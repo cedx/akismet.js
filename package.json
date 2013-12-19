@@ -8,15 +8,13 @@
   "preferGlobal" : false,
   "private" : false,
   "version" : "0.1.0",
-  "dependencies" : {
-    "commander" : "*"
-  },
+  "dependencies" : {},
   "devDependencies" : {
-    "jshint" : "*",
-    "yuidocjs" : "*"
+    "jshint" : "~2.3.0",
+    "yuidocjs" : "~0.3.46"
   },
   "engines" : {
-    "node" : "*"
+    "node" : "~0.10.23"
   },
   "jshintConfig" : {
     "camelcase" : true,
