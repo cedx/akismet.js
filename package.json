@@ -1,0 +1,43 @@
+{
+  "author" : "Cédric Belin <cedric@belin.io>",
+  "bugs" : "https://github.com/cedx/akismet.js/issues",
+  "description" : "Prevent comment spam using Akismet service (https://akismet.com).",
+  "license" : "MIT",
+  "main" : "./index",
+  "name" : "akismet-js",
+  "preferGlobal" : false,
+  "private" : false,
+  "version" : "0.1.0",
+  "dependencies" : {
+    "commander" : "*"
+  },
+  "devDependencies" : {
+    "jshint" : "*",
+    "yuidocjs" : "*"
+  },
+  "engines" : {
+    "node" : "*"
+  },
+  "jshintConfig" : {
+    "camelcase" : true,
+    "freeze" : true,
+    "indent" : 2,
+    "latedef" : true,
+    "newcap" : true,
+    "node" : true,
+    "nonew" : true,
+    "quotmark" : "single",
+    "strict" : true,
+    "trailing" : true,
+    "undef" : true,
+    "unused" : true
+  },
+  "repository" : {
+    "type" : "git",
+    "url" : "https://github.com/cedx/akismet.js.git"
+  },
+  "scripts" : {
+    "docs" : "yuidoc --lint && yuidoc --no-code",
+    "lint" : "jshint --verbose bin/ lib/"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "logo" : "http://akismet.belin.io/favicon.ico",
+  "name" : "Akismet.js",
+  "url" : "http://akismet.belin.io",
+  "options" : {
+    "linkNatives" : "true",
+    "outdir" : "./doc/api",
+    "paths" : "./lib",
+    "tabtospace" : 2
+  }
+}
