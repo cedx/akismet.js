@@ -13,7 +13,7 @@ Prevent comment spam using [Akismet](https://akismet.com) service, in [JavaScrip
 ## Installing via [npm](https://npmjs.org)
 
 ### 1. Depend on it
-Add this to your application's `package.json` file:
+Add this to your project's `package.json` file:
 ```json
 {
   "dependencies": {
@@ -30,15 +30,18 @@ $ npm install
 	
 ### 3. Import it
 Now in your JavaScript code, you can use:
-```javascript
+```js
 var akismet = require('akismet-js');
 ```
 
 ## Usage
 
 ### Key Verification
-```javascript
-var client = new akismet.Client({ apiKey: '123YourAPIKey', blog: 'http://your.blog.url' });
+```js
+var client = new akismet.Client({
+  apiKey: '123YourAPIKey',
+  blog: 'http://your.blog.url'
+});
 
 client.verifyKey(function(err, isValid) {
   console.log(isValid ? 'Your API key is valid.' : 'Your API key is invalid.')
@@ -46,17 +49,19 @@ client.verifyKey(function(err, isValid) {
 ```
 	
 ### Comment Check
-```javascript
-var author = new akismet.Author({ name: 'An author' });
-var comment = new akismet.Comment({ content: 'A comment.', author: author });
+```js
+var comment = new akismet.Comment({
+  author: new akismet.Author({ name: 'An author' }),
+  content: 'A comment.'
+});
 
-client.checkComment(function(err, isSpam) {
+client.checkComment(comment, function(err, isSpam) {
   console.log(isSpam ? 'The comment is marked as spam.' : 'The comment is marked as ham.')
 });
 ```
 	
 ### Submit Spam/Ham
-```javascript
+```js
 client.submitSpam(comment, function(err) {
   console.log('Spam submitted.');
 });
