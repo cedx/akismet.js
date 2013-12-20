@@ -30,12 +30,18 @@
     "undef" : true,
     "unused" : true
   },
+  "keywords" : [
+    "akismet",
+    "comment",
+    "spam",
+    "validation"
+  ],
   "repository" : {
     "type" : "git",
     "url" : "https://github.com/cedx/akismet.js.git"
   },
   "scripts" : {
-    "docs" : "yuidoc --lint && yuidoc --no-code",
+    "doc" : "yuidoc --lint && yuidoc --no-code",
     "lint" : "jshint --verbose bin/ lib/",
     "test" : "mocha --check-leaks --recursive --reporter spec test/"
   }
