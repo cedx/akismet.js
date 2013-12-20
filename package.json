@@ -11,13 +11,13 @@
   "dependencies" : {},
   "devDependencies" : {
     "jshint" : "~2.3.0",
+    "mocha" : "~1.15.1",
     "yuidocjs" : "~0.3.46"
   },
   "engines" : {
     "node" : "~0.10.23"
   },
   "jshintConfig" : {
-    "camelcase" : true,
     "freeze" : true,
     "indent" : 2,
     "latedef" : true,
@@ -36,6 +36,7 @@
   },
   "scripts" : {
     "docs" : "yuidoc --lint && yuidoc --no-code",
-    "lint" : "jshint --verbose bin/ lib/"
+    "lint" : "jshint --verbose bin/ lib/",
+    "test" : "mocha --check-leaks --recursive --reporter spec test/"
   }
 }
