@@ -17,7 +17,7 @@ Add this to your project's `package.json` file:
 ```json
 {
   "dependencies": {
-    "akismet-js": "~0.1.0"
+    "akismet-js": "*"
   }
 }
 ```
