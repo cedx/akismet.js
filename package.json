@@ -45,7 +45,7 @@
   },
   "scripts" : {
     "doc" : "yuidoc --lint && yuidoc --no-code",
-    "lint" : "jshint --verbose bin/ lib/",
+    "lint" : "jshint --verbose lib/",
     "test" : "mocha --check-leaks --recursive --reporter spec test/"
   }
 }
