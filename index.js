@@ -2,8 +2,16 @@
  * Package entry point.
  * @module index
  */
+'use strict';
+
+// Module dependencies.
+var client=require('./lib/client');
+var comment=require('./lib/comment');
+
+// Public interface.
 module.exports={
-  Author: require('./lib/author'),
-  Comment: require('./lib/comment').Comment,
-  CommentType: require('./lib/comment').CommentType
+  Author: comment.Author,
+  Client: client.Client,
+  Comment: comment.Comment,
+  CommentType: comment.CommentType
 };

@@ -44,7 +44,7 @@ var client = new akismet.Client({
 });
 
 client.verifyKey(function(err, isValid) {
-  console.log(isValid ? 'Your API key is valid.' : 'Your API key is invalid.')
+  console.log(isValid ? 'Your API key is valid.' : 'Your API key is invalid.');
 });
 ```
 	
@@ -56,7 +56,7 @@ var comment = new akismet.Comment({
 });
 
 client.checkComment(comment, function(err, isSpam) {
-  console.log(isSpam ? 'The comment is marked as spam.' : 'The comment is marked as ham.')
+  console.log(isSpam ? 'The comment is marked as spam.' : 'The comment is marked as ham.');
 });
 ```
 	
