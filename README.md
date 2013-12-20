@@ -38,12 +38,8 @@ var akismet = require('akismet-js');
 
 ### Key Verification
 ```js
-var client = new akismet.Client({
-  apiKey: '123YourAPIKey',
-  blog: 'http://your.blog.url'
-});
-
-client.verifyKey(function(err, isValid) {
+var client = new akismet.Client('123YourAPIKey', 'http://your.blog.url');
+client.verifyKey(function(error, isValid) {
   console.log(isValid ? 'Your API key is valid.' : 'Your API key is invalid.');
 });
 ```
@@ -55,18 +51,18 @@ var comment = new akismet.Comment({
   content: 'A comment.'
 });
 
-client.checkComment(comment, function(err, isSpam) {
+client.checkComment(comment, function(error, isSpam) {
   console.log(isSpam ? 'The comment is marked as spam.' : 'The comment is marked as ham.');
 });
 ```
 	
 ### Submit Spam/Ham
 ```js
-client.submitSpam(comment, function(err) {
+client.submitSpam(comment, function(error) {
   console.log('Spam submitted.');
 });
 
-client.submitHam(comment, function(err) {
+client.submitHam(comment, function(error) {
   console.log('Ham submitted.');
 });
 ```
