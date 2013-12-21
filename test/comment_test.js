@@ -2,6 +2,7 @@
  * Unit tests of the `comment` module.
  * @module comment_test
  */
+'use strict';
 
 // Module dependencies.
 var assert=require('assert');
@@ -25,13 +26,13 @@ var AuthorTest={
   run: function() {
     var self=this;
     describe('Author', function() {
-      describe('.fromJSON()', self.testFromJSON.bind(self));
-      describe('#toJSON()', self.testToJSON.bind(self));
+      describe('.fromJSON()', self.testFromJSON);
+      describe('#toJSON()', self.testToJSON);
     });
   },
 
   /**
-   * Tests the `Author.fromJSON()` method.
+   * Tests the `Author.fromJSON` method.
    * @method testFromJSON
    */
   testFromJSON: function() {
@@ -53,7 +54,7 @@ var AuthorTest={
   },
 
   /**
-   * Tests the `Author#toJSON()` method.
+   * Tests the `Author#toJSON` method.
    * @method testToJSON
    */
   testToJSON: function() {
@@ -88,7 +89,7 @@ var CommentTest={
   },
 
   /**
-   * Tests the `Comment.fromJSON()` method.
+   * Tests the `Comment.fromJSON` method.
    * @method testFromJSON
    */
   testFromJSON: function() {
@@ -115,7 +116,7 @@ var CommentTest={
   },
 
   /**
-   * Tests the `Comment#toJSON()` method.
+   * Tests the `Comment#toJSON` method.
    * @method testToJSON
    */
   testToJSON: function() {

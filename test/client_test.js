@@ -2,6 +2,7 @@
  * Unit tests of the `client` module.
  * @module client_test
  */
+'use strict';
 
 // Module dependencies.
 var assert=require('assert');
@@ -25,7 +26,7 @@ var ClientTest={
    * @type Client
    * @private
    */
-  _client: new Client('747ebaa4d142', 'https://github.com/cedx/akismet.js'),
+  _client: new Client('TODO: put your own Akismet API key', 'https://github.com/cedx/akismet.js'),
 
   /**
    * A comment with content marked as ham.
@@ -38,7 +39,8 @@ var ClientTest={
       ipAddress: '192.168.0.1',
       name: 'Akismet.js',
       url: 'https://github.com/cedx/akismet.js',
-      userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9) AppleWebKit/537.71 (KHTML, like Gecko) Version/7.0 Safari/537.71' }),
+      userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9) AppleWebKit/537.71 (KHTML, like Gecko) Version/7.0 Safari/537.71'
+    }),
     content: 'I\'m testing out the Service API.',
     referrer: 'https://npmjs.org/package/akismet-js',
     type: CommentType.COMMENT
@@ -75,7 +77,7 @@ var ClientTest={
   },
 
   /**
-   * Tests the `Client#checkComment()` method.
+   * Tests the `Client#checkComment` method.
    * @method testCheckComment
    */
   testCheckComment: function() {
@@ -98,7 +100,7 @@ var ClientTest={
   },
 
   /**
-   * Tests the `Client#submitHam()` method.
+   * Tests the `Client#submitHam` method.
    * @method testSubmitHam
    */
   testSubmitHam: function() {
@@ -109,7 +111,7 @@ var ClientTest={
   },
 
   /**
-   * Tests the `Client#submitSpam()` method.
+   * Tests the `Client#submitSpam` method.
    * @method testSubmitSpam
    */
   testSubmitSpam: function() {
@@ -120,7 +122,7 @@ var ClientTest={
   },
 
   /**
-   * Tests the `Client#verifyKey()` method.
+   * Tests the `Client#verifyKey` method.
    * @method testVerifyKey
    */
   testVerifyKey: function() {

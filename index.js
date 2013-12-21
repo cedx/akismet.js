@@ -5,13 +5,12 @@
 'use strict';
 
 // Module dependencies.
-var client=require('./lib/client');
 var comment=require('./lib/comment');
 
 // Public interface.
 module.exports={
   Author: comment.Author,
-  Client: client.Client,
+  Client: require('./lib/client'),
   Comment: comment.Comment,
   CommentType: comment.CommentType
 };
