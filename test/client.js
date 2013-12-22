@@ -1,6 +1,6 @@
 /**
  * Unit tests of the `client` module.
- * @module client_test
+ * @module test/client
  */
 'use strict';
 
