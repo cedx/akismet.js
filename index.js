@@ -12,5 +12,6 @@ module.exports={
   Author: comment.Author,
   Client: require('./lib/client'),
   Comment: comment.Comment,
-  CommentType: comment.CommentType
+  CommentType: comment.CommentType,
+  Server: require('./lib/server')
 };

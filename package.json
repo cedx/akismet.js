@@ -1,16 +1,17 @@
 {
   "author" : "Cédric Belin <cedric@belin.io>",
   "bugs" : "https://github.com/cedx/akismet.js/issues",
-  "description" : "Prevent comment spam using Akismet service.",
-  "homepage" : "https://github.com/cedx/akismet.js",
+  "description" : "Prevent comment spam using Akismet service (https://akismet.com).",
+  "homepage" : "http://akismet.belin.io",
   "license" : "MIT",
   "main" : "./index",
   "name" : "akismet-js",
   "preferGlobal" : false,
   "private" : false,
-  "version" : "0.1.0",
+  "version" : "0.2.0",
   "dependencies" : {
-    "request" : "~2.30.0"
+    "express" : "~3.4.7",
+    "superagent" : "~0.15.7"
   },
   "devDependencies" : {
     "jshint" : "~2.3.0",
@@ -31,7 +32,11 @@
     "strict" : true,
     "trailing" : true,
     "undef" : true,
-    "unused" : true
+    "unused" : true,
+    "globals" : {
+      "describe" : false,
+      "it" : false
+    }
   },
   "keywords" : [
     "akismet",
@@ -45,7 +50,7 @@
   },
   "scripts" : {
     "doc" : "yuidoc --lint && yuidoc --no-code",
-    "lint" : "jshint --verbose lib/",
+    "lint" : "jshint --verbose bin/ lib/ test/",
     "test" : "mocha --check-leaks --recursive --reporter spec test/"
   }
 }
