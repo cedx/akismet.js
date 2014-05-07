@@ -1,56 +1,56 @@
 {
-  "author" : "Cédric Belin <cedric@belin.io>",
-  "bugs" : "https://github.com/cedx/akismet.js/issues",
-  "description" : "Prevent comment spam using Akismet service (https://akismet.com).",
-  "homepage" : "http://akismet.belin.io",
-  "license" : "MIT",
-  "main" : "./index",
-  "name" : "akismet-js",
-  "preferGlobal" : false,
-  "private" : false,
-  "version" : "0.2.0",
-  "dependencies" : {
-    "express" : "~3.4.7",
-    "superagent" : "~0.15.7"
+  "author": "Cédric Belin <cedric@belin.io>",
+  "bugs": "http://dev.belin.io/akismet.js/issues",
+  "description": "Prevent comment spam using Akismet service (https://akismet.com).",
+  "homepage": "http://dev.belin.io/akismet.js",
+  "license": "MIT",
+  "main": "./index",
+  "name": "akismet-js",
+  "preferGlobal": false,
+  "private": false,
+  "version": "0.2.0",
+  "dependencies": {
+    "express": "~3.4.7",
+    "superagent": "~0.15.7"
   },
-  "devDependencies" : {
-    "jshint" : "~2.3.0",
-    "mocha" : "~1.15.1",
-    "yuidocjs" : "~0.3.46"
+  "devDependencies": {
+    "jshint": "~2.3.0",
+    "mocha": "~1.15.1",
+    "yuidocjs": "~0.3.46"
   },
-  "engines" : {
-    "node" : "~0.10.23"
+  "engines": {
+    "node": "~0.10.23"
   },
-  "jshintConfig" : {
-    "freeze" : true,
-    "indent" : 2,
-    "latedef" : true,
-    "newcap" : true,
-    "node" : true,
-    "nonew" : true,
-    "quotmark" : "single",
-    "strict" : true,
-    "trailing" : true,
-    "undef" : true,
-    "unused" : true,
-    "globals" : {
-      "describe" : false,
-      "it" : false
+  "jshintConfig": {
+    "freeze": true,
+    "indent": 2,
+    "latedef": true,
+    "newcap": true,
+    "node": true,
+    "nonew": true,
+    "quotmark": "single",
+    "strict": true,
+    "trailing": true,
+    "undef": true,
+    "unused": true,
+    "globals": {
+      "describe": false,
+      "it": false
     }
   },
-  "keywords" : [
+  "keywords": [
     "akismet",
     "comment",
     "spam",
     "validation"
   ],
-  "repository" : {
-    "type" : "git",
-    "url" : "https://github.com/cedx/akismet.js.git"
+  "repository": {
+    "type": "git",
+    "url": "http://dev.belin.io/akismet.js.git"
   },
-  "scripts" : {
-    "doc" : "yuidoc --lint && yuidoc --no-code",
-    "lint" : "jshint --verbose bin/ lib/ test/",
-    "test" : "mocha --check-leaks --recursive --reporter spec test/"
+  "scripts": {
+    "docs": "yuidoc --lint && yuidoc --no-code",
+    "lint": "jshint --verbose bin/ lib/ test/",
+    "test": "mocha --check-leaks --recursive --reporter spec test/"
   }
 }
