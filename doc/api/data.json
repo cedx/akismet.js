@@ -1,0 +1,610 @@
+{
+    "project": {
+        "logo": "http://api.belin.io/akismet.js/favicon.ico",
+        "name": "Akismet.js",
+        "url": "https://npmjs.org/package/akismet-js",
+        "description": "Prevent comment spam using Akismet service.",
+        "version": "0.1.0"
+    },
+    "files": {
+        "lib/client.js": {
+            "name": "lib/client.js",
+            "modules": {
+                "client": 1
+            },
+            "classes": {
+                "EndPoints": 1,
+                "Client": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "lib/comment.js": {
+            "name": "lib/comment.js",
+            "modules": {
+                "comment": 1
+            },
+            "classes": {
+                "Author": 1,
+                "Comment": 1,
+                "CommentType": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        }
+    },
+    "modules": {
+        "client": {
+            "name": "client",
+            "submodules": {},
+            "classes": {
+                "EndPoints": 1,
+                "Client": 1
+            },
+            "fors": {},
+            "namespaces": {},
+            "tag": "module",
+            "file": "lib/client.js",
+            "line": 55,
+            "description": "Contains classes that provide a simple programming interface for querying [Akismet](https://akismet.com) service."
+        },
+        "comment": {
+            "name": "comment",
+            "submodules": {},
+            "classes": {
+                "Author": 1,
+                "Comment": 1,
+                "CommentType": 1
+            },
+            "fors": {},
+            "namespaces": {},
+            "tag": "module",
+            "file": "lib/comment.js",
+            "line": 216,
+            "description": "Provides classes describing a comment."
+        }
+    },
+    "classes": {
+        "EndPoints": {
+            "name": "EndPoints",
+            "shortname": "EndPoints",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "client",
+            "namespace": "",
+            "file": "lib/client.js",
+            "line": 11,
+            "description": "Provides the URLs corresponding to the service end points.",
+            "static": 1
+        },
+        "Client": {
+            "name": "Client",
+            "shortname": "Client",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "client",
+            "namespace": "",
+            "file": "lib/client.js",
+            "line": 55,
+            "description": "Provides the base class for clients that submit comments to [Akismet](https://akismet.com) service.",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "apiKey",
+                    "description": "The Akismet API key used to query the service.",
+                    "type": "String"
+                },
+                {
+                    "name": "blog",
+                    "description": "The front page or home URL transmitted when making requests.",
+                    "type": "String"
+                },
+                {
+                    "name": "options",
+                    "description": "An object specifying additional values used to initialize this instance.",
+                    "type": "Object",
+                    "optional": true
+                }
+            ]
+        },
+        "Author": {
+            "name": "Author",
+            "shortname": "Author",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "comment",
+            "namespace": "",
+            "file": "lib/comment.js",
+            "line": 7,
+            "description": "Represents the author of a `Comment`.",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "options",
+                    "description": "An object specifying values used to initialize this instance.",
+                    "type": "Object",
+                    "optional": true
+                }
+            ]
+        },
+        "Comment": {
+            "name": "Comment",
+            "shortname": "Comment",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "comment",
+            "namespace": "",
+            "file": "lib/comment.js",
+            "line": 104,
+            "description": "Represents a comment submitted by an `Author`.",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "options",
+                    "description": "An object specifying values used to initialize this instance.",
+                    "type": "Object",
+                    "optional": true
+                }
+            ]
+        },
+        "CommentType": {
+            "name": "CommentType",
+            "shortname": "CommentType",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "comment",
+            "namespace": "",
+            "file": "lib/comment.js",
+            "line": 216,
+            "description": "Specifies the type of a `Comment`.",
+            "static": 1
+        }
+    },
+    "classitems": [
+        {
+            "file": "lib/client.js",
+            "line": 18,
+            "description": "URL of the [comment check](https://akismet.com/development/api/#comment-check) end point.",
+            "itemtype": "property",
+            "name": "CHECK_COMMENT",
+            "type": "String",
+            "static": 1,
+            "final": 1,
+            "class": "EndPoints",
+            "module": "client"
+        },
+        {
+            "file": "lib/client.js",
+            "line": 27,
+            "description": "URL of the [submit ham](https://akismet.com/development/api/#submit-ham) end point.",
+            "itemtype": "property",
+            "name": "SUBMIT_HAM",
+            "type": "String",
+            "static": 1,
+            "final": 1,
+            "class": "EndPoints",
+            "module": "client"
+        },
+        {
+            "file": "lib/client.js",
+            "line": 36,
+            "description": "URL of the [submit spam](https://akismet.com/development/api/#submit-spam) end point.",
+            "itemtype": "property",
+            "name": "SUBMIT_SPAM",
+            "type": "String",
+            "static": 1,
+            "final": 1,
+            "class": "EndPoints",
+            "module": "client"
+        },
+        {
+            "file": "lib/client.js",
+            "line": 45,
+            "description": "URL of the [key verification](https://akismet.com/development/api/#verify-key) end point.",
+            "itemtype": "property",
+            "name": "VERIFY_KEY",
+            "type": "String",
+            "static": 1,
+            "final": 1,
+            "class": "EndPoints",
+            "module": "client"
+        },
+        {
+            "file": "lib/client.js",
+            "line": 65,
+            "description": "The Akismet API key.",
+            "itemtype": "property",
+            "name": "apiKey",
+            "type": "String",
+            "class": "Client",
+            "module": "client"
+        },
+        {
+            "file": "lib/client.js",
+            "line": 72,
+            "description": "The front page or home URL of the instance making requests.",
+            "itemtype": "property",
+            "name": "blog",
+            "type": "String",
+            "class": "Client",
+            "module": "client"
+        },
+        {
+            "file": "lib/client.js",
+            "line": 79,
+            "description": "The user agent string to use when making requests.\nIf possible, the user agent string should always have the following format: `Application Name/Version | Plugin Name/Version`.",
+            "itemtype": "property",
+            "name": "userAgent",
+            "type": "String",
+            "class": "Client",
+            "module": "client"
+        },
+        {
+            "file": "lib/client.js",
+            "line": 87,
+            "description": "A value indicating whether to use secure requests when querying the service database.",
+            "itemtype": "property",
+            "name": "useSecureRequests",
+            "type": "Boolean",
+            "default": "false",
+            "class": "Client",
+            "module": "client"
+        },
+        {
+            "file": "lib/client.js",
+            "line": 101,
+            "description": "Checks the specified comment against the service database, and returns a value indicating whether it is spam.",
+            "itemtype": "method",
+            "name": "checkComment",
+            "params": [
+                {
+                    "name": "callback",
+                    "description": "The callback to invoke at the end. It is passed two arguments:\n- `error` containing the error that occurred, if any.\n- `isSpam` indicating whether the specified comment is spam.",
+                    "type": "Function"
+                }
+            ],
+            "async": 1,
+            "class": "Client",
+            "module": "client"
+        },
+        {
+            "file": "lib/client.js",
+            "line": 122,
+            "description": "Submits the specified comment that was incorrectly marked as spam but should not have been.",
+            "itemtype": "method",
+            "name": "submitHam",
+            "params": [
+                {
+                    "name": "callback",
+                    "description": "The callback to invoke at the end. It is passed one argument `error` containing the error that occurred, if any.",
+                    "type": "Function"
+                }
+            ],
+            "async": 1,
+            "class": "Client",
+            "module": "client"
+        },
+        {
+            "file": "lib/client.js",
+            "line": 138,
+            "description": "Submits the specified comment that was not marked as spam but should have been.",
+            "itemtype": "method",
+            "name": "submitSpam",
+            "params": [
+                {
+                    "name": "callback",
+                    "description": "The callback to invoke at the end. It is passed one argument `error` containing the error that occurred, if any.",
+                    "type": "Function"
+                }
+            ],
+            "async": 1,
+            "class": "Client",
+            "module": "client"
+        },
+        {
+            "file": "lib/client.js",
+            "line": 154,
+            "description": "Returns a string representation of this object.",
+            "itemtype": "method",
+            "name": "toString",
+            "return": {
+                "description": "The string representation of this object.",
+                "type": "String"
+            },
+            "class": "Client",
+            "module": "client"
+        },
+        {
+            "file": "lib/client.js",
+            "line": 167,
+            "description": "Checks the API key against the service database, and returns a value indicating whether it is valid.",
+            "itemtype": "method",
+            "name": "verifyKey",
+            "params": [
+                {
+                    "name": "callback",
+                    "description": "The callback to invoke at the end. It is passed two arguments:\n- `error` containing the error that occurred, if any.\n- `isValid` indicating whether the API key is valid.",
+                    "type": "Function"
+                }
+            ],
+            "async": 1,
+            "class": "Client",
+            "module": "client"
+        },
+        {
+            "file": "lib/client.js",
+            "line": 187,
+            "description": "Queries the service by posting the specified fields to a given end point, and returns the response as a string.",
+            "itemtype": "method",
+            "name": "_queryService",
+            "params": [
+                {
+                    "name": "endPoint",
+                    "description": "URL of the end point to query.",
+                    "type": "String"
+                },
+                {
+                    "name": "fields",
+                    "description": "Fields describing the query body.",
+                    "type": "Object"
+                },
+                {
+                    "name": "callback",
+                    "description": "The callback to invoke at the end. It is passed two arguments:\n- `error` containing the error that occurred, if any.\n- `response` containing the response body returned by the remote service.",
+                    "type": "Function"
+                }
+            ],
+            "access": "private",
+            "tagname": "",
+            "async": 1,
+            "class": "Client",
+            "module": "client"
+        },
+        {
+            "file": "lib/comment.js",
+            "line": 15,
+            "description": "The author's mail address.",
+            "itemtype": "property",
+            "name": "email",
+            "type": "String",
+            "class": "Author",
+            "module": "comment"
+        },
+        {
+            "file": "lib/comment.js",
+            "line": 22,
+            "description": "The author's IP address.",
+            "itemtype": "property",
+            "name": "ipAddress",
+            "type": "String",
+            "class": "Author",
+            "module": "comment"
+        },
+        {
+            "file": "lib/comment.js",
+            "line": 29,
+            "description": "The author's name.",
+            "itemtype": "property",
+            "name": "name",
+            "type": "String",
+            "class": "Author",
+            "module": "comment"
+        },
+        {
+            "file": "lib/comment.js",
+            "line": 36,
+            "description": "The URL of the author's website.",
+            "itemtype": "property",
+            "name": "url",
+            "type": "String",
+            "class": "Author",
+            "module": "comment"
+        },
+        {
+            "file": "lib/comment.js",
+            "line": 43,
+            "description": "The author's user agent, that is the string identifying the Web browser used to submit comments.",
+            "itemtype": "property",
+            "name": "userAgent",
+            "type": "String",
+            "class": "Author",
+            "module": "comment"
+        },
+        {
+            "file": "lib/comment.js",
+            "line": 56,
+            "description": "Creates a new `Author` from the specified JSON string.",
+            "itemtype": "method",
+            "name": "fromJSON",
+            "params": [
+                {
+                    "name": "json",
+                    "description": "A JSON string, or an already parsed object, representing an `Author`.",
+                    "type": "Object|String"
+                }
+            ],
+            "return": {
+                "description": "The instance corresponding to the specified JSON object, or `null` if a parsing error occurred.",
+                "type": "Author"
+            },
+            "static": 1,
+            "class": "Author",
+            "module": "comment"
+        },
+        {
+            "file": "lib/comment.js",
+            "line": 80,
+            "description": "Converts this object to a string in JSON format.",
+            "itemtype": "method",
+            "name": "toJSON",
+            "return": {
+                "description": "The JSON representation of this object.",
+                "type": "String"
+            },
+            "class": "Author",
+            "module": "comment"
+        },
+        {
+            "file": "lib/comment.js",
+            "line": 95,
+            "description": "Returns a string representation of this object.",
+            "itemtype": "method",
+            "name": "toString",
+            "return": {
+                "description": "The string representation of this object.",
+                "type": "String"
+            },
+            "class": "Author",
+            "module": "comment"
+        },
+        {
+            "file": "lib/comment.js",
+            "line": 112,
+            "description": "The comment's author.",
+            "itemtype": "property",
+            "name": "author",
+            "type": "Author",
+            "class": "Comment",
+            "module": "comment"
+        },
+        {
+            "file": "lib/comment.js",
+            "line": 119,
+            "description": "The comment's content.",
+            "itemtype": "property",
+            "name": "content",
+            "type": "String",
+            "class": "Comment",
+            "module": "comment"
+        },
+        {
+            "file": "lib/comment.js",
+            "line": 126,
+            "description": "The permanent location of the entry the comment is submitted to.",
+            "itemtype": "property",
+            "name": "permalink",
+            "type": "String",
+            "class": "Comment",
+            "module": "comment"
+        },
+        {
+            "file": "lib/comment.js",
+            "line": 133,
+            "description": "The URL of the webpage that linked to the entry being requested.",
+            "itemtype": "property",
+            "name": "referrer",
+            "type": "String",
+            "class": "Comment",
+            "module": "comment"
+        },
+        {
+            "file": "lib/comment.js",
+            "line": 140,
+            "description": "The comment's type.\nThis string value specifies a `CommentType` constant or a made up value like \"registration\".",
+            "itemtype": "property",
+            "name": "type",
+            "type": "String",
+            "class": "Comment",
+            "module": "comment"
+        },
+        {
+            "file": "lib/comment.js",
+            "line": 154,
+            "description": "Creates a new `Comment` from the specified JSON string.",
+            "itemtype": "method",
+            "name": "fromJSON",
+            "params": [
+                {
+                    "name": "json",
+                    "description": "A JSON string, or an already parsed object, representing an `Comment`.",
+                    "type": "Object|String"
+                }
+            ],
+            "return": {
+                "description": "The instance corresponding to the specified JSON object, or `null` if a parsing error occurred.",
+                "type": "Comment"
+            },
+            "static": 1,
+            "class": "Comment",
+            "module": "comment"
+        },
+        {
+            "file": "lib/comment.js",
+            "line": 188,
+            "description": "Converts this object to a string in JSON format.",
+            "itemtype": "method",
+            "name": "toJSON",
+            "return": {
+                "description": "The JSON representation of this object.",
+                "type": "String"
+            },
+            "class": "Comment",
+            "module": "comment"
+        },
+        {
+            "file": "lib/comment.js",
+            "line": 207,
+            "description": "Returns a string representation of this object.",
+            "itemtype": "method",
+            "name": "toString",
+            "return": {
+                "description": "The string representation of this object.",
+                "type": "String"
+            },
+            "class": "Comment",
+            "module": "comment"
+        },
+        {
+            "file": "lib/comment.js",
+            "line": 223,
+            "description": "A standard comment.",
+            "itemtype": "property",
+            "name": "COMMENT",
+            "type": "String",
+            "static": 1,
+            "final": 1,
+            "class": "CommentType",
+            "module": "comment"
+        },
+        {
+            "file": "lib/comment.js",
+            "line": 232,
+            "description": "A [pingback](https://en.wikipedia.org/wiki/Pingback) comment.",
+            "itemtype": "property",
+            "name": "PINGBACK",
+            "type": "String",
+            "static": 1,
+            "final": 1,
+            "class": "CommentType",
+            "module": "comment"
+        },
+        {
+            "file": "lib/comment.js",
+            "line": 241,
+            "description": "A [trackback](https://en.wikipedia.org/wiki/Trackback) comment.",
+            "itemtype": "property",
+            "name": "TRACKBACK",
+            "type": "String",
+            "static": 1,
+            "final": 1,
+            "class": "CommentType",
+            "module": "comment"
+        }
+    ],
+    "warnings": []
+}
