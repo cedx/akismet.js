@@ -1,11 +1,11 @@
 {
-  "logo": "http://api.belin.io/akismet.js/favicon.ico",
+  "logo": "http://dev.belin.io/akismet.js/api/favicon.ico",
   "name": "Akismet.js",
   "url": "https://npmjs.org/package/akismet-js",
   "options" : {
-    "linkNatives": "true",
-    "outdir": "./doc/api",
-    "paths": "./lib",
+    "linkNatives": true,
+    "outdir": "doc/api",
+    "paths": "lib",
     "tabtospace": 2
   }
 }

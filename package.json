@@ -1,8 +1,8 @@
 {
   "author": "Cédric Belin <cedric@belin.io>",
-  "bugs": "http://dev.belin.io/akismet.js/issues",
+  "bugs": "https://github.com/cedx/akismet.js/issues",
   "description": "Prevent comment spam using Akismet service (https://akismet.com).",
-  "homepage": "http://dev.belin.io/akismet.js",
+  "homepage": "https://github.com/cedx/akismet.js",
   "license": "MIT",
   "main": "./index",
   "name": "akismet-js",
@@ -10,16 +10,16 @@
   "private": false,
   "version": "0.2.0",
   "dependencies": {
-    "express": "~3.4.7",
-    "superagent": "~0.15.7"
+    "express": "~3.4.8",
+    "superagent": "~0.18.0"
   },
   "devDependencies": {
-    "jshint": "~2.3.0",
-    "mocha": "~1.15.1",
-    "yuidocjs": "~0.3.46"
+    "jshint": "~2.5.1",
+    "mocha": "~1.20.1",
+    "yuidocjs": "~0.3.50"
   },
   "engines": {
-    "node": "~0.10.23"
+    "node": "~0.10.29"
   },
   "jshintConfig": {
     "freeze": true,
@@ -46,11 +46,11 @@
   ],
   "repository": {
     "type": "git",
-    "url": "http://dev.belin.io/akismet.js.git"
+    "url": "https://github.com/cedx/akismet.js.git"
   },
   "scripts": {
-    "docs": "yuidoc --lint && yuidoc --no-code",
-    "lint": "jshint --verbose bin/ lib/ test/",
-    "test": "mocha --check-leaks --recursive --reporter spec test/"
+    "doc": "yuidoc --lint && yuidoc --no-code",
+    "lint": "jshint --verbose lib test",
+    "test": "mocha --check-leaks --recursive --reporter spec test"
   }
 }
