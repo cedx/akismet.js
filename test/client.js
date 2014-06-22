@@ -26,7 +26,7 @@ var ClientTest={
    * @type Client
    * @private
    */
-  _client: new Client('TODO: put your own Akismet API key', 'http://dev.belin.io/akismet.js'),
+  _client: new Client('TODO: put your own Akismet API key', 'https://github.com/cedx/akismet.js'),
 
   /**
    * A comment with content marked as ham.
@@ -38,7 +38,7 @@ var ClientTest={
     author: new Author({
       ipAddress: '192.168.0.1',
       name: 'Akismet.js',
-      url: 'http://dev.belin.io/akismet.js',
+      url: 'https://github.com/cedx/akismet.js',
       userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9) AppleWebKit/537.71 (KHTML, like Gecko) Version/7.0 Safari/537.71'
     }),
     content: 'I\'m testing out the Service API.',
