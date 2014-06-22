@@ -8,7 +8,7 @@ Prevent comment spam using [Akismet](https://akismet.com) service, in [JavaScrip
 - [Submit ham](https://akismet.com/development/api/#submit-ham): submits a comment that was incorrectly marked as spam but should not have been.
 
 ## Documentation
-- [API Reference](http://api.belin.io/akismet.js)
+- [API Reference](http://dev.belin.io/akismet.js/api)
 
 ## Installing via [npm](https://npmjs.org)
 
