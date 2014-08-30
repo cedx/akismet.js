@@ -74,4 +74,4 @@ client.submitHam(comment, function(error) {
 ```
 
 ## License
-[Akismet.js](https://npmjs.org/package/akismet-js) is distributed under the MIT License.
+[Akismet.js](https://www.npmjs.org/package/akismet-js) is distributed under the MIT License.
