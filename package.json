@@ -52,5 +52,16 @@
     "doc": "yuidoc --lint && yuidoc --no-code",
     "lint": "jshint --verbose lib test",
     "test": "mocha --check-leaks --recursive --reporter spec test"
+  },
+  "yuidoc": {
+    "logo": "http://dev.belin.io/akismet.js/favicon.ico",
+    "name": "Akismet.js",
+    "url": "https://npmjs.org/package/akismet-js",
+    "options" : {
+      "linkNatives": true,
+      "outdir": "doc/api",
+      "paths": "lib",
+      "tabtospace": 2
+    }
   }
 }
