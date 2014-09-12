@@ -1,6 +1,6 @@
 /**
  * Unit tests of the `comment` module.
- * @module test/comment
+ * @module tests.comment
  */
 'use strict';
 
@@ -14,7 +14,7 @@ var CommentType=akismet.CommentType;
 
 /**
  * Tests the features of the `Author` class.
- * @class AuthorTest
+ * @class akismet.tests.AuthorTest
  * @static
  */
 var AuthorTest={
@@ -71,7 +71,7 @@ var AuthorTest={
 
 /**
  * Tests the features of the `Comment` class.
- * @class CommentTest
+ * @class akismet.tests.CommentTest
  * @static
  */
 var CommentTest={

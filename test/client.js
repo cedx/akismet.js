@@ -1,6 +1,6 @@
 /**
  * Unit tests of the `client` module.
- * @module test/client
+ * @module tests.client
  */
 'use strict';
 
@@ -15,7 +15,7 @@ var CommentType=akismet.CommentType;
 
 /**
  * Tests the features of the `Client` class.
- * @class ClientTest
+ * @class akismet.tests.ClientTest
  * @static
  */
 var ClientTest={
