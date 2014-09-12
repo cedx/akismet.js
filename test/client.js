@@ -6,15 +6,13 @@
 
 // Module dependencies.
 var assert=require('assert');
-var akismet=require('../index');
-
-var Author=akismet.Author;
-var Client=akismet.Client;
-var Comment=akismet.Comment;
-var CommentType=akismet.CommentType;
+var Author=require('../index').Author;
+var Client=require('../index').Client;
+var Comment=require('../index').Comment;
+var CommentType=require('../index').CommentType;
 
 /**
- * Tests the features of the `Client` class.
+ * Tests the features of the `akismet.Client` class.
  * @class akismet.tests.ClientTest
  * @static
  */
@@ -26,7 +24,7 @@ var ClientTest={
    * @type Client
    * @private
    */
-  _client: new Client('TODO: put your own Akismet API key', 'https://github.com/cedx/akismet.js'),
+  _client: new Client(process.env.AKISMET_API_KEY, process.env.AKISMET_BLOG),
 
   /**
    * A comment with content marked as ham.
@@ -38,11 +36,11 @@ var ClientTest={
     author: new Author({
       ipAddress: '192.168.0.1',
       name: 'Akismet.js',
-      url: 'https://github.com/cedx/akismet.js',
+      url: 'http://dev.belin.io/akismet.js',
       userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9) AppleWebKit/537.71 (KHTML, like Gecko) Version/7.0 Safari/537.71'
     }),
     content: 'I\'m testing out the Service API.',
-    referrer: 'https://npmjs.org/package/akismet-js',
+    referrer: 'https://www.npmjs.org/package/akismet-js',
     type: CommentType.COMMENT
   }),
 
@@ -77,7 +75,7 @@ var ClientTest={
   },
 
   /**
-   * Tests the `Client#checkComment` method.
+   * Tests the `checkComment` method.
    * @method testCheckComment
    */
   testCheckComment: function() {
@@ -100,7 +98,7 @@ var ClientTest={
   },
 
   /**
-   * Tests the `Client#submitHam` method.
+   * Tests the `submitHam` method.
    * @method testSubmitHam
    */
   testSubmitHam: function() {
@@ -111,7 +109,7 @@ var ClientTest={
   },
 
   /**
-   * Tests the `Client#submitSpam` method.
+   * Tests the `submitSpam` method.
    * @method testSubmitSpam
    */
   testSubmitSpam: function() {
@@ -122,7 +120,7 @@ var ClientTest={
   },
 
   /**
-   * Tests the `Client#verifyKey` method.
+   * Tests the `verifyKey` method.
    * @method testVerifyKey
    */
   testVerifyKey: function() {
@@ -136,16 +134,9 @@ var ClientTest={
     });
 
     it('should return `false` for an invalid API key' , function(done) {
-      new Client('viagra-test-123', 'http://fake-url.com').verifyKey(function(err, res) {
+      new Client('viagra-test-123', self._client.blog).verifyKey(function(err, res) {
         assert.ifError(err);
         assert.strictEqual(res, false);
-        done();
-      });
-    });
-
-    it('should throw an error for an invalid blog URL' , function(done) {
-      new Client('', 'mailto:viagra-test-123@fake-url.com').verifyKey(function(err) {
-        assert(err instanceof Error);
         done();
       });
     });

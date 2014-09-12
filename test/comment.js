@@ -6,14 +6,12 @@
 
 // Module dependencies.
 var assert=require('assert');
-var akismet=require('../index');
-
-var Author=akismet.Author;
-var Comment=akismet.Comment;
-var CommentType=akismet.CommentType;
+var Author=require('../index').Author;
+var Comment=require('../index').Comment;
+var CommentType=require('../index').CommentType;
 
 /**
- * Tests the features of the `Author` class.
+ * Tests the features of the `akismet.Author` class.
  * @class akismet.tests.AuthorTest
  * @static
  */
@@ -70,7 +68,7 @@ var AuthorTest={
 };
 
 /**
- * Tests the features of the `Comment` class.
+ * Tests the features of the `akismet.Comment` class.
  * @class akismet.tests.CommentTest
  * @static
  */
@@ -89,7 +87,7 @@ var CommentTest={
   },
 
   /**
-   * Tests the `Comment.fromJSON` method.
+   * Tests the `fromJSON` method.
    * @method testFromJSON
    */
   testFromJSON: function() {
@@ -116,7 +114,7 @@ var CommentTest={
   },
 
   /**
-   * Tests the `Comment#toJSON` method.
+   * Tests the `toJSON` method.
    * @method testToJSON
    */
   testToJSON: function() {
