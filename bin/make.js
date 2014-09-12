@@ -42,7 +42,7 @@ target.all=function() {
  */
 target.doc=function() {
   echo('Build the documentation...');
-  exec('yuidoc-bs --theme cerulean');
+  exec('yuidoc-bs --theme default');
   cp('-f', [ 'www/apple-touch-icon.png', 'www/favicon.ico' ], 'doc/api/assets');
 };
 
