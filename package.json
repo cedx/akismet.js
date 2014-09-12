@@ -1,25 +1,28 @@
 {
   "author": "Cédric Belin <cedric@belin.io>",
   "bugs": "https://github.com/cedx/akismet.js/issues",
-  "description": "Prevent comment spam using Akismet service (https://akismet.com).",
+  "description": "Prevent comment spam using Akismet service.",
   "homepage": "https://github.com/cedx/akismet.js",
   "license": "MIT",
   "main": "./index",
   "name": "akismet-js",
-  "preferGlobal": false,
-  "private": false,
   "version": "0.2.0",
+  "bin": {
+    "akismet": "./bin/cli.js"
+  },
   "dependencies": {
+    "commander": "^2.3.0",
     "express": "^4.4.4",
     "superagent": "^0.18.0"
   },
   "devDependencies": {
-    "jshint": "^2.5.1",
-    "mocha": "^1.20.1",
-    "yuidocjs": "^0.3.50"
+    "jshint": "^2.5.2",
+    "mocha": "^1.21.4",
+    "shelljs": "^0.3.0",
+    "yuidoc-bs": "^0.1.0"
   },
   "engines": {
-    "node": ">=0.10.29"
+    "node": ">=0.10.30"
   },
   "jshintConfig": {
     "freeze": true,
@@ -49,9 +52,9 @@
     "url": "https://github.com/cedx/akismet.js.git"
   },
   "scripts": {
-    "doc": "yuidoc --lint && yuidoc --no-code",
-    "lint": "jshint --verbose lib test",
-    "test": "mocha --check-leaks --recursive --reporter spec test"
+    "make": "node bin/make.js",
+    "start": "node bin/cli.js",
+    "test": "node bin/make.js test"
   },
   "yuidoc": {
     "logo": "http://dev.belin.io/akismet.js/favicon.ico",
