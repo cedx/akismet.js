@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Unit Tests - Akismet.js</title>
+
+    <meta name="application-name" content="Akismet.js">
+    <meta name="author" content="Cédric Belin &lt;cedric@belin.io&gt;">
+    <meta name="description" content="Prevent comment spam using Akismet service (https://akismet.com), in JavaScript.">
+    <meta name="keywords" content="dart, akismet, prevent, spam">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, width=device-width">
+
+    <link rel="apple-touch-icon" href="./apple-touch-icon.png">
+    <link rel="icon" href="./favicon.ico">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootswatch/3.2.0/cerulean/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+
+    <style>
+      *[data-rel='external']:after,
+      a[rel='external']:after {
+        content: '\f08e';
+        display: inline-block;
+        font-family: FontAwesome;
+        font-size: 0.65em;
+        font-style: normal;
+        font-weight: normal;
+        line-height: 1;
+        padding-left: 0.3em;
+        position: relative;
+        text-decoration: none;
+        top: 1px;
+        vertical-align: super;
+      }
+
+      .navbar-brand img {
+        margin-bottom: 2px;
+        max-height: 16px;
+        vertical-align: bottom;
+      }
+
+      .page-header,
+      .page-header h1 {
+        margin-top: 0;
+      }
+    </style>
+  </head>
+
+  <body>
+    <a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
+
+    <div id="dialog-alert" class="modal fade">
+      <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal"><i class="fa fa-times"></i></button>
+            <h4 class="modal-title">Error</h4>
+          </div>
+
+          <div class="modal-body">
+            You must provide a valid Akismet API key in order to run the unit tests.
+          </div>
+
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <header>
+      <nav class="navbar navbar-default">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-target="#menu" data-toggle="collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="./">
+              <img alt="" src="./favicon.ico"> Akismet.js
+            </a>
+          </div>
+
+          <div class="collapse navbar-collapse" id="menu">
+            <ul class="nav navbar-nav">
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                  Project <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a href="https://www.npmjs.org/package/akismet-js" rel="external" target="_blank"><i class="fa fa-fw fa-home"></i> Homepage</a></li>
+                  <li><a href="./"><i class="fa fa-fw fa-cogs"></i> Unit Tests</a></li>
+                </ul>
+              </li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Development <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><a href="http://dev.belin.io/akismet.js/api" rel="external" target="_blank"><i class="fa fa-book fa-fw"></i> API Reference</a></li>
+                  <li><a href="https://github.com/cedx/akismet.js/issues" rel="external" target="_blank"><i class="fa fa-bug fa-fw"></i> File an Issue</a></li>
+                  <li><a href="https://github.com/cedx/akismet.js" rel="external" target="_blank"><i class="fa fa-code fa-fw"></i> Get the Source</a></li>
+                </ul>
+              </li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                  <span class="hidden-xs"><i class="fa fa-question-circle fa-lg"></i> <span class="caret"></span></span>
+                  <span class="visible-xs-inline">Help <span class="caret"></span></span>
+                </a>
+                <ul class="dropdown-menu">
+                  <li class="dropdown-header">About</li>
+                  <li><a href="https://github.com/cedx/akismet.js/raw/master/LICENSE.txt" rel="external" target="_blank"><i class="fa fa-file-text fa-fw"></i> License</a></li>
+                  <li class="divider"></li>
+                  <li class="dropdown-header">Author</li>
+                  <li><a href="mailto:cedric@belin.io"><i class="fa fa-envelope fa-fw"></i> cedric@belin.io</a></li>
+                  <li><a href="http://belin.io" rel="external" target="_blank"><i class="fa fa-globe fa-fw"></i> http://belin.io</a></li>
+                </ul>
+              </li>
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+              <li>
+                <div>
+                  <a href="https://github.com/cedx/akismet.js" class="btn btn-success navbar-btn" target="_blank">
+                    Fork me on <i class="fa fa-fw fa-github"></i>
+                  </a>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container">
+      <div class="row">
+        <article id="content" class="col-sm-9">
+          <div class="page-header">
+            <h1>Unit Tests</h1>
+          </div>
+
+          <div class="alert alert-warning alert-dismissible">
+            <button type="button" class="close" data-dismiss="alert"><i class="fa fa-times"></i></button>
+            The execution of unit tests causes a profound change in the page display.<br>
+            To restore this form after the tests did finish, simply refresh the page.
+          </div>
+
+          <form id="form-unit-tests" class="form-horizontal">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h3 class="panel-title"><i class="fa fa-lg fa-cloud-upload"></i> Client settings</h3>
+              </div>
+
+              <div class="panel-body">
+                <div class="form-group">
+                  <label class="col-sm-3 control-label" for="api-key">API key</label>
+                  <div class="col-sm-5 input-group">
+                    <span class="input-group-addon"><i class="fa fa-key"></i></span>
+                    <input id="api-key" type="text" class="form-control" placeholder="Your Akismet API key" autofocus required>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label class="col-sm-3 control-label" for="blog-url">Blog URL</label>
+                  <div class="col-sm-7 input-group">
+                    <span class="input-group-addon"><i class="fa fa-link"></i></span>
+                    <input id="blog-url" type="url" class="form-control" placeholder="http://dev.belin.io/akismet.js">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h3 class="panel-title"><i class="fa fa-lg fa-cloud-download"></i> Server settings</h3>
+              </div>
+
+              <div class="panel-body">
+                <div class="form-group">
+                  <label class="col-sm-3 control-label" for="service-url">Service URL</label>
+                  <div class="col-sm-7 input-group">
+                    <span class="input-group-addon"><i class="fa fa-link"></i></span>
+                    <input id="service-url" type="url" class="form-control" placeholder="http://localhost:3000">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="col-sm-offset-3 col-sm-7">
+                <button id="btn-submit" type="submit" class="btn btn-primary btn-block">Run Tests</button>
+              </div>
+            </div>
+          </form>
+        </article>
+
+        <aside class="col-sm-3">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h3 class="panel-title"><i class="fa fa-download"></i> Downloads</h3>
+            </div>
+
+            <div class="list-group">
+              <a href="https://github.com/cedx/akismet.js/releases/download/v0.2.0/akismet.js-0.2.0.zip" class="list-group-item">
+                <span class="label label-info pull-right">0.2.0</span>
+                Pub package
+              </a>
+              <a href="https://github.com/cedx/akismet.js/archive/master.zip" class="list-group-item">
+                <span class="label label-default pull-right">ZIP</span>
+                Source code
+              </a>
+              <a href="https://github.com/cedx/akismet.js/archive/master.tar.gz" class="list-group-item">
+                <span class="label label-default pull-right">TAR.GZ</span>
+                Source code
+              </a>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </main>
+
+    <footer class="hidden-xs">
+      <nav class="navbar navbar-inverse">
+        <div class="container">
+          <ul class="nav navbar-nav">
+            <li>
+              <p class="navbar-text">
+                <i class="fa fa-fw fa-code"></i> with <i class="fa fa-fw fa-heart"></i>
+                by <a class="navbar-link" href="http://belin.io" rel="external" target="_blank">Cédric Belin</a>
+              </p>
+            </li>
+          </ul>
+
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="https://github.com/cedx/akismet.js" rel="external" target="_blank">GitHub</a></li>
+            <li><a href="https://www.npmjs.org/package/akismet-js" rel="external" target="_blank">NPM</a></li>
+          </ul>
+        </div>
+      </nav>
+    </footer>
+
+    <script src="//code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="./tests.js"></script>
+  </body>
+</html>
