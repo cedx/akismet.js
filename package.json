@@ -11,15 +11,18 @@
     "akismet": "./bin/cli.js"
   },
   "dependencies": {
+    "body-parser": "^1.8.2",
     "commander": "^2.3.0",
-    "express": "^4.4.4",
+    "express": "^4.9.0",
     "superagent": "^0.18.0"
   },
   "devDependencies": {
-    "jshint": "^2.5.2",
+    "browserify": "^5.11.2",
+    "docgen-js": "^0.1.0",
+    "jshint": "^2.5.5",
     "mocha": "^1.21.4",
     "shelljs": "^0.3.0",
-    "yuidoc-bs": "^0.1.0"
+    "uglify-js": "^2.4.15"
   },
   "engines": {
     "node": ">=0.10.30"
@@ -59,12 +62,13 @@
   "yuidoc": {
     "logo": "http://dev.belin.io/akismet.js/favicon.ico",
     "name": "Akismet.js",
-    "url": "https://npmjs.org/package/akismet-js",
+    "url": "https://www.npmjs.org/package/akismet-js",
     "options" : {
       "linkNatives": true,
       "outdir": "doc/api",
       "paths": "lib",
-      "tabtospace": 2
+      "tabtospace": 2,
+      "theme": "default"
     }
   }
 }

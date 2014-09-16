@@ -8,7 +8,7 @@
 
 // Module dependencies.
 var program=require('commander');
-var Server=require('../index').Server;
+var Server=require('../lib/server');
 var util=require('util');
 
 /**
@@ -37,13 +37,34 @@ var Application={
     program._name=this.name;
     program
       .version(require('../package.json').version)
-      .option('-a, --address <address>', 'the address to which to listen [0.0.0.0]', '0.0.0.0')
-      .option('-p, --port <port>', 'the port on which to listen [3000]', function(value) { return parseInt(value, 10); }, 3000)
+      .option('-p, --port <port>', 'port that the server should run on [3000]', function(value) { return parseInt(value, 10); }, 3000)
+      .option('-h, --host <host>', 'host that the server should run on [0.0.0.0]', '0.0.0.0')
       .option('-r, --redirect <url>', 'the URL to redirect when a request is unhandled')
       .option('--silent', 'silence the log output from the server')
       .parse(process.argv);
 
-    program.help();
+    // Start the server.
+    var self=this;
+    var server=new Server({ redirectUrl: program.redirect ? program.redirect : null });
+
+    server.on('error', function(err) {
+      _self.log(util.format('ERROR - %s', err));
+    });
+
+    server.on('request', function(req) {
+      self._log(util.format(
+        '%s - "%s %s HTTP/%s" "%s"',
+        req.connection.remoteAddress,
+        req.method,
+        req.url,
+        req.httpVersion,
+        req.headers['user-agent']
+      ));
+    });
+
+    server.listen(program.port, program.host, function() {
+      self._log(util.format('Akismet server listening on %s:%d', program.host, program.port));
+    });
   },
 
   /**
@@ -54,17 +75,6 @@ var Application={
    */
   _log: function(message) {
     if(!program.silent) console.log('[%s] %s', new Date().toUTCString(), message instanceof Function ? message() : message);
-  },
-
-  /**
-   * Starts the specified reverse proxy instances.
-   * @method _start
-   * @param {Function} [callback] The function to invoke when all servers are started.
-   * @async
-   * @private
-   */
-  _start: function(callback) {
-    if(callback instanceof Function) callback();
   }
 };
 

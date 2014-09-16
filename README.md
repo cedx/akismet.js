@@ -101,8 +101,8 @@ $ node bin/cli.js --help
 
     -h, --help               output usage information
     -V, --version            output the version number
-    -a, --address <address>  the address to which to listen [0.0.0.0]
-    -p, --port <port>        the port on which to listen [3000]
+    -p, --port <port>        port that the reverse proxy should run on [3000]
+    -h, --host <host>        host that the reverse proxy should run on [0.0.0.0]
     -r, --redirect <url>     the URL to redirect when a request is unhandled
     --silent                 silence the log output from the server
 ```
