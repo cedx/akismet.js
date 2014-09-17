@@ -6,10 +6,13 @@
 
 // Module dependencies.
 var assert=require('assert');
-var Author=require('../index').Author;
-var Client=require('../index').Client;
-var Comment=require('../index').Comment;
-var CommentType=require('../index').CommentType;
+var core=require('../lib/comment');
+var env=global.process.env;
+
+var Author=core.Author;
+var Client=require('../lib/client');
+var Comment=core.Comment;
+var CommentType=core.CommentType;
 
 /**
  * Tests the features of the `akismet.Client` class.
@@ -24,7 +27,11 @@ var ClientTest={
    * @type Client
    * @private
    */
-  _client: new Client(process.env.AKISMET_API_KEY, process.env.AKISMET_BLOG),
+  _client: new Client(
+    env.AKISMET_API_KEY,
+    env.AKISMET_BLOG,
+    { serviceUrl: 'AKISMET_SERVICE_URL' in env ? env.AKISMET_SERVICE_URL : null }
+  ),
 
   /**
    * A comment with content marked as ham.
@@ -67,6 +74,7 @@ var ClientTest={
   run: function() {
     var self=this;
     describe('Client', function() {
+      this.timeout(15000);
       describe('#verifyKey()', self.testVerifyKey.bind(self));
       describe('#submitHam()', self.testSubmitHam.bind(self));
       describe('#submitSpam()', self.testSubmitSpam.bind(self));
@@ -115,7 +123,7 @@ var ClientTest={
   testSubmitSpam: function() {
     var self=this;
     it('should complete without error' , function(done) {
-      self._client.submitHam(self._spam, done);
+      self._client.submitSpam(self._spam, done);
     });
   },
 
@@ -134,7 +142,8 @@ var ClientTest={
     });
 
     it('should return `false` for an invalid API key' , function(done) {
-      new Client('viagra-test-123', self._client.blog).verifyKey(function(err, res) {
+      var client=new Client('viagra-test-123', self._client.blog, { serviceUrl: self._client.serviceUrl });
+      client.verifyKey(function(err, res) {
         assert.ifError(err);
         assert.strictEqual(res, false);
         done();

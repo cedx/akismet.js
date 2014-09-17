@@ -28,9 +28,11 @@
     "node": ">=0.10.30"
   },
   "jshintConfig": {
+    "browser": true,
     "freeze": true,
     "indent": 2,
     "latedef": true,
+    "loopfunc": true,
     "newcap": true,
     "node": true,
     "nonew": true,
