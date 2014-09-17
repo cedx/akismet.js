@@ -12,7 +12,9 @@
 
     <link rel="apple-touch-icon" href="./apple-touch-icon.png">
     <link rel="icon" href="./favicon.ico">
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootswatch/3.2.0/cerulean/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/mocha.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
 
     <style>
@@ -120,7 +122,7 @@
             <ul class="nav navbar-nav navbar-right">
               <li>
                 <div>
-                  <a href="https://github.com/cedx/akismet.js" class="btn btn-success navbar-btn" target="_blank">
+                  <a href="https://github.com/cedx/akismet.js" class="btn btn-success navbar-btn" data-toggle="tooltip" target="_blank" title="GitHub">
                     Fork me on <i class="fa fa-fw fa-github"></i>
                   </a>
                 </div>
@@ -152,7 +154,7 @@
 
               <div class="panel-body">
                 <div class="form-group">
-                  <label class="col-sm-3 control-label" for="api-key">API key</label>
+                  <label class="col-sm-3 control-label" for="api-key">API Key</label>
                   <div class="col-sm-5 input-group">
                     <span class="input-group-addon"><i class="fa fa-key"></i></span>
                     <input id="api-key" type="text" class="form-control" placeholder="Your Akismet API key" autofocus required>
@@ -240,6 +242,7 @@
 
     <script src="//code.jquery.com/jquery-2.1.1.min.js"></script>
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-    <script src="./tests.js"></script>
+    <script src="./js/mocha.min.js"></script>
+    <script src="./js/tests.min.js"></script>
   </body>
 </html>
