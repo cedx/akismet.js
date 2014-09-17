@@ -76,7 +76,7 @@ client.submitHam(comment, function(error) {
 ## Implementations
 
 #### Client
-The Akismet client comes in two flavors: a first one based on [`http.ClientRequest`](http://nodejs.org/api/http.html#http_class_http_clientrequest)
+The Akismet client comes in two flavors: a first one based on [`http.request`](http://nodejs.org/api/http.html#http_http_request_options_callback)
 for server/console applications, and a second one based on [`XMLHttpRequest`](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest)
 for client/browser applications.
 
@@ -99,12 +99,12 @@ $ node bin/cli.js --help
 
   Options:
 
-    -h, --help               output usage information
-    -V, --version            output the version number
-    -p, --port <port>        port that the reverse proxy should run on [3000]
-    -h, --host <host>        host that the reverse proxy should run on [0.0.0.0]
-    -r, --redirect <url>     the URL to redirect when a request is unhandled
-    --silent                 silence the log output from the server
+    -h, --help            output usage information
+    -V, --version         output the version number
+    -p, --port <port>     port that the server should run on [3000]
+    -h, --host <host>     host that the server should run on [0.0.0.0]
+    -r, --redirect <url>  the URL to redirect when a request is unhandled
+    --silent              silence the log output from the server
 ```
 
 ## License
