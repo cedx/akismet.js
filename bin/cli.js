@@ -48,7 +48,7 @@ var Application={
     var server=new Server({ redirectUrl: program.redirect ? program.redirect : null });
 
     server.on('error', function(err) {
-      _self.log(util.format('ERROR - %s', err));
+      self.log(util.format('ERROR - %s', err));
     });
 
     server.on('request', function(req) {
