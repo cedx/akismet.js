@@ -133,7 +133,7 @@ var ClientTest={
   run: function() {
     var self=this;
     describe('Client', function() {
-      this.timeout(15000);
+      this.timeout(10000);
       describe('#verifyKey()', self.testVerifyKey.bind(self));
       describe('#submitHam()', self.testSubmitHam.bind(self));
       describe('#submitSpam()', self.testSubmitSpam.bind(self));
