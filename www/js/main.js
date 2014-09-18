@@ -8,7 +8,7 @@
 
 /**
  * Runs the unit tests in a browser.
- * @class akismet.tests.web
+ * @class tests.web
  * @static
  */
 
