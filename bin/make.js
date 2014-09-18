@@ -10,6 +10,7 @@
 // Module dependencies.
 require('shelljs/make');
 var path=require('path');
+var util=require('util');
 
 /**
  * Provides tasks for [ShellJS](http://shelljs.org) make tool.
@@ -46,15 +47,15 @@ target.all=function() {
 target.css=function() {
   echo('Build the stylesheets...');
 
-  var file;
+  var stylesheet;
   config.includePath.forEach(function(dir) {
-    if(!file) {
-      var stylesheet=path.join(dir, 'mocha/mocha.css');
-      if(test('-f', stylesheet)) file=stylesheet;
+    if(!stylesheet) {
+      var file=path.join(dir, 'mocha/mocha.css');
+      if(test('-f', file)) stylesheet=file;
     }
   });
 
-  cp('-f', file, 'www/css');
+  cp('-f', stylesheet, 'www/css');
 };
 
 /**
@@ -76,16 +77,15 @@ target.js=function() {
   exec('browserify www/js/main.js --debug --outfile www/js/tests.js');
   exec('uglifyjs www/js/tests.js --compress --mangle --output www/js/tests.min.js --screw-ie8');
 
-  var file;
+  var script;
   config.includePath.forEach(function(dir) {
-    if(!file) {
-      var script=path.join(dir, 'mocha/mocha.js');
-      if(test('-f', script)) file=script;
+    if(!script) {
+      var file=path.join(dir, 'mocha/mocha.js');
+      if(test('-f', file)) script=file;
     }
   });
 
-  cp('-f', file, 'www/js');
-  exec('uglifyjs www/js/mocha.js --compress --mangle --output www/js/mocha.min.js --screw-ie8');
+  exec(util.format('uglifyjs "%s" --compress --mangle --output www/js/mocha.js --screw-ie8', script));
 };
 
 /**
