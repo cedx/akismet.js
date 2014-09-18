@@ -114,7 +114,7 @@ To test the server/console implementation, run the `bin/make.js` script from a c
 $ node bin/make.js test --key <YourAPIKey>
 ```
 
-To test the client/browser implementation, launch a server instance, and points your browser to:
+To test the client/browser implementation, launch a server instance, and points your browser to this link:
 [Unit Tests of HTML Client](http://dev.belin.io/akismet.js)
 
 ## License
