@@ -5,13 +5,15 @@
 'use strict';
 
 // Module dependencies.
-var core=require('./lib/comment');
+var client=require('./lib/client');
+var comment=require('./lib/comment');
 
 // Public interface.
 module.exports={
-  Author: core.Author,
-  Client: require('./lib/client'),
-  Comment: core.Comment,
-  CommentType: core.CommentType,
+  Author: comment.Author,
+  Blog: client.Blog,
+  Client: client.Client,
+  Comment: comment.Comment,
+  CommentType: comment.CommentType,
   Server: typeof window!='undefined' ? null : require('./lib/server')
 };

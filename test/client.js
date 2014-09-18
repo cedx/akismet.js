@@ -6,13 +6,72 @@
 
 // Module dependencies.
 var assert=require('assert');
-var core=require('../lib/comment');
 var env=global.process.env;
 
-var Author=core.Author;
-var Client=require('../lib/client');
-var Comment=core.Comment;
-var CommentType=core.CommentType;
+var Author=require('../lib/comment').Author;
+var Blog=require('../lib/client').Blog;
+var Client=require('../lib/client').Client;
+var Comment=require('../lib/comment').Comment;
+var CommentType=require('../lib/comment').CommentType;
+
+/**
+ * Tests the features of the `akismet.Blog` class.
+ * @class akismet.tests.BlogTest
+ * @static
+ */
+var BlogTest={
+
+  /**
+   * Runs the unit tests.
+   * @method run
+   */
+  run: function() {
+    var self=this;
+    describe('Blog', function() {
+      describe('.fromJSON()', self.testFromJSON);
+      describe('#toJSON()', self.testToJSON);
+    });
+  },
+
+  /**
+   * Tests the `Author.fromJSON` method.
+   * @method testFromJSON
+   */
+  testFromJSON: function() {
+    it('should return a null reference with a non-object JSON string', function() {
+      assert.strictEqual(Blog.fromJSON('foo'), null);
+    });
+
+    it('should return an empty instance with an empty JSON object', function() {
+      var blog=Blog.fromJSON({});
+      assert.strictEqual(blog.charset, null);
+      assert.strictEqual(blog.lang, null);
+      assert.strictEqual(blog.url, null);
+    });
+
+    it('should return an initialized instance with a non-empty JSON object', function() {
+      var blog=Blog.fromJSON({ blog: 'http://dev.belin.io/akismet.js', blog_charset: 'UTF-8', blog_lang: 'en' });
+      assert.equal(blog.charset, 'UTF-8');
+      assert.equal(blog.lang, 'en');
+      assert.equal(blog.url, 'http://dev.belin.io/akismet.js');
+    });
+  },
+
+  /**
+   * Tests the `Author#toJSON` method.
+   * @method testToJSON
+   */
+  testToJSON: function() {
+    it('should return an empty JSON object with a newly created instance', function() {
+      assert.equal(new Blog().toJSON(), '{}');
+    });
+
+    it('should return a non-empty JSON object with a initialized instance', function() {
+      var blog=new Blog('http://dev.belin.io/akismet.js', { charset: 'UTF-8', lang: 'en' });
+      assert.equal(blog.toJSON(), '{"blog":"http://dev.belin.io/akismet.js","blog_charset":"UTF-8","blog_lang":"en"}');
+    });
+  }
+};
 
 /**
  * Tests the features of the `akismet.Client` class.
@@ -153,4 +212,5 @@ var ClientTest={
 };
 
 // Run all tests.
+BlogTest.run();
 ClientTest.run();

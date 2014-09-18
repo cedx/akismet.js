@@ -6,11 +6,9 @@
 
 // Module dependencies.
 var assert=require('assert');
-var core=require('../lib/comment');
-
-var Author=core.Author;
-var Comment=core.Comment;
-var CommentType=core.CommentType;
+var Author=require('../lib/comment').Author;
+var Comment=require('../lib/comment').Comment;
+var CommentType=require('../lib/comment').CommentType;
 
 /**
  * Tests the features of the `akismet.Author` class.
