@@ -2,13 +2,13 @@
 
 /**
  * Web interface.
- * @module tests.web
+ * @module www.main
  */
 'use strict';
 
 /**
  * Runs the unit tests in a browser.
- * @class tests.web
+ * @class tests.web.main
  * @static
  */
 
