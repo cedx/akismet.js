@@ -16,7 +16,7 @@ var CommentType=require('../lib/comment').CommentType;
 
 /**
  * Tests the features of the `akismet.Blog` class.
- * @class tests.BlogTest
+ * @class akismet.tests.BlogTest
  * @static
  */
 var BlogTest={
@@ -28,13 +28,13 @@ var BlogTest={
   run: function() {
     var self=this;
     describe('Blog', function() {
-      describe('.fromJSON()', self.testFromJSON);
-      describe('#toJSON()', self.testToJSON);
+      describe('fromJSON()', self.testFromJSON);
+      describe('toJSON()', self.testToJSON);
     });
   },
 
   /**
-   * Tests the `Author.fromJSON` method.
+   * Tests the `fromJSON` method.
    * @method testFromJSON
    */
   testFromJSON: function() {
@@ -58,7 +58,7 @@ var BlogTest={
   },
 
   /**
-   * Tests the `Author#toJSON` method.
+   * Tests the `toJSON` method.
    * @method testToJSON
    */
   testToJSON: function() {
@@ -75,7 +75,7 @@ var BlogTest={
 
 /**
  * Tests the features of the `akismet.Client` class.
- * @class tests.ClientTest
+ * @class akismet.tests.ClientTest
  * @static
  */
 var ClientTest={
@@ -83,7 +83,7 @@ var ClientTest={
   /**
    * The client used to query the service database.
    * @property _client
-   * @type Client
+   * @type akismet.Client
    * @private
    */
   _client: new Client(
@@ -95,7 +95,7 @@ var ClientTest={
   /**
    * A comment with content marked as ham.
    * @property _ham
-   * @type Comment
+   * @type akismet.Comment
    * @private
    */
   _ham: new Comment({
@@ -113,7 +113,7 @@ var ClientTest={
   /**
    * A comment with content marked as spam.
    * @property _spam
-   * @type Comment
+   * @type akismet.Comment
    * @private
    */
   _spam: new Comment({
@@ -134,10 +134,10 @@ var ClientTest={
     var self=this;
     describe('Client', function() {
       this.timeout(10000);
-      describe('#verifyKey()', self.testVerifyKey.bind(self));
-      describe('#submitHam()', self.testSubmitHam.bind(self));
-      describe('#submitSpam()', self.testSubmitSpam.bind(self));
-      describe('#checkComment()', self.testCheckComment.bind(self));
+      describe('verifyKey()', self.testVerifyKey.bind(self));
+      describe('submitHam()', self.testSubmitHam.bind(self));
+      describe('submitSpam()', self.testSubmitSpam.bind(self));
+      describe('checkComment()', self.testCheckComment.bind(self));
     });
   },
 

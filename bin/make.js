@@ -115,7 +115,7 @@ target.test=function() {
   program
     .version(require('../package.json').version)
     .option('-k, --key <apiKey>', 'the Akismet API key')
-    .option('-b, --blog [uri]', 'the front page or home URL [http://dev.belin.io/akismet.js]', 'http://dev.belin.io/akismet.js')
+    .option('-b, --blog <url>', 'the front page or home URL [http://dev.belin.io/akismet.js]', 'http://dev.belin.io/akismet.js')
     .parse(process.argv);
 
   if(!program.key) program.help();

@@ -12,7 +12,7 @@ var CommentType=require('../lib/comment').CommentType;
 
 /**
  * Tests the features of the `akismet.Author` class.
- * @class tests.AuthorTest
+ * @class akismet.tests.AuthorTest
  * @static
  */
 var AuthorTest={
@@ -24,13 +24,13 @@ var AuthorTest={
   run: function() {
     var self=this;
     describe('Author', function() {
-      describe('.fromJSON()', self.testFromJSON);
-      describe('#toJSON()', self.testToJSON);
+      describe('fromJSON()', self.testFromJSON);
+      describe('toJSON()', self.testToJSON);
     });
   },
 
   /**
-   * Tests the `Author.fromJSON` method.
+   * Tests the `fromJSON` method.
    * @method testFromJSON
    */
   testFromJSON: function() {
@@ -52,7 +52,7 @@ var AuthorTest={
   },
 
   /**
-   * Tests the `Author#toJSON` method.
+   * Tests the `toJSON` method.
    * @method testToJSON
    */
   testToJSON: function() {
@@ -69,7 +69,7 @@ var AuthorTest={
 
 /**
  * Tests the features of the `akismet.Comment` class.
- * @class tests.CommentTest
+ * @class akismet.tests.CommentTest
  * @static
  */
 var CommentTest={
@@ -81,8 +81,8 @@ var CommentTest={
   run: function() {
     var self=this;
     describe('Comment', function() {
-      describe('.fromJSON()', self.testFromJSON);
-      describe('#toJSON()', self.testToJSON);
+      describe('fromJSON()', self.testFromJSON);
+      describe('toJSON()', self.testToJSON);
     });
   },
 
