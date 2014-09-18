@@ -16,7 +16,7 @@ var CommentType=require('../lib/comment').CommentType;
 
 /**
  * Tests the features of the `akismet.Blog` class.
- * @class akismet.tests.BlogTest
+ * @class tests.BlogTest
  * @static
  */
 var BlogTest={
@@ -75,7 +75,7 @@ var BlogTest={
 
 /**
  * Tests the features of the `akismet.Client` class.
- * @class akismet.tests.ClientTest
+ * @class tests.ClientTest
  * @static
  */
 var ClientTest={

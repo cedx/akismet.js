@@ -12,7 +12,7 @@ var CommentType=require('../lib/comment').CommentType;
 
 /**
  * Tests the features of the `akismet.Author` class.
- * @class akismet.tests.AuthorTest
+ * @class tests.AuthorTest
  * @static
  */
 var AuthorTest={
@@ -69,7 +69,7 @@ var AuthorTest={
 
 /**
  * Tests the features of the `akismet.Comment` class.
- * @class akismet.tests.CommentTest
+ * @class tests.CommentTest
  * @static
  */
 var CommentTest={
