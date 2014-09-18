@@ -45,14 +45,14 @@ var BlogTest={
     it('should return an empty instance with an empty JSON object', function() {
       var blog=Blog.fromJSON({});
       assert.strictEqual(blog.charset, null);
-      assert.strictEqual(blog.lang, null);
+      assert.strictEqual(blog.language, null);
       assert.strictEqual(blog.url, null);
     });
 
     it('should return an initialized instance with a non-empty JSON object', function() {
       var blog=Blog.fromJSON({ blog: 'http://dev.belin.io/akismet.js', blog_charset: 'UTF-8', blog_lang: 'en' });
       assert.equal(blog.charset, 'UTF-8');
-      assert.equal(blog.lang, 'en');
+      assert.equal(blog.language, 'en');
       assert.equal(blog.url, 'http://dev.belin.io/akismet.js');
     });
   },
@@ -67,7 +67,7 @@ var BlogTest={
     });
 
     it('should return a non-empty JSON object with a initialized instance', function() {
-      var blog=new Blog('http://dev.belin.io/akismet.js', { charset: 'UTF-8', lang: 'en' });
+      var blog=new Blog('http://dev.belin.io/akismet.js', { charset: 'UTF-8', language: 'en' });
       assert.equal(blog.toJSON(), '{"blog":"http://dev.belin.io/akismet.js","blog_charset":"UTF-8","blog_lang":"en"}');
     });
   }
