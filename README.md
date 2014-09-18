@@ -110,8 +110,17 @@ $ node bin/cli.js --help
 ## Unit Tests
 To test the server/console implementation, run the `bin/make.js` script from a command prompt:
 
-```shell
-$ node bin/make.js test --key <YourAPIKey>
+```
+$ node bin/make.js test --help
+
+  Usage: make test [options]
+
+  Options:
+
+    -h, --help          output usage information
+    -V, --version       output the version number
+    -k, --key <apiKey>  the Akismet API key
+    -b, --blog <url>    the front page or home URL [http://dev.belin.io/akismet.js]
 ```
 
 To test the client/browser implementation, launch a server instance, and points your browser to this link:
