@@ -2,10 +2,10 @@
 Prevent comment spam using [Akismet](https://akismet.com) service, in [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript).
 
 ## Features
-- [Key verification](https://akismet.com/development/api/#verify-key): checks an Akismet API key and gets a value indicating whether it is valid.
-- [Comment check](https://akismet.com/development/api/#comment-check): checks a comment and gets a value indicating whether it is spam.
-- [Submit spam](https://akismet.com/development/api/#submit-spam): submits a comment that was not marked as spam but should have been.
-- [Submit ham](https://akismet.com/development/api/#submit-ham): submits a comment that was incorrectly marked as spam but should not have been.
+- [Key Verification](https://akismet.com/development/api/#verify-key): checks an Akismet API key and gets a value indicating whether it is valid.
+- [Comment Check](https://akismet.com/development/api/#comment-check): checks a comment and gets a value indicating whether it is spam.
+- [Submit Spam](https://akismet.com/development/api/#submit-spam): submits a comment that was not marked as spam but should have been.
+- [Submit Ham](https://akismet.com/development/api/#submit-ham): submits a comment that was incorrectly marked as spam but should not have been.
 
 ## Documentation
 - [API Reference](http://dev.belin.io/akismet.js/api)
@@ -42,7 +42,7 @@ var akismet = require('akismet-js');
 #### Key Verification
 
 ```javascript
-var client = new akismet.Client('123YourAPIKey', 'http://your.blog.url');
+var client = new akismet.Client('YourAPIKey', 'http://your.blog.url');
 client.verifyKey(function(error, isValid) {
   console.log(isValid ? 'Your API key is valid.' : 'Your API key is invalid.');
 });
@@ -52,7 +52,7 @@ client.verifyKey(function(error, isValid) {
 
 ```javascript
 var comment = new akismet.Comment({
-  author: new akismet.Author({ name: 'An author' }),
+  author: new akismet.Author({ name: 'An author', ipAddress: '127.0.0.1' }),
   content: 'A comment.'
 });
 
@@ -106,6 +106,16 @@ $ node bin/cli.js --help
     -r, --redirect <url>  the URL to redirect when a request is unhandled
     --silent              silence the log output from the server
 ```
+
+## Unit Tests
+To test the server/console implementation, run the `bin/make.js` script from a command prompt:
+
+```shell
+$ node bin/make.js test --key <YourAPIKey>
+```
+
+To test the client/browser implementation, launch a server instance, and points your browser to:
+[Unit Tests of HTML Client](http://dev.belin.io/akismet.js)
 
 ## License
 [Akismet.js](https://www.npmjs.org/package/akismet-js) is distributed under the MIT License.
