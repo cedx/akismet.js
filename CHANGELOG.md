@@ -1,6 +1,9 @@
 # Changelog
 This file contains highlights of what changes on each version of the [Akismet.js](https://www.npmjs.org/package/akismet-js) library.
 
+#### Version 0.3.2
+- Lowered the required version of Node.js runtime.
+
 #### Version 0.3.1
 - Fixed bugs in server implementation: bad error handling.
 
