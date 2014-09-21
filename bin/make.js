@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-/* global cd, config, cp, echo, env, exec, exit, target, test */
+/* global cd, config, cp, echo, env, exec, exit, target */
 
 /**
  * Build system.
@@ -9,7 +9,6 @@
 
 // Module dependencies.
 require('shelljs/make');
-var path=require('path');
 var util=require('util');
 
 /**
@@ -25,8 +24,6 @@ cd(__dirname+'/..');
  * @type Object
  */
 config.fatal=true;
-config.includePath=[ 'node_modules' ];
-if('NODE_PATH' in env) config.includePath.push(env.NODE_PATH);
 
 /**
  * Runs the default tasks.
@@ -46,16 +43,7 @@ target.all=function() {
  */
 target.css=function() {
   echo('Build the stylesheets...');
-
-  var stylesheet;
-  config.includePath.forEach(function(dir) {
-    if(!stylesheet) {
-      var file=path.join(dir, 'mocha/mocha.css');
-      if(test('-f', file)) stylesheet=file;
-    }
-  });
-
-  cp('-f', stylesheet, 'www/css');
+  cp('-f', require.resolve('mocha/mocha.css'), 'www/css');
 };
 
 /**
@@ -76,16 +64,7 @@ target.js=function() {
   echo('Build the client scripts...');
   exec('browserify www/js/main.js --debug --outfile www/js/tests.js');
   exec('uglifyjs www/js/tests.js --compress --mangle --output www/js/tests.min.js --screw-ie8');
-
-  var script;
-  config.includePath.forEach(function(dir) {
-    if(!script) {
-      var file=path.join(dir, 'mocha/mocha.js');
-      if(test('-f', file)) script=file;
-    }
-  });
-
-  exec(util.format('uglifyjs "%s" --compress --mangle --output www/js/mocha.js --screw-ie8', script));
+  exec(util.format('uglifyjs "%s" --compress --mangle --output www/js/mocha.js --screw-ie8', require.resolve('mocha/mocha.js')));
 };
 
 /**
