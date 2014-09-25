@@ -39,13 +39,13 @@ var AuthorTest={
     });
 
     it('should return an empty instance with an empty JSON object', function() {
-      var author=Author.fromJSON({});
+      var author=Author.fromJSON('{}');
       assert.strictEqual(author.email, null);
       assert.strictEqual(author.url, null);
     });
 
     it('should return an initialized instance with a non-empty JSON object', function() {
-      var author=Author.fromJSON({ comment_author_email: 'cedric@belin.io', comment_author_url: 'http://belin.io' });
+      var author=Author.fromJSON('{ "comment_author_email": "cedric@belin.io", "comment_author_url": "http://belin.io" }');
       assert.equal(author.email, 'cedric@belin.io');
       assert.equal(author.url, 'http://belin.io');
     });
@@ -96,7 +96,7 @@ var CommentTest={
     });
 
     it('should return an empty instance with an empty JSON object', function() {
-      var comment=Comment.fromJSON({});
+      var comment=Comment.fromJSON('{}');
       assert.strictEqual(comment.author, null);
       assert.strictEqual(comment.content, null);
       assert.strictEqual(comment.referrer, null);
@@ -104,7 +104,7 @@ var CommentTest={
     });
 
     it('should return an initialized instance with a non-empty JSON object', function() {
-      var comment=Comment.fromJSON({ comment_author: 'Cédric Belin', comment_content: 'A user comment.', comment_type: 'trackback', referrer: 'http://belin.io' });
+      var comment=Comment.fromJSON('{ "comment_author": "Cédric Belin", "comment_content": "A user comment.", "comment_type": "trackback", "referrer": "http://belin.io" }');
       assert(comment.author instanceof Author);
       assert.equal(comment.author.name, 'Cédric Belin');
       assert.equal(comment.content, 'A user comment.');
