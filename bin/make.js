@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-/* global cd, config, cp, echo, env, exec, exit, target */
+/* global cd, config, cp, echo, env, exec, exit, rm, target */
 
 /**
  * Build system.
@@ -9,6 +9,9 @@
 
 // Module dependencies.
 require('shelljs/make');
+var archiver=require('archiver');
+var fs=require('fs');
+var pkg=require('../package.json');
 var util=require('util');
 
 /**
@@ -24,6 +27,7 @@ cd(__dirname+'/..');
  * @type Object
  */
 config.fatal=true;
+config.output=util.format('var/%s-%s.zip', pkg.yuidoc.name.toLowerCase(), pkg.version);
 
 /**
  * Runs the default tasks.
@@ -44,6 +48,39 @@ target.all=function() {
 target.css=function() {
   echo('Build the stylesheets...');
   cp('-f', require.resolve('mocha/mocha.css'), 'www/css');
+};
+
+/**
+ * Deletes all generated files and reset any saved state.
+ * @method clean
+ */
+target.clean=function() {
+  echo('Delete the output files...');
+  rm('-f', config.output);
+};
+
+/**
+ * Creates a distribution file for this program.
+ * @method dist
+ */
+target.dist=function() {
+  echo('Build the redistributable...');
+
+  var sources=[
+    'index.js',
+    'package.json',
+    '*.md',
+    '*.txt',
+    'bin/*',
+    'lib/*.js',
+    'test/*.js',
+    'www/**/*'
+  ];
+
+  var archive=archiver('zip');
+  archive.on('entry', function(entry) { echo('Pack:', entry.name); });
+  archive.pipe(fs.createWriteStream(config.output));
+  archive.bulk({ src: sources }).finalize();
 };
 
 /**

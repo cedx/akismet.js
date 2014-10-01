@@ -1,6 +1,6 @@
 /**
  * Unit tests of the `client` module.
- * @module test.client
+ * @module test.client_test
  */
 'use strict';
 
@@ -89,7 +89,7 @@ var ClientTest={
   _client: new Client(
     env.AKISMET_API_KEY,
     env.AKISMET_BLOG,
-    { serviceUrl: 'AKISMET_SERVICE_URL' in env ? env.AKISMET_SERVICE_URL : null }
+    { serviceUrl: 'AKISMET_SERVICE_URL' in env ? env.AKISMET_SERVICE_URL : 'https://'+Client.DEFAULT_SERVICE }
   ),
 
   /**

@@ -1,6 +1,6 @@
 /**
  * Unit tests of the `comment` module.
- * @module test.comment
+ * @module test.comment_test
  */
 'use strict';
 

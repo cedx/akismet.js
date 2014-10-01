@@ -65,8 +65,8 @@ function main() {
       }
     };
 
-    require('../../test/comment');
-    require('../../test/client');
+    require('../../test/comment_test');
+    require('../../test/client_test');
     mocha.run();
   });
 }
