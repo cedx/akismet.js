@@ -1,5 +1,5 @@
 # Akismet.js
-[![Version](http://img.shields.io/npm/v/akismet-js.svg?style=flat-square)](https://www.npmjs.org/package/akismet-js) [![Downloads](http://img.shields.io/npm/dm/akismet-js.svg?style=flat-square)](https://www.npmjs.org/package/akismet-js) [![License](http://img.shields.io/npm/l/akismet-js.svg?style=flat-square)](https://github.com/cedx/akismet.js/blob/master/LICENSE.txt)
+[![Version](http://img.shields.io/npm/v/akismet-js.svg?style=flat-square)](https://www.npmjs.org/package/akismet-js) [![Dependencies](http://img.shields.io/david/cedx/akismet.js.svg?style=flat-square)](https://david-dm.org/cedx/akismet.js) [![Downloads](http://img.shields.io/npm/dm/akismet-js.svg?style=flat-square)](https://www.npmjs.org/package/akismet-js) [![License](http://img.shields.io/npm/l/akismet-js.svg?style=flat-square)](https://github.com/cedx/akismet.js/blob/master/LICENSE.txt)
 
 Prevent comment spam using [Akismet](https://akismet.com) service, in [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript).
 
