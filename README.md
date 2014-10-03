@@ -1,4 +1,6 @@
 # Akismet.js
+[![Version](http://img.shields.io/npm/v/akismet-js.svg?style=flat-square)](https://www.npmjs.org/package/akismet-js) [![Downloads](http://img.shields.io/npm/dm/akismet-js.svg?style=flat-square)](https://www.npmjs.org/package/akismet-js) [![License](http://img.shields.io/npm/l/akismet-js.svg?style=flat-square)](https://raw.githubusercontent.com/cedx/akismet.js/master/LICENSE.txt)
+
 Prevent comment spam using [Akismet](https://akismet.com) service, in [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript).
 
 ## Features
