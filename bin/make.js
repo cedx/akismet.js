@@ -42,12 +42,12 @@ target.all=function() {
 };
 
 /**
- * Builds the stylesheets.
- * @method css
+ * Checks the package dependencies.
+ * @method check
  */
-target.css=function() {
-  echo('Build the stylesheets...');
-  cp('-f', require.resolve('mocha/mocha.css'), 'www/css');
+target.check=function() {
+  echo('Check the package dependencies...');
+  exec('david');
 };
 
 /**
@@ -57,6 +57,15 @@ target.css=function() {
 target.clean=function() {
   echo('Delete the output files...');
   rm('-f', config.output);
+};
+
+/**
+ * Builds the stylesheets.
+ * @method css
+ */
+target.css=function() {
+  echo('Build the stylesheets...');
+  cp('-f', require.resolve('mocha/mocha.css'), 'www/css');
 };
 
 /**

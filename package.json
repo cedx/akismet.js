@@ -19,6 +19,7 @@
   "devDependencies": {
     "archiver": "^0.11.0",
     "browserify": "^6.0.2",
+    "david": "^5.0.0",
     "docgen-js": "^0.1.0",
     "jshint": "^2.5.6",
     "mocha": "^1.21.4",
