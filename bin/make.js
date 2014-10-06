@@ -138,7 +138,7 @@ target.test=function() {
   program._name='make test';
 
   program
-    .version(require('../package.json').version)
+    .version(pkg.version)
     .option('-k, --key <apiKey>', 'the Akismet API key')
     .option('-b, --blog <url>', 'the front page or home URL [http://dev.belin.io/akismet.js]', 'http://dev.belin.io/akismet.js')
     .parse(process.argv);
