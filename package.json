@@ -6,23 +6,23 @@
   "license": "MIT",
   "main": "./index",
   "name": "akismet-js",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "bin": {
     "akismet": "./bin/cli.js"
   },
   "dependencies": {
-    "body-parser": "^1.9.0",
-    "commander": "^2.3.0",
-    "express": "^4.9.5",
-    "superagent": "^0.20.0"
+    "body-parser": "^1.9.2",
+    "commander": "^2.5.0",
+    "express": "^4.10.2",
+    "superagent": "^0.21.0"
   },
   "devDependencies": {
-    "archiver": "^0.11.0",
-    "browserify": "^6.0.2",
+    "archiver": "^0.12.0",
+    "browserify": "^6.3.2",
     "david": "^5.0.0",
     "docgen-js": "^0.1.0",
-    "jshint": "^2.5.6",
-    "mocha": "^1.21.4",
+    "jshint": "^2.5.10",
+    "mocha": "^2.0.1",
     "shelljs": "^0.3.0",
     "uglify-js": "^2.4.15"
   },
