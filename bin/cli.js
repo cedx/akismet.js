@@ -60,7 +60,7 @@ var Application={
    * @method _startServer
    * @param {Number} port The port that the server should run on.
    * @param {String} host The host that the server should run on.
-   * @param {Uri} [redirectUrl] The URL to redirect the user when a request is unhandled.
+   * @param {String} [redirectUrl] The URL to redirect the user when a request is unhandled.
    * @private
    */
   _startServer: function(port, host, redirectUrl) {
