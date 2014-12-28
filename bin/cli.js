@@ -52,7 +52,7 @@ var Application={
    * @private
    */
   _log: function(message) {
-    if(!program.silent) console.log('[%s] %s', new Date().toUTCString(), message instanceof Function ? message() : message);
+    if(!program.silent) console.log('[%s] %s', new Date().toUTCString(), typeof message=='function' ? message() : message);
   },
 
   /**
