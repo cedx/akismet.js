@@ -88,7 +88,7 @@ var ClientTest={
    */
   _client: new Client(
     env.AKISMET_API_KEY,
-    env.AKISMET_BLOG,
+    'AKISMET_BLOG' in env ? env.AKISMET_BLOG : 'http://dev.belin.io/akismet.js',
     { serviceUrl: 'AKISMET_SERVICE_URL' in env ? env.AKISMET_SERVICE_URL : 'https://'+Client.DEFAULT_SERVICE }
   ),
 
@@ -106,7 +106,7 @@ var ClientTest={
       userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9) AppleWebKit/537.71 (KHTML, like Gecko) Version/7.0 Safari/537.71'
     }),
     content: 'I\'m testing out the Service API.',
-    referrer: 'https://www.npmjs.org/package/akismet-js',
+    referrer: 'https://www.npmjs.com/package/akismet-js',
     type: CommentType.COMMENT
   }),
 

@@ -52,11 +52,6 @@ function main() {
       .append('<div id="mocha"></div>');
 
     // Run the tests.
-    mocha.setup({
-      checkLeaks: true,
-      ui: 'bdd'
-    });
-
     window.process={
       env: {
         AKISMET_API_KEY: apiKey.val(),

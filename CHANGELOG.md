@@ -1,5 +1,8 @@
 # Changelog
-This file contains highlights of what changes on each version of the [Akismet.js](https://www.npmjs.org/package/akismet-js) library.
+This file contains highlights of what changes on each version of the [Akismet.js](https://www.npmjs.com/package/akismet-js) library.
+
+#### Version 0.3.5
+- Using [Gulp.js](http://gulpjs.com) as build system.
 
 #### Version 0.3.4
 - CORS headers handling delegated to [`cors`](https://www.npmjs.com/package/cors) module.

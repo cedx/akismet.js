@@ -1,5 +1,5 @@
 # Akismet.js
-[![Version](http://img.shields.io/npm/v/akismet-js.svg?style=flat)](https://www.npmjs.org/package/akismet-js) [![Dependencies](http://img.shields.io/david/cedx/akismet.js.svg?style=flat)](https://david-dm.org/cedx/akismet.js) [![Downloads](http://img.shields.io/npm/dm/akismet-js.svg?style=flat)](https://www.npmjs.org/package/akismet-js) [![License](http://img.shields.io/npm/l/akismet-js.svg?style=flat)](https://github.com/cedx/akismet.js/blob/master/LICENSE.txt)
+[![Version](http://img.shields.io/npm/v/akismet-js.svg?style=flat)](https://www.npmjs.com/package/akismet-js) [![Dependencies](http://img.shields.io/david/cedx/akismet.js.svg?style=flat)](https://david-dm.org/cedx/akismet.js) [![Downloads](http://img.shields.io/npm/dm/akismet-js.svg?style=flat)](https://www.npmjs.com/package/akismet-js) [![License](http://img.shields.io/npm/l/akismet-js.svg?style=flat)](https://github.com/cedx/akismet.js/blob/master/LICENSE.txt)
 
 Prevent comment spam using [Akismet](https://akismet.com) service, in [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript).
 
@@ -12,7 +12,7 @@ Prevent comment spam using [Akismet](https://akismet.com) service, in [JavaScrip
 ## Documentation
 - [API Reference](http://dev.belin.io/akismet.js/api)
 
-## Installing via [npm](https://www.npmjs.org)
+## Installing via [npm](https://www.npmjs.com)
 
 #### 1. Depend on it
 Add this to your project's `package.json` file:
@@ -92,7 +92,7 @@ To be able to use the HTML client, we must rely on a proxy server adding [CORS](
 This is why a [server implementation](https://github.com/cedx/akismet.js/blob/master/lib/server.js) is provided with this package.
 To facilitate its usage, a [command line interface](https://github.com/cedx/akismet.js/blob/master/bin/cli.js) is available in the `bin` folder.
 
-From a command prompt, run the `cli.js` script (aliased as `akismet` by [npm](https://www.npmjs.org)):
+From a command prompt, run the `cli.js` script (aliased as `akismet` by [npm](https://www.npmjs.com)):
 
 ```
 $ node bin/cli.js --help
@@ -129,4 +129,4 @@ To test the client/browser implementation, launch a server instance, and points 
 [Unit Tests of HTML Client](http://dev.belin.io/akismet.js)
 
 ## License
-[Akismet.js](https://www.npmjs.org/package/akismet-js) is distributed under the MIT License.
+[Akismet.js](https://www.npmjs.com/package/akismet-js) is distributed under the MIT License.
