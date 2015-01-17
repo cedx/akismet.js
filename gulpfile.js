@@ -5,10 +5,11 @@
 'use strict';
 
 // Module dependencies.
+var browserify=require('browserify');
 var child=require('child_process');
 var del=require('del');
 var gulp=require('gulp');
-var plugins=require('gulp-load-plugins')();
+var loadPlugins=require('gulp-load-plugins');
 var pkg=require('./package.json');
 var util=require('util');
 
@@ -27,6 +28,16 @@ process.chdir(__dirname);
 var config={
   output: util.format('%s-%s.zip', pkg.yuidoc.name.toLowerCase(), pkg.version)
 };
+
+/**
+ * The task plugins.
+ * @property plugins
+ * @type Object
+ */
+var plugins=loadPlugins({
+  pattern: [ 'gulp-*', 'vinyl-*' ],
+  replaceString: /^(gulp|vinyl)-/
+});
 
 /**
  * Runs the default tasks.
@@ -101,11 +112,12 @@ gulp.task('doc:build', function(callback) {
  * @method js
  */
 gulp.task('js', [ 'js:tests' ], function() {
-  return gulp.src('www/js/main.js')
-    .pipe(plugins.sourcemaps.init())
-    .pipe(plugins.browserify())
+  return browserify({ debug: true, entries: [ './www/js/main.js' ] })
+    .bundle()
+    .pipe(plugins.sourceStream('tests.js'))
+    .pipe(plugins.buffer())
+    .pipe(plugins.sourcemaps.init({ loadMaps: true }))
     .pipe(plugins.uglify())
-    .pipe(plugins.rename('tests.js'))
     .pipe(plugins.sourcemaps.write('.'))
     .pipe(gulp.dest('www/js'));
 });
@@ -133,20 +145,6 @@ gulp.task('lint:js', function() {
 });
 
 /**
- * Runs the unit tests.
- * @method test
- */
-gulp.task('test', [ 'test:env' ], function() {
-  return gulp.src([ 'test/*.js' ], { read: false })
-    .pipe(plugins.mocha());
-});
-
-gulp.task('test:env', function(callback) {
-  if('AKISMET_API_KEY' in process.env) callback();
-  else callback(new Error('AKISMET_API_KEY environment variable not set.'));
-});
-
-/**
  * Starts the Web server.
  * @method serve
  */
@@ -158,6 +156,20 @@ gulp.task('serve', function(callback) {
 
   config._server=child.fork('bin/cli.js');
   callback();
+});
+
+/**
+ * Runs the unit tests.
+ * @method test
+ */
+gulp.task('test', [ 'test:env' ], function() {
+  return gulp.src([ 'test/*.js' ], { read: false })
+    .pipe(plugins.mocha());
+});
+
+gulp.task('test:env', function(callback) {
+  if('AKISMET_API_KEY' in process.env) callback();
+  else callback(new Error('AKISMET_API_KEY environment variable not set.'));
 });
 
 /**
@@ -179,7 +191,8 @@ gulp.task('watch', [ 'default', 'serve' ], function() {
  */
 function _exec(command, callback) {
   child.exec(command, function(err, stdout) {
-    console.log(stdout.trim());
+    if(err) console.error(err);
+    else console.log(stdout.trim());
     callback();
   });
 }
