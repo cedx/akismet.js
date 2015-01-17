@@ -82,7 +82,7 @@ var Application={
       ));
     });
 
-    server.listen(port, host, function() {
+    server.listen(port, host).then(function() {
       self._log(util.format('Akismet server listening on %s:%d', host, port));
     });
   }
