@@ -1,5 +1,5 @@
 # Akismet.js
-[![Version](http://img.shields.io/npm/v/akismet-js.svg?style=flat)](https://www.npmjs.com/package/akismet-js) [![Dependencies](http://img.shields.io/david/cedx/akismet.js.svg?style=flat)](https://david-dm.org/cedx/akismet.js) [![Downloads](http://img.shields.io/npm/dm/akismet-js.svg?style=flat)](https://www.npmjs.com/package/akismet-js) [![License](http://img.shields.io/npm/l/akismet-js.svg?style=flat)](https://github.com/cedx/akismet.js/blob/master/LICENSE.txt)
+[![Version](http://img.shields.io/npm/v/akismet-js.svg?style=flat)](https://www.npmjs.com/package/akismet-js) [![License](http://img.shields.io/npm/l/akismet-js.svg?style=flat)](https://github.com/cedx/akismet.js/blob/master/LICENSE.txt) [![Dependencies](http://img.shields.io/david/cedx/akismet.js.svg?style=flat)](https://david-dm.org/cedx/akismet.js) [![Downloads](http://img.shields.io/npm/dm/akismet-js.svg?style=flat)](https://www.npmjs.com/package/akismet-js) [![Build](http://img.shields.io/travis/cedx/akismet.js.svg?style=flat)](https://www.npmjs.com/package/akismet-js)
 
 Prevent comment spam using [Akismet](https://akismet.com) service, in [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript).
 
@@ -13,26 +13,12 @@ Prevent comment spam using [Akismet](https://akismet.com) service, in [JavaScrip
 - [API Reference](http://dev.belin.io/akismet.js/api)
 
 ## Installing via [npm](https://www.npmjs.com)
-
-#### 1. Depend on it
-Add this to your project's `package.json` file:
-
-```json
-{
-  "dependencies": {
-    "akismet-js": "*"
-  }
-}
-```
-
-#### 2. Install it
-From the command line, run:
+From a command prompt, run:
 
 ```shell
-$ npm install
+$ npm install akismet-js --save
 ```
 
-#### 3. Import it
 Now in your JavaScript code, you can use:
 
 ```javascript
@@ -40,12 +26,13 @@ var akismet = require('akismet-js');
 ```
 
 ## Usage
+This package has an API based on [Promises/A+](https://www.promisejs.org).
 
 #### Key Verification
 
 ```javascript
 var client = new akismet.Client('YourAPIKey', 'http://your.blog.url');
-client.verifyKey(function(error, isValid) {
+client.verifyKey().then(function(isValid) {
   console.log(isValid ? 'Your API key is valid.' : 'Your API key is invalid.');
 });
 ```
@@ -58,7 +45,7 @@ var comment = new akismet.Comment({
   content: 'A comment.'
 });
 
-client.checkComment(comment, function(error, isSpam) {
+client.checkComment(comment).then(function(isSpam) {
   console.log(isSpam ? 'The comment is marked as spam.' : 'The comment is marked as ham.');
 });
 ```
@@ -66,11 +53,11 @@ client.checkComment(comment, function(error, isSpam) {
 #### Submit Spam/Ham
 
 ```javascript
-client.submitSpam(comment, function(error) {
+client.submitSpam(comment).then(function() {
   console.log('Spam submitted.');
 });
 
-client.submitHam(comment, function(error) {
+client.submitHam(comment).then(function() {
   console.log('Ham submitted.');
 });
 ```
@@ -92,7 +79,7 @@ To be able to use the HTML client, we must rely on a proxy server adding [CORS](
 This is why a [server implementation](https://github.com/cedx/akismet.js/blob/master/lib/server.js) is provided with this package.
 To facilitate its usage, a [command line interface](https://github.com/cedx/akismet.js/blob/master/bin/cli.js) is available in the `bin` folder.
 
-From a command prompt, run the `cli.js` script (aliased as `akismet` by [npm](https://www.npmjs.com)):
+From a command prompt, run the `cli.js` script (globally aliased as `akismet` by [npm](https://www.npmjs.com)):
 
 ```
 $ node bin/cli.js --help
@@ -110,23 +97,22 @@ $ node bin/cli.js --help
 ```
 
 ## Unit Tests
-To test the server/console implementation, run the `bin/make.js` script from a command prompt:
 
-```
-$ node bin/make.js test --help
-
-  Usage: make test [options]
-
-  Options:
-
-    -h, --help          output usage information
-    -V, --version       output the version number
-    -k, --key <apiKey>  the Akismet API key
-    -b, --blog <url>    the front page or home URL [http://dev.belin.io/akismet.js]
-```
-
+#### Browser
 To test the client/browser implementation, launch a server instance, and points your browser to this link:
 [Unit Tests of HTML Client](http://dev.belin.io/akismet.js)
+
+#### Console
+To test the server/console implementation, you must set one or several environment variables prior to running the tests:
+- `AKISMET_API_KEY`: the Akismet API key (required).
+- `AKISMET_BLOG`: the front page or home URL (optional).
+- `AKISMET_SERVICE_URL`: the URL of the remote service (optional).
+
+Then, run the `test` build task from the command prompt:
+
+```shell
+$ gulp test
+```
 
 ## License
 [Akismet.js](https://www.npmjs.com/package/akismet-js) is distributed under the MIT License.

@@ -1,6 +1,9 @@
 # Changelog
 This file contains highlights of what changes on each version of the [Akismet.js](https://www.npmjs.com/package/akismet-js) library.
 
+#### Version 0.4.0
+- Breaking change: ported the callback-based API to [Promises/A+](https://www.promisejs.org).
+
 #### Version 0.3.5
 - Using [Gulp.js](http://gulpjs.com) as build system.
 
