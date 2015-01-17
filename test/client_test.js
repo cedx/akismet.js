@@ -6,7 +6,6 @@
 
 // Module dependencies.
 var assert=require('assert');
-var env=global.process.env;
 
 var Author=require('../lib/comment').Author;
 var Blog=require('../lib/client').Blog;
@@ -87,9 +86,9 @@ var ClientTest={
    * @private
    */
   _client: new Client(
-    env.AKISMET_API_KEY,
-    'AKISMET_BLOG' in env ? env.AKISMET_BLOG : 'http://dev.belin.io/akismet.js',
-    { serviceUrl: 'AKISMET_SERVICE_URL' in env ? env.AKISMET_SERVICE_URL : 'https://'+Client.DEFAULT_SERVICE }
+    process.env.AKISMET_API_KEY,
+    'AKISMET_BLOG' in process.env ? process.env.AKISMET_BLOG : 'http://dev.belin.io/akismet.js',
+    { serviceUrl: 'AKISMET_SERVICE_URL' in process.env ? process.env.AKISMET_SERVICE_URL : 'https://'+Client.DEFAULT_SERVICE }
   ),
 
   /**
@@ -103,7 +102,7 @@ var ClientTest={
       ipAddress: '192.168.0.1',
       name: 'Akismet.js',
       url: 'http://dev.belin.io/akismet.js',
-      userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9) AppleWebKit/537.71 (KHTML, like Gecko) Version/7.0 Safari/537.71'
+      userAgent: 'Mozilla/5.0 (Windows NT 6.3; WOW64; rv:35.0) Gecko/20100101 Firefox/35.0'
     }),
     content: 'I\'m testing out the Service API.',
     referrer: 'https://www.npmjs.com/package/akismet-js',
@@ -148,19 +147,17 @@ var ClientTest={
   testCheckComment: function() {
     var self=this;
     it('should return `false` for valid comment (e.g. ham)' , function(done) {
-      self._client.checkComment(self._ham, function(err, res) {
-        assert.ifError(err);
-        assert.strictEqual(res, false);
-        done();
-      });
+      self._client.checkComment(self._ham).then(
+        function(res) { assert.strictEqual(res, false); done(); },
+        done
+      );
     });
 
     it('should return `true` for invalid comment (e.g. spam)' , function(done) {
-      self._client.checkComment(self._spam, function(err, res) {
-        assert.ifError(err);
-        assert.strictEqual(res, true);
-        done();
-      });
+      self._client.checkComment(self._spam).then(
+        function(res) { assert.strictEqual(res, true); done(); },
+        done
+      );
     });
   },
 
@@ -171,7 +168,10 @@ var ClientTest={
   testSubmitHam: function() {
     var self=this;
     it('should complete without error' , function(done) {
-      self._client.submitHam(self._ham, done);
+      self._client.submitHam(self._ham).then(
+        function() { done(); },
+        done
+      );
     });
   },
 
@@ -182,7 +182,10 @@ var ClientTest={
   testSubmitSpam: function() {
     var self=this;
     it('should complete without error' , function(done) {
-      self._client.submitSpam(self._spam, done);
+      self._client.submitSpam(self._spam).then(
+        function() { done(); },
+        done
+      );
     });
   },
 
@@ -193,20 +196,18 @@ var ClientTest={
   testVerifyKey: function() {
     var self=this;
     it('should return `true` for a valid API key' , function(done) {
-      self._client.verifyKey(function(err, res) {
-        assert.ifError(err);
-        assert.strictEqual(res, true);
-        done();
-      });
+      self._client.verifyKey().then(
+        function(res) { assert.strictEqual(res, true); done(); },
+        done
+      );
     });
 
     it('should return `false` for an invalid API key' , function(done) {
       var client=new Client('viagra-test-123', self._client.blog, { serviceUrl: self._client.serviceUrl });
-      client.verifyKey(function(err, res) {
-        assert.ifError(err);
-        assert.strictEqual(res, false);
-        done();
-      });
+      client.verifyKey().then(
+        function(res) { assert.strictEqual(res, false); done(); },
+        done
+      );
     });
   }
 };

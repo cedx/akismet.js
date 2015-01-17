@@ -178,7 +178,7 @@ gulp.task('test:env', function(callback) {
  */
 gulp.task('watch', [ 'default', 'serve' ], function() {
   gulp.watch('lib/*.js', [ 'serve' ]);
-  gulp.watch('www/js/main.js', [ 'js' ]);
+  gulp.watch([ 'test/*.js', 'www/js/main.js' ], [ 'js' ]);
 });
 
 /**

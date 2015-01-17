@@ -19,7 +19,7 @@
  */
 function main() {
   // Enable tooltips.
-  var isTouch=(('ontouchstart' in document.documentElement) || window.navigator.maxTouchPoints || window.navigator.msMaxTouchPoints);
+  var isTouch=(('ontouchstart' in document.documentElement) || navigator.maxTouchPoints || navigator.msMaxTouchPoints);
   if(!isTouch) $('[data-toggle="tooltip"]').tooltip({ placement: 'auto' });
 
   // Register button handlers.
@@ -52,14 +52,13 @@ function main() {
       .append('<div id="mocha"></div>');
 
     // Run the tests.
-    window.process={
-      env: {
-        AKISMET_API_KEY: apiKey.val(),
-        AKISMET_BLOG: blog.val(),
-        AKISMET_SERVICE_URL: serviceUrl.val()
-      }
+    process.env={
+      AKISMET_API_KEY: apiKey.val(),
+      AKISMET_BLOG: blog.val(),
+      AKISMET_SERVICE_URL: serviceUrl.val()
     };
 
+    mocha.setup({ ui: 'bdd' });
     require('../../test/comment_test');
     require('../../test/client_test');
     mocha.run();

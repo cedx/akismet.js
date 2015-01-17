@@ -6,6 +6,7 @@
 
 // Module dependencies.
 var assert=require('assert');
+
 var Author=require('../lib/comment').Author;
 var Comment=require('../lib/comment').Comment;
 var CommentType=require('../lib/comment').CommentType;
