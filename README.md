@@ -1,5 +1,5 @@
 # Akismet.js
-[![Version](http://img.shields.io/npm/v/akismet-js.svg?style=flat)](https://www.npmjs.com/package/akismet-js) [![License](http://img.shields.io/npm/l/akismet-js.svg?style=flat)](https://github.com/cedx/akismet.js/blob/master/LICENSE.txt) [![Downloads](http://img.shields.io/npm/dm/akismet-js.svg?style=flat)](https://www.npmjs.com/package/akismet-js) [![Dependencies](http://img.shields.io/david/cedx/akismet.js.svg?style=flat)](https://david-dm.org/cedx/akismet.js) [![Build](http://img.shields.io/travis/cedx/akismet.js.svg?style=flat)](https://www.npmjs.com/package/akismet-js)
+[![Release](http://img.shields.io/npm/v/akismet-js.svg?style=flat)](https://www.npmjs.com/package/akismet-js) [![License](http://img.shields.io/npm/l/akismet-js.svg?style=flat)](https://github.com/cedx/akismet.js/blob/master/LICENSE.txt) [![Downloads](http://img.shields.io/npm/dm/akismet-js.svg?style=flat)](https://www.npmjs.com/package/akismet-js) [![Dependencies](http://img.shields.io/david/cedx/akismet.js.svg?style=flat)](https://david-dm.org/cedx/akismet.js) [![Build](http://img.shields.io/travis/cedx/akismet.js.svg?style=flat)](https://www.npmjs.com/package/akismet-js)
 
 Prevent comment spam using [Akismet](https://akismet.com) service, in [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript).
 
