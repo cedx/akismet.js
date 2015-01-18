@@ -15,10 +15,9 @@ var util=require('util');
 
 /**
  * Provides tasks for [Gulp.js](http://gulpjs.com) build system.
- * @class MiniFramework.Gulpfile
+ * @class cli.Gulpfile
  * @static
  */
-process.chdir(__dirname);
 
 /**
  * The task settings.
