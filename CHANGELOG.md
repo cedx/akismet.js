@@ -1,6 +1,9 @@
 # Changelog
 This file contains highlights of what changes on each version of the [Akismet.js](https://www.npmjs.com/package/akismet-js) library.
 
+#### Version 0.4.1
+- Fixed [issue #2](https://github.com/cedx/akismet.js/issues/2): used a Unix system for publishing the package on [npm](https://www.npmjs.com).
+
 #### Version 0.4.0
 - Breaking change: ported the callback-based API to [Promises/A+](https://www.promisejs.org).
 
