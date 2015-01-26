@@ -175,8 +175,8 @@ gulp.task('test:env', function(callback) {
  * Watches for file changes.
  * @method watch
  */
-gulp.task('watch', [ 'default', 'serve' ], function() {
-  gulp.watch('lib/*.js', [ 'serve' ]);
+gulp.task('watch', [ 'js', 'serve' ], function() {
+  gulp.watch('lib/*.js', [ 'js', 'serve' ]);
   gulp.watch([ 'test/*.js', 'www/js/main.js' ], [ 'js' ]);
 });
 
