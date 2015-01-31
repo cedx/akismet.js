@@ -49,7 +49,9 @@ gulp.task('default', [ 'css', 'js' ]);
  * @method check
  */
 gulp.task('check', function(callback) {
-  _exec('david', callback);
+  return gulp.src('package.json')
+    .pipe(david())
+    .pipe(david.reporter);
 });
 
 /**
