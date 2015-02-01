@@ -20,7 +20,7 @@
     "superagent": "^0.21.0"
   },
   "devDependencies": {
-    "browserify": "8.1.1",
+    "browserify": "8.1.3",
     "del": "^1.1.1",
     "docgen-js": "^0.0.1",
     "gulp": "^3.8.10",
