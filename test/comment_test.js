@@ -6,8 +6,8 @@
 
 // Module dependencies.
 var assert=require('assert');
+var comment=require('../lib/comment');
 
-var Author=require('../lib/comment').Author;
 var Comment=require('../lib/comment').Comment;
 var CommentType=require('../lib/comment').CommentType;
 
@@ -36,17 +36,17 @@ var AuthorTest={
    */
   testFromJSON: function() {
     it('should return a null reference with a non-object JSON string', function() {
-      assert.strictEqual(Author.fromJSON('foo'), null);
+      assert.strictEqual(comment.Author.fromJSON('foo'), null);
     });
 
     it('should return an empty instance with an empty JSON object', function() {
-      var author=Author.fromJSON('{}');
+      var author=comment.Author.fromJSON('{}');
       assert.strictEqual(author.email, null);
       assert.strictEqual(author.url, null);
     });
 
     it('should return an initialized instance with a non-empty JSON object', function() {
-      var author=Author.fromJSON('{ "comment_author_email": "cedric@belin.io", "comment_author_url": "http://belin.io" }');
+      var author=comment.Author.fromJSON('{ "comment_author_email": "cedric@belin.io", "comment_author_url": "http://belin.io" }');
       assert.equal(author.email, 'cedric@belin.io');
       assert.equal(author.url, 'http://belin.io');
     });
@@ -58,11 +58,11 @@ var AuthorTest={
    */
   testToJSON: function() {
     it('should return an empty JSON object with a newly created instance', function() {
-      assert.equal(new Author().toJSON(), '{}');
+      assert.equal(new comment.Author().toJSON(), '{}');
     });
 
     it('should return a non-empty JSON object with a initialized instance', function() {
-      var author=new Author({ name: 'Cédric Belin', email: 'cedric@belin.io', ipAddress: '127.0.0.1', url: 'http://belin.io' });
+      var author=new comment.Author({ name: 'Cédric Belin', email: 'cedric@belin.io', ipAddress: '127.0.0.1', url: 'http://belin.io' });
       assert.equal(author.toJSON(), '{"comment_author":"Cédric Belin","comment_author_email":"cedric@belin.io","comment_author_url":"http://belin.io","user_ip":"127.0.0.1"}');
     });
   }
@@ -106,7 +106,7 @@ var CommentTest={
 
     it('should return an initialized instance with a non-empty JSON object', function() {
       var comment=Comment.fromJSON('{ "comment_author": "Cédric Belin", "comment_content": "A user comment.", "comment_type": "trackback", "referrer": "http://belin.io" }');
-      assert(comment.author instanceof Author);
+      assert(comment.author instanceof comment.Author);
       assert.equal(comment.author.name, 'Cédric Belin');
       assert.equal(comment.content, 'A user comment.');
       assert.equal(comment.referrer, 'http://belin.io');
@@ -124,7 +124,7 @@ var CommentTest={
     });
 
     it('should return a non-empty JSON object with a initialized instance', function() {
-      var comment=new Comment({ author: new Author({ name: 'Cédric Belin' }), content: 'A user comment.', referrer: 'http://belin.io', type: CommentType.PINGBACK });
+      var comment=new Comment({ author: new comment.Author({ name: 'Cédric Belin' }), content: 'A user comment.', referrer: 'http://belin.io', type: CommentType.PINGBACK });
       assert.equal(comment.toJSON(), '{"comment_author":"Cédric Belin","comment_content":"A user comment.","comment_type":"pingback","referrer":"http://belin.io"}');
     });
   }

@@ -6,8 +6,9 @@
 
 // Module dependencies.
 var assert=require('assert');
+var client=require('../lib/client');
+var comment=require('../lib/comment');
 
-var Author=require('../lib/comment').Author;
 var Blog=require('../lib/client').Blog;
 var Client=require('../lib/client').Client;
 var Comment=require('../lib/comment').Comment;
@@ -98,7 +99,7 @@ var ClientTest={
    * @private
    */
   _ham: new Comment({
-    author: new Author({
+    author: new comment.Author({
       ipAddress: '192.168.0.1',
       name: 'Akismet.js',
       url: 'http://dev.belin.io/akismet.js',
@@ -116,7 +117,7 @@ var ClientTest={
    * @private
    */
   _spam: new Comment({
-    author: new Author({
+    author: new comment.Author({
       ipAddress: '127.0.0.1',
       name: 'viagra-test-123',
       userAgent: 'Spam Bot/6.6.6'
