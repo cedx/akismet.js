@@ -6,13 +6,8 @@
 
 // Module dependencies.
 var assert=require('assert');
-var client=require('../lib/client');
-var comment=require('../lib/comment');
-
-var Blog=require('../lib/client').Blog;
-var Client=require('../lib/client').Client;
-var Comment=require('../lib/comment').Comment;
-var CommentType=require('../lib/comment').CommentType;
+var clt=require('../lib/client');
+var cmt=require('../lib/comment');
 
 /**
  * Tests the features of the `akismet.Blog` class.
@@ -39,18 +34,18 @@ var BlogTest={
    */
   testFromJSON: function() {
     it('should return a null reference with a non-object JSON string', function() {
-      assert.strictEqual(Blog.fromJSON('foo'), null);
+      assert.strictEqual(clt.Blog.fromJSON('foo'), null);
     });
 
     it('should return an empty instance with an empty JSON object', function() {
-      var blog=Blog.fromJSON('{}');
+      var blog=clt.Blog.fromJSON('{}');
       assert.strictEqual(blog.charset, null);
       assert.strictEqual(blog.language, null);
       assert.strictEqual(blog.url, null);
     });
 
     it('should return an initialized instance with a non-empty JSON object', function() {
-      var blog=Blog.fromJSON('{ "blog": "http://dev.belin.io/akismet.js", "blog_charset": "UTF-8", "blog_lang": "en" }');
+      var blog=clt.Blog.fromJSON('{ "blog": "http://dev.belin.io/akismet.js", "blog_charset": "UTF-8", "blog_lang": "en" }');
       assert.equal(blog.charset, 'UTF-8');
       assert.equal(blog.language, 'en');
       assert.equal(blog.url, 'http://dev.belin.io/akismet.js');
@@ -63,11 +58,11 @@ var BlogTest={
    */
   testToJSON: function() {
     it('should return an empty JSON object with a newly created instance', function() {
-      assert.equal(new Blog().toJSON(), '{}');
+      assert.equal(new clt.Blog().toJSON(), '{}');
     });
 
     it('should return a non-empty JSON object with a initialized instance', function() {
-      var blog=new Blog('http://dev.belin.io/akismet.js', { charset: 'UTF-8', language: 'en' });
+      var blog=new clt.Blog('http://dev.belin.io/akismet.js', { charset: 'UTF-8', language: 'en' });
       assert.equal(blog.toJSON(), '{"blog":"http://dev.belin.io/akismet.js","blog_charset":"UTF-8","blog_lang":"en"}');
     });
   }
@@ -86,10 +81,10 @@ var ClientTest={
    * @type akismet.Client
    * @private
    */
-  _client: new Client(
+  _client: new clt.Client(
     process.env.AKISMET_API_KEY,
     'AKISMET_BLOG' in process.env ? process.env.AKISMET_BLOG : 'http://dev.belin.io/akismet.js',
-    { serviceUrl: 'AKISMET_SERVICE_URL' in process.env ? process.env.AKISMET_SERVICE_URL : 'https://'+Client.DEFAULT_SERVICE }
+    { serviceUrl: 'AKISMET_SERVICE_URL' in process.env ? process.env.AKISMET_SERVICE_URL : 'https://'+clt.Client.DEFAULT_SERVICE }
   ),
 
   /**
@@ -98,8 +93,8 @@ var ClientTest={
    * @type akismet.Comment
    * @private
    */
-  _ham: new Comment({
-    author: new comment.Author({
+  _ham: new cmt.Comment({
+    author: new cmt.Author({
       ipAddress: '192.168.0.1',
       name: 'Akismet.js',
       url: 'http://dev.belin.io/akismet.js',
@@ -107,7 +102,7 @@ var ClientTest={
     }),
     content: 'I\'m testing out the Service API.',
     referrer: 'https://www.npmjs.com/package/akismet-js',
-    type: CommentType.COMMENT
+    type: cmt.CommentType.COMMENT
   }),
 
   /**
@@ -116,14 +111,14 @@ var ClientTest={
    * @type akismet.Comment
    * @private
    */
-  _spam: new Comment({
-    author: new comment.Author({
+  _spam: new cmt.Comment({
+    author: new cmt.Author({
       ipAddress: '127.0.0.1',
       name: 'viagra-test-123',
       userAgent: 'Spam Bot/6.6.6'
     }),
     content: 'Spam!',
-    type: CommentType.TRACKBACK
+    type: cmt.CommentType.TRACKBACK
   }),
 
   /**
@@ -204,7 +199,7 @@ var ClientTest={
     });
 
     it('should return `false` for an invalid API key' , function(done) {
-      var client=new Client('viagra-test-123', self._client.blog, { serviceUrl: self._client.serviceUrl });
+      var client=new clt.Client('viagra-test-123', self._client.blog, { serviceUrl: self._client.serviceUrl });
       client.verifyKey().then(
         function(res) { assert.strictEqual(res, false); done(); },
         done

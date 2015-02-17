@@ -38,6 +38,7 @@
   },
   "jshintConfig": {
     "browser": true,
+    "camelcase": false,
     "freeze": true,
     "indent": 2,
     "latedef": "nofunc",
