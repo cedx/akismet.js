@@ -58,7 +58,7 @@ function main() {
       AKISMET_SERVICE_URL: serviceUrl.val()
     };
 
-    mocha.setup({ ui: 'bdd' });
+    mocha.setup('bdd');
     require('../../test/comment_test');
     require('../../test/client_test');
     mocha.run();
