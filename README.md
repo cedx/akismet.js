@@ -104,6 +104,7 @@ To test the client/browser implementation, launch a server instance, and points 
 
 #### Console
 To test the server/console implementation, you must set one or several environment variables prior to running the tests:
+
 - `AKISMET_API_KEY`: the Akismet API key (required).
 - `AKISMET_BLOG`: the front page or home URL (optional).
 - `AKISMET_SERVICE_URL`: the URL of the remote service (optional).
