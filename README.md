@@ -1,5 +1,5 @@
 # Akismet.js
-[![Release](http://img.shields.io/npm/v/akismet-js.svg)](https://www.npmjs.com/package/akismet-js) [![License](http://img.shields.io/npm/l/akismet-js.svg)](https://bitbucket.org/cedx/akismet.js/src/master/LICENSE.txt) [![Downloads](http://img.shields.io/npm/dm/akismet-js.svg)](https://www.npmjs.com/package/akismet-js) [![Dependencies](http://img.shields.io/david/cedx/akismet.js.svg)](https://david-dm.org/cedx/akismet.js) ![Build](https://img.shields.io/codeship/6ba3aa20-bb9a-0132-1473-02d724aeca6d.svg)
+[![Release](http://img.shields.io/npm/v/akismet-js.svg)](https://www.npmjs.com/package/akismet-js) [![License](http://img.shields.io/npm/l/akismet-js.svg)](http://dev.belin.io/akismet.js/src/master/LICENSE.txt) [![Downloads](http://img.shields.io/npm/dm/akismet-js.svg)](https://www.npmjs.com/package/akismet-js) [![Dependencies](http://img.shields.io/david/cedx/akismet.js.svg)](https://david-dm.org/cedx/akismet.js) ![Build](https://img.shields.io/codeship/6ba3aa20-bb9a-0132-1473-02d724aeca6d.svg)
 
 Prevent comment spam using [Akismet](https://akismet.com) service, in [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript).
 
@@ -10,7 +10,7 @@ Prevent comment spam using [Akismet](https://akismet.com) service, in [JavaScrip
 - [Submit Ham](https://akismet.com/development/api/#submit-ham): submits a comment that was incorrectly marked as spam but should not have been.
 
 ## Documentation
-- [API Reference](http://dev.belin.io/akismet.js/api)
+- [API Reference](http://api.belin.io/akismet.js)
 
 ## Installing via [npm](https://www.npmjs.com)
 From a command prompt, run:
@@ -76,8 +76,8 @@ So, the HTML client can't be used directly with the official service.
 #### Server
 To be able to use the HTML client, we must rely on a proxy server adding [CORS](http://www.w3.org/TR/cors) headers to service responses.
 
-This is why a [server implementation](https://bitbucket.org/cedx/akismet.js/src/master/lib/server.js) is provided with this package.
-To facilitate its usage, a [command line interface](https://bitbucket.org/cedx/akismet.js/src/master/bin/cli.js) is available in the `bin` folder.
+This is why a [server implementation](http://dev.belin.io/akismet.js/src/master/lib/server.js) is provided with this package.
+To facilitate its usage, a [command line interface](http://dev.belin.io/akismet.js/src/master/bin/cli.js) is available in the `bin` folder.
 
 From a command prompt, run the `cli.js` script (globally aliased as `akismet` by [npm](https://www.npmjs.com)):
 
@@ -100,7 +100,7 @@ $ node bin/cli.js --help
 
 #### Browser
 To test the client/browser implementation, launch a server instance, and points your browser to this link:
-[Unit Tests of HTML Client](http://dev.belin.io/akismet.js)
+[Unit Tests of HTML Client](http://demo.belin.io/akismet.js)
 
 #### Console
 To test the server/console implementation, you must set one or several environment variables prior to running the tests:

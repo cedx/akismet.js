@@ -33,7 +33,7 @@ function main() {
     });
 
     var blog=$('#blog-url');
-    if(!blog.val().length) blog.val('http://dev.belin.io/akismet.js');
+    if(!blog.val().length) blog.val('http://api.belin.io/akismet.js');
 
     var serviceUrl=$('#service-url');
     if(!serviceUrl.val().length) serviceUrl.val('http://localhost:3000');
