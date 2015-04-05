@@ -6,7 +6,7 @@
   "license": "MIT",
   "main": "./index",
   "name": "akismet-js",
-  "version": "0.5.1",
+  "version": "0.5.2",
   "bin": {
     "akismet": "./bin/cli.js"
   },
@@ -53,7 +53,8 @@
     "unused": true,
     "globals": {
       "describe": false,
-      "it": false
+      "it": false,
+      "Promise": false
     }
   },
   "keywords": [

@@ -1,6 +1,9 @@
 # Changelog
 This file contains highlights of what changes on each version of the [Akismet.js](https://www.npmjs.com/package/akismet-js) library.
 
+#### Version 0.5.2
+- Upgraded the package dependencies.
+
 #### Version 0.5.1
 - Upgraded the package dependencies.
 
