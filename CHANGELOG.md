@@ -11,10 +11,10 @@ This file contains highlights of what changes on each version of the [Akismet.js
 - Raised the required [Node.js](http://nodejs.org) version.
 - Removed the dependency on [`promise`](https://www.npmjs.com/package/promise) module.
 - Upgraded the package dependencies.
-- Fixed [issue #3](https://github.com/cedx/akismet.js/issues/3): returning a `Promise` in `Server.checkComment` method.
+- Fixed [GitHub issue #3](https://github.com/cedx/akismet.js/issues/3): returning a `Promise` in `Server.checkComment` method.
 
 #### Version 0.4.1
-- Fixed [issue #2](https://github.com/cedx/akismet.js/issues/2): using a Unix system for publishing the package on [npm](https://www.npmjs.com).
+- Fixed [GitHub issue #2](https://github.com/cedx/akismet.js/issues/2): using a Unix system for publishing the package on [npm](https://www.npmjs.com).
 
 #### Version 0.4.0
 - Breaking change: ported the callback-based API to [Promises/A+](https://www.promisejs.org).
