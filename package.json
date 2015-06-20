@@ -6,7 +6,7 @@
   "license": "MIT",
   "main": "./index",
   "name": "akismet-js",
-  "version": "0.6.0",
+  "version": "0.6.1",
   "bin": {
     "akismet": "./bin/cli.js"
   },
