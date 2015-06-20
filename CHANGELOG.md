@@ -2,8 +2,9 @@
 This file contains highlights of what changes on each version of the [Akismet.js](https://www.npmjs.com/package/akismet-js) library.
 
 #### Version 0.6.1
+- Fixed the usage of `Author.role` property.
 - Fixed the usage of `Client.isTest` property.
-- Fixed a unit test
+- Fixed a unit test.
 
 #### Version 0.6.0
 - Added `role` property to `Author` class.
