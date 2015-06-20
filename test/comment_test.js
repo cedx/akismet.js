@@ -97,15 +97,18 @@ var CommentTest={
       var comment=cmt.Comment.fromJSON('{}');
       assert.strictEqual(comment.author, null);
       assert.strictEqual(comment.content, null);
+      assert.strictEqual(comment.date, null);
       assert.strictEqual(comment.referrer, null);
       assert.strictEqual(comment.type, null);
     });
 
     it('should return an initialized instance with a non-empty JSON object', function() {
-      var comment=cmt.Comment.fromJSON('{ "comment_author": "Cédric Belin", "comment_content": "A user comment.", "comment_type": "trackback", "referrer": "http://belin.io" }');
+      var comment=cmt.Comment.fromJSON('{ "comment_author": "Cédric Belin", "comment_content": "A user comment.", "comment_date_gmt": "2000-01-31T23:00:00.000Z", "comment_type": "trackback", "referrer": "http://belin.io" }');
       assert(comment.author instanceof cmt.Author);
+      assert(comment.date instanceof Date);
       assert.equal(comment.author.name, 'Cédric Belin');
       assert.equal(comment.content, 'A user comment.');
+      assert.equal(comment.date.getTime(), (new Date(2000, 1, 1)).getTime());
       assert.equal(comment.referrer, 'http://belin.io');
       assert.equal(comment.type, cmt.CommentType.TRACKBACK);
     });
@@ -121,8 +124,8 @@ var CommentTest={
     });
 
     it('should return a non-empty JSON object with a initialized instance', function() {
-      var comment=new cmt.Comment({ author: new cmt.Author({ name: 'Cédric Belin' }), content: 'A user comment.', referrer: 'http://belin.io', type: cmt.CommentType.PINGBACK });
-      assert.equal(comment.toJSON(), '{"comment_author":"Cédric Belin","comment_content":"A user comment.","comment_type":"pingback","referrer":"http://belin.io"}');
+      var comment=new cmt.Comment({ author: new cmt.Author({ name: 'Cédric Belin' }), content: 'A user comment.', date: new Date(2000, 1, 1), referrer: 'http://belin.io', type: cmt.CommentType.PINGBACK });
+      assert.equal(comment.toJSON(), '{"comment_author":"Cédric Belin","comment_content":"A user comment.","comment_date_gmt":"2000-01-31T23:00:00.000Z","comment_type":"pingback","referrer":"http://belin.io"}');
     });
   }
 };

@@ -1,6 +1,11 @@
 # Changelog
 This file contains highlights of what changes on each version of the [Akismet.js](https://www.npmjs.com/package/akismet-js) library.
 
+#### Version 0.6.0
+- Added `role` property to `Author` class.
+- Added `isTest` property to `Client` class.
+- Added `date` and `postModified` properties to `Comment` class.
+
 #### Version 0.5.2
 - Upgraded the package dependencies.
 
