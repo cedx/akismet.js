@@ -27,7 +27,7 @@ This file contains highlights of what changes on each version of the [Akismet.js
 - Fixed [GitHub issue #2](https://github.com/cedx/akismet.js/issues/2): using a Unix system for publishing the package on [npm](https://www.npmjs.com).
 
 #### Version 0.4.0
-- Breaking change: ported the callback-based API to [Promises/A+](https://www.promisejs.org).
+- Breaking change: ported the callback-based API to [Promises](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise).
 
 #### Version 0.3.5
 - Using [Gulp.js](http://gulpjs.com) as build system.
