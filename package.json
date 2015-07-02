@@ -7,7 +7,7 @@
   "main": "./index",
   "name": "akismet-js",
   "repository": "bitbucket:cedx/akismet.js",
-  "version": "0.6.1",
+  "version": "0.6.2",
   "bin": {
     "akismet": "./bin/cli.js"
   },
