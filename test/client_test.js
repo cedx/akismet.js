@@ -45,10 +45,10 @@ var BlogTest={
     });
 
     it('should return an initialized instance with a non-empty JSON object', function() {
-      var blog=clt.Blog.fromJSON('{ "blog": "https://bitbucket.org/cedx/akismet.js", "blog_charset": "UTF-8", "blog_lang": "en" }');
+      var blog=clt.Blog.fromJSON('{ "blog": "http://dev.belin.io/akismet.js", "blog_charset": "UTF-8", "blog_lang": "en" }');
       assert.equal(blog.charset, 'UTF-8');
       assert.equal(blog.language, 'en');
-      assert.equal(blog.url, 'https://bitbucket.org/cedx/akismet.js');
+      assert.equal(blog.url, 'http://dev.belin.io/akismet.js');
     });
   },
 
@@ -62,8 +62,8 @@ var BlogTest={
     });
 
     it('should return a non-empty JSON object with a initialized instance', function() {
-      var blog=new clt.Blog('https://bitbucket.org/cedx/akismet.js', { charset: 'UTF-8', language: 'en' });
-      assert.equal(blog.toJSON(), '{"blog":"https://bitbucket.org/cedx/akismet.js","blog_charset":"UTF-8","blog_lang":"en"}');
+      var blog=new clt.Blog('http://dev.belin.io/akismet.js', { charset: 'UTF-8', language: 'en' });
+      assert.equal(blog.toJSON(), '{"blog":"http://dev.belin.io/akismet.js","blog_charset":"UTF-8","blog_lang":"en"}');
     });
   }
 };
@@ -83,7 +83,7 @@ var ClientTest={
    */
   _client: new clt.Client(
     process.env.AKISMET_API_KEY,
-    'AKISMET_BLOG' in process.env ? process.env.AKISMET_BLOG : 'https://bitbucket.org/cedx/akismet.js',
+    'AKISMET_BLOG' in process.env ? process.env.AKISMET_BLOG : 'http://dev.belin.io/akismet.js',
     { isTest: true, serviceUrl: 'AKISMET_SERVICE_URL' in process.env ? process.env.AKISMET_SERVICE_URL : 'https://'+clt.Client.DEFAULT_SERVICE }
   ),
 
@@ -97,7 +97,7 @@ var ClientTest={
     author: new cmt.Author({
       ipAddress: '192.168.0.1',
       name: 'Akismet.js',
-      url: 'https://bitbucket.org/cedx/akismet.js',
+      url: 'http://dev.belin.io/akismet.js',
       userAgent: 'Mozilla/5.0 (Windows NT 6.3; WOW64; Trident/7.0; Touch; rv:11.0) like Gecko'
     }),
     content: 'I\'m testing out the Service API.',
