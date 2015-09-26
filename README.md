@@ -116,4 +116,4 @@ $ gulp test
 ```
 
 ## License
-[Akismet.js](https://www.npmjs.com/package/akismet-js) is distributed under the MIT License.
+[Akismet.js](https://www.npmjs.com/package/akismet-js) is distributed under the Apache License, version 2.0.
