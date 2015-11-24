@@ -192,7 +192,8 @@ gulp.task('watch', [ 'js', 'serve' ], function() {
  */
 function _exec(command, callback) {
   child.exec(command, function(err, stdout) {
-    console.log(stdout.trim());
+    var output=stdout.trim();
+    if(output.length) console.log(output);
     if(err) console.error(err);
     callback();
   });
