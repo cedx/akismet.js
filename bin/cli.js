@@ -2,32 +2,28 @@
 
 /**
  * Command line interface.
- * @module bin.cli
+ * @module bin/cli
  */
 'use strict';
 
 // Module dependencies.
-var program=require('commander');
-var Server=require('../lib/server');
-var util=require('util');
+const program=require('commander');
+const Server=require('../lib/server');
+const util=require('util');
 
 /**
  * Represents an application providing functionalities specific to console requests.
- * @class cli.Application
- * @static
  */
 var Application={
 
   /**
    * The application name.
-   * @property name
-   * @type String
+   * @var {string}
    */
   name: 'akismet',
 
   /**
    * Runs the application.
-   * @method run
    */
   run: function() {
     process.chdir(__dirname+'/..');
@@ -47,8 +43,7 @@ var Application={
 
   /**
    * Prints the specified message, with a timestamp and a new line, to the standard output.
-   * @method _log
-   * @param {String|Function} message The message to be logged. If it's a function, the message is the result of the function call.
+   * @param {string|function} message The message to be logged. If it's a function, the message is the result of the function call.
    * @private
    */
   _log: function(message) {
@@ -57,10 +52,9 @@ var Application={
 
   /**
    * Starts a server listening for HTTP requests.
-   * @method _startServer
-   * @param {Number} port The port that the server should run on.
-   * @param {String} host The host that the server should run on.
-   * @param {String} [redirectUrl] The URL to redirect the user when a request is unhandled.
+   * @param {number} port The port that the server should run on.
+   * @param {string} host The host that the server should run on.
+   * @param {string} [redirectUrl] The URL to redirect the user when a request is unhandled.
    * @private
    */
   _startServer: function(port, host, redirectUrl) {

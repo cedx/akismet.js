@@ -18,7 +18,6 @@ var BlogTest={
 
   /**
    * Runs the unit tests.
-   * @method run
    */
   run: function() {
     var self=this;
@@ -30,7 +29,6 @@ var BlogTest={
 
   /**
    * Tests the `fromJSON` method.
-   * @method testFromJSON
    */
   testFromJSON: function() {
     it('should return a null reference with a non-object JSON string', function() {
@@ -54,7 +52,6 @@ var BlogTest={
 
   /**
    * Tests the `toJSON` method.
-   * @method testToJSON
    */
   testToJSON: function() {
     it('should return an empty JSON object with a newly created instance', function() {
@@ -123,7 +120,6 @@ var ClientTest={
 
   /**
    * Runs the unit tests.
-   * @method run
    */
   run: function() {
     var self=this;
@@ -138,7 +134,6 @@ var ClientTest={
 
   /**
    * Tests the `checkComment` method.
-   * @method testCheckComment
    */
   testCheckComment: function() {
     var self=this;
@@ -159,7 +154,6 @@ var ClientTest={
 
   /**
    * Tests the `submitHam` method.
-   * @method testSubmitHam
    */
   testSubmitHam: function() {
     var self=this;
@@ -173,7 +167,6 @@ var ClientTest={
 
   /**
    * Tests the `submitSpam` method.
-   * @method testSubmitSpam
    */
   testSubmitSpam: function() {
     var self=this;
@@ -187,7 +180,6 @@ var ClientTest={
 
   /**
    * Tests the `verifyKey` method.
-   * @method testVerifyKey
    */
   testVerifyKey: function() {
     var self=this;

@@ -17,7 +17,6 @@ var AuthorTest={
 
   /**
    * Runs the unit tests.
-   * @method run
    */
   run: function() {
     var self=this;
@@ -29,7 +28,6 @@ var AuthorTest={
 
   /**
    * Tests the `fromJSON` method.
-   * @method testFromJSON
    */
   testFromJSON: function() {
     it('should return a null reference with a non-object JSON string', function() {
@@ -51,7 +49,6 @@ var AuthorTest={
 
   /**
    * Tests the `toJSON` method.
-   * @method testToJSON
    */
   testToJSON: function() {
     it('should return an empty JSON object with a newly created instance', function() {
@@ -74,7 +71,6 @@ var CommentTest={
 
   /**
    * Runs the unit tests.
-   * @method run
    */
   run: function() {
     var self=this;
@@ -86,7 +82,6 @@ var CommentTest={
 
   /**
    * Tests the `fromJSON` method.
-   * @method testFromJSON
    */
   testFromJSON: function() {
     it('should return a null reference with a non-object JSON string', function() {
@@ -115,7 +110,6 @@ var CommentTest={
 
   /**
    * Tests the `toJSON` method.
-   * @method testToJSON
    */
   testToJSON: function() {
     it('should return an empty JSON object with a newly created instance', function() {
