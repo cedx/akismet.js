@@ -5,66 +5,61 @@
 'use strict';
 
 // Module dependencies.
-var browserify=require('browserify');
-var child=require('child_process');
-var del=require('del');
-var gulp=require('gulp');
-var loadPlugins=require('gulp-load-plugins');
-var pkg=require('./package.json');
-var util=require('util');
-
-/**
- * Provides tasks for [Gulp.js](http://gulpjs.com) build system.
- * @class cli.Gulpfile
- * @static
- */
+const browserify=require('browserify');
+const child=require('child_process');
+const del=require('del');
+const fs=require('fs');
+const gulp=require('gulp');
+const loadPlugins=require('gulp-load-plugins');
+const pkg=require('./package.json');
 
 /**
  * The task settings.
- * @property config
- * @type Object
+ * @var {object}
  */
-var config={
-  output: util.format('%s-%s.zip', pkg.yuidoc.name.toLowerCase(), pkg.version)
+const config={
+  output: `${pkg.name}-${pkg.version}.zip`,
+  sources: [
+    '*.json',
+    '*.md',
+    '*.txt',
+    'index.js',
+    'bin/*',
+    'lib/*.js',
+    'test/*.js',
+    'www/**/*',
+    '!www/**.map'
+  ]
 };
 
 /**
  * The task plugins.
- * @property plugins
- * @type Object
+ * @var {object}
  */
-var plugins=loadPlugins({
-  pattern: [ 'gulp-*', 'vinyl-*' ],
+const plugins=loadPlugins({
+  pattern: ['gulp-*', 'vinyl-*'],
   replaceString: /^(gulp|vinyl)-/
 });
 
 /**
  * Runs the default tasks.
- * @method default
  */
-gulp.task('default', [ 'css', 'js' ]);
+gulp.task('default', ['css', 'js']);
 
 /**
  * Checks the package dependencies.
- * @method check
  */
-gulp.task('check', function() {
-  return gulp.src('package.json')
-    .pipe(plugins.david())
-    .pipe(plugins.david.reporter);
-});
+gulp.task('check', () => gulp.src('package.json')
+  .pipe(plugins.david())
+  .pipe(plugins.david.reporter));
 
 /**
  * Deletes all generated files and reset any saved state.
- * @method clean
  */
-gulp.task('clean', function(callback) {
-  del('var/'+config.output, callback);
-});
+gulp.task('clean', callback => del(`var/${config.output}`, callback));
 
 /**
  * Builds the stylesheets.
- * @method css
  */
 gulp.task('css', function() {
   return gulp.src(require.resolve('mocha/mocha.css'))
@@ -73,47 +68,30 @@ gulp.task('css', function() {
 
 /**
  * Creates a distribution file for this program.
- * @method dist
  */
-gulp.task('dist', [ 'default' ], function() {
-  var sources=[
-    '*.js',
-    '*.json',
-    '*.md',
-    '*.txt',
-    'bin/*',
-    'lib/*.js',
-    'test/*.js',
-    'www/**/*',
-    '!www/**/*.map'
-  ];
-
-  return gulp.src(sources, { base: '.' })
-    .pipe(plugins.zip(config.output))
-    .pipe(gulp.dest('var'));
-});
+gulp.task('dist', ['default'], () => gulp.src(config.sources, { base: '.' })
+  .pipe(plugins.zip(config.output))
+  .pipe(gulp.dest('var')));
 
 /**
  * Builds the documentation.
- * @method doc
  */
-gulp.task('doc', [ 'doc:assets' ]);
+gulp.task('doc', ['doc:assets']);
 
-gulp.task('doc:assets', [ 'doc:build' ], function() {
-  return gulp.src([ 'www/apple-touch-icon.png', 'www/favicon.ico' ])
-    .pipe(gulp.dest('doc/api/assets'));
+gulp.task('doc:assets', ['doc:rename'], () => gulp.src(['web/apple-touch-icon.png', 'web/favicon.ico'])
+  .pipe(gulp.dest('doc/api')));
+
+gulp.task('doc:build', callback => {
+  _exec('jsdoc --configure doc/conf.json').then(callback, callback)
 });
 
-gulp.task('doc:build', function(callback) {
-  _exec('docgen', callback);
-});
+gulp.task('doc:rename', ['doc:build'], callback => fs.rename(`doc/${pkg.name}/${pkg.version}`, 'doc/api', callback));
 
 /**
  * Builds the client scripts.
- * @method js
  */
-gulp.task('js', [ 'js:tests' ], function() {
-  return browserify({ debug: true, entries: [ './www/js/main.js' ] })
+gulp.task('js', ['js:tests'], function() {
+  return browserify({ debug: true, entries: ['./www/js/main.js'] })
     .bundle()
     .pipe(plugins.sourceStream('tests.js'))
     .pipe(plugins.buffer())
@@ -131,25 +109,15 @@ gulp.task('js:tests', function() {
 
 /**
  * Performs static analysis of source code.
- * @method lint
  */
-gulp.task('lint', [ 'lint:doc', 'lint:js' ]);
-
-gulp.task('lint:doc', function(callback) {
-  _exec('docgen --lint', callback);
-});
-
-gulp.task('lint:js', function() {
-  return gulp.src([ '*.js', 'bin/*.js', 'lib/*.js', 'test/*.js', 'www/js/main.js' ])
-    .pipe(plugins.jshint(pkg.jshintConfig))
-    .pipe(plugins.jshint.reporter('default', { verbose: true }));
-});
+gulp.task('lint', () => gulp.src(['*.js', 'bin/*.js', 'lib/*.js', 'test/*.js', 'www/js/main.js'])
+  .pipe(plugins.jshint(pkg.jshintConfig))
+  .pipe(plugins.jshint.reporter('default', { verbose: true })));
 
 /**
  * Starts the Web server.
- * @method serve
  */
-gulp.task('serve', function(callback) {
+gulp.task('serve', callback => {
   if('_server' in config) {
     config._server.kill();
     delete config._server;
@@ -161,12 +129,9 @@ gulp.task('serve', function(callback) {
 
 /**
  * Runs the unit tests.
- * @method test
  */
-gulp.task('test', [ 'test:env' ], function() {
-  return gulp.src([ 'test/*.js' ], { read: false })
-    .pipe(plugins.mocha());
-});
+gulp.task('test', ['test:env'], () => gulp.src(['test/*.js'], { read: false })
+  .pipe(plugins.mocha()));
 
 gulp.task('test:env', function(callback) {
   if('AKISMET_API_KEY' in process.env) callback();
@@ -175,26 +140,23 @@ gulp.task('test:env', function(callback) {
 
 /**
  * Watches for file changes.
- * @method watch
  */
-gulp.task('watch', [ 'js', 'serve' ], function() {
-  gulp.watch('lib/*.js', [ 'js', 'serve' ]);
-  gulp.watch([ 'test/*.js', 'www/js/main.js' ], [ 'js' ]);
+gulp.task('watch', ['js', 'serve'], function() {
+  gulp.watch('lib/*.js', ['js', 'serve']);
+  gulp.watch(['test/*.js', 'www/js/main.js'], ['js']);
 });
 
 /**
  * Runs a command and prints its output.
- * @method _exec
- * @param {String} command The command to run, with space-separated arguments.
- * @param {Function} callback The function to invoke when the task is over.
- * @async
+ * @param {string} command The command to run, with space-separated arguments.
+ * @return {Promise} Completes when the command is finally terminated.
  * @private
  */
-function _exec(command, callback) {
-  child.exec(command, function(err, stdout) {
-    var output=stdout.trim();
+function _exec(command) {
+  return new Promise((resolve, reject) => child.exec(command, (err, stdout) => {
+    let output=stdout.trim();
     if(output.length) console.log(output);
-    if(err) console.error(err);
-    callback();
-  });
+    if(err) reject(err);
+    else resolve();
+  }));
 }
