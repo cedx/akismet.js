@@ -1,6 +1,13 @@
 # Changelog
 This file contains highlights of what changes on each version of the [Akismet.js](https://www.npmjs.com/package/akismet-js) library.
 
+#### Version 0.7.0
+- Breaking change: using ES6 features, like arrow functions, block-scoped binding constructs, classes and template strings.
+- Breaking change: raised the required [Node.js](http://nodejs.org) version.
+- Added support for [SonarQube](http://www.sonarqube.org) code analyzer.
+- Changed the documentation system for [JSDoc](http://usejsdoc.org).
+- Changed licensing for the [Apache License Version 2.0](http://www.apache.org/licenses/LICENSE-2.0).
+
 #### Version 0.6.2
 - Fixed a bug in `Comment.toJSON` method.
 
@@ -24,10 +31,10 @@ This file contains highlights of what changes on each version of the [Akismet.js
 - Raised the required [Node.js](http://nodejs.org) version.
 - Removed the dependency on [`promise`](https://www.npmjs.com/package/promise) module.
 - Upgraded the package dependencies.
-- Fixed [GitHub issue #3](https://github.com/cedx/akismet.js/issues/3): returning a `Promise` in `Server.checkComment` method.
+- Fixed [issue #3](https://github.com/cedx/akismet.js/issues/3): returning a `Promise` in `Server.checkComment` method.
 
 #### Version 0.4.1
-- Fixed [GitHub issue #2](https://github.com/cedx/akismet.js/issues/2): using a Unix system for publishing the package on [npm](https://www.npmjs.com).
+- Fixed [issue #2](https://github.com/cedx/akismet.js/issues/2): using a Unix system for publishing the package on [npm](https://www.npmjs.com).
 
 #### Version 0.4.0
 - Breaking change: ported the callback-based API to [Promises](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise).

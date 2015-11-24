@@ -5,8 +5,8 @@
 'use strict';
 
 // Module dependencies.
-var client=require('./lib/client');
-var comment=require('./lib/comment');
+const client=require('./lib/client');
+const comment=require('./lib/comment');
 
 // Public interface.
 module.exports={
