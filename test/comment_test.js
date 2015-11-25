@@ -5,91 +5,87 @@
 'use strict';
 
 // Module dependencies.
-var assert=require('assert');
-var cmt=require('../lib/comment');
+const assert=require('assert');
+const cmt=require('../lib/comment');
 
 /**
  * Tests the features of the `akismet.Author` class.
- * @class akismet.tests.AuthorTest
- * @static
  */
-var AuthorTest={
+class AuthorTest {
 
   /**
    * Runs the unit tests.
    */
-  run: function() {
-    var self=this;
-    describe('Author', function() {
+  run() {
+    let self=this;
+    describe('Author', () => {
       describe('fromJSON()', self.testFromJSON);
       describe('toJSON()', self.testToJSON);
     });
-  },
+  }
 
   /**
    * Tests the `fromJSON` method.
    */
-  testFromJSON: function() {
-    it('should return a null reference with a non-object JSON string', function() {
-      assert.strictEqual(cmt.Author.fromJSON('foo'), null);
-    });
+  testFromJSON() {
+    it('should return a null reference with a non-object JSON string', () =>
+      assert.strictEqual(cmt.Author.fromJSON('foo'), null)
+    );
 
-    it('should return an empty instance with an empty JSON object', function() {
-      var author=cmt.Author.fromJSON('{}');
+    it('should return an empty instance with an empty JSON object', () => {
+      let author=cmt.Author.fromJSON('{}');
       assert.strictEqual(author.email, null);
       assert.strictEqual(author.url, null);
     });
 
-    it('should return an initialized instance with a non-empty JSON object', function() {
-      var author=cmt.Author.fromJSON('{ "comment_author_email": "cedric@belin.io", "comment_author_url": "http://belin.io" }');
+    it('should return an initialized instance with a non-empty JSON object', () => {
+      let author=cmt.Author.fromJSON('{ "comment_author_email": "cedric@belin.io", "comment_author_url": "http://www.belin.io" }');
       assert.equal(author.email, 'cedric@belin.io');
-      assert.equal(author.url, 'http://belin.io');
+      assert.equal(author.url, 'http://www.belin.io');
     });
-  },
+  }
 
   /**
    * Tests the `toJSON` method.
    */
-  testToJSON: function() {
-    it('should return an empty JSON object with a newly created instance', function() {
-      assert.equal(new cmt.Author().toJSON(), '{}');
-    });
+  testToJSON() {
+    it('should return an empty JSON object with a newly created instance', () =>
+      assert.equal(new cmt.Author().toJSON(), '{}')
+    );
 
-    it('should return a non-empty JSON object with a initialized instance', function() {
-      var author=new cmt.Author({ name: 'Cédric Belin', email: 'cedric@belin.io', ipAddress: '127.0.0.1', url: 'http://belin.io' });
-      assert.equal(author.toJSON(), '{"comment_author":"Cédric Belin","comment_author_email":"cedric@belin.io","comment_author_url":"http://belin.io","user_ip":"127.0.0.1"}');
+    it('should return a non-empty JSON object with a initialized instance', () => {
+      let author=new cmt.Author({name: 'Cédric Belin', email: 'cedric@belin.io', ipAddress: '127.0.0.1', url: 'http://www.belin.io'});
+      assert.equal(author.toJSON(), '{"comment_author":"Cédric Belin","comment_author_email":"cedric@belin.io","comment_author_url":"http://www.belin.io","user_ip":"127.0.0.1"}');
     });
   }
-};
+}
 
 /**
  * Tests the features of the `akismet.Comment` class.
- * @class akismet.tests.CommentTest
- * @static
  */
-var CommentTest={
+class CommentTest {
 
   /**
    * Runs the unit tests.
    */
-  run: function() {
-    var self=this;
-    describe('Comment', function() {
+  run() {
+    let self=this;
+    describe('Comment', () => {
       describe('fromJSON()', self.testFromJSON);
       describe('toJSON()', self.testToJSON);
     });
-  },
+  }
 
   /**
    * Tests the `fromJSON` method.
    */
-  testFromJSON: function() {
-    it('should return a null reference with a non-object JSON string', function() {
-      assert.strictEqual(cmt.Comment.fromJSON('foo'), null);
-    });
+  testFromJSON() {
+    it('should return a null reference with a non-object JSON string', () =>
+      assert.strictEqual(cmt.Comment.fromJSON('foo'), null)
+    );
 
-    it('should return an empty instance with an empty JSON object', function() {
-      var comment=cmt.Comment.fromJSON('{}');
+    it('should return an empty instance with an empty JSON object', () => {
+      let comment=cmt.Comment.fromJSON('{}');
       assert.strictEqual(comment.author, null);
       assert.strictEqual(comment.content, null);
       assert.strictEqual(comment.date, null);
@@ -97,32 +93,32 @@ var CommentTest={
       assert.strictEqual(comment.type, null);
     });
 
-    it('should return an initialized instance with a non-empty JSON object', function() {
-      var comment=cmt.Comment.fromJSON('{ "comment_author": "Cédric Belin", "comment_content": "A user comment.", "comment_date_gmt": "2000-01-01T00:00:00.000Z", "comment_type": "trackback", "referrer": "http://belin.io" }');
+    it('should return an initialized instance with a non-empty JSON object', () => {
+      let comment=cmt.Comment.fromJSON('{ "comment_author": "Cédric Belin", "comment_content": "A user comment.", "comment_date_gmt": "2000-01-01T00:00:00.000Z", "comment_type": "trackback", "referrer": "http://www.belin.io" }');
       assert(comment.author instanceof cmt.Author);
       assert(comment.date instanceof Date);
       assert.equal(comment.author.name, 'Cédric Belin');
       assert.equal(comment.content, 'A user comment.');
-      assert.equal(comment.referrer, 'http://belin.io');
+      assert.equal(comment.referrer, 'http://www.belin.io');
       assert.equal(comment.type, cmt.CommentType.TRACKBACK);
     });
-  },
+  }
 
   /**
    * Tests the `toJSON` method.
    */
-  testToJSON: function() {
-    it('should return an empty JSON object with a newly created instance', function() {
-      assert.equal(new cmt.Comment().toJSON(), '{}');
-    });
+  testToJSON() {
+    it('should return an empty JSON object with a newly created instance', () =>
+      assert.equal(new cmt.Comment().toJSON(), '{}')
+    );
 
-    it('should return a non-empty JSON object with a initialized instance', function() {
-      var comment=new cmt.Comment({ author: new cmt.Author({ name: 'Cédric Belin' }), content: 'A user comment.', referrer: 'http://belin.io', type: cmt.CommentType.PINGBACK });
-      assert.equal(comment.toJSON(), '{"comment_author":"Cédric Belin","comment_content":"A user comment.","comment_type":"pingback","referrer":"http://belin.io"}');
+    it('should return a non-empty JSON object with a initialized instance', () => {
+      let comment=new cmt.Comment({ author: new cmt.Author({ name: 'Cédric Belin' }), content: 'A user comment.', referrer: 'http://www.belin.io', type: cmt.CommentType.PINGBACK });
+      assert.equal(comment.toJSON(), '{"comment_author":"Cédric Belin","comment_content":"A user comment.","comment_type":"pingback","referrer":"http://www.belin.io"}');
     });
   }
-};
+}
 
 // Run all tests.
-AuthorTest.run();
-CommentTest.run();
+new AuthorTest().run();
+new CommentTest().run();

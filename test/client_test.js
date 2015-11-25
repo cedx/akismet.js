@@ -5,201 +5,196 @@
 'use strict';
 
 // Module dependencies.
-var assert=require('assert');
-var clt=require('../lib/client');
-var cmt=require('../lib/comment');
+const assert=require('assert');
+const clt=require('../lib/client');
+const cmt=require('../lib/comment');
 
 /**
  * Tests the features of the `akismet.Blog` class.
- * @class akismet.tests.BlogTest
- * @static
  */
-var BlogTest={
+class BlogTest {
 
   /**
    * Runs the unit tests.
    */
-  run: function() {
-    var self=this;
-    describe('Blog', function() {
+  run() {
+    let self=this;
+    describe('Blog', () => {
       describe('fromJSON()', self.testFromJSON);
       describe('toJSON()', self.testToJSON);
     });
-  },
+  }
 
   /**
    * Tests the `fromJSON` method.
    */
-  testFromJSON: function() {
-    it('should return a null reference with a non-object JSON string', function() {
-      assert.strictEqual(clt.Blog.fromJSON('foo'), null);
-    });
+  testFromJSON() {
+    it('should return a null reference with a non-object JSON string', () =>
+      assert.strictEqual(clt.Blog.fromJSON('foo'), null)
+    );
 
-    it('should return an empty instance with an empty JSON object', function() {
-      var blog=clt.Blog.fromJSON('{}');
+    it('should return an empty instance with an empty JSON object', () => {
+      let blog=clt.Blog.fromJSON('{}');
       assert.strictEqual(blog.charset, null);
       assert.strictEqual(blog.language, null);
       assert.strictEqual(blog.url, null);
     });
 
-    it('should return an initialized instance with a non-empty JSON object', function() {
-      var blog=clt.Blog.fromJSON('{ "blog": "http://dev.belin.io/akismet.js", "blog_charset": "UTF-8", "blog_lang": "en" }');
+    it('should return an initialized instance with a non-empty JSON object', () => {
+      let blog=clt.Blog.fromJSON('{ "blog": "https://github.com/cedx/akismet.js", "blog_charset": "UTF-8", "blog_lang": "en" }');
       assert.equal(blog.charset, 'UTF-8');
       assert.equal(blog.language, 'en');
-      assert.equal(blog.url, 'http://dev.belin.io/akismet.js');
+      assert.equal(blog.url, 'https://github.com/cedx/akismet.js');
     });
-  },
+  }
 
   /**
    * Tests the `toJSON` method.
    */
-  testToJSON: function() {
-    it('should return an empty JSON object with a newly created instance', function() {
-      assert.equal(new clt.Blog().toJSON(), '{}');
-    });
+  testToJSON() {
+    it('should return an empty JSON object with a newly created instance', () =>
+      assert.equal(new clt.Blog().toJSON(), '{}')
+    );
 
-    it('should return a non-empty JSON object with a initialized instance', function() {
-      var blog=new clt.Blog('http://dev.belin.io/akismet.js', { charset: 'UTF-8', language: 'en' });
-      assert.equal(blog.toJSON(), '{"blog":"http://dev.belin.io/akismet.js","blog_charset":"UTF-8","blog_lang":"en"}');
+    it('should return a non-empty JSON object with a initialized instance', () => {
+      let blog=new clt.Blog('https://github.com/cedx/akismet.js', {charset: 'UTF-8', language: 'en'});
+      assert.equal(blog.toJSON(), '{"blog":"https://github.com/cedx/akismet.js","blog_charset":"UTF-8","blog_lang":"en"}');
     });
   }
-};
+}
 
 /**
  * Tests the features of the `akismet.Client` class.
- * @class akismet.tests.ClientTest
- * @static
  */
-var ClientTest={
+class ClientTest {
 
   /**
-   * The client used to query the service database.
-   * @property _client
-   * @type akismet.Client
-   * @private
+   * Initializes a new instance of the class.
    */
-  _client: new clt.Client(
-    process.env.AKISMET_API_KEY,
-    'AKISMET_BLOG' in process.env ? process.env.AKISMET_BLOG : 'http://dev.belin.io/akismet.js',
-    { isTest: true, serviceUrl: 'AKISMET_SERVICE_URL' in process.env ? process.env.AKISMET_SERVICE_URL : 'https://'+clt.Client.DEFAULT_SERVICE }
-  ),
+  constructor() {
 
-  /**
-   * A comment with content marked as ham.
-   * @property _ham
-   * @type akismet.Comment
-   * @private
-   */
-  _ham: new cmt.Comment({
-    author: new cmt.Author({
-      ipAddress: '192.168.0.1',
-      name: 'Akismet.js',
-      url: 'http://dev.belin.io/akismet.js',
-      userAgent: 'Mozilla/5.0 (Windows NT 6.3; WOW64; Trident/7.0; Touch; rv:11.0) like Gecko'
-    }),
-    content: 'I\'m testing out the Service API.',
-    referrer: 'https://www.npmjs.com/package/akismet-js',
-    type: cmt.CommentType.COMMENT
-  }),
+    /**
+     * The client used to query the service database.
+     * @var akismet.Client
+     * @private
+     */
+    this._client=new clt.Client(
+      process.env.AKISMET_API_KEY,
+      'AKISMET_BLOG' in process.env ? process.env.AKISMET_BLOG : 'https://github.com/cedx/akismet.js',
+      {isTest: true, serviceUrl: 'AKISMET_SERVICE_URL' in process.env ? process.env.AKISMET_SERVICE_URL : 'https://'+clt.Client.DEFAULT_SERVICE}
+    );
 
-  /**
-   * A comment with content marked as spam.
-   * @property _spam
-   * @type akismet.Comment
-   * @private
-   */
-  _spam: new cmt.Comment({
-    author: new cmt.Author({
-      ipAddress: '127.0.0.1',
-      name: 'viagra-test-123',
-      userAgent: 'Spam Bot/6.6.6'
-    }),
-    content: 'Spam!',
-    type: cmt.CommentType.TRACKBACK
-  }),
+    /**
+     * A comment with content marked as ham.
+     * @var akismet.Comment
+     * @private
+     */
+    this._ham=new cmt.Comment({
+      author: new cmt.Author({
+        ipAddress: '192.168.0.1',
+        name: 'Akismet.js',
+        url: 'https://github.com/cedx/akismet.js',
+        userAgent: 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0'
+      }),
+      content: 'I\'m testing out the Service API.',
+      referrer: 'https://www.npmjs.com/package/akismet-js',
+      type: cmt.CommentType.COMMENT
+    });
+
+    /**
+     * A comment with content marked as spam.
+     * @var akismet.Comment
+     * @private
+     */
+    this._spam=new cmt.Comment({
+      author: new cmt.Author({
+        ipAddress: '127.0.0.1',
+        name: 'viagra-test-123',
+        userAgent: 'Spam Bot/6.6.6'
+      }),
+      content: 'Spam!',
+      type: cmt.CommentType.TRACKBACK
+    });
+  }
 
   /**
    * Runs the unit tests.
    */
-  run: function() {
-    var self=this;
-    describe('Client', function() {
+  run() {
+    let self=this;
+    describe('Client', () => {
       this.timeout(10000);
       describe('verifyKey()', self.testVerifyKey.bind(self));
       describe('submitHam()', self.testSubmitHam.bind(self));
       describe('submitSpam()', self.testSubmitSpam.bind(self));
       describe('checkComment()', self.testCheckComment.bind(self));
     });
-  },
+  }
 
   /**
    * Tests the `checkComment` method.
    */
-  testCheckComment: function() {
-    var self=this;
-    it('should return `false` for valid comment (e.g. ham)' , function(done) {
-      self._client.checkComment(self._ham).then(
-        function(res) { assert.strictEqual(res, false); done(); },
+  testCheckComment() {
+    it('should return `false` for valid comment (e.g. ham)' , done =>
+      this._client.checkComment(this._ham).then(
+        (res) => { assert.strictEqual(res, false); done(); },
         done
-      );
-    });
+      )
+    );
 
-    it('should return `true` for invalid comment (e.g. spam)' , function(done) {
-      self._client.checkComment(self._spam).then(
-        function(res) { assert.strictEqual(res, true); done(); },
+    it('should return `true` for invalid comment (e.g. spam)' , done =>
+      this._client.checkComment(this._spam).then(
+        (res) => { assert.strictEqual(res, true); done(); },
         done
-      );
-    });
-  },
+      )
+    );
+  }
 
   /**
    * Tests the `submitHam` method.
    */
-  testSubmitHam: function() {
-    var self=this;
-    it('should complete without error' , function(done) {
-      self._client.submitHam(self._ham).then(
-        function() { done(); },
+  testSubmitHam() {
+    it('should complete without error' , done =>
+      this._client.submitHam(this._ham).then(
+        () => { done(); },
         done
-      );
-    });
-  },
+      )
+    );
+  }
 
   /**
    * Tests the `submitSpam` method.
    */
-  testSubmitSpam: function() {
-    var self=this;
-    it('should complete without error' , function(done) {
-      self._client.submitSpam(self._spam).then(
-        function() { done(); },
+  testSubmitSpam() {
+    it('should complete without error' , done =>
+      this._client.submitSpam(this._spam).then(
+        () => { done(); },
         done
-      );
-    });
-  },
+      )
+    );
+  }
 
   /**
    * Tests the `verifyKey` method.
    */
-  testVerifyKey: function() {
-    var self=this;
-    it('should return `true` for a valid API key' , function(done) {
-      self._client.verifyKey().then(
-        function(res) { assert.strictEqual(res, true); done(); },
+  testVerifyKey() {
+    it('should return `true` for a valid API key' , done =>
+      this._client.verifyKey().then(
+        (res) => { assert.strictEqual(res, true); done(); },
         done
-      );
-    });
+      )
+    );
 
-    it('should return `false` for an invalid API key' , function(done) {
-      var client=new clt.Client('viagra-test-123', self._client.blog, { isTest: self._client.isTest, serviceUrl: self._client.serviceUrl });
+    it('should return `false` for an invalid API key' , done => {
+      let client=new clt.Client('viagra-test-123', this._client.blog, {isTest: this._client.isTest, serviceUrl: this._client.serviceUrl});
       client.verifyKey().then(
-        function(res) { assert.strictEqual(res, false); done(); },
+        (res) => { assert.strictEqual(res, false); done(); },
         done
       );
     });
   }
-};
+}
 
 // Run all tests.
-BlogTest.run();
-ClientTest.run();
+new BlogTest().run();
+new ClientTest().run();
