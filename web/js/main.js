@@ -1,45 +1,36 @@
-/* global $, mocha */
-
 /**
  * Web interface.
- * @module www.main
+ * @module www/main
  */
 'use strict';
 
 /**
- * Runs the unit tests in a browser.
- * @class tests.web.main
- * @static
- */
-
-/**
  * Application entry point.
- * @method main
- * @static
  */
-function main() {
+$(() => {
   // Enable tooltips.
-  var isTouch=(('ontouchstart' in document.documentElement) || navigator.maxTouchPoints || navigator.msMaxTouchPoints);
+  let isTouch=(('ontouchstart' in document.documentElement) || navigator.maxTouchPoints || navigator.msMaxTouchPoints);
   if(!isTouch) $('[data-toggle="tooltip"]').tooltip({ placement: 'auto' });
 
   // Register button handlers.
-  $('#btn-submit').on('click', function(event) {
+  $('#btn-submit').on('click', event => {
     event.preventDefault();
 
     // Validate the user input.
-    $('#form-unit-tests input').each(function() {
-      var self=$(this);
-      self.val($.trim(self.val()));
+    $('#form-unit-tests input').each(() => {
+      let self=$(this);
+      self.val(self.val().trim());
     });
 
-    var blog=$('#blog-url');
-    if(!blog.val().length) blog.val('http://api.belin.io/akismet.js');
+    let blog=$('#blog-url');
+    if(!blog.val().length) blog.val('https://github.com/cedx/akismet.js');
 
-    var serviceUrl=$('#service-url');
+    let serviceUrl=$('#service-url');
     if(!serviceUrl.val().length) serviceUrl.val('http://localhost:3000');
 
-    var apiKey=$('#api-key');
-    if(apiKey.val().length>0) apiKey.closest('.form-group').removeClass('has-error');
+    let apiKey=$('#api-key');
+    if(apiKey.val().length>0)
+      apiKey.closest('.form-group').removeClass('has-error');
     else {
       apiKey.closest('.form-group').addClass('has-error');
       apiKey.focus();
@@ -63,7 +54,4 @@ function main() {
     require('../../test/client_test');
     mocha.run();
   });
-}
-
-// Start the application.
-$(main);
+});
