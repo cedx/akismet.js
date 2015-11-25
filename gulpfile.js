@@ -18,7 +18,8 @@ const pkg=require('./package.json');
  * @var {object}
  */
 const config={
-  output: `${pkg.name}-${pkg.version}.zip`,
+  output:
+    `${pkg.name}-${pkg.version}.zip`,
   sources: [
     '*.json',
     '*.md',
