@@ -22,7 +22,7 @@ $ npm install akismet-js --save
 Now in your JavaScript code, you can use:
 
 ```javascript
-var akismet = require('akismet-js');
+const akismet = require('akismet-js');
 ```
 
 ## Usage
@@ -31,35 +31,35 @@ This package has an API based on [Promises](https://developer.mozilla.org/en-US/
 #### Key Verification
 
 ```javascript
-var client = new akismet.Client('YourAPIKey', 'http://your.blog.url');
-client.verifyKey().then(function(isValid) {
-  console.log(isValid ? 'Your API key is valid.' : 'Your API key is invalid.');
-});
+let client = new akismet.Client('YourAPIKey', 'http://your.blog.url');
+client.verifyKey().then(isValid =>
+  console.log(isValid ? 'Your API key is valid.' : 'Your API key is invalid.')
+);
 ```
 
 #### Comment Check
 
 ```javascript
-var comment = new akismet.Comment({
+let comment = new akismet.Comment({
   author: new akismet.Author({ ipAddress: '127.0.0.1', userAgent: 'Mozilla/5.0' }),
   content: 'A comment.'
 });
 
-client.checkComment(comment).then(function(isSpam) {
-  console.log(isSpam ? 'The comment is marked as spam.' : 'The comment is marked as ham.');
-});
+client.checkComment(comment).then(isSpam =>
+  console.log(isSpam ? 'The comment is marked as spam.' : 'The comment is marked as ham.')
+);
 ```
 
 #### Submit Spam/Ham
 
 ```javascript
-client.submitSpam(comment).then(function() {
-  console.log('Spam submitted.');
-});
+client.submitSpam(comment).then(() =>
+  console.log('Spam submitted.')
+);
 
-client.submitHam(comment).then(function() {
-  console.log('Ham submitted.');
-});
+client.submitHam(comment).then(() =>
+  console.log('Ham submitted.')
+);
 ```
 
 ## Implementations
