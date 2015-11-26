@@ -1,4 +1,5 @@
 /.idea/
+/.sonar/
 /*.iml
 /doc/api/
 /node_modules/

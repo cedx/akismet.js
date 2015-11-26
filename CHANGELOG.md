@@ -4,6 +4,7 @@ This file contains highlights of what changes on each version of the [Akismet.js
 #### Version 0.7.0
 - Breaking change: using ES6 features, like arrow functions, block-scoped binding constructs, classes and template strings.
 - Breaking change: raised the required [Node.js](http://nodejs.org) version.
+- Added support for code coverage.
 - Added support for [SonarQube](http://www.sonarqube.org) code analyzer.
 - Changed the documentation system for [JSDoc](http://usejsdoc.org).
 - Changed licensing for the [Apache License Version 2.0](http://www.apache.org/licenses/LICENSE-2.0).
