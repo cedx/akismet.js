@@ -8,6 +8,7 @@
 *.js text
 *.json text
 *.md text
+*.properties text
 *.txt text
 
 *.gif binary
