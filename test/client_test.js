@@ -19,7 +19,7 @@ class BlogTest {
    */
   run() {
     let self=this;
-    describe('Blog', () => {
+    describe('Blog', function() {
       describe('fromJSON()', self.testFromJSON);
       describe('toJSON()', self.testToJSON);
     });
@@ -122,7 +122,7 @@ class ClientTest {
    */
   run() {
     let self=this;
-    describe('Client', () => {
+    describe('Client', function() {
       this.timeout(10000);
       describe('verifyKey()', self.testVerifyKey.bind(self));
       describe('submitHam()', self.testSubmitHam.bind(self));
@@ -186,7 +186,11 @@ class ClientTest {
     );
 
     it('should return `false` for an invalid API key' , done => {
-      let client=new clt.Client('viagra-test-123', this._client.blog, {isTest: this._client.isTest, serviceUrl: this._client.serviceUrl});
+      let client=new clt.Client('viagra-test-123', this._client.blog, {
+        isTest: this._client.isTest,
+        serviceUrl: this._client.serviceUrl
+      });
+
       client.verifyKey().then(
         (res) => { assert.strictEqual(res, false); done(); },
         done

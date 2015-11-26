@@ -18,7 +18,7 @@ class AuthorTest {
    */
   run() {
     let self=this;
-    describe('Author', () => {
+    describe('Author', function() {
       describe('fromJSON()', self.testFromJSON);
       describe('toJSON()', self.testToJSON);
     });
@@ -54,7 +54,13 @@ class AuthorTest {
     );
 
     it('should return a non-empty JSON object with a initialized instance', () => {
-      let author=new cmt.Author({name: 'Cédric Belin', email: 'cedric@belin.io', ipAddress: '127.0.0.1', url: 'http://www.belin.io'});
+      let author=new cmt.Author({
+        name: 'Cédric Belin',
+        email: 'cedric@belin.io',
+        ipAddress: '127.0.0.1',
+        url: 'http://www.belin.io'
+      });
+
       assert.equal(author.toJSON(), '{"comment_author":"Cédric Belin","comment_author_email":"cedric@belin.io","comment_author_url":"http://www.belin.io","user_ip":"127.0.0.1"}');
     });
   }
@@ -70,7 +76,7 @@ class CommentTest {
    */
   run() {
     let self=this;
-    describe('Comment', () => {
+    describe('Comment', function() {
       describe('fromJSON()', self.testFromJSON);
       describe('toJSON()', self.testToJSON);
     });
@@ -113,7 +119,13 @@ class CommentTest {
     );
 
     it('should return a non-empty JSON object with a initialized instance', () => {
-      let comment=new cmt.Comment({ author: new cmt.Author({ name: 'Cédric Belin' }), content: 'A user comment.', referrer: 'http://www.belin.io', type: cmt.CommentType.PINGBACK });
+      let comment=new cmt.Comment({
+        author: new cmt.Author({ name: 'Cédric Belin' }),
+        content: 'A user comment.',
+        referrer: 'http://www.belin.io',
+        type: cmt.CommentType.PINGBACK
+      });
+
       assert.equal(comment.toJSON(), '{"comment_author":"Cédric Belin","comment_content":"A user comment.","comment_type":"pingback","referrer":"http://www.belin.io"}');
     });
   }
