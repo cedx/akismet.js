@@ -42,9 +42,11 @@
     "node": ">=4.2.0"
   },
   "jshintConfig": {
+    "browser": true,
     "esnext": true,
     "freeze": true,
     "futurehostile": true,
+    "jquery": true,
     "latedef": "nofunc",
     "loopfunc": true,
     "mocha": true,
@@ -55,7 +57,10 @@
     "strict": true,
     "undef": true,
     "unused": true,
-    "varstmt": true
+    "varstmt": true,
+    "globals": {
+      "mocha": false
+    }
   },
   "keywords": [
     "akismet",
