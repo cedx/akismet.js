@@ -109,16 +109,14 @@ gulp.task('doc:rename', ['doc:build'], callback =>
 /**
  * Builds the client scripts.
  */
-gulp.task('js', ['js:tests'], function() {
-  return browserify({debug: true, entries: ['./www/js/main.js']})
-    .bundle()
-    .pipe(plugins.sourceStream('tests.js'))
-    .pipe(plugins.buffer())
-    .pipe(plugins.sourcemaps.init({loadMaps: true}))
-    .pipe(plugins.uglify())
-    .pipe(plugins.sourcemaps.write('.'))
-    .pipe(gulp.dest('www/js'));
-});
+gulp.task('js', ['js:tests'], () => browserify({debug: true, entries: ['./www/js/main.js']})
+  .bundle()
+  .pipe(plugins.sourceStream('tests.js'))
+  .pipe(plugins.buffer())
+  .pipe(plugins.sourcemaps.init({loadMaps: true}))
+  .pipe(plugins.uglify())
+  .pipe(plugins.sourcemaps.write('.'))
+  .pipe(gulp.dest('www/js')));
 
 gulp.task('js:tests', () => gulp.src(require.resolve('mocha/mocha.js'))
   .pipe(plugins.uglify())
@@ -150,7 +148,7 @@ gulp.task('serve', callback => {
 gulp.task('test', ['test:env'], () => gulp.src(['test/*.js'], {read: false})
   .pipe(plugins.mocha()));
 
-gulp.task('test:env', function(callback) {
+gulp.task('test:env', callback => {
   if('AKISMET_API_KEY' in process.env) callback();
   else callback(new Error('AKISMET_API_KEY environment variable not set.'));
 });
