@@ -9,7 +9,7 @@ const assert=require('assert');
 const Server=require('../lib/server');
 
 /**
- * Tests the features of the `akismet.Server` class.
+ * Tests the features of the `Server` class.
  */
 class ServerTest {
 
@@ -18,22 +18,50 @@ class ServerTest {
    */
   run() {
     let self=this;
-    describe('Server', function() {
-      describe('fromJSON()', self.testFromJSON);
-      describe('toJSON()', self.testToJSON);
+    describe.only('Server', function() {
+      describe('host', self.testHost);
+      describe('port', self.testPort);
+      describe('redirectUrl', self.testRedirectUrl);
     });
   }
 
   /**
-   * Tests the `fromJSON` method.
+   * Tests the `host` property.
    */
-  testFromJSON() {
+  testHost() {
+    it('should have an "any IPv4" address as the default host', () =>
+      assert.equal(new Server().host, '0.0.0.0')
+    );
+
+    it('should have the same host as the specified one', () =>
+      assert.equal(new Server({host: 'localhost'}).host, 'localhost')
+    );
   }
 
   /**
-   * Tests the `toJSON` method.
+   * Tests the `port` property.
    */
-  testToJSON() {
+  testPort() {
+    it('should have 3000 as the default port', () =>
+      assert.equal(new Server().port, 3000)
+    );
+
+    it('should have the same port as the specified one', () =>
+      assert.equal(new Server({port: 8080}).port, 8080)
+    );
+  }
+
+  /**
+   * Tests the `redirectUrl` property.
+   */
+  testRedirectUrl() {
+    it('should have a null reference as the default redirect URL', () =>
+      assert.strictEqual(new Server().redirectUrl, null)
+    );
+
+    it('should have the same redirect URL as the specified one', () =>
+      assert.equal(new Server({redirectUrl: 'http://www.belin.io'}).redirectUrl, 'http://www.belin.io')
+    );
   }
 }
 

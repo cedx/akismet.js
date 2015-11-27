@@ -10,7 +10,7 @@ const clt=require('../lib/client');
 const cmt=require('../lib/comment');
 
 /**
- * Tests the features of the `akismet.Blog` class.
+ * Tests the features of the `Blog` class.
  */
 class BlogTest {
 
@@ -64,7 +64,7 @@ class BlogTest {
 }
 
 /**
- * Tests the features of the `akismet.Client` class.
+ * Tests the features of the `Client` class.
  */
 class ClientTest {
 
@@ -75,7 +75,7 @@ class ClientTest {
 
     /**
      * The client used to query the service database.
-     * @var akismet.Client
+     * @var {Client}
      * @private
      */
     this._client=new clt.Client(
@@ -86,7 +86,7 @@ class ClientTest {
 
     /**
      * A comment with content marked as ham.
-     * @var akismet.Comment
+     * @var {Comment}
      * @private
      */
     this._ham=new cmt.Comment({
@@ -103,7 +103,7 @@ class ClientTest {
 
     /**
      * A comment with content marked as spam.
-     * @var akismet.Comment
+     * @var {Comment}
      * @private
      */
     this._spam=new cmt.Comment({

@@ -28,8 +28,8 @@ const config={
     'bin/*',
     'lib/*.js',
     'test/*.js',
-    'www/**/*',
-    '!www/**.map'
+    'web/**/*',
+    '!web/**.map'
   ]
 };
 
@@ -81,7 +81,7 @@ gulp.task('cover:instrument', () => gulp.src(['lib/*.js'])
  * Builds the stylesheets.
  */
 gulp.task('css', () => gulp.src(require.resolve('mocha/mocha.css'))
-  .pipe(gulp.dest('www/css')));
+  .pipe(gulp.dest('web/css')));
 
 /**
  * Creates a distribution file for this program.
@@ -109,23 +109,23 @@ gulp.task('doc:rename', ['doc:build'], callback =>
 /**
  * Builds the client scripts.
  */
-gulp.task('js', ['js:tests'], () => browserify({debug: true, entries: ['./www/js/main.js']})
+gulp.task('js', ['js:tests'], () => browserify({debug: true, entries: ['./web/js/main.js']})
   .bundle()
   .pipe(plugins.sourceStream('tests.js'))
   .pipe(plugins.buffer())
   .pipe(plugins.sourcemaps.init({loadMaps: true}))
   .pipe(plugins.uglify())
   .pipe(plugins.sourcemaps.write('.'))
-  .pipe(gulp.dest('www/js')));
+  .pipe(gulp.dest('web/js')));
 
 gulp.task('js:tests', () => gulp.src(require.resolve('mocha/mocha.js'))
   .pipe(plugins.uglify())
-  .pipe(gulp.dest('www/js')));
+  .pipe(gulp.dest('web/js')));
 
 /**
  * Performs static analysis of source code.
  */
-gulp.task('lint', () => gulp.src(['*.js', 'bin/*.js', 'lib/*.js', 'test/*.js', 'www/js/main.js'])
+gulp.task('lint', () => gulp.src(['*.js', 'bin/*.js', 'lib/*.js', 'test/*.js', 'web/js/main.js'])
   .pipe(plugins.jshint(pkg.jshintConfig))
   .pipe(plugins.jshint.reporter('default', {verbose: true})));
 
@@ -158,7 +158,7 @@ gulp.task('test:env', callback => {
  */
 gulp.task('watch', ['js', 'serve'], () => {
   gulp.watch('lib/*.js', ['js', 'serve']);
-  gulp.watch(['test/*.js', 'www/js/main.js'], ['js']);
+  gulp.watch(['test/*.js', 'web/js/main.js'], ['js']);
 });
 
 /**

@@ -1,6 +1,6 @@
 /**
  * Web interface.
- * @module www/main
+ * @module web/main
  */
 'use strict';
 

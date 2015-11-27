@@ -9,7 +9,7 @@ const assert=require('assert');
 const cmt=require('../lib/comment');
 
 /**
- * Tests the features of the `akismet.Author` class.
+ * Tests the features of the `Author` class.
  */
 class AuthorTest {
 
@@ -67,7 +67,7 @@ class AuthorTest {
 }
 
 /**
- * Tests the features of the `akismet.Comment` class.
+ * Tests the features of the `Comment` class.
  */
 class CommentTest {
 
