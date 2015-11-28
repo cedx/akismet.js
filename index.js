@@ -9,11 +9,13 @@ const client=require('./lib/client');
 const comment=require('./lib/comment');
 
 // Public interface.
-module.exports={
+const akismet={
   Author: comment.Author,
   Blog: client.Blog,
   Client: client.Client,
   Comment: comment.Comment,
-  CommentType: comment.CommentType,
-  Server: typeof window!='undefined' ? null : require('./lib/server')
+  CommentType: comment.CommentType
 };
+
+module.exports=akismet;
+if(typeof window!='undefined') window.akismet=akismet;

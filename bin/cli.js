@@ -46,7 +46,6 @@ class Application {
    */
   run() {
     program.parse(process.argv);
-    if(!program.config && !program.target) program.help();
     this._startServer(program.port, program.host, program.redirect ? program.redirect : null);
   }
 
