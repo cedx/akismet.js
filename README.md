@@ -84,7 +84,6 @@ So, the HTML client can't be used directly with the official service.
 To be able to use the HTML client, we must rely on a proxy server adding [CORS](http://www.w3.org/TR/cors) headers to service responses.
 
 This is why a [server implementation](https://github.com/cedx/akismet.js/blob/master/lib/server.js) is provided within this package.
-
 Unlike the other package classes, the `Server` class must be required explicitly if you want to use it in your code:
 
 ```javascript
@@ -93,7 +92,6 @@ new Server().listen(8080);
 ```
 
 To facilitate its usage, a [command line interface](https://github.com/cedx/akismet.js/blob/master/bin/cli.js) is available in the `bin` folder.
-
 From a command prompt, run the `cli.js` script (aliased as `akismet` by [npm](https://www.npmjs.com)):
 
 ```
