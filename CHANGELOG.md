@@ -1,5 +1,5 @@
 # Changelog
-This file contains highlights of what changes on each version of the [Akismet.js](https://www.npmjs.com/package/akismet-js) library.
+This file contains highlights of what changes on each version of the [Akismet.js](https://github.com/cedx/akismet.js) library.
 
 #### Version 0.7.0
 - Breaking change: using ES6 features, like arrow functions, block-scoped binding constructs, classes and template strings.
