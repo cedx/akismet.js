@@ -2,10 +2,10 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Unit Tests - Akismet.js</title>
+    <title>Unit Tests &ndash; Akismet.js</title>
 
     <meta name="application-name" content="Akismet.js">
-    <meta name="author" content="Cédric Belin &lt;cedric@belin.io&gt;">
+    <meta name="author" content="Cédric Belin - cedric@belin.io">
     <meta name="description" content="Prevent comment spam using Akismet service (https://akismet.com), in JavaScript.">
     <meta name="keywords" content="akismet, prevent, spam, javascript, node.js">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, width=device-width">
@@ -13,27 +13,11 @@
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
     <link rel="icon" href="favicon.ico">
     <link rel="stylesheet" href="css/mocha.css">
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 
     <style>
-      *[data-rel='external']:after,
-      a[rel='external']:after {
-        content: '\f08e';
-        display: inline-block;
-        font-family: FontAwesome;
-        font-size: 0.65em;
-        font-style: normal;
-        font-weight: normal;
-        line-height: 1;
-        padding-left: 0.3em;
-        position: relative;
-        text-decoration: none;
-        top: 1px;
-        vertical-align: super;
-      }
-
       .navbar {
         border-radius: 0;
       }
@@ -57,29 +41,13 @@
         margin-top: -10px;
       }
     </style>
+
+    <script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
   </head>
 
   <body>
     <a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
-
-    <div id="dialog-alert" class="modal fade">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal"><i class="fa fa-times"></i></button>
-            <h4 class="modal-title">Error</h4>
-          </div>
-
-          <div class="modal-body">
-            You must provide a valid Akismet API key in order to run the unit tests.
-          </div>
-
-          <div class="modal-footer">
-            <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
-          </div>
-        </div>
-      </div>
-    </div>
 
     <header>
       <nav class="navbar navbar-default">
@@ -103,16 +71,16 @@
                   Project <span class="caret"></span>
                 </a>
                 <ul class="dropdown-menu">
-                  <li><a href="https://www.npmjs.com/package/akismet-js" rel="external" target="_blank"><i class="fa fa-fw fa-home"></i> Homepage</a></li>
+                  <li><a href="https://github.com/cedx/akismet.js" target="_blank"><i class="fa fa-fw fa-home"></i> Homepage</a></li>
                   <li class="active"><a href="./"><i class="fa fa-fw fa-cogs"></i> Unit Tests</a></li>
                 </ul>
               </li>
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Development <span class="caret"></span></a>
                 <ul class="dropdown-menu">
-                  <li><a href="http://api.belin.io/akismet.js" rel="external" target="_blank"><i class="fa fa-book fa-fw"></i> API Reference</a></li>
-                  <li><a href="https://github.com/cedx/akismet.js/issues" rel="external" target="_blank"><i class="fa fa-bug fa-fw"></i> File an Issue</a></li>
-                  <li><a href="https://github.com/cedx/akismet.js/src" rel="external" target="_blank"><i class="fa fa-code fa-fw"></i> Get the Source</a></li>
+                  <li><a href="http://www.belin.io/akismet.js/api" target="_blank"><i class="fa fa-book fa-fw"></i> API Reference</a></li>
+                  <li><a href="https://github.com/cedx/akismet.js/issues" target="_blank"><i class="fa fa-bug fa-fw"></i> File an Issue</a></li>
+                  <li><a href="https://github.com/cedx/akismet.js" target="_blank"><i class="fa fa-code fa-fw"></i> Get the Source</a></li>
                 </ul>
               </li>
               <li class="dropdown">
@@ -122,11 +90,11 @@
                 </a>
                 <ul class="dropdown-menu">
                   <li class="dropdown-header">About</li>
-                  <li><a href="https://github.com/cedx/akismet.js/raw/master/LICENSE.txt" rel="external" target="_blank"><i class="fa fa-file-text fa-fw"></i> License</a></li>
+                  <li><a href="https://github.com/cedx/akismet.js/raw/master/LICENSE.txt" target="_blank"><i class="fa fa-file-text fa-fw"></i> License</a></li>
                   <li class="divider"></li>
                   <li class="dropdown-header">Author</li>
                   <li><a href="mailto:cedric@belin.io"><i class="fa fa-envelope fa-fw"></i> cedric@belin.io</a></li>
-                  <li><a href="http://www.belin.io" rel="external" target="_blank"><i class="fa fa-globe fa-fw"></i> http://www.belin.io</a></li>
+                  <li><a href="http://www.belin.io" target="_blank"><i class="fa fa-globe fa-fw"></i> http://www.belin.io</a></li>
                 </ul>
               </li>
             </ul>
@@ -134,8 +102,8 @@
             <ul class="nav navbar-nav navbar-right">
               <li>
                 <div>
-                  <a href="https://github.com/cedx/akismet.js" class="btn btn-success navbar-btn" data-toggle="tooltip" target="_blank" title="Bitbucket">
-                    Fork me on <i class="fa fa-fw fa-bitbucket"></i>
+                  <a href="https://github.com/cedx/akismet.js" class="btn btn-success navbar-btn" data-toggle="tooltip" target="_blank" title="GitHub">
+                    Fork me on <i class="fa fa-lg fa-fw fa-github"></i>
                   </a>
                 </div>
               </li>
@@ -214,15 +182,15 @@
             </div>
 
             <div class="list-group">
-              <a href="https://github.com/cedx/akismet.js/downloads/akismet.js-0.6.2.zip" class="list-group-item">
-                <span class="label label-info pull-right">0.6.2</span>
+              <a href="https://www.npmjs.com/package/akismet-js" class="list-group-item" target="_blank">
+                <span class="label label-info pull-right">0.7.0</span>
                 NPM package
               </a>
-              <a href="https://github.com/cedx/akismet.js/get/v0.6.2.zip" class="list-group-item">
+              <a href="https://github.com/cedx/akismet.js/archive/v0.7.0.zip" class="list-group-item">
                 <span class="label label-default pull-right">ZIP</span>
                 Source code
               </a>
-              <a href="https://github.com/cedx/akismet.js/get/v0.6.2.tar.gz" class="list-group-item">
+              <a href="https://github.com/cedx/akismet.js/archive/v0.7.0.tar.gz" class="list-group-item">
                 <span class="label label-default pull-right">TAR.GZ</span>
                 Source code
               </a>
@@ -235,25 +203,37 @@
     <footer class="hidden-xs">
       <nav class="navbar navbar-inverse">
         <div class="container">
-          <ul class="nav navbar-nav">
+          <ul class="nav navbar-nav navbar-right">
             <li>
               <p class="navbar-text">
                 <i class="fa fa-fw fa-code"></i> with <i class="fa fa-fw fa-heart"></i>
-                by <a class="navbar-link" href="http://www.belin.io" rel="external" target="_blank">Cédric Belin</a>
+                by <a class="navbar-link" href="http://www.belin.io" target="_blank">Cédric Belin</a>
               </p>
             </li>
-          </ul>
-
-          <ul class="nav navbar-nav navbar-right">
-            <li><a href="https://github.com/cedx/akismet.js" rel="external" target="_blank">Bitbucket</a></li>
-            <li><a href="https://www.npmjs.com/package/akismet-js" rel="external" target="_blank">NPM</a></li>
           </ul>
         </div>
       </nav>
     </footer>
 
-    <script src="//code.jquery.com/jquery-2.1.3.min.js"></script>
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <div id="dialog-alert" class="modal fade">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal"><i class="fa fa-times"></i></button>
+            <h4 class="modal-title">Error</h4>
+          </div>
+
+          <div class="modal-body">
+            You must provide a valid Akismet API key in order to run the unit tests.
+          </div>
+
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <script src="js/mocha.js"></script>
     <script src="js/tests.js"></script>
   </body>

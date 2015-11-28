@@ -8,17 +8,17 @@
  * Application entry point.
  */
 $(() => {
-  // Enable tooltips.
+  // Enable the tooltips.
   let isTouch=(('ontouchstart' in document.documentElement) || navigator.maxTouchPoints || navigator.msMaxTouchPoints);
-  if(!isTouch) $('[data-toggle="tooltip"]').tooltip({ placement: 'auto' });
+  if(!isTouch) $('[data-toggle="tooltip"]').tooltip({placement: 'auto'});
 
-  // Register button handlers.
+  // Register the button handlers.
   $('#btn-submit').on('click', event => {
     event.preventDefault();
 
     // Validate the user input.
-    $('#form-unit-tests input').each(() => {
-      let self=$(this);
+    $('#form-unit-tests input').each((index, element) => {
+      let self=$(element);
       self.val(self.val().trim());
     });
 
