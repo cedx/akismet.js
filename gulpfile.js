@@ -21,15 +21,14 @@ const config={
   output:
     `${pkg.name}-${pkg.version}.zip`,
   sources: [
+    '*.js',
     '*.json',
     '*.md',
     '*.txt',
-    'index.js',
     'bin/*',
+    'doc/*.conf',
     'lib/*.js',
-    'test/*.js',
-    'web/**/*',
-    '!web/**.map'
+    'test/*.js'
   ]
 };
 
@@ -89,7 +88,8 @@ gulp.task('css', () => gulp.src(require.resolve('mocha/mocha.css'))
  */
 gulp.task('dist', ['default'], () => gulp.src(config.sources, {base: '.'})
   .pipe(plugins.zip(config.output))
-  .pipe(gulp.dest('var')));
+  .pipe(gulp.dest('var'))
+);
 
 /**
  * Builds the documentation.

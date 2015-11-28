@@ -5,7 +5,9 @@ This file contains highlights of what changes on each version of the [Akismet.js
 - Breaking change: using ES6 features, like arrow functions, block-scoped binding constructs, classes and template strings.
 - Breaking change: raised the required [Node.js](http://nodejs.org) version.
 - Breaking change: the `Server` class is not exposed anymore by the default exports.
+- Breaking change: `Application._log` method renamed to `log`.
 - The `port` parameter of `Server.listen()` method is now optional.
+- Improved browser integration.
 - Added support for code coverage.
 - Added support for [SonarQube](http://www.sonarqube.org) code analyzer.
 - Added support for [Travis CI](https://travis-ci.org) continuous integration.
