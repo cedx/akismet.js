@@ -109,31 +109,43 @@ gulp.task('doc:rename', ['doc:build'], callback =>
 /**
  * Builds the client scripts.
  */
-gulp.task('js', ['js:es2015', 'js:tests'], () => gulp.src(['web/js/akismet.js', 'web/js/akismet.es5.js'])
-  .pipe(plugins.uglify())
-  .pipe(gulp.dest('web')));
+gulp.task('js', ['js:es5', 'js:tests']);
 
 gulp.task('js:es2015', () => browserify({entries: ['./index.js']})
   .bundle()
   .pipe(plugins.sourceStream('akismet.js'))
   .pipe(plugins.buffer())
-  .pipe(gulp.dest('web/js')));
+  .pipe(gulp.dest('.'))
+);
 
-gulp.task('js:es5', ['js:es2015'], () => gulp.src(['web/js/akismet.js'])
+gulp.task('js:es5', ['js:es2015'], () => gulp.src(['akismet.js'])
   .pipe(plugins.babel({presets: ['es2015']}))
-  .pipe(plugins.rename('akismet.es5.js'))
-  .pipe(gulp.dest('web/js')));
-
-gulp.task('js:tests', () => gulp.src(require.resolve('mocha/mocha.js'))
   .pipe(plugins.uglify())
-  .pipe(gulp.dest('web/js')));
+  .pipe(plugins.rename('akismet.es5.js'))
+  .pipe(gulp.dest('.'))
+);
+
+gulp.task('js:mocha', () => gulp.src(require.resolve('mocha/mocha.js'))
+  .pipe(plugins.uglify())
+  .pipe(gulp.dest('web/js'))
+);
+
+gulp.task('js:tests', ['js:mocha'], () => browserify({entries: ['./web/js/main.js']})
+  .bundle()
+  .pipe(plugins.sourceStream('tests.js'))
+  .pipe(plugins.buffer())
+  .pipe(plugins.babel({presets: ['es2015']}))
+  .pipe(plugins.uglify())
+  .pipe(gulp.dest('web/js'))
+);
 
 /**
  * Performs static analysis of source code.
  */
 gulp.task('lint', () => gulp.src(['*.js', 'bin/*.js', 'lib/*.js', 'test/*.js', 'web/js/main.js'])
   .pipe(plugins.jshint(pkg.jshintConfig))
-  .pipe(plugins.jshint.reporter('default', {verbose: true})));
+  .pipe(plugins.jshint.reporter('default', {verbose: true}))
+);
 
 /**
  * Starts the Web server.
@@ -152,7 +164,8 @@ gulp.task('serve', callback => {
  * Runs the unit tests.
  */
 gulp.task('test', ['test:env'], () => gulp.src(['test/*.js'], {read: false})
-  .pipe(plugins.mocha()));
+  .pipe(plugins.mocha())
+);
 
 gulp.task('test:env', callback => {
   if('AKISMET_API_KEY' in process.env) callback();
