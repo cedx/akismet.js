@@ -109,13 +109,19 @@ gulp.task('doc:rename', ['doc:build'], callback =>
 /**
  * Builds the client scripts.
  */
-gulp.task('js', ['js:tests'], () => browserify({debug: true, entries: ['./web/js/main.js']})
-  .bundle()
-  .pipe(plugins.sourceStream('tests.js'))
-  .pipe(plugins.buffer())
-  .pipe(plugins.sourcemaps.init({loadMaps: true}))
+gulp.task('js', ['js:es2015', 'js:tests'], () => gulp.src(['web/js/akismet.js', 'web/js/akismet.es5.js'])
   .pipe(plugins.uglify())
-  .pipe(plugins.sourcemaps.write('.'))
+  .pipe(gulp.dest('web')));
+
+gulp.task('js:es2015', () => browserify({entries: ['./index.js']})
+  .bundle()
+  .pipe(plugins.sourceStream('akismet.js'))
+  .pipe(plugins.buffer())
+  .pipe(gulp.dest('web/js')));
+
+gulp.task('js:es5', ['js:es2015'], () => gulp.src(['web/js/akismet.js'])
+  .pipe(plugins.babel({presets: ['es2015']}))
+  .pipe(plugins.rename('akismet.es5.js'))
   .pipe(gulp.dest('web/js')));
 
 gulp.task('js:tests', () => gulp.src(require.resolve('mocha/mocha.js'))

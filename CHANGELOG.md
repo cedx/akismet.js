@@ -6,6 +6,7 @@ This file contains highlights of what changes on each version of the [Akismet.js
 - Breaking change: raised the required [Node.js](http://nodejs.org) version.
 - Added support for code coverage.
 - Added support for [SonarQube](http://www.sonarqube.org) code analyzer.
+- Added support for [Travis CI](https://travis-ci.org) continuous integration.
 - Changed the documentation system for [JSDoc](http://usejsdoc.org).
 - Changed licensing for the [Apache License Version 2.0](http://www.apache.org/licenses/LICENSE-2.0).
 
