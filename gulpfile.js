@@ -52,7 +52,8 @@ gulp.task('default', ['css', 'js']);
  */
 gulp.task('check', () => gulp.src('package.json')
   .pipe(plugins.david())
-  .pipe(plugins.david.reporter));
+  .pipe(plugins.david.reporter)
+);
 
 /**
  * Deletes all generated files and reset any saved state.
@@ -103,7 +104,7 @@ gulp.task('doc:build', callback => {
 });
 
 gulp.task('doc:rename', ['doc:build'], callback =>
-  fs.rename(`doc/${pkg.name}/${pkg.version}`, 'doc/api', callback)
+  fs.rename(`doc/${pkg.name}/${pkg.version}`, 'doc/api', () => del(`doc/${pkg.name}`, callback))
 );
 
 /**
@@ -175,7 +176,7 @@ gulp.task('test:env', callback => {
 /**
  * Watches for file changes.
  */
-gulp.task('watch', ['js', 'serve'], () => {
+gulp.task('watch', ['default', 'serve'], () => {
   gulp.watch('lib/*.js', ['js', 'serve']);
   gulp.watch(['test/*.js', 'web/js/main.js'], ['js']);
 });
