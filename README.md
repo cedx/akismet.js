@@ -16,10 +16,20 @@ From a command prompt, run:
 $ npm install akismet-js --save
 ```
 
-Now in your JavaScript code, you can use:
+If you use CommonJS modules (e.g. [Node.js](https://nodejs.org) or [Browserify](http://browserify.org)), load the library as usual:
 
 ```javascript
 const akismet = require('akismet-js');
+```
+
+If you simply use Web pages, add a `<script>` tag to load the library:
+
+```html
+<!-- On modern browsers: ECMAScript 2015, uncompressed -->
+<script src="/node_modules/akismet-js/akismet.js"></script>
+
+<!-- On legacy browsers: ECMAScript 5, compressed -->
+<script src="/node_modules/akismet-js/akismet.es5.js"></script>
 ```
 
 ## Usage
@@ -73,10 +83,18 @@ So, the HTML client can't be used directly with the official service.
 #### Server
 To be able to use the HTML client, we must rely on a proxy server adding [CORS](http://www.w3.org/TR/cors) headers to service responses.
 
-This is why a [server implementation](https://github.com/cedx/akismet.js/src/master/lib/server.js) is provided with this package.
-To facilitate its usage, a [command line interface](https://github.com/cedx/akismet.js/src/master/bin/cli.js) is available in the `bin` folder.
+This is why a [server implementation](https://github.com/cedx/akismet.js/blob/master/lib/server.js) is provided within this package.
 
-From a command prompt, run the `cli.js` script (globally aliased as `akismet` by [npm](https://www.npmjs.com)):
+Unlike the other package classes, the `Server` class must be required explicitly if you want to use it in your code:
+
+```javascript
+const Server = require('akismet-js/lib/server');
+new Server().listen(8080);
+```
+
+To facilitate its usage, a [command line interface](https://github.com/cedx/akismet.js/blob/master/bin/cli.js) is available in the `bin` folder.
+
+From a command prompt, run the `cli.js` script (aliased as `akismet` by [npm](https://www.npmjs.com)):
 
 ```
 $ node bin/cli.js --help
