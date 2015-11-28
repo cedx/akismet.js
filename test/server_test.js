@@ -18,11 +18,25 @@ class ServerTest {
    */
   run() {
     let self=this;
-    describe.only('Server', function() {
+    describe('Server', function() {
       describe('host', self.testHost);
       describe('port', self.testPort);
       describe('redirectUrl', self.testRedirectUrl);
+
+      describe('checkComment()', self.testCheckComment);
+      describe('submitHam()', self.testSubmitHam);
+      describe('submitSpam()', self.testSubmitSpam);
+      describe('verifyKey()', self.testVerifyKey);
     });
+  }
+
+  /**
+   * Tests the `checkComment` method.
+   */
+  testCheckComment() {
+    it('should throw an error if the request has no "akismet" property', () =>
+      assert.throws(() => new Server().checkComment({}, null))
+    );
   }
 
   /**
@@ -61,6 +75,33 @@ class ServerTest {
 
     it('should have the same redirect URL as the specified one', () =>
       assert.equal(new Server({redirectUrl: 'http://www.belin.io'}).redirectUrl, 'http://www.belin.io')
+    );
+  }
+
+  /**
+   * Tests the `submitHam` method.
+   */
+  testSubmitHam() {
+    it('should throw an error if the request has no "akismet" property', () =>
+      assert.throws(() => new Server().submitHam({}, null))
+    );
+  }
+
+  /**
+   * Tests the `submitSpam` method.
+   */
+  testSubmitSpam() {
+    it('should throw an error if the request has no "akismet" property', () =>
+      assert.throws(() => new Server().submitSpam({}, null))
+    );
+  }
+
+  /**
+   * Tests the `verifyKey` method.
+   */
+  testVerifyKey() {
+    it('should throw an error if the request has no "akismet" property', () =>
+      assert.throws(() => new Server().verifyKey({}, null))
     );
   }
 }

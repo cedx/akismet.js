@@ -20,9 +20,26 @@ class BlogTest {
   run() {
     let self=this;
     describe('Blog', function() {
+      describe('constructor()', self.testConstructor);
       describe('fromJSON()', self.testFromJSON);
       describe('toJSON()', self.testToJSON);
     });
+  }
+
+  /**
+   * Tests the constructor.
+   */
+  testConstructor() {
+    it('should initialize the existing properties', () => {
+      let blog=new clt.Blog('https://github.com/cedx/akismet.js', {charset: 'UTF-8', language: 'en'});
+      assert.equal(blog.charset, 'UTF-8');
+      assert.equal(blog.language, 'en');
+      assert.equal(blog.url, 'https://github.com/cedx/akismet.js');
+    });
+
+    it('should not create new properties', () =>
+      assert(!('foo' in new clt.Blog('https://github.com/cedx/akismet.js', {foo: 'bar'})))
+    );
   }
 
   /**
