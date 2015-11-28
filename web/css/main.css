@@ -1,0 +1,22 @@
+.navbar {
+  border-radius: 0;
+}
+
+.navbar-brand img {
+  margin: 2px 5px 0 0;
+  max-height: 16px;
+}
+
+.page-header,
+.page-header h1 {
+  margin-top: 0;
+}
+
+#mocha .test a.replay {
+  display: none;
+}
+
+#mocha-stats .progress {
+  height: 40px;
+  margin-top: -10px;
+}
