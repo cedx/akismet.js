@@ -152,18 +152,12 @@ class ClientTest {
    * Tests the `checkComment` method.
    */
   testCheckComment() {
-    it('should return `false` for valid comment (e.g. ham)' , done =>
-      this._client.checkComment(this._ham).then(
-        (res) => { assert.strictEqual(res, false); done(); },
-        done
-      )
+    it('should return `false` for valid comment (e.g. ham)' , () =>
+      this._client.checkComment(this._ham).then(res => assert.strictEqual(res, false))
     );
 
-    it('should return `true` for invalid comment (e.g. spam)' , done =>
-      this._client.checkComment(this._spam).then(
-        (res) => { assert.strictEqual(res, true); done(); },
-        done
-      )
+    it('should return `true` for invalid comment (e.g. spam)' , () =>
+      this._client.checkComment(this._spam).then(res => assert.strictEqual(res, true))
     );
   }
 
@@ -171,11 +165,8 @@ class ClientTest {
    * Tests the `submitHam` method.
    */
   testSubmitHam() {
-    it('should complete without error' , done =>
-      this._client.submitHam(this._ham).then(
-        () => { done(); },
-        done
-      )
+    it('should complete without error' , () =>
+      this._client.submitHam(this._ham)
     );
   }
 
@@ -183,11 +174,8 @@ class ClientTest {
    * Tests the `submitSpam` method.
    */
   testSubmitSpam() {
-    it('should complete without error' , done =>
-      this._client.submitSpam(this._spam).then(
-        () => { done(); },
-        done
-      )
+    it('should complete without error' , () =>
+      this._client.submitSpam(this._spam)
     );
   }
 
@@ -195,23 +183,17 @@ class ClientTest {
    * Tests the `verifyKey` method.
    */
   testVerifyKey() {
-    it('should return `true` for a valid API key' , done =>
-      this._client.verifyKey().then(
-        (res) => { assert.strictEqual(res, true); done(); },
-        done
-      )
+    it('should return `true` for a valid API key' , () =>
+      this._client.verifyKey().then(res => assert.strictEqual(res, true))
     );
 
-    it('should return `false` for an invalid API key' , done => {
+    it('should return `false` for an invalid API key' , () => {
       let client=new clt.Client('viagra-test-123', this._client.blog, {
         isTest: this._client.isTest,
         serviceUrl: this._client.serviceUrl
       });
 
-      client.verifyKey().then(
-        (res) => { assert.strictEqual(res, false); done(); },
-        done
-      );
+      return client.verifyKey().then(res => assert.strictEqual(res, false));
     });
   }
 }
