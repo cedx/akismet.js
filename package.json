@@ -12,20 +12,20 @@
     "akismet": "./bin/cli.js"
   },
   "dependencies": {
-    "body-parser": "^1.14.1",
+    "body-parser": "^1.14.2",
     "commander": "^2.9.0",
     "cors": "^2.7.1",
     "express": "^4.13.3",
     "forever": "^0.15.1",
-    "superagent": "^1.4.0"
+    "superagent": "^1.6.1"
   },
   "devDependencies": {
-    "babel-preset-es2015": "^6.1.18",
+    "babel-preset-es2015": "^6.3.13",
+    "babelify": "^7.2.0",
     "browserify": "^12.0.1",
     "del": "^2.1.0",
     "gulp": "^3.9.0",
-    "gulp-babel": "^6.1.1",
-    "gulp-david": "^0.3.3",
+    "gulp-david": "^0.3.4",
     "gulp-istanbul": "^0.10.3",
     "gulp-jshint": "^2.0.0",
     "gulp-load-plugins": "^1.1.0",
