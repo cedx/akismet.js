@@ -52,9 +52,10 @@ class Application {
    */
   run() {
     program.parse(process.argv);
-    this.startServer(program.port, program.host, program.redirect ? program.redirect : null).then(() => {
-      if(program.user) this.setUser(program.user);
-    });
+    this.startServer(program.port, program.host, program.redirect ? program.redirect : null).then(
+      () => { if(program.user) this.setUser(program.user); },
+      this._errorHandler.bind(this)
+    );
   }
 
   /**
@@ -79,7 +80,9 @@ class Application {
    */
   startServer(port, host, redirectUrl) {
     let server=new Server({redirectUrl: redirectUrl});
-    server.on('error', err => this.log(`ERROR - ${err}`));
+    server.on('close', () => this.log(`Akismet server on ${server.host}:${server.port} closed`));
+    server.on('error', this._errorHandler.bind(this));
+    server.on('listening', () => this.log(`Akismet server listening on ${server.host}:${server.port}`));
 
     server.on('request', req => {
       let ipAddress=req.connection.remoteAddress;
@@ -87,9 +90,17 @@ class Application {
       this.log(`${ipAddress} - "${req.method} ${req.url} HTTP/${req.httpVersion}" "${userAgent}"`);
     });
 
-    return server.listen(port, host).then(() =>
-      this.log(`Akismet server listening on ${server.host}:${server.port}`)
-    );
+    return server.listen(port, host);
+  }
+
+  /**
+   * Logs the error events and their associated stack trace to the standard output.
+   * @param error An error event to be logged.
+   */
+  _errorHandler(error) {
+    let message=`ERROR - ${error}`;
+    if((error instanceof Error) && 'stack' in error) message+=` ${error.stack}`;
+    this.log(message);
   }
 }
 
