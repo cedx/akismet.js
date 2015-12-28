@@ -1,6 +1,11 @@
 # Changelog
 This file contains highlights of what changes on each version of the [Akismet.js](https://github.com/cedx/akismet.js) library.
 
+#### Version 0.7.1
+- Added a command line option to set the user to drop privileges to once server socket is bound.
+- Fixed [issue #4](https://github.com/cedx/akismet.js/issues/4): properly handle the `host` and `port` command line arguments.
+- Upgraded the package dependencies.
+
 #### Version 0.7.0
 - Breaking change: using ES6 features, like arrow functions, block-scoped binding constructs, classes and template strings.
 - Breaking change: raised the required [Node.js](http://nodejs.org) version.

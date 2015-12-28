@@ -20,12 +20,18 @@ class Application {
    * Initializes a new instance of the class.
    */
   constructor() {
+    const format={
+      asInteger: value => parseInt(value, 10),
+      asIntegerIfNumeric: value => /^\d+$/.test(value) ? parseInt(value, 10) : value
+    };
+
     program._name='akismet';
     program
       .version(pkg.version)
-      .option('-p, --port <port>', 'port that the reverse proxy should run on [3000]', value => parseInt(value, 10), 3000)
-      .option('-h, --host <host>', 'host that the server should run on [0.0.0.0]', '0.0.0.0')
+      .option('-p, --port <port>', 'port that the reverse proxy should run on [3000]', format.asInteger, 3000)
+      .option('-H, --host <host>', 'host that the server should run on [0.0.0.0]', '0.0.0.0')
       .option('-r, --redirect <url>', 'the URL to redirect when a request is unhandled')
+      .option('-u, --user <user>', 'user to drop privileges to once server socket is bound', format.asIntegerIfNumeric)
       .option('--silent', 'silence the log output from the server');
   }
 
@@ -46,7 +52,22 @@ class Application {
    */
   run() {
     program.parse(process.argv);
-    this._startServer(program.port, program.host, program.redirect ? program.redirect : null);
+    this.startServer(program.port, program.host, program.redirect ? program.redirect : null).then(() => {
+      if(program.user) this.setUser(program.user);
+    });
+  }
+
+  /**
+   * Sets the user identity of the application process.
+   * @param {number|string} userId The user identifier.
+   */
+  setUser(userId) {
+    if(typeof process.setuid!='function')
+      this.log('Changing the process user is not supported on this platform.');
+    else {
+      this.log(`Drop user privileges to: ${userId}`);
+      process.setuid(userId);
+    }
   }
 
   /**
@@ -55,9 +76,8 @@ class Application {
    * @param {string} host The host that the server should run on.
    * @param {string} [redirectUrl] The URL to redirect the user when a request is unhandled.
    * @return {Promise} Completes when the server has been started.
-   * @private
    */
-  _startServer(port, host, redirectUrl) {
+  startServer(port, host, redirectUrl) {
     let server=new Server({redirectUrl: redirectUrl});
     server.on('error', err => this.log(`ERROR - ${err}`));
 

@@ -25,11 +25,7 @@ const akismet = require('akismet-js');
 If you simply use Web pages, add a `<script>` tag to load the library:
 
 ```html
-<!-- On modern browsers: ECMAScript 2015, uncompressed -->
 <script src="/node_modules/akismet-js/akismet.js"></script>
-
-<!-- On legacy browsers: ECMAScript 5, compressed -->
-<script src="/node_modules/akismet-js/akismet.es5.js"></script>
 ```
 
 ## Usage
@@ -104,8 +100,9 @@ $ node bin/cli.js --help
     -h, --help            output usage information
     -V, --version         output the version number
     -p, --port <port>     port that the server should run on [3000]
-    -h, --host <host>     host that the server should run on [0.0.0.0]
+    -H, --host <host>     host that the server should run on [0.0.0.0]
     -r, --redirect <url>  the URL to redirect when a request is unhandled
+    -u, --user <user>     user to drop privileges to once server socket is bound
     --silent              silence the log output from the server
 ```
 
