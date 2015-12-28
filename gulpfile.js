@@ -75,13 +75,15 @@ gulp.task('cover', ['cover:instrument'], () => {
 
 gulp.task('cover:instrument', () => gulp.src(['lib/*.js'])
   .pipe(plugins.istanbul())
-  .pipe(plugins.istanbul.hookRequire()));
+  .pipe(plugins.istanbul.hookRequire())
+);
 
 /**
  * Builds the stylesheets.
  */
 gulp.task('css', () => gulp.src(require.resolve('mocha/mocha.css'))
-  .pipe(gulp.dest('web/css')));
+  .pipe(gulp.dest('web/css'))
+);
 
 /**
  * Creates a distribution file for this program.
@@ -97,7 +99,8 @@ gulp.task('dist', ['default'], () => gulp.src(config.sources, {base: '.'})
 gulp.task('doc', ['doc:assets']);
 
 gulp.task('doc:assets', ['doc:rename'], () => gulp.src(['web/apple-touch-icon.png', 'web/favicon.ico'])
-  .pipe(gulp.dest('doc/api')));
+  .pipe(gulp.dest('doc/api'))
+);
 
 gulp.task('doc:build', callback => {
   _exec('jsdoc --configure doc/conf.json').then(callback, callback);
@@ -110,19 +113,14 @@ gulp.task('doc:rename', ['doc:build'], callback =>
 /**
  * Builds the client scripts.
  */
-gulp.task('js', ['js:es5', 'js:tests']);
+gulp.task('js', ['js:bundle', 'js:tests']);
 
-gulp.task('js:es2015', () => browserify({entries: ['./index.js']})
+gulp.task('js:bundle', () => browserify({debug: true, entries: ['./index.js']})
+  .transform('babelify', {presets: ['es2015']})
   .bundle()
   .pipe(plugins.sourceStream('akismet.js'))
   .pipe(plugins.buffer())
-  .pipe(gulp.dest('.'))
-);
-
-gulp.task('js:es5', ['js:es2015'], () => gulp.src(['akismet.js'])
-  .pipe(plugins.babel({presets: ['es2015']}))
-  .pipe(plugins.uglify())
-  .pipe(plugins.rename('akismet.es5.js'))
+  //.pipe(plugins.uglify())
   .pipe(gulp.dest('.'))
 );
 
@@ -131,19 +129,19 @@ gulp.task('js:mocha', () => gulp.src(require.resolve('mocha/mocha.js'))
   .pipe(gulp.dest('web/js'))
 );
 
-gulp.task('js:tests', ['js:mocha'], () => browserify({entries: ['./web/js/main.js']})
+gulp.task('js:tests', ['js:mocha'], () => browserify({debug: true, entries: ['./web/js/main.js']})
+  .transform('babelify', {presets: ['es2015']})
   .bundle()
   .pipe(plugins.sourceStream('tests.js'))
   .pipe(plugins.buffer())
-  .pipe(plugins.babel({presets: ['es2015']}))
-  .pipe(plugins.uglify())
+  //.pipe(plugins.uglify())
   .pipe(gulp.dest('web/js'))
 );
 
 /**
  * Performs static analysis of source code.
  */
-gulp.task('lint', () => gulp.src(['*.js', 'bin/*.js', 'lib/*.js', 'test/*.js', 'web/js/main.js'])
+gulp.task('lint', () => gulp.src(['gulpfile.js', 'bin/*.js', 'lib/*.js', 'test/*.js', 'web/js/main.js'])
   .pipe(plugins.jshint(pkg.jshintConfig))
   .pipe(plugins.jshint.reporter('default', {verbose: true}))
 );
