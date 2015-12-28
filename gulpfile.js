@@ -120,7 +120,7 @@ gulp.task('js:bundle', () => browserify({debug: true, entries: ['./index.js']})
   .bundle()
   .pipe(plugins.sourceStream('akismet.js'))
   .pipe(plugins.buffer())
-  //.pipe(plugins.uglify())
+  .pipe(plugins.uglify())
   .pipe(gulp.dest('.'))
 );
 
@@ -134,7 +134,7 @@ gulp.task('js:tests', ['js:mocha'], () => browserify({debug: true, entries: ['./
   .bundle()
   .pipe(plugins.sourceStream('tests.js'))
   .pipe(plugins.buffer())
-  //.pipe(plugins.uglify())
+  .pipe(plugins.uglify())
   .pipe(gulp.dest('web/js'))
 );
 
