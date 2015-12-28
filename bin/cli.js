@@ -67,7 +67,7 @@ class Application {
       this.log(`${ipAddress} - "${req.method} ${req.url} HTTP/${req.httpVersion}" "${userAgent}"`);
     });
 
-    return server.listen(server.port, server.host).then(() =>
+    return server.listen(port, host).then(() =>
       this.log(`Akismet server listening on ${server.host}:${server.port}`)
     );
   }
