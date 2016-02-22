@@ -5,11 +5,11 @@
 'use strict';
 
 // Module dependencies.
-const client=require('./lib/client');
-const comment=require('./lib/comment');
+const client = require('./lib/client');
+const comment = require('./lib/comment');
 
 // Public interface.
-const akismet={
+const akismet = {
   Author: comment.Author,
   Blog: client.Blog,
   Client: client.Client,
@@ -17,5 +17,5 @@ const akismet={
   CommentType: comment.CommentType
 };
 
-module.exports=akismet;
-if(typeof window!='undefined') window.akismet=akismet;
+module.exports = akismet;
+if(typeof window != 'undefined') window.akismet = akismet;

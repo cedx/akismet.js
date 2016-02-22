@@ -7,9 +7,9 @@
 'use strict';
 
 // Module dependencies.
-const pkg=require('../package.json');
-const program=require('commander');
-const Server=require('../lib/server');
+const pkg = require('../package.json');
+const program = require('commander');
+const Server = require('../lib/server');
 
 /**
  * Represents an application providing functionalities specific to console requests.
@@ -20,12 +20,12 @@ class Application {
    * Initializes a new instance of the class.
    */
   constructor() {
-    const format={
+    const format = {
       asInteger: value => parseInt(value, 10),
       asIntegerIfNumeric: value => /^\d+$/.test(value) ? parseInt(value, 10) : value
     };
 
-    program._name='akismet';
+    program._name = 'akismet';
     program
       .version(pkg.version)
       .option('-p, --port <port>', 'port that the reverse proxy should run on [3000]', format.asInteger, 3000)
@@ -41,8 +41,8 @@ class Application {
    */
   log(message) {
     if(!program.silent) {
-      let now=new Date().toUTCString();
-      let text=(typeof message=='function' ? message() : message);
+      let now = new Date().toUTCString();
+      let text = (typeof message == 'function' ? message() : message);
       console.log(`[${now}] ${text}`);
     }
   }
@@ -63,7 +63,7 @@ class Application {
    * @param {number|string} userId The user identifier.
    */
   setUser(userId) {
-    if(typeof process.setuid!='function')
+    if(typeof process.setuid != 'function')
       this.log('Changing the process user is not supported on this platform.');
     else {
       this.log(`Drop user privileges to: ${userId}`);
@@ -79,14 +79,14 @@ class Application {
    * @return {Promise} Completes when the server has been started.
    */
   startServer(port, host, redirectUrl) {
-    let server=new Server({redirectUrl: redirectUrl});
+    let server = new Server({redirectUrl: redirectUrl});
     server.on('close', () => this.log(`Akismet server on ${server.host}:${server.port} closed`));
     server.on('error', this._errorHandler.bind(this));
     server.on('listening', () => this.log(`Akismet server listening on ${server.host}:${server.port}`));
 
     server.on('request', req => {
-      let ipAddress=req.connection.remoteAddress;
-      let userAgent=req.headers['user-agent'];
+      let ipAddress = req.connection.remoteAddress;
+      let userAgent = req.headers['user-agent'];
       this.log(`${ipAddress} - "${req.method} ${req.url} HTTP/${req.httpVersion}" "${userAgent}"`);
     });
 
@@ -98,15 +98,15 @@ class Application {
    * @param error An error event to be logged.
    */
   _errorHandler(error) {
-    let message=`ERROR - ${error}`;
-    if((error instanceof Error) && 'stack' in error) message+=` ${error.stack}`;
+    let message = `ERROR - ${error}`;
+    if((error instanceof Error) && 'stack' in error) message += ` ${error.stack}`;
     this.log(message);
   }
 }
 
 // Run the application.
-if(module===require.main) {
-  process.title='akismet.js';
+if(module === require.main) {
+  process.title = 'akismet.js';
   new Application().run();
 }
-else module.exports=Application;
+else module.exports = Application;
