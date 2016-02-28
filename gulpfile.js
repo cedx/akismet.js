@@ -152,11 +152,7 @@ gulp.task('lint', () => gulp.src(['gulpfile.js', 'bin/*.js', 'lib/*.js', 'test/*
  * Starts the Web server.
  */
 gulp.task('serve', callback => {
-  if('_server' in config) {
-    config._server.kill();
-    delete config._server;
-  }
-
+  if('_server' in config) config._server.kill();
   config._server = child.fork('bin/cli.js');
   callback();
 });
