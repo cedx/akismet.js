@@ -50,8 +50,10 @@ gulp.task('default', ['css', 'js']);
  * Checks the package dependencies.
  */
 gulp.task('check', () => gulp.src('package.json')
-  .pipe(plugins.david())
-  .pipe(plugins.david.reporter)
+  .pipe(plugins.david()).on('error', function(err) {
+    console.error(err);
+    this.emit('end');
+  })
 );
 
 /**
