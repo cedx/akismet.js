@@ -106,7 +106,7 @@ class Application {
 
 // Run the application.
 if(module === require.main) {
-  process.title = 'akismet.js';
+  process.title = 'akismet';
   new Application().run();
 }
 else module.exports = Application;

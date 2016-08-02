@@ -6,7 +6,7 @@
   "license": "Apache-2.0",
   "main": "./index.js",
   "name": "@cedx/akismet",
-  "repository": "cedx/akismet.js",
+  "repository": "cedx/akismet",
   "version": "0.8.0",
   "bin": {
     "akismet": "./bin/cli.js"
@@ -40,7 +40,7 @@
     "vinyl-source-stream": "^1.1.0"
   },
   "engines": {
-    "node": ">=4.3.0"
+    "node": ">=6.3.0"
   },
   "jshintConfig": {
     "browser": true,
