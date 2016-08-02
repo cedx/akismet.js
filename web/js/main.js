@@ -23,7 +23,7 @@ $(() => {
     });
 
     let blog = $('#blog-url');
-    if(!blog.val().length) blog.val('https://github.com/cedx/akismet.js');
+    if(!blog.val().length) blog.val('https://github.com/cedx/akismet');
 
     let serviceUrl = $('#service-url');
     if(!serviceUrl.val().length) serviceUrl.val('http://localhost:3000');

@@ -1,5 +1,5 @@
-# Akismet.js
-![Release](http://img.shields.io/npm/v/akismet-js.svg) ![License](http://img.shields.io/npm/l/akismet-js.svg) ![Downloads](http://img.shields.io/npm/dm/akismet-js.svg) ![Dependencies](http://img.shields.io/david/cedx/akismet.js.svg) ![Build](http://img.shields.io/travis/cedx/akismet.js.svg)
+# Akismet
+![Release](http://img.shields.io/npm/v/akismet.svg) ![License](http://img.shields.io/npm/l/akismet.svg) ![Downloads](http://img.shields.io/npm/dm/akismet.svg) ![Dependencies](http://img.shields.io/david/cedx/akismet.js.svg) ![Build](http://img.shields.io/travis/cedx/akismet.js.svg)
 
 Prevent comment spam using [Akismet](https://akismet.com) service, in [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript).
 
@@ -13,19 +13,19 @@ Prevent comment spam using [Akismet](https://akismet.com) service, in [JavaScrip
 From a command prompt, run:
 
 ```shell
-$ npm install akismet-js --save
+$ npm install akismet --save
 ```
 
 If you use CommonJS modules (e.g. [Node.js](https://nodejs.org) or [Browserify](http://browserify.org)), load the library as usual:
 
 ```javascript
-const akismet = require('akismet-js');
+const akismet = require('@cedx/akismet');
 ```
 
 If you simply use Web pages, add a `<script>` tag to load the library:
 
 ```html
-<script src="/node_modules/akismet-js/akismet.js"></script>
+<script src="/node_modules/akismet/akismet.js"></script>
 ```
 
 ## Usage
@@ -79,15 +79,15 @@ So, the HTML client can't be used directly with the official service.
 #### Server
 To be able to use the HTML client, we must rely on a proxy server adding [CORS](http://www.w3.org/TR/cors) headers to service responses.
 
-This is why a [server implementation](https://github.com/cedx/akismet.js/blob/master/lib/server.js) is provided within this package.
+This is why a [server implementation](https://github.com/cedx/akismet/blob/master/lib/server.js) is provided within this package.
 Unlike the other package classes, the `Server` class must be required explicitly if you want to use it in your code:
 
 ```javascript
-const Server = require('akismet-js/lib/server');
+const Server = require('@cedx/akismet/lib/server');
 new Server().listen(8080);
 ```
 
-To facilitate its usage, a [command line interface](https://github.com/cedx/akismet.js/blob/master/bin/cli.js) is available in the `bin` folder.
+To facilitate its usage, a [command line interface](https://github.com/cedx/akismet/blob/master/bin/cli.js) is available in the `bin` folder.
 From a command prompt, run the `cli.js` script (aliased as `akismet` by [npm](https://www.npmjs.com)):
 
 ```
@@ -126,9 +126,8 @@ $ gulp test
 ```
 
 ## See Also
-- [API Reference](http://www.belin.io/akismet.js/api)
-- [Code Analysis](http://src.belin.io/dashboard/index/akismet.js)
+- [Code Quality](http://src.belin.io/dashboard/index/akismet.js)
 - [Continuous Integration](https://travis-ci.org/cedx/akismet.js)
 
 ## License
-[Akismet.js](https://github.com/cedx/akismet.js) is distributed under the Apache License, version 2.0.
+[Akismet](https://github.com/cedx/akismet) is distributed under the Apache License, version 2.0.

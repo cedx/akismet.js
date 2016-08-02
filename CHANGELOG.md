@@ -1,16 +1,23 @@
 # Changelog
-This file contains highlights of what changes on each version of the [Akismet.js](https://github.com/cedx/akismet.js) library.
+This file contains highlights of what changes on each version of the [Akismet](https://github.com/cedx/akismet) library.
+
+#### Version 0.8.0
+- Breaking change: using more ES2015 features, like default parameters and destructuring assignment.
+- Breaking change: raised the required [Node.js](https://nodejs.org) version.
+- Turned the package into a [scoped one](https://docs.npmjs.com/getting-started/scoped-packages).
+- Added the `DEFAULT_HOST` and `DEFAULT_PORT` constants to the `Server` class.
+- Replaced [SonarQube](http://www.sonarqube.org) code analyzer by [Codacy](https://www.codacy.com) service.
 
 #### Version 0.7.2
 - Upgraded the package dependencies.
 
 #### Version 0.7.1
 - Added a command line option to set the user to drop privileges to once server socket is bound.
-- Fixed [issue #4](https://github.com/cedx/akismet.js/issues/4): properly handle the `host` and `port` command line arguments.
+- Fixed [issue #4](https://github.com/cedx/akismet/issues/4): properly handle the `host` and `port` command line arguments.
 - Upgraded the package dependencies.
 
 #### Version 0.7.0
-- Breaking change: using ES6 features, like arrow functions, block-scoped binding constructs, classes and template strings.
+- Breaking change: using ES2015 features, like arrow functions, block-scoped binding constructs, classes and template strings.
 - Breaking change: raised the required [Node.js](http://nodejs.org) version.
 - Breaking change: the `Server` class is not exposed anymore by the default exports.
 - Breaking change: `Application._log` method renamed to `log`.
@@ -45,10 +52,10 @@ This file contains highlights of what changes on each version of the [Akismet.js
 - Raised the required [Node.js](http://nodejs.org) version.
 - Removed the dependency on [`promise`](https://www.npmjs.com/package/promise) module.
 - Upgraded the package dependencies.
-- Fixed [issue #3](https://github.com/cedx/akismet.js/issues/3): returning a `Promise` in `Server.checkComment` method.
+- Fixed [issue #3](https://github.com/cedx/akismet/issues/3): returning a `Promise` in `Server.checkComment` method.
 
 #### Version 0.4.1
-- Fixed [issue #2](https://github.com/cedx/akismet.js/issues/2): using a Unix system for publishing the package on [npm](https://www.npmjs.com).
+- Fixed [issue #2](https://github.com/cedx/akismet/issues/2): using a Unix system for publishing the package on [npm](https://www.npmjs.com).
 
 #### Version 0.4.0
 - Breaking change: ported the callback-based API to [Promises](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise).

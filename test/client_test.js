@@ -31,14 +31,14 @@ class BlogTest {
    */
   testConstructor() {
     it('should initialize the existing properties', () => {
-      let blog=new clt.Blog('https://github.com/cedx/akismet.js', {charset: 'UTF-8', language: 'en'});
+      let blog=new clt.Blog('https://github.com/cedx/akismet', {charset: 'UTF-8', language: 'en'});
       assert.equal(blog.charset, 'UTF-8');
       assert.equal(blog.language, 'en');
-      assert.equal(blog.url, 'https://github.com/cedx/akismet.js');
+      assert.equal(blog.url, 'https://github.com/cedx/akismet');
     });
 
     it('should not create new properties', () =>
-      assert(!('foo' in new clt.Blog('https://github.com/cedx/akismet.js', {foo: 'bar'})))
+      assert(!('foo' in new clt.Blog('https://github.com/cedx/akismet', {foo: 'bar'})))
     );
   }
 
@@ -58,10 +58,10 @@ class BlogTest {
     });
 
     it('should return an initialized instance with a non-empty JSON object', () => {
-      let blog=clt.Blog.fromJSON('{ "blog": "https://github.com/cedx/akismet.js", "blog_charset": "UTF-8", "blog_lang": "en" }');
+      let blog=clt.Blog.fromJSON('{ "blog": "https://github.com/cedx/akismet", "blog_charset": "UTF-8", "blog_lang": "en" }');
       assert.equal(blog.charset, 'UTF-8');
       assert.equal(blog.language, 'en');
-      assert.equal(blog.url, 'https://github.com/cedx/akismet.js');
+      assert.equal(blog.url, 'https://github.com/cedx/akismet');
     });
   }
 
@@ -74,8 +74,8 @@ class BlogTest {
     );
 
     it('should return a non-empty JSON object with a initialized instance', () => {
-      let blog=new clt.Blog('https://github.com/cedx/akismet.js', {charset: 'UTF-8', language: 'en'});
-      assert.equal(blog.toJSON(), '{"blog":"https://github.com/cedx/akismet.js","blog_charset":"UTF-8","blog_lang":"en"}');
+      let blog=new clt.Blog('https://github.com/cedx/akismet', {charset: 'UTF-8', language: 'en'});
+      assert.equal(blog.toJSON(), '{"blog":"https://github.com/cedx/akismet","blog_charset":"UTF-8","blog_lang":"en"}');
     });
   }
 }
@@ -97,7 +97,7 @@ class ClientTest {
      */
     this._client=new clt.Client(
       process.env.AKISMET_API_KEY,
-      'AKISMET_BLOG' in process.env ? process.env.AKISMET_BLOG : 'https://github.com/cedx/akismet.js',
+      'AKISMET_BLOG' in process.env ? process.env.AKISMET_BLOG : 'https://github.com/cedx/akismet',
       {isTest: true, serviceUrl: 'AKISMET_SERVICE_URL' in process.env ? process.env.AKISMET_SERVICE_URL : 'https://'+clt.Client.DEFAULT_SERVICE}
     );
 
@@ -109,12 +109,12 @@ class ClientTest {
     this._ham=new cmt.Comment({
       author: new cmt.Author({
         ipAddress: '192.168.0.1',
-        name: 'Akismet.js',
-        url: 'https://github.com/cedx/akismet.js',
+        name: 'Akismet',
+        url: 'https://github.com/cedx/akismet',
         userAgent: 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0'
       }),
       content: 'I\'m testing out the Service API.',
-      referrer: 'https://www.npmjs.com/package/akismet-js',
+      referrer: 'https://www.npmjs.com/package/akismet',
       type: cmt.CommentType.COMMENT
     });
 
