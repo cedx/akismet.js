@@ -1,13 +1,15 @@
 {
-  "author": "Cédric Belin <cedric@belin.io>",
-  "bugs": "https://github.com/cedx/akismet/issues",
   "description": "Prevent comment spam using Akismet service.",
   "homepage": "https://github.com/cedx/akismet",
+  "name": "@cedx/akismet",
+
+  "author": "Cédric Belin <cedric@belin.io>",
+  "bugs": "https://github.com/cedx/akismet/issues",
   "license": "Apache-2.0",
   "main": "./index.js",
-  "name": "@cedx/akismet",
   "repository": "cedx/akismet",
   "version": "0.8.0",
+
   "bin": {
     "akismet": "./bin/cli.js"
   },
@@ -36,6 +38,7 @@
     "gulp-zip": "^3.2.0",
     "jsdoc": "^3.4.0",
     "jshint": "^2.9.2",
+    "mocha": "^3.0.1",
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.1.0"
   },

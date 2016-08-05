@@ -6,7 +6,6 @@
  */
 'use strict';
 
-// Module dependencies.
 const pkg = require('../package.json');
 const program = require('commander');
 const Server = require('../lib/server');
@@ -33,18 +32,6 @@ class Application {
       .option('-r, --redirect <url>', 'the URL to redirect when a request is unhandled')
       .option('-u, --user <user>', 'user to drop privileges to once server socket is bound', format.asIntegerIfNumeric)
       .option('--silent', 'silence the log output from the server');
-  }
-
-  /**
-   * Prints the specified message, with a timestamp and a new line, to the standard output.
-   * @param {string|function} message The message to be logged. If it's a function, the message is the result of the function call.
-   */
-  log(message) {
-    if(!program.silent) {
-      let now = new Date().toUTCString();
-      let text = (typeof message == 'function' ? message() : message);
-      console.log(`[${now}] ${text}`);
-    }
   }
 
   /**
@@ -105,8 +92,13 @@ class Application {
 }
 
 // Run the application.
+let application = new Application();
+
 if(module === require.main) {
   process.title = 'akismet';
-  new Application().run();
+  global.app = application;
+  global.app.run();
 }
-else module.exports = Application;
+
+// Public interface.
+module.exports = application;
