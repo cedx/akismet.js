@@ -23,7 +23,7 @@ class ClientTest {
     this._client = new Client(
       process.env.AKISMET_API_KEY,
       'AKISMET_BLOG' in process.env ? process.env.AKISMET_BLOG : 'https://github.com/cedx/akismet',
-      {isTest: true, serviceUrl: 'AKISMET_SERVICE_URL' in process.env ? process.env.AKISMET_SERVICE_URL : `https://${Client.DEFAULT_SERVICE}`}
+      {isTest: true, serviceURL: 'AKISMET_SERVICE_URL' in process.env ? process.env.AKISMET_SERVICE_URL : `https://${Client.DEFAULT_SERVICE}`}
     );
 
     /**
@@ -115,7 +115,7 @@ class ClientTest {
     it('should return `false` for an invalid API key' , () => {
       let client = new Client('viagra-test-123', this._client.blog, {
         isTest: this._client.isTest,
-        serviceUrl: this._client.serviceUrl
+        serviceURL: this._client.serviceURL
       });
 
       return client.verifyKey().then(res => assert.strictEqual(res, false));

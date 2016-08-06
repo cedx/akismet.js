@@ -5,7 +5,7 @@ This file contains highlights of what changes on each version of the [Akismet fo
 - Breaking change: using more ES2015 features, like default parameters and destructuring assignment.
 - Breaking change: raised the required [Node.js](https://nodejs.org) version.
 - Breaking change: fixed the signature and behavior of the `toJSON()` methods.
-- Breaking change: changed the case of the `Server.redirectUrl` property.
+- Breaking change: changed the case of the `Client.serviceUrl` and `Server.redirectUrl` properties.
 - Turned the package into a [scoped one](https://docs.npmjs.com/getting-started/scoped-packages).
 - Added the `DEFAULT_HOST` and `DEFAULT_PORT` constants to the `Server` class.
 - Added more unit tests.

@@ -25,8 +25,8 @@ $(() => {
     let blog = $('#blog-url');
     if(!blog.val().length) blog.val('https://github.com/cedx/akismet');
 
-    let serviceUrl = $('#service-url');
-    if(!serviceUrl.val().length) serviceUrl.val('http://localhost:3000');
+    let serviceURL = $('#service-url');
+    if(!serviceURL.val().length) serviceURL.val('http://localhost:3000');
 
     let apiKey = $('#api-key');
     if(apiKey.val().length > 0)
@@ -46,7 +46,7 @@ $(() => {
     process.env = {
       AKISMET_API_KEY: apiKey.val(),
       AKISMET_BLOG: blog.val(),
-      AKISMET_SERVICE_URL: serviceUrl.val()
+      AKISMET_SERVICE_URL: serviceURL.val()
     };
 
     mocha.setup('bdd');
