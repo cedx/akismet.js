@@ -1,10 +1,11 @@
 # Changelog
-This file contains highlights of what changes on each version of the [Akismet](https://github.com/cedx/akismet) library.
+This file contains highlights of what changes on each version of the [Akismet for JS](https://github.com/cedx/akismet) library.
 
 #### Version 0.8.0
 - Breaking change: using more ES2015 features, like default parameters and destructuring assignment.
 - Breaking change: raised the required [Node.js](https://nodejs.org) version.
 - Breaking change: fixed the signature and behavior of the `toJSON()` methods.
+- Breaking change: changed the case of the `Server.redirectUrl` property.
 - Turned the package into a [scoped one](https://docs.npmjs.com/getting-started/scoped-packages).
 - Added the `DEFAULT_HOST` and `DEFAULT_PORT` constants to the `Server` class.
 - Added more unit tests.

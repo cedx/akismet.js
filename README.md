@@ -1,4 +1,4 @@
-# Akismet
+# Akismet for JS
 ![Release](http://img.shields.io/npm/v/akismet.svg) ![License](http://img.shields.io/npm/l/akismet.svg) ![Downloads](http://img.shields.io/npm/dm/akismet.svg) ![Dependencies](http://img.shields.io/david/cedx/akismet.svg) ![Build](http://img.shields.io/travis/cedx/akismet.svg)
 
 Prevent comment spam using [Akismet](https://akismet.com) service, in [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript).
@@ -133,4 +133,4 @@ $ gulp test
 - [Continuous Integration](https://travis-ci.org/cedx/akismet)
 
 ## License
-[Akismet](https://github.com/cedx/akismet) is distributed under the Apache License, version 2.0.
+[Akismet for JS](https://github.com/cedx/akismet) is distributed under the Apache License, version 2.0.

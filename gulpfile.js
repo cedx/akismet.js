@@ -4,40 +4,36 @@
  */
 'use strict';
 
-// Module dependencies.
 const browserify = require('browserify');
 const child = require('child_process');
 const del = require('del');
 const fs = require('fs');
 const gulp = require('gulp');
 const loadPlugins = require('gulp-load-plugins');
+const path = require('path');
 const pkg = require('./package.json');
 
 /**
  * The task settings.
- * @var {object}
+ * @type {object}
  */
 const config = {
-  output:
-    `${pkg.name}-${pkg.version}.zip`,
-  sources: [
-    '*.js',
-    '*.json',
-    '*.md',
-    '*.txt',
-    'bin/*',
-    'doc/*.conf',
-    'lib/*.js',
-    'test/*.js'
-  ]
+  output: `${pkg.name}-${pkg.version}.zip`,
+  sources: ['akismet.js', '*.json', '*.md', '*.txt', 'bin/*.js', 'lib/*.js']
 };
 
 /**
+ * The build environment.
+ * @type {string}
+ */
+const environment = 'NODE_ENV' in process.env ? process.env.NODE_ENV : 'development';
+
+/**
  * The task plugins.
- * @var {object}
+ * @type {object}
  */
 const plugins = loadPlugins({
-  pattern: ['gulp-*', 'vinyl-*'],
+  pattern: ['gulp-*', '@*/gulp-*', 'vinyl-*'],
   replaceString: /^(gulp|vinyl)-/
 });
 
@@ -50,7 +46,7 @@ gulp.task('default', ['css', 'js']);
  * Checks the package dependencies.
  */
 gulp.task('check', () => gulp.src('package.json')
-  .pipe(plugins.david()).on('error', function(err) {
+  .pipe(plugins.cedx.david()).on('error', function(err) {
     console.error(err);
     this.emit('end');
   })
@@ -59,31 +55,22 @@ gulp.task('check', () => gulp.src('package.json')
 /**
  * Deletes all generated files and reset any saved state.
  */
-gulp.task('clean', callback =>
-  del([`var/${config.output}`, 'var/*.info', 'var/*.xml'], callback)
+gulp.task('clean', () =>
+  del([`var/${config.output}`, 'var/*.info'])
 );
 
 /**
- * Generates the code coverage.
+ * Sends the results of the code coverage.
  */
-gulp.task('cover', ['cover:instrument'], () => {
-  process.env.npm_package_config_mocha_sonar_reporter_outputfile = 'var/TEST-results.xml';
-  process.env.npm_package_config_mocha_sonar_reporter_testdir = 'test';
-
-  return gulp.src(['test/*.js'], {read: false})
-    .pipe(plugins.mocha({reporter: 'mocha-sonar-reporter'}))
-    .pipe(plugins.istanbul.writeReports({dir: 'var', reporters: ['lcovonly']}));
+gulp.task('coverage', ['test'], () => {
+  let command = path.join('node_modules/.bin', process.platform == 'win32' ? 'codacy-coverage.cmd' : 'codacy-coverage');
+  return _exec(`${command} < var/lcov.info`);
 });
-
-gulp.task('cover:instrument', () => gulp.src(['lib/*.js'])
-  .pipe(plugins.istanbul())
-  .pipe(plugins.istanbul.hookRequire())
-);
 
 /**
  * Builds the stylesheets.
  */
-gulp.task('css', () => gulp.src(require.resolve('mocha/mocha.css'))
+gulp.task('css', () => gulp.src('node_modules/mocha/mocha.css')
   .pipe(gulp.dest('web/css'))
 );
 
@@ -100,61 +87,77 @@ gulp.task('dist', ['default'], () => gulp.src(config.sources, {base: '.'})
  */
 gulp.task('doc', ['doc:assets']);
 
-gulp.task('doc:assets', ['doc:rename'], () => gulp.src(['web/apple-touch-icon.png', 'web/favicon.ico'])
+gulp.task('doc:assets', ['doc:rename'], () => gulp.src(['web/apple-touch-icon.png', 'web/favicon.ico'], {base: 'web'})
   .pipe(gulp.dest('doc/api'))
 );
 
-gulp.task('doc:build', callback => {
-  _exec('jsdoc --configure doc/conf.json').then(callback, callback);
+gulp.task('doc:build', () => {
+  let command = path.join('node_modules/.bin', process.platform == 'win32' ? 'jsdoc.cmd' : 'jsdoc');
+  return del('doc/api').then(() => _exec(`${command} --configure doc/jsdoc.json`));
 });
 
-gulp.task('doc:rename', ['doc:build'], callback =>
-  fs.rename(`doc/${pkg.name}/${pkg.version}`, 'doc/api', () => del(`doc/${pkg.name}`, callback))
-);
+gulp.task('doc:rename', ['doc:build'], () => new Promise((resolve, reject) =>
+  fs.rename(`doc/${pkg.name}/${pkg.version}`, 'doc/api', err => {
+    if(err) reject(err);
+    else del('doc/@cedx').then(resolve, reject);
+  })
+));
 
 /**
  * Builds the client scripts.
  */
-gulp.task('js', ['js:bundle', 'js:tests']);
+gulp.task('js', ['js:assets', 'js:build', 'js:tests']);
 
-gulp.task('js:bundle', () => browserify({debug: true, entries: ['./index.js']})
-  .transform('babelify', {presets: ['es2015']})
-  .bundle()
-  .pipe(plugins.sourceStream('akismet.js'))
-  .pipe(plugins.buffer())
-  .pipe(plugins.uglify())
-  .pipe(gulp.dest('.'))
-);
-
-gulp.task('js:mocha', () => gulp.src(require.resolve('mocha/mocha.js'))
+gulp.task('js:assets', () => gulp.src('node_modules/mocha/mocha.js')
   .pipe(plugins.uglify())
   .pipe(gulp.dest('web/js'))
 );
 
-gulp.task('js:tests', ['js:mocha'], () => browserify({debug: true, entries: ['./web/js/main.js']})
-  .transform('babelify', {presets: ['es2015']})
-  .bundle()
-  .pipe(plugins.sourceStream('tests.js'))
-  .pipe(plugins.buffer())
-  .pipe(plugins.uglify())
-  .pipe(gulp.dest('web/js'))
-);
+gulp.task('js:build', () => {
+  let sources = browserify({debug: true, entries: ['./lib/index.js']})
+    .transform('babelify', {presets: ['es2015']});
+
+  let stream = sources.bundle().on('error', function(err) {
+      console.error(err);
+      this.emit('end');
+    })
+    .pipe(plugins.sourceStream('akismet.js'))
+    .pipe(plugins.buffer());
+
+  if(environment != 'development') stream.pipe(plugins.uglify());
+  return stream.pipe(gulp.dest('.'));
+});
+
+gulp.task('js:tests', () => {
+  let sources = browserify({debug: true, entries: ['./web/js/main.js']})
+    .transform('babelify', {presets: ['es2015']});
+
+  let stream = sources.bundle().on('error', function(err) {
+      console.error(err);
+      this.emit('end');
+    })
+    .pipe(plugins.sourceStream('tests.js'))
+    .pipe(plugins.buffer());
+
+  if(environment != 'development') stream.pipe(plugins.uglify());
+  return stream.pipe(gulp.dest('web/js'));
+});
 
 /**
  * Performs static analysis of source code.
  */
-gulp.task('lint', () => gulp.src(['gulpfile.js', 'bin/*.js', 'lib/*.js', 'test/*.js', 'web/js/main.js'])
+gulp.task('lint', () => gulp.src(['gulpfile.js', 'bin/*.js', 'lib/**/*.js', 'test/*.js', 'web/js/main.js'])
   .pipe(plugins.jshint(pkg.jshintConfig))
   .pipe(plugins.jshint.reporter('default', {verbose: true}))
 );
 
 /**
- * Starts the Web server.
+ * Starts the Akismet server.
  */
-gulp.task('serve', callback => {
+gulp.task('serve', () => {
   if('_server' in config) config._server.kill();
   config._server = child.fork('bin/cli.js');
-  callback();
+  return Promise.resolve();
 });
 
 /**
@@ -164,30 +167,28 @@ gulp.task('test', ['test:env'], () => gulp.src(['test/*.js'], {read: false})
   .pipe(plugins.mocha())
 );
 
-gulp.task('test:env', callback => {
-  if('AKISMET_API_KEY' in process.env) callback();
-  else callback(new Error('AKISMET_API_KEY environment variable not set.'));
-});
+gulp.task('test:env', () =>
+  'AKISMET_API_KEY' in process.env ? Promise.resolve() : Promise.reject('AKISMET_API_KEY environment variable not set.')
+);
 
 /**
  * Watches for file changes.
  */
 gulp.task('watch', ['default', 'serve'], () => {
-  gulp.watch('lib/*.js', ['js', 'serve']);
-  gulp.watch(['test/*.js', 'web/js/main.js'], ['js']);
+  gulp.watch(['lib/**/*.js', 'test/*.js', 'web/js/main.js'], ['js:tests']);
+  gulp.watch('lib/**/*.js', ['serve']);
 });
 
 /**
  * Runs a command and prints its output.
  * @param {string} command The command to run, with space-separated arguments.
- * @return {Promise} Completes when the command is finally terminated.
+ * @param {object} [options] The settings to customize how the process is spawned.
+ * @returns {Promise.<string>} The command output when it is finally terminated.
  * @private
  */
-function _exec(command) {
-  return new Promise((resolve, reject) => child.exec(command, (err, stdout) => {
-    let output = stdout.trim();
-    if(output.length) console.log(output);
+function _exec(command, options = {}) {
+  return new Promise((resolve, reject) => child.exec(command, options, (err, stdout) => {
     if(err) reject(err);
-    else resolve();
+    else resolve(stdout.trim());
   }));
 }

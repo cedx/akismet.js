@@ -47,24 +47,23 @@
   },
   "jshintConfig": {
     "browser": true,
-    "esnext": true,
+    "esversion": 6,
     "freeze": true,
     "futurehostile": true,
     "jquery": true,
     "latedef": "nofunc",
-    "loopfunc": true,
     "mocha": true,
+    "noarg": true,
     "nocomma": true,
     "node": true,
     "nonbsp": true,
     "nonew": true,
-    "strict": true,
+    "singleGroups": true,
+    "trailing": true,
+    "typed": true,
     "undef": true,
     "unused": true,
-    "varstmt": true,
-    "globals": {
-      "mocha": false
-    }
+    "varstmt": true
   },
   "keywords": [
     "akismet",
