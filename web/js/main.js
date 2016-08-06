@@ -2,7 +2,6 @@
  * Web interface.
  * @module web/main
  */
-'use strict';
 
 /**
  * Application entry point.
