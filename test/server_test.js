@@ -1,12 +1,9 @@
 /**
- * Unit tests of the `server` module.
- * @module test.server_test
+ * Implementation of the `akismet.tests.ServerTest` class.
+ * @module test/server_test
  */
-'use strict';
-
-// Module dependencies.
-const assert=require('assert');
-const Server=require('../lib/server');
+const assert = require('assert');
+const {Server} = require('../lib/server');
 
 /**
  * Tests the features of the `Server` class.
@@ -17,11 +14,11 @@ class ServerTest {
    * Runs the unit tests.
    */
   run() {
-    let self=this;
+    let self = this;
     describe('Server', function() {
       describe('host', self.testHost);
       describe('port', self.testPort);
-      describe('redirectUrl', self.testRedirectUrl);
+      describe('redirectURL', self.testRedirectURL);
 
       describe('checkComment()', self.testCheckComment);
       describe('submitHam()', self.testSubmitHam);
@@ -44,7 +41,7 @@ class ServerTest {
    */
   testHost() {
     it('should have an "any IPv4" address as the default host', () =>
-      assert.equal(new Server().host, '0.0.0.0')
+      assert.equal(new Server().host, Server.DEFAULT_HOST)
     );
 
     it('should have the same host as the specified one', () =>
@@ -57,7 +54,7 @@ class ServerTest {
    */
   testPort() {
     it('should have 3000 as the default port', () =>
-      assert.equal(new Server().port, 3000)
+      assert.equal(new Server().port, Server.DEFAULT_PORT)
     );
 
     it('should have the same port as the specified one', () =>
@@ -66,15 +63,15 @@ class ServerTest {
   }
 
   /**
-   * Tests the `redirectUrl` property.
+   * Tests the `redirectURL` property.
    */
-  testRedirectUrl() {
+  testRedirectURL() {
     it('should have a null reference as the default redirect URL', () =>
-      assert.strictEqual(new Server().redirectUrl, null)
+      assert.strictEqual(new Server().redirectURL, null)
     );
 
     it('should have the same redirect URL as the specified one', () =>
-      assert.equal(new Server({redirectUrl: 'http://www.belin.io'}).redirectUrl, 'http://www.belin.io')
+      assert.equal(new Server({redirectURL: 'https://www.belin.io'}).redirectURL, 'https://www.belin.io')
     );
   }
 
