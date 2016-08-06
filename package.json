@@ -6,7 +6,7 @@
   "author": "Cédric Belin <cedric@belin.io>",
   "bugs": "https://github.com/cedx/akismet/issues",
   "license": "Apache-2.0",
-  "main": "./index.js",
+  "main": "./lib/index.js",
   "repository": "cedx/akismet",
   "version": "0.8.0",
 

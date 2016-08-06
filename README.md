@@ -83,7 +83,7 @@ This is why a [server implementation](https://github.com/cedx/akismet/blob/maste
 Unlike the other package classes, the `Server` class must be required explicitly if you want to use it in your own code:
 
 ```javascript
-const Server = require('@cedx/akismet/lib/server');
+const {Server} = require('@cedx/akismet/lib/server');
 new Server().listen(8080);
 ```
 
