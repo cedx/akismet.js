@@ -80,7 +80,7 @@ So, the HTML client can't be used directly with the official service.
 To be able to use the HTML client, we must rely on a proxy server adding [CORS](http://www.w3.org/TR/cors) headers to service responses.
 
 This is why a [server implementation](https://github.com/cedx/akismet/blob/master/lib/server.js) is provided within this package.
-Unlike the other package classes, the `Server` class must be required explicitly if you want to use it in your code:
+Unlike the other package classes, the `Server` class must be required explicitly if you want to use it in your own code:
 
 ```javascript
 const Server = require('@cedx/akismet/lib/server');
