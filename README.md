@@ -26,6 +26,9 @@ If you simply use Web pages, add a `<script>` tag to load the library:
 
 ```html
 <script src="/node_modules/akismet/akismet.js"></script>
+<script>
+  const akismet = window.cedx.akismet;
+</script>
 ```
 
 ## Usage
@@ -44,7 +47,7 @@ client.verifyKey().then(isValid =>
 
 ```javascript
 let comment = new akismet.Comment({
-  author: new akismet.Author({ ipAddress: '127.0.0.1', userAgent: 'Mozilla/5.0' }),
+  author: new akismet.Author({ipAddress: '127.0.0.1', userAgent: 'Mozilla/5.0'}),
   content: 'A comment.'
 });
 
@@ -110,7 +113,7 @@ $ node bin/cli.js --help
 
 #### Browser
 To test the client/browser implementation, launch a server instance, and points your browser to this link:  
-[Unit Tests of HTML Client](http://www.belin.io/akismet)
+[Unit Tests of HTML Client](https://www.belin.io/akismet)
 
 #### Console
 To test the server/console implementation, you must set one or several environment variables prior to running the tests:
