@@ -7,6 +7,7 @@
 const browserify = require('browserify');
 const child = require('child_process');
 const del = require('del');
+const express = require('express');
 const fs = require('fs');
 const gulp = require('gulp');
 const loadPlugins = require('gulp-load-plugins');
@@ -181,6 +182,11 @@ gulp.task('test:env', () =>
  * Watches for file changes.
  */
 gulp.task('watch', ['default', 'serve'], () => {
+  let server = express();
+  server.set('env', environment);
+  server.use(express.static(path.join(__dirname, 'web')));
+  server.listen(5000, () => console.log('Web server listening on http://localhost:5000'));
+
   gulp.watch(['lib/**/*.js', 'test/*.js', 'web/js/main.js'], ['js:tests']);
   gulp.watch('lib/**/*.js', ['serve']);
 });
