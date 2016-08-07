@@ -13,7 +13,7 @@ Prevent comment spam using [Akismet](https://akismet.com) service, in [JavaScrip
 From a command prompt, run:
 
 ```shell
-$ npm install akismet --save
+$ npm install --save @cedx/akismet
 ```
 
 If you use CommonJS modules (e.g. [Node.js](https://nodejs.org) or [Browserify](http://browserify.org)), load the library as usual:
@@ -71,7 +71,7 @@ client.submitHam(comment).then(() =>
 ## Implementations
 
 #### Client
-The Akismet client comes in two flavors: a first one based on [`http.request`](http://nodejs.org/api/http.html#http_http_request_options_callback)
+The Akismet client comes in two flavors: a first one based on [`http.request`](https://nodejs.org/api/http.html#http_http_request_options_callback)
 for server/console applications, and a second one based on [`XMLHttpRequest`](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest)
 for client/browser applications.
 
@@ -82,7 +82,7 @@ So, the HTML client can't be used directly with the official service.
 #### Server
 To be able to use the HTML client, we must rely on a proxy server adding [CORS](http://www.w3.org/TR/cors) headers to service responses.
 
-This is why a [server implementation](https://github.com/cedx/akismet/blob/master/lib/server.js) is provided within this package.
+This is why a [server implementation](https://github.com/cedx/akismet/blob/master/lib/server/server.js) is provided within this package.
 Unlike the other package classes, the `Server` class must be required explicitly if you want to use it in your own code:
 
 ```javascript
@@ -90,7 +90,7 @@ const {Server} = require('@cedx/akismet/lib/server');
 new Server().listen(8080);
 ```
 
-To facilitate its usage, a [command line interface](https://github.com/cedx/akismet/blob/master/bin/cli.js) is available in the `bin` folder.
+To facilitate its usage, a [command line interface](https://github.com/cedx/akismet/blob/master/lib/server/application.js) is available in the `bin` folder.
 From a command prompt, run the `cli.js` script (aliased as `akismet` by [npm](https://www.npmjs.com)):
 
 ```
@@ -112,8 +112,15 @@ $ node bin/cli.js --help
 ## Unit Tests
 
 #### Browser
-To test the client/browser implementation, launch a server instance, and points your browser to this link:  
-[Unit Tests of HTML Client](https://www.belin.io/akismet)
+To test the client/browser implementation, launch a Web server instance, and sets the document root to the [`web`](https://github.com/cedx/akismet/tree/master/web) folder of this package.
+
+For example, using the [`node-static`](https://www.npmjs.com/package/node-static) package:
+
+```shell
+$ static --host-address=localhost --port=5000 web/
+```
+
+Then, open the served address in your Web browser.
 
 #### Console
 To test the server/console implementation, you must set one or several environment variables prior to running the tests:
@@ -125,11 +132,11 @@ To test the server/console implementation, you must set one or several environme
 Then, run the `test` build task from the command prompt:
 
 ```shell
-$ gulp test
+$ npm test
 ```
 
 ## See Also
-- [Code Quality](http://src.belin.io/dashboard/index/akismet)
+- [Code Quality](https://www.codacy.com/app/cedx/akismet)
 - [Continuous Integration](https://travis-ci.org/cedx/akismet)
 
 ## License
