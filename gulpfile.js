@@ -163,8 +163,14 @@ gulp.task('serve', () => {
 /**
  * Runs the unit tests.
  */
-gulp.task('test', ['test:env'], () => gulp.src(['test/*.js'], {read: false})
+gulp.task('test', ['test:coverage'], () => gulp.src(['test/*.js'], {read: false})
   .pipe(plugins.mocha())
+  .pipe(plugins.istanbul.writeReports({dir: 'var', reporters: ['lcovonly']}))
+);
+
+gulp.task('test:coverage', ['test:env'], () => gulp.src(['lib/**/*.js'])
+  .pipe(plugins.istanbul())
+  .pipe(plugins.istanbul.hookRequire())
 );
 
 gulp.task('test:env', () =>
