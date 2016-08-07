@@ -25,7 +25,7 @@ const akismet = require('@cedx/akismet');
 If you simply use Web pages, add a `<script>` tag to load the library:
 
 ```html
-<script src="/node_modules/akismet/akismet.js"></script>
+<script src="/node_modules/@cedx/akismet/akismet.js"></script>
 <script>
   const akismet = window.cedx.akismet;
 </script>
