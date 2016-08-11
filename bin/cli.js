@@ -4,7 +4,6 @@
  * Command line interface.
  * @module bin/cli
  */
-'use strict';
 const {Application} = require('../lib/server');
 
 // Run the application.
