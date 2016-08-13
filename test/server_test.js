@@ -16,7 +16,7 @@ class ServerTest {
   run() {
     let self = this;
     describe('Server', function() {
-      describe('host', self.testHost);
+      describe('address', self.testAddress);
       describe('port', self.testPort);
       describe('redirectURL', self.testRedirectURL);
 
@@ -37,15 +37,15 @@ class ServerTest {
   }
 
   /**
-   * Tests the `host` property.
+   * Tests the `address` property.
    */
-  testHost() {
-    it('should have an "any IPv4" address as the default host', () =>
-      assert.equal(new Server().host, Server.DEFAULT_HOST)
+  testAddress() {
+    it('should have an "any IPv4" address as the default address', () =>
+      assert.equal(new Server().address, Server.DEFAULT_ADDRESS)
     );
 
     it('should have the same host as the specified one', () =>
-      assert.equal(new Server({host: 'localhost'}).host, 'localhost')
+      assert.equal(new Server({address: 'localhost'}).address, 'localhost')
     );
   }
 

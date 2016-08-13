@@ -101,7 +101,7 @@ $ node bin/cli.js --help
   Options:
 
     -h, --help            output usage information
-    -V, --version         output the version number
+    -v, --version         output the version number
     -p, --port <port>     port that the server should run on [3000]
     -H, --host <host>     host that the server should run on [0.0.0.0]
     -r, --redirect <url>  the URL to redirect when a request is unhandled
