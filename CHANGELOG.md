@@ -1,5 +1,5 @@
 # Changelog
-This file contains highlights of what changes on each version of the [Akismet for JS](https://github.com/cedx/akismet) library.
+This file contains highlights of what changes on each version of the [Akismet for JS](https://www.npmjs.com/package/@cedx/akismet) library.
 
 #### Version 0.9.0
 - Breaking change: renamed the `Server.DEFAULT_HOST` property to `DEFAULT_ADDRESS`.
