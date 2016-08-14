@@ -14,11 +14,10 @@ class BlogTest {
    * Runs the unit tests.
    */
   run() {
-    let self = this;
-    describe('Blog', function() {
-      describe('constructor()', self.testConstructor);
-      describe('fromJSON()', self.testFromJSON);
-      describe('toJSON()', self.testToJSON);
+    describe('Blog', () => {
+      describe('constructor()', this.testConstructor);
+      describe('fromJSON()', this.testFromJSON);
+      describe('toJSON()', this.testToJSON);
     });
   }
 

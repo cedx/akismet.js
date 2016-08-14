@@ -14,10 +14,9 @@ class AuthorTest {
    * Runs the unit tests.
    */
   run() {
-    let self = this;
-    describe('Author', function() {
-      describe('fromJSON()', self.testFromJSON);
-      describe('toJSON()', self.testToJSON);
+    describe('Author', () => {
+      describe('fromJSON()', this.testFromJSON);
+      describe('toJSON()', this.testToJSON);
     });
   }
 

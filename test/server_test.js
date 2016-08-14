@@ -14,16 +14,15 @@ class ServerTest {
    * Runs the unit tests.
    */
   run() {
-    let self = this;
-    describe('Server', function() {
-      describe('address', self.testAddress);
-      describe('port', self.testPort);
-      describe('redirectURL', self.testRedirectURL);
+    describe('Server', () => {
+      describe('address', this.testAddress);
+      describe('port', this.testPort);
+      describe('redirectURL', this.testRedirectURL);
 
-      describe('checkComment()', self.testCheckComment);
-      describe('submitHam()', self.testSubmitHam);
-      describe('submitSpam()', self.testSubmitSpam);
-      describe('verifyKey()', self.testVerifyKey);
+      describe('checkComment()', this.testCheckComment);
+      describe('submitHam()', this.testSubmitHam);
+      describe('submitSpam()', this.testSubmitSpam);
+      describe('verifyKey()', this.testVerifyKey);
     });
   }
 

@@ -14,10 +14,9 @@ class ApplicationTest {
    * Runs the unit tests.
    */
   run() {
-    let self = this;
-    describe('Application', function() {
-      describe('debug', self.testDebug);
-      describe('env', self.testEnv);
+    describe('Application', () => {
+      describe('debug', this.testDebug);
+      describe('env', this.testEnv);
     });
   }
 
