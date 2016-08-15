@@ -100,13 +100,13 @@ $ node bin/cli.js --help
 
   Options:
 
-    -h, --help            output usage information
-    -v, --version         output the version number
-    -p, --port <port>     port that the server should run on [3000]
-    -H, --host <host>     host that the server should run on [0.0.0.0]
-    -r, --redirect <url>  the URL to redirect when a request is unhandled
-    -u, --user <user>     user to drop privileges to once server socket is bound
-    --silent              silence the log output from the server
+    -h, --help               output usage information
+    -v, --version            output the version number
+    -a, --address <address>  address that the Akismet server should run on [0.0.0.0]
+    -p, --port <port>        port that the Akismet server should run on [3000]
+    -r, --redirect <url>     the URL to redirect when a request is unhandled
+    -u, --user <user>        user to drop privileges to once server socket is bound
+    --silent                 silence the log output from the server
 ```
 
 ## Unit Tests
