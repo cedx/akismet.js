@@ -175,7 +175,7 @@ gulp.task('test:coverage', ['test:env'], () => gulp.src(['lib/**/*.js'])
 );
 
 gulp.task('test:env', () =>
-  'AKISMET_API_KEY' in process.env ? Promise.resolve() : Promise.reject('AKISMET_API_KEY environment variable not set.')
+  'AKISMET_API_KEY' in process.env ? Promise.resolve() : Promise.reject(new Error('AKISMET_API_KEY environment variable not set.'))
 );
 
 /**
