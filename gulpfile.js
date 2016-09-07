@@ -156,8 +156,8 @@ gulp.task('lint', () => gulp.src(['gulpfile.js', 'bin/*.js', 'lib/**/*.js', 'tes
  * Starts the Akismet server.
  */
 gulp.task('serve', () => {
-  if('_server' in config) config._server.kill();
-  config._server = child.fork('bin/cli.js');
+  if('_server' in global) global._server.kill();
+  global._server = child.fork('bin/cli.js');
   return Promise.resolve();
 });
 

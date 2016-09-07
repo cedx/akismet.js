@@ -72,11 +72,7 @@
     "validation"
   ],
   "scripts": {
-    "build": "gulp",
-    "check": "david",
     "coverage": "codacy-coverage < var/lcov.info",
-    "doc": "jsdoc --configure doc/jsdoc.json",
-    "lint": "gulp lint",
     "start": "forever start -c node -e var/stderr.log -o var/stdout.log -l var/forever.log --append --minUptime 30000 --spinSleepTime 30000 --uid akismet bin/cli.js",
     "stop": "forever stop akismet",
     "test": "gulp test"
