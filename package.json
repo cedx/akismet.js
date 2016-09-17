@@ -43,7 +43,7 @@
     "vinyl-source-stream": "^1.1.0"
   },
   "engines": {
-    "node": ">=6.5.0"
+    "node": ">=6.6.0"
   },
   "jshintConfig": {
     "browser": true,
