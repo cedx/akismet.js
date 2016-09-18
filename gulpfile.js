@@ -183,7 +183,6 @@ gulp.task('test:env', () =>
  */
 gulp.task('watch', ['default', 'serve'], () => {
   let server = express();
-  server.set('env', environment);
   server.use(express.static(path.join(__dirname, 'web')));
   server.listen(5000, () => console.log('Web server listening on http://localhost:5000'));
 
