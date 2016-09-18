@@ -11,6 +11,7 @@ const express = require('express');
 const fs = require('fs');
 const gulp = require('gulp');
 const loadPlugins = require('gulp-load-plugins');
+const os = require('os');
 const path = require('path');
 const pkg = require('./package.json');
 
@@ -57,7 +58,7 @@ gulp.task('check', () => gulp.src('package.json')
  * Deletes all generated files and reset any saved state.
  */
 gulp.task('clean', () =>
-  del([`var/${config.output}`, 'var/*.info'])
+  del(['var/**/*', `${os.homedir()}/.forever/akismet.log`])
 );
 
 /**
