@@ -20,7 +20,7 @@
     "express": "^4.14.0",
     "forever": "^0.15.2",
     "morgan": "^1.7.0",
-    "superagent": "^2.2.0"
+    "superagent": "^2.3.0"
   },
   "devDependencies": {
     "@cedx/gulp-david": "^2.0.4",
