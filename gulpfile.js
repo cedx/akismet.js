@@ -17,7 +17,7 @@ const pkg = require('./package.json');
 
 /**
  * The task settings.
- * @type {object}
+ * @constant {object}
  */
 const config = {
   output: `${pkg.name}-${pkg.version}.zip`,
@@ -26,13 +26,13 @@ const config = {
 
 /**
  * The build environment.
- * @type {string}
+ * @constant {string}
  */
 const environment = 'NODE_ENV' in process.env ? process.env.NODE_ENV : 'development';
 
 /**
  * The task plugins.
- * @type {object}
+ * @constant {object}
  */
 const plugins = loadPlugins({
   pattern: ['gulp-*', '@*/gulp-*', 'vinyl-*'],
