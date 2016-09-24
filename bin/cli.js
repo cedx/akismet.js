@@ -7,13 +7,6 @@
 const {Application} = require('../lib/server');
 
 // Run the application.
-let application = new Application();
-
-if(module === require.main) {
-  process.title = 'akismet';
-  global.app = application;
-  global.app.run();
-}
-
-// Public interface.
-module.exports = application;
+process.title = 'akismet';
+global.app = new Application();
+global.app.run();
