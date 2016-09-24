@@ -26,14 +26,14 @@ class BlogTest {
    */
   testConstructor() {
     it('should initialize the existing properties', () => {
-      let blog = new Blog('https://github.com/cedx/akismet', {charset: 'UTF-8', language: 'en'});
+      let blog = new Blog({charset: 'UTF-8', language: 'en', url: 'https://github.com/cedx/akismet'});
       assert.equal(blog.charset, 'UTF-8');
       assert.equal(blog.language, 'en');
       assert.equal(blog.url, 'https://github.com/cedx/akismet');
     });
 
     it('should not create new properties', () =>
-      assert(!('foo' in new Blog('https://github.com/cedx/akismet', {foo: 'bar'})))
+      assert(!('foo' in new Blog({foo: 'bar', url: 'https://github.com/cedx/akismet'})))
     );
   }
 
@@ -69,9 +69,10 @@ class BlogTest {
     );
 
     it('should return a non-empty JSON object with a initialized instance', () => {
-      let data = new Blog('https://github.com/cedx/akismet', {
+      let data = new Blog({
         charset: 'UTF-8',
-        language: 'en'
+        language: 'en',
+        url: 'https://github.com/cedx/akismet'
       }).toJSON();
 
       assert.equal(data.blog, 'https://github.com/cedx/akismet');
