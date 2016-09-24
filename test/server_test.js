@@ -65,7 +65,7 @@ class ServerTest {
    * Tests the `redirectURL` property.
    */
   testRedirectURL() {
-    it('should have a null reference as the default redirect URL', () =>
+    it('should have an empty string as the default redirect URL', () =>
       assert(!new Server().redirectURL.length)
     );
 
