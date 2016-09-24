@@ -30,8 +30,8 @@ class AuthorTest {
 
     it('should return an empty instance with an empty JSON object', () => {
       let author = Author.fromJSON('{}');
-      assert.strictEqual(author.email, null);
-      assert.strictEqual(author.url, null);
+      assert(!author.email.length);
+      assert(!author.url.length);
     });
 
     it('should return an initialized instance with a non-empty JSON object', () => {

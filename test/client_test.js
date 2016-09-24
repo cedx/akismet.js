@@ -78,11 +78,11 @@ class ClientTest {
    */
   testCheckComment() {
     it('should return `false` for valid comment (e.g. ham)' , () =>
-      this._client.checkComment(this._ham).then(res => assert.strictEqual(res, false))
+      this._client.checkComment(this._ham).then(res => assert.equal(res, false))
     );
 
     it('should return `true` for invalid comment (e.g. spam)' , () =>
-      this._client.checkComment(this._spam).then(res => assert.strictEqual(res, true))
+      this._client.checkComment(this._spam).then(res => assert.equal(res, true))
     );
   }
 
@@ -109,7 +109,7 @@ class ClientTest {
    */
   testVerifyKey() {
     it('should return `true` for a valid API key' , () =>
-      this._client.verifyKey().then(res => assert.strictEqual(res, true))
+      this._client.verifyKey().then(res => assert.equal(res, true))
     );
 
     it('should return `false` for an invalid API key' , () => {
@@ -118,7 +118,7 @@ class ClientTest {
         serviceURL: this._client.serviceURL
       });
 
-      return client.verifyKey().then(res => assert.strictEqual(res, false));
+      return client.verifyKey().then(res => assert.equal(res, false));
     });
   }
 }

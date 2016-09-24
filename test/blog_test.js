@@ -47,9 +47,9 @@ class BlogTest {
 
     it('should return an empty instance with an empty JSON object', () => {
       let blog = Blog.fromJSON('{}');
-      assert.strictEqual(blog.charset, null);
-      assert.strictEqual(blog.language, null);
-      assert.strictEqual(blog.url, null);
+      assert(!blog.charset.length);
+      assert(!blog.language.length);
+      assert(!blog.url.length);
     });
 
     it('should return an initialized instance with a non-empty JSON object', () => {

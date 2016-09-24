@@ -66,7 +66,7 @@ class ServerTest {
    */
   testRedirectURL() {
     it('should have a null reference as the default redirect URL', () =>
-      assert.strictEqual(new Server().redirectURL, null)
+      assert(!new Server().redirectURL.length)
     );
 
     it('should have the same redirect URL as the specified one', () =>
