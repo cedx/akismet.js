@@ -2,7 +2,7 @@
 This file contains highlights of what changes on each version of the [Akismet for JS](https://www.npmjs.com/package/@cedx/akismet) library.
 
 #### Version 1.0.0
-- Breaking change: changed the signature of `fromJSON` methods.
+- Breaking change: changed the signature of the `fromJSON` methods.
 - Breaking change: raised the required [Node.js](https://nodejs.org) version.
 - Breaking change: removed the `url` parameter from the `Blog` constructor.
 - Updated the package dependencies.

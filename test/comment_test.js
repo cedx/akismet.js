@@ -29,7 +29,7 @@ class CommentTest {
     );
 
     it('should return an empty instance with an empty JSON object', () => {
-      let comment = Comment.fromJSON('{}');
+      let comment = Comment.fromJSON({});
       assert.strictEqual(comment.author, null);
       assert(!comment.content.length);
       assert.strictEqual(comment.date, null);
@@ -38,7 +38,14 @@ class CommentTest {
     });
 
     it('should return an initialized instance with a non-empty JSON object', () => {
-      let comment = Comment.fromJSON('{ "comment_author": "Cédric Belin", "comment_content": "A user comment.", "comment_date_gmt": "2000-01-01T00:00:00.000Z", "comment_type": "trackback", "referrer": "https://www.belin.io" }');
+      let comment = Comment.fromJSON({
+        comment_author: 'Cédric Belin',
+        comment_content: 'A user comment.',
+        comment_date_gmt: '2000-01-01T00:00:00.000Z',
+        comment_type: 'trackback',
+        referrer: 'https://www.belin.io'
+      });
+
       assert(comment.author instanceof Author);
       assert(comment.date instanceof Date);
       assert.equal(comment.author.name, 'Cédric Belin');
