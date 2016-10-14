@@ -85,7 +85,7 @@
 
     // Stylistic issues.
     "brace-style": ["error", "stroustrup", {"allowSingleLine": true}],
-    "camelcase": "error",
+    "camelcase": "off",
     "consistent-this": ["error", "self"],
     "indent": ["error", 2],
     "keyword-spacing": "error",

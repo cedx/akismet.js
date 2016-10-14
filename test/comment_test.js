@@ -65,7 +65,7 @@ class CommentTest {
 
     it('should return a non-empty JSON object with a initialized instance', () => {
       let data = new Comment({
-        author: new Author({ name: 'Cédric Belin' }),
+        author: new Author({name: 'Cédric Belin'}),
         content: 'A user comment.',
         referrer: 'https://www.belin.io',
         type: CommentType.PINGBACK

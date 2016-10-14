@@ -55,9 +55,9 @@ class AuthorTest {
 
     it('should return a non-empty JSON object with a initialized instance', () => {
       let data = new Author({
-        name: 'Cédric Belin',
         email: 'cedric@belin.io',
         ipAddress: '127.0.0.1',
+        name: 'Cédric Belin',
         url: 'https://www.belin.io'
       }).toJSON();
 

@@ -102,7 +102,7 @@ gulp.task('doc:build', () => {
 /**
  * Fixes the coding standards issues.
  */
-gulp.task('fix', () => gulp.src(['*.js', 'lib/**/*.js', 'test/**/*.js'], {base: '.'})
+gulp.task('fix', () => gulp.src(['gulpfile.js', 'bin/*.js', 'lib/**/*.js', 'test/**/*.js', 'web/js/main.js'], {base: '.'})
   .pipe(plugins.eslint({fix: true}))
   .pipe(gulp.dest('.'))
 );
@@ -122,13 +122,13 @@ gulp.task('js:build', () => {
     .transform('babelify', {presets: ['es2015']});
 
   let stream = sources.bundle().on('error', function(err) {
-      console.error(err);
-      this.emit('end');
-    })
-    .pipe(plugins.sourceStream('akismet.js'))
-    .pipe(plugins.buffer());
+    console.error(err);
+    this.emit('end');
+  })
+  .pipe(plugins.sourceStream('akismet.js'))
+  .pipe(plugins.buffer());
 
-  if(environment != 'development') stream.pipe(plugins.uglify());
+  if (environment != 'development') stream.pipe(plugins.uglify());
   return stream.pipe(gulp.dest('.'));
 });
 
@@ -137,13 +137,13 @@ gulp.task('js:tests', () => {
     .transform('babelify', {presets: ['es2015']});
 
   let stream = sources.bundle().on('error', function(err) {
-      console.error(err);
-      this.emit('end');
-    })
-    .pipe(plugins.sourceStream('tests.js'))
-    .pipe(plugins.buffer());
+    console.error(err);
+    this.emit('end');
+  })
+  .pipe(plugins.sourceStream('tests.js'))
+  .pipe(plugins.buffer());
 
-  if(environment != 'development') stream.pipe(plugins.uglify());
+  if (environment != 'development') stream.pipe(plugins.uglify());
   return stream.pipe(gulp.dest('web/js'));
 });
 
@@ -160,7 +160,7 @@ gulp.task('lint', () => gulp.src(['gulpfile.js', 'bin/*.js', 'lib/**/*.js', 'tes
  * Starts the Akismet server.
  */
 gulp.task('serve', () => {
-  if('_server' in global) global._server.kill();
+  if ('_server' in global) global._server.kill();
   global._server = child.fork('bin/cli.js');
   return Promise.resolve();
 });
@@ -203,7 +203,7 @@ gulp.task('watch', ['default', 'serve'], () => {
  */
 function _exec(command, options = {}) {
   return new Promise((resolve, reject) => child.exec(command, options, (err, stdout) => {
-    if(err) reject(err);
+    if (err) reject(err);
     else resolve(stdout.trim());
   }));
 }
