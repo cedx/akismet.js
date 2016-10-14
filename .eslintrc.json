@@ -87,7 +87,7 @@
     "brace-style": ["error", "stroustrup", {"allowSingleLine": true}],
     "camelcase": "off",
     "consistent-this": ["error", "self"],
-    "indent": ["error", 2],
+    "indent": ["error", 2, {"SwitchCase": 1}],
     "keyword-spacing": "error",
     "linebreak-style": "off",
     "line-comment-position": "error",
