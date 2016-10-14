@@ -96,7 +96,7 @@ gulp.task('doc', ['doc:build', ], () => new Promise((resolve, reject) =>
 
 gulp.task('doc:build', () => {
   let command = path.join('node_modules/.bin', process.platform == 'win32' ? 'jsdoc.cmd' : 'jsdoc');
-  return _exec(`${command} --configure doc/jsdoc.json`);
+  return del('doc/api').then(() => _exec(`${command} --configure doc/jsdoc.json`));
 });
 
 /**
