@@ -1,5 +1,5 @@
 /**
- * Implementation of the `akismet.tests.ApplicationTest` class.
+ * Implementation of the `tests.ApplicationTest` class.
  * @module test/applicaton_test
  */
 const assert = require('assert');

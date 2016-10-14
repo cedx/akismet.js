@@ -1,5 +1,5 @@
 /**
- * Implementation of the `akismet.tests.AuthorTest` class.
+ * Implementation of the `tests.AuthorTest` class.
  * @module test/author_test
  */
 const assert = require('assert');

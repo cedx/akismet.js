@@ -1,5 +1,5 @@
 /**
- * Implementation of the `akismet.tests.CommentTest` class.
+ * Implementation of the `tests.CommentTest` class.
  * @module test/comment_test
  */
 const assert = require('assert');

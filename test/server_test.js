@@ -1,5 +1,5 @@
 /**
- * Implementation of the `akismet.tests.ServerTest` class.
+ * Implementation of the `tests.ServerTest` class.
  * @module test/server_test
  */
 const assert = require('assert');

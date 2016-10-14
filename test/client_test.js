@@ -1,5 +1,5 @@
 /**
- * Implementation of the `akismet.tests.ClientTest` class.
+ * Implementation of the `tests.ClientTest` class.
  * @module test/client_test
  */
 const assert = require('assert');

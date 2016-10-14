@@ -1,5 +1,5 @@
 /**
- * Implementation of the `akismet.tests.BlogTest` class.
+ * Implementation of the `tests.BlogTest` class.
  * @module test/blog_test
  */
 const assert = require('assert');
