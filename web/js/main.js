@@ -28,8 +28,7 @@ $(() => {
     if (!serviceURL.val().length) serviceURL.val('http://localhost:3000');
 
     let apiKey = $('#api-key');
-    if (apiKey.val().length > 0)
-      apiKey.closest('.form-group').removeClass('has-error');
+    if (apiKey.val().length > 0) apiKey.closest('.form-group').removeClass('has-error');
     else {
       apiKey.closest('.form-group').addClass('has-error');
       apiKey.focus();
