@@ -43,7 +43,7 @@
     "vinyl-source-stream": "^1.1.0"
   },
   "engines": {
-    "node": ">=6.8.0"
+    "node": ">=6.9.0"
   },
   "keywords": [
     "akismet",
