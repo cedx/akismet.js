@@ -34,7 +34,7 @@ If you simply use Web pages, add a `<script>` tag to load the library:
 ## Usage
 This package has an API based on [Promises](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise).
 
-#### Key Verification
+### Key Verification
 
 ```javascript
 let client = new akismet.Client('YourAPIKey', 'http://your.blog.url');
@@ -43,7 +43,7 @@ client.verifyKey().then(isValid =>
 );
 ```
 
-#### Comment Check
+### Comment Check
 
 ```javascript
 let comment = new akismet.Comment({
@@ -56,7 +56,7 @@ client.checkComment(comment).then(isSpam =>
 );
 ```
 
-#### Submit Spam/Ham
+### Submit Spam/Ham
 
 ```javascript
 client.submitSpam(comment).then(() =>
@@ -70,7 +70,7 @@ client.submitHam(comment).then(() =>
 
 ## Implementations
 
-#### Client
+### Client
 The Akismet client comes in two flavors: a first one based on [`http.request`](https://nodejs.org/api/http.html#http_http_request_options_callback)
 for server/console applications, and a second one based on [`XMLHttpRequest`](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest)
 for client/browser applications.
@@ -79,7 +79,7 @@ Their usage is the same, but the HTML client is limited by security restrictions
 Unfortunately, the [Akismet](https://akismet.com) service does not support [CORS](http://www.w3.org/TR/cors) headers.
 So, the HTML client can't be used directly with the official service.
 
-#### Server
+### Server
 To be able to use the HTML client, we must rely on a proxy server adding [CORS](http://www.w3.org/TR/cors) headers to service responses.
 
 This is why a [server implementation](https://github.com/cedx/akismet/blob/master/lib/server/server.js) is provided within this package.
@@ -111,7 +111,7 @@ $ node bin/cli.js --help
 
 ## Unit Tests
 
-#### Browser
+### Browser
 To test the client/browser implementation, launch a Web server instance, and sets the document root to the [`web`](https://github.com/cedx/akismet/tree/master/web) folder of this package.
 
 For example, using the [`node-static`](https://www.npmjs.com/package/node-static) package:
@@ -122,7 +122,7 @@ $ static --host-address=localhost --port=5000 web/
 
 Then, open the served address in your Web browser.
 
-#### Console
+### Console
 To test the server/console implementation, you must set one or several environment variables prior to running the tests:
 
 - `AKISMET_API_KEY`: the Akismet API key (required).

@@ -1,6 +1,5 @@
 /**
  * Build system.
- * @module gulpfile
  */
 'use strict';
 
@@ -17,7 +16,7 @@ const pkg = require('./package.json');
 
 /**
  * The task settings.
- * @constant {object}
+ * @type {object}
  */
 const config = {
   output: `${pkg.name}-${pkg.version}.zip`,
@@ -26,13 +25,13 @@ const config = {
 
 /**
  * The build environment.
- * @constant {string}
+ * @type {string}
  */
 const environment = 'NODE_ENV' in process.env ? process.env.NODE_ENV : 'development';
 
 /**
  * The task plugins.
- * @constant {object}
+ * @type {object}
  */
 const plugins = loadPlugins({
   pattern: ['gulp-*', '@*/gulp-*', 'vinyl-*'],
@@ -47,12 +46,13 @@ gulp.task('default', ['css', 'js']);
 /**
  * Checks the package dependencies.
  */
-gulp.task('check', () => gulp.src('package.json')
-  .pipe(plugins.cedx.david()).on('error', function(err) {
+gulp.task('check', () => {
+  const {david} = plugins.cedx.david;
+  return gulp.src('package.json').pipe(david()).on('error', function(err) {
     console.error(err);
     this.emit('end');
-  })
-);
+  });
+});
 
 /**
  * Deletes all generated files and reset any saved state.
@@ -68,13 +68,6 @@ gulp.task('coverage', ['test'], () => {
   let command = path.join('node_modules/.bin', process.platform == 'win32' ? 'codacy-coverage.cmd' : 'codacy-coverage');
   return _exec(`${command} < var/lcov.info`);
 });
-
-/**
- * Builds the stylesheets.
- */
-gulp.task('css', () => gulp.src('node_modules/mocha/mocha.css')
-  .pipe(gulp.dest('web/css'))
-);
 
 /**
  * Creates a distribution file for this program.
@@ -198,8 +191,7 @@ gulp.task('watch', ['default', 'serve'], () => {
  * Runs a command and prints its output.
  * @param {string} command The command to run, with space-separated arguments.
  * @param {object} [options] The settings to customize how the process is spawned.
- * @returns {Promise.<string>} The command output when it is finally terminated.
- * @private
+ * @return {Promise<string>} The command output when it is finally terminated.
  */
 function _exec(command, options = {}) {
   return new Promise((resolve, reject) => child.exec(command, options, (err, stdout) => {
