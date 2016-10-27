@@ -22,8 +22,11 @@
     "no-template-curly-in-string": "error",
     "no-unsafe-negation": "error",
     "valid-jsdoc": ["error", {
-      "prefer": {"constructor": "class", "const": "constant", "exception": "throws", "extends": "augments", "return": "returns", "virtual": "abstract"},
-      "preferType": {"Boolean": "boolean", "Number": "number", "Object": "object", "String": "string"},
+      "prefer": {
+        "arg": "param", "argument": "param", "augments": "extends", "description": "desc", "exception": "throws",
+        "fires": "emits", "host": "external", "prop": "property", "returns": "return", "virtual": "abstract"
+      },
+      "preferType": {"Boolean": "boolean", "Number": "number", "Object": "object", "String": "string", "Symbol": "symbol"},
       "requireReturn": false
     }],
 
