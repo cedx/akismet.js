@@ -1,8 +1,4 @@
-/**
- * Implementation of the `Client` class.
- * @module client/client
- */
-const {Blog, EndPoints, HTTPHeaders} = require('../core');
+const {Blog, EndPoints} = require('../core');
 const pkg = require('../../package.json');
 const request = require('superagent');
 const url = require('url');
@@ -10,7 +6,7 @@ const url = require('url');
 /**
  * Provides the base class for clients that submit comments to [Akismet](https://akismet.com) service.
  */
-module.exports = class Client {
+export class Client {
 
   /**
    * Initializes a new instance of the class.
@@ -61,7 +57,7 @@ module.exports = class Client {
 
   /**
    * Gets the host of the default remote service.
-   * @returns {string} The host of the default remote service.
+   * @return {string} The host of the default remote service.
    */
   static get DEFAULT_SERVICE() {
     return 'rest.akismet.com';
@@ -70,7 +66,7 @@ module.exports = class Client {
   /**
    * Checks the specified comment against the service database, and returns a value indicating whether it is spam.
    * @param {Comment} comment The comment to be checked.
-   * @returns {Promise} A boolean value indicating whether it is spam.
+   * @return {Promise} A boolean value indicating whether it is spam.
    */
   checkComment(comment) {
     let serviceURL = url.parse(this.serviceURL);
@@ -86,7 +82,7 @@ module.exports = class Client {
   /**
    * Submits the specified comment that was incorrectly marked as spam but should not have been.
    * @param {Comment} comment The comment to be submitted.
-   * @returns {Promise} Completes once the comment has been submitted.
+   * @return {Promise} Completes once the comment has been submitted.
    */
   submitHam(comment) {
     let serviceURL = url.parse(this.serviceURL);
@@ -102,7 +98,7 @@ module.exports = class Client {
   /**
    * Submits the specified comment that was not marked as spam but should have been.
    * @param {Comment} comment The comment to be submitted.
-   * @returns {Promise} Completes once the comment has been submitted.
+   * @return {Promise} Completes once the comment has been submitted.
    */
   submitSpam(comment) {
     let serviceURL = url.parse(this.serviceURL);
@@ -116,17 +112,8 @@ module.exports = class Client {
   }
 
   /**
-   * Returns a string representation of this object.
-   * @returns {string} The string representation of this object.
-   */
-  toString() {
-    let json = JSON.stringify(this.toJSON(), null, 2);
-    return `${this.constructor.name} ${json}`;
-  }
-
-  /**
    * Checks the API key against the service database, and returns a value indicating whether it is valid.
-   * @returns {Promise} A boolean value indicating whether it is a valid API key.
+   * @return {Promise} A boolean value indicating whether it is a valid API key.
    */
   verifyKey() {
     let endPoint = url.resolve(this.serviceURL, EndPoints.VERIFY_KEY);
@@ -137,8 +124,7 @@ module.exports = class Client {
    * Queries the service by posting the specified fields to a given end point, and returns the response as a string.
    * @param {string} endPoint The URL of the end point to query.
    * @param {object} fields The fields describing the query body.
-   * @returns {Promise} The response as string.
-   * @private
+   * @return {Promise} The response as string.
    */
   _queryService(endPoint, fields) {
     fields.key = this.apiKey;
@@ -150,15 +136,15 @@ module.exports = class Client {
     return new Promise((resolve, reject) => request.post(endPoint)
       .type('form')
       .send(fields)
-      .set(typeof window != 'undefined' ? HTTPHeaders.X_USER_AGENT : 'user-agent', this.userAgent)
+      .set(typeof window != 'undefined' ? 'x-user-agent' : 'user-agent', this.userAgent)
       .end((err, res) => {
         if (err || !res.ok) reject(new Error(err ? err.status : res.status));
         else {
-          let akismetHeader = HTTPHeaders.X_AKISMET_DEBUG_HELP;
+          let akismetHeader = 'x-akismet-debug-help';
           if (akismetHeader in res.header) reject(new Error(res.header[akismetHeader]));
           else resolve(res.text);
         }
       })
     );
   }
-};
+}

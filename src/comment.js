@@ -1,13 +1,9 @@
-/**
- * Implementation of the `Comment` class.
- * @module core/comment
- */
 const Author = require('./author');
 
 /**
  * Represents a comment submitted by an author.
  */
-module.exports = class Comment {
+export class Comment {
 
   /**
    * Initializes a new instance of the class.
@@ -62,7 +58,7 @@ module.exports = class Comment {
   /**
    * Creates a new comment from the specified JSON map.
    * @param {object} map A JSON map representing a comment.
-   * @returns {Comment} The instance corresponding to the specified JSON map, or `null` if a parsing error occurred.
+   * @return {Comment} The instance corresponding to the specified JSON map, or `null` if a parsing error occurred.
    */
   static fromJSON(map) {
     if (!map || typeof map != 'object') return null;
@@ -84,7 +80,7 @@ module.exports = class Comment {
 
   /**
    * Converts this object to a map in JSON format.
-   * @returns {object} The map in JSON format corresponding to this object.
+   * @return {object} The map in JSON format corresponding to this object.
    */
   toJSON() {
     let map = {};
@@ -102,10 +98,10 @@ module.exports = class Comment {
 
   /**
    * Returns a string representation of this object.
-   * @returns {string} The string representation of this object.
+   * @return {string} The string representation of this object.
    */
   toString() {
     let json = JSON.stringify(this.toJSON(), null, 2);
     return `${this.constructor.name} ${json}`;
   }
-};
+}

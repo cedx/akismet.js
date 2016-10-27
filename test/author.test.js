@@ -31,7 +31,10 @@ describe('Author', () => {
     });
   });
 
-  describe('toJSON()', () => {
+  /**
+   * @test {Author#toJSON}
+   */
+  describe('#toJSON()', () => {
     it('should return an empty JSON object with a newly created instance', () =>
       assert(!Object.keys(new Author().toJSON()).length)
     );

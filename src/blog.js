@@ -1,12 +1,7 @@
 /**
- * Implementation of the `Blog` class.
- * @module core/blog
- */
-
-/**
  * Represents the front page or home URL transmitted when making requests.
  */
-module.exports = class Blog {
+export class Blog {
 
   /**
    * Initializes a new instance of the class.
@@ -36,7 +31,7 @@ module.exports = class Blog {
   /**
    * Creates a new blog from the specified JSON map.
    * @param {object} map A JSON map representing a blog.
-   * @returns {Blog} The instance corresponding to the specified JSON map, or `null` if a parsing error occurred.
+   * @return {Blog} The instance corresponding to the specified JSON map, or `null` if a parsing error occurred.
    */
   static fromJSON(map) {
     return !map || typeof map != 'object' ? null : new Blog({
@@ -48,7 +43,7 @@ module.exports = class Blog {
 
   /**
    * Converts this object to a map in JSON format.
-   * @returns {object} The map in JSON format corresponding to this object.
+   * @return {object} The map in JSON format corresponding to this object.
    */
   toJSON() {
     let map = {};
@@ -62,10 +57,10 @@ module.exports = class Blog {
 
   /**
    * Returns a string representation of this object.
-   * @returns {string} The string representation of this object.
+   * @return {string} The string representation of this object.
    */
   toString() {
     let json = JSON.stringify(this.toJSON(), null, 2);
     return `${this.constructor.name} ${json}`;
   }
-};
+}

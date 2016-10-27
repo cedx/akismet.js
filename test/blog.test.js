@@ -6,7 +6,10 @@ import {Blog} from '../src';
  */
 describe('Blog', () => {
 
-  describe('constructor()', () => {
+  /**
+   * @test {Blog#constructor}
+   */
+  describe('#constructor()', () => {
     it('should initialize the existing properties', () => {
       let blog = new Blog({charset: 'UTF-8', language: 'en', url: 'https://github.com/cedx/akismet'});
       assert.equal(blog.charset, 'UTF-8');
@@ -47,7 +50,10 @@ describe('Blog', () => {
     });
   });
 
-  describe('toJSON()', () => {
+  /**
+   * @test {Blog#toJSON}
+   */
+  describe('#toJSON()', () => {
     it('should return an empty JSON object with a newly created instance', () =>
       assert(!Object.keys(new Blog().toJSON()).length)
     );

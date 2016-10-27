@@ -32,13 +32,13 @@ If you simply use Web pages, add a `<script>` tag to load the library:
 ```
 
 ## Usage
-This package has an API based on [Promises](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise).
+This package has an API based on [Observables](http://reactivex.io/intro.html).
 
 ### Key Verification
 
 ```javascript
 let client = new akismet.Client('YourAPIKey', 'http://your.blog.url');
-client.verifyKey().then(isValid =>
+client.verifyKey().subscribe(isValid =>
   console.log(isValid ? 'Your API key is valid.' : 'Your API key is invalid.')
 );
 ```
@@ -51,7 +51,7 @@ let comment = new akismet.Comment({
   content: 'A comment.'
 });
 
-client.checkComment(comment).then(isSpam =>
+client.checkComment(comment).subscribe(isSpam =>
   console.log(isSpam ? 'The comment is marked as spam.' : 'The comment is marked as ham.')
 );
 ```
@@ -59,11 +59,11 @@ client.checkComment(comment).then(isSpam =>
 ### Submit Spam/Ham
 
 ```javascript
-client.submitSpam(comment).then(() =>
+client.submitSpam(comment).subscribe(() =>
   console.log('Spam submitted.')
 );
 
-client.submitHam(comment).then(() =>
+client.submitHam(comment).subscribe(() =>
   console.log('Ham submitted.')
 );
 ```

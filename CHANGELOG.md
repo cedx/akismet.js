@@ -4,12 +4,15 @@ This file contains highlights of what changes on each version of the [Akismet fo
 ## Version 1.0.0
 - Breaking change: changed the signature of the `fromJSON` methods.
 - Breaking change: dropped the embedded server and the command line interface.
+- Breaking change: ported the [CommonJS](https://nodejs.org/api/modules.html) modules to ES2015 format.
+- Breaking change: ported the [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)-based APIs to [Observables](http://reactivex.io/intro.html).
 - Breaking change: raised the required [Node.js](https://nodejs.org) version.
 - Breaking change: removed the `url` parameter from the `Blog` constructor.
 - Breaking change: removed the `HTTPHeaders` enumeration.
 - Added a build task for fixing the coding standards issues.
 - Replaced [JSDoc](http://usejsdoc.org) documentation generator by [ESDoc](https://esdoc.org).
 - Replaced [JSHint](http://jshint.com) linter by [ESLint](http://eslint.org).
+- Replaced the test classes by plain tests.
 - Updated the package dependencies.
 
 ## Version 0.9.0

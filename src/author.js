@@ -1,12 +1,7 @@
 /**
- * Implementation of the `Author` class.
- * @module core/author
- */
-
-/**
  * Represents the author of a comment.
  */
-module.exports = class Author {
+export class Author {
 
   /**
    * Initializes a new instance of the class.
@@ -55,7 +50,7 @@ module.exports = class Author {
   /**
    * Creates a new author from the specified JSON map.
    * @param {object} map A JSON map representing an author.
-   * @returns {Author} The instance corresponding to the specified JSON map, or `null` if a parsing error occurred.
+   * @return {Author} The instance corresponding to the specified JSON map, or `null` if a parsing error occurred.
    */
   static fromJSON(map) {
     return !map || typeof map != 'object' ? null : new Author({
@@ -70,7 +65,7 @@ module.exports = class Author {
 
   /**
    * Converts this object to a map in JSON format.
-   * @returns {object} The map in JSON format corresponding to this object.
+   * @return {object} The map in JSON format corresponding to this object.
    */
   toJSON() {
     let map = {};
@@ -87,10 +82,10 @@ module.exports = class Author {
 
   /**
    * Returns a string representation of this object.
-   * @returns {string} The string representation of this object.
+   * @return {string} The string representation of this object.
    */
   toString() {
     let json = JSON.stringify(this.toJSON(), null, 2);
     return `${this.constructor.name} ${json}`;
   }
-};
+}
