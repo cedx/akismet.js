@@ -80,16 +80,9 @@ gulp.task('dist', ['default'], () => gulp.src(config.sources, {base: '.'})
 /**
  * Builds the documentation.
  */
-gulp.task('doc', ['doc:build', ], () => new Promise((resolve, reject) =>
-  fs.rename(`doc/${pkg.name}/${pkg.version}`, 'doc/api', err => {
-    if (err) reject(err);
-    else del('doc/@cedx').then(resolve, reject);
-  })
-));
-
-gulp.task('doc:build', () => {
-  let command = path.join('node_modules/.bin', process.platform == 'win32' ? 'jsdoc.cmd' : 'jsdoc');
-  return del('doc/api').then(() => _exec(`${command} --configure doc/jsdoc.json`));
+gulp.task('doc', () => {
+  let command = path.join('node_modules/.bin', process.platform == 'win32' ? 'esdoc.cmd' : 'esdoc');
+  return del('doc/api').then(() => _exec(`${command} -c doc/esdoc.json`));
 });
 
 /**

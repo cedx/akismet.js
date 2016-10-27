@@ -1,0 +1,14 @@
+{
+  "title": "Akismet for JS",
+
+  "source": "src",
+  "destination": "doc/api",
+
+  "manual": {
+    "changelog": ["CHANGELOG.md"]
+  },
+  "test": {
+    "source": "test",
+    "type": "mocha"
+  }
+}
