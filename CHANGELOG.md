@@ -3,6 +3,7 @@ This file contains highlights of what changes on each version of the [Akismet fo
 
 ## Version 1.0.0
 - Breaking change: changed the signature of the `fromJSON` methods.
+- Breaking change: dropped the embedded server and the command line interface.
 - Breaking change: raised the required [Node.js](https://nodejs.org) version.
 - Breaking change: removed the `url` parameter from the `Blog` constructor.
 - Breaking change: removed the `HTTPHeaders` enumeration.
