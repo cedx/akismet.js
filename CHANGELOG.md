@@ -5,6 +5,7 @@ This file contains highlights of what changes on each version of the [Akismet fo
 - Breaking change: changed the signature of the `fromJSON` methods.
 - Breaking change: raised the required [Node.js](https://nodejs.org) version.
 - Breaking change: removed the `url` parameter from the `Blog` constructor.
+- Breaking change: removed the `HTTPHeaders` enumeration.
 - Added a build task for fixing the coding standards issues.
 - Replaced [JSDoc](http://usejsdoc.org) documentation generator by [ESDoc](https://esdoc.org).
 - Replaced [JSHint](http://jshint.com) linter by [ESLint](http://eslint.org).
