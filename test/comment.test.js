@@ -1,29 +1,15 @@
-/**
- * Implementation of the `tests.CommentTest` class.
- * @module test/comment_test
- */
-const assert = require('assert');
-const {Author, Comment, CommentType} = require('../lib');
+import assert from 'assert';
+import {Author, Comment, CommentType} from '../src';
 
 /**
- * Tests the features of the `Comment` class.
+ * @test {Comment}
  */
-class CommentTest {
+describe('Comment', () => {
 
   /**
-   * Runs the unit tests.
+   * @test {Comment.fromJSON}
    */
-  run() {
-    describe('Comment', () => {
-      describe('fromJSON()', this.testFromJSON);
-      describe('toJSON()', this.testToJSON);
-    });
-  }
-
-  /**
-   * Tests the `fromJSON` method.
-   */
-  testFromJSON() {
+  describe('.fromJSON()', () => {
     it('should return a null reference with a non-object JSON string', () =>
       assert.strictEqual(Comment.fromJSON('foo'), null)
     );
@@ -53,12 +39,12 @@ class CommentTest {
       assert.equal(comment.referrer, 'https://www.belin.io');
       assert.equal(comment.type, CommentType.TRACKBACK);
     });
-  }
+  });
 
   /**
-   * Tests the `toJSON` method.
+   * @test {Comment#toJSON}
    */
-  testToJSON() {
+  describe('#toJSON()', () => {
     it('should return an empty JSON object with a newly created instance', () =>
       assert(!Object.keys(new Comment().toJSON()).length)
     );
@@ -76,8 +62,5 @@ class CommentTest {
       assert.equal(data.comment_type, 'pingback');
       assert.equal(data.referrer, 'https://www.belin.io');
     });
-  }
-}
-
-// Run all tests.
-new CommentTest().run();
+  });
+});

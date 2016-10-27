@@ -1,30 +1,12 @@
-/**
- * Implementation of the `tests.BlogTest` class.
- * @module test/blog_test
- */
-const assert = require('assert');
-const {Blog} = require('../lib');
+import assert from 'assert';
+import {Blog} from '../src';
 
 /**
- * Tests the features of the `Blog` class.
+ * @test {Blog}
  */
-class BlogTest {
+describe('Blog', () => {
 
-  /**
-   * Runs the unit tests.
-   */
-  run() {
-    describe('Blog', () => {
-      describe('constructor()', this.testConstructor);
-      describe('fromJSON()', this.testFromJSON);
-      describe('toJSON()', this.testToJSON);
-    });
-  }
-
-  /**
-   * Tests the constructor.
-   */
-  testConstructor() {
+  describe('constructor()', () => {
     it('should initialize the existing properties', () => {
       let blog = new Blog({charset: 'UTF-8', language: 'en', url: 'https://github.com/cedx/akismet'});
       assert.equal(blog.charset, 'UTF-8');
@@ -35,12 +17,12 @@ class BlogTest {
     it('should not create new properties', () =>
       assert(!('foo' in new Blog({foo: 'bar', url: 'https://github.com/cedx/akismet'})))
     );
-  }
+  });
 
   /**
-   * Tests the `fromJSON` method.
+   * @test {Blog.fromJSON}
    */
-  testFromJSON() {
+  describe('.fromJSON()', () => {
     it('should return a null reference with a non-object JSON string', () =>
       assert.strictEqual(Blog.fromJSON('foo'), null)
     );
@@ -63,12 +45,9 @@ class BlogTest {
       assert.equal(blog.language, 'en');
       assert.equal(blog.url, 'https://github.com/cedx/akismet');
     });
-  }
+  });
 
-  /**
-   * Tests the `toJSON` method.
-   */
-  testToJSON() {
+  describe('toJSON()', () => {
     it('should return an empty JSON object with a newly created instance', () =>
       assert(!Object.keys(new Blog().toJSON()).length)
     );
@@ -84,8 +63,5 @@ class BlogTest {
       assert.equal(data.blog_charset, 'UTF-8');
       assert.equal(data.blog_lang, 'en');
     });
-  }
-}
-
-// Run all tests.
-new BlogTest().run();
+  });
+});

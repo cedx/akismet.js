@@ -1,29 +1,15 @@
-/**
- * Implementation of the `tests.AuthorTest` class.
- * @module test/author_test
- */
-const assert = require('assert');
-const {Author} = require('../lib');
+import assert from 'assert';
+import {Author} from '../src';
 
 /**
- * Tests the features of the `Author` class.
+ * @test {Author}
  */
-class AuthorTest {
+describe('Author', () => {
 
   /**
-   * Runs the unit tests.
+   * @test {Author.fromJSON}
    */
-  run() {
-    describe('Author', () => {
-      describe('fromJSON()', this.testFromJSON);
-      describe('toJSON()', this.testToJSON);
-    });
-  }
-
-  /**
-   * Tests the `fromJSON` method.
-   */
-  testFromJSON() {
+  describe('.fromJSON()', () => {
     it('should return a null reference with a non-object JSON string', () =>
       assert.strictEqual(Author.fromJSON('foo'), null)
     );
@@ -43,12 +29,9 @@ class AuthorTest {
       assert.equal(author.email, 'cedric@belin.io');
       assert.equal(author.url, 'https://www.belin.io');
     });
-  }
+  });
 
-  /**
-   * Tests the `toJSON` method.
-   */
-  testToJSON() {
+  describe('toJSON()', () => {
     it('should return an empty JSON object with a newly created instance', () =>
       assert(!Object.keys(new Author().toJSON()).length)
     );
@@ -66,8 +49,5 @@ class AuthorTest {
       assert.equal(data.comment_author_url, 'https://www.belin.io');
       assert.equal(data.user_ip, '127.0.0.1');
     });
-  }
-}
-
-// Run all tests.
-new AuthorTest().run();
+  });
+});
