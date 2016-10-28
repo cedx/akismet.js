@@ -47,11 +47,9 @@ export class Blog {
    */
   toJSON() {
     let map = {};
-
     if (this.url.length) map.blog = this.url;
     if (this.charset.length) map.blog_charset = this.charset;
     if (this.language.length) map.blog_lang = this.language;
-
     return map;
   }
 

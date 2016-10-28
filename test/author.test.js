@@ -7,6 +7,22 @@ import {Author} from '../src';
 describe('Author', () => {
 
   /**
+   * @test {Author#constructor}
+   */
+  describe('#constructor()', () => {
+    it('should initialize the existing properties', () => {
+      let author = new Author({email: 'cedric@belin.io', ipAddress: '192.168.0.1', name: 'Cédric Belin'});
+      assert.equal(author.email, 'cedric@belin.io');
+      assert.equal(author.ipAddress, '192.168.0.1');
+      assert.equal(author.name, 'Cédric Belin');
+    });
+
+    it('should not create new properties', () =>
+      assert(!('foo' in new Author({email: 'cedric@belin.io', foo: 'bar'})))
+    );
+  });
+
+  /**
    * @test {Author.fromJSON}
    */
   describe('.fromJSON()', () => {
