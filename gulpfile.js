@@ -41,7 +41,15 @@ const plugins = loadPlugins({
 /**
  * Runs the default tasks.
  */
-gulp.task('default', ['css', 'js']);
+gulp.task('default', ['build']);
+
+/**
+ * Builds the sources.
+ */
+gulp.task('build', () => gulp.src('src/**/*.js')
+  .pipe(plugins.babel())
+  .pipe(gulp.dest('lib'))
+);
 
 /**
  * Checks the package dependencies.
@@ -88,55 +96,15 @@ gulp.task('doc', () => {
 /**
  * Fixes the coding standards issues.
  */
-gulp.task('fix', () => gulp.src(['gulpfile.js', 'bin/*.js', 'lib/**/*.js', 'test/**/*.js', 'web/js/main.js'], {base: '.'})
+gulp.task('fix', () => gulp.src(['*.js', 'src/**/*.js', 'test/**/*.js'], {base: '.'})
   .pipe(plugins.eslint({fix: true}))
   .pipe(gulp.dest('.'))
 );
 
 /**
- * Builds the client scripts.
- */
-gulp.task('js', ['js:assets', 'js:build', 'js:tests']);
-
-gulp.task('js:assets', () => gulp.src('node_modules/mocha/mocha.js')
-  .pipe(plugins.uglify())
-  .pipe(gulp.dest('web/js'))
-);
-
-gulp.task('js:build', () => {
-  let sources = browserify({debug: true, entries: ['./lib/index.js']})
-    .transform('babelify', {presets: ['es2015']});
-
-  let stream = sources.bundle().on('error', function(err) {
-    console.error(err);
-    this.emit('end');
-  })
-  .pipe(plugins.sourceStream('akismet.js'))
-  .pipe(plugins.buffer());
-
-  if (environment != 'development') stream.pipe(plugins.uglify());
-  return stream.pipe(gulp.dest('.'));
-});
-
-gulp.task('js:tests', () => {
-  let sources = browserify({debug: true, entries: ['./web/js/main.js']})
-    .transform('babelify', {presets: ['es2015']});
-
-  let stream = sources.bundle().on('error', function(err) {
-    console.error(err);
-    this.emit('end');
-  })
-  .pipe(plugins.sourceStream('tests.js'))
-  .pipe(plugins.buffer());
-
-  if (environment != 'development') stream.pipe(plugins.uglify());
-  return stream.pipe(gulp.dest('web/js'));
-});
-
-/**
  * Performs static analysis of source code.
  */
-gulp.task('lint', () => gulp.src(['gulpfile.js', 'bin/*.js', 'lib/**/*.js', 'test/**/*.js', 'web/js/main.js'])
+gulp.task('lint', () => gulp.src(['*.js', 'src/**/*.js', 'test/**/*.js'])
   .pipe(plugins.eslint())
   .pipe(plugins.eslint.format())
   .pipe(plugins.eslint.failAfterError())
@@ -154,31 +122,25 @@ gulp.task('serve', () => {
 /**
  * Runs the unit tests.
  */
-gulp.task('test', ['test:coverage'], () => gulp.src(['test/*.js'], {read: false})
+gulp.task('test', ['test:instrument'], () => gulp.src(['test/**/*.js'], {read: false})
   .pipe(plugins.mocha())
   .pipe(plugins.istanbul.writeReports({dir: 'var', reporters: ['lcovonly']}))
-);
-
-gulp.task('test:coverage', ['test:env'], () => gulp.src(['lib/**/*.js'])
-  .pipe(plugins.istanbul())
-  .pipe(plugins.istanbul.hookRequire())
 );
 
 gulp.task('test:env', () =>
   'AKISMET_API_KEY' in process.env ? Promise.resolve() : Promise.reject(new Error('AKISMET_API_KEY environment variable not set.'))
 );
 
-/**
- * Watches for file changes.
- */
-gulp.task('watch', ['default', 'serve'], () => {
-  let server = express();
-  server.use(express.static(path.join(__dirname, 'web')));
-  server.listen(5000, () => console.log('Web server listening on http://localhost:5000'));
+gulp.task('test:instrument', ['test:setup'], () => gulp.src(['src/**/*.js'])
+  .pipe(plugins.istanbul({instrumenter: require('isparta').Instrumenter}))
+  .pipe(plugins.istanbul.hookRequire())
+);
 
-  gulp.watch(['lib/**/*.js', 'test/*.js', 'web/js/main.js'], ['js:tests']);
-  gulp.watch('lib/**/*.js', ['serve']);
-});
+gulp.task('test:setup', ['test:env'], () => new Promise(resolve => {
+  process.env.BABEL_DISABLE_CACHE = process.platform == 'win32' ? '0' : '1';
+  require('babel-register');
+  resolve();
+}));
 
 /**
  * Runs a command and prints its output.
