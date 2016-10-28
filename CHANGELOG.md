@@ -1,5 +1,5 @@
 # Changelog
-This file contains highlights of what changes on each version of the [Akismet for JS](https://www.npmjs.com/package/@cedx/akismet) library.
+This file contains highlights of what changes on each version of the [Akismet for JS](https://github.com/cedx/akismet) library.
 
 ## Version 1.0.0
 - Breaking change: changed the signature of the `fromJSON` methods.

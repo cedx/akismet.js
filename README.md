@@ -136,8 +136,9 @@ $ npm test
 ```
 
 ## See Also
+- [API Reference](http://dev.belin.io/akismet)
 - [Code Quality](https://www.codacy.com/app/cedx/akismet)
 - [Continuous Integration](https://travis-ci.org/cedx/akismet)
 
 ## License
-[Akismet for JS](https://www.npmjs.com/package/@cedx/akismet) is distributed under the Apache License, version 2.0.
+[Akismet for JS](https://github.com/cedx/akismet) is distributed under the Apache License, version 2.0.
