@@ -10,36 +10,25 @@
   "repository": "cedx/akismet",
   "version": "1.0.0",
 
-  "bin": {
-    "akismet": "./bin/cli.js"
-  },
   "dependencies": {
-    "body-parser": "^1.15.2",
-    "commander": "^2.9.0",
-    "cors": "^2.8.1",
-    "express": "^4.14.0",
-    "forever": "^0.15.2",
-    "morgan": "^1.7.0",
     "superagent": "^2.3.0"
   },
   "devDependencies": {
     "@cedx/gulp-david": "^3.0.0",
     "babel-preset-es2015": "^6.18.0",
-    "babelify": "^7.3.0",
+    "babel-register": "^6.18.0",
     "browserify": "^13.1.0",
     "codacy-coverage": "^2.0.0",
     "del": "^2.2.2",
     "esdoc": "^0.4.8",
     "gulp": "^3.9.1",
+    "gulp-babel": "^6.1.2",
     "gulp-istanbul": "^1.1.1",
     "gulp-eslint": "^3.0.1",
     "gulp-load-plugins": "^1.3.0",
     "gulp-mocha": "^3.0.1",
-    "gulp-sourcemaps": "^2.2.0",
-    "gulp-uglify": "^2.0.0",
     "gulp-zip": "^3.2.0",
-    "vinyl-buffer": "^1.0.0",
-    "vinyl-source-stream": "^1.1.0"
+    "isparta": "^4.0.0"
   },
   "engines": {
     "node": ">=6.9.0"
@@ -54,10 +43,7 @@
   ],
   "scripts": {
     "coverage": "codacy-coverage < var/lcov.info",
-    "prepublish": "gulp default",
-    "restart": "npm stop && gulp clean && npm start",
-    "start": "forever start -c node -e var/stderr.log -o var/stdout.log -l akismet.log --append --minUptime 30000 --spinSleepTime 30000 --uid akismet bin/cli.js",
-    "stop": "forever stop akismet",
+    "prepublish": "gulp build",
     "test": "gulp test"
   }
 }
