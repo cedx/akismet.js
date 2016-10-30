@@ -61,6 +61,16 @@ client.submitHam(comment).subscribe(() =>
 );
 ```
 
+## Promise Support
+If you require it, an `Observable` can be converted to a [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) by using the `toPromise()` method:
+
+```javascript
+let promise = client.checkComment(comment).toPromise();
+promise.then(isSpam =>
+  console.log(isSpam ? 'The comment is marked as spam.' : 'The comment is marked as ham.')
+);
+```
+
 ## Unit Tests
 In order to run the tests, you must set one or several environment variables:
 
