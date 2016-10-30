@@ -51,12 +51,12 @@ describe('Client', function() {
    * @test {Client#verifyKey}
    */
   describe('verifyKey()', () => {
-    it('should return `false` for valid comment (e.g. ham)' , () =>
-      _client.checkComment(_ham).then(res => assert.equal(res, false))
+    it('should return `false` for valid comment (e.g. ham)' , done =>
+      _client.checkComment(_ham).subscribe(res => assert.equal(res, false), null, done)
     );
 
-    it('should return `true` for invalid comment (e.g. spam)' , () =>
-      _client.checkComment(_spam).then(res => assert.equal(res, true))
+    it('should return `true` for invalid comment (e.g. spam)' , done =>
+      _client.checkComment(_spam).subscribe(res => assert.equal(res, true), null, done)
     );
   });
 
@@ -64,8 +64,8 @@ describe('Client', function() {
    * @test {Client#submitHam}
    */
   describe('submitHam()', () => {
-    it('should complete without error' , () =>
-      _client.submitHam(_ham)
+    it('should complete without error' , done =>
+      _client.submitHam(_ham).subscribe({complete: done})
     );
   });
 
@@ -73,8 +73,8 @@ describe('Client', function() {
    * @test {Client#submitSpam}
    */
   describe('submitSpam()', () => {
-    it('should complete without error' , () =>
-      _client.submitSpam(_spam)
+    it('should complete without error' , done =>
+      _client.submitSpam(_spam).subscribe({complete: done})
     );
   });
 
@@ -82,17 +82,17 @@ describe('Client', function() {
    * @test {Client#verifyKey}
    */
   describe('verifyKey()', () => {
-    it('should return `true` for a valid API key' , () =>
-      _client.verifyKey().then(res => assert.equal(res, true))
+    it('should return `true` for a valid API key' , done =>
+      _client.verifyKey().subscribe(res => assert.equal(res, true), null, done)
     );
 
-    it('should return `false` for an invalid API key' , () => {
+    it('should return `false` for an invalid API key' , done => {
       let client = new Client('viagra-test-123', _client.blog, {
         isTest: _client.isTest,
         serviceURL: _client.serviceURL
       });
 
-      return client.verifyKey().then(res => assert.equal(res, false));
+      return client.verifyKey().subscribe(res => assert.equal(res, false), null, done);
     });
   });
 });
