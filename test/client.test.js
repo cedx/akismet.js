@@ -1,5 +1,5 @@
 import assert from 'assert';
-import {Author, Client, Comment, CommentType} from '../src/index';
+import {Author, Blog, Client, Comment, CommentType} from '../src/index';
 
 /**
  * The client used to query the service database.
@@ -46,6 +46,21 @@ let _spam = new Comment({
  */
 describe('Client', function() {
   this.timeout(15000);
+
+  /**
+   * @test {Client#constructor}
+   */
+  describe('#constructor()', () => {
+    it('should initialize the existing properties', () => {
+      let client = new Client('0123456789ABCDEF', 'https://github.com/cedx/akismet');
+      assert.equal(client.apiKey, '0123456789ABCDEF');
+      assert(client.blog instanceof Blog);
+    });
+
+    it('should not create new properties', () =>
+      assert(!('foo' in new Client('0123456789ABCDEF', 'https://github.com/cedx/akismet', {foo: 'bar'})))
+    );
+  });
 
   /**
    * @test {Client#verifyKey}
