@@ -25,7 +25,7 @@ export class Comment {
 
     /**
      * The UTC timestamp of the creation of the comment.
-     * @avar {Date}
+     * @type {Date}
      */
     this.date = options.date instanceof Date ? options.date : null;
 
@@ -37,7 +37,7 @@ export class Comment {
 
     /**
      * The UTC timestamp of the publication time for the post, page or thread on which the comment was posted.
-     * @avar {Date}
+     * @type {Date}
      */
     this.postModified = options.postModified instanceof Date ? options.postModified : null;
 
