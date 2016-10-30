@@ -1,5 +1,5 @@
 import assert from 'assert';
-import {Blog} from '../src';
+import {Blog} from '../src/index';
 
 /**
  * @test {Blog}

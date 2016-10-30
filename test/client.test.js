@@ -1,5 +1,5 @@
 import assert from 'assert';
-import {Author, Client, Comment, CommentType} from '../src';
+import {Author, Client, Comment, CommentType} from '../src/index';
 
 /**
  * The client used to query the service database.

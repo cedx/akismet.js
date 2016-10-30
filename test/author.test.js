@@ -1,5 +1,5 @@
 import assert from 'assert';
-import {Author} from '../src';
+import {Author} from '../src/index';
 
 /**
  * @test {Author}

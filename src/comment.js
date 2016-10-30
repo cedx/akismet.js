@@ -1,4 +1,4 @@
-import Author from './author';
+import {Author} from './author';
 
 /**
  * Represents a comment submitted by an author.

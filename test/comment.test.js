@@ -1,5 +1,5 @@
 import assert from 'assert';
-import {Author, Comment, CommentType} from '../src';
+import {Author, Comment, CommentType} from '../src/index';
 
 /**
  * @test {Comment}
