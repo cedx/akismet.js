@@ -1,13 +1,7 @@
-/**
- * Build system.
- */
 'use strict';
 
-const browserify = require('browserify');
 const child = require('child_process');
 const del = require('del');
-const express = require('express');
-const fs = require('fs');
 const gulp = require('gulp');
 const loadPlugins = require('gulp-load-plugins');
 const os = require('os');
@@ -22,12 +16,6 @@ const config = {
   output: `${pkg.name}-${pkg.version}.zip`,
   sources: ['akismet.js', '*.json', '*.md', '*.txt', 'bin/*.js', 'lib/*.js']
 };
-
-/**
- * The build environment.
- * @type {string}
- */
-const environment = 'NODE_ENV' in process.env ? process.env.NODE_ENV : 'development';
 
 /**
  * The task plugins.
