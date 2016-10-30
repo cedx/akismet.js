@@ -7,6 +7,22 @@ import {Author, Comment, CommentType} from '../src/index';
 describe('Comment', () => {
 
   /**
+   * @test {Comment#constructor}
+   */
+  describe('#constructor()', () => {
+    it('should initialize the existing properties', () => {
+      let comment = new Comment({content: 'Hello World!', date: new Date(), referrer: 'https://github.com/cedx/akismet'});
+      assert.equal(comment.content, 'UTF-8');
+      assert(comment.date instanceof Date);
+      assert.equal(comment.referrer, 'https://github.com/cedx/akismet');
+    });
+
+    it('should not create new properties', () =>
+      assert(!('foo' in new Comment({content: 'Hello World!', foo: 'bar'})))
+    );
+  });
+
+  /**
    * @test {Comment.fromJSON}
    */
   describe('.fromJSON()', () => {
