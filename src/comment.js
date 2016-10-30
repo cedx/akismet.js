@@ -1,4 +1,4 @@
-const Author = require('./author');
+import Author from './author';
 
 /**
  * Represents a comment submitted by an author.

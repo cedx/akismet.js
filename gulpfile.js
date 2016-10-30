@@ -125,7 +125,7 @@ gulp.task('test:instrument', ['test:setup'], () => gulp.src(['src/**/*.js'])
 );
 
 gulp.task('test:setup', ['test:env'], () => new Promise(resolve => {
-  process.env.BABEL_DISABLE_CACHE = process.platform == 'win32' ? '0' : '1';
+  process.env.BABEL_DISABLE_CACHE = process.platform == 'win32' ? '1' : '0';
   require('babel-register');
   resolve();
 }));
