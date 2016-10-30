@@ -6,9 +6,11 @@
   "author": "Cédric Belin <cedric@belin.io>",
   "bugs": "https://github.com/cedx/akismet/issues",
   "license": "Apache-2.0",
-  "main": "./lib",
   "repository": "cedx/akismet",
   "version": "1.0.0",
+
+  "jsnext:main": "./src/index",
+  "main": "./lib/index",
 
   "dependencies": {
     "superagent": "^2.3.0"
