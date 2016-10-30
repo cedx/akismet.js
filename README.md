@@ -9,26 +9,15 @@ Prevent comment spam using [Akismet](https://akismet.com) service, in [JavaScrip
 - [Submit Spam](https://akismet.com/development/api/#submit-spam): submits a comment that was not marked as spam but should have been.
 - [Submit Ham](https://akismet.com/development/api/#submit-ham): submits a comment that was incorrectly marked as spam but should not have been.
 
+## Requirements
+The latest [Node.js](https://nodejs.org) and [NPM](https://www.npmjs.com) versions.
+If you plan to play with the sources, you will also need the [Gulp.js](http://gulpjs.com/) latest version.
+
 ## Installing via [npm](https://www.npmjs.com)
 From a command prompt, run:
 
 ```shell
 $ npm install --save @cedx/akismet
-```
-
-If you use CommonJS modules (e.g. [Node.js](https://nodejs.org) or [Browserify](http://browserify.org)), load the library as usual:
-
-```javascript
-const akismet = require('@cedx/akismet');
-```
-
-If you simply use Web pages, add a `<script>` tag to load the library:
-
-```html
-<script src="/node_modules/@cedx/akismet/akismet.js"></script>
-<script>
-  const akismet = window.cedx.akismet;
-</script>
 ```
 
 ## Usage
@@ -37,7 +26,9 @@ This package has an API based on [Observables](http://reactivex.io/intro.html).
 ### Key Verification
 
 ```javascript
-let client = new akismet.Client('YourAPIKey', 'http://your.blog.url');
+const {Client} = require('@cedx/akismet');
+
+let client = new Client('YourAPIKey', 'http://your.blog.url');
 client.verifyKey().subscribe(isValid =>
   console.log(isValid ? 'Your API key is valid.' : 'Your API key is invalid.')
 );
@@ -46,8 +37,10 @@ client.verifyKey().subscribe(isValid =>
 ### Comment Check
 
 ```javascript
-let comment = new akismet.Comment({
-  author: new akismet.Author({ipAddress: '127.0.0.1', userAgent: 'Mozilla/5.0'}),
+const {Author, Comment} = require('@cedx/akismet');
+
+let comment = new Comment({
+  author: new Author({ipAddress: '127.0.0.1', userAgent: 'Mozilla/5.0'}),
   content: 'A comment.'
 });
 
@@ -68,68 +61,14 @@ client.submitHam(comment).subscribe(() =>
 );
 ```
 
-## Implementations
-
-### Client
-The Akismet client comes in two flavors: a first one based on [`http.request`](https://nodejs.org/api/http.html#http_http_request_options_callback)
-for server/console applications, and a second one based on [`XMLHttpRequest`](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest)
-for client/browser applications.
-
-Their usage is the same, but the HTML client is limited by security restrictions in a browser context.
-Unfortunately, the [Akismet](https://akismet.com) service does not support [CORS](http://www.w3.org/TR/cors) headers.
-So, the HTML client can't be used directly with the official service.
-
-### Server
-To be able to use the HTML client, we must rely on a proxy server adding [CORS](http://www.w3.org/TR/cors) headers to service responses.
-
-This is why a [server implementation](https://github.com/cedx/akismet/blob/master/lib/server/server.js) is provided within this package.
-Unlike the other package classes, the `Server` class must be required explicitly if you want to use it in your own code:
-
-```javascript
-const {Server} = require('@cedx/akismet/lib/server');
-new Server().listen(8080);
-```
-
-To facilitate its usage, a [command line interface](https://github.com/cedx/akismet/blob/master/lib/server/application.js) is available in the `bin` folder.
-From a command prompt, run the `cli.js` script (aliased as `akismet` by [npm](https://www.npmjs.com)):
-
-```
-$ node bin/cli.js --help
-
-  Usage: akismet [options]
-
-  Options:
-
-    -h, --help               output usage information
-    -v, --version            output the version number
-    -a, --address <address>  address that the Akismet server should run on [0.0.0.0]
-    -p, --port <port>        port that the Akismet server should run on [3000]
-    -r, --redirect <url>     the URL to redirect when a request is unhandled
-    -u, --user <user>        user to drop privileges to once server socket is bound
-    --silent                 silence the log output from the server
-```
-
 ## Unit Tests
-
-### Browser
-To test the client/browser implementation, launch a Web server instance, and sets the document root to the [`web`](https://github.com/cedx/akismet/tree/master/web) folder of this package.
-
-For example, using the [`node-static`](https://www.npmjs.com/package/node-static) package:
-
-```shell
-$ static --host-address=localhost --port=5000 web/
-```
-
-Then, open the served address in your Web browser.
-
-### Console
-To test the server/console implementation, you must set one or several environment variables prior to running the tests:
+In order to run the tests, you must set one or several environment variables:
 
 - `AKISMET_API_KEY`: the Akismet API key (required).
 - `AKISMET_BLOG`: the front page or home URL (optional).
 - `AKISMET_SERVICE_URL`: the URL of the remote service (optional).
 
-Then, run the `test` build task from the command prompt:
+Then, you can run the `test` script from the command prompt:
 
 ```shell
 $ npm test
