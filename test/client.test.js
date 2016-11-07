@@ -7,7 +7,7 @@ import {Author, Blog, Client, Comment, CommentType} from '../src/index';
  */
 let _client = new Client(
   process.env.AKISMET_API_KEY,
-  'AKISMET_BLOG' in process.env ? process.env.AKISMET_BLOG : 'https://github.com/cedx/akismet',
+  'AKISMET_BLOG' in process.env ? process.env.AKISMET_BLOG : 'https://github.com/cedx/akismet.js',
   {isTest: true, serviceURL: 'AKISMET_SERVICE_URL' in process.env ? process.env.AKISMET_SERVICE_URL : `https://${Client.DEFAULT_SERVICE}`}
 );
 
@@ -19,7 +19,7 @@ let _ham = new Comment({
   author: new Author({
     ipAddress: '192.168.0.1',
     name: 'Akismet',
-    url: 'https://github.com/cedx/akismet',
+    url: 'https://github.com/cedx/akismet.js',
     userAgent: 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0'
   }),
   content: 'I\'m testing out the Service API.',
@@ -52,13 +52,13 @@ describe('Client', function() {
    */
   describe('#constructor()', () => {
     it('should initialize the existing properties', () => {
-      let client = new Client('0123456789ABCDEF', 'https://github.com/cedx/akismet');
+      let client = new Client('0123456789ABCDEF', 'https://github.com/cedx/akismet.js');
       assert.equal(client.apiKey, '0123456789ABCDEF');
       assert(client.blog instanceof Blog);
     });
 
     it('should not create new properties', () =>
-      assert(!('foo' in new Client('0123456789ABCDEF', 'https://github.com/cedx/akismet', {foo: 'bar'})))
+      assert(!('foo' in new Client('0123456789ABCDEF', 'https://github.com/cedx/akismet.js', {foo: 'bar'})))
     );
   });
 

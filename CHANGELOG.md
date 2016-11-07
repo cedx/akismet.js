@@ -1,8 +1,11 @@
 # Changelog
-This file contains highlights of what changes on each version of the [Akismet for JS](https://github.com/cedx/akismet) library.
+This file contains highlights of what changes on each version of the [Akismet for JS](https://github.com/cedx/akismet.js) library.
+
+## Version 1.0.2
+- Updated the project URL.
 
 ## Version 1.0.1
-- Fixed [GitHub issue #5](https://github.com/cedx/akismet/issues/5).
+- Fixed [GitHub issue #5](https://github.com/cedx/akismet.js/issues/5).
 
 ## Version 1.0.0
 - Breaking change: changed the signature of the `fromJSON` methods.
@@ -40,7 +43,7 @@ This file contains highlights of what changes on each version of the [Akismet fo
 
 ## Version 0.7.1
 - Added a command line option to set the user to drop privileges to once server socket is bound.
-- Fixed [issue #4](https://github.com/cedx/akismet/issues/4): properly handle the `host` and `port` command line arguments.
+- Fixed [issue #4](https://github.com/cedx/akismet.js/issues/4): properly handle the `host` and `port` command line arguments.
 - Upgraded the package dependencies.
 
 ## Version 0.7.0
@@ -79,10 +82,10 @@ This file contains highlights of what changes on each version of the [Akismet fo
 - Raised the required [Node.js](http://nodejs.org) version.
 - Removed the dependency on [`promise`](https://www.npmjs.com/package/promise) module.
 - Upgraded the package dependencies.
-- Fixed [issue #3](https://github.com/cedx/akismet/issues/3): returning a `Promise` in `Server.checkComment` method.
+- Fixed [issue #3](https://github.com/cedx/akismet.js/issues/3): returning a `Promise` in `Server.checkComment` method.
 
 ## Version 0.4.1
-- Fixed [issue #2](https://github.com/cedx/akismet/issues/2): using a Unix system for publishing the package on [npm](https://www.npmjs.com).
+- Fixed [issue #2](https://github.com/cedx/akismet.js/issues/2): using a Unix system for publishing the package on [npm](https://www.npmjs.com).
 
 ## Version 0.4.0
 - Breaking change: ported the callback-based API to [Promises](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise).
