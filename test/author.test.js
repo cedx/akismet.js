@@ -39,11 +39,11 @@ describe('Author', () => {
     it('should return an initialized instance with a non-empty JSON object', () => {
       let author = Author.fromJSON({
         comment_author_email: 'cedric@belin.io',
-        comment_author_url: 'https://www.belin.io'
+        comment_author_url: 'https://belin.io'
       });
 
       assert.equal(author.email, 'cedric@belin.io');
-      assert.equal(author.url, 'https://www.belin.io');
+      assert.equal(author.url, 'https://belin.io');
     });
   });
 
@@ -60,12 +60,12 @@ describe('Author', () => {
         email: 'cedric@belin.io',
         ipAddress: '127.0.0.1',
         name: 'Cédric Belin',
-        url: 'https://www.belin.io'
+        url: 'https://belin.io'
       }).toJSON();
 
       assert.equal(data.comment_author, 'Cédric Belin');
       assert.equal(data.comment_author_email, 'cedric@belin.io');
-      assert.equal(data.comment_author_url, 'https://www.belin.io');
+      assert.equal(data.comment_author_url, 'https://belin.io');
       assert.equal(data.user_ip, '127.0.0.1');
     });
   });

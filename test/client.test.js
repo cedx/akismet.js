@@ -5,11 +5,7 @@ import {Author, Blog, Client, Comment, CommentType} from '../src/index';
  * The client used to query the service database.
  * @type {Client}
  */
-let _client = new Client(
-  process.env.AKISMET_API_KEY,
-  'AKISMET_BLOG' in process.env ? process.env.AKISMET_BLOG : 'https://github.com/cedx/akismet.js',
-  {isTest: true, serviceURL: 'AKISMET_SERVICE_URL' in process.env ? process.env.AKISMET_SERVICE_URL : `https://${Client.DEFAULT_SERVICE}`}
-);
+let _client = new Client(process.env.AKISMET_API_KEY, 'https://github.com/cedx/akismet.js', {isTest: true});
 
 /**
  * A comment with content marked as ham.
@@ -23,7 +19,7 @@ let _ham = new Comment({
     userAgent: 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0'
   }),
   content: 'I\'m testing out the Service API.',
-  referrer: 'https://www.npmjs.com/package/akismet',
+  referrer: 'https://www.npmjs.com/package/@cedx/akismet',
   type: CommentType.COMMENT
 });
 

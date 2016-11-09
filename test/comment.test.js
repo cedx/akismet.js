@@ -45,14 +45,14 @@ describe('Comment', () => {
         comment_content: 'A user comment.',
         comment_date_gmt: '2000-01-01T00:00:00.000Z',
         comment_type: 'trackback',
-        referrer: 'https://www.belin.io'
+        referrer: 'https://belin.io'
       });
 
       assert(comment.author instanceof Author);
-      assert(comment.date instanceof Date);
       assert.equal(comment.author.name, 'Cédric Belin');
       assert.equal(comment.content, 'A user comment.');
-      assert.equal(comment.referrer, 'https://www.belin.io');
+      assert(comment.date instanceof Date);
+      assert.equal(comment.referrer, 'https://belin.io');
       assert.equal(comment.type, CommentType.TRACKBACK);
     });
   });
@@ -69,14 +69,14 @@ describe('Comment', () => {
       let data = new Comment({
         author: new Author({name: 'Cédric Belin'}),
         content: 'A user comment.',
-        referrer: 'https://www.belin.io',
+        referrer: 'https://belin.io',
         type: CommentType.PINGBACK
       }).toJSON();
 
       assert.equal(data.comment_author, 'Cédric Belin');
       assert.equal(data.comment_content, 'A user comment.');
       assert.equal(data.comment_type, 'pingback');
-      assert.equal(data.referrer, 'https://www.belin.io');
+      assert.equal(data.referrer, 'https://belin.io');
     });
   });
 });
