@@ -72,11 +72,11 @@ promise.then(isSpam =>
 ```
 
 ## Unit Tests
-In order to run the tests, you must set one or several environment variables:
+In order to run the tests, you must set the `AKISMET_API_KEY` environment variable to the value of your Akismet API key:
 
-- `AKISMET_API_KEY`: the Akismet API key (required).
-- `AKISMET_BLOG`: the front page or home URL (optional).
-- `AKISMET_SERVICE_URL`: the URL of the remote service (optional).
+```shell
+$ export AKISMET_API_KEY=<YourApiKey>
+```
 
 Then, you can run the `test` script from the command prompt:
 

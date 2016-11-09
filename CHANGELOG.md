@@ -1,7 +1,11 @@
 # Changelog
 This file contains highlights of what changes on each version of the [Akismet for JS](https://github.com/cedx/akismet.js) library.
 
-## Version 1.0.2
+## Version 2.0.0
+- Breaking change: removed the `Client.serviceURL` property.
+- Breaking change: removed the `EndPoints` enumeration.
+- Breaking change: renamed the `Client.DEFAULT_SERVICE` property to `SERVICE_URL`.
+- Updated the package dependencies.
 - Updated the project URL.
 
 ## Version 1.0.1
