@@ -14,7 +14,7 @@ const pkg = require('./package.json');
  */
 const config = {
   output: `${pkg.name}-${pkg.version}.zip`,
-  sources: ['akismet.js', '*.json', '*.md', '*.txt', 'bin/*.js', 'lib/*.js']
+  sources: ['*.json', '*.md', '*.txt', 'lib/**/*.js']
 };
 
 /**
@@ -54,7 +54,7 @@ gulp.task('check', () => {
  * Deletes all generated files and reset any saved state.
  */
 gulp.task('clean', () =>
-  del(['var/**/*', `${os.homedir()}/.forever/akismet.log`])
+  del('var/**/*')
 );
 
 /**
@@ -97,15 +97,6 @@ gulp.task('lint', () => gulp.src(['*.js', 'src/**/*.js', 'test/**/*.js'])
   .pipe(plugins.eslint.format())
   .pipe(plugins.eslint.failAfterError())
 );
-
-/**
- * Starts the Akismet server.
- */
-gulp.task('serve', () => {
-  if ('_server' in global) global._server.kill();
-  global._server = child.fork('bin/cli.js');
-  return Promise.resolve();
-});
 
 /**
  * Runs the unit tests.
