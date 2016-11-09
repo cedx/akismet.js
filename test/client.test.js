@@ -53,49 +53,49 @@ describe('Client', function() {
       assert.ok(client.blog instanceof Blog);
     });
 
-    it('should not create new properties', () =>
-      assert.ok(!('foo' in new Client('0123456789ABCDEF', 'https://github.com/cedx/akismet.js', {foo: 'bar'})))
-    );
+    it('should not create new properties', () => {
+      assert.ok(!('foo' in new Client('0123456789ABCDEF', 'https://github.com/cedx/akismet.js', {foo: 'bar'})));
+    });
   });
 
   /**
    * @test {Client#checkComment}
    */
   describe('checkComment()', () => {
-    it('should return `false` for valid comment (e.g. ham)' , done =>
-      _client.checkComment(_ham).subscribe(res => assert.equal(res, false), done, done)
-    );
+    it('should return `false` for valid comment (e.g. ham)' , done => {
+      _client.checkComment(_ham).subscribe(res => assert.equal(res, false), done, done);
+    });
 
-    it('should return `true` for invalid comment (e.g. spam)' , done =>
-      _client.checkComment(_spam).subscribe(res => assert.equal(res, true), done, done)
-    );
+    it('should return `true` for invalid comment (e.g. spam)' , done => {
+      _client.checkComment(_spam).subscribe(res => assert.equal(res, true), done, done);
+    });
   });
 
   /**
    * @test {Client#submitHam}
    */
   describe('submitHam()', () => {
-    it('should complete without error' , done =>
-      _client.submitHam(_ham).subscribe(null, done, done)
-    );
+    it('should complete without error' , done => {
+      _client.submitHam(_ham).subscribe(null, done, done);
+    });
   });
 
   /**
    * @test {Client#submitSpam}
    */
   describe('submitSpam()', () => {
-    it('should complete without error' , done =>
-      _client.submitSpam(_spam).subscribe(null, done, done)
-    );
+    it('should complete without error' , done => {
+      _client.submitSpam(_spam).subscribe(null, done, done);
+    });
   });
 
   /**
    * @test {Client#verifyKey}
    */
   describe('verifyKey()', () => {
-    it('should return `true` for a valid API key' , done =>
-      _client.verifyKey().subscribe(res => assert.equal(res, true), done, done)
-    );
+    it('should return `true` for a valid API key' , done => {
+      _client.verifyKey().subscribe(res => assert.equal(res, true), done, done);
+    });
 
     it('should return `false` for an invalid API key' , done => {
       let client = new Client('viagra-test-123', _client.blog, {

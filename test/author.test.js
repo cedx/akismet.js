@@ -17,18 +17,18 @@ describe('Author', () => {
       assert.equal(author.name, 'Cédric Belin');
     });
 
-    it('should not create new properties', () =>
-      assert.ok(!('foo' in new Author({email: 'cedric@belin.io', foo: 'bar'})))
-    );
+    it('should not create new properties', () => {
+      assert.ok(!('foo' in new Author({email: 'cedric@belin.io', foo: 'bar'})));
+    });
   });
 
   /**
    * @test {Author.fromJSON}
    */
   describe('.fromJSON()', () => {
-    it('should return a null reference with a non-object JSON string', () =>
-      assert.strictEqual(Author.fromJSON('foo'), null)
-    );
+    it('should return a null reference with a non-object JSON string', () => {
+      assert.strictEqual(Author.fromJSON('foo'), null);
+    });
 
     it('should return an empty instance with an empty JSON object', () => {
       let author = Author.fromJSON({});
@@ -51,9 +51,9 @@ describe('Author', () => {
    * @test {Author#toJSON}
    */
   describe('#toJSON()', () => {
-    it('should return an empty JSON object with a newly created instance', () =>
-      assert.equal(Object.keys(new Author().toJSON()).length, 0)
-    );
+    it('should return an empty JSON object with a newly created instance', () => {
+      assert.equal(Object.keys(new Author().toJSON()).length, 0);
+    });
 
     it('should return a non-empty JSON object with a initialized instance', () => {
       let data = new Author({

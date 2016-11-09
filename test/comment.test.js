@@ -17,18 +17,18 @@ describe('Comment', () => {
       assert.equal(comment.referrer, 'https://github.com/cedx/akismet.js');
     });
 
-    it('should not create new properties', () =>
-      assert.ok(!('foo' in new Comment({content: 'Hello World!', foo: 'bar'})))
-    );
+    it('should not create new properties', () => {
+      assert.ok(!('foo' in new Comment({content: 'Hello World!', foo: 'bar'})));
+    });
   });
 
   /**
    * @test {Comment.fromJSON}
    */
   describe('.fromJSON()', () => {
-    it('should return a null reference with a non-object JSON string', () =>
-      assert.strictEqual(Comment.fromJSON('foo'), null)
-    );
+    it('should return a null reference with a non-object JSON string', () => {
+      assert.strictEqual(Comment.fromJSON('foo'), null);
+    });
 
     it('should return an empty instance with an empty JSON object', () => {
       let comment = Comment.fromJSON({});
@@ -62,7 +62,7 @@ describe('Comment', () => {
    */
   describe('#toJSON()', () => {
     it('should return an empty JSON object with a newly created instance', () => {
-      assert.equal(Object.keys(new Comment().toJSON()).length, 0)
+      assert.equal(Object.keys(new Comment().toJSON()).length, 0);
     });
 
     it('should return a non-empty JSON object with a initialized instance', () => {

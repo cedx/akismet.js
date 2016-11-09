@@ -17,18 +17,18 @@ describe('Blog', () => {
       assert.equal(blog.url, 'https://github.com/cedx/akismet.js');
     });
 
-    it('should not create new properties', () =>
-      assert.ok(!('foo' in new Blog({foo: 'bar', url: 'https://github.com/cedx/akismet.js'})))
-    );
+    it('should not create new properties', () => {
+      assert.ok(!('foo' in new Blog({foo: 'bar', url: 'https://github.com/cedx/akismet.js'})));
+    });
   });
 
   /**
    * @test {Blog.fromJSON}
    */
   describe('.fromJSON()', () => {
-    it('should return a null reference with a non-object JSON string', () =>
-      assert.strictEqual(Blog.fromJSON('foo'), null)
-    );
+    it('should return a null reference with a non-object JSON string', () => {
+      assert.strictEqual(Blog.fromJSON('foo'), null);
+    });
 
     it('should return an empty instance with an empty JSON object', () => {
       let blog = Blog.fromJSON({});
@@ -54,9 +54,9 @@ describe('Blog', () => {
    * @test {Blog#toJSON}
    */
   describe('#toJSON()', () => {
-    it('should return an empty JSON object with a newly created instance', () =>
-      assert.equal(Object.keys(new Blog().toJSON()).length, 0)
-    );
+    it('should return an empty JSON object with a newly created instance', () => {
+      assert.equal(Object.keys(new Blog().toJSON()).length, 0);
+    });
 
     it('should return a non-empty JSON object with a initialized instance', () => {
       let data = new Blog({
