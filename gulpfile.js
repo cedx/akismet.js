@@ -4,7 +4,6 @@ const child = require('child_process');
 const del = require('del');
 const gulp = require('gulp');
 const loadPlugins = require('gulp-load-plugins');
-const os = require('os');
 const path = require('path');
 const pkg = require('./package.json');
 
