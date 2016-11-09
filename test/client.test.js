@@ -63,15 +63,15 @@ describe('Client', function() {
   });
 
   /**
-   * @test {Client#verifyKey}
+   * @test {Client#checkComment}
    */
-  describe('verifyKey()', () => {
+  describe('checkComment()', () => {
     it('should return `false` for valid comment (e.g. ham)' , done =>
-      _client.checkComment(_ham).subscribe(res => assert.equal(res, false), null, done)
+      _client.checkComment(_ham).subscribe(res => assert.equal(res, false), done, done)
     );
 
     it('should return `true` for invalid comment (e.g. spam)' , done =>
-      _client.checkComment(_spam).subscribe(res => assert.equal(res, true), null, done)
+      _client.checkComment(_spam).subscribe(res => assert.equal(res, true), done, done)
     );
   });
 
@@ -80,7 +80,7 @@ describe('Client', function() {
    */
   describe('submitHam()', () => {
     it('should complete without error' , done =>
-      _client.submitHam(_ham).subscribe({complete: done})
+      _client.submitHam(_ham).subscribe(null, done, done)
     );
   });
 
@@ -89,7 +89,7 @@ describe('Client', function() {
    */
   describe('submitSpam()', () => {
     it('should complete without error' , done =>
-      _client.submitSpam(_spam).subscribe({complete: done})
+      _client.submitSpam(_spam).subscribe(null, done, done)
     );
   });
 
@@ -98,7 +98,7 @@ describe('Client', function() {
    */
   describe('verifyKey()', () => {
     it('should return `true` for a valid API key' , done =>
-      _client.verifyKey().subscribe(res => assert.equal(res, true), null, done)
+      _client.verifyKey().subscribe(res => assert.equal(res, true), done, done)
     );
 
     it('should return `false` for an invalid API key' , done => {
@@ -107,7 +107,7 @@ describe('Client', function() {
         serviceURL: _client.serviceURL
       });
 
-      return client.verifyKey().subscribe(res => assert.equal(res, false), null, done);
+      client.verifyKey().subscribe(res => assert.equal(res, false), done, done);
     });
   });
 });
