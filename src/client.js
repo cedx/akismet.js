@@ -37,12 +37,6 @@ export class Client {
     this.isTest = typeof options.isTest == 'boolean' ? options.isTest : false;
 
     /**
-     * The URL of the remote service.
-     * @type {string}
-     */
-    this.serviceURL = typeof options.serviceURL == 'string' ? options.serviceURL : `https://${Client.DEFAULT_SERVICE}`;
-
-    /**
      * The user agent string to use when making requests.
      * If possible, the user agent string should always have the following format: `Application Name/Version | Plugin Name/Version`.
      * @type {string}
@@ -51,11 +45,11 @@ export class Client {
   }
 
   /**
-   * The host of the default remote service.
+   * The URL of the remote service.
    * @type {string}
    */
-  static get DEFAULT_SERVICE() {
-    return 'rest.akismet.com';
+  static get SERVICE_URL() {
+    return 'https://rest.akismet.com';
   }
 
   /**
@@ -64,13 +58,8 @@ export class Client {
    * @return {Observable<boolean>} A boolean value indicating whether it is spam.
    */
   checkComment(comment) {
-    let serviceURL = url.parse(this.serviceURL);
-
-    let endPoint =
-      serviceURL.host != Client.DEFAULT_SERVICE ?
-      url.resolve(this.serviceURL, EndPoints.CHECK_COMMENT) :
-      `${serviceURL.protocol}//${this.apiKey}.${serviceURL.host}${EndPoints.CHECK_COMMENT}`;
-
+    let serviceURL = url.parse(Client.SERVICE_URL);
+    let endPoint = `${serviceURL.protocol}//${this.apiKey}.${serviceURL.host}/1.1/comment-check`;
     return this._queryService(endPoint, comment.toJSON()).map(res => res == 'true');
   }
 
@@ -80,13 +69,8 @@ export class Client {
    * @return {Observable} Completes once the comment has been submitted.
    */
   submitHam(comment) {
-    let serviceURL = url.parse(this.serviceURL);
-
-    let endPoint =
-      serviceURL.host != Client.DEFAULT_SERVICE ?
-      url.resolve(this.serviceURL, EndPoints.SUBMIT_HAM) :
-      `${serviceURL.protocol}//${this.apiKey}.${serviceURL.host}${EndPoints.SUBMIT_HAM}`;
-
+    let serviceURL = url.parse(Client.SERVICE_URL);
+    let endPoint = `${serviceURL.protocol}//${this.apiKey}.${serviceURL.host}/1.1/submit-ham`;
     return this._queryService(endPoint, comment.toJSON());
   }
 
@@ -96,13 +80,8 @@ export class Client {
    * @return {Observable} Completes once the comment has been submitted.
    */
   submitSpam(comment) {
-    let serviceURL = url.parse(this.serviceURL);
-
-    let endPoint =
-      serviceURL.host != Client.DEFAULT_SERVICE ?
-      url.resolve(this.serviceURL, EndPoints.SUBMIT_SPAM) :
-      `${serviceURL.protocol}//${this.apiKey}.${serviceURL.host}${EndPoints.SUBMIT_SPAM}`;
-
+    let serviceURL = url.parse(Client.SERVICE_URL);
+    let endPoint = `${serviceURL.protocol}//${this.apiKey}.${serviceURL.host}/1.1/submit-spam`;
     return this._queryService(endPoint, comment.toJSON());
   }
 
@@ -111,8 +90,8 @@ export class Client {
    * @return {Observable<boolean>} A boolean value indicating whether it is a valid API key.
    */
   verifyKey() {
-    let endPoint = url.resolve(this.serviceURL, EndPoints.VERIFY_KEY);
-    return this._queryService(endPoint, {}).map(res => res == 'valid');
+    let endPoint = `${Client.SERVICE_URL}/1.1/verify-key`;
+    return this._queryService(endPoint, {key: this.apiKey}).map(res => res == 'valid');
   }
 
   /**
@@ -122,7 +101,6 @@ export class Client {
    * @return {Observable<string>} The response as string.
    */
   _queryService(endPoint, fields) {
-    fields.key = this.apiKey;
     fields.blog = this.blog.url;
     if (this.blog.charset.length) fields.blog_charset = this.blog.charset;
     if (this.blog.language.length) fields.blog_lang = this.blog.language;
