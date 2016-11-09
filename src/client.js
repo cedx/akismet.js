@@ -1,12 +1,11 @@
 import {Blog} from './blog';
-import {EndPoints} from './end_points';
 import * as pkg from '../package.json';
 import {Observable} from 'rxjs';
 import request from 'superagent';
 import url from 'url';
 
 /**
- * Provides the base class for clients that submit comments to [Akismet](https://akismet.com) service.
+ * Submits comments to the [Akismet](https://akismet.com) service.
  */
 export class Client {
 
