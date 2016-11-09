@@ -18,7 +18,7 @@ describe('Author', () => {
     });
 
     it('should not create new properties', () =>
-      assert(!('foo' in new Author({email: 'cedric@belin.io', foo: 'bar'})))
+      assert.ok(!('foo' in new Author({email: 'cedric@belin.io', foo: 'bar'})))
     );
   });
 
@@ -32,8 +32,8 @@ describe('Author', () => {
 
     it('should return an empty instance with an empty JSON object', () => {
       let author = Author.fromJSON({});
-      assert(!author.email.length);
-      assert(!author.url.length);
+      assert.equal(author.email.length, 0);
+      assert.equal(author.url.length, 0);
     });
 
     it('should return an initialized instance with a non-empty JSON object', () => {
@@ -52,7 +52,7 @@ describe('Author', () => {
    */
   describe('#toJSON()', () => {
     it('should return an empty JSON object with a newly created instance', () =>
-      assert(!Object.keys(new Author().toJSON()).length)
+      assert.equal(Object.keys(new Author().toJSON()).length, 0)
     );
 
     it('should return a non-empty JSON object with a initialized instance', () => {

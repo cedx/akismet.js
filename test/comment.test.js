@@ -13,12 +13,12 @@ describe('Comment', () => {
     it('should initialize the existing properties', () => {
       let comment = new Comment({content: 'Hello World!', date: new Date(), referrer: 'https://github.com/cedx/akismet.js'});
       assert.equal(comment.content, 'Hello World!');
-      assert(comment.date instanceof Date);
+      assert.ok(comment.date instanceof Date);
       assert.equal(comment.referrer, 'https://github.com/cedx/akismet.js');
     });
 
     it('should not create new properties', () =>
-      assert(!('foo' in new Comment({content: 'Hello World!', foo: 'bar'})))
+      assert.ok(!('foo' in new Comment({content: 'Hello World!', foo: 'bar'})))
     );
   });
 
@@ -33,10 +33,10 @@ describe('Comment', () => {
     it('should return an empty instance with an empty JSON object', () => {
       let comment = Comment.fromJSON({});
       assert.strictEqual(comment.author, null);
-      assert(!comment.content.length);
+      assert.equal(comment.content.length, 0);
       assert.strictEqual(comment.date, null);
-      assert(!comment.referrer.length);
-      assert(!comment.type.length);
+      assert.equal(comment.referrer.length, 0);
+      assert.equal(comment.type.length, 0);
     });
 
     it('should return an initialized instance with a non-empty JSON object', () => {
@@ -48,10 +48,10 @@ describe('Comment', () => {
         referrer: 'https://belin.io'
       });
 
-      assert(comment.author instanceof Author);
+      assert.ok(comment.author instanceof Author);
       assert.equal(comment.author.name, 'Cédric Belin');
       assert.equal(comment.content, 'A user comment.');
-      assert(comment.date instanceof Date);
+      assert.ok(comment.date instanceof Date);
       assert.equal(comment.referrer, 'https://belin.io');
       assert.equal(comment.type, CommentType.TRACKBACK);
     });
@@ -61,9 +61,9 @@ describe('Comment', () => {
    * @test {Comment#toJSON}
    */
   describe('#toJSON()', () => {
-    it('should return an empty JSON object with a newly created instance', () =>
-      assert(!Object.keys(new Comment().toJSON()).length)
-    );
+    it('should return an empty JSON object with a newly created instance', () => {
+      assert.equal(Object.keys(new Comment().toJSON()).length, 0)
+    });
 
     it('should return a non-empty JSON object with a initialized instance', () => {
       let data = new Comment({

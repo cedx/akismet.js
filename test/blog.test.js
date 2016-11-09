@@ -18,7 +18,7 @@ describe('Blog', () => {
     });
 
     it('should not create new properties', () =>
-      assert(!('foo' in new Blog({foo: 'bar', url: 'https://github.com/cedx/akismet.js'})))
+      assert.ok(!('foo' in new Blog({foo: 'bar', url: 'https://github.com/cedx/akismet.js'})))
     );
   });
 
@@ -32,9 +32,9 @@ describe('Blog', () => {
 
     it('should return an empty instance with an empty JSON object', () => {
       let blog = Blog.fromJSON({});
-      assert(!blog.charset.length);
-      assert(!blog.language.length);
-      assert(!blog.url.length);
+      assert.equal(blog.charset.length, 0);
+      assert.equal(blog.language.length, 0);
+      assert.equal(blog.url.length, 0);
     });
 
     it('should return an initialized instance with a non-empty JSON object', () => {
@@ -55,7 +55,7 @@ describe('Blog', () => {
    */
   describe('#toJSON()', () => {
     it('should return an empty JSON object with a newly created instance', () =>
-      assert(!Object.keys(new Blog().toJSON()).length)
+      assert.equal(Object.keys(new Blog().toJSON()).length, 0)
     );
 
     it('should return a non-empty JSON object with a initialized instance', () => {
