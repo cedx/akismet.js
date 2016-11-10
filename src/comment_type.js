@@ -1,3 +1,5 @@
+import {Enum} from '@cedx/enum';
+
 /**
  * Specifies the type of a comment.
  * @type {object}
@@ -6,7 +8,7 @@
  * @property {string} PINGBACK A [pingback](https://en.wikipedia.org/wiki/Pingback) comment.
  * @property {string} TRACKBACK A [trackback](https://en.wikipedia.org/wiki/Trackback) comment.
  */
-export const CommentType = Object.freeze({
+export const CommentType = Enum.create({
   COMMENT: 'comment',
   PINGBACK: 'pingback',
   TRACKBACK: 'trackback'
