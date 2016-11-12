@@ -1,6 +1,9 @@
 # Changelog
 This file contains highlights of what changes on each version of the [Akismet for JS](https://github.com/cedx/akismet.js) library.
 
+## Version 2.1.0
+- Added the `Client.DEBUG_HEADER` property.
+
 ## Version 2.0.1
 - Added a dedicated enumeration API to the `CommentType` type.
 
