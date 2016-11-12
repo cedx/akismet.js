@@ -60,7 +60,7 @@ export class Client {
   checkComment(comment) {
     let serviceURL = url.parse(Client.SERVICE_URL);
     let endPoint = `${serviceURL.protocol}//${this.apiKey}.${serviceURL.host}/1.1/comment-check`;
-    return this._queryService(endPoint, comment.toJSON()).map(res => res == 'true');
+    return this._fetch(endPoint, comment.toJSON()).map(res => res == 'true');
   }
 
   /**
@@ -71,7 +71,7 @@ export class Client {
   submitHam(comment) {
     let serviceURL = url.parse(Client.SERVICE_URL);
     let endPoint = `${serviceURL.protocol}//${this.apiKey}.${serviceURL.host}/1.1/submit-ham`;
-    return this._queryService(endPoint, comment.toJSON());
+    return this._fetch(endPoint, comment.toJSON());
   }
 
   /**
@@ -82,7 +82,7 @@ export class Client {
   submitSpam(comment) {
     let serviceURL = url.parse(Client.SERVICE_URL);
     let endPoint = `${serviceURL.protocol}//${this.apiKey}.${serviceURL.host}/1.1/submit-spam`;
-    return this._queryService(endPoint, comment.toJSON());
+    return this._fetch(endPoint, comment.toJSON());
   }
 
   /**
@@ -91,24 +91,24 @@ export class Client {
    */
   verifyKey() {
     let endPoint = `${Client.SERVICE_URL}/1.1/verify-key`;
-    return this._queryService(endPoint, {key: this.apiKey}).map(res => res == 'valid');
+    return this._fetch(endPoint, {key: this.apiKey}).map(res => res == 'valid');
   }
 
   /**
    * Queries the service by posting the specified fields to a given end point, and returns the response as a string.
    * @param {string} endPoint The URL of the end point to query.
-   * @param {object} fields The fields describing the query body.
+   * @param {object} params The fields describing the query body.
    * @return {Observable<string>} The response as string.
    */
-  _queryService(endPoint, fields) {
-    fields.blog = this.blog.url;
-    if (this.blog.charset.length) fields.blog_charset = this.blog.charset;
-    if (this.blog.language.length) fields.blog_lang = this.blog.language;
-    if (this.isTest) fields.is_test = 'true';
+  _fetch(endPoint, params) {
+    params.blog = this.blog.url;
+    if (this.blog.charset.length) params.blog_charset = this.blog.charset;
+    if (this.blog.language.length) params.blog_lang = this.blog.language;
+    if (this.isTest) params.is_test = 'true';
 
     return new Observable(observer => request.post(endPoint)
       .type('form')
-      .send(fields)
+      .send(params)
       .set('User-Agent', this.userAgent)
       .end((err, res) => {
         if (err || !res.ok) observer.error(new Error(err ? err.status : res.status));
