@@ -43,7 +43,7 @@ export class Client {
      */
     this.userAgent = typeof options.userAgent == 'string' ? options.userAgent : `Node.js/${process.version} | Akismet/${pkg.version}`;
   }
-  
+
   /**
    * The HTTP header containing the Akismet error messages.
    * @type {string}
@@ -120,12 +120,10 @@ export class Client {
       .set('User-Agent', this.userAgent)
       .end((err, res) => {
         if (err || !res.ok) observer.error(new Error(err ? err.status : res.status));
+        else if (Client.DEBUG_HEADER in res.header) observer.error(new Error(res.header[Client.DEBUG_HEADER]));
         else {
-          if (Client.DEBUG_HEADER in res.header) observer.error(new Error(res.header[Client.DEBUG_HEADER]));
-          else {
-            observer.next(res.text);
-            observer.complete();
-          }
+          observer.next(res.text);
+          observer.complete();
         }
       })
     );
