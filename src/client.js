@@ -1,7 +1,7 @@
 import {Blog} from './blog';
 import * as pkg from '../package.json';
 import {Observable} from 'rxjs';
-import request from 'superagent';
+import superagent from 'superagent';
 import url from 'url';
 
 /**
@@ -114,7 +114,7 @@ export class Client {
     if (this.blog.language.length) params.blog_lang = this.blog.language;
     if (this.isTest) params.is_test = 'true';
 
-    return new Observable(observer => request.post(endPoint)
+    return new Observable(observer => superagent.post(endPoint)
       .type('form')
       .send(params)
       .set('User-Agent', this.userAgent)
