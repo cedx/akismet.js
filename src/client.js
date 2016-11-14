@@ -108,7 +108,7 @@ export class Client {
    * @throws {Error} The API key or blog URL is empty.
    */
   _fetch(endPoint, params) {
-    if (!this.apiKey.length || !this.blog) throw new Error('The API key or the blog URL is empty.');
+    if (!this.apiKey.length || !this.blog) return Observable.throw(new Error('The API key or the blog URL is empty.'));
 
     let bodyParams = Object.assign(this.blog.toJSON(), params);
     if (this.test) bodyParams.is_test = '1';
