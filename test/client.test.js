@@ -5,7 +5,7 @@ import {Author, Blog, Client, Comment, CommentType} from '../src/index';
  * The client used to query the service database.
  * @type {Client}
  */
-let _client = new Client(process.env.AKISMET_API_KEY, 'https://github.com/cedx/akismet.js', {isTest: true});
+let _client = new Client(process.env.AKISMET_API_KEY, 'https://github.com/cedx/akismet.js', {test: true});
 
 /**
  * A comment with content marked as ham.
@@ -99,7 +99,7 @@ describe('Client', function() {
 
     it('should return `false` for an invalid API key' , done => {
       let client = new Client('viagra-test-123', _client.blog, {
-        isTest: _client.isTest,
+        test: _client.test,
         serviceURL: _client.serviceURL
       });
 

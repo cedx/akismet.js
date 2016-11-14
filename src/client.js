@@ -34,7 +34,7 @@ export class Client {
      * You can use it when submitting test queries to Akismet.
      * @type {boolean}
      */
-    this.isTest = typeof options.isTest == 'boolean' ? options.isTest : false;
+    this.test = typeof options.test == 'boolean' ? options.test : false;
 
     /**
      * The user agent string to use when making requests.
@@ -109,10 +109,8 @@ export class Client {
    * @return {Observable<string>} The response as string.
    */
   _fetch(endPoint, params) {
-    params.blog = this.blog.url;
-    if (this.blog.charset.length) params.blog_charset = this.blog.charset;
-    if (this.blog.language.length) params.blog_lang = this.blog.language;
-    if (this.isTest) params.is_test = 'true';
+    params = Object.assign(this.blog.toJSON(), params);
+    if (this.test) params.is_test = '1';
 
     return new Observable(observer => superagent.post(endPoint)
       .type('form')
