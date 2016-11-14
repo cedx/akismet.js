@@ -127,4 +127,26 @@ export class Client {
       })
     );
   }
+
+  /**
+   * Converts this object to a map in JSON format.
+   * @return {object} The map in JSON format corresponding to this object.
+   */
+  toJSON() {
+    return {
+      apiKey: this.apiKey,
+      blog: this.blog ? this.blog.constructor.name : null,
+      test: this.test,
+      userAgent: this.userAgent
+    };
+  }
+
+  /**
+   * Returns a string representation of this object.
+   * @return {string} The string representation of this object.
+   */
+  toString() {
+    let json = JSON.stringify(this.toJSON(), null, 2);
+    return `${this.constructor.name} ${json}`;
+  }
 }

@@ -98,6 +98,29 @@ describe('Client', function() {
   });
 
   /**
+   * @test {Client#toJSON}
+   */
+  describe('#toJSON()', () => {
+    it('should return the right values for an incorrectly configured client' , () => {
+      let data = new Client({apiKey: '0123456789-ABCDEF', userAgent: 'FooBar/6.6.6'}).toJSON();
+      assert.equal(data.apiKey, '0123456789-ABCDEF');
+      assert.strictEqual(data.blog, null);
+      assert.ok(!data.test);
+      assert.equal(data.userAgent, 'FooBar/6.6.6');
+    });
+
+    it('should return the right values for a properly configured client' , () => {
+      let data = _client.toJSON();
+      assert.equal(data.apiKey, process.env.AKISMET_API_KEY);
+      assert.equal(data.blog, 'Blog');
+      assert.ok(data.test);
+
+      let version = `Node.js/${process.version}`;
+      assert.equal(data.userAgent.substr(0, version.length), version);
+    });
+  });
+
+  /**
    * @test {Client#verifyKey}
    */
   describe('#verifyKey()', () => {
