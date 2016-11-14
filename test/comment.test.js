@@ -18,7 +18,7 @@ describe('Comment', () => {
     });
 
     it('should not create new properties', () => {
-      assert.ok(!('foo' in new Comment({content: 'Hello World!', foo: 'bar'})));
+      assert.ok(!('foo' in new Comment({foo: 'bar'})));
     });
   });
 

@@ -69,14 +69,12 @@ export class Author {
    */
   toJSON() {
     let map = {};
-
     if (this.name.length) map.comment_author = this.name;
     if (this.email.length) map.comment_author_email = this.email;
     if (this.url.length) map.comment_author_url = this.url;
     if (this.userAgent.length) map.user_agent = this.userAgent;
     if (this.ipAddress.length) map.user_ip = this.ipAddress;
     if (this.role.length) map.user_role = this.role;
-
     return map;
   }
 

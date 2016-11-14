@@ -84,14 +84,12 @@ export class Comment {
    */
   toJSON() {
     let map = this.author ? this.author.toJSON() : {};
-
     if (this.content.length) map.comment_content = this.content;
     if (this.date) map.comment_date_gmt = this.date.toISOString();
     if (this.postModified) map.comment_post_modified_gmt = this.postModified.toISOString();
     if (this.type.length) map.comment_type = this.type;
     if (this.permalink.length) map.permalink = this.permalink;
     if (this.referrer.length) map.referrer = this.referrer;
-
     return map;
   }
 

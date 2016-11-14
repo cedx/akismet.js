@@ -18,7 +18,7 @@ describe('Blog', () => {
     });
 
     it('should not create new properties', () => {
-      assert.ok(!('foo' in new Blog({foo: 'bar', url: 'https://github.com/cedx/akismet.js'})));
+      assert.ok(!('foo' in new Blog({foo: 'bar'})));
     });
   });
 

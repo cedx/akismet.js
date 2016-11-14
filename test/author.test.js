@@ -18,7 +18,7 @@ describe('Author', () => {
     });
 
     it('should not create new properties', () => {
-      assert.ok(!('foo' in new Author({email: 'cedric@belin.io', foo: 'bar'})));
+      assert.ok(!('foo' in new Author({foo: 'bar'})));
     });
   });
 
