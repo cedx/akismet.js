@@ -1,8 +1,11 @@
 # Changelog
 This file contains highlights of what changes on each version of the [Akismet for JS](https://github.com/cedx/akismet.js) library.
 
-## Version 2.1.0
+## Version 3.0.0
+- Breaking change: modified the signature of the constructor of the `Client` class.
+- Breaking change: renamed the `Client.isTest` property to `test`.
 - Added the `Client.DEBUG_HEADER` property.
+- Added the `Client.toJSON()` method.
 
 ## Version 2.0.1
 - Added a dedicated enumeration API to the `CommentType` type.
