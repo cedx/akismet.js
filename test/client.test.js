@@ -5,7 +5,11 @@ import {Author, Blog, Client, Comment, CommentType} from '../src/index';
  * The client used to query the service database.
  * @type {Client}
  */
-let _client = new Client(process.env.AKISMET_API_KEY, 'https://github.com/cedx/akismet.js', {test: true});
+let _client = new Client({
+  apiKey: process.env.AKISMET_API_KEY,
+  blog: 'https://github.com/cedx/akismet.js',
+  test: true
+});
 
 /**
  * A comment with content marked as ham.
@@ -15,6 +19,7 @@ let _ham = new Comment({
   author: new Author({
     ipAddress: '192.168.0.1',
     name: 'Akismet',
+    role: 'administrator',
     url: 'https://github.com/cedx/akismet.js',
     userAgent: 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0'
   }),
@@ -48,20 +53,23 @@ describe('Client', function() {
    */
   describe('#constructor()', () => {
     it('should initialize the existing properties', () => {
-      let client = new Client('0123456789ABCDEF', 'https://github.com/cedx/akismet.js');
-      assert.equal(client.apiKey, '0123456789ABCDEF');
+      let client = new Client({apiKey: '0123456789-ABCDEF', blog: 'https://github.com/cedx/akismet.js', userAgent: 'FooBar/6.6.6'});
+      assert.equal(client.apiKey, '0123456789-ABCDEF');
+      assert.equal(client.userAgent, 'FooBar/6.6.6');
+
       assert.ok(client.blog instanceof Blog);
+      assert.equal(client.blog.url, 'https://github.com/cedx/akismet.js');
     });
 
     it('should not create new properties', () => {
-      assert.ok(!('foo' in new Client('0123456789ABCDEF', 'https://github.com/cedx/akismet.js', {foo: 'bar'})));
+      assert.ok(!('foo' in new Client({foo: 'bar'})));
     });
   });
 
   /**
    * @test {Client#checkComment}
    */
-  describe('checkComment()', () => {
+  describe('#checkComment()', () => {
     it('should return `false` for valid comment (e.g. ham)' , done => {
       _client.checkComment(_ham).subscribe(res => assert.equal(res, false), done, done);
     });
@@ -74,7 +82,7 @@ describe('Client', function() {
   /**
    * @test {Client#submitHam}
    */
-  describe('submitHam()', () => {
+  describe('#submitHam()', () => {
     it('should complete without error' , done => {
       _client.submitHam(_ham).subscribe(null, done, done);
     });
@@ -83,7 +91,7 @@ describe('Client', function() {
   /**
    * @test {Client#submitSpam}
    */
-  describe('submitSpam()', () => {
+  describe('#submitSpam()', () => {
     it('should complete without error' , done => {
       _client.submitSpam(_spam).subscribe(null, done, done);
     });
@@ -92,17 +100,13 @@ describe('Client', function() {
   /**
    * @test {Client#verifyKey}
    */
-  describe('verifyKey()', () => {
+  describe('#verifyKey()', () => {
     it('should return `true` for a valid API key' , done => {
       _client.verifyKey().subscribe(res => assert.equal(res, true), done, done);
     });
 
     it('should return `false` for an invalid API key' , done => {
-      let client = new Client('viagra-test-123', _client.blog, {
-        test: _client.test,
-        serviceURL: _client.serviceURL
-      });
-
+      let client = new Client({apiKey: '0123456789-ABCDEF', blog: _client.blog, test: _client.test});
       client.verifyKey().subscribe(res => assert.equal(res, false), done, done);
     });
   });

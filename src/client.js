@@ -11,23 +11,21 @@ export class Client {
 
   /**
    * Initializes a new instance of the class.
-   * @param {string} apiKey The Akismet API key used to query the service.
-   * @param {string|Blog} blog The front page or home URL transmitted when making requests.
-   * @param {object} [options] An object specifying additional values used to initialize this instance.
+   * @param {object} [options] An object specifying values used to initialize this instance.
    */
-  constructor(apiKey, blog, options = {}) {
+  constructor(options = {}) {
 
     /**
      * The Akismet API key.
      * @type {string}
      */
-    this.apiKey = apiKey;
+    this.apiKey = typeof options.apiKey == 'string' ? options.apiKey : '';
 
     /**
      * The front page or home URL of the instance making requests.
      * @type {Blog}
      */
-    this.blog = blog instanceof Blog ? blog : new Blog({url: blog});
+    this.blog = options.blog instanceof Blog ? options.blog : new Blog({url: options.blog});
 
     /**
      * Value indicating whether the client operates in test mode.
@@ -107,15 +105,18 @@ export class Client {
    * @param {string} endPoint The URL of the end point to query.
    * @param {object} params The fields describing the query body.
    * @return {Observable<string>} The response as string.
+   * @throws {Error} The API key or blog URL is empty.
    */
   _fetch(endPoint, params) {
-    params = Object.assign(this.blog.toJSON(), params);
-    if (this.test) params.is_test = '1';
+    if (!this.apiKey.length || !this.blog) throw new Error('The API key or the blog URL is empty.');
+
+    let bodyParams = Object.assign(this.blog.toJSON(), params);
+    if (this.test) bodyParams.is_test = '1';
 
     return new Observable(observer => superagent.post(endPoint)
       .type('form')
-      .send(params)
       .set('User-Agent', this.userAgent)
+      .send(bodyParams)
       .end((err, res) => {
         if (err || !res.ok) observer.error(new Error(err ? err.status : res.status));
         else if (Client.DEBUG_HEADER in res.header) observer.error(new Error(res.header[Client.DEBUG_HEADER]));
