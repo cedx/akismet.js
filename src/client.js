@@ -25,7 +25,9 @@ export class Client {
      * The front page or home URL of the instance making requests.
      * @type {Blog}
      */
-    this.blog = options.blog instanceof Blog ? options.blog : new Blog({url: options.blog});
+    this.blog = null;
+    if (options.blog instanceof Blog) this.blog = options.blog;
+    else if (typeof options.blog == 'string') this.blog = new Blog({url: options.blog});
 
     /**
      * Value indicating whether the client operates in test mode.
