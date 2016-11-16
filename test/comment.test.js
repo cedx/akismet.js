@@ -11,7 +11,7 @@ describe('Comment', () => {
    */
   describe('#constructor()', () => {
     it('should initialize the existing properties', () => {
-      let comment = new Comment({content: 'Hello World!', date: new Date(), referrer: 'https://github.com/cedx/akismet.js'});
+      let comment = new Comment({content: 'Hello World!', date: Date.now(), referrer: 'https://github.com/cedx/akismet.js'});
       assert.equal(comment.content, 'Hello World!');
       assert.ok(comment.date instanceof Date);
       assert.equal(comment.referrer, 'https://github.com/cedx/akismet.js');

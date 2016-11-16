@@ -15,7 +15,9 @@ export class Comment {
      * The comment's author.
      * @type {Author}
      */
-    this.author = options.author instanceof Author ? options.author : null;
+    this.author = null;
+    if (options.author instanceof Author) this.author = options.author;
+    else if (typeof options.author == 'string') this.author = new Author({name: options.author});
 
     /**
      * The comment's content.
@@ -27,7 +29,12 @@ export class Comment {
      * The UTC timestamp of the creation of the comment.
      * @type {Date}
      */
-    this.date = options.date instanceof Date ? options.date : null;
+    this.date = null;
+    if (options.date instanceof Date) this.date = options.date;
+    else {
+      let type = typeof options.date;
+      if (type == 'number' || type == 'string') this.date = new Date(options.date);
+    }
 
     /**
      * The permanent location of the entry the comment is submitted to.
@@ -39,7 +46,12 @@ export class Comment {
      * The UTC timestamp of the publication time for the post, page or thread on which the comment was posted.
      * @type {Date}
      */
-    this.postModified = options.postModified instanceof Date ? options.postModified : null;
+    this.postModified = null;
+    if (options.postModified instanceof Date) this.postModified = options.postModified;
+    else {
+      let type = typeof options.postModified;
+      if (type == 'number' || type == 'string') this.postModified = new Date(options.postModified);
+    }
 
     /**
      * The URL of the webpage that linked to the entry being requested.
@@ -70,9 +82,9 @@ export class Comment {
     return new Comment({
       author: hasAuthor ? Author.fromJSON(map) : null,
       content: typeof map.comment_content == 'string' ? map.comment_content : '',
-      date: typeof map.comment_date_gmt == 'string' ? new Date(map.comment_date_gmt) : null,
+      date: typeof map.comment_date_gmt == 'string' ? map.comment_date_gmt : null,
       permalink: typeof map.permalink == 'string' ? map.permalink : '',
-      postModified: typeof map.comment_post_modified_gmt == 'string' ? new Date(map.comment_post_modified_gmt) : null,
+      postModified: typeof map.comment_post_modified_gmt == 'string' ? map.comment_post_modified_gmt : null,
       referrer: typeof map.referrer == 'string' ? map.referrer : '',
       type: typeof map.comment_type == 'string' ? map.comment_type : ''
     });
