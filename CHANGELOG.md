@@ -1,6 +1,9 @@
 # Changelog
 This file contains highlights of what changes on each version of the [Akismet for JS](https://github.com/cedx/akismet.js) library.
 
+## Version 3.1.0
+- Allowing to set dates as timestamps or strings in the `Comment` constructor.
+
 ## Version 3.0.0
 - Breaking change: modified the signature of the constructor of the `Client` class.
 - Breaking change: renamed the `Client.isTest` property to `test`.
