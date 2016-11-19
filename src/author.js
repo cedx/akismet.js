@@ -54,12 +54,12 @@ export class Author {
    */
   static fromJSON(map) {
     return !map || typeof map != 'object' ? null : new Author({
-      email: typeof map.comment_author_email == 'string' ? map.comment_author_email : '',
-      ipAddress: typeof map.user_ip == 'string' ? map.user_ip : '',
-      name: typeof map.comment_author == 'string' ? map.comment_author : '',
-      role: typeof map.user_role == 'string' ? map.user_role : '',
-      url: typeof map.comment_author_url == 'string' ? map.comment_author_url : '',
-      userAgent: typeof map.user_agent == 'string' ? map.user_agent : ''
+      email: map.comment_author_email,
+      ipAddress: map.user_ip,
+      name: map.comment_author,
+      role: map.user_role,
+      url: map.comment_author_url,
+      userAgent: map.user_agent
     });
   }
 

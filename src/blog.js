@@ -35,9 +35,9 @@ export class Blog {
    */
   static fromJSON(map) {
     return !map || typeof map != 'object' ? null : new Blog({
-      charset: typeof map.blog_charset == 'string' ? map.blog_charset : '',
-      language: typeof map.blog_lang == 'string' ? map.blog_lang : '',
-      url: typeof map.blog == 'string' ? map.blog : ''
+      charset: map.blog_charset,
+      language: map.blog_lang,
+      url: map.blog
     });
   }
 

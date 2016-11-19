@@ -81,12 +81,12 @@ export class Comment {
 
     return new Comment({
       author: hasAuthor ? Author.fromJSON(map) : null,
-      content: typeof map.comment_content == 'string' ? map.comment_content : '',
-      date: typeof map.comment_date_gmt == 'string' ? map.comment_date_gmt : null,
-      permalink: typeof map.permalink == 'string' ? map.permalink : '',
-      postModified: typeof map.comment_post_modified_gmt == 'string' ? map.comment_post_modified_gmt : null,
-      referrer: typeof map.referrer == 'string' ? map.referrer : '',
-      type: typeof map.comment_type == 'string' ? map.comment_type : ''
+      content: map.comment_content,
+      date: map.comment_date_gmt,
+      permalink: map.permalink,
+      postModified: map.comment_post_modified_gmt,
+      referrer: map.referrer,
+      type: map.comment_type
     });
   }
 
