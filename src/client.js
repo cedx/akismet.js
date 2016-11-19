@@ -10,6 +10,22 @@ import url from 'url';
 export class Client {
 
   /**
+   * The HTTP header containing the Akismet error messages.
+   * @type {string}
+   */
+  static get DEBUG_HEADER() {
+    return 'x-akismet-debug-help';
+  }
+
+  /**
+   * The URL of the remote service.
+   * @type {string}
+   */
+  static get SERVICE_URL() {
+    return 'https://rest.akismet.com';
+  }
+
+  /**
    * Initializes a new instance of the class.
    * @param {object} [options] An object specifying values used to initialize this instance.
    */
@@ -42,22 +58,6 @@ export class Client {
      * @type {string}
      */
     this.userAgent = typeof options.userAgent == 'string' ? options.userAgent : `Node.js/${process.version} | Akismet/${pkg.version}`;
-  }
-
-  /**
-   * The HTTP header containing the Akismet error messages.
-   * @type {string}
-   */
-  static get DEBUG_HEADER() {
-    return 'x-akismet-debug-help';
-  }
-
-  /**
-   * The URL of the remote service.
-   * @type {string}
-   */
-  static get SERVICE_URL() {
-    return 'https://rest.akismet.com';
   }
 
   /**
