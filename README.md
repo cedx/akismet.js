@@ -28,7 +28,11 @@ This package has an API based on [Observables](http://reactivex.io/intro.html).
 ```javascript
 const {Client} = require('@cedx/akismet');
 
-let client = new Client({apiKey: 'YourAPIKey', blog: 'http://your.blog.url'});
+let client = new Client({
+  apiKey: 'YourAPIKey',
+  blog: 'http://your.blog.url'
+});
+
 client.verifyKey().subscribe(isValid =>
   console.log(isValid ? 'Your API key is valid.' : 'Your API key is invalid.')
 );
