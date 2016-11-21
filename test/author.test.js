@@ -1,3 +1,5 @@
+'use strict';
+
 import assert from 'assert';
 import {Author} from '../src/index';
 

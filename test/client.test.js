@@ -1,3 +1,5 @@
+'use strict';
+
 import assert from 'assert';
 import {Author, Blog, Client, Comment, CommentType} from '../src/index';
 
