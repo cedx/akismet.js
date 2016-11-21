@@ -1,6 +1,9 @@
 # Changelog
 This file contains highlights of what changes on each version of the [Akismet for JS](https://github.com/cedx/akismet.js) library.
 
+## Version 3.2.0
+- Updated the [SuperAgent](https://visionmedia.github.io/superagent) dependency.
+
 ## Version 3.1.0
 - Allowing to set dates as timestamps or strings in the `Comment` constructor.
 

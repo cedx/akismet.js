@@ -7,7 +7,7 @@
   "bugs": "https://github.com/cedx/akismet.js/issues",
   "license": "Apache-2.0",
   "repository": "cedx/akismet.js",
-  "version": "3.1.0",
+  "version": "3.2.0",
 
   "jsnext:main": "./src/index",
   "main": "./lib/index",
@@ -15,7 +15,7 @@
   "dependencies": {
     "@cedx/enum": "^1.1.0",
     "rxjs": "^5.0.0-rc.4",
-    "superagent": "^2.3.0"
+    "superagent": "^3.0.0"
   },
   "devDependencies": {
     "@cedx/gulp-david": "^3.0.2",
