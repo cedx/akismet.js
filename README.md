@@ -89,7 +89,7 @@ $ npm test
 ```
 
 ## See Also
-- [API Reference](http://dev.belin.io/akismet.js)
+- [API Reference](https://cedx.github.io/akismet.js)
 - [Code Quality](https://www.codacy.com/app/cedx/akismet-js)
 - [Continuous Integration](https://travis-ci.org/cedx/akismet.js)
 
