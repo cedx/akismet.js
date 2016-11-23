@@ -1,6 +1,6 @@
 import {Blog} from './blog';
 import * as pkg from '../package.json';
-import {Observable} from 'rxjs';
+import {Observable, Subject} from 'rxjs';
 import superagent from 'superagent';
 import url from 'url';
 
@@ -58,6 +58,34 @@ export class Client {
      * @type {string}
      */
     this.userAgent = typeof options.userAgent == 'string' ? options.userAgent : `Node.js/${process.version} | Akismet/${pkg.version}`;
+
+    /**
+     * The handler of "request" events.
+     * @type {Subject<superagent.Request>}
+     */
+    this._onRequest = new Subject();
+
+    /**
+     * The handler of "response" events.
+     * @type {Subject<superagent.Response>}
+     */
+    this._onResponse = new Subject();
+  }
+
+  /**
+   * The stream of "request" events.
+   * @type {Observable<superagent.Request>}
+   */
+  get onRequest() {
+    return this._onRequest.asObservable();
+  }
+
+  /**
+   * The stream of "response" events.
+   * @type {Observable<superagent.Response>}
+   */
+  get onResponse() {
+    return this._onResponse.asObservable();
   }
 
   /**
@@ -108,6 +136,8 @@ export class Client {
    * @param {object} params The fields describing the query body.
    * @return {Observable<string>} The response as string.
    * @throws {Error} The API key or blog URL is empty.
+   * @emits {superagent.Request} The "request" event.
+   * @emits {superagent.Response} The "response" event.
    */
   _fetch(endPoint, params) {
     if (!this.apiKey.length || !this.blog) return Observable.throw(new Error('The API key or the blog URL is empty.'));
@@ -115,19 +145,23 @@ export class Client {
     let bodyParams = Object.assign(this.blog.toJSON(), params);
     if (this.test) bodyParams.is_test = '1';
 
-    return new Observable(observer => superagent.post(endPoint)
-      .type('form')
-      .set('User-Agent', this.userAgent)
-      .send(bodyParams)
-      .end((err, res) => {
-        if (err || !res.ok) observer.error(new Error(err ? err.status : res.status));
+    return new Observable(observer => {
+      let req = superagent.post(endPoint)
+        .type('form')
+        .set('User-Agent', this.userAgent)
+        .send(bodyParams);
+
+      this._onRequest.next(req);
+      req.end((err, res) => {
+        if (err) observer.error(err);
         else if (Client.DEBUG_HEADER in res.header) observer.error(new Error(res.header[Client.DEBUG_HEADER]));
         else {
+          this._onResponse.next(res);
           observer.next(res.text);
           observer.complete();
         }
-      })
-    );
+      });
+    });
   }
 
   /**

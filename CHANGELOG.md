@@ -1,6 +1,9 @@
 # Changelog
 This file contains highlights of what changes on each version of the [Akismet for JS](https://github.com/cedx/akismet.js) library.
 
+## Version 3.3.0
+- Added the `onRequest` and `onResponse` event streams to the `Client` class.
+
 ## Version 3.2.0
 - Updated the [SuperAgent](https://visionmedia.github.io/superagent) dependency.
 
