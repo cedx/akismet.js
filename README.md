@@ -65,6 +65,24 @@ client.submitHam(comment).subscribe(() =>
 );
 ```
 
+## Events
+The `Client` class triggers some events during its life cycle:
+
+- `request` : emitted every time a request is made to the remote service.
+- `response` : emitted every time a response is received from the remote service.
+
+These events are exposed as `Observables`, you can subscribe to them using the `on<EventName>` properties:
+
+```javascript
+client.onRequest.subscribe(
+  req => console.log(`Client request: ${JSON.stringify(req)}`)
+);
+
+client.onResponse.subscribe(
+  res => console.log(`Server response: ${JSON.stringify(res)}`)
+);
+```
+
 ## Promise Support
 If you require it, an `Observable` can be converted to a [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) by using the `toPromise()` method:
 
