@@ -2,6 +2,7 @@
 
 import assert from 'assert';
 import {Author, Blog, Client, Comment, CommentType} from '../src/index';
+import {Observable, Subject} from 'rxjs';
 
 /**
  * The client used to query the service database.
@@ -78,6 +79,28 @@ describe('Client', function() {
 
     it('should return `true` for invalid comment (e.g. spam)' , done => {
       _client.checkComment(_spam).subscribe(res => assert.equal(res, true), done, done);
+    });
+  });
+
+  /**
+   * @test {Client#onRequest}
+   */
+  describe('#onRequest', () => {
+    it('should return an Observable instead of the underlying Subject', () => {
+      let stream = new Client().onRequest;
+      assert.ok(stream instanceof Observable);
+      assert.ok(!(stream instanceof Subject));
+    });
+  });
+
+  /**
+   * @test {Client#onResponse}
+   */
+  describe('#onResponse', () => {
+    it('should return an Observable instead of the underlying Subject', () => {
+      let stream = new Client().onResponse;
+      assert.ok(stream instanceof Observable);
+      assert.ok(!(stream instanceof Subject));
     });
   });
 
