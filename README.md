@@ -1,5 +1,5 @@
 # Akismet for JS
-![Release](https://img.shields.io/npm/v/@cedx/akismet.svg) ![License](https://img.shields.io/npm/l/@cedx/akismet.svg) ![Downloads](https://img.shields.io/npm/dt/@cedx/akismet.svg) ![Dependencies](https://img.shields.io/david/cedx/akismet.js.svg) ![Code quality](https://img.shields.io/codacy/grade/5886b7627a5947e58f51f11e9814fc56.svg) ![Build](https://img.shields.io/travis/cedx/akismet.js.svg)
+![Release](https://img.shields.io/npm/v/@cedx/akismet.svg) ![License](https://img.shields.io/badge/license-Apache--2.0-blue.svg) ![Dependencies](https://david-dm.org/cedx/akismet.js.svg) ![Coverage](https://coveralls.io/repos/github/cedx/akismet.js/badge.svg) ![Build](https://travis-ci.org/cedx/akismet.js.svg)
 
 Prevent comment spam using [Akismet](https://akismet.com) service, in [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript).
 
@@ -10,8 +10,8 @@ Prevent comment spam using [Akismet](https://akismet.com) service, in [JavaScrip
 - [Submit Ham](https://akismet.com/development/api/#submit-ham): submits a comment that was incorrectly marked as spam but should not have been.
 
 ## Requirements
-The latest [Node.js](https://nodejs.org) and [NPM](https://www.npmjs.com) versions.
-If you plan to play with the sources, you will also need the [Gulp.js](http://gulpjs.com/) latest version.
+The latest [Node.js](https://nodejs.org) and [npm](https://www.npmjs.com) versions.
+If you plan to play with the sources, you will also need the latest [Gulp.js](http://gulpjs.com) version.
 
 ## Installing via [npm](https://www.npmjs.com)
 From a command prompt, run:
@@ -83,7 +83,7 @@ client.onResponse.subscribe(
 );
 ```
 
-## Promise Support
+## Promise support
 If you require it, an `Observable` can be converted to a [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) by using the `toPromise()` method:
 
 ```javascript
@@ -93,7 +93,7 @@ promise.then(isSpam =>
 );
 ```
 
-## Unit Tests
+## Unit tests
 In order to run the tests, you must set the `AKISMET_API_KEY` environment variable to the value of your Akismet API key:
 
 ```shell
@@ -106,10 +106,10 @@ Then, you can run the `test` script from the command prompt:
 $ npm test
 ```
 
-## See Also
-- [API Reference](https://cedx.github.io/akismet.js)
-- [Code Quality](https://www.codacy.com/app/cedx/akismet-js)
-- [Continuous Integration](https://travis-ci.org/cedx/akismet.js)
+## See also
+- [API reference](https://cedx.github.io/akismet.js)
+- [Code coverage](https://coveralls.io/github/cedx/akismet-js)
+- [Continuous integration](https://travis-ci.org/cedx/akismet.js)
 
 ## License
 [Akismet for JS](https://github.com/cedx/akismet.js) is distributed under the Apache License, version 2.0.

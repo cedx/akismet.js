@@ -1,6 +1,10 @@
 # Changelog
 This file contains highlights of what changes on each version of the [Akismet for JS](https://github.com/cedx/akismet.js) library.
 
+## Version 3.4.0
+- Replaced the [Codacy](https://www.codacy.com) code coverage service by the [Coveralls](https://coveralls.io) one.
+- Updated the package dependencies.
+
 ## Version 3.3.0
 - Added the `onRequest` and `onResponse` event streams to the `Client` class.
 
