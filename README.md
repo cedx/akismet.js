@@ -108,7 +108,7 @@ $ npm test
 
 ## See also
 - [API reference](https://cedx.github.io/akismet.js)
-- [Code coverage](https://coveralls.io/github/cedx/akismet-js)
+- [Code coverage](https://coveralls.io/github/cedx/akismet.js)
 - [Continuous integration](https://travis-ci.org/cedx/akismet.js)
 
 ## License
