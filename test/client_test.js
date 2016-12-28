@@ -11,7 +11,7 @@ import {Observable, Subject} from 'rxjs';
 let _client = new Client({
   apiKey: process.env.AKISMET_API_KEY,
   blog: 'https://github.com/cedx/akismet.js',
-  test: true
+  isTest: true
 });
 
 /**
@@ -130,7 +130,7 @@ describe('Client', function() {
       let data = new Client({apiKey: '0123456789-ABCDEF', userAgent: 'FooBar/6.6.6'}).toJSON();
       assert.equal(data.apiKey, '0123456789-ABCDEF');
       assert.strictEqual(data.blog, null);
-      assert.ok(!data.test);
+      assert.ok(!data.isTest);
       assert.equal(data.userAgent, 'FooBar/6.6.6');
     });
 
@@ -138,7 +138,7 @@ describe('Client', function() {
       let data = _client.toJSON();
       assert.equal(data.apiKey, process.env.AKISMET_API_KEY);
       assert.equal(data.blog, 'Blog');
-      assert.ok(data.test);
+      assert.ok(data.isTest);
 
       let version = `Node.js/${process.version}`;
       assert.equal(data.userAgent.substr(0, version.length), version);
@@ -154,7 +154,7 @@ describe('Client', function() {
     });
 
     it('should return `false` for an invalid API key' , done => {
-      let client = new Client({apiKey: '0123456789-ABCDEF', blog: _client.blog, test: _client.test});
+      let client = new Client({apiKey: '0123456789-ABCDEF', blog: _client.blog, isTest: _client.isTest});
       client.verifyKey().subscribe(res => assert.equal(res, false), done, done);
     });
   });

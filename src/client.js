@@ -50,7 +50,7 @@ export class Client {
      * You can use it when submitting test queries to Akismet.
      * @type {boolean}
      */
-    this.test = typeof options.test == 'boolean' ? options.test : false;
+    this.isTest = typeof options.isTest == 'boolean' ? options.isTest : false;
 
     /**
      * The user agent string to use when making requests.
@@ -143,7 +143,7 @@ export class Client {
     if (!this.apiKey.length || !this.blog) return Observable.throw(new Error('The API key or the blog URL is empty.'));
 
     let bodyParams = Object.assign(this.blog.toJSON(), params);
-    if (this.test) bodyParams.is_test = '1';
+    if (this.isTest) bodyParams.is_test = '1';
 
     return new Observable(observer => {
       let req = superagent.post(endPoint)
@@ -172,7 +172,7 @@ export class Client {
     return {
       apiKey: this.apiKey,
       blog: this.blog ? this.blog.constructor.name : null,
-      test: this.test,
+      isTest: this.isTest,
       userAgent: this.userAgent
     };
   }
