@@ -2,7 +2,8 @@
 
 .babelrc text
 .editorconfig text
-.eslintrc.json text
+.esdoc.json text
+.eslintrc.yaml text
 .gitattributes text
 .gitignore text
 .npmignore text
@@ -12,6 +13,7 @@
 *.json text
 *.md text
 *.txt text
+*.yaml text
 
 *.ico binary
 *.png binary

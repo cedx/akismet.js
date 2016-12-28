@@ -18,12 +18,12 @@
     "superagent": "^3.3.1"
   },
   "devDependencies": {
-    "@cedx/gulp-david": "^3.0.2",
+    "@cedx/gulp-david": "^3.1.0",
     "babel-preset-latest": "^6.16.0",
     "babel-register": "^6.18.0",
     "coveralls": "^2.11.15",
     "del": "^2.2.2",
-    "esdoc": "^0.4.8",
+    "esdoc": "^0.5.1",
     "gulp": "^3.9.1",
     "gulp-babel": "^6.1.2",
     "gulp-istanbul": "^1.1.1",
