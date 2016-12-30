@@ -145,7 +145,7 @@ export class Client {
     let bodyParams = Object.assign(this.blog.toJSON(), params);
     if (this.isTest) bodyParams.is_test = '1';
 
-    return new Observable(observer => {
+    return Observable.create(observer => {
       let req = superagent.post(endPoint)
         .type('form')
         .set('User-Agent', this.userAgent)
