@@ -83,7 +83,6 @@ export class Author {
    * @return {string} The string representation of this object.
    */
   toString() {
-    let json = JSON.stringify(this.toJSON(), null, 2);
-    return `${this.constructor.name} ${json}`;
+    return `${this.constructor.name} ${JSON.stringify(this)}`;
   }
 }
