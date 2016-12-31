@@ -16,10 +16,14 @@ export class Blog {
     this.charset = typeof options.charset == 'string' ? options.charset : '';
 
     /**
-     * The language(s) in use on the blog or site, in ISO 639-1 format, comma-separated.
-     * @type {string}
+     * The languages in use on the blog or site, in ISO 639-1 format.
+     * @type {string[]}
      */
-    this.language = typeof options.language == 'string' ? options.language : '';
+    this.languages = [];
+    if (Array.isArray(options.languages)) this.languages = options.languages;
+    else if (typeof options.languages == 'string') this.languages = options.languages.split(',')
+      .map(language => language.trim())
+      .filter(language => language.length > 0);
 
     /**
      * The blog or site URL.
@@ -36,7 +40,7 @@ export class Blog {
   static fromJSON(map) {
     return !map || typeof map != 'object' ? null : new Blog({
       charset: map.blog_charset,
-      language: map.blog_lang,
+      languages: map.blog_lang,
       url: map.blog
     });
   }
@@ -49,7 +53,7 @@ export class Blog {
     let map = {};
     if (this.url.length) map.blog = this.url;
     if (this.charset.length) map.blog_charset = this.charset;
-    if (this.language.length) map.blog_lang = this.language;
+    if (this.languages.length) map.blog_lang = this.languages.join(',');
     return map;
   }
 

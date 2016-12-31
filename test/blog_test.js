@@ -13,9 +13,11 @@ describe('Blog', () => {
    */
   describe('#constructor()', () => {
     it('should initialize the existing properties', () => {
-      let blog = new Blog({charset: 'UTF-8', language: 'en', url: 'https://github.com/cedx/akismet.js'});
+      let blog = new Blog({charset: 'UTF-8', languages: 'en, fr', url: 'https://github.com/cedx/akismet.js'});
       assert.equal(blog.charset, 'UTF-8');
-      assert.equal(blog.language, 'en');
+      assert.equal(blog.languages.length, 2);
+      assert.equal(blog.languages[0], 'en');
+      assert.equal(blog.languages[1], 'fr');
       assert.equal(blog.url, 'https://github.com/cedx/akismet.js');
     });
 
@@ -35,7 +37,7 @@ describe('Blog', () => {
     it('should return an empty instance with an empty JSON object', () => {
       let blog = Blog.fromJSON({});
       assert.equal(blog.charset.length, 0);
-      assert.equal(blog.language.length, 0);
+      assert.equal(blog.languages.length, 0);
       assert.equal(blog.url.length, 0);
     });
 
@@ -43,11 +45,13 @@ describe('Blog', () => {
       let blog = Blog.fromJSON({
         blog: 'https://github.com/cedx/akismet.js',
         blog_charset: 'UTF-8',
-        blog_lang: 'en'
+        blog_lang: 'en, fr'
       });
 
       assert.equal(blog.charset, 'UTF-8');
-      assert.equal(blog.language, 'en');
+      assert.equal(blog.languages.length, 2);
+      assert.equal(blog.languages[0], 'en');
+      assert.equal(blog.languages[1], 'fr');
       assert.equal(blog.url, 'https://github.com/cedx/akismet.js');
     });
   });
@@ -63,13 +67,14 @@ describe('Blog', () => {
     it('should return a non-empty JSON object with a initialized instance', () => {
       let data = new Blog({
         charset: 'UTF-8',
-        language: 'en',
+        languages: 'en, fr',
         url: 'https://github.com/cedx/akismet.js'
       }).toJSON();
 
+      assert.equal(Object.keys(new Blog().toJson()).length, 3);
       assert.equal(data.blog, 'https://github.com/cedx/akismet.js');
       assert.equal(data.blog_charset, 'UTF-8');
-      assert.equal(data.blog_lang, 'en');
+      assert.equal(data.blog_lang, 'en,fr');
     });
   });
 });
