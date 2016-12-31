@@ -140,7 +140,7 @@ describe('Client', function() {
       assert.equal(data.blog, 'Blog');
       assert.ok(data.isTest);
 
-      let version = `Node.js/${process.version}`;
+      let version = `Node.js/${process.version.substr(1)}`;
       assert.equal(data.userAgent.substr(0, version.length), version);
     });
   });

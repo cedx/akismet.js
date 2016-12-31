@@ -71,7 +71,7 @@ describe('Blog', () => {
         url: 'https://github.com/cedx/akismet.js'
       }).toJSON();
 
-      assert.equal(Object.keys(new Blog().toJson()).length, 3);
+      assert.equal(Object.keys(new Blog().toJSON()).length, 3);
       assert.equal(data.blog, 'https://github.com/cedx/akismet.js');
       assert.equal(data.blog_charset, 'UTF-8');
       assert.equal(data.blog_lang, 'en,fr');
