@@ -4,10 +4,10 @@
 Prevent comment spam using [Akismet](https://akismet.com) service, in [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript).
 
 ## Features
-- [Key Verification](https://akismet.com/development/api/#verify-key): checks an Akismet API key and gets a value indicating whether it is valid.
-- [Comment Check](https://akismet.com/development/api/#comment-check): checks a comment and gets a value indicating whether it is spam.
-- [Submit Spam](https://akismet.com/development/api/#submit-spam): submits a comment that was not marked as spam but should have been.
-- [Submit Ham](https://akismet.com/development/api/#submit-ham): submits a comment that was incorrectly marked as spam but should not have been.
+- [Key verification](https://akismet.com/development/api/#verify-key): checks an Akismet API key and gets a value indicating whether it is valid.
+- [Comment check](https://akismet.com/development/api/#comment-check): checks a comment and gets a value indicating whether it is spam.
+- [Submit spam](https://akismet.com/development/api/#submit-spam): submits a comment that was not marked as spam but should have been.
+- [Submit ham](https://akismet.com/development/api/#submit-ham): submits a comment that was incorrectly marked as spam but should not have been.
 
 ## Requirements
 The latest [Node.js](https://nodejs.org) and [npm](https://www.npmjs.com) versions.
@@ -23,7 +23,7 @@ $ npm install --save @cedx/akismet
 ## Usage
 This package has an API based on [Observables](http://reactivex.io/intro.html).
 
-### Key Verification
+### Key verification
 
 ```javascript
 const {Client} = require('@cedx/akismet');
@@ -38,7 +38,7 @@ client.verifyKey().subscribe(isValid =>
 );
 ```
 
-### Comment Check
+### Comment check
 
 ```javascript
 const {Author, Comment} = require('@cedx/akismet');
@@ -53,7 +53,7 @@ client.checkComment(comment).subscribe(isSpam =>
 );
 ```
 
-### Submit Spam/Ham
+### Submit spam/ham
 
 ```javascript
 client.submitSpam(comment).subscribe(() =>
@@ -71,15 +71,15 @@ The `Client` class triggers some events during its life cycle:
 - `request` : emitted every time a request is made to the remote service.
 - `response` : emitted every time a response is received from the remote service.
 
-These events are exposed as `Observables`, you can subscribe to them using the `on<EventName>` properties:
+These events are exposed as `Observable`, you can subscribe to them using the `on<EventName>` properties:
 
 ```javascript
 client.onRequest.subscribe(
-  req => console.log(`Client request: ${JSON.stringify(req)}`)
+  request => console.log(`Client request: ${request.url}`)
 );
 
 client.onResponse.subscribe(
-  res => console.log(`Server response: ${JSON.stringify(res)}`)
+  response => console.log(`Server response: ${response.statusCode}`)
 );
 ```
 

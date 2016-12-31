@@ -1,6 +1,13 @@
 # Changelog
 This file contains highlights of what changes on each version of the [Akismet for JS](https://github.com/cedx/akismet.js) library.
 
+## Version 4.0.0
+- Breaking change: changed the `Blog.language` string property for the `languages` array property.
+- Breaking change: reverted the `Client.test` property to `isTest`.
+- Removed the `v` prefix from the Node.js version number in the `Client.userAgent` property.
+- Removed the `dist` build task.
+- Updated the package dependencies.
+
 ## Version 3.4.0
 - Replaced the [Codacy](https://www.codacy.com) code coverage service by the [Coveralls](https://coveralls.io) one.
 - Updated the package dependencies.
