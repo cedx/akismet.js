@@ -5,16 +5,6 @@ const del = require('del');
 const gulp = require('gulp');
 const loadPlugins = require('gulp-load-plugins');
 const path = require('path');
-const pkg = require('./package.json');
-
-/**
- * The task settings.
- * @type {object}
- */
-const config = {
-  output: `${pkg.name}-${pkg.version}.zip`,
-  sources: ['*.json', '*.md', '*.txt', 'lib/**/*.js']
-};
 
 /**
  * The task plugins.
@@ -52,9 +42,7 @@ gulp.task('check', () => {
 /**
  * Deletes all generated files and reset any saved state.
  */
-gulp.task('clean', () =>
-  del('var/**/*')
-);
+gulp.task('clean', () => del('var/**/*'));
 
 /**
  * Sends the results of the code coverage.
