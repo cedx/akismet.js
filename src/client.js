@@ -57,7 +57,7 @@ export class Client {
      * If possible, the user agent string should always have the following format: `Application Name/Version | Plugin Name/Version`.
      * @type {string}
      */
-    this.userAgent = typeof options.userAgent == 'string' ? options.userAgent : `Node.js/${process.version} | Akismet/${pkg.version}`;
+    this.userAgent = typeof options.userAgent == 'string' ? options.userAgent : `Node.js/${process.version.substr(1)} | Akismet/${pkg.version}`;
 
     /**
      * The handler of "request" events.
@@ -133,23 +133,23 @@ export class Client {
   /**
    * Queries the service by posting the specified fields to a given end point, and returns the response as a string.
    * @param {string} endPoint The URL of the end point to query.
-   * @param {object} params The fields describing the query body.
+   * @param {object} fields The fields describing the query body.
    * @return {Observable<string>} The response as string.
    * @throws {Error} The API key or blog URL is empty.
    * @emits {superagent.Request} The "request" event.
    * @emits {superagent.Response} The "response" event.
    */
-  _fetch(endPoint, params) {
+  _fetch(endPoint, fields) {
     if (!this.apiKey.length || !this.blog) return Observable.throw(new Error('The API key or the blog URL is empty.'));
 
-    let bodyParams = Object.assign(this.blog.toJSON(), params);
-    if (this.isTest) bodyParams.is_test = '1';
+    let bodyFields = Object.assign(this.blog.toJSON(), fields);
+    if (this.isTest) bodyFields.is_test = '1';
 
     return Observable.create(observer => {
       let req = superagent.post(endPoint)
         .type('form')
         .set('User-Agent', this.userAgent)
-        .send(bodyParams);
+        .send(bodyFields);
 
       this._onRequest.next(req);
       req.end((err, res) => {
