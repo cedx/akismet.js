@@ -66,14 +66,6 @@ gulp.task('coverage', ['test'], () => {
 });
 
 /**
- * Creates a distribution file for this program.
- */
-gulp.task('dist', ['default'], () => gulp.src(config.sources, {base: '.'})
-  .pipe(plugins.zip(config.output))
-  .pipe(gulp.dest('var'))
-);
-
-/**
  * Builds the documentation.
  */
 gulp.task('doc', () => {
