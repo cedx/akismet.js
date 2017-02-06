@@ -30,7 +30,7 @@ describe('Blog', () => {
    * @test {Blog.fromJSON}
    */
   describe('.fromJSON()', () => {
-    it('should return a null reference with a non-object JSON string', () => {
+    it('should return a null reference with a non-object value', () => {
       assert.strictEqual(Blog.fromJSON('foo'), null);
     });
 

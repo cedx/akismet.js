@@ -28,7 +28,7 @@ describe('Author', () => {
    * @test {Author.fromJSON}
    */
   describe('.fromJSON()', () => {
-    it('should return a null reference with a non-object JSON string', () => {
+    it('should return a null reference with a non-object value', () => {
       assert.strictEqual(Author.fromJSON('foo'), null);
     });
 
