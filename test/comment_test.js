@@ -9,22 +9,6 @@ import {Author, Comment, CommentType} from '../src/index';
 describe('Comment', () => {
 
   /**
-   * @test {Comment#constructor}
-   */
-  describe('#constructor()', () => {
-    it('should initialize the existing properties', () => {
-      let comment = new Comment({content: 'Hello World!', date: Date.now(), referrer: 'https://github.com/cedx/akismet.js'});
-      assert.equal(comment.content, 'Hello World!');
-      assert.ok(comment.date instanceof Date);
-      assert.equal(comment.referrer, 'https://github.com/cedx/akismet.js');
-    });
-
-    it('should not create new properties', () => {
-      assert.ok(!('foo' in new Comment({foo: 'bar'})));
-    });
-  });
-
-  /**
    * @test {Comment.fromJSON}
    */
   describe('.fromJSON()', () => {
@@ -71,17 +55,41 @@ describe('Comment', () => {
       let author = new Author();
       author.name = 'Cédric Belin';
 
-      let data = new Comment({
-        author,
-        content: 'A user comment.',
-        referrer: 'https://belin.io',
-        type: CommentType.PINGBACK
-      }).toJSON();
+      let comment = new Comment(author, 'A user comment.', CommentType.PINGBACK);
+      comment.date = new Date('2000-01-01T00:00:00.000Z');
+      comment.referrer = 'https://belin.io';
 
+      let data = comment.toJSON();
       assert.equal(data.comment_author, 'Cédric Belin');
       assert.equal(data.comment_content, 'A user comment.');
+      assert.equal(data.comment_date_gmt, '2000-01-01T00:00:00.000Z');
       assert.equal(data.comment_type, 'pingback');
       assert.equal(data.referrer, 'https://belin.io');
+    });
+  });
+
+  /**
+   * @test {Comment#toString}
+   */
+  describe('#toString()', () => {
+    let author = new Author();
+    author.name = 'Cédric Belin';
+
+    let comment = new Comment(author, 'A user comment.', CommentType.PINGBACK);
+    comment.date = new Date('2000-01-01T00:00:00.000Z');
+    comment.referrer = 'https://belin.io';
+
+    let data = String(comment);
+    it('should start with the constructor name', () => {
+      assert.equal(data.indexOf('Comment {'), 0);
+    });
+
+    it('should contain the instance properties', () => {
+      assert.ok(data.includes('"comment_author":"Cédric Belin"'));
+      assert.ok(data.includes('"comment_content":"A user comment."'));
+      assert.ok(data.includes('"comment_type":"pingback"'));
+      assert.ok(data.includes('"comment_date_gmt":"2000-01-01T00:00:00.000Z"'));
+      assert.ok(data.includes('"referrer":"https://belin.io"'));
     });
   });
 });

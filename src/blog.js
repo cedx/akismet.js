@@ -6,20 +6,22 @@ export class Blog {
   /**
    * Initializes a new instance of the class.
    * @param {string} [url] The blog or site URL.
+   * @param {string} [charset] he character encoding for the values included in comments.
+   * @param {string[]} [languages] The languages in use on the blog or site, in ISO 639-1 format.
    */
-  constructor(url = '') {
+  constructor(url = '', charset = '', languages = []) {
 
     /**
      * The character encoding for the values included in comments.
      * @type {string}
      */
-    this.charset = '';
+    this.charset = charset;
 
     /**
      * The languages in use on the blog or site, in ISO 639-1 format.
      * @type {string[]}
      */
-    this.languages = [];
+    this.languages = languages;
 
     /**
      * The blog or site URL.

@@ -8,63 +8,54 @@ export class Comment {
 
   /**
    * Initializes a new instance of the class.
-   * @param {object} [options] An object specifying values used to initialize this instance.
+   * @param {Author} [author] The comment's author.
+   * @param {string} [content] The comment's content.
+   * @param {string} [type] The comment's type.
    */
-  constructor(options = {}) {
+  constructor(author = null, content = '', type = '') {
 
     /**
      * The comment's author.
      * @type {Author}
      */
-    this.author = null;
-    if (options.author instanceof Author) this.author = options.author;
+    this.author = author;
 
     /**
      * The comment's content.
      * @type {string}
      */
-    this.content = typeof options.content == 'string' ? options.content : '';
+    this.content = content;
 
     /**
      * The UTC timestamp of the creation of the comment.
      * @type {Date}
      */
     this.date = null;
-    if (options.date instanceof Date) this.date = options.date;
-    else {
-      let type = typeof options.date;
-      if (type == 'number' || type == 'string') this.date = new Date(options.date);
-    }
 
     /**
      * The permanent location of the entry the comment is submitted to.
      * @type {string}
      */
-    this.permalink = typeof options.permalink == 'string' ? options.permalink : '';
+    this.permalink = '';
 
     /**
      * The UTC timestamp of the publication time for the post, page or thread on which the comment was posted.
      * @type {Date}
      */
     this.postModified = null;
-    if (options.postModified instanceof Date) this.postModified = options.postModified;
-    else {
-      let type = typeof options.postModified;
-      if (type == 'number' || type == 'string') this.postModified = new Date(options.postModified);
-    }
 
     /**
      * The URL of the webpage that linked to the entry being requested.
      * @type {string}
      */
-    this.referrer = typeof options.referrer == 'string' ? options.referrer : '';
+    this.referrer = '';
 
     /**
      * The comment's type.
      * This string value specifies a `CommentType` constant or a made up value like `"registration"`.
      * @type {string}
      */
-    this.type = typeof options.type == 'string' ? options.type : '';
+    this.type = type;
   }
 
   /**
@@ -79,15 +70,14 @@ export class Comment {
       .filter(key => /^comment_author/.test(key) || /^user/.test(key))
       .length > 0;
 
-    return new Comment({
-      author: hasAuthor ? Author.fromJSON(map) : null,
-      content: map.comment_content,
-      date: map.comment_date_gmt,
-      permalink: map.permalink,
-      postModified: map.comment_post_modified_gmt,
-      referrer: map.referrer,
-      type: map.comment_type
-    });
+    let comment = new Comment(hasAuthor ? Author.fromJSON(map) : null);
+    comment.content = typeof map.comment_content == 'string' ? map.comment_content : '';
+    comment.date = typeof map.comment_date_gmt == 'string' ? new Date(map.comment_date_gmt) : null;
+    comment.permalink = typeof map.permalink == 'string' ? map.permalink : '';
+    comment.postModified = typeof map.comment_post_modified_gmt == 'string' ? new Date(map.comment_post_modified_gmt) : null;
+    comment.referrer = typeof map.referrer == 'string' ? map.referrer : '';
+    comment.type = typeof map.comment_type == 'string' ? map.comment_type : '';
+    return comment;
   }
 
   /**

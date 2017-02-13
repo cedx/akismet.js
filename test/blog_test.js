@@ -47,11 +47,7 @@ describe('Blog', () => {
     });
 
     it('should return a non-empty JSON object with a initialized instance', () => {
-      let blog = new Blog('https://github.com/cedx/akismet.js');
-      blog.charset = 'UTF-8';
-      blog.languages = ['en', 'fr'];
-
-      let data = blog.toJSON();
+      let data = new Blog('https://github.com/cedx/akismet.js', 'UTF-8', ['en', 'fr']).toJSON();
       assert.equal(Object.keys(data).length, 3);
       assert.equal(data.blog, 'https://github.com/cedx/akismet.js');
       assert.equal(data.blog_charset, 'UTF-8');
@@ -63,11 +59,8 @@ describe('Blog', () => {
    * @test {Blog#toString}
    */
   describe('#toString()', () => {
-    let blog = new Blog('https://github.com/cedx/akismet.js');
-    blog.charset = 'UTF-8';
-    blog.languages = ['en', 'fr'];
+    let data = String(new Blog('https://github.com/cedx/akismet.js', 'UTF-8', ['en', 'fr']));
 
-    let data = String(blog);
     it('should start with the constructor name', () => {
       assert.equal(data.indexOf('Blog {'), 0);
     });
