@@ -106,6 +106,24 @@ describe('Client', function() {
   });
 
   /**
+   * @test {Client#toString}
+   */
+  describe('#toString()', () => {
+    let data = String(_client);
+
+    it('should start with the constructor name', () => {
+      assert.equal(data.indexOf('Client {'), 0);
+    });
+
+    it('should contain the instance properties', () => {
+      assert.ok(data.includes('"apiKey":"'));
+      assert.ok(data.includes('"blog":{'));
+      assert.ok(data.includes('"isTest":true'));
+      assert.ok(data.includes('"userAgent":"Node.js/'));
+    });
+  });
+
+  /**
    * @test {Client#verifyKey}
    */
   describe('#verifyKey()', () => {
