@@ -68,8 +68,11 @@ describe('Comment', () => {
     });
 
     it('should return a non-empty JSON object with a initialized instance', () => {
+      let author = new Author();
+      author.name = 'Cédric Belin';
+
       let data = new Comment({
-        author: new Author({name: 'Cédric Belin'}),
+        author,
         content: 'A user comment.',
         referrer: 'https://belin.io',
         type: CommentType.PINGBACK

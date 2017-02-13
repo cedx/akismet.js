@@ -9,22 +9,6 @@ import {Author} from '../src/index';
 describe('Author', () => {
 
   /**
-   * @test {Author#constructor}
-   */
-  describe('#constructor()', () => {
-    it('should initialize the existing properties', () => {
-      let author = new Author({email: 'cedric@belin.io', ipAddress: '192.168.0.1', name: 'Cédric Belin'});
-      assert.equal(author.email, 'cedric@belin.io');
-      assert.equal(author.ipAddress, '192.168.0.1');
-      assert.equal(author.name, 'Cédric Belin');
-    });
-
-    it('should not create new properties', () => {
-      assert.ok(!('foo' in new Author({foo: 'bar'})));
-    });
-  });
-
-  /**
    * @test {Author.fromJSON}
    */
   describe('.fromJSON()', () => {
@@ -58,13 +42,12 @@ describe('Author', () => {
     });
 
     it('should return a non-empty JSON object with a initialized instance', () => {
-      let data = new Author({
-        email: 'cedric@belin.io',
-        ipAddress: '127.0.0.1',
-        name: 'Cédric Belin',
-        url: 'https://belin.io'
-      }).toJSON();
+      let author = new Author('127.0.0.1');
+      author.email = 'cedric@belin.io';
+      author.name = 'Cédric Belin';
+      author.url = 'https://belin.io';
 
+      let data = author.toJSON();
       assert.equal(data.comment_author, 'Cédric Belin');
       assert.equal(data.comment_author_email, 'cedric@belin.io');
       assert.equal(data.comment_author_url, 'https://belin.io');

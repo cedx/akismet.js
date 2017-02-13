@@ -5,51 +5,37 @@ import {Author, Blog, Client, Comment, CommentType} from '../src/index';
 import {Observable, Subject} from 'rxjs';
 
 /**
- * The client used to query the service database.
- * @type {Client}
- */
-let _client = new Client({
-  apiKey: process.env.AKISMET_API_KEY,
-  blog: 'https://github.com/cedx/akismet.js',
-  isTest: true
-});
-
-/**
- * A comment with content marked as ham.
- * @type {Comment}
- */
-let _ham = new Comment({
-  author: new Author({
-    ipAddress: '192.168.0.1',
-    name: 'Akismet',
-    role: 'administrator',
-    url: 'https://github.com/cedx/akismet.js',
-    userAgent: 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0'
-  }),
-  content: 'I\'m testing out the Service API.',
-  referrer: 'https://www.npmjs.com/package/@cedx/akismet',
-  type: CommentType.COMMENT
-});
-
-/**
- * A comment with content marked as spam.
- * @type {Comment}
- */
-let _spam = new Comment({
-  author: new Author({
-    ipAddress: '127.0.0.1',
-    name: 'viagra-test-123',
-    userAgent: 'Spam Bot/6.6.6'
-  }),
-  content: 'Spam!',
-  type: CommentType.TRACKBACK
-});
-
-/**
  * @test {Client}
  */
 describe('Client', function() {
   this.timeout(15000);
+
+  let _client = new Client({
+    apiKey: process.env.AKISMET_API_KEY,
+    blog: 'https://github.com/cedx/akismet.js',
+    isTest: true
+  });
+
+  let author = new Author('192.168.0.1', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0');
+  author.name = 'Akismet';
+  author.role = 'administrator';
+  author.url = 'https://github.com/cedx/akismet.js';
+
+  let ham = new Comment({
+    author,
+    content: 'I\'m testing out the Service API.',
+    referrer: 'https://www.npmjs.com/package/@cedx/akismet',
+    type: CommentType.COMMENT
+  });
+
+  author = new Author('127.0.0.1', 'Spam Bot/6.6.6');
+  author.name = 'viagra-test-123';
+
+  let spam = new Comment({
+    author,
+    content: 'Spam!',
+    type: CommentType.TRACKBACK
+  });
 
   /**
    * @test {Client#constructor}
@@ -74,11 +60,11 @@ describe('Client', function() {
    */
   describe('#checkComment()', () => {
     it('should return `false` for valid comment (e.g. ham)' , done => {
-      _client.checkComment(_ham).subscribe(res => assert.equal(res, false), done, done);
+      _client.checkComment(ham).subscribe(res => assert.equal(res, false), done, done);
     });
 
     it('should return `true` for invalid comment (e.g. spam)' , done => {
-      _client.checkComment(_spam).subscribe(res => assert.equal(res, true), done, done);
+      _client.checkComment(spam).subscribe(res => assert.equal(res, true), done, done);
     });
   });
 
@@ -109,7 +95,7 @@ describe('Client', function() {
    */
   describe('#submitHam()', () => {
     it('should complete without error' , done => {
-      _client.submitHam(_ham).subscribe(null, done, done);
+      _client.submitHam(ham).subscribe(null, done, done);
     });
   });
 
@@ -118,7 +104,7 @@ describe('Client', function() {
    */
   describe('#submitSpam()', () => {
     it('should complete without error' , done => {
-      _client.submitSpam(_spam).subscribe(null, done, done);
+      _client.submitSpam(spam).subscribe(null, done, done);
     });
   });
 

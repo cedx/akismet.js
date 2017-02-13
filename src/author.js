@@ -5,46 +5,47 @@ export class Author {
 
   /**
    * Initializes a new instance of the class.
-   * @param {object} [options] An object specifying values used to initialize this instance.
+   * @param {string} [ipAddress] The author's IP address.
+   * @param {string} [userAgent] The author's user agent.
    */
-  constructor(options = {}) {
+  constructor(ipAddress = '', userAgent = '') {
 
     /**
      * The author's mail address.
      * @type {string}
      */
-    this.email = typeof options.email == 'string' ? options.email : '';
+    this.email = '';
 
     /**
      * The author's IP address.
      * @type {string}
      */
-    this.ipAddress = typeof options.ipAddress == 'string' ? options.ipAddress : '';
+    this.ipAddress = ipAddress;
 
     /**
      * The author's name.
      * @type {string}
      */
-    this.name = typeof options.name == 'string' ? options.name : '';
+    this.name = '';
 
     /**
      * The role of the author.
      * If you set it to `"administrator"`, Akismet will always return `false`.
      * @type {string}
      */
-    this.role = typeof options.role == 'string' ? options.role : '';
+    this.role = '';
 
     /**
      * The URL of the author's website.
      * @type {string}
      */
-    this.url = typeof options.url == 'string' ? options.url : '';
+    this.url = '';
 
     /**
      * The author's user agent, that is the string identifying the Web browser used to submit comments.
      * @type {string}
      */
-    this.userAgent = typeof options.userAgent == 'string' ? options.userAgent : '';
+    this.userAgent = userAgent;
   }
 
   /**
@@ -53,14 +54,16 @@ export class Author {
    * @return {Author} The instance corresponding to the specified JSON map, or `null` if a parsing error occurred.
    */
   static fromJSON(map) {
-    return !map || typeof map != 'object' ? null : new Author({
-      email: map.comment_author_email,
-      ipAddress: map.user_ip,
-      name: map.comment_author,
-      role: map.user_role,
-      url: map.comment_author_url,
-      userAgent: map.user_agent
-    });
+    if (!map || typeof map != 'object') return null;
+
+    let author = new Author();
+    author.email = typeof map.comment_author_email == 'string' ? map.comment_author_email : '';
+    author.ipAddress = typeof map.user_ip == 'string' ? map.user_ip : '';
+    author.name = typeof map.comment_author == 'string' ? map.comment_author : '';
+    author.role = typeof map.user_role == 'string' ? map.user_role : '';
+    author.url = typeof map.comment_author_url == 'string' ? map.comment_author_url : '';
+    author.userAgent = typeof map.user_agent == 'string' ? map.user_agent : '';
+    return author;
   }
 
   /**

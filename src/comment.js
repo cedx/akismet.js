@@ -18,7 +18,6 @@ export class Comment {
      */
     this.author = null;
     if (options.author instanceof Author) this.author = options.author;
-    else if (typeof options.author == 'string') this.author = new Author({name: options.author});
 
     /**
      * The comment's content.
