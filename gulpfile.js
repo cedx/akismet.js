@@ -1,6 +1,6 @@
 'use strict';
 
-const childProcess = require('child_process');
+const child_process = require('child_process');
 const del = require('del');
 const gulp = require('gulp');
 const loadPlugins = require('gulp-load-plugins');
@@ -48,9 +48,8 @@ gulp.task('clean', () => del('var/**/*'));
  * Sends the results of the code coverage.
  */
 gulp.task('coverage', ['test'], () => {
-  let command = process.platform == 'win32' ? 'type' : 'cat';
   let executable = path.join('node_modules/.bin', process.platform == 'win32' ? 'coveralls.cmd' : 'coveralls');
-  return _exec(`${command} var/lcov.info | ${executable}`);
+  return _exec(`${executable} --file=var/lcov.info`);
 });
 
 /**
@@ -108,7 +107,7 @@ gulp.task('test:setup', ['test:env'], () => new Promise(resolve => {
  * @return {Promise<string>} The command output when it is finally terminated.
  */
 function _exec(command, options = {}) {
-  return new Promise((resolve, reject) => childProcess.exec(command, options, (err, stdout) => {
+  return new Promise((resolve, reject) => child_process.exec(command, options, (err, stdout) => {
     if (err) reject(err);
     else resolve(stdout.trim());
   }));
