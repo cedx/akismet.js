@@ -1,6 +1,10 @@
 # Changelog
 This file contains highlights of what changes on each version of the [Akismet for JS](https://github.com/cedx/akismet.js) library.
 
+## Version 5.0.0
+- Breaking change: changed the signature of all constructors.
+- Updated the package dependencies.
+
 ## Version 4.0.0
 - Breaking change: changed the `Blog.language` string property for the `languages` array property.
 - Breaking change: reverted the `Client.test` property to `isTest`.

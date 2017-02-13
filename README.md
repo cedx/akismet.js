@@ -21,7 +21,6 @@ $ npm install --save @cedx/akismet
 ```
 
 ## Usage
-This package has an API based on [Observables](http://reactivex.io/intro.html).
 
 ### Key verification
 
@@ -44,7 +43,7 @@ client.verifyKey().subscribe(isValid =>
 const {Author, Comment} = require('@cedx/akismet');
 
 let comment = new Comment({
-  author: new Author({ipAddress: '127.0.0.1', userAgent: 'Mozilla/5.0'}),
+  author: new Author('127.0.0.1', 'Mozilla/5.0'),
   content: 'A comment.'
 });
 
