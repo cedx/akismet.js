@@ -117,7 +117,7 @@ describe('Client', function() {
 
     it('should contain the instance properties', () => {
       assert.ok(data.includes('"apiKey":"'));
-      assert.ok(data.includes('"blog":{'));
+      assert.ok(data.includes('"blog":"Blog"'));
       assert.ok(data.includes('"isTest":true'));
       assert.ok(data.includes('"userAgent":"Node.js/'));
     });
