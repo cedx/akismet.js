@@ -27,12 +27,8 @@ $ npm install --save @cedx/akismet
 ```javascript
 const {Client} = require('@cedx/akismet');
 
-let client = new Client({
-  apiKey: 'YourAPIKey',
-  blog: 'http://your.blog.url'
-});
-
-client.verifyKey().subscribe(isValid =>
+let client = new Client('YourAPIKey', 'http://your.blog.url');
+client.verifyKey().then(isValid =>
   console.log(isValid ? 'Your API key is valid.' : 'Your API key is invalid.')
 );
 ```
@@ -42,12 +38,12 @@ client.verifyKey().subscribe(isValid =>
 ```javascript
 const {Author, Comment} = require('@cedx/akismet');
 
-let comment = new Comment({
-  author: new Author('127.0.0.1', 'Mozilla/5.0'),
-  content: 'A comment.'
-});
+let comment = new Comment(
+  new Author('127.0.0.1', 'Mozilla/5.0'),
+  'A comment.'
+);
 
-client.checkComment(comment).subscribe(isSpam =>
+client.checkComment(comment).then(isSpam =>
   console.log(isSpam ? 'The comment is marked as spam.' : 'The comment is marked as ham.')
 );
 ```
@@ -55,12 +51,14 @@ client.checkComment(comment).subscribe(isSpam =>
 ### Submit spam/ham
 
 ```javascript
-client.submitSpam(comment).subscribe(() =>
-  console.log('Spam submitted.')
+client.submitSpam(comment).then(
+  () => console.log('Spam submitted.'),
+  err => console.log('An error occurred.')
 );
 
-client.submitHam(comment).subscribe(() =>
-  console.log('Ham submitted.')
+client.submitHam(comment).then(
+  () => console.log('Ham submitted.'),
+  err => console.log('An error occurred.')
 );
 ```
 
@@ -70,7 +68,7 @@ The `Client` class triggers some events during its life cycle:
 - `request` : emitted every time a request is made to the remote service.
 - `response` : emitted every time a response is received from the remote service.
 
-These events are exposed as `Observable`, you can subscribe to them using the `on<EventName>` properties:
+These events are exposed as [Observables](http://reactivex.io/intro.html), you can subscribe to them using the `on<EventName>` properties:
 
 ```javascript
 client.onRequest.subscribe(
@@ -79,16 +77,6 @@ client.onRequest.subscribe(
 
 client.onResponse.subscribe(
   response => console.log(`Server response: ${response.statusCode}`)
-);
-```
-
-## Promise support
-If you require it, an `Observable` can be converted to a [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) by using the `toPromise()` method:
-
-```javascript
-let promise = client.checkComment(comment).toPromise();
-promise.then(isSpam =>
-  console.log(isSpam ? 'The comment is marked as spam.' : 'The comment is marked as ham.')
 );
 ```
 

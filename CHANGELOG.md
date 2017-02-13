@@ -3,6 +3,9 @@ This file contains highlights of what changes on each version of the [Akismet fo
 
 ## Version 5.0.0
 - Breaking change: changed the signature of all constructors.
+- Breaking change: changed the return type of several `Client` methods.
+- Breaking change: renamed the `Client.SERVICE_URL` constant to `DEFAULT_ENDPOINT`.
+- Added the `Client.endPoint` property.
 - Updated the package dependencies.
 
 ## Version 4.0.0
