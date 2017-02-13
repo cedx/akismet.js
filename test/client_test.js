@@ -1,7 +1,7 @@
 'use strict';
 
 import assert from 'assert';
-import {Author, Blog, Client, Comment, CommentType} from '../src/index';
+import {Author, Client, Comment, CommentType} from '../src/index';
 import {Observable, Subject} from 'rxjs';
 
 /**
@@ -10,62 +10,33 @@ import {Observable, Subject} from 'rxjs';
 describe('Client', function() {
   this.timeout(15000);
 
-  let _client = new Client({
-    apiKey: process.env.AKISMET_API_KEY,
-    blog: 'https://github.com/cedx/akismet.js',
-    isTest: true
-  });
+  let _client = new Client(process.env.AKISMET_API_KEY, 'https://github.com/cedx/akismet.js');
+  _client.isTest = true;
 
   let author = new Author('192.168.0.1', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0');
   author.name = 'Akismet';
   author.role = 'administrator';
   author.url = 'https://github.com/cedx/akismet.js';
 
-  let ham = new Comment({
-    author,
-    content: 'I\'m testing out the Service API.',
-    referrer: 'https://www.npmjs.com/package/@cedx/akismet',
-    type: CommentType.COMMENT
-  });
+  let ham = new Comment(author, 'I\'m testing out the Service API.', CommentType.COMMENT);
+  ham.referrer = 'https://www.npmjs.com/package/@cedx/akismet';
 
   author = new Author('127.0.0.1', 'Spam Bot/6.6.6');
   author.name = 'viagra-test-123';
 
-  let spam = new Comment({
-    author,
-    content: 'Spam!',
-    type: CommentType.TRACKBACK
-  });
-
-  /**
-   * @test {Client#constructor}
-   */
-  describe('#constructor()', () => {
-    it('should initialize the existing properties', () => {
-      let client = new Client({apiKey: '0123456789-ABCDEF', blog: 'https://github.com/cedx/akismet.js', userAgent: 'FooBar/6.6.6'});
-      assert.equal(client.apiKey, '0123456789-ABCDEF');
-      assert.equal(client.userAgent, 'FooBar/6.6.6');
-
-      assert.ok(client.blog instanceof Blog);
-      assert.equal(client.blog.url, 'https://github.com/cedx/akismet.js');
-    });
-
-    it('should not create new properties', () => {
-      assert.ok(!('foo' in new Client({foo: 'bar'})));
-    });
-  });
+  let spam = new Comment(author, 'Spam!', CommentType.TRACKBACK);
 
   /**
    * @test {Client#checkComment}
    */
   describe('#checkComment()', () => {
-    it('should return `false` for valid comment (e.g. ham)' , done => {
-      _client.checkComment(ham).subscribe(res => assert.equal(res, false), done, done);
-    });
+    it('should return `false` for valid comment (e.g. ham)' , () =>
+      _client.checkComment(ham).then(res => assert.equal(res, false))
+    );
 
-    it('should return `true` for invalid comment (e.g. spam)' , done => {
-      _client.checkComment(spam).subscribe(res => assert.equal(res, true), done, done);
-    });
+    it('should return `true` for invalid comment (e.g. spam)' , () =>
+      _client.checkComment(spam).then(res => assert.equal(res, true))
+    );
   });
 
   /**
@@ -94,18 +65,18 @@ describe('Client', function() {
    * @test {Client#submitHam}
    */
   describe('#submitHam()', () => {
-    it('should complete without error' , done => {
-      _client.submitHam(ham).subscribe(null, done, done);
-    });
+    it('should complete without error' , () =>
+      _client.submitHam(ham).then(() => assert.ok(true))
+    );
   });
 
   /**
    * @test {Client#submitSpam}
    */
   describe('#submitSpam()', () => {
-    it('should complete without error' , done => {
-      _client.submitSpam(spam).subscribe(null, done, done);
-    });
+    it('should complete without error' , () =>
+      _client.submitSpam(spam).then(() => assert.ok(true))
+    );
   });
 
   /**
@@ -113,7 +84,10 @@ describe('Client', function() {
    */
   describe('#toJSON()', () => {
     it('should return the right values for an incorrectly configured client' , () => {
-      let data = new Client({apiKey: '0123456789-ABCDEF', userAgent: 'FooBar/6.6.6'}).toJSON();
+      let client = new Client('0123456789-ABCDEF');
+      client.userAgent = 'FooBar/6.6.6';
+
+      let data = client.toJSON();
       assert.equal(data.apiKey, '0123456789-ABCDEF');
       assert.strictEqual(data.blog, null);
       assert.ok(!data.isTest);
@@ -135,13 +109,14 @@ describe('Client', function() {
    * @test {Client#verifyKey}
    */
   describe('#verifyKey()', () => {
-    it('should return `true` for a valid API key' , done => {
-      _client.verifyKey().subscribe(res => assert.equal(res, true), done, done);
-    });
+    it('should return `true` for a valid API key' , () =>
+      _client.verifyKey().then(res => assert.equal(res, true))
+    );
 
-    it('should return `false` for an invalid API key' , done => {
-      let client = new Client({apiKey: '0123456789-ABCDEF', blog: _client.blog, isTest: _client.isTest});
-      client.verifyKey().subscribe(res => assert.equal(res, false), done, done);
+    it('should return `false` for an invalid API key' , () => {
+      let client = new Client('0123456789-ABCDEF', _client.blog);
+      client.isTest = _client.isTest;
+      return client.verifyKey().then(res => assert.equal(res, false));
     });
   });
 });
