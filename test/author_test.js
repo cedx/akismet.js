@@ -54,4 +54,26 @@ describe('Author', () => {
       assert.equal(data.user_ip, '127.0.0.1');
     });
   });
+
+  /**
+   * @test {Author#toString}
+   */
+  describe('#toString()', () => {
+    let author = new Author('127.0.0.1');
+    author.email = 'cedric@belin.io';
+    author.name = 'Cédric Belin';
+    author.url = 'https://belin.io';
+
+    let data = String(author);
+    it('should start with the constructor name', () => {
+      assert.equal(data.indexOf('Author {'), 0);
+    });
+
+    it('should contain the instance properties', () => {
+      assert.ok(data.includes('"comment_author":"Cédric Belin"'));
+      assert.ok(data.includes('"comment_author_email":"cedric@belin.io"'));
+      assert.ok(data.includes('"comment_author_url":"https://belin.io"'));
+      assert.ok(data.includes('"user_ip":"127.0.0.1"'));
+    });
+  });
 });

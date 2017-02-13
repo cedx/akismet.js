@@ -56,9 +56,8 @@ export class Author {
   static fromJSON(map) {
     if (!map || typeof map != 'object') return null;
 
-    let author = new Author();
+    let author = new Author(typeof map.user_ip == 'string' ? map.user_ip : '');
     author.email = typeof map.comment_author_email == 'string' ? map.comment_author_email : '';
-    author.ipAddress = typeof map.user_ip == 'string' ? map.user_ip : '';
     author.name = typeof map.comment_author == 'string' ? map.comment_author : '';
     author.role = typeof map.user_role == 'string' ? map.user_role : '';
     author.url = typeof map.comment_author_url == 'string' ? map.comment_author_url : '';

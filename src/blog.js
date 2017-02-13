@@ -5,31 +5,27 @@ export class Blog {
 
   /**
    * Initializes a new instance of the class.
-   * @param {object} [options] An object specifying values used to initialize this instance.
+   * @param {string} [url] The blog or site URL.
    */
-  constructor(options = {}) {
+  constructor(url = '') {
 
     /**
      * The character encoding for the values included in comments.
      * @type {string}
      */
-    this.charset = typeof options.charset == 'string' ? options.charset : '';
+    this.charset = '';
 
     /**
      * The languages in use on the blog or site, in ISO 639-1 format.
      * @type {string[]}
      */
     this.languages = [];
-    if (Array.isArray(options.languages)) this.languages = options.languages;
-    else if (typeof options.languages == 'string') this.languages = options.languages.split(',')
-      .map(language => language.trim())
-      .filter(language => language.length > 0);
 
     /**
      * The blog or site URL.
      * @type {string}
      */
-    this.url = typeof options.url == 'string' ? options.url : '';
+    this.url = url;
   }
 
   /**
@@ -38,11 +34,12 @@ export class Blog {
    * @return {Blog} The instance corresponding to the specified JSON map, or `null` if a parsing error occurred.
    */
   static fromJSON(map) {
-    return !map || typeof map != 'object' ? null : new Blog({
-      charset: map.blog_charset,
-      languages: map.blog_lang,
-      url: map.blog
-    });
+    if (!map || typeof map != 'object') return null;
+
+    let blog = new Blog(typeof map.blog == 'string' ? map.blog : '');
+    blog.charset = typeof map.blog_charset == 'string' ? map.blog_charset : '';
+    blog.languages = typeof map.blog_lang == 'string' ? map.blog_lang.split(',').map(lang => lang.trim()).filter(lang => lang.length) : [];
+    return blog;
   }
 
   /**

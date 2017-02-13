@@ -9,24 +9,6 @@ import {Blog} from '../src/index';
 describe('Blog', () => {
 
   /**
-   * @test {Blog#constructor}
-   */
-  describe('#constructor()', () => {
-    it('should initialize the existing properties', () => {
-      let blog = new Blog({charset: 'UTF-8', languages: 'en, fr', url: 'https://github.com/cedx/akismet.js'});
-      assert.equal(blog.charset, 'UTF-8');
-      assert.equal(blog.languages.length, 2);
-      assert.equal(blog.languages[0], 'en');
-      assert.equal(blog.languages[1], 'fr');
-      assert.equal(blog.url, 'https://github.com/cedx/akismet.js');
-    });
-
-    it('should not create new properties', () => {
-      assert.ok(!('foo' in new Blog({foo: 'bar'})));
-    });
-  });
-
-  /**
    * @test {Blog.fromJSON}
    */
   describe('.fromJSON()', () => {
@@ -65,16 +47,35 @@ describe('Blog', () => {
     });
 
     it('should return a non-empty JSON object with a initialized instance', () => {
-      let data = new Blog({
-        charset: 'UTF-8',
-        languages: 'en, fr',
-        url: 'https://github.com/cedx/akismet.js'
-      }).toJSON();
+      let blog = new Blog('https://github.com/cedx/akismet.js');
+      blog.charset = 'UTF-8';
+      blog.languages = ['en', 'fr'];
 
+      let data = blog.toJSON();
       assert.equal(Object.keys(data).length, 3);
       assert.equal(data.blog, 'https://github.com/cedx/akismet.js');
       assert.equal(data.blog_charset, 'UTF-8');
       assert.equal(data.blog_lang, 'en,fr');
+    });
+  });
+
+  /**
+   * @test {Blog#toString}
+   */
+  describe('#toString()', () => {
+    let blog = new Blog('https://github.com/cedx/akismet.js');
+    blog.charset = 'UTF-8';
+    blog.languages = ['en', 'fr'];
+
+    let data = String(blog);
+    it('should start with the constructor name', () => {
+      assert.equal(data.indexOf('Blog {'), 0);
+    });
+
+    it('should contain the instance properties', () => {
+      assert.ok(data.includes('"blog":"https://github.com/cedx/akismet.js"'));
+      assert.ok(data.includes('"blog_charset":"UTF-8"'));
+      assert.ok(data.includes('"blog_lang":"en,fr"'));
     });
   });
 });
