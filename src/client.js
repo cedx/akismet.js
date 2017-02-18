@@ -18,7 +18,7 @@ export class Client {
   }
 
   /**
-   * The URL of the remote service.
+   * The URL of the default API end point.
    * @type {string}
    */
   static get DEFAULT_ENDPOINT() {
