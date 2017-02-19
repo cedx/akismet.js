@@ -171,6 +171,7 @@ export class Client {
     return {
       apiKey: this.apiKey,
       blog: this.blog ? this.blog.constructor.name : null,
+      endPoint: this.endPoint,
       isTest: this.isTest,
       userAgent: this.userAgent
     };
