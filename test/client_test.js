@@ -43,7 +43,7 @@ describe('Client', function() {
    * @test {Client#onRequest}
    */
   describe('#onRequest', () => {
-    it('should return an Observable instead of the underlying Subject', () => {
+    it('should return an `Observable` instead of the underlying `Subject`', () => {
       let stream = new Client().onRequest;
       assert.ok(stream instanceof Observable);
       assert.ok(!(stream instanceof Subject));
@@ -54,7 +54,7 @@ describe('Client', function() {
    * @test {Client#onResponse}
    */
   describe('#onResponse', () => {
-    it('should return an Observable instead of the underlying Subject', () => {
+    it('should return an `Observable` instead of the underlying `Subject`', () => {
       let stream = new Client().onResponse;
       assert.ok(stream instanceof Observable);
       assert.ok(!(stream instanceof Subject));
