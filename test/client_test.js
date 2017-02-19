@@ -85,11 +85,13 @@ describe('Client', function() {
   describe('#toJSON()', () => {
     it('should return the right values for an incorrectly configured client' , () => {
       let client = new Client('0123456789-ABCDEF');
+      client.endPoint = 'http://localhost';
       client.userAgent = 'FooBar/6.6.6';
 
       let data = client.toJSON();
       assert.equal(data.apiKey, '0123456789-ABCDEF');
       assert.strictEqual(data.blog, null);
+      assert.equal(data.endPoint, 'http://localhost');
       assert.ok(!data.isTest);
       assert.equal(data.userAgent, 'FooBar/6.6.6');
     });
@@ -98,10 +100,11 @@ describe('Client', function() {
       let data = _client.toJSON();
       assert.equal(data.apiKey, process.env.AKISMET_API_KEY);
       assert.equal(data.blog, 'Blog');
+      assert.equal(data.endPoint, Client.DEFAULT_ENDPOINT);
       assert.ok(data.isTest);
 
       let version = `Node.js/${process.version.substr(1)}`;
-      assert.equal(data.userAgent.substr(0, version.length), version);
+      assert.equal(data.userAgent.indexOf(version), 0);
     });
   });
 
@@ -111,13 +114,14 @@ describe('Client', function() {
   describe('#toString()', () => {
     let data = String(_client);
 
-    it('should start with the constructor name', () => {
+    it('should start with the class name', () => {
       assert.equal(data.indexOf('Client {'), 0);
     });
 
     it('should contain the instance properties', () => {
       assert.ok(data.includes('"apiKey":"'));
       assert.ok(data.includes('"blog":"Blog"'));
+      assert.ok(data.includes(`"endPoint":"${Client.DEFAULT_ENDPOINT}"`));
       assert.ok(data.includes('"isTest":true'));
       assert.ok(data.includes('"userAgent":"Node.js/'));
     });

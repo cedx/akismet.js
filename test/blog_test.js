@@ -16,14 +16,14 @@ describe('Blog', () => {
       assert.strictEqual(Blog.fromJSON('foo'), null);
     });
 
-    it('should return an empty instance with an empty JSON object', () => {
+    it('should return an empty instance with an empty map', () => {
       let blog = Blog.fromJSON({});
       assert.equal(blog.charset.length, 0);
       assert.equal(blog.languages.length, 0);
       assert.equal(blog.url.length, 0);
     });
 
-    it('should return an initialized instance with a non-empty JSON object', () => {
+    it('should return an initialized instance with a non-empty map', () => {
       let blog = Blog.fromJSON({
         blog: 'https://github.com/cedx/akismet.js',
         blog_charset: 'UTF-8',
@@ -42,11 +42,11 @@ describe('Blog', () => {
    * @test {Blog#toJSON}
    */
   describe('#toJSON()', () => {
-    it('should return an empty JSON object with a newly created instance', () => {
+    it('should return an empty map with a newly created instance', () => {
       assert.equal(Object.keys(new Blog().toJSON()).length, 0);
     });
 
-    it('should return a non-empty JSON object with a initialized instance', () => {
+    it('should return a non-empty map with a initialized instance', () => {
       let data = new Blog('https://github.com/cedx/akismet.js', 'UTF-8', ['en', 'fr']).toJSON();
       assert.equal(Object.keys(data).length, 3);
       assert.equal(data.blog, 'https://github.com/cedx/akismet.js');
@@ -61,7 +61,7 @@ describe('Blog', () => {
   describe('#toString()', () => {
     let data = String(new Blog('https://github.com/cedx/akismet.js', 'UTF-8', ['en', 'fr']));
 
-    it('should start with the constructor name', () => {
+    it('should start with the class name', () => {
       assert.equal(data.indexOf('Blog {'), 0);
     });
 

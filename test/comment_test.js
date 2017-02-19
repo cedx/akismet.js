@@ -16,7 +16,7 @@ describe('Comment', () => {
       assert.strictEqual(Comment.fromJSON('foo'), null);
     });
 
-    it('should return an empty instance with an empty JSON object', () => {
+    it('should return an empty instance with an empty map', () => {
       let comment = Comment.fromJSON({});
       assert.strictEqual(comment.author, null);
       assert.equal(comment.content.length, 0);
@@ -25,7 +25,7 @@ describe('Comment', () => {
       assert.equal(comment.type.length, 0);
     });
 
-    it('should return an initialized instance with a non-empty JSON object', () => {
+    it('should return an initialized instance with a non-empty map', () => {
       let comment = Comment.fromJSON({
         comment_author: 'Cédric Belin',
         comment_content: 'A user comment.',
@@ -47,11 +47,11 @@ describe('Comment', () => {
    * @test {Comment#toJSON}
    */
   describe('#toJSON()', () => {
-    it('should return an empty JSON object with a newly created instance', () => {
+    it('should return an empty map with a newly created instance', () => {
       assert.equal(Object.keys(new Comment().toJSON()).length, 0);
     });
 
-    it('should return a non-empty JSON object with a initialized instance', () => {
+    it('should return a non-empty map with a initialized instance', () => {
       let author = new Author();
       author.name = 'Cédric Belin';
 
@@ -80,7 +80,7 @@ describe('Comment', () => {
     comment.referrer = 'https://belin.io';
 
     let data = String(comment);
-    it('should start with the constructor name', () => {
+    it('should start with the class name', () => {
       assert.equal(data.indexOf('Comment {'), 0);
     });
 
