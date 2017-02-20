@@ -81,7 +81,7 @@ gulp.task('lint', () => gulp.src(['*.js', 'src/**/*.js', 'test/**/*.js'])
  * Runs the unit tests.
  */
 gulp.task('test', ['test:instrument'], () => gulp.src(['test/**/*.js'], {read: false})
-  .pipe(plugins.mocha())
+  .pipe(plugins.mocha({compilers: 'js:babel-register'}))
   .pipe(plugins.istanbul.writeReports({dir: 'var', reporters: ['lcovonly']}))
 );
 
