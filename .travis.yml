@@ -7,4 +7,6 @@ env: NODE_ENV="test"
 sudo: false
 
 script: npm test
-after_script: npm run coverage
+after_script:
+- cat var/lcov.info
+- npm run coverage
