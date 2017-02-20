@@ -8,5 +8,6 @@ sudo: false
 
 script: npm test
 after_script:
+- sleep 3
 - cat var/lcov.info
 - npm run coverage
