@@ -89,16 +89,10 @@ gulp.task('test:env', () =>
   'AKISMET_API_KEY' in process.env ? Promise.resolve() : Promise.reject(new Error('AKISMET_API_KEY environment variable not set.'))
 );
 
-gulp.task('test:instrument', ['test:setup'], () => gulp.src(['src/**/*.js'])
+gulp.task('test:instrument', ['test:env'], () => gulp.src(['src/**/*.js'])
   .pipe(plugins.istanbul({instrumenter: require('isparta').Instrumenter}))
   .pipe(plugins.istanbul.hookRequire())
 );
-
-gulp.task('test:setup', ['test:env'], () => new Promise(resolve => {
-  process.env.BABEL_DISABLE_CACHE = process.platform == 'win32' ? '1' : '0';
-  require('babel-register');
-  resolve();
-}));
 
 /**
  * Runs a command and returns its output.
