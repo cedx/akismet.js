@@ -42,8 +42,8 @@
     "validation"
   ],
   "scripts": {
-    "coverage": "coveralls --file=var/lcov.info",
+    "coverage": "coveralls --file=var/lcov",
     "prepublish": "gulp build",
-    "test": "gulp test"
+    "test": "nyc --report-dir=var --reporter=lcovonly mocha --compilers js:babel-register"
   }
 }
