@@ -7,7 +7,7 @@
   "bugs": "https://github.com/cedx/akismet.js/issues",
   "license": "Apache-2.0",
   "repository": "cedx/akismet.js",
-  "version": "5.0.0",
+  "version": "6.0.0",
 
   "jsnext:main": "./src/index",
   "main": "./lib/index",
@@ -44,6 +44,6 @@
   "scripts": {
     "coverage": "coveralls --file=var/lcov",
     "prepublish": "gulp build",
-    "test": "nyc --report-dir=var --reporter=lcovonly mocha --compilers js:babel-register"
+    "test": "nyc --report-dir=var --reporter=lcovonly mocha --compilers=js:babel-register"
   }
 }
