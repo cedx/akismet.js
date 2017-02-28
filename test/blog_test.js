@@ -1,6 +1,6 @@
 'use strict';
 
-import assert from 'assert';
+import {expect} from 'chai';
 import {Blog} from '../src/index';
 
 /**
@@ -13,14 +13,14 @@ describe('Blog', () => {
    */
   describe('.fromJSON()', () => {
     it('should return a null reference with a non-object value', () => {
-      assert.strictEqual(Blog.fromJSON('foo'), null);
+      expect(Blog.fromJSON('foo')).to.be.null;
     });
 
     it('should return an empty instance with an empty map', () => {
       let blog = Blog.fromJSON({});
-      assert.equal(blog.charset.length, 0);
-      assert.equal(blog.languages.length, 0);
-      assert.equal(blog.url.length, 0);
+      expect(blog.charset).to.be.empty;
+      expect(blog.languages).to.be.empty;
+      expect(blog.url).to.be.empty;
     });
 
     it('should return an initialized instance with a non-empty map', () => {
@@ -30,11 +30,11 @@ describe('Blog', () => {
         blog_lang: 'en, fr'
       });
 
-      assert.equal(blog.charset, 'UTF-8');
-      assert.equal(blog.languages.length, 2);
-      assert.equal(blog.languages[0], 'en');
-      assert.equal(blog.languages[1], 'fr');
-      assert.equal(blog.url, 'https://github.com/cedx/akismet.js');
+      expect(blog.charset).to.equal('UTF-8');
+      expect(blog.languages).to.have.lengthOf(2);
+      expect(blog.languages[0]).to.equal('en');
+      expect(blog.languages[1]).to.equal('fr');
+      expect(blog.url).to.equal('https://github.com/cedx/akismet.js');
     });
   });
 
@@ -43,15 +43,15 @@ describe('Blog', () => {
    */
   describe('#toJSON()', () => {
     it('should return an empty map with a newly created instance', () => {
-      assert.equal(Object.keys(new Blog().toJSON()).length, 0);
+      expect(Object.keys(new Blog().toJSON())).to.be.empty;
     });
 
     it('should return a non-empty map with a initialized instance', () => {
       let data = new Blog('https://github.com/cedx/akismet.js', 'UTF-8', ['en', 'fr']).toJSON();
-      assert.equal(Object.keys(data).length, 3);
-      assert.equal(data.blog, 'https://github.com/cedx/akismet.js');
-      assert.equal(data.blog_charset, 'UTF-8');
-      assert.equal(data.blog_lang, 'en,fr');
+      expect(Object.keys(data)).to.have.lengthOf(3);
+      expect(data.blog).to.equal('https://github.com/cedx/akismet.js');
+      expect(data.blog_charset).to.equal('UTF-8');
+      expect(data.blog_lang).to.equal('en,fr');
     });
   });
 
@@ -62,13 +62,13 @@ describe('Blog', () => {
     let data = String(new Blog('https://github.com/cedx/akismet.js', 'UTF-8', ['en', 'fr']));
 
     it('should start with the class name', () => {
-      assert.equal(data.indexOf('Blog {'), 0);
+      expect(data.indexOf('Blog {')).to.equal(0);
     });
 
     it('should contain the instance properties', () => {
-      assert.ok(data.includes('"blog":"https://github.com/cedx/akismet.js"'));
-      assert.ok(data.includes('"blog_charset":"UTF-8"'));
-      assert.ok(data.includes('"blog_lang":"en,fr"'));
+      expect(data).to.contain('"blog":"https://github.com/cedx/akismet.js"');
+      expect(data).to.contain('"blog_charset":"UTF-8"');
+      expect(data).to.contain('"blog_lang":"en,fr"');
     });
   });
 });

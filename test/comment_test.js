@@ -1,6 +1,6 @@
 'use strict';
 
-import assert from 'assert';
+import {expect} from 'chai';
 import {Author, Comment, CommentType} from '../src/index';
 
 /**
@@ -13,16 +13,16 @@ describe('Comment', () => {
    */
   describe('.fromJSON()', () => {
     it('should return a null reference with a non-object value', () => {
-      assert.strictEqual(Comment.fromJSON('foo'), null);
+      expect(Comment.fromJSON('foo')).to.be.null;
     });
 
     it('should return an empty instance with an empty map', () => {
       let comment = Comment.fromJSON({});
-      assert.strictEqual(comment.author, null);
-      assert.equal(comment.content.length, 0);
-      assert.strictEqual(comment.date, null);
-      assert.equal(comment.referrer.length, 0);
-      assert.equal(comment.type.length, 0);
+      expect(comment.author).to.be.null;
+      expect(comment.content).to.be.empty;
+      expect(comment.date).to.be.null;
+      expect(comment.referrer).to.be.empty;
+      expect(comment.type).to.be.empty;
     });
 
     it('should return an initialized instance with a non-empty map', () => {
@@ -34,12 +34,12 @@ describe('Comment', () => {
         referrer: 'https://belin.io'
       });
 
-      assert.ok(comment.author instanceof Author);
-      assert.equal(comment.author.name, 'Cédric Belin');
-      assert.equal(comment.content, 'A user comment.');
-      assert.ok(comment.date instanceof Date);
-      assert.equal(comment.referrer, 'https://belin.io');
-      assert.equal(comment.type, CommentType.TRACKBACK);
+      expect(comment.author).to.be.instanceof(Author);
+      expect(comment.author.name).to.equal('Cédric Belin');
+      expect(comment.content).to.equal('A user comment.');
+      expect(comment.date).to.be.instanceof(Date);
+      expect(comment.referrer).to.equal('https://belin.io');
+      expect(comment.type).to.equal(CommentType.TRACKBACK);
     });
   });
 
@@ -48,7 +48,7 @@ describe('Comment', () => {
    */
   describe('#toJSON()', () => {
     it('should return an empty map with a newly created instance', () => {
-      assert.equal(Object.keys(new Comment().toJSON()).length, 0);
+      expect(Object.keys(new Comment().toJSON())).to.be.empty;
     });
 
     it('should return a non-empty map with a initialized instance', () => {
@@ -60,11 +60,11 @@ describe('Comment', () => {
       comment.referrer = 'https://belin.io';
 
       let data = comment.toJSON();
-      assert.equal(data.comment_author, 'Cédric Belin');
-      assert.equal(data.comment_content, 'A user comment.');
-      assert.equal(data.comment_date_gmt, '2000-01-01T00:00:00.000Z');
-      assert.equal(data.comment_type, 'pingback');
-      assert.equal(data.referrer, 'https://belin.io');
+      expect(data.comment_author).to.equal('Cédric Belin');
+      expect(data.comment_content).to.equal('A user comment.');
+      expect(data.comment_date_gmt).to.equal('2000-01-01T00:00:00.000Z');
+      expect(data.comment_type).to.equal('pingback');
+      expect(data.referrer).to.equal('https://belin.io');
     });
   });
 
@@ -81,15 +81,15 @@ describe('Comment', () => {
 
     let data = String(comment);
     it('should start with the class name', () => {
-      assert.equal(data.indexOf('Comment {'), 0);
+      expect(data.indexOf('Comment {')).to.equal(0);
     });
 
     it('should contain the instance properties', () => {
-      assert.ok(data.includes('"comment_author":"Cédric Belin"'));
-      assert.ok(data.includes('"comment_content":"A user comment."'));
-      assert.ok(data.includes('"comment_type":"pingback"'));
-      assert.ok(data.includes('"comment_date_gmt":"2000-01-01T00:00:00.000Z"'));
-      assert.ok(data.includes('"referrer":"https://belin.io"'));
+      expect(data).to.contain('"comment_author":"Cédric Belin"');
+      expect(data).to.contain('"comment_content":"A user comment."');
+      expect(data).to.contain('"comment_type":"pingback"');
+      expect(data).to.contain('"comment_date_gmt":"2000-01-01T00:00:00.000Z"');
+      expect(data).to.contain('"referrer":"https://belin.io"');
     });
   });
 });

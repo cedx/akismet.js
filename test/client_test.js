@@ -1,6 +1,6 @@
 'use strict';
 
-import assert from 'assert';
+import {expect} from 'chai';
 import {Author, Client, Comment, CommentType} from '../src/index';
 import {Observable, Subject} from 'rxjs';
 
@@ -31,11 +31,11 @@ describe('Client', function() {
    */
   describe('#checkComment()', () => {
     it('should return `false` for valid comment (e.g. ham)' , () =>
-      _client.checkComment(ham).then(res => assert.equal(res, false))
+      _client.checkComment(ham).then(res => expect(res).to.be.false)
     );
 
     it('should return `true` for invalid comment (e.g. spam)' , () =>
-      _client.checkComment(spam).then(res => assert.equal(res, true))
+      _client.checkComment(spam).then(res => expect(res).to.be.true)
     );
   });
 
@@ -45,8 +45,8 @@ describe('Client', function() {
   describe('#onRequest', () => {
     it('should return an `Observable` instead of the underlying `Subject`', () => {
       let stream = new Client().onRequest;
-      assert.ok(stream instanceof Observable);
-      assert.ok(!(stream instanceof Subject));
+      expect(stream).to.be.instanceof(Observable);
+      expect(stream).to.not.be.instanceof(Subject);
     });
   });
 
@@ -56,8 +56,8 @@ describe('Client', function() {
   describe('#onResponse', () => {
     it('should return an `Observable` instead of the underlying `Subject`', () => {
       let stream = new Client().onResponse;
-      assert.ok(stream instanceof Observable);
-      assert.ok(!(stream instanceof Subject));
+      expect(stream).to.be.instanceof(Observable);
+      expect(stream).to.not.be.instanceof(Subject);
     });
   });
 
@@ -66,7 +66,7 @@ describe('Client', function() {
    */
   describe('#submitHam()', () => {
     it('should complete without error' , () =>
-      _client.submitHam(ham).then(() => assert.ok(true))
+      _client.submitHam(ham).then(() => expect(true).to.be.ok)
     );
   });
 
@@ -75,7 +75,7 @@ describe('Client', function() {
    */
   describe('#submitSpam()', () => {
     it('should complete without error' , () =>
-      _client.submitSpam(spam).then(() => assert.ok(true))
+      _client.submitSpam(spam).then(() => expect(true).to.be.ok)
     );
   });
 
@@ -89,22 +89,22 @@ describe('Client', function() {
       client.userAgent = 'FooBar/6.6.6';
 
       let data = client.toJSON();
-      assert.equal(data.apiKey, '0123456789-ABCDEF');
-      assert.strictEqual(data.blog, null);
-      assert.equal(data.endPoint, 'http://localhost');
-      assert.ok(!data.isTest);
-      assert.equal(data.userAgent, 'FooBar/6.6.6');
+      expect(data.apiKey).to.equal('0123456789-ABCDEF');
+      expect(data.blog).to.be.null;
+      expect(data.endPoint).to.equal('http://localhost');
+      expect(data.isTest).to.be.false;
+      expect(data.userAgent).to.equal('FooBar/6.6.6');
     });
 
     it('should return the right values for a properly configured client' , () => {
       let data = _client.toJSON();
-      assert.equal(data.apiKey, process.env.AKISMET_API_KEY);
-      assert.equal(data.blog, 'Blog');
-      assert.equal(data.endPoint, Client.DEFAULT_ENDPOINT);
-      assert.ok(data.isTest);
+      expect(data.apiKey).to.equal(process.env.AKISMET_API_KEY);
+      expect(data.blog).to.equal('Blog');
+      expect(data.endPoint).to.equal(Client.DEFAULT_ENDPOINT);
+      expect(data.isTest).to.be.true;
 
       let version = `Node.js/${process.version.substr(1)}`;
-      assert.equal(data.userAgent.indexOf(version), 0);
+      expect(data.userAgent.indexOf(version)).to.equal(0);
     });
   });
 
@@ -115,15 +115,15 @@ describe('Client', function() {
     let data = String(_client);
 
     it('should start with the class name', () => {
-      assert.equal(data.indexOf('Client {'), 0);
+      expect(data.indexOf('Client {')).to.equal(0);
     });
 
     it('should contain the instance properties', () => {
-      assert.ok(data.includes('"apiKey":"'));
-      assert.ok(data.includes('"blog":"Blog"'));
-      assert.ok(data.includes(`"endPoint":"${Client.DEFAULT_ENDPOINT}"`));
-      assert.ok(data.includes('"isTest":true'));
-      assert.ok(data.includes('"userAgent":"Node.js/'));
+      expect(data).to.contain('"apiKey":"');
+      expect(data).to.contain('"blog":"Blog"');
+      expect(data).to.contain(`"endPoint":"${Client.DEFAULT_ENDPOINT}"`);
+      expect(data).to.contain('"isTest":true');
+      expect(data).to.contain('"userAgent":"Node.js/');
     });
   });
 
@@ -132,13 +132,13 @@ describe('Client', function() {
    */
   describe('#verifyKey()', () => {
     it('should return `true` for a valid API key' , () =>
-      _client.verifyKey().then(res => assert.equal(res, true))
+      _client.verifyKey().then(res => expect(res).to.be.true)
     );
 
     it('should return `false` for an invalid API key' , () => {
       let client = new Client('0123456789-ABCDEF', _client.blog);
       client.isTest = _client.isTest;
-      return client.verifyKey().then(res => assert.equal(res, false));
+      return client.verifyKey().then(res => expect(res).to.be.false);
     });
   });
 });

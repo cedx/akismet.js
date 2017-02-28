@@ -1,6 +1,6 @@
 'use strict';
 
-import assert from 'assert';
+import {expect} from 'chai';
 import {Author} from '../src/index';
 
 /**
@@ -13,13 +13,13 @@ describe('Author', () => {
    */
   describe('.fromJSON()', () => {
     it('should return a null reference with a non-object value', () => {
-      assert.strictEqual(Author.fromJSON('foo'), null);
+      expect(Author.fromJSON('foo')).to.be.null;
     });
 
     it('should return an empty instance with an empty map', () => {
       let author = Author.fromJSON({});
-      assert.equal(author.email.length, 0);
-      assert.equal(author.url.length, 0);
+      expect(author.email).to.be.empty;
+      expect(author.url).to.be.empty;
     });
 
     it('should return an initialized instance with a non-empty map', () => {
@@ -28,8 +28,8 @@ describe('Author', () => {
         comment_author_url: 'https://belin.io'
       });
 
-      assert.equal(author.email, 'cedric@belin.io');
-      assert.equal(author.url, 'https://belin.io');
+      expect(author.email).to.equal('cedric@belin.io');
+      expect(author.url).to.equal('https://belin.io');
     });
   });
 
@@ -38,7 +38,7 @@ describe('Author', () => {
    */
   describe('#toJSON()', () => {
     it('should return an empty map with a newly created instance', () => {
-      assert.equal(Object.keys(new Author().toJSON()).length, 0);
+      expect(Object.keys(new Author().toJSON())).to.be.empty;
     });
 
     it('should return a non-empty map with a initialized instance', () => {
@@ -48,10 +48,10 @@ describe('Author', () => {
       author.url = 'https://belin.io';
 
       let data = author.toJSON();
-      assert.equal(data.comment_author, 'Cédric Belin');
-      assert.equal(data.comment_author_email, 'cedric@belin.io');
-      assert.equal(data.comment_author_url, 'https://belin.io');
-      assert.equal(data.user_ip, '127.0.0.1');
+      expect(data.comment_author).to.equal('Cédric Belin');
+      expect(data.comment_author_email).to.equal('cedric@belin.io');
+      expect(data.comment_author_url).to.equal('https://belin.io');
+      expect(data.user_ip).to.equal('127.0.0.1');
     });
   });
 
@@ -66,14 +66,14 @@ describe('Author', () => {
 
     let data = String(author);
     it('should start with the class name', () => {
-      assert.equal(data.indexOf('Author {'), 0);
+      expect(data.indexOf('Author {')).to.equal(0);
     });
 
     it('should contain the instance properties', () => {
-      assert.ok(data.includes('"comment_author":"Cédric Belin"'));
-      assert.ok(data.includes('"comment_author_email":"cedric@belin.io"'));
-      assert.ok(data.includes('"comment_author_url":"https://belin.io"'));
-      assert.ok(data.includes('"user_ip":"127.0.0.1"'));
+      expect(data).to.contain('"comment_author":"Cédric Belin"');
+      expect(data).to.contain('"comment_author_email":"cedric@belin.io"');
+      expect(data).to.contain('"comment_author_url":"https://belin.io"');
+      expect(data).to.contain('"user_ip":"127.0.0.1"');
     });
   });
 });
