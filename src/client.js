@@ -98,10 +98,10 @@ export class Client {
    * @param {Comment} comment The comment to be checked.
    * @return {Promise<boolean>} A boolean value indicating whether it is spam.
    */
-  checkComment(comment) {
+  async checkComment(comment) {
     let serviceURL = url.parse(this.endPoint);
     let endPoint = `${serviceURL.protocol}//${this.apiKey}.${serviceURL.host}/1.1/comment-check`;
-    return this._fetch(endPoint, comment.toJSON()).then(res => res == 'true');
+    return await this._fetch(endPoint, comment.toJSON()) == 'true';
   }
 
   /**
@@ -109,7 +109,7 @@ export class Client {
    * @param {Comment} comment The comment to be submitted.
    * @return {Promise} Completes once the comment has been submitted.
    */
-  submitHam(comment) {
+  async submitHam(comment) {
     let serviceURL = url.parse(this.endPoint);
     let endPoint = `${serviceURL.protocol}//${this.apiKey}.${serviceURL.host}/1.1/submit-ham`;
     return this._fetch(endPoint, comment.toJSON());
@@ -120,7 +120,7 @@ export class Client {
    * @param {Comment} comment The comment to be submitted.
    * @return {Promise} Completes once the comment has been submitted.
    */
-  submitSpam(comment) {
+  async submitSpam(comment) {
     let serviceURL = url.parse(this.endPoint);
     let endPoint = `${serviceURL.protocol}//${this.apiKey}.${serviceURL.host}/1.1/submit-spam`;
     return this._fetch(endPoint, comment.toJSON());
@@ -130,9 +130,9 @@ export class Client {
    * Checks the API key against the service database, and returns a value indicating whether it is valid.
    * @return {Promise<boolean>} A boolean value indicating whether it is a valid API key.
    */
-  verifyKey() {
+  async verifyKey() {
     let endPoint = `${this.endPoint}/1.1/verify-key`;
-    return this._fetch(endPoint, {key: this.apiKey}).then(res => res == 'valid');
+    return await this._fetch(endPoint, {key: this.apiKey}) == 'valid';
   }
 
   /**
@@ -144,23 +144,23 @@ export class Client {
    * @emits {superagent.Request} The "request" event.
    * @emits {superagent.Response} The "response" event.
    */
-  _fetch(endPoint, fields) {
+  async _fetch(endPoint, fields) {
     if (!this.apiKey.length || !this.blog) return Promise.reject(new Error('The API key or the blog URL is empty.'));
 
     let bodyFields = Object.assign(this.blog.toJSON(), fields);
     if (this.isTest) bodyFields.is_test = '1';
 
-    let req = superagent.post(endPoint)
+    let request = superagent.post(endPoint)
       .type('form')
       .set('User-Agent', this.userAgent)
       .send(bodyFields);
 
-    this._onRequest.next(req);
-    return req.then(res => {
-      this._onResponse.next(res);
-      if (Client.DEBUG_HEADER in res.header) throw new Error(res.header[Client.DEBUG_HEADER]);
-      return res.text;
-    });
+    this._onRequest.next(request);
+    let response = await request;
+    this._onResponse.next(response);
+
+    if (Client.DEBUG_HEADER in response.header) throw new Error(response.header[Client.DEBUG_HEADER]);
+    return response.text;
   }
 
   /**

@@ -30,12 +30,12 @@ describe('Client', function() {
    * @test {Client#checkComment}
    */
   describe('#checkComment()', () => {
-    it('should return `false` for valid comment (e.g. ham)' , () =>
-      _client.checkComment(ham).then(res => expect(res).to.be.false)
+    it('should return `false` for valid comment (e.g. ham)' , async () =>
+      expect(await _client.checkComment(ham)).to.be.false
     );
 
-    it('should return `true` for invalid comment (e.g. spam)' , () =>
-      _client.checkComment(spam).then(res => expect(res).to.be.true)
+    it('should return `true` for invalid comment (e.g. spam)' , async () =>
+      expect(await _client.checkComment(spam)).to.be.true
     );
   });
 
@@ -65,18 +65,20 @@ describe('Client', function() {
    * @test {Client#submitHam}
    */
   describe('#submitHam()', () => {
-    it('should complete without error' , () =>
-      _client.submitHam(ham).then(() => expect(true).to.be.ok)
-    );
+    it('should complete without error' , async () => {
+      await _client.submitHam(ham);
+      expect(true).to.be.ok;
+    });
   });
 
   /**
    * @test {Client#submitSpam}
    */
   describe('#submitSpam()', () => {
-    it('should complete without error' , () =>
-      _client.submitSpam(spam).then(() => expect(true).to.be.ok)
-    );
+    it('should complete without error' , async () => {
+      await _client.submitSpam(spam);
+      expect(true).to.be.ok;
+    });
   });
 
   /**
@@ -131,14 +133,14 @@ describe('Client', function() {
    * @test {Client#verifyKey}
    */
   describe('#verifyKey()', () => {
-    it('should return `true` for a valid API key' , () =>
-      _client.verifyKey().then(res => expect(res).to.be.true)
+    it('should return `true` for a valid API key' , async () =>
+      expect(await _client.verifyKey()).to.be.true
     );
 
-    it('should return `false` for an invalid API key' , () => {
+    it('should return `false` for an invalid API key' , async () => {
       let client = new Client('0123456789-ABCDEF', _client.blog);
       client.isTest = _client.isTest;
-      return client.verifyKey().then(res => expect(res).to.be.false);
+      expect(await client.verifyKey()).to.be.false;
     });
   });
 });

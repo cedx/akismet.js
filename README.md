@@ -27,10 +27,15 @@ $ npm install --save @cedx/akismet
 ```javascript
 const {Client} = require('@cedx/akismet');
 
-let client = new Client('YourAPIKey', 'http://your.blog.url');
-client.verifyKey().then(isValid =>
-  console.log(isValid ? 'Your API key is valid.' : 'Your API key is invalid.')
-);
+try {
+  let client = new Client('YourAPIKey', 'http://your.blog.url');
+  let isValid = await client.verifyKey();
+  console.log(isValid ? 'Your API key is valid.' : 'Your API key is invalid.');
+}
+
+catch (error) {
+  console.log(`An error occurred: ${error}`);
+}
 ```
 
 ### Comment check
@@ -38,28 +43,35 @@ client.verifyKey().then(isValid =>
 ```javascript
 const {Author, Comment} = require('@cedx/akismet');
 
-let comment = new Comment(
-  new Author('127.0.0.1', 'Mozilla/5.0'),
-  'A comment.'
-);
+try {
+  let comment = new Comment(
+    new Author('127.0.0.1', 'Mozilla/5.0'),
+    'A comment.'
+  );
 
-client.checkComment(comment).then(isSpam =>
-  console.log(isSpam ? 'The comment is marked as spam.' : 'The comment is marked as ham.')
-);
+  let isSpam = await client.checkComment(comment);
+  console.log(isSpam ? 'The comment is marked as spam.' : 'The comment is marked as ham.');
+}
+
+catch (error) {
+  console.log(`An error occurred: ${error}`);
+}
 ```
 
 ### Submit spam/ham
 
 ```javascript
-client.submitSpam(comment).then(
-  () => console.log('Spam submitted.'),
-  err => console.log('An error occurred.')
-);
+try {
+  await client.submitSpam(comment);
+  console.log('Spam submitted.');
+   
+  await client.submitHam(comment);
+  console.log('Ham submitted.');
+}
 
-client.submitHam(comment).then(
-  () => console.log('Ham submitted.'),
-  err => console.log('An error occurred.')
-);
+catch (error) {
+  console.log(`An error occurred: ${error}`);
+}
 ```
 
 ## Events
