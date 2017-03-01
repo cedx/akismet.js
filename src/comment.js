@@ -112,7 +112,7 @@ export class Comment {
  * @property {string} PINGBACK A [pingback](https://en.wikipedia.org/wiki/Pingback) comment.
  * @property {string} TRACKBACK A [trackback](https://en.wikipedia.org/wiki/Trackback) comment.
  */
-export const CommentType = Enum.create({
+export const CommentType = Object.freeze({
   COMMENT: 'comment',
   PINGBACK: 'pingback',
   TRACKBACK: 'trackback'
