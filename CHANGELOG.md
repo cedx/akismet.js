@@ -1,6 +1,10 @@
 # Changelog
 This file contains highlights of what changes on each version of the [Akismet for JS](https://github.com/cedx/akismet.js) library.
 
+## Version 6.1.0
+- Removed dependency on `@cedx/enum` module.
+- Removed dependency on `gulp-load-plugins` module.
+
 ## Version 6.0.0
 - Breaking change: raised the required [Node.js](https://nodejs.org) version.
 - Breaking change: using ES2017 features, like async/await functions.
