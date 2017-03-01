@@ -1,4 +1,3 @@
-import {Enum} from '@cedx/enum';
 import {Author} from './author';
 
 /**
