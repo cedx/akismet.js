@@ -29,14 +29,14 @@ gulp.task('clean', () => del('var/**/*'));
 /**
  * Sends the results of the code coverage.
  */
-gulp.task('coverage', ['test'], () => _exec(path.normalize('node_modules/.bin/coveralls'), ['--file=var/lcov.info']));
+gulp.task('coverage', ['test'], () => _exec('node_modules/.bin/coveralls', ['--file=var/lcov.info']));
 
 /**
  * Builds the documentation.
  */
 gulp.task('doc', async () => {
   await del('doc/api');
-  return _exec(path.normalize('node_modules/.bin/esdoc'));
+  return _exec('node_modules/.bin/esdoc');
 });
 
 /**
@@ -64,7 +64,7 @@ gulp.task('outdated', () => gulp.src('package.json').pipe(david()));
 /**
  * Runs the unit tests.
  */
-gulp.task('test', () => _exec(path.normalize('node_modules/.bin/nyc'), [
+gulp.task('test', () => _exec('node_modules/.bin/nyc', [
   '--report-dir=var',
   '--reporter=lcovonly',
   path.normalize('node_modules/.bin/mocha'),
@@ -80,7 +80,7 @@ gulp.task('test', () => _exec(path.normalize('node_modules/.bin/nyc'), [
  */
 function _exec(command, args = [], options = {shell: true, stdio: 'inherit'}) {
   return new Promise((resolve, reject) => child_process
-    .spawn(command, args, options)
+    .spawn(path.normalize(command), args, options)
     .on('close', code => code ? reject(new Error(`${command}: ${code}`)) : resolve())
   );
 }
