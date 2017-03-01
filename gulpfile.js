@@ -1,19 +1,12 @@
 'use strict';
 
+const babel = require('gulp-babel');
 const child_process = require('child_process');
+const {david} = require('@cedx/gulp-david');
 const del = require('del');
+const eslint = require('gulp-eslint');
 const gulp = require('gulp');
-const loadPlugins = require('gulp-load-plugins');
 const path = require('path');
-
-/**
- * The task plugins.
- * @type {object}
- */
-const plugins = loadPlugins({
-  pattern: ['gulp-*', '@*/gulp-*', 'vinyl-*'],
-  replaceString: /^(gulp|vinyl)-/
-});
 
 /**
  * Runs the default tasks.
@@ -24,20 +17,9 @@ gulp.task('default', ['build']);
  * Builds the sources.
  */
 gulp.task('build', () => gulp.src('src/**/*.js')
-  .pipe(plugins.babel())
+  .pipe(babel())
   .pipe(gulp.dest('lib'))
 );
-
-/**
- * Checks the package dependencies.
- */
-gulp.task('check', () => {
-  const {david} = plugins.cedx.david;
-  return gulp.src('package.json').pipe(david()).on('error', function(err) {
-    console.error(err);
-    this.emit('end');
-  });
-});
 
 /**
  * Deletes all generated files and reset any saved state.
@@ -61,7 +43,7 @@ gulp.task('doc', async () => {
  * Fixes the coding standards issues.
  */
 gulp.task('fix', () => gulp.src(['*.js', 'src/**/*.js', 'test/**/*.js'], {base: '.'})
-  .pipe(plugins.eslint({fix: true}))
+  .pipe(eslint({fix: true}))
   .pipe(gulp.dest('.'))
 );
 
@@ -69,10 +51,15 @@ gulp.task('fix', () => gulp.src(['*.js', 'src/**/*.js', 'test/**/*.js'], {base: 
  * Performs static analysis of source code.
  */
 gulp.task('lint', () => gulp.src(['*.js', 'src/**/*.js', 'test/**/*.js'])
-  .pipe(plugins.eslint())
-  .pipe(plugins.eslint.format())
-  .pipe(plugins.eslint.failAfterError())
+  .pipe(eslint())
+  .pipe(eslint.format())
+  .pipe(eslint.failAfterError())
 );
+
+/**
+ * Checks the package dependencies.
+ */
+gulp.task('outdated', () => gulp.src('package.json').pipe(david()));
 
 /**
  * Runs the unit tests.
