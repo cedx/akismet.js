@@ -140,12 +140,12 @@ export class Client {
    * @param {string} endPoint The URL of the end point to query.
    * @param {object} fields The fields describing the query body.
    * @return {Promise<string>} The response as string.
-   * @throws {Error} The API key or blog URL is empty.
+   * @throws {Error} The API key or blog URL is empty, or a remote error occurred.
    * @emits {superagent.Request} The "request" event.
    * @emits {superagent.Response} The "response" event.
    */
   async _fetch(endPoint, fields) {
-    if (!this.apiKey.length || !this.blog) return Promise.reject(new Error('The API key or the blog URL is empty.'));
+    if (!this.apiKey.length || !this.blog) throw new Error('The API key or the blog URL is empty.');
 
     let bodyFields = Object.assign(this.blog.toJSON(), fields);
     if (this.isTest) bodyFields.is_test = '1';
