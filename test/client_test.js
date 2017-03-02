@@ -121,11 +121,11 @@ describe('Client', function() {
     });
 
     it('should contain the instance properties', () => {
-      expect(data).to.contain('"apiKey":"');
-      expect(data).to.contain('"blog":"Blog"');
-      expect(data).to.contain(`"endPoint":"${Client.DEFAULT_ENDPOINT}"`);
-      expect(data).to.contain('"isTest":true');
-      expect(data).to.contain('"userAgent":"Node.js/');
+      expect(data).to.contain('"apiKey":"')
+        .and.contain('"blog":"Blog"')
+        .and.contain(`"endPoint":"${Client.DEFAULT_ENDPOINT}"`)
+        .and.contain('"isTest":true')
+        .and.contain('"userAgent":"Node.js/');
     });
   });
 

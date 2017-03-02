@@ -70,10 +70,10 @@ describe('Author', () => {
     });
 
     it('should contain the instance properties', () => {
-      expect(data).to.contain('"comment_author":"Cédric Belin"');
-      expect(data).to.contain('"comment_author_email":"cedric@belin.io"');
-      expect(data).to.contain('"comment_author_url":"https://belin.io"');
-      expect(data).to.contain('"user_ip":"127.0.0.1"');
+      expect(data).to.contain('"comment_author":"Cédric Belin"')
+        .and.contain('"comment_author_email":"cedric@belin.io"')
+        .and.contain('"comment_author_url":"https://belin.io"')
+        .and.contain('"user_ip":"127.0.0.1"');
     });
   });
 });

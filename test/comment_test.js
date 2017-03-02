@@ -85,11 +85,11 @@ describe('Comment', () => {
     });
 
     it('should contain the instance properties', () => {
-      expect(data).to.contain('"comment_author":"Cédric Belin"');
-      expect(data).to.contain('"comment_content":"A user comment."');
-      expect(data).to.contain('"comment_type":"pingback"');
-      expect(data).to.contain('"comment_date_gmt":"2000-01-01T00:00:00.000Z"');
-      expect(data).to.contain('"referrer":"https://belin.io"');
+      expect(data).to.contain('"comment_author":"Cédric Belin"')
+        .and.contain('"comment_content":"A user comment."')
+        .and.contain('"comment_type":"pingback"')
+        .and.contain('"comment_date_gmt":"2000-01-01T00:00:00.000Z"')
+        .and.contain('"referrer":"https://belin.io"');
     });
   });
 });

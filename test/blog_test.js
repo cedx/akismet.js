@@ -66,9 +66,9 @@ describe('Blog', () => {
     });
 
     it('should contain the instance properties', () => {
-      expect(data).to.contain('"blog":"https://github.com/cedx/akismet.js"');
-      expect(data).to.contain('"blog_charset":"UTF-8"');
-      expect(data).to.contain('"blog_lang":"en,fr"');
+      expect(data).to.contain('"blog":"https://github.com/cedx/akismet.js"')
+        .and.contain('"blog_charset":"UTF-8"')
+        .and.contain('"blog_lang":"en,fr"');
     });
   });
 });
