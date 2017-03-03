@@ -140,7 +140,6 @@ export class Client {
    * @param {string} endPoint The URL of the end point to query.
    * @param {object} fields The fields describing the query body.
    * @return {Promise<string>} The response as string.
-   * @throws {Error} The API key or blog URL is empty, or a remote error occurred.
    * @emits {superagent.Request} The "request" event.
    * @emits {superagent.Response} The "response" event.
    */
