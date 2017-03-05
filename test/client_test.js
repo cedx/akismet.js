@@ -100,13 +100,12 @@ describe('Client', function() {
 
     it('should return the right values for a properly configured client' , () => {
       let data = _client.toJSON();
+      expect(Object.keys(data)).to.have.lengthOf(5);
       expect(data.apiKey).to.equal(process.env.AKISMET_API_KEY);
       expect(data.blog).to.equal('Blog');
       expect(data.endPoint).to.equal(Client.DEFAULT_ENDPOINT);
       expect(data.isTest).to.be.true;
-
-      let version = `Node.js/${process.version.substr(1)}`;
-      expect(data.userAgent.indexOf(version)).to.equal(0);
+      expect(data.userAgent.startsWith('Node.js/')).to.be.true;
     });
   });
 
@@ -117,7 +116,7 @@ describe('Client', function() {
     let data = String(_client);
 
     it('should start with the class name', () => {
-      expect(data.indexOf('Client {')).to.equal(0);
+      expect(data.startsWith('Client {')).to.be.true;
     });
 
     it('should contain the instance properties', () => {

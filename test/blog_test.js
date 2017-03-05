@@ -31,7 +31,7 @@ describe('Blog', () => {
       });
 
       expect(blog.charset).to.equal('UTF-8');
-      expect(blog.languages).to.have.lengthOf(2);
+      expect(blog.languages).to.be.an('array').and.have.lengthOf(2);
       expect(blog.languages[0]).to.equal('en');
       expect(blog.languages[1]).to.equal('fr');
       expect(blog.url).to.equal('https://github.com/cedx/akismet.js');
@@ -62,7 +62,7 @@ describe('Blog', () => {
     let data = String(new Blog('https://github.com/cedx/akismet.js', 'UTF-8', ['en', 'fr']));
 
     it('should start with the class name', () => {
-      expect(data.indexOf('Blog {')).to.equal(0);
+      expect(data.startsWith('Blog {')).be.true;
     });
 
     it('should contain the instance properties', () => {

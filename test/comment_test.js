@@ -38,6 +38,7 @@ describe('Comment', () => {
       expect(comment.author.name).to.equal('Cédric Belin');
       expect(comment.content).to.equal('A user comment.');
       expect(comment.date).to.be.instanceof(Date);
+      expect(comment.date.getFullYear()).to.equal(2000);
       expect(comment.referrer).to.equal('https://belin.io');
       expect(comment.type).to.equal(CommentType.TRACKBACK);
     });
@@ -81,7 +82,7 @@ describe('Comment', () => {
 
     let data = String(comment);
     it('should start with the class name', () => {
-      expect(data.indexOf('Comment {')).to.equal(0);
+      expect(data.startsWith('Comment {')).to.be.true;
     });
 
     it('should contain the instance properties', () => {

@@ -66,7 +66,7 @@ describe('Author', () => {
 
     let data = String(author);
     it('should start with the class name', () => {
-      expect(data.indexOf('Author {')).to.equal(0);
+      expect(data.startsWith('Author {')).to.be.true;
     });
 
     it('should contain the instance properties', () => {
