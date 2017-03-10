@@ -17,7 +17,7 @@
     "superagent": "^3.5.0"
   },
   "devDependencies": {
-    "@cedx/coveralls": "^0.3.0",
+    "@cedx/coveralls": "^0.4.0",
     "@cedx/gulp-david": "^6.0.0",
     "babel-preset-env": "^1.2.1",
     "babel-register": "^6.23.0",
@@ -42,6 +42,6 @@
   "scripts": {
     "coverage": "coveralls --file=var/lcov.info",
     "prepublish": "gulp build",
-    "test": "nyc --report-dir=var --reporter=lcovonly mocha --compilers=js:babel-register"
+    "test": "nyc --report-dir=var --reporter=lcovonly mocha --compilers=js:babel-register --recursive"
   }
 }
