@@ -7,7 +7,7 @@
   "bugs": "https://github.com/cedx/akismet.js/issues",
   "license": "Apache-2.0",
   "repository": "cedx/akismet.js",
-  "version": "6.1.0",
+  "version": "6.2.0",
 
   "jsnext:main": "./src/index",
   "main": "./lib/index",
