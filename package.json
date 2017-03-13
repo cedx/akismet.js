@@ -20,7 +20,7 @@
     "@cedx/coveralls": "^0.4.0",
     "@cedx/gulp-david": "^6.1.0",
     "babel-preset-env": "^1.2.1",
-    "babel-register": "^6.23.0",
+    "babel-register": "^6.24.0",
     "chai": "^3.5.0",
     "del": "^2.2.2",
     "esdoc": "^0.5.2",
