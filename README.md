@@ -84,8 +84,8 @@ During its life cycle, it emits these events:
 You can subscribe to them using the `on()` method:
 
 ```javascript
-client.on('request', () => console.log(`Client request: ${request.url}`));
-client.on('response', () => console.log(`Server response: ${response.statusCode}`));
+client.on('request', response => console.log(`Client request: ${request.url}`));
+client.on('response', response => console.log(`Server response: ${response.statusCode}`));
 ```
 
 ## Unit tests
