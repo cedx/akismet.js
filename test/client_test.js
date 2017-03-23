@@ -2,7 +2,6 @@
 
 import {expect} from 'chai';
 import {Author, Client, Comment, CommentType} from '../src/index';
-import {Observable, Subject} from 'rxjs';
 
 /**
  * @test {Client}
