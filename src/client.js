@@ -125,9 +125,9 @@ export class Client {
       .set('User-Agent', this.userAgent)
       .send(bodyFields);
 
-    this._onRequest.next(request);
+    this.emit('request', request);
     let response = await request;
-    this._onResponse.next(response);
+    this.emit('response', response);
 
     if (Client.DEBUG_HEADER in response.header) throw new Error(response.header[Client.DEBUG_HEADER]);
     return response.text;
