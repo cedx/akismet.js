@@ -75,21 +75,17 @@ catch (error) {
 ```
 
 ## Events
-The `Client` class triggers some events during its life cycle:
+The `Client` class is an [EventEmitter](https://nodejs.org/api/events.html#events_class_eventemitter).
+During its life cycle, it emits these events:
 
 - `request` : emitted every time a request is made to the remote service.
 - `response` : emitted every time a response is received from the remote service.
 
-These events are exposed as [Observables](http://reactivex.io/intro.html), you can subscribe to them using the `on<EventName>` properties:
+You can subscribe to them using the `on()` method:
 
 ```javascript
-client.onRequest.subscribe(
-  request => console.log(`Client request: ${request.url}`)
-);
-
-client.onResponse.subscribe(
-  response => console.log(`Server response: ${response.statusCode}`)
-);
+client.on('request', () => console.log(`Client request: ${request.url}`));
+client.on('response', () => console.log(`Server response: ${response.statusCode}`));
 ```
 
 ## Unit tests
