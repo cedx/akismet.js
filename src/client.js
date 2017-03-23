@@ -1,12 +1,14 @@
-import {Blog} from './blog';
-import * as pkg from '../package.json';
+import EventEmitter from 'events';
 import superagent from 'superagent';
 import url from 'url';
+
+import {Blog} from './blog';
+import * as pkg from '../package.json';
 
 /**
  * Submits comments to the [Akismet](https://akismet.com) service.
  */
-export class Client {
+export class Client extends EventEmitter {
 
   /**
    * The HTTP header containing the Akismet error messages.
@@ -30,6 +32,7 @@ export class Client {
    * @param {Blog|string} [blog] The front page or home URL of the instance making requests.
    */
   constructor(apiKey = '', blog = null) {
+    super();
 
     /**
      * The Akismet API key.
