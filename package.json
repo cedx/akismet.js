@@ -9,8 +9,8 @@
   "repository": "cedx/akismet.js",
   "version": "7.0.0",
 
-  "jsnext:main": "./src/index",
   "main": "./lib/index",
+  "module": "./src/index",
 
   "dependencies": {
     "superagent": "^3.5.2"
