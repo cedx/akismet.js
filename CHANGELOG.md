@@ -1,6 +1,10 @@
 # Changelog
 This file contains highlights of what changes on each version of the [Akismet for JS](https://github.com/cedx/akismet.js) library.
 
+## Version 7.1.0
+- Added support for the [Node Security Platform](https://nodesecurity.io) reports.
+- Updated the package dependencies.
+
 ## Version 7.0.0
 - Breaking change: dropped the dependency on [Observables](http://reactivex.io/intro.html).
 - Breaking change: the `Client` class is now an [EventEmitter](https://nodejs.org/api/events.html#events_class_eventemitter).
