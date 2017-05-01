@@ -1,9 +1,9 @@
 import EventEmitter from 'events';
 import superagent from 'superagent';
-import {parse} from 'url';
+import {parse as parseURL} from 'url';
 
 import {Blog} from './blog';
-import {version} from '../package.json';
+import {version as pkgVersion} from '../package.json';
 
 /**
  * Submits comments to the [Akismet](https://akismet.com) service.
@@ -64,7 +64,7 @@ export class Client extends EventEmitter {
      * If possible, the user agent string should always have the following format: `Application Name/Version | Plugin Name/Version`.
      * @type {string}
      */
-    this.userAgent = `Node.js/${process.version.substr(1)} | Akismet/${version}`;
+    this.userAgent = `Node.js/${process.version.substr(1)} | Akismet/${pkgVersion}`;
   }
 
   /**
@@ -73,7 +73,7 @@ export class Client extends EventEmitter {
    * @return {Promise<boolean>} A boolean value indicating whether it is spam.
    */
   async checkComment(comment) {
-    let serviceURL = parse(this.endPoint);
+    let serviceURL = parseURL(this.endPoint);
     let endPoint = `${serviceURL.protocol}//${this.apiKey}.${serviceURL.host}/1.1/comment-check`;
     return await this._fetch(endPoint, comment.toJSON()) == 'true';
   }
@@ -84,7 +84,7 @@ export class Client extends EventEmitter {
    * @return {Promise} Completes once the comment has been submitted.
    */
   async submitHam(comment) {
-    let serviceURL = parse(this.endPoint);
+    let serviceURL = parseURL(this.endPoint);
     let endPoint = `${serviceURL.protocol}//${this.apiKey}.${serviceURL.host}/1.1/submit-ham`;
     return this._fetch(endPoint, comment.toJSON());
   }
@@ -95,7 +95,7 @@ export class Client extends EventEmitter {
    * @return {Promise} Completes once the comment has been submitted.
    */
   async submitSpam(comment) {
-    let serviceURL = parse(this.endPoint);
+    let serviceURL = parseURL(this.endPoint);
     let endPoint = `${serviceURL.protocol}//${this.apiKey}.${serviceURL.host}/1.1/submit-spam`;
     return this._fetch(endPoint, comment.toJSON());
   }
