@@ -1,6 +1,8 @@
 # Changelog
 This file contains highlights of what changes on each version of the [Akismet for JS](https://github.com/cedx/akismet.js) library.
 
+## Version 8.0.0
+
 ## Version 7.1.0
 - Added support for the [Node Security Platform](https://nodesecurity.io) reports.
 - Updated the package dependencies.
