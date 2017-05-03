@@ -2,7 +2,7 @@
 This file contains highlights of what changes on each version of the [Akismet for JS](https://github.com/cedx/akismet.js) library.
 
 ## Version 8.0.0
-- Breaking change: properties representing URLs as strings now uses instances of the [`URL`](https://developer.mozilla.org/en-US/docs/Web/API/URL) class.
+- Breaking change: properties representing URLs as strings now use instances of the [`URL`](https://developer.mozilla.org/en-US/docs/Web/API/URL) class.
 - Breaking change: raised the required [Node.js](https://nodejs.org) version.
 - Updated the package dependencies.
 
