@@ -102,7 +102,7 @@ export class Client extends EventEmitter {
    * @return {Promise<boolean>} A boolean value indicating whether it is a valid API key.
    */
   async verifyKey() {
-    let endPoint = new URL('/1.1/verify-key', this.endPoint);
+    let endPoint = new URL('1.1/verify-key', this.endPoint);
     return await this._fetch(endPoint.href, {key: this.apiKey}) == 'valid';
   }
 
