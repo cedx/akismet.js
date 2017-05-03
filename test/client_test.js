@@ -72,7 +72,7 @@ describe('Client', function() {
       let data = client.toJSON();
       expect(data.apiKey).to.equal('0123456789-ABCDEF');
       expect(data.blog).to.be.null;
-      expect(data.endPoint.href).to.equal('http://localhost/');
+      expect(data.endPoint).to.be.instanceOf(URL).and.have.property('href').that.equal('http://localhost/');
       expect(data.isTest).to.be.false;
       expect(data.userAgent).to.equal('FooBar/6.6.6');
     });
@@ -82,7 +82,7 @@ describe('Client', function() {
       expect(Object.keys(data)).to.have.lengthOf(5);
       expect(data.apiKey).to.equal(process.env.AKISMET_API_KEY);
       expect(data.blog).to.equal('Blog');
-      expect(data.endPoint.href).to.equal(Client.DEFAULT_ENDPOINT.href);
+      expect(data.endPoint).to.be.instanceOf(URL).and.have.property('href').that.equal(Client.DEFAULT_ENDPOINT.href);
       expect(data.isTest).to.be.true;
       expect(data.userAgent.startsWith('Node.js/')).to.be.true;
     });

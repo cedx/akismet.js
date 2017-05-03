@@ -36,7 +36,7 @@ describe('Blog', () => {
       expect(blog.languages).to.be.an('array').and.have.lengthOf(2);
       expect(blog.languages[0]).to.equal('en');
       expect(blog.languages[1]).to.equal('fr');
-      expect(blog.url.href).to.equal('https://github.com/cedx/akismet.js');
+      expect(blog.url).to.be.instanceOf(URL).and.have.property('href').that.equal('https://github.com/cedx/akismet.js');
     });
   });
 

@@ -31,7 +31,7 @@ describe('Author', () => {
       });
 
       expect(author.email).to.equal('cedric@belin.io');
-      expect(author.url.href).to.equal('https://belin.io/');
+      expect(author.url).to.be.instanceOf(URL).and.have.property('href').that.equal('https://belin.io/');
     });
   });
 
