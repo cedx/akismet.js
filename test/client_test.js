@@ -2,6 +2,7 @@
 
 import {expect} from 'chai';
 import {describe, it} from 'mocha';
+import {URL} from 'url';
 import {Author, Client, Comment, CommentType} from '../src/index';
 
 /**
@@ -16,10 +17,10 @@ describe('Client', function() {
   let author = new Author('192.168.0.1', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0');
   author.name = 'Akismet';
   author.role = 'administrator';
-  author.url = 'https://github.com/cedx/akismet.js';
+  author.url = new URL('https://github.com/cedx/akismet.js');
 
   let ham = new Comment(author, 'I\'m testing out the Service API.', CommentType.COMMENT);
-  ham.referrer = 'https://www.npmjs.com/package/@cedx/akismet';
+  ham.referrer = new URL('https://www.npmjs.com/package/@cedx/akismet');
 
   author = new Author('127.0.0.1', 'Spam Bot/6.6.6');
   author.name = 'viagra-test-123';
@@ -65,13 +66,13 @@ describe('Client', function() {
   describe('#toJSON()', () => {
     it('should return the right values for an incorrectly configured client' , () => {
       let client = new Client('0123456789-ABCDEF');
-      client.endPoint = 'http://localhost';
+      client.endPoint = new URL('http://localhost');
       client.userAgent = 'FooBar/6.6.6';
 
       let data = client.toJSON();
       expect(data.apiKey).to.equal('0123456789-ABCDEF');
       expect(data.blog).to.be.null;
-      expect(data.endPoint).to.equal('http://localhost');
+      expect(data.endPoint.href).to.equal('http://localhost/');
       expect(data.isTest).to.be.false;
       expect(data.userAgent).to.equal('FooBar/6.6.6');
     });
@@ -81,7 +82,7 @@ describe('Client', function() {
       expect(Object.keys(data)).to.have.lengthOf(5);
       expect(data.apiKey).to.equal(process.env.AKISMET_API_KEY);
       expect(data.blog).to.equal('Blog');
-      expect(data.endPoint).to.equal(Client.DEFAULT_ENDPOINT);
+      expect(data.endPoint.href).to.equal(Client.DEFAULT_ENDPOINT.href);
       expect(data.isTest).to.be.true;
       expect(data.userAgent.startsWith('Node.js/')).to.be.true;
     });

@@ -1,3 +1,5 @@
+import {URL} from 'url';
+
 /**
  * Represents the front page or home URL transmitted when making requests.
  */
@@ -5,11 +7,11 @@ export class Blog {
 
   /**
    * Initializes a new instance of the class.
-   * @param {string} [url] The blog or site URL.
+   * @param {string|URL} [url] The blog or site URL.
    * @param {string} [charset] he character encoding for the values included in comments.
    * @param {string[]} [languages] The languages in use on the blog or site, in ISO 639-1 format.
    */
-  constructor(url = '', charset = '', languages = []) {
+  constructor(url = null, charset = '', languages = []) {
 
     /**
      * The character encoding for the values included in comments.
@@ -25,9 +27,9 @@ export class Blog {
 
     /**
      * The blog or site URL.
-     * @type {string}
+     * @type {URL}
      */
-    this.url = url;
+    this.url = typeof url == 'string' ? new URL(url) : url;
   }
 
   /**
@@ -38,7 +40,7 @@ export class Blog {
   static fromJSON(map) {
     if (!map || typeof map != 'object') return null;
 
-    let blog = new Blog(typeof map.blog == 'string' ? map.blog : '');
+    let blog = new Blog(typeof map.blog == 'string' ? map.blog : null);
     blog.charset = typeof map.blog_charset == 'string' ? map.blog_charset : '';
     blog.languages = typeof map.blog_lang == 'string' ? map.blog_lang.split(',').map(lang => lang.trim()).filter(lang => lang.length) : [];
     return blog;
@@ -50,7 +52,7 @@ export class Blog {
    */
   toJSON() {
     let map = {};
-    if (this.url.length) map.blog = this.url;
+    if (this.url) map.blog = this.url.href;
     if (this.charset.length) map.blog_charset = this.charset;
     if (this.languages.length) map.blog_lang = this.languages.join(',');
     return map;

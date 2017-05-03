@@ -1,3 +1,4 @@
+import {URL} from 'url';
 import {Author} from './author';
 
 /**
@@ -33,9 +34,9 @@ export class Comment {
 
     /**
      * The permanent location of the entry the comment is submitted to.
-     * @type {string}
+     * @type {URL}
      */
-    this.permalink = '';
+    this.permalink = null;
 
     /**
      * The UTC timestamp of the publication time for the post, page or thread on which the comment was posted.
@@ -45,9 +46,9 @@ export class Comment {
 
     /**
      * The URL of the webpage that linked to the entry being requested.
-     * @type {string}
+     * @type {URL}
      */
-    this.referrer = '';
+    this.referrer = null;
 
     /**
      * The comment's type.
@@ -72,9 +73,9 @@ export class Comment {
     let comment = new Comment(hasAuthor ? Author.fromJSON(map) : null);
     comment.content = typeof map.comment_content == 'string' ? map.comment_content : '';
     comment.date = typeof map.comment_date_gmt == 'string' ? new Date(map.comment_date_gmt) : null;
-    comment.permalink = typeof map.permalink == 'string' ? map.permalink : '';
+    comment.permalink = typeof map.permalink == 'string' ? new URL(map.permalink) : null;
     comment.postModified = typeof map.comment_post_modified_gmt == 'string' ? new Date(map.comment_post_modified_gmt) : null;
-    comment.referrer = typeof map.referrer == 'string' ? map.referrer : '';
+    comment.referrer = typeof map.referrer == 'string' ? new URL(map.referrer) : null;
     comment.type = typeof map.comment_type == 'string' ? map.comment_type : '';
     return comment;
   }
@@ -89,8 +90,8 @@ export class Comment {
     if (this.date) map.comment_date_gmt = this.date.toISOString();
     if (this.postModified) map.comment_post_modified_gmt = this.postModified.toISOString();
     if (this.type.length) map.comment_type = this.type;
-    if (this.permalink.length) map.permalink = this.permalink;
-    if (this.referrer.length) map.referrer = this.referrer;
+    if (this.permalink) map.permalink = this.permalink.href;
+    if (this.referrer) map.referrer = this.referrer.href;
     return map;
   }
 

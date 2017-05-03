@@ -2,6 +2,7 @@
 
 import {expect} from 'chai';
 import {describe, it} from 'mocha';
+import {URL} from 'url';
 import {Author, Comment, CommentType} from '../src/index';
 
 /**
@@ -22,7 +23,7 @@ describe('Comment', () => {
       expect(comment.author).to.be.null;
       expect(comment.content).to.be.empty;
       expect(comment.date).to.be.null;
-      expect(comment.referrer).to.be.empty;
+      expect(comment.referrer).to.be.null;
       expect(comment.type).to.be.empty;
     });
 
@@ -40,7 +41,7 @@ describe('Comment', () => {
       expect(comment.content).to.equal('A user comment.');
       expect(comment.date).to.be.instanceof(Date);
       expect(comment.date.getFullYear()).to.equal(2000);
-      expect(comment.referrer).to.equal('https://belin.io');
+      expect(comment.referrer.href).to.equal('https://belin.io/');
       expect(comment.type).to.equal(CommentType.TRACKBACK);
     });
   });
@@ -59,14 +60,14 @@ describe('Comment', () => {
 
       let comment = new Comment(author, 'A user comment.', CommentType.PINGBACK);
       comment.date = new Date('2000-01-01T00:00:00.000Z');
-      comment.referrer = 'https://belin.io';
+      comment.referrer = new URL('https://belin.io');
 
       let data = comment.toJSON();
       expect(data.comment_author).to.equal('Cédric Belin');
       expect(data.comment_content).to.equal('A user comment.');
       expect(data.comment_date_gmt).to.equal('2000-01-01T00:00:00.000Z');
       expect(data.comment_type).to.equal('pingback');
-      expect(data.referrer).to.equal('https://belin.io');
+      expect(data.referrer).to.equal('https://belin.io/');
     });
   });
 
@@ -79,7 +80,7 @@ describe('Comment', () => {
 
     let comment = new Comment(author, 'A user comment.', CommentType.PINGBACK);
     comment.date = new Date('2000-01-01T00:00:00.000Z');
-    comment.referrer = 'https://belin.io';
+    comment.referrer = new URL('https://belin.io');
 
     let data = String(comment);
     it('should start with the class name', () => {
@@ -91,7 +92,7 @@ describe('Comment', () => {
         .and.contain('"comment_content":"A user comment."')
         .and.contain('"comment_type":"pingback"')
         .and.contain('"comment_date_gmt":"2000-01-01T00:00:00.000Z"')
-        .and.contain('"referrer":"https://belin.io"');
+        .and.contain('"referrer":"https://belin.io/"');
     });
   });
 });

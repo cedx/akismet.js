@@ -1,3 +1,5 @@
+import {URL} from 'url';
+
 /**
  * Represents the author of a comment.
  */
@@ -37,9 +39,9 @@ export class Author {
 
     /**
      * The URL of the author's website.
-     * @type {string}
+     * @type {URL}
      */
-    this.url = '';
+    this.url = null;
 
     /**
      * The author's user agent, that is the string identifying the Web browser used to submit comments.
@@ -60,7 +62,7 @@ export class Author {
     author.email = typeof map.comment_author_email == 'string' ? map.comment_author_email : '';
     author.name = typeof map.comment_author == 'string' ? map.comment_author : '';
     author.role = typeof map.user_role == 'string' ? map.user_role : '';
-    author.url = typeof map.comment_author_url == 'string' ? map.comment_author_url : '';
+    author.url = typeof map.comment_author_url == 'string' ? new URL(map.comment_author_url) : null;
     author.userAgent = typeof map.user_agent == 'string' ? map.user_agent : '';
     return author;
   }
@@ -73,7 +75,7 @@ export class Author {
     let map = {};
     if (this.name.length) map.comment_author = this.name;
     if (this.email.length) map.comment_author_email = this.email;
-    if (this.url.length) map.comment_author_url = this.url;
+    if (this.url) map.comment_author_url = this.url.href;
     if (this.userAgent.length) map.user_agent = this.userAgent;
     if (this.ipAddress.length) map.user_ip = this.ipAddress;
     if (this.role.length) map.user_role = this.role;

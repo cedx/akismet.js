@@ -1,6 +1,6 @@
 import EventEmitter from 'events';
 import superagent from 'superagent';
-import {parse as parseURL} from 'url';
+import {URL} from 'url';
 
 import {Blog} from './blog';
 import {version as pkgVersion} from '../package.json';
@@ -20,10 +20,10 @@ export class Client extends EventEmitter {
 
   /**
    * The URL of the default API end point.
-   * @type {string}
+   * @type {URL}
    */
   static get DEFAULT_ENDPOINT() {
-    return 'https://rest.akismet.com';
+    return new URL('https://rest.akismet.com');
   }
 
   /**
@@ -48,7 +48,7 @@ export class Client extends EventEmitter {
 
     /**
      * The URL of the API end point.
-     * @type {string}
+     * @type {URL}
      */
     this.endPoint = Client.DEFAULT_ENDPOINT;
 
@@ -73,8 +73,7 @@ export class Client extends EventEmitter {
    * @return {Promise<boolean>} A boolean value indicating whether it is spam.
    */
   async checkComment(comment) {
-    let serviceURL = parseURL(this.endPoint);
-    let endPoint = `${serviceURL.protocol}//${this.apiKey}.${serviceURL.host}/1.1/comment-check`;
+    let endPoint = `${this.endPoint.protocol}//${this.apiKey}.${this.endPoint.host}/1.1/comment-check`;
     return await this._fetch(endPoint, comment.toJSON()) == 'true';
   }
 
@@ -84,8 +83,7 @@ export class Client extends EventEmitter {
    * @return {Promise} Completes once the comment has been submitted.
    */
   async submitHam(comment) {
-    let serviceURL = parseURL(this.endPoint);
-    let endPoint = `${serviceURL.protocol}//${this.apiKey}.${serviceURL.host}/1.1/submit-ham`;
+    let endPoint = `${this.endPoint.protocol}//${this.apiKey}.${this.endPoint.host}/1.1/submit-ham`;
     return this._fetch(endPoint, comment.toJSON());
   }
 
@@ -95,8 +93,7 @@ export class Client extends EventEmitter {
    * @return {Promise} Completes once the comment has been submitted.
    */
   async submitSpam(comment) {
-    let serviceURL = parseURL(this.endPoint);
-    let endPoint = `${serviceURL.protocol}//${this.apiKey}.${serviceURL.host}/1.1/submit-spam`;
+    let endPoint = `${this.endPoint.protocol}//${this.apiKey}.${this.endPoint.host}/1.1/submit-spam`;
     return this._fetch(endPoint, comment.toJSON());
   }
 
@@ -105,8 +102,8 @@ export class Client extends EventEmitter {
    * @return {Promise<boolean>} A boolean value indicating whether it is a valid API key.
    */
   async verifyKey() {
-    let endPoint = `${this.endPoint}/1.1/verify-key`;
-    return await this._fetch(endPoint, {key: this.apiKey}) == 'valid';
+    let endPoint = new URL('/1.1/verify-key', this.endPoint);
+    return await this._fetch(endPoint.href, {key: this.apiKey}) == 'valid';
   }
 
   /**

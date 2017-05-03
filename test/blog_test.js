@@ -2,6 +2,7 @@
 
 import {expect} from 'chai';
 import {describe, it} from 'mocha';
+import {URL} from 'url';
 import {Blog} from '../src/index';
 
 /**
@@ -21,7 +22,7 @@ describe('Blog', () => {
       let blog = Blog.fromJSON({});
       expect(blog.charset).to.be.empty;
       expect(blog.languages).to.be.empty;
-      expect(blog.url).to.be.empty;
+      expect(blog.url).to.be.null;
     });
 
     it('should return an initialized instance with a non-empty map', () => {
@@ -35,7 +36,7 @@ describe('Blog', () => {
       expect(blog.languages).to.be.an('array').and.have.lengthOf(2);
       expect(blog.languages[0]).to.equal('en');
       expect(blog.languages[1]).to.equal('fr');
-      expect(blog.url).to.equal('https://github.com/cedx/akismet.js');
+      expect(blog.url.href).to.equal('https://github.com/cedx/akismet.js');
     });
   });
 
