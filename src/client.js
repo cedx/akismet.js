@@ -73,8 +73,9 @@ export class Client extends EventEmitter {
    * @return {Promise<boolean>} A boolean value indicating whether it is spam.
    */
   async checkComment(comment) {
-    let endPoint = `${this.endPoint.protocol}//${this.apiKey}.${this.endPoint.host}/1.1/comment-check`;
-    return await this._fetch(endPoint, comment.toJSON()) == 'true';
+    let baseURL = `${this.endPoint.protocol}//${this.apiKey}.${this.endPoint.host}${this.endPoint.pathname}`;
+    let endPoint = new URL('1.1/comment-check', baseURL);
+    return await this._fetch(endPoint.href, comment.toJSON()) == 'true';
   }
 
   /**
@@ -83,8 +84,9 @@ export class Client extends EventEmitter {
    * @return {Promise} Completes once the comment has been submitted.
    */
   async submitHam(comment) {
-    let endPoint = `${this.endPoint.protocol}//${this.apiKey}.${this.endPoint.host}/1.1/submit-ham`;
-    return this._fetch(endPoint, comment.toJSON());
+    let baseURL = `${this.endPoint.protocol}//${this.apiKey}.${this.endPoint.host}${this.endPoint.pathname}`;
+    let endPoint = new URL('1.1/submit-ham', baseURL);
+    return this._fetch(endPoint.href, comment.toJSON());
   }
 
   /**
@@ -93,8 +95,9 @@ export class Client extends EventEmitter {
    * @return {Promise} Completes once the comment has been submitted.
    */
   async submitSpam(comment) {
-    let endPoint = `${this.endPoint.protocol}//${this.apiKey}.${this.endPoint.host}/1.1/submit-spam`;
-    return this._fetch(endPoint, comment.toJSON());
+    let baseURL = `${this.endPoint.protocol}//${this.apiKey}.${this.endPoint.host}${this.endPoint.pathname}`;
+    let endPoint = new URL('1.1/submit-spam', baseURL);
+    return this._fetch(endPoint.href, comment.toJSON());
   }
 
   /**
