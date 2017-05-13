@@ -51,11 +51,11 @@ describe('Comment', () => {
    */
   describe('#toJSON()', () => {
     it('should return an empty map with a newly created instance', () => {
-      expect(new Comment().toJSON()).to.be.empty;
+      expect((new Comment).toJSON()).to.be.empty;
     });
 
     it('should return a non-empty map with a initialized instance', () => {
-      let author = new Author();
+      let author = new Author;
       author.name = 'Cédric Belin';
 
       let comment = new Comment(author, 'A user comment.', CommentType.PINGBACK);
@@ -75,7 +75,7 @@ describe('Comment', () => {
    * @test {Comment#toString}
    */
   describe('#toString()', () => {
-    let author = new Author();
+    let author = new Author;
     author.name = 'Cédric Belin';
 
     let comment = new Comment(author, 'A user comment.', CommentType.PINGBACK);
