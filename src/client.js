@@ -132,6 +132,7 @@ export class Client extends EventEmitter {
     let response = await request;
     this.emit('response', response);
 
+    if (!response.ok) throw new Error(`${response.status} ${response.statusText}`);
     if (Client.DEBUG_HEADER in response.header) throw new Error(response.header[Client.DEBUG_HEADER]);
     return response.text;
   }
