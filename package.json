@@ -1,17 +1,14 @@
 {
-  "description": "Prevent comment spam using Akismet service.",
-  "homepage": "https://github.com/cedx/akismet.js",
-  "name": "@cedx/akismet",
-
   "author": "Cédric Belin <cedric@belin.io>",
   "bugs": "https://github.com/cedx/akismet.js/issues",
+  "description": "Prevent comment spam using Akismet service.",
+  "homepage": "https://github.com/cedx/akismet.js",
   "license": "Apache-2.0",
-  "repository": "cedx/akismet.js",
-  "version": "8.0.1",
-
   "main": "./lib/index",
   "module": "./src/index",
-
+  "name": "@cedx/akismet",
+  "repository": "cedx/akismet.js",
+  "version": "8.0.1",
   "dependencies": {
     "superagent": "^3.5.2"
   },
