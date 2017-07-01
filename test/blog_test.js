@@ -45,7 +45,7 @@ describe('Blog', () => {
    */
   describe('#toJSON()', () => {
     it('should return an empty map with a newly created instance', () => {
-      expect((new Blog).toJSON()).to.be.empty;
+      expect((new Blog).toJSON()).to.be.an('object').that.is.empty;
     });
 
     it('should return a non-empty map with a initialized instance', () => {

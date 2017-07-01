@@ -51,7 +51,7 @@ describe('Comment', () => {
    */
   describe('#toJSON()', () => {
     it('should return an empty map with a newly created instance', () => {
-      expect((new Comment).toJSON()).to.be.empty;
+      expect((new Comment).toJSON()).to.be.an('object').that.is.empty;
     });
 
     it('should return a non-empty map with a initialized instance', () => {
