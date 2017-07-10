@@ -8,8 +8,9 @@
   "module": "./src/index",
   "name": "@cedx/akismet",
   "repository": "cedx/akismet.js",
-  "version": "8.0.1",
+  "version": "9.0.0",
   "dependencies": {
+    "rxjs": "^5.4.2",
     "superagent": "^3.5.2"
   },
   "devDependencies": {
@@ -29,7 +30,7 @@
     "nyc": "^11.0.3"
   },
   "engines": {
-    "node": ">=8.1.0"
+    "node": ">=8.0.0"
   },
   "keywords": [
     "akismet",

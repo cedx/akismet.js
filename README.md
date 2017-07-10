@@ -21,21 +21,17 @@ $ npm install --save @cedx/akismet
 ```
 
 ## Usage
+This package has an API based on [Observables](http://reactivex.io/intro.html).
 
 ### Key verification
 
 ```javascript
 const {Client} = require('@cedx/akismet');
 
-try {
-  let client = new Client('YourAPIKey', 'http://your.blog.url');
-  let isValid = await client.verifyKey();
-  console.log(isValid ? 'Your API key is valid.' : 'Your API key is invalid.');
-}
-
-catch (error) {
-  console.log(`An error occurred: ${error}`);
-}
+let client = new Client('YourAPIKey', 'http://your.blog.url');
+client.verifyKey().subscribe(isValid =>
+  console.log(isValid ? 'Your API key is valid.' : 'Your API key is invalid.')
+);
 ```
 
 ### Comment check
@@ -84,8 +80,27 @@ During its life cycle, it emits these events:
 You can subscribe to them using the `on()` method:
 
 ```javascript
-client.on('request', response => console.log(`Client request: ${request.url}`));
-client.on('response', response => console.log(`Server response: ${response.statusCode}`));
+client.onRequest.subscribe(
+  request => console.log(`Client request: ${request.url}`)
+);
+
+client.onResponse.subscribe(
+  response => console.log(`Server response: ${response.statusCode}`)
+);
+```
+
+## Promise support
+If you require it, an `Observable` can be converted to a [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) by using the `toPromise()` method:
+
+```javascript
+try {
+  let isSpam = await client.checkComment(comment).toPromise();
+  console.log(isSpam ? 'The comment is marked as spam.' : 'The comment is marked as ham.');
+}
+
+catch (error) {
+  console.log(`An error occurred: ${error.message}`);
+}
 ```
 
 ## Unit tests

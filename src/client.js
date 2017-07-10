@@ -1,4 +1,7 @@
-import EventEmitter from 'events';
+import 'rxjs/add/operator/map';
+
+import {Observable} from 'rxjs/Observable';
+import {Subject} from 'rxjs/Subject';
 import superagent from 'superagent';
 import {URL} from 'url';
 
@@ -8,7 +11,7 @@ import {version as pkgVersion} from '../package.json';
 /**
  * Submits comments to the [Akismet](https://akismet.com) service.
  */
-export class Client extends EventEmitter {
+export class Client {
 
   /**
    * The HTTP header containing the Akismet error messages.
@@ -32,7 +35,6 @@ export class Client extends EventEmitter {
    * @param {Blog|string} [blog] The front page or home URL of the instance making requests.
    */
   constructor(apiKey = '', blog = null) {
-    super();
 
     /**
      * The Akismet API key.
@@ -65,25 +67,53 @@ export class Client extends EventEmitter {
      * @type {string}
      */
     this.userAgent = `Node.js/${process.version.substr(1)} | Akismet/${pkgVersion}`;
+
+    /**
+     * The handler of "request" events.
+     * @type {Subject<superagent.Request>}
+     */
+    this._onRequest = new Subject();
+
+    /**
+     * The handler of "response" events.
+     * @type {Subject<superagent.Response>}
+     */
+    this._onResponse = new Subject();
+  }
+
+  /**
+   * The stream of "request" events.
+   * @type {Observable<superagent.Request>}
+   */
+  get onRequest() {
+    return this._onRequest.asObservable();
+  }
+
+  /**
+   * The stream of "response" events.
+   * @type {Observable<superagent.Response>}
+   */
+  get onResponse() {
+    return this._onResponse.asObservable();
   }
 
   /**
    * Checks the specified comment against the service database, and returns a value indicating whether it is spam.
    * @param {Comment} comment The comment to be checked.
-   * @return {Promise<boolean>} A boolean value indicating whether it is spam.
+   * @return {Observable<boolean>} A boolean value indicating whether it is spam.
    */
-  async checkComment(comment) {
+  checkComment(comment) {
     let baseURL = `${this.endPoint.protocol}//${this.apiKey}.${this.endPoint.host}${this.endPoint.pathname}`;
     let endPoint = new URL('1.1/comment-check', baseURL);
-    return await this._fetch(endPoint.href, comment.toJSON()) == 'true';
+    return this._fetch(endPoint.href, comment.toJSON()).map(res => res == 'true');
   }
 
   /**
    * Submits the specified comment that was incorrectly marked as spam but should not have been.
    * @param {Comment} comment The comment to be submitted.
-   * @return {Promise} Completes once the comment has been submitted.
+   * @return {Observable} Completes once the comment has been submitted.
    */
-  async submitHam(comment) {
+  submitHam(comment) {
     let baseURL = `${this.endPoint.protocol}//${this.apiKey}.${this.endPoint.host}${this.endPoint.pathname}`;
     let endPoint = new URL('1.1/submit-ham', baseURL);
     return this._fetch(endPoint.href, comment.toJSON());
@@ -92,9 +122,9 @@ export class Client extends EventEmitter {
   /**
    * Submits the specified comment that was not marked as spam but should have been.
    * @param {Comment} comment The comment to be submitted.
-   * @return {Promise} Completes once the comment has been submitted.
+   * @return {Observable} Completes once the comment has been submitted.
    */
-  async submitSpam(comment) {
+  submitSpam(comment) {
     let baseURL = `${this.endPoint.protocol}//${this.apiKey}.${this.endPoint.host}${this.endPoint.pathname}`;
     let endPoint = new URL('1.1/submit-spam', baseURL);
     return this._fetch(endPoint.href, comment.toJSON());
@@ -102,23 +132,23 @@ export class Client extends EventEmitter {
 
   /**
    * Checks the API key against the service database, and returns a value indicating whether it is valid.
-   * @return {Promise<boolean>} A boolean value indicating whether it is a valid API key.
+   * @return {Observable<boolean>} A boolean value indicating whether it is a valid API key.
    */
-  async verifyKey() {
+  verifyKey() {
     let endPoint = new URL('1.1/verify-key', this.endPoint);
-    return await this._fetch(endPoint.href, {key: this.apiKey}) == 'valid';
+    return this._fetch(endPoint.href, {key: this.apiKey}).map(res => res == 'valid');
   }
 
   /**
    * Queries the service by posting the specified fields to a given end point, and returns the response as a string.
    * @param {string} endPoint The URL of the end point to query.
    * @param {object} fields The fields describing the query body.
-   * @return {Promise<string>} The response as string.
+   * @return {Observable<string>} The response as string.
    * @emits {superagent.Request} The "request" event.
    * @emits {superagent.Response} The "response" event.
    */
-  async _fetch(endPoint, fields) {
-    if (!this.apiKey.length || !this.blog) throw new Error('The API key or the blog URL is empty.');
+  _fetch(endPoint, fields) {
+    if (!this.apiKey.length || !this.blog) return Observable.throw(new Error('The API key or the blog URL is empty.'));
 
     let bodyFields = Object.assign(this.blog.toJSON(), fields);
     if (this.isTest) bodyFields.is_test = '1';
@@ -128,13 +158,22 @@ export class Client extends EventEmitter {
       .set('User-Agent', this.userAgent)
       .send(bodyFields);
 
-    this.emit('request', request);
-    let response = await request;
-    this.emit('response', response);
+    this._onRequest.next(request);
+    Observable.bindNodeCallback();
 
-    if (!response.ok) throw new Error(`${response.status} ${response.statusText}`);
-    if (Client.DEBUG_HEADER in response.header) throw new Error(response.header[Client.DEBUG_HEADER]);
-    return response.text;
+    return new Observable(observer => {
+      request.then(
+        response => {
+          if (!response.ok) observer.error(new Error(`${response.status} ${response.statusText}`));
+          else if (Client.DEBUG_HEADER in response.header) observer.error(new Error(response.header[Client.DEBUG_HEADER]));
+          else {
+            observer.next(response.text);
+            observer.complete();
+          }
+        },
+        error => observer.error(error)
+      );
+    });
   }
 
   /**
