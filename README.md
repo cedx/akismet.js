@@ -83,14 +83,8 @@ client.onResponse.subscribe(response =>
 If you require it, an `Observable` can be converted to a [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) by using the `toPromise()` method:
 
 ```javascript
-try {
-  let isSpam = await client.checkComment(comment).toPromise();
-  console.log(isSpam ? 'The comment is marked as spam.' : 'The comment is marked as ham.');
-}
-
-catch (error) {
-  console.log(`An error occurred: ${error.message}`);
-}
+let isSpam = await client.checkComment(comment).toPromise();
+console.log(isSpam ? 'The comment is marked as spam.' : 'The comment is marked as ham.');
 ```
 
 ## Unit tests
