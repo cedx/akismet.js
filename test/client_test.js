@@ -2,6 +2,8 @@
 
 import {expect} from 'chai';
 import {describe, it} from 'mocha';
+import {Observable} from 'rxjs/Observable';
+import {Subject} from 'rxjs/Subject';
 import {URL} from 'url';
 import {Author, Client, Comment, CommentType} from '../src/index';
 
@@ -37,6 +39,28 @@ describe('Client', function() {
 
     it('should return `true` for invalid comment (e.g. spam)' , done => {
       _client.checkComment(spam).subscribe(res => expect(res).to.be.true, done, done);
+    });
+  });
+
+  /**
+   * @test {Client#onRequest}
+   */
+  describe('#onRequest', () => {
+    it('should return an `Observable` instead of the underlying `Subject`', () => {
+      let stream = new Client().onRequest;
+      expect(stream).to.be.instanceof(Observable);
+      expect(stream).to.not.be.instanceof(Subject);
+    });
+  });
+
+  /**
+   * @test {Client#onResponse}
+   */
+  describe('#onResponse', () => {
+    it('should return an `Observable` instead of the underlying `Subject`', () => {
+      let stream = new Client().onResponse;
+      expect(stream).to.be.instanceof(Observable);
+      expect(stream).to.not.be.instanceof(Subject);
     });
   });
 
