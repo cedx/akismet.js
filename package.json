@@ -35,6 +35,8 @@
   "keywords": [
     "akismet",
     "comment",
+    "observable",
+    "rxjs",
     "spam",
     "validation"
   ],
