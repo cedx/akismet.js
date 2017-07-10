@@ -1,8 +1,4 @@
-import 'rxjs/add/observable/fromPromise';
-import 'rxjs/add/operator/map';
-
-import {Observable} from 'rxjs/Observable';
-import {Subject} from 'rxjs/Subject';
+import {Observable, Subject} from 'rxjs';
 import superagent from 'superagent';
 import {URL} from 'url';
 

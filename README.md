@@ -80,11 +80,9 @@ client.onResponse.subscribe(response =>
 ```
 
 ## Promise support
-If you require it, an `Observable` can be converted to a [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) by using the `toPromise` operator:
+If you require it, an `Observable` can be converted to a [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) by using the `toPromise()` method:
 
 ```javascript
-import 'rxjs/add/operator/toPromise';
-
 try {
   let isSpam = await client.checkComment(comment).toPromise();
   console.log(isSpam ? 'The comment is marked as spam.' : 'The comment is marked as ham.');

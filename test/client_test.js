@@ -2,8 +2,7 @@
 
 import {expect} from 'chai';
 import {describe, it} from 'mocha';
-import {Observable} from 'rxjs/Observable';
-import {Subject} from 'rxjs/Subject';
+import {Observable, Subject} from 'rxjs';
 import {URL} from 'url';
 import {Author, Client, Comment, CommentType} from '../src/index';
 
