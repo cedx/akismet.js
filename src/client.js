@@ -178,7 +178,7 @@ export class Client {
       .send(bodyFields);
 
     this._onRequest.next(req);
-    return Observable.fromPromise(req).map(res => {
+    return Observable.from(req).map(res => {
       this._onResponse.next(res);
       if (!res.ok) return Observable.throw(new Error(`${res.status} ${res.statusText}`));
       if (Client.DEBUG_HEADER in res.header) return Observable.throw(new Error(res.header[Client.DEBUG_HEADER]));
