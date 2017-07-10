@@ -39,60 +39,52 @@ client.verifyKey().subscribe(isValid =>
 ```javascript
 const {Author, Comment} = require('@cedx/akismet');
 
-try {
-  let comment = new Comment(
-    new Author('127.0.0.1', 'Mozilla/5.0'),
-    'A comment.'
-  );
+let comment = new Comment(
+  new Author('127.0.0.1', 'Mozilla/5.0'),
+  'A comment.'
+);
 
-  let isSpam = await client.checkComment(comment);
-  console.log(isSpam ? 'The comment is marked as spam.' : 'The comment is marked as ham.');
-}
-
-catch (error) {
-  console.log(`An error occurred: ${error}`);
-}
+client.checkComment(comment).subscribe(isSpam =>
+  console.log(isSpam ? 'The comment is marked as spam.' : 'The comment is marked as ham.')
+);
 ```
 
 ### Submit spam/ham
 
 ```javascript
-try {
-  await client.submitSpam(comment);
-  console.log('Spam submitted.');
-   
-  await client.submitHam(comment);
-  console.log('Ham submitted.');
-}
+client.submitSpam(comment).subscribe(() =>
+  console.log('Spam submitted.')
+);
 
-catch (error) {
-  console.log(`An error occurred: ${error}`);
-}
+client.submitHam(comment).subscribe(() =>
+  console.log('Ham submitted.')
+);
 ```
 
 ## Events
-The `Client` class is an [EventEmitter](https://nodejs.org/api/events.html#events_class_eventemitter).
-During its life cycle, it emits these events:
+The `Client` class triggers some events during its life cycle:
 
 - `request` : emitted every time a request is made to the remote service.
 - `response` : emitted every time a response is received from the remote service.
 
-You can subscribe to them using the `on()` method:
+These events are exposed as [Observable](http://reactivex.io/intro.html), you can subscribe to them using the `on<EventName>` properties:
 
 ```javascript
-client.onRequest.subscribe(
-  request => console.log(`Client request: ${request.url}`)
+client.onRequest.subscribe(request =>
+  console.log(`Client request: ${request.url}`)
 );
 
-client.onResponse.subscribe(
-  response => console.log(`Server response: ${response.statusCode}`)
+client.onResponse.subscribe(response =>
+  console.log(`Server response: ${response.statusCode}`)
 );
 ```
 
 ## Promise support
-If you require it, an `Observable` can be converted to a [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) by using the `toPromise()` method:
+If you require it, an `Observable` can be converted to a [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) by using the `toPromise` operator:
 
 ```javascript
+import 'rxjs/add/operator/toPromise';
+
 try {
   let isSpam = await client.checkComment(comment).toPromise();
   console.log(isSpam ? 'The comment is marked as spam.' : 'The comment is marked as ham.');

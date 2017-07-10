@@ -106,7 +106,7 @@ export class Client {
   checkComment(comment) {
     let baseURL = `${this.endPoint.protocol}//${this.apiKey}.${this.endPoint.host}${this.endPoint.pathname}`;
     let endPoint = new URL('1.1/comment-check', baseURL);
-    return this._fetch(endPoint.href, comment.toJSON()).map(response => response == 'true');
+    return this._fetch(endPoint, comment.toJSON()).map(res => res == 'true');
   }
 
   /**
@@ -117,7 +117,7 @@ export class Client {
   submitHam(comment) {
     let baseURL = `${this.endPoint.protocol}//${this.apiKey}.${this.endPoint.host}${this.endPoint.pathname}`;
     let endPoint = new URL('1.1/submit-ham', baseURL);
-    return this._fetch(endPoint.href, comment.toJSON());
+    return this._fetch(endPoint, comment.toJSON());
   }
 
   /**
@@ -128,7 +128,7 @@ export class Client {
   submitSpam(comment) {
     let baseURL = `${this.endPoint.protocol}//${this.apiKey}.${this.endPoint.host}${this.endPoint.pathname}`;
     let endPoint = new URL('1.1/submit-spam', baseURL);
-    return this._fetch(endPoint.href, comment.toJSON());
+    return this._fetch(endPoint, comment.toJSON());
   }
 
   /**
@@ -159,12 +159,12 @@ export class Client {
    */
   verifyKey() {
     let endPoint = new URL('1.1/verify-key', this.endPoint);
-    return this._fetch(endPoint.href, {key: this.apiKey}).map(response => response == 'valid');
+    return this._fetch(endPoint, {key: this.apiKey}).map(res => res == 'valid');
   }
 
   /**
    * Queries the service by posting the specified fields to a given end point, and returns the response as a string.
-   * @param {string} endPoint The URL of the end point to query.
+   * @param {URL} endPoint The URL of the end point to query.
    * @param {object} fields The fields describing the query body.
    * @return {Observable<string>} The response as string.
    * @emits {superagent.Request} The "request" event.
@@ -176,17 +176,17 @@ export class Client {
     let bodyFields = Object.assign(this.blog.toJSON(), fields);
     if (this.isTest) bodyFields.is_test = '1';
 
-    let request = superagent.post(endPoint)
+    let req = superagent.post(endPoint.href)
       .type('form')
       .set('User-Agent', this.userAgent)
       .send(bodyFields);
 
-    this._onRequest.next(request);
-    return Observable.fromPromise(request).map(response => {
-      this._onResponse.next(response);
-      if (!response.ok) return Observable.throw(new Error(`${response.status} ${response.statusText}`));
-      if (Client.DEBUG_HEADER in response.header) return Observable.throw(new Error(response.header[Client.DEBUG_HEADER]));
-      return response.text;
+    this._onRequest.next(req);
+    return Observable.fromPromise(req).map(res => {
+      this._onResponse.next(res);
+      if (!res.ok) return Observable.throw(new Error(`${res.status} ${res.statusText}`));
+      if (Client.DEBUG_HEADER in res.header) return Observable.throw(new Error(res.header[Client.DEBUG_HEADER]));
+      return res.text;
     });
   }
 }

@@ -2,7 +2,9 @@
 This file contains highlights of what changes on each version of the [Akismet for JS](https://github.com/cedx/akismet.js) library.
 
 ## Version 9.0.0
-- Breaking change: reverted the API to an [Observable](http://reactivex.io/intro.html)-based one.
+- Breaking change: reverted the API of the `Client` class to an [Observable](http://reactivex.io/intro.html)-based one.
+- Added new unit tests.
+- Updated the package dependencies.
 
 ## Version 8.0.1
 - Fixed a code generation bug.
