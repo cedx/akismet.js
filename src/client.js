@@ -105,7 +105,7 @@ export class Client {
   checkComment(comment) {
     let baseURL = `${this.endPoint.protocol}//${this.apiKey}.${this.endPoint.host}${this.endPoint.pathname}`;
     let endPoint = new URL('1.1/comment-check', baseURL);
-    return this._fetch(endPoint.href, comment.toJSON()).map(res => res == 'true');
+    return this._fetch(endPoint.href, comment.toJSON()).map(response => response == 'true');
   }
 
   /**
@@ -131,12 +131,34 @@ export class Client {
   }
 
   /**
+   * Converts this object to a map in JSON format.
+   * @return {object} The map in JSON format corresponding to this object.
+   */
+  toJSON() {
+    return {
+      apiKey: this.apiKey,
+      blog: this.blog ? this.blog.constructor.name : null,
+      endPoint: this.endPoint,
+      isTest: this.isTest,
+      userAgent: this.userAgent
+    };
+  }
+
+  /**
+   * Returns a string representation of this object.
+   * @return {string} The string representation of this object.
+   */
+  toString() {
+    return `${this.constructor.name} ${JSON.stringify(this)}`;
+  }
+
+  /**
    * Checks the API key against the service database, and returns a value indicating whether it is valid.
    * @return {Observable<boolean>} A boolean value indicating whether it is a valid API key.
    */
   verifyKey() {
     let endPoint = new URL('1.1/verify-key', this.endPoint);
-    return this._fetch(endPoint.href, {key: this.apiKey}).map(res => res == 'valid');
+    return this._fetch(endPoint.href, {key: this.apiKey}).map(response => response == 'valid');
   }
 
   /**
@@ -159,42 +181,11 @@ export class Client {
       .send(bodyFields);
 
     this._onRequest.next(request);
-    Observable.bindNodeCallback();
-
-    return new Observable(observer => {
-      request.then(
-        response => {
-          if (!response.ok) observer.error(new Error(`${response.status} ${response.statusText}`));
-          else if (Client.DEBUG_HEADER in response.header) observer.error(new Error(response.header[Client.DEBUG_HEADER]));
-          else {
-            observer.next(response.text);
-            observer.complete();
-          }
-        },
-        error => observer.error(error)
-      );
+    return Observable.fromPromise(request).map(response => {
+      this._onResponse.next(response);
+      if (!response.ok) return Observable.throw(new Error(`${response.status} ${response.statusText}`));
+      if (Client.DEBUG_HEADER in response.header) return Observable.throw(new Error(response.header[Client.DEBUG_HEADER]));
+      return response.text;
     });
-  }
-
-  /**
-   * Converts this object to a map in JSON format.
-   * @return {object} The map in JSON format corresponding to this object.
-   */
-  toJSON() {
-    return {
-      apiKey: this.apiKey,
-      blog: this.blog ? this.blog.constructor.name : null,
-      endPoint: this.endPoint,
-      isTest: this.isTest,
-      userAgent: this.userAgent
-    };
-  }
-
-  /**
-   * Returns a string representation of this object.
-   * @return {string} The string representation of this object.
-   */
-  toString() {
-    return `${this.constructor.name} ${JSON.stringify(this)}`;
   }
 }
