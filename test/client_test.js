@@ -68,7 +68,7 @@ describe('Client', function() {
    */
   describe('#submitHam()', () => {
     it('should complete without error' , done => {
-      _client.submitHam(ham).subscribe(null, done, done);
+      _client.submitHam(ham).subscribe(() => done(), done);
     });
   });
 
@@ -77,7 +77,7 @@ describe('Client', function() {
    */
   describe('#submitSpam()', () => {
     it('should complete without error' , done => {
-      _client.submitSpam(spam).subscribe(null, done, done);
+      _client.submitSpam(spam).subscribe(() => done(), done);
     });
   });
 
