@@ -100,7 +100,7 @@ export class Client {
    * @return {Observable<boolean>} A boolean value indicating whether it is spam.
    */
   checkComment(comment) {
-    let baseURL = `${this.endPoint.protocol}//${this.apiKey}.${this.endPoint.host}${this.endPoint.pathname}`;
+    let baseURL = `${this.endPoint.protocol}//${this.apiKey}.${this.endPoint.host}`;
     let endPoint = new URL('1.1/comment-check', baseURL);
     return this._fetch(endPoint, comment.toJSON()).map(res => res == 'true');
   }
@@ -111,7 +111,7 @@ export class Client {
    * @return {Observable} Completes once the comment has been submitted.
    */
   submitHam(comment) {
-    let baseURL = `${this.endPoint.protocol}//${this.apiKey}.${this.endPoint.host}${this.endPoint.pathname}`;
+    let baseURL = `${this.endPoint.protocol}//${this.apiKey}.${this.endPoint.host}`;
     let endPoint = new URL('1.1/submit-ham', baseURL);
     return this._fetch(endPoint, comment.toJSON());
   }
@@ -122,7 +122,7 @@ export class Client {
    * @return {Observable} Completes once the comment has been submitted.
    */
   submitSpam(comment) {
-    let baseURL = `${this.endPoint.protocol}//${this.apiKey}.${this.endPoint.host}${this.endPoint.pathname}`;
+    let baseURL = `${this.endPoint.protocol}//${this.apiKey}.${this.endPoint.host}`;
     let endPoint = new URL('1.1/submit-spam', baseURL);
     return this._fetch(endPoint, comment.toJSON());
   }
