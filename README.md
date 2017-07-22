@@ -26,7 +26,7 @@ This package has an API based on [Observables](http://reactivex.io/intro.html).
 ### Key verification
 
 ```javascript
-import {Client} from '@cedx/akismet';
+const {Client} = require('@cedx/akismet');
 
 let client = new Client('YourAPIKey', 'http://your.blog.url');
 client.verifyKey().subscribe(isValid =>
@@ -37,7 +37,7 @@ client.verifyKey().subscribe(isValid =>
 ### Comment check
 
 ```javascript
-import {Author, Comment} from '@cedx/akismet';
+const {Author, Comment} = require('@cedx/akismet');
 
 let comment = new Comment(
   new Author('127.0.0.1', 'Mozilla/5.0'),
