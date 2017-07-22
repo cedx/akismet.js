@@ -5,10 +5,9 @@
   "homepage": "https://github.com/cedx/akismet.js",
   "license": "Apache-2.0",
   "main": "./lib/index",
-  "module": "./src/index",
   "name": "@cedx/akismet",
   "repository": "cedx/akismet.js",
-  "version": "9.0.0",
+  "version": "9.1.0",
   "dependencies": {
     "rxjs": "^5.4.2",
     "superagent": "^3.5.2"
@@ -16,14 +15,12 @@
   "devDependencies": {
     "@cedx/coveralls": "^2.0.0",
     "@cedx/gulp-david": "^8.0.0",
-    "babel-preset-env": "^1.6.0",
-    "babel-register": "^6.24.1",
     "chai": "^4.1.0",
     "del": "^3.0.0",
     "esdoc": "^0.5.2",
+    "esdoc-node": "^1.0.2",
     "estraverse": "^4.2.0",
     "gulp": "^3.9.1",
-    "gulp-babel": "^6.1.2",
     "gulp-eslint": "^4.0.0",
     "mocha": "^3.4.2",
     "nsp": "^2.6.3",
@@ -42,7 +39,6 @@
   ],
   "scripts": {
     "coverage": "coveralls --file=var/lcov.info",
-    "prepare": "gulp build",
-    "test": "nyc --report-dir=var --reporter=lcovonly mocha --compilers=js:babel-register --recursive"
+    "test": "nyc --report-dir=var --reporter=lcovonly mocha --recursive"
   }
 }

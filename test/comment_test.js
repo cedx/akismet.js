@@ -1,9 +1,8 @@
 'use strict';
 
-import {expect} from 'chai';
-import {describe, it} from 'mocha';
-import {URL} from 'url';
-import {Author, Comment, CommentType} from '../src/index';
+const {expect} = require('chai');
+const {URL} = require('url');
+const {Author, Comment, CommentType} = require('../lib');
 
 /**
  * @test {Comment}

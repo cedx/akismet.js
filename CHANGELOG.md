@@ -1,6 +1,10 @@
 # Changelog
 This file contains highlights of what changes on each version of the [Akismet for JS](https://github.com/cedx/akismet.js) library.
 
+## Version 9.1.0
+- Removed the dependency on [Babel](https://babeljs.io) compiler.
+- Updated the package dependencies.
+
 ## Version 9.0.0
 - Breaking change: reverted the API of the `Client` class to an [Observable](http://reactivex.io/intro.html)-based one.
 - Added new unit tests.
