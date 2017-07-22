@@ -8,7 +8,7 @@ env:
 
 parserOptions:
   ecmaVersion: 2017
-  sourceType: module
+  sourceType: script
 
 rules:
   # Possible errors.

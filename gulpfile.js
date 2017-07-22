@@ -10,7 +10,7 @@ const {normalize} = require('path');
 /**
  * Runs the default tasks.
  */
-gulp.task('default', ['lint']);
+gulp.task('default', ['test']);
 
 /**
  * Deletes all generated files and reset any saved state.
