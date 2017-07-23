@@ -13,8 +13,8 @@
     "superagent": "^3.5.2"
   },
   "devDependencies": {
-    "@cedx/coveralls": "^2.0.0",
-    "@cedx/gulp-david": "^8.0.0",
+    "@cedx/coveralls": "^2.1.0",
+    "@cedx/gulp-david": "^8.1.0",
     "chai": "^4.1.0",
     "del": "^3.0.0",
     "esdoc": "^0.5.2",
@@ -38,7 +38,7 @@
     "validation"
   ],
   "scripts": {
-    "coverage": "coveralls --file=var/lcov.info",
+    "coverage": "coveralls var/lcov.info",
     "test": "nyc --report-dir=var --reporter=lcovonly mocha --recursive"
   }
 }
