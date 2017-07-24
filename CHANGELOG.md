@@ -85,7 +85,7 @@ This file contains highlights of what changes on each version of the [Akismet fo
 - Updated the project URL.
 
 ## Version 1.0.1
-- Fixed [GitHub issue #5](https://github.com/cedx/akismet.js/issues/5).
+- Fixed [issue #5](https://github.com/cedx/akismet.js/issues/5).
 
 ## Version 1.0.0
 - Breaking change: changed the signature of the `fromJSON` methods.
