@@ -10,21 +10,21 @@ const {Author} = require('../lib');
 describe('Author', () => {
 
   /**
-   * @test {Author.fromJSON}
+   * @test {Author.fromJson}
    */
-  describe('.fromJSON()', () => {
+  describe('.fromJson()', () => {
     it('should return a null reference with a non-object value', () => {
-      expect(Author.fromJSON('foo')).to.be.null;
+      expect(Author.fromJson('foo')).to.be.null;
     });
 
     it('should return an empty instance with an empty map', () => {
-      let author = Author.fromJSON({});
+      let author = Author.fromJson({});
       expect(author.email).to.be.empty;
       expect(author.url).to.be.null;
     });
 
     it('should return an initialized instance with a non-empty map', () => {
-      let author = Author.fromJSON({
+      let author = Author.fromJson({
         comment_author_email: 'cedric@belin.io',
         comment_author_url: 'https://belin.io'
       });

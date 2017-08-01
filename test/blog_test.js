@@ -10,22 +10,22 @@ const {Blog} = require('../lib');
 describe('Blog', () => {
 
   /**
-   * @test {Blog.fromJSON}
+   * @test {Blog.fromJson}
    */
-  describe('.fromJSON()', () => {
+  describe('.fromJson()', () => {
     it('should return a null reference with a non-object value', () => {
-      expect(Blog.fromJSON('foo')).to.be.null;
+      expect(Blog.fromJson('foo')).to.be.null;
     });
 
     it('should return an empty instance with an empty map', () => {
-      let blog = Blog.fromJSON({});
+      let blog = Blog.fromJson({});
       expect(blog.charset).to.be.empty;
       expect(blog.languages).to.be.empty;
       expect(blog.url).to.be.null;
     });
 
     it('should return an initialized instance with a non-empty map', () => {
-      let blog = Blog.fromJSON({
+      let blog = Blog.fromJson({
         blog: 'https://github.com/cedx/akismet.js',
         blog_charset: 'UTF-8',
         blog_lang: 'en, fr'
