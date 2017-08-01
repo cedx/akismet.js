@@ -11,7 +11,7 @@
       "brand": {
         "description": "Prevent comment spam using Akismet service, in JavaScript.",
         "logo": "web/favicon.ico",
-        "repository": "",
+        "repository": "https://github.com/cedx/akismet.js",
         "title": "Akismet for JS"
       }
     }}

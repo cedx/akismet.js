@@ -1,6 +1,11 @@
 # Changelog
 This file contains highlights of what changes on each version of the [Akismet for JS](https://github.com/cedx/akismet.js) library.
 
+## Version 10.0.0
+- Breaking change: renamed the `fromJSON()` static methods to `fromJson`.
+- Changed the naming convention: acronyms and abbreviations are capitalized like regular words, except for two-letter acronyms.
+- Updated the package dependencies.
+
 ## Version 9.1.0
 - Removed the dependency on [Babel](https://babeljs.io) compiler.
 - Updated the package dependencies.
