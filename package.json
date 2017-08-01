@@ -7,7 +7,7 @@
   "main": "./lib/index",
   "name": "@cedx/akismet",
   "repository": "cedx/akismet.js",
-  "version": "9.1.0",
+  "version": "10.0.0",
   "dependencies": {
     "rxjs": "^5.4.2",
     "superagent": "^3.5.2"
