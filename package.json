@@ -17,13 +17,14 @@
     "@cedx/gulp-david": "^8.1.0",
     "chai": "^4.1.0",
     "del": "^3.0.0",
-    "esdoc": "^0.5.2",
+    "esdoc": "^1.0.1",
     "esdoc-node": "^1.0.2",
+    "esdoc-standard-plugin": "^1.0.0",
     "estraverse": "^4.2.0",
     "gulp": "^3.9.1",
     "gulp-eslint": "^4.0.0",
-    "mocha": "^3.4.2",
-    "nsp": "^2.6.3",
+    "mocha": "^3.5.0",
+    "nsp": "^2.7.0",
     "nyc": "^11.1.0"
   },
   "engines": {

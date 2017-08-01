@@ -1,15 +1,19 @@
 {
-  "title": "Akismet for JS",
-
   "source": "lib",
   "destination": "doc/api",
-
   "excludes": ["index\\.js$"],
-  "manual": {"changelog": ["CHANGELOG.md"]},
-  "plugins": [{"name": "esdoc-node"}],
-
-  "test": {
-    "source": "test",
-    "type": "mocha"
-  }
+  "plugins": [
+    {"name": "esdoc-node"},
+    {"name": "esdoc-standard-plugin", "option": {
+      "accessor": {"access": ["public", "protected"]},
+      "manual": {"files": ["CHANGELOG.md"]},
+      "test": {"source": "test"},
+      "brand": {
+        "description": "Prevent comment spam using Akismet service, in JavaScript.",
+        "logo": "web/favicon.ico",
+        "repository": "",
+        "title": "Akismet for JS"
+      }
+    }}
+  ]
 }
