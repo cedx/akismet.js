@@ -7,7 +7,7 @@
   "main": "./lib/index",
   "name": "@cedx/akismet",
   "repository": "cedx/akismet.js",
-  "version": "10.0.0",
+  "version": "10.1.0",
   "dependencies": {
     "node-fetch": "^1.7.2",
     "rxjs": "^5.4.3"
