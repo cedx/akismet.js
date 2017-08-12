@@ -2,6 +2,8 @@
 This file contains highlights of what changes on each version of the [Akismet for JS](https://github.com/cedx/akismet.js) library.
 
 ## Version 10.1.0
+- Replaced the [SuperAgent](https://visionmedia.github.io/superagent) HTTP client by `node-fetch`.
+- Updated the package dependencies.
 
 ## Version 10.0.0
 - Breaking change: renamed the `fromJSON()` static methods to `fromJson`.
