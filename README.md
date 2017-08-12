@@ -75,7 +75,7 @@ client.onRequest.subscribe(request =>
 );
 
 client.onResponse.subscribe(response =>
-  console.log(`Server response: ${response.statusCode}`)
+  console.log(`Server response: ${response.status}`)
 );
 ```
 
