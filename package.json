@@ -3,12 +3,11 @@
   "bugs": "https://github.com/cedx/akismet.js/issues",
   "description": "Prevent comment spam using Akismet service.",
   "homepage": "https://github.com/cedx/akismet.js",
-  "license": "Apache-2.0",
   "license": "MIT",
   "main": "./lib/index",
   "name": "@cedx/akismet",
   "repository": "cedx/akismet.js",
-  "version": "10.1.0",
+  "version": "11.0.0",
   "dependencies": {
     "node-fetch": "^1.7.2",
     "rxjs": "^5.4.3"

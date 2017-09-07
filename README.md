@@ -1,5 +1,5 @@
 # Akismet for JS
-![Runtime](https://img.shields.io/badge/node-%3E%3D8.3-brightgreen.svg) ![Release](https://img.shields.io/npm/v/@cedx/akismet.svg) ![License](https://img.shields.io/npm/l/@cedx/akismet.svg) ![Downloads](https://img.shields.io/npm/dt/@cedx/akismet.svg) ![Dependencies](https://david-dm.org/cedx/akismet.js.svg) ![Coverage](https://coveralls.io/repos/github/cedx/akismet.js/badge.svg) ![Build](https://travis-ci.org/cedx/akismet.js.svg)
+![Runtime](https://img.shields.io/badge/node-%3E%3D8.4-brightgreen.svg) ![Release](https://img.shields.io/npm/v/@cedx/akismet.svg) ![License](https://img.shields.io/npm/l/@cedx/akismet.svg) ![Downloads](https://img.shields.io/npm/dt/@cedx/akismet.svg) ![Dependencies](https://david-dm.org/cedx/akismet.js.svg) ![Coverage](https://coveralls.io/repos/github/cedx/akismet.js/badge.svg) ![Build](https://travis-ci.org/cedx/akismet.js.svg)
 
 Prevent comment spam using [Akismet](https://akismet.com) service, in [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript).
 
@@ -62,29 +62,16 @@ client.submitHam(comment).subscribe(() =>
 ```
 
 ## Events
-The `Client` class triggers some events during its life cycle:
+The `Client` class is an [`EventEmitter`](https://nodejs.org/api/events.html) that triggers some events during its life cycle:
 
 - `request` : emitted every time a request is made to the remote service.
 - `response` : emitted every time a response is received from the remote service.
 
-These events are exposed as [Observable](http://reactivex.io/intro.html), you can subscribe to them using the `on<EventName>` properties:
+You can subscribe to them using the `on()` method:
 
 ```javascript
-client.onRequest.subscribe(request =>
-  console.log(`Client request: ${request.url}`)
-);
-
-client.onResponse.subscribe(response =>
-  console.log(`Server response: ${response.status}`)
-);
-```
-
-## Promise support
-If you require it, an `Observable` can be converted to a [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) by using the `toPromise()` method:
-
-```javascript
-let isSpam = await client.checkComment(comment).toPromise();
-console.log(isSpam ? 'The comment is marked as spam.' : 'The comment is marked as ham.');
+client.on('request', request => console.log(`Client request: ${request.url}`));
+client.on('response', response => console.log(`Server response: ${response.status}`));
 ```
 
 ## Unit tests

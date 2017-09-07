@@ -2,6 +2,8 @@
 This file contains highlights of what changes on each version of the [Akismet for JS](https://github.com/cedx/akismet.js) library.
 
 ## Version 11.0.0
+- Breaking change: converted the `Subject` event API to the [`EventEmitter`](https://nodejs.org/api/events.html) one.
+- Added the [`#[Symbol.toStringTag]`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol/toStringTag) property to all classes.
 - Changed licensing for the [MIT License](https://opensource.org/licenses/MIT).
 
 ## Version 10.1.0
