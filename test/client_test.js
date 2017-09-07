@@ -1,7 +1,6 @@
 'use strict';
 
 const {expect} = require('chai');
-const {Observable, Subject} = require('rxjs');
 const {URL} = require('url');
 const {Author, Client, Comment, CommentType} = require('../lib');
 
@@ -31,34 +30,12 @@ describe('Client', function() {
    * @test {Client#checkComment}
    */
   describe('#checkComment()', () => {
-    it('should return `false` for valid comment (e.g. ham)' , done => {
-      _client.checkComment(ham).subscribe(res => expect(res).to.be.false, done, done);
+    it('should return `false` for valid comment (e.g. ham)' , async () => {
+      expect(await _client.checkComment(ham)).to.be.false;
     });
 
-    it('should return `true` for invalid comment (e.g. spam)' , done => {
-      _client.checkComment(spam).subscribe(res => expect(res).to.be.true, done, done);
-    });
-  });
-
-  /**
-   * @test {Client#onRequest}
-   */
-  describe('#onRequest', () => {
-    it('should return an `Observable` instead of the underlying `Subject`', () => {
-      let stream = (new Client).onRequest;
-      expect(stream).to.be.instanceof(Observable);
-      expect(stream).to.not.be.instanceof(Subject);
-    });
-  });
-
-  /**
-   * @test {Client#onResponse}
-   */
-  describe('#onResponse', () => {
-    it('should return an `Observable` instead of the underlying `Subject`', () => {
-      let stream = (new Client).onResponse;
-      expect(stream).to.be.instanceof(Observable);
-      expect(stream).to.not.be.instanceof(Subject);
+    it('should return `true` for invalid comment (e.g. spam)' , async () => {
+      expect(await _client.checkComment(spam)).to.be.true;
     });
   });
 
@@ -66,8 +43,9 @@ describe('Client', function() {
    * @test {Client#submitHam}
    */
   describe('#submitHam()', () => {
-    it('should complete without error' , done => {
-      _client.submitHam(ham).subscribe(() => done(), done);
+    it('should complete without error' , async () => {
+      await _client.submitHam(ham);
+      expect(true).to.be.ok;
     });
   });
 
@@ -75,8 +53,9 @@ describe('Client', function() {
    * @test {Client#submitSpam}
    */
   describe('#submitSpam()', () => {
-    it('should complete without error' , done => {
-      _client.submitSpam(spam).subscribe(() => done(), done);
+    it('should complete without error' , async () => {
+      await _client.submitSpam(spam);
+      expect(true).to.be.ok;
     });
   });
 
@@ -131,14 +110,14 @@ describe('Client', function() {
    * @test {Client#verifyKey}
    */
   describe('#verifyKey()', () => {
-    it('should return `true` for a valid API key' , done => {
-      _client.verifyKey().subscribe(res => expect(res).to.be.true, done, done);
+    it('should return `true` for a valid API key' , async () => {
+      expect(await _client.verifyKey()).to.be.true;
     });
 
-    it('should return `false` for an invalid API key' , done => {
+    it('should return `false` for an invalid API key' , async () => {
       let client = new Client('0123456789-ABCDEF', _client.blog);
       client.isTest = _client.isTest;
-      client.verifyKey().subscribe(res => expect(res).to.be.false, done, done);
+      expect(await client.verifyKey()).to.be.false;
     });
   });
 });
