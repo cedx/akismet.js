@@ -4,6 +4,7 @@
   "description": "Prevent comment spam using Akismet service.",
   "homepage": "https://github.com/cedx/akismet.js",
   "license": "Apache-2.0",
+  "license": "MIT",
   "main": "./lib/index",
   "name": "@cedx/akismet",
   "repository": "cedx/akismet.js",

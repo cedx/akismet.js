@@ -106,4 +106,4 @@ $ npm test
 - [Continuous integration](https://travis-ci.org/cedx/akismet.js)
 
 ## License
-[Akismet for JS](https://github.com/cedx/akismet.js) is distributed under the Apache License, version 2.0.
+[Akismet for JS](https://github.com/cedx/akismet.js) is distributed under the MIT License.
