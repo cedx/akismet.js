@@ -10,7 +10,7 @@
       "test": {"source": "test"},
       "brand": {
         "description": "Prevent comment spam using Akismet service, in JavaScript.",
-        "logo": "web/favicon.ico",
+        "logo": "www/favicon.ico",
         "repository": "https://github.com/cedx/akismet.js",
         "title": "Akismet for JS"
       }
