@@ -21,17 +21,21 @@ $ npm install --save @cedx/akismet
 ```
 
 ## Usage
-This package has an API based on [Observables](http://reactivex.io/intro.html).
 
 ### Key verification
 
 ```javascript
 const {Client} = require('@cedx/akismet');
 
-let client = new Client('YourAPIKey', 'http://your.blog.url');
-client.verifyKey().subscribe(isValid =>
-  console.log(isValid ? 'Your API key is valid.' : 'Your API key is invalid.')
-);
+try {
+  let client = new Client('YourAPIKey', 'http://your.blog.url');
+  let isValid = await client.verifyKey();
+  console.log(isValid ? 'Your API key is valid.' : 'Your API key is invalid.');
+}
+
+catch (error) {
+  console.log(`An error occurred: ${error}`);
+}
 ```
 
 ### Comment check
@@ -39,26 +43,35 @@ client.verifyKey().subscribe(isValid =>
 ```javascript
 const {Author, Comment} = require('@cedx/akismet');
 
-let comment = new Comment(
-  new Author('127.0.0.1', 'Mozilla/5.0'),
-  'A comment.'
-);
+try {
+  let comment = new Comment(
+    new Author('127.0.0.1', 'Mozilla/5.0'),
+    'A comment.'
+  );
+  
+  let isSpam = await client.checkComment(comment);
+  console.log(isSpam ? 'The comment is marked as spam.' : 'The comment is marked as ham.');
+}
 
-client.checkComment(comment).subscribe(isSpam =>
-  console.log(isSpam ? 'The comment is marked as spam.' : 'The comment is marked as ham.')
-);
+catch (error) {
+  console.log(`An error occurred: ${error}`);
+}
 ```
 
 ### Submit spam/ham
 
 ```javascript
-client.submitSpam(comment).subscribe(() =>
-  console.log('Spam submitted.')
-);
+try {
+  await client.submitSpam(comment);
+  console.log('Spam submitted.');
+  
+  await client.submitHam(comment);
+  console.log('Ham submitted.');
+}
 
-client.submitHam(comment).subscribe(() =>
-  console.log('Ham submitted.')
-);
+catch (error) {
+  console.log(`An error occurred: ${error}`);
+}
 ```
 
 ## Events
