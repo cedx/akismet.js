@@ -12,8 +12,9 @@
     "node-fetch": "^1.7.3"
   },
   "devDependencies": {
-    "@cedx/coveralls": "^4.0.0",
+    "@cedx/coveralls": "^5.0.0",
     "@cedx/gulp-david": "^10.0.0",
+    "browserify": "^14.4.0",
     "chai": "^4.1.2",
     "del": "^3.0.0",
     "esdoc": "^1.0.2",
@@ -21,12 +22,17 @@
     "esdoc-standard-plugin": "^1.0.0",
     "gulp": "^3.9.1",
     "gulp-eslint": "^4.0.0",
-    "mocha": "^3.5.0",
+    "karma": "^1.7.1",
+    "karma-browserify": "^5.1.1",
+    "karma-firefox-launcher": "^1.0.1",
+    "karma-mocha": "^1.3.0",
+    "mocha": "^3.5.3",
     "nsp": "^2.8.0",
-    "nyc": "^11.2.1"
+    "nyc": "^11.2.1",
+    "watchify": "^3.9.0"
   },
   "engines": {
-    "node": ">=8.4.0"
+    "node": ">=8.5.0"
   },
   "keywords": [
     "akismet",
@@ -36,6 +42,6 @@
   ],
   "scripts": {
     "coverage": "coveralls var/lcov.info",
-    "test": "nyc --report-dir=var --reporter=lcovonly mocha --recursive"
+    "test": "nyc mocha"
   }
 }
