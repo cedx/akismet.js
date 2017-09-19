@@ -1,16 +1,10 @@
 * text=auto
 
-.editorconfig text
-.esdoc.json text
-.eslintrc.yaml text
-.gitattributes text
-.gitignore text
-.npmignore text
-.travis.yml text
-
+.* text
 *.js text
 *.json text
 *.md text
+*.opts text
 *.txt text
 *.yaml text
 
