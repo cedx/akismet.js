@@ -41,7 +41,7 @@ describe('Comment', () => {
       expect(comment.date).to.be.instanceof(Date);
       expect(comment.date.getFullYear()).to.equal(2000);
       expect(comment.referrer).to.be.instanceof(URL).and.have.property('href').that.equal('https://belin.io/');
-      expect(comment.type).to.equal(CommentType.TRACKBACK);
+      expect(comment.type).to.equal(CommentType.trackback);
     });
   });
 
@@ -53,11 +53,11 @@ describe('Comment', () => {
       expect((new Comment).toJSON()).to.be.an('object').that.is.empty;
     });
 
-    it('should return a non-empty map with a initialized instance', () => {
+    it('should return a non-empty map with an initialized instance', () => {
       let author = new Author;
       author.name = 'Cédric Belin';
 
-      let comment = new Comment(author, 'A user comment.', CommentType.PINGBACK);
+      let comment = new Comment(author, 'A user comment.', CommentType.pingback);
       comment.date = new Date('2000-01-01T00:00:00.000Z');
       comment.referrer = new URL('https://belin.io');
 
@@ -77,7 +77,7 @@ describe('Comment', () => {
     let author = new Author;
     author.name = 'Cédric Belin';
 
-    let comment = new Comment(author, 'A user comment.', CommentType.PINGBACK);
+    let comment = new Comment(author, 'A user comment.', CommentType.pingback);
     comment.date = new Date('2000-01-01T00:00:00.000Z');
     comment.referrer = new URL('https://belin.io');
 

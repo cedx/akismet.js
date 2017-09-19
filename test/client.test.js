@@ -18,13 +18,13 @@ describe('Client', function() {
   author.role = 'administrator';
   author.url = new URL('https://github.com/cedx/akismet.js');
 
-  let ham = new Comment(author, 'I\'m testing out the Service API.', CommentType.COMMENT);
+  let ham = new Comment(author, 'I\'m testing out the Service API.', CommentType.comment);
   ham.referrer = new URL('https://www.npmjs.com/package/@cedx/akismet');
 
   author = new Author('127.0.0.1', 'Spam Bot/6.6.6');
   author.name = 'viagra-test-123';
 
-  let spam = new Comment(author, 'Spam!', CommentType.TRACKBACK);
+  let spam = new Comment(author, 'Spam!', CommentType.trackback);
 
   /**
    * @test {Client#checkComment}
@@ -81,7 +81,7 @@ describe('Client', function() {
       expect(Object.keys(data)).to.have.lengthOf(5);
       expect(data.apiKey).to.equal(process.env.AKISMET_API_KEY);
       expect(data.blog).to.equal('Blog');
-      expect(data.endPoint).to.equal(Client.DEFAULT_ENDPOINT.href);
+      expect(data.endPoint).to.equal(Client.defaultEndPoint.href);
       expect(data.isTest).to.be.true;
       expect(data.userAgent.startsWith('Node.js/')).to.be.true;
     });
@@ -100,7 +100,7 @@ describe('Client', function() {
     it('should contain the instance properties', () => {
       expect(data).to.contain('"apiKey":"')
         .and.contain('"blog":"Blog"')
-        .and.contain(`"endPoint":"${Client.DEFAULT_ENDPOINT}"`)
+        .and.contain(`"endPoint":"${Client.defaultEndPoint}"`)
         .and.contain('"isTest":true')
         .and.contain('"userAgent":"Node.js/');
     });
