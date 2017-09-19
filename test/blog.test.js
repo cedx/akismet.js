@@ -20,7 +20,7 @@ describe('Blog', () => {
     it('should return an empty instance with an empty map', () => {
       let blog = Blog.fromJson({});
       expect(blog.charset).to.be.empty;
-      expect(blog.languages).to.be.empty;
+      expect(blog.languages).to.be.an('array').that.is.empty;
       expect(blog.url).to.be.null;
     });
 
@@ -32,9 +32,7 @@ describe('Blog', () => {
       });
 
       expect(blog.charset).to.equal('UTF-8');
-      expect(blog.languages).to.be.an('array').and.have.lengthOf(2);
-      expect(blog.languages[0]).to.equal('en');
-      expect(blog.languages[1]).to.equal('fr');
+      expect(blog.languages).to.have.ordered.members(['en', 'fr']);
       expect(blog.url).to.be.instanceof(URL).and.have.property('href').that.equal('https://github.com/cedx/akismet.js');
     });
   });
@@ -43,12 +41,13 @@ describe('Blog', () => {
    * @test {Blog#toJSON}
    */
   describe('#toJSON()', () => {
-    it('should return an empty map with a newly created instance', () => {
-      expect((new Blog).toJSON()).to.be.an('object').that.is.empty;
+    it('should return only the blog URL with a newly created instance', () => {
+      let data = new Blog('https://github.com/cedx/akismet.js').toJSON();
+      expect(data).to.be.an('object').and.have.property('blog').that.equal('https://github.com/cedx/akismet.js');
     });
 
-    it('should return a non-empty map with a initialized instance', () => {
-      let data = new Blog('https://github.com/cedx/akismet.js', 'UTF-8', ['en', 'fr']).toJSON();
+    it('should return a non-empty map with an initialized instance', () => {
+      let data = new Blog('https://github.com/cedx/akismet.js', {charset: 'UTF-8', languages: ['en', 'fr']}).toJSON();
       expect(Object.keys(data)).to.have.lengthOf(3);
       expect(data.blog).to.equal('https://github.com/cedx/akismet.js');
       expect(data.blog_charset).to.equal('UTF-8');
@@ -60,7 +59,7 @@ describe('Blog', () => {
    * @test {Blog#toString}
    */
   describe('#toString()', () => {
-    let data = String(new Blog('https://github.com/cedx/akismet.js', 'UTF-8', ['en', 'fr']));
+    let data = String(new Blog('https://github.com/cedx/akismet.js', {charset: 'UTF-8', languages: ['en', 'fr']}));
 
     it('should start with the class name', () => {
       expect(data.startsWith('Blog {')).be.true;

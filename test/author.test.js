@@ -42,7 +42,7 @@ describe('Author', () => {
       expect((new Author).toJSON()).to.be.an('object').that.is.empty;
     });
 
-    it('should return a non-empty map with a initialized instance', () => {
+    it('should return a non-empty map with an initialized instance', () => {
       let author = new Author('127.0.0.1');
       author.email = 'cedric@belin.io';
       author.name = 'Cédric Belin';
