@@ -122,7 +122,7 @@ This file contains highlights of what changes on each version of the [Akismet fo
 - Breaking change: renamed the `-H, --host` command line option to `-a, --address`.
 - Upgraded the package dependencies.
 
-## Version [0.8.0](https://github.com/cedx/akismet.js/compare/v0.7.2...v0.8.0)
+## Version [0.8.0](https://github.com/cedx/akismet.js/compare/v0.7.1...v0.8.0)
 - Breaking change: using more ES2015 features, like default parameters and destructuring assignment.
 - Breaking change: raised the required [Node.js](https://nodejs.org) version.
 - Breaking change: fixed the signature and behavior of the `toJSON()` methods.
@@ -132,9 +132,6 @@ This file contains highlights of what changes on each version of the [Akismet fo
 - Added more unit tests.
 - Replaced [SonarQube](http://www.sonarqube.org) code analyzer by [Codacy](https://www.codacy.com) service.
 - Improved the code coverage.
-
-## Version [0.7.2](https://github.com/cedx/akismet.js/compare/v0.7.1...v0.7.2)
-- Upgraded the package dependencies.
 
 ## Version [0.7.1](https://github.com/cedx/akismet.js/compare/v0.7.0...v0.7.1)
 - Added a command line option to set the user to drop privileges to once server socket is bound.
