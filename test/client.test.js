@@ -5,6 +5,12 @@ const {URL} = require('url');
 const {Author, Client, Comment, CommentType} = require('../lib');
 
 /**
+ * Value indicating whether the current program is running in a browser.
+ * @type {boolean}
+ */
+const isBrowser = typeof process == 'undefined' && typeof window != 'undefined';
+
+/**
  * @test {Client}
  */
 describe('Client', function() {
