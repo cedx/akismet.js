@@ -1,10 +1,13 @@
 # Changelog
 This file contains highlights of what changes on each version of the [Akismet for JS](https://github.com/cedx/akismet.js) library.
 
+## Version [12.0.0](https://github.com/cedx/akismet.js/compare/v11.0.0...v12.0.0)
+- Breaking change: removed the `toJSON()` and `toString()` methods from the `Client` class.
+- Added new values to the `CommentType` enumeration.
+
 ## Version [11.0.0](https://github.com/cedx/akismet.js/compare/v10.1.0...v11.0.0)
 - Breaking change: converted the [`Observable`](http://reactivex.io/intro.html)-based API to an `async/await`-based one.
 - Breaking change: converted the `Subject` event API to the [`EventEmitter`](https://nodejs.org/api/events.html) one.
-- Added new values to the `CommentType` enumeration.
 - Added the [`#[Symbol.toStringTag]`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol/toStringTag) property to all classes.
 - Changed licensing for the [MIT License](https://opensource.org/licenses/MIT).
 

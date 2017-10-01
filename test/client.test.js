@@ -66,53 +66,6 @@ describe('Client', function() {
   });
 
   /**
-   * @test {Client#toJSON}
-   */
-  describe('#toJSON()', () => {
-    it('should return the right values for an incorrectly configured client' , () => {
-      let client = new Client('0123456789-ABCDEF');
-      client.endPoint = new URL('http://localhost');
-      client.userAgent = 'FooBar/6.6.6';
-
-      let data = client.toJSON();
-      expect(data.apiKey).to.equal('0123456789-ABCDEF');
-      expect(data.blog).to.be.null;
-      expect(data.endPoint).to.equal('http://localhost/');
-      expect(data.isTest).to.be.false;
-      expect(data.userAgent).to.equal('FooBar/6.6.6');
-    });
-
-    it('should return the right values for a properly configured client' , () => {
-      let data = _client.toJSON();
-      expect(Object.keys(data)).to.have.lengthOf(5);
-      expect(data.apiKey).to.equal(process.env.AKISMET_API_KEY);
-      expect(data.blog).to.equal('Blog');
-      expect(data.endPoint).to.equal(Client.defaultEndPoint.href);
-      expect(data.isTest).to.be.true;
-      expect(data.userAgent.startsWith('Node.js/')).to.be.true;
-    });
-  });
-
-  /**
-   * @test {Client#toString}
-   */
-  describe('#toString()', () => {
-    let data = String(_client);
-
-    it('should start with the class name', () => {
-      expect(data.startsWith('Client {')).to.be.true;
-    });
-
-    it('should contain the instance properties', () => {
-      expect(data).to.contain('"apiKey":"')
-        .and.contain('"blog":"Blog"')
-        .and.contain(`"endPoint":"${Client.defaultEndPoint}"`)
-        .and.contain('"isTest":true')
-        .and.contain('"userAgent":"Node.js/');
-    });
-  });
-
-  /**
    * @test {Client#verifyKey}
    */
   describe('#verifyKey()', () => {
