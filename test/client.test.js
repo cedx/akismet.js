@@ -1,12 +1,11 @@
 'use strict';
 
 const {expect} = require('chai');
-const {Author, Client, Comment, CommentType, URL} = require('../lib');
+const {Author, Client, Comment, CommentType} = require('../lib');
+const {URL} = require('../lib/url');
 
-/* eslint-disable no-new-func */
-const isBrowser = new Function('try { return this === window; } catch (e) { return false; }');
-const onNodeDescribe = isBrowser() ? describe.skip : describe;
-/* eslint-enable no-new-func */
+const isBrowser = typeof window == 'object' && typeof document == 'object' && document.nodeType == 9;
+const onNodeDescribe = isBrowser ? describe.skip : describe;
 
 /**
  * @test {Client}
