@@ -1,8 +1,7 @@
 'use strict';
 
 const {expect} = require('chai');
-const {URL} = require('url');
-const {Author, Client, Comment, CommentType} = require('../lib');
+const {Author, Client, Comment, CommentType, URL} = require('../lib');
 
 /**
  * Value indicating whether the current program is running in a browser.

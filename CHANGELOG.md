@@ -2,8 +2,12 @@
 This file contains highlights of what changes on each version of the [Akismet for JS](https://github.com/cedx/akismet.js) library.
 
 ## Version [12.0.0](https://github.com/cedx/akismet.js/compare/v11.0.0...v12.0.0)
+- Breaking change: changed the signature of most class constructors.
+- Breaking change: raised the required [Node.js](https://nodejs.org) version.
 - Breaking change: removed the `toJSON()` and `toString()` methods from the `Client` class.
+- Breaking change: using camel case instead of studly caps for static properties.
 - Added new values to the `CommentType` enumeration.
+- Updated the package dependencies.
 
 ## Version [11.0.0](https://github.com/cedx/akismet.js/compare/v10.1.0...v11.0.0)
 - Breaking change: converted the [`Observable`](http://reactivex.io/intro.html)-based API to an `async/await`-based one.

@@ -1,8 +1,7 @@
 'use strict';
 
 const {expect} = require('chai');
-const {URL} = require('url');
-const {Blog} = require('../lib');
+const {Blog, URL} = require('../lib');
 
 /**
  * @test {Blog}
