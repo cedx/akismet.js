@@ -3,16 +3,15 @@
 const {expect} = require('chai');
 const {Author, Client, Comment, CommentType, URL} = require('../lib');
 
-/**
- * Value indicating whether the current program is running in a browser.
- * @type {boolean}
- */
-const isBrowser = typeof process == 'undefined' && typeof window != 'undefined';
+/* eslint-disable no-new-func */
+const isBrowser = new Function('try { return this === window; } catch (e) { return false; }');
+const onNodeDescribe = isBrowser() ? describe.skip : describe;
+/* eslint-enable no-new-func */
 
 /**
  * @test {Client}
  */
-describe('Client', function() {
+onNodeDescribe('Client', function() {
   this.timeout(15000);
 
   let _client = new Client(process.env.AKISMET_API_KEY, 'https://github.com/cedx/akismet.js');
