@@ -33,8 +33,8 @@ try {
   console.log(isValid ? 'Your API key is valid.' : 'Your API key is invalid.');
 }
 
-catch (error) {
-  console.log(`An error occurred: ${error}`);
+catch (err) {
+  console.log(`An error occurred: ${err}`);
 }
 ```
 
@@ -46,15 +46,15 @@ const {Author, Comment} = require('@cedx/akismet');
 try {
   let comment = new Comment(
     new Author('127.0.0.1', 'Mozilla/5.0'),
-    'A comment.'
+    {content: 'A comment.', date: Date.now()}
   );
   
   let isSpam = await client.checkComment(comment);
   console.log(isSpam ? 'The comment is marked as spam.' : 'The comment is marked as ham.');
 }
 
-catch (error) {
-  console.log(`An error occurred: ${error}`);
+catch (err) {
+  console.log(`An error occurred: ${err}`);
 }
 ```
 
@@ -69,8 +69,8 @@ try {
   console.log('Ham submitted.');
 }
 
-catch (error) {
-  console.log(`An error occurred: ${error}`);
+catch (err) {
+  console.log(`An error occurred: ${err}`);
 }
 ```
 

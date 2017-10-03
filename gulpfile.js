@@ -20,7 +20,7 @@ gulp.task('clean', () => del(['.nyc_output', 'var/**/*']));
 /**
  * Sends the results of the code coverage.
  */
-gulp.task('coverage', ['test:node'], () => _exec('node_modules/.bin/coveralls', ['var/lcov.info']));
+gulp.task('coverage', ['test'], () => _exec('node_modules/.bin/coveralls', ['var/lcov.info']));
 
 /**
  * Checks the package dependencies.
@@ -56,19 +56,12 @@ gulp.task('lint', () => gulp.src(['*.js', 'lib/**/*.js', 'test/**/*.js'])
 /**
  * Runs the unit tests.
  */
-gulp.task('test', ['test:browser', 'test:node']);
-
-gulp.task('test:browser', () => {
-  if (process.platform == 'win32') process.env.FIREFOX_BIN = 'firefox.exe';
-  return _exec('node_modules/.bin/karma', ['start', '--single-run']);
-});
-
-gulp.task('test:node', () => _exec('node_modules/.bin/nyc', [normalize('node_modules/.bin/mocha')]));
+gulp.task('test', () => _exec('node_modules/.bin/nyc', [normalize('node_modules/.bin/mocha')]));
 
 /**
  * Watches for file changes.
  */
-gulp.task('watch', () => gulp.watch(['lib/**/*.js', 'test/**/*.js'], ['test:node']));
+gulp.task('watch', () => gulp.watch(['lib/**/*.js', 'test/**/*.js'], ['test']));
 
 /**
  * Spawns a new process using the specified command.

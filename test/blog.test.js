@@ -1,8 +1,8 @@
 'use strict';
 
 const {expect} = require('chai');
+const {URL} = require('url');
 const {Blog} = require('../lib');
-const {URL} = require('../lib/url');
 
 /**
  * @test {Blog}
@@ -43,7 +43,8 @@ describe('Blog', () => {
   describe('#toJSON()', () => {
     it('should return only the blog URL with a newly created instance', () => {
       let data = new Blog('https://github.com/cedx/akismet.js').toJSON();
-      expect(data).to.be.an('object').and.have.property('blog').that.equal('https://github.com/cedx/akismet.js');
+      expect(Object.keys(data)).to.have.lengthOf(1);
+      expect(data.blog).to.equal('https://github.com/cedx/akismet.js');
     });
 
     it('should return a non-empty map with an initialized instance', () => {
