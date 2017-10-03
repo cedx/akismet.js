@@ -1,16 +1,12 @@
 'use strict';
 
 const {expect} = require('chai');
-const {URL} = require('url');
 const {Author, Client, Comment, CommentType} = require('../lib');
-
-const isBrowser = typeof window == 'object' && typeof document == 'object' && document.nodeType == 9;
-const onNodeDescribe = isBrowser ? describe.skip : describe;
 
 /**
  * @test {Client}
  */
-onNodeDescribe('Client', function() {
+describe('Client', function() {
   this.timeout(15000);
   let _client = new Client(process.env.AKISMET_API_KEY, 'https://github.com/cedx/akismet.js', {isTest: true});
 
