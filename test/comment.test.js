@@ -1,8 +1,8 @@
 'use strict';
 
 const {expect} = require('chai');
+const {URL} = require('url');
 const {Author, Comment, CommentType} = require('../lib');
-const {URL} = require('../lib/url');
 
 /**
  * @test {Comment}
@@ -49,24 +49,29 @@ describe('Comment', () => {
    * @test {Comment#toJSON}
    */
   describe('#toJSON()', () => {
-    it('should return an empty map with a newly created instance', () => {
-      expect((new Comment).toJSON()).to.be.an('object').that.is.empty;
+    it('should return only the author info with a newly created instance', () => {
+      let data = new Comment(new Author('127.0.0.1', 'Doom/6.6.6')).toJSON();
+      expect(Object.keys(data)).to.have.lengthOf(2);
+      expect(data.user_agent).to.equal('Doom/6.6.6');
+      expect(data.user_ip).to.equal('127.0.0.1');
     });
 
     it('should return a non-empty map with an initialized instance', () => {
-      let author = new Author;
-      author.name = 'Cédric Belin';
+      let data = new Comment(new Author('127.0.0.1', 'Doom/6.6.6', {name: 'Cédric Belin'}), {
+        content: 'A user comment.',
+        date: new Date('2000-01-01T00:00:00.000Z'),
+        referrer: 'https://belin.io',
+        type: CommentType.pingback
+      }).toJSON();
 
-      let comment = new Comment(author, 'A user comment.', CommentType.pingback);
-      comment.date = new Date('2000-01-01T00:00:00.000Z');
-      comment.referrer = new URL('https://belin.io');
-
-      let data = comment.toJSON();
+      expect(Object.keys(data)).to.have.lengthOf(7);
       expect(data.comment_author).to.equal('Cédric Belin');
       expect(data.comment_content).to.equal('A user comment.');
       expect(data.comment_date_gmt).to.equal('2000-01-01T00:00:00.000Z');
       expect(data.comment_type).to.equal('pingback');
       expect(data.referrer).to.equal('https://belin.io/');
+      expect(data.user_agent).to.equal('Doom/6.6.6');
+      expect(data.user_ip).to.equal('127.0.0.1');
     });
   });
 
@@ -74,14 +79,13 @@ describe('Comment', () => {
    * @test {Comment#toString}
    */
   describe('#toString()', () => {
-    let author = new Author;
-    author.name = 'Cédric Belin';
+    let data = String(new Comment(new Author('127.0.0.1', 'Doom/6.6.6', {name: 'Cédric Belin'}), {
+      content: 'A user comment.',
+      date: new Date('2000-01-01T00:00:00.000Z'),
+      referrer: 'https://belin.io',
+      type: CommentType.pingback
+    }));
 
-    let comment = new Comment(author, 'A user comment.', CommentType.pingback);
-    comment.date = new Date('2000-01-01T00:00:00.000Z');
-    comment.referrer = new URL('https://belin.io');
-
-    let data = String(comment);
     it('should start with the class name', () => {
       expect(data.startsWith('Comment {')).to.be.true;
     });
@@ -91,7 +95,9 @@ describe('Comment', () => {
         .and.contain('"comment_content":"A user comment."')
         .and.contain('"comment_type":"pingback"')
         .and.contain('"comment_date_gmt":"2000-01-01T00:00:00.000Z"')
-        .and.contain('"referrer":"https://belin.io/"');
+        .and.contain('"referrer":"https://belin.io/"')
+        .and.contain('"user_agent":"Doom/6.6.6"')
+        .and.contain('"user_ip":"127.0.0.1"');
     });
   });
 });
