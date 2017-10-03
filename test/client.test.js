@@ -1,8 +1,8 @@
 'use strict';
 
 const {expect} = require('chai');
+const {URL} = require('url');
 const {Author, Client, Comment, CommentType} = require('../lib');
-const {URL} = require('../lib/url');
 
 const isBrowser = typeof window == 'object' && typeof document == 'object' && document.nodeType == 9;
 const onNodeDescribe = isBrowser ? describe.skip : describe;
@@ -12,22 +12,24 @@ const onNodeDescribe = isBrowser ? describe.skip : describe;
  */
 onNodeDescribe('Client', function() {
   this.timeout(15000);
+  let _client = new Client(process.env.AKISMET_API_KEY, 'https://github.com/cedx/akismet.js', {isTest: true});
 
-  let _client = new Client(process.env.AKISMET_API_KEY, 'https://github.com/cedx/akismet.js');
-  _client.isTest = true;
+  let author = new Author('192.168.0.1', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0', {
+    name: 'Akismet',
+    role: 'administrator',
+    url: 'https://github.com/cedx/akismet.js'
+  });
 
-  let author = new Author('192.168.0.1', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0');
-  author.name = 'Akismet';
-  author.role = 'administrator';
-  author.url = new URL('https://github.com/cedx/akismet.js');
+  let ham = new Comment(author, {
+    content: 'I\'m testing out the Service API.',
+    referrer: 'https://www.npmjs.com/package/@cedx/akismet',
+    type: CommentType.comment
+  });
 
-  let ham = new Comment(author, 'I\'m testing out the Service API.', CommentType.comment);
-  ham.referrer = new URL('https://www.npmjs.com/package/@cedx/akismet');
-
-  author = new Author('127.0.0.1', 'Spam Bot/6.6.6');
-  author.name = 'viagra-test-123';
-
-  let spam = new Comment(author, 'Spam!', CommentType.trackback);
+  let spam = new Comment(new Author('127.0.0.1', 'Spam Bot/6.6.6', {name: 'viagra-test-123'}), {
+    content: 'Spam!',
+    type: CommentType.trackback
+  });
 
   /**
    * @test {Client#checkComment}
@@ -71,8 +73,7 @@ onNodeDescribe('Client', function() {
     });
 
     it('should return `false` for an invalid API key' , async () => {
-      let client = new Client('0123456789-ABCDEF', _client.blog);
-      client.isTest = _client.isTest;
+      let client = new Client('0123456789-ABCDEF', _client.blog, {isTest: _client.isTest});
       expect(await client.verifyKey()).to.be.false;
     });
   });
