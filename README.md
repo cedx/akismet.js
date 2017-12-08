@@ -83,8 +83,13 @@ The `Client` class is an [`EventEmitter`](https://nodejs.org/api/events.html) th
 You can subscribe to them using the `on()` method:
 
 ```javascript
-client.on('request', request => console.log(`Client request: ${request.url}`));
-client.on('response', response => console.log(`Server response: ${response.status}`));
+client.on('request', event =>
+  console.log(`Client request: ${event.request.url}`)
+);
+
+client.on('response', event =>
+  console.log(`Server response: ${event.response.status}`)
+);
 ```
 
 ## Unit tests
