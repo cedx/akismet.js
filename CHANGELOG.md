@@ -1,6 +1,9 @@
 # Changelog
 This file contains highlights of what changes on each version of the [Akismet for JS](https://github.com/cedx/akismet.js) library.
 
+## Version [13.0.1](https://github.com/cedx/akismet.js/compare/v13.0.0...v13.0.1)
+- Fixed the previous packaging: `RequestEvent` class released by error.
+
 ## Version [13.0.0](https://github.com/cedx/akismet.js/compare/v12.0.0...v13.0.0)
 - Breaking change: changed the signature of the `Client` events.
 - Added the `RequestEvent` class.
