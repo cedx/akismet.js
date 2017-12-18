@@ -2,7 +2,7 @@
 
 const {expect} = require('chai');
 const {URL} = require('url');
-const {Blog} = require('../lib');
+const {Blog} = require('../lib/index.js');
 
 /**
  * @test {Blog}

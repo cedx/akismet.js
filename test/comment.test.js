@@ -2,7 +2,7 @@
 
 const {expect} = require('chai');
 const {URL} = require('url');
-const {Author, Comment, CommentType} = require('../lib');
+const {Author, Comment, CommentType} = require('../lib/index.js');
 
 /**
  * @test {Comment}

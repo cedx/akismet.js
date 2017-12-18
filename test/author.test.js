@@ -2,7 +2,7 @@
 
 const {expect} = require('chai');
 const {URL} = require('url');
-const {Author} = require('../lib');
+const {Author} = require('../lib/index.js');
 
 /**
  * @test {Author}
