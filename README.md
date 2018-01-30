@@ -107,10 +107,10 @@ $ npm test
 ```
 
 ## See also
-- [User guide](https://cedx.github.io/akismet.js)
 - [API reference](https://cedx.github.io/akismet.js/api)
 - [Code coverage](https://coveralls.io/github/cedx/akismet.js)
 - [Continuous integration](https://travis-ci.org/cedx/akismet.js)
+- [npm package](https://www.npmjs.com/package/@cedx/akismet)
 
 ## License
 [Akismet for JS](https://cedx.github.io/akismet.js) is distributed under the MIT License.
