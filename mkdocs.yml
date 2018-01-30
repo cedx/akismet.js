@@ -1,0 +1,44 @@
+site_name: Akismet for JS
+site_description: Prevent comment spam using the Akismet service, in JavaScript.
+site_author: Cédric Belin - cedric@belin.io
+site_url: https://cedx.github.io/akismet.js
+
+docs_dir: doc
+site_dir: web
+
+repo_name: cedx/akismet.js
+repo_url: https://github.com/cedx/akismet.js
+edit_uri: ''
+
+copyright: Copyright &copy; 2014 - 2018 Cédric Belin
+google_analytics:
+- !!python/object/apply:os.getenv [GOOGLE_ANALYTICS_ID]
+- auto
+
+extra:
+  social:
+  - {type: globe, link: 'https://belin.io'}
+  - {type: github, link: 'https://github.com/cedx'}
+  - {type: twitter, link: 'https://twitter.com/cedxbelin'}
+  - {type: linkedin, link: 'https://www.linkedin.com/in/cedxbelin'}
+
+markdown_extensions:
+- admonition
+- codehilite
+- meta
+
+pages:
+- Home: index.md
+- Features:
+  - Key verification: features/key-verification.md
+  - Comment check: features/comment-check.md
+  - Submit spam: features/submit-spam.md
+  - Submit ham: features/submit-ham.md
+- About:
+  - Changelog: about/changelog.md
+  - License: about/license.md
+
+theme:
+  name: material
+  favicon: img/favicon.ico
+  palette: {primary: light green, accent: light green}

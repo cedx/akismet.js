@@ -33,8 +33,9 @@ gulp.task('deps:security', () => _exec('node_modules/.bin/nsp', ['check']));
  * Builds the documentation.
  */
 gulp.task('doc', async () => {
-  await del('doc/api');
-  return _exec('node_modules/.bin/esdoc');
+  await del(['doc/api', 'web']);
+  await _exec('node_modules/.bin/esdoc');
+  return _exec('mkdocs', ['build']);
 });
 
 /**

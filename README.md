@@ -11,7 +11,8 @@ Prevent comment spam using [Akismet](https://akismet.com) service, in [JavaScrip
 
 ## Requirements
 The latest [Node.js](https://nodejs.org) and [npm](https://www.npmjs.com) versions.
-If you plan to play with the sources, you will also need the latest [Gulp](http://gulpjs.com) version.
+
+If you plan to play with the sources, you will also need the latest [Gulp](http://gulpjs.com) and [Material for MkDocs](https://squidfunk.github.io/mkdocs-material) versions.
 
 ## Installing via [npm](https://www.npmjs.com)
 From a command prompt, run:
@@ -28,13 +29,13 @@ $ npm install --save @cedx/akismet
 const {Client} = require('@cedx/akismet');
 
 try {
-  let client = new Client('YourAPIKey', 'http://your.blog.url');
+  let client = new Client('123YourAPIKey', 'http://www.yourblog.com');
   let isValid = await client.verifyKey();
-  console.log(isValid ? 'Your API key is valid.' : 'Your API key is invalid.');
+  console.log(isValid ? 'The API key is valid' : 'The API key is invalid');
 }
 
 catch (err) {
-  console.log(`An error occurred: ${err}`);
+  console.log(`An error occurred: ${err.message}`);
 }
 ```
 
@@ -46,15 +47,15 @@ const {Author, Comment} = require('@cedx/akismet');
 try {
   let comment = new Comment(
     new Author('127.0.0.1', 'Mozilla/5.0'),
-    {content: 'A comment.', date: Date.now()}
+    {content: 'A user comment', date: Date.now()}
   );
-  
+
   let isSpam = await client.checkComment(comment);
-  console.log(isSpam ? 'The comment is marked as spam.' : 'The comment is marked as ham.');
+  console.log(isSpam ? 'The comment is spam' : 'The comment is ham');
 }
 
 catch (err) {
-  console.log(`An error occurred: ${err}`);
+  console.log(`An error occurred: ${err.message}`);
 }
 ```
 
@@ -63,14 +64,14 @@ catch (err) {
 ```javascript
 try {
   await client.submitSpam(comment);
-  console.log('Spam submitted.');
-  
+  console.log('Spam submitted');
+
   await client.submitHam(comment);
-  console.log('Ham submitted.');
+  console.log('Ham submitted');
 }
 
 catch (err) {
-  console.log(`An error occurred: ${err}`);
+  console.log(`An error occurred: ${err.message}`);
 }
 ```
 
@@ -106,9 +107,10 @@ $ npm test
 ```
 
 ## See also
-- [API reference](https://cedx.github.io/akismet.js)
+- [User guide](https://cedx.github.io/akismet.js)
+- [API reference](https://cedx.github.io/akismet.js/api)
 - [Code coverage](https://coveralls.io/github/cedx/akismet.js)
 - [Continuous integration](https://travis-ci.org/cedx/akismet.js)
 
 ## License
-[Akismet for JS](https://github.com/cedx/akismet.js) is distributed under the MIT License.
+[Akismet for JS](https://cedx.github.io/akismet.js) is distributed under the MIT License.
