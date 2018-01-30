@@ -10,15 +10,15 @@ Prevent comment spam using [Akismet](https://akismet.com) service, in [JavaScrip
 - [Submit ham](https://akismet.com/development/api/#submit-ham): submits a comment that was incorrectly marked as spam but should not have been.
 
 ## Requirements
-The latest [Node.js](https://nodejs.org) and [npm](https://www.npmjs.com) versions.
+You need the latest [Node.js](https://nodejs.org) and [npm](https://www.npmjs.com) versions.
 
 If you plan to play with the sources, you will also need the latest [Gulp](http://gulpjs.com) and [Material for MkDocs](https://squidfunk.github.io/mkdocs-material) versions.
 
-## Installing via [npm](https://www.npmjs.com)
+## Installing with npm package manager
 From a command prompt, run:
 
 ```shell
-$ npm install --save @cedx/akismet
+npm install @cedx/akismet
 ```
 
 ## Usage
@@ -97,13 +97,13 @@ client.on('response', (request, response) =>
 In order to run the tests, you must set the `AKISMET_API_KEY` environment variable to the value of your Akismet API key:
 
 ```shell
-$ export AKISMET_API_KEY="<YourAPIKey>"
+export AKISMET_API_KEY="<YourAPIKey>"
 ```
 
 Then, you can run the `test` script from the command prompt:
 
 ```shell
-$ npm test
+npm test
 ```
 
 ## See also

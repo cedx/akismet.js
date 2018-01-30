@@ -29,6 +29,7 @@ markdown_extensions:
 
 pages:
 - Home: index.md
+- Installation: installation.md
 - Features:
   - Key verification: features/key-verification.md
   - Comment check: features/comment-check.md
@@ -37,6 +38,7 @@ pages:
 - About:
   - Changelog: about/changelog.md
   - License: about/license.md
+  - See also: see-also.md
 
 theme:
   name: material
