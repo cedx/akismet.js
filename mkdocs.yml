@@ -4,7 +4,7 @@ site_author: Cédric Belin - cedric@belin.io
 site_url: https://cedx.github.io/akismet.js
 
 docs_dir: doc
-site_dir: web
+site_dir: www
 
 repo_name: cedx/akismet.js
 repo_url: https://github.com/cedx/akismet.js
