@@ -2,6 +2,7 @@
 
 ## Version [13.1.0](https://github.com/cedx/akismet.js/compare/v13.0.1...v13.1.0)
 - Added a user guide based on [MkDocs](http://www.mkdocs.org).
+- Added the `ClientError` class.
 
 ## Version [13.0.1](https://github.com/cedx/akismet.js/compare/v12.0.0...v13.0.1)
 - Breaking change: changed the signature of the `Client` events.
