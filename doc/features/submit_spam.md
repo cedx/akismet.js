@@ -1,6 +1,3 @@
-path: blob/master/lib
-source: client.js
-
 # Submit spam
 This call is for submitting comments that weren't marked as spam but should have been.
 
@@ -10,4 +7,41 @@ It is very important that the values you submit with this call match those of yo
 Client#submitSpam(comment: Comment): Promise
 ```
 
+## Parameters
+
+### comment
+The user `Comment` to be submitted, incorrectly classified as ham.
+
+!!! tip
+    It should be the same object instance as the one passed to the original [comment check](comment_check.md) API call.
+
+## Return value
+A `Promise` that resolves when the given `Comment` has been submitted.
+
+The promise rejects with a `ClientError` exception when an error occurs.
+The exception `message` usually includes some debug information, provided by the `X-akismet-debug-help` HTTP header, about what exactly was invalid about the call.
+
 ## Example
+
+```js
+const {Author, Client, Comment} = require('@cedx/akismet');
+
+async function main() {
+  try {
+    let comment = new Comment(
+      new Author('127.0.0.1', 'Mozilla/5.0'),
+      {content: 'An invalid user comment (spam)'}
+    );
+
+    let client = new Client('123YourAPIKey', 'http://www.yourblog.com');
+    let isSpam = await client.checkComment(comment); // `false`, but `true` expected.
+    
+    console.log('The comment was incorrectly classified as ham');
+    await client.submitSpam(comment);
+  }
+    
+  catch (err) {
+    console.log(`An error occurred: ${err.message}`);
+  }
+}
+```

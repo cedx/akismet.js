@@ -22,7 +22,12 @@ describe('Client', function() {
     type: CommentType.comment
   });
 
-  let spam = new Comment(new Author('127.0.0.1', 'Spam Bot/6.6.6', {email: 'akismet-guaranteed-spam@example.com', name: 'viagra-test-123'}), {
+  author = new Author('127.0.0.1', 'Spam Bot/6.6.6', {
+    email: 'akismet-guaranteed-spam@example.com',
+    name: 'viagra-test-123'
+  });
+
+  let spam = new Comment(author, {
     content: 'Spam!',
     type: CommentType.trackback
   });
