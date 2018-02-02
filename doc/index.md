@@ -1,19 +1,25 @@
 # Akismet <small>for JS</small>
-Use [Akismet](https://akismet.com)'s powerful spam detection within your [Node.js](https://nodejs.org) applications.
+![Akismet](img/akismet.png)  
 
-## Get a developer key
-You first need to sign up for a developer key. This will give you access to the API and will allow Akismet to monitor its results to make sure things are running as smoothly as possible.
+## Stop spam
+Used by millions of websites, [Akismet](https://akismet.com) filters out hundreds of millions of spam comments from the Web every day.
+Add Akismet to your [Node.js](https://nodejs.org) applications so you don't have to worry about spam again.
 
-[> Get a developer key](https://akismet.com/signup/?connect=yes&plan=developer)
+## Quick start
 
-## Building your application
+### Get a developer key
+You first need to [sign up for a developer key](https://akismet.com/signup/?connect=yes&plan=developer).
+This will give you access to the API and will allow Akismet to monitor its results to make sure things are running as smoothly as possible.
 
-### Structuring your API calls
-There are three different types of calls to Akismet:
+!!! warning
+    All Akismet endpoints require an API key. If you are not already registered,
+    [join the developer program](https://akismet.com/signup/?connect=yes&plan=developer).
 
-1. [Key verification](features/key-verification.md) will verify whether or not a valid API key is being used. This is especially useful if you will have multiple users with their own Akismet subscriptions using your application.
-2. [Comment check](features/comment-check.md) is used to ask Akismet whether or not a given post, comment, profile, etc. is spam.
-3. [Submit spam](features/submit-spam.md) and [submit ham](features/submit-ham.md) are follow-ups to let Akismet know when it got something wrong (missed spam and false positives). These are very important, and you shouldn't develop using the Akismet API without a facility to include reporting missed spam and false positives.
+### Get the library
+Install the latest version of **Akismet for JS** with [npm](https://www.npmjs.com):
 
-### Testing your API calls
-Akismet works by examining all the available information combined. It is not enough to provide just the content of a message; you need to provide as many independent pieces of information as you can in each call. So before you can test Akismet's accuracy, you need to make sure you're sending complete and correct information.
+```shell
+npm install @cedx/akismet
+```
+
+For detailed instructions, see the [installation guide](installation.md).

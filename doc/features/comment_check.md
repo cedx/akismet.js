@@ -1,22 +1,25 @@
-path: blob/master
-source: lib/client.js
+path: blob/master/lib
+source: client.js
 
 # Comment check
 This is the call you will make the most. It takes a number of arguments and characteristics about the submitted content and then returns a thumbs up or thumbs down. **Performance can drop dramatically if you choose to exclude data points.** The more data you send Akismet about each comment, the greater the accuracy. We recommend erring on the side of including too much data.
 
-```javascript
-async Client#checkComment(comment)
+```
+Client#checkComment(comment: Comment): Promise<boolean>
 ```
 
+## Parameters
+- `comment` : the `Comment` providing the user message to be checked.
+
 ## Return value
-A `Promise` that resolves with a `bool` value indicating whether the given `Comment` is spam.
+A `Promise` that resolves with a `boolean` value indicating whether the given `Comment` is spam.
 
 The promise rejects with an `Error` exception when an error occurs.
 The exception `message` usually includes some debug information, provided by the `X-akismet-debug-help` HTTP header, about what exactly was invalid about the call.
 
 ## Example
 
-```javascript
+```js
 const {Author, Client, Comment} = require('@cedx/akismet');
 
 try {

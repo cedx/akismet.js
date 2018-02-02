@@ -1,25 +1,25 @@
-path: blob/master
-source: lib/client.js
+path: blob/master/lib
+source: client.js
 
 # Key verification
-Key verification authenticates your key before calling the [comment check](comment-check.md), [submit spam](submit-spam.md), or [submit ham](submit-ham.md) methods. This is the first call that you should make to Akismet and is especially useful if you will have multiple users with their own Akismet subscriptions using your application.
+Key verification authenticates your key before calling the [comment check](comment_check.md), [submit spam](submit_spam.md), or [submit ham](submit_ham.md) methods. This is the first call that you should make to Akismet and is especially useful if you will have multiple users with their own Akismet subscriptions using your application.
 
-```javascript
-async Client#verifyKey()
+```
+Client#verifyKey(): Promise<boolean>
 ```
 
 ## Parameters
 None.
 
 ## Return value
-A `Promise` that resolves with a `bool` value indicating whether the client's API key is valid.
+A `Promise` that resolves with a `boolean` value indicating whether the client's API key is valid.
 
 The promise rejects with an `Error` exception when an error occurs.
 The exception `message` usually includes some debug information, provided by the `X-akismet-debug-help` HTTP header, about what exactly was invalid about the call.
 
 ## Example
 
-```javascript
+```js
 const {Client} = require('@cedx/akismet');
 
 try {

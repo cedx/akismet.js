@@ -4,7 +4,7 @@ site_author: Cédric Belin - cedric@belin.io
 site_url: https://cedx.github.io/akismet.js
 
 docs_dir: doc
-site_dir: www
+site_dir: web
 
 repo_name: cedx/akismet.js
 repo_url: https://github.com/cedx/akismet.js
@@ -20,7 +20,7 @@ extra:
   - {type: globe, link: 'https://belin.io'}
   - {type: github, link: 'https://github.com/cedx'}
   - {type: twitter, link: 'https://twitter.com/cedxbelin'}
-  - {type: linkedin, link: 'https://www.linkedin.com/in/cedxbelin'}
+  - {type: linkedin, link: 'https://linkedin.com/in/cedxbelin'}
 
 markdown_extensions:
 - admonition
@@ -28,17 +28,20 @@ markdown_extensions:
 - meta
 
 pages:
-- Home: index.md
+- Overview: index.md
 - Installation: installation.md
+- Usage:
+  - Structuring your API calls: usage/structuring_api_calls.md
+  - Testing your API calls: usage/testing_api_calls.md
 - Features:
-  - Key verification: features/key-verification.md
-  - Comment check: features/comment-check.md
-  - Submit spam: features/submit-spam.md
-  - Submit ham: features/submit-ham.md
+  - Key verification: features/key_verification.md
+  - Comment check: features/comment_check.md
+  - Submit spam: features/submit_spam.md
+  - Submit ham: features/submit_ham.md
 - About:
   - Changelog: about/changelog.md
   - License: about/license.md
-  - See also: see-also.md
+  - See also: about/see_also.md
 
 theme:
   name: material

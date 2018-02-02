@@ -15,7 +15,7 @@ gulp.task('default', ['test']);
 /**
  * Deletes all generated files and reset any saved state.
  */
-gulp.task('clean', () => del(['.nyc_output', 'doc/api', 'var/**/*', 'www']));
+gulp.task('clean', () => del(['.nyc_output', 'doc/api', 'var/**/*', 'web']));
 
 /**
  * Sends the results of the code coverage.

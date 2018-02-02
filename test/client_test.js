@@ -8,12 +8,12 @@ const {Author, Client, Comment, CommentType} = require('../lib/index.js');
  */
 describe('Client', function() {
   this.timeout(15000);
-  let _client = new Client(process.env.AKISMET_API_KEY, 'https://github.com/cedx/akismet.js', {isTest: true});
+  let _client = new Client(process.env.AKISMET_API_KEY, 'https://cedx.github.io/akismet.js', {isTest: true});
 
   let author = new Author('192.168.0.1', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0', {
     name: 'Akismet',
     role: 'administrator',
-    url: 'https://github.com/cedx/akismet.js'
+    url: 'https://cedx.github.io/akismet.js'
   });
 
   let ham = new Comment(author, {
@@ -22,7 +22,7 @@ describe('Client', function() {
     type: CommentType.comment
   });
 
-  let spam = new Comment(new Author('127.0.0.1', 'Spam Bot/6.6.6', {name: 'viagra-test-123'}), {
+  let spam = new Comment(new Author('127.0.0.1', 'Spam Bot/6.6.6', {email: 'akismet-guaranteed-spam@example.com', name: 'viagra-test-123'}), {
     content: 'Spam!',
     type: CommentType.trackback
   });

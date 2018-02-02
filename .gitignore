@@ -2,7 +2,7 @@
 /doc/api/
 /node_modules/
 /var/
-/www/
+/web/
 
 /*.iml
 /**/.DS_Store
