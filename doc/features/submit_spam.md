@@ -13,7 +13,7 @@ Client#submitSpam(comment: Comment): Promise
 The user `Comment` to be submitted, incorrectly classified as ham.
 
 !!! tip
-    It should be the same object instance as the one passed to the original [comment check](comment_check.md) API call.
+    Ideally, it should be the same object as the one passed to the original [comment check](comment_check.md) API call.
 
 ## Return value
 A `Promise` that resolves when the given `Comment` has been submitted.

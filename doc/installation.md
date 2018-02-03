@@ -9,7 +9,7 @@ and [npm](https://www.npmjs.com), the Node.js package manager, up and running.
 
 !!! info
     If you plan to play with the library sources, you will also need
-    [Gulp](http://gulpjs.com) and [Material for MkDocs](https://squidfunk.github.io/mkdocs-material).
+    [Gulp](https://gulpjs.com) and [Material for MkDocs](https://squidfunk.github.io/mkdocs-material).
     
 You can verify if you're already good to go with the following commands:
 

@@ -14,7 +14,7 @@ Prevent comment spam using [Akismet](https://akismet.com) service, in [JavaScrip
 ## Requirements
 You need the latest [Node.js](https://nodejs.org) and [npm](https://www.npmjs.com) versions to use the Akismet library.
 
-If you plan to play with the sources, you will also need the latest [Gulp](http://gulpjs.com) and [Material for MkDocs](https://squidfunk.github.io/mkdocs-material) versions.
+If you plan to play with the sources, you will also need the latest [Gulp](https://gulpjs.com) and [Material for MkDocs](https://squidfunk.github.io/mkdocs-material) versions.
 
 ## Installing with npm package manager
 From a command prompt, run:

@@ -199,7 +199,7 @@
 - Breaking change: ported the callback-based API to [Promises](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise).
 
 ## Version [0.3.5](https://github.com/cedx/akismet.js/compare/v0.3.4...v0.3.5)
-- Using [Gulp](http://gulpjs.com) as build system.
+- Using [Gulp](https://gulpjs.com) as build system.
 
 ## Version [0.3.4](https://github.com/cedx/akismet.js/compare/v0.3.3...v0.3.4)
 - CORS headers handling delegated to [`cors`](https://www.npmjs.com/package/cors) module.
