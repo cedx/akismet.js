@@ -1,4 +1,5 @@
-# Testing your API calls
+# Testing
+When you will integrate the library with your own application, you will of course need to test it. Often we see developers get ahead of themselves, making a few trivial API calls with minimal values and drawing the wrong conclusions about Akismet's accuracy.
 
 ## Simulate a positive (spam) result
 Make a [comment check](../features/comment_check.md) API call with the `Author#name` set to `"viagra-test-123"` or `Author#email` set to `"akismet-guaranteed-spam@example.com"`. Populate all other required fields with typical values.

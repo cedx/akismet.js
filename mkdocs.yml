@@ -30,9 +30,11 @@ pages:
 - Overview: index.md
 - Installation: installation.md
 - Usage:
-  - Structuring your API calls: usage/structuring_api_calls.md
-  - Testing your API calls: usage/testing_api_calls.md
-  - Lifecycle: usage/lifecycle.md
+  - Client setup: usage/client_setup.md
+  - Data collection: usage/data_collection.md
+  - Testing: usage/testing.md
+  - JSON serialization: usage/json_serialization.md
+  - Request lifecycle: usage/request_lifecycle.md
 - Features:
   - Key verification: features/key_verification.md
   - Comment check: features/comment_check.md

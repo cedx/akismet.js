@@ -115,9 +115,9 @@ npm test
 - [Code coverage](https://coveralls.io/github/cedx/akismet.js)
 
 ### Other implementations
-* Dart: [Akismet for Dart](https://cedx.github.io/akismet.dart)
-* PHP: [Akismet for PHP](https://cedx.github.io/akismet.php)
-* Yii Framework: [Akismet for Yii](https://cedx.github.io/yii2-akismet)
+- Dart: [Akismet for Dart](https://cedx.github.io/akismet.dart)
+- PHP: [Akismet for PHP](https://cedx.github.io/akismet.php)
+- Yii Framework: [Akismet for Yii](https://cedx.github.io/yii2-akismet)
 
 ## License
 [Akismet for JS](https://cedx.github.io/akismet.js) is distributed under the MIT License.
