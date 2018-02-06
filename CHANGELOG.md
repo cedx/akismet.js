@@ -4,6 +4,7 @@
 - Added a user guide based on [MkDocs](http://www.mkdocs.org).
 - Added the `ClientError` class.
 - Updated the build system to [Gulp](https://gulpjs.com) version 4.
+- Updated the package dependencies.
 
 ## Version [13.0.1](https://github.com/cedx/akismet.js/compare/v12.0.0...v13.0.1)
 - Breaking change: changed the signature of the `Client` events.
