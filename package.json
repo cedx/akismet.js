@@ -9,7 +9,7 @@
   "repository": "cedx/akismet.js",
   "version": "13.1.0",
   "dependencies": {
-    "node-fetch": "^1.7.3"
+    "node-fetch": "^2.0.0"
   },
   "devDependencies": {
     "@cedx/coveralls": "^5.1.0",

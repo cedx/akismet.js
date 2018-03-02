@@ -3,7 +3,11 @@
 
 Prevent comment spam using [Akismet](https://akismet.com) service, in [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript).
 
-> For detailed instructions, see the [user guide](https://cedx.github.io/akismet.js).
+## Resources
+- [Documentation](https://cedx.github.io/akismet.js)
+- [API reference](https://cedx.github.io/akismet.js/api)
+- [npm package](https://www.npmjs.com/package/@cedx/akismet)
+- [GitHub repository](https://github.com/cedx/akismet.js)
 
 ## Features
 - [Key verification](https://akismet.com/development/api/#verify-key): checks an Akismet API key and gets a value indicating whether it is valid.
