@@ -1,5 +1,5 @@
 # Akismet <small>for JS</small>
-![Akismet](img/akismet.png)  
+![Akismet](img/akismet.png)
 
 ## Stop spam
 Used by millions of websites, [Akismet](https://akismet.com) filters out hundreds of millions of spam comments from the Web every day.
