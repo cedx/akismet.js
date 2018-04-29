@@ -2,6 +2,7 @@ root: true
 extends: eslint:recommended
 
 env:
+  browser: true
   es6: true
   mocha: true
   node: true
@@ -34,9 +35,9 @@ rules:
       Boolean: boolean
       Function: function
       Number: number
-      Object: object
       String: string
-      Symbol: symbol
+      object: Object
+      symbol: Symbol
     requireReturn: false
 
   # Best practices.
