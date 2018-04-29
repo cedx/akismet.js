@@ -1,5 +1,8 @@
 # Changelog
 
+- Breaking change: raised the required [Node.js](https://nodejs.org) version.
+- Updated the package dependencies.
+
 ## Version [13.1.0](https://github.com/cedx/akismet.js/compare/v13.0.1...v13.1.0)
 - Added a user guide based on [MkDocs](http://www.mkdocs.org).
 - Added the `ClientError` class.
