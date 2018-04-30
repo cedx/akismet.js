@@ -18,4 +18,4 @@ Application Name/Version | Plugin Name/Version
 ```
 
 !!! info
-    The default user agent string looks like: `Node.js/9.5.0 | Akismet/13.1.0`
+    The default user agent string looks like: `Node.js/10.0.0 | Akismet/14.0.0`
