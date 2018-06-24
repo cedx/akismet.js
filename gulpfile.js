@@ -50,12 +50,25 @@ gulp.task('lint', () => gulp.src(['*.js', 'lib/**/*.js', 'test/**/*.js'])
 /**
  * Runs the unit tests.
  */
-gulp.task('test', () => _exec('node_modules/.bin/nyc', [normalize('node_modules/.bin/mocha')]));
+gulp.task('test:browser', () => _exec('node_modules/.bin/karma', ['start', '--single-run']));
+gulp.task('test:node', () => _exec('node_modules/.bin/nyc', [normalize('node_modules/.bin/mocha')]));
+gulp.task('test', gulp.series('test:browser', 'test:node'));
+
+/**
+ * Upgrades the project to the latest revision.
+ */
+gulp.task('upgrade', async () => {
+  await _exec('git', ['reset', '--hard']);
+  await _exec('git', ['fetch', '--all', '--prune']);
+  await _exec('git', ['pull', '--rebase']);
+  await _exec('npm', ['install']);
+  return _exec('npm', ['update']);
+});
 
 /**
  * Watches for file changes.
  */
-gulp.task('watch', () => gulp.watch(['lib/**/*.js', 'test/**/*.js'], gulp.task('test')));
+gulp.task('watch', () => gulp.watch(['lib/**/*.js', 'test/**/*.js'], gulp.task('test:node')));
 
 /**
  * Runs the default tasks.
@@ -66,7 +79,7 @@ gulp.task('default', gulp.task('test'));
  * Spawns a new process using the specified command.
  * @param {string} command The command to run.
  * @param {string[]} [args] The command arguments.
- * @param {object} [options] The settings to customize how the process is spawned.
+ * @param {Object} [options] The settings to customize how the process is spawned.
  * @return {Promise} Completes when the command is finally terminated.
  */
 async function _exec(command, args = [], options = {shell: true, stdio: 'inherit'}) {
