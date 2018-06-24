@@ -170,7 +170,7 @@
 - Improved browser integration.
 - Added support for code coverage.
 - Added support for [SonarQube](http://www.sonarqube.org) code analyzer.
-- Added support for [Travis CI](https://travis-ci.org) continuous integration.
+- Added support for [Travis CI](https://travis-ci.com) continuous integration.
 - Changed the documentation system for [JSDoc](http://usejsdoc.org).
 - Changed licensing for the [Apache License Version 2.0](http://www.apache.org/licenses/LICENSE-2.0).
 

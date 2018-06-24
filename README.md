@@ -1,11 +1,11 @@
 # Akismet for JS
-![Runtime](https://img.shields.io/badge/node-%3E%3D10.0-brightgreen.svg) ![Release](https://img.shields.io/npm/v/@cedx/akismet.svg) ![License](https://img.shields.io/npm/l/@cedx/akismet.svg) ![Downloads](https://img.shields.io/npm/dt/@cedx/akismet.svg) ![Dependencies](https://david-dm.org/cedx/akismet.js.svg) ![Coverage](https://coveralls.io/repos/github/cedx/akismet.js/badge.svg) ![Build](https://travis-ci.org/cedx/akismet.js.svg)
+![Runtime](https://img.shields.io/badge/node-%3E%3D10.5-brightgreen.svg) ![Release](https://img.shields.io/npm/v/@cedx/akismet.svg) ![License](https://img.shields.io/npm/l/@cedx/akismet.svg) ![Downloads](https://img.shields.io/npm/dt/@cedx/akismet.svg) ![Dependencies](https://david-dm.org/cedx/akismet.js.svg) ![Coverage](https://coveralls.io/repos/github/cedx/akismet.js/badge.svg) ![Build](https://travis-ci.com/cedx/akismet.js.svg)
 
 Prevent comment spam using [Akismet](https://akismet.com) service, in [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript).
 
 ## Resources
-- [Documentation](https://cedx.github.io/akismet.js)
-- [API reference](https://cedx.github.io/akismet.js/api)
+- [Documentation](https://dev.belin.io/akismet.js)
+- [API reference](https://dev.belin.io/akismet.js/api)
 - [npm package](https://www.npmjs.com/package/@cedx/akismet)
 - [GitHub repository](https://github.com/cedx/akismet.js)
 
@@ -113,4 +113,4 @@ npm test
 ```
 
 ## License
-[Akismet for JS](https://cedx.github.io/akismet.js) is distributed under the MIT License.
+[Akismet for JS](https://dev.belin.io/akismet.js) is distributed under the MIT License.

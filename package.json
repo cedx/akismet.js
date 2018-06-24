@@ -2,7 +2,7 @@
   "author": "Cédric Belin <cedric@belin.io>",
   "bugs": "https://github.com/cedx/akismet.js/issues",
   "description": "Prevent comment spam using Akismet service.",
-  "homepage": "https://cedx.github.io/akismet.js",
+  "homepage": "https://dev.belin.io/akismet.js",
   "license": "MIT",
   "main": "./lib/index.js",
   "name": "@cedx/akismet",

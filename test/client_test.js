@@ -8,12 +8,12 @@ const {Author, Client, Comment, CommentType} = require('../lib/index.js');
  */
 describe('Client', function() {
   this.timeout(15000);
-  let _client = new Client(process.env.AKISMET_API_KEY, 'https://cedx.github.io/akismet.js', {isTest: true});
+  let _client = new Client(process.env.AKISMET_API_KEY, 'https://dev.belin.io/akismet.js', {isTest: true});
 
   let author = new Author('192.168.0.1', 'Mozilla/5.0 (X11; Linux x86_64) Chrome/66.0.3359.139', {
     name: 'Akismet',
     role: 'administrator',
-    url: 'https://cedx.github.io/akismet.js'
+    url: 'https://dev.belin.io/akismet.js'
   });
 
   let ham = new Comment(author, {
