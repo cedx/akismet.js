@@ -1,7 +1,7 @@
 {
   "author": "Cédric Belin <cedric@belin.io>",
   "bugs": "https://github.com/cedx/akismet.js/issues",
-  "description": "Prevent comment spam using Akismet service.",
+  "description": "Prevent comment spam using the Akismet service. Add Akismet to your applications so you don't have to worry about spam again.",
   "homepage": "https://dev.belin.io/akismet.js",
   "license": "MIT",
   "main": "./lib/index.js",
@@ -9,7 +9,7 @@
   "repository": "cedx/akismet.js",
   "version": "14.0.0",
   "dependencies": {
-    "node-fetch": "^2.1.2"
+    "node-fetch": "^2.2.0"
   },
   "devDependencies": {
     "@cedx/coveralls": "^6.0.0",
