@@ -1,6 +1,8 @@
 /.*
 
 /doc/
+/example/
+/src/
 /test/
 /var/
 /web/
@@ -8,3 +10,4 @@
 /*.iml
 /*.js
 /*.yml
+/lib/*.map
