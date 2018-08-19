@@ -16,8 +16,8 @@ The exception `message` usually includes some debug information, provided by the
 
 ## Example
 
-```js
-const {Client} = require('@cedx/akismet');
+```ts
+const {Client} from '@cedx/akismet');
 
 async function main() {
   try {

@@ -6,8 +6,8 @@ Make a [comment check](../features/comment_check.md) API call with the `Author#n
 
 The Akismet API will always return a `true` response to a valid request with one of those values. If you receive anything else, something is wrong in your client, data, or communications.
 
-```js
-const {Author, Client, Comment} = require('@cedx/akismet');
+```ts
+const {Author, Client, Comment} from '@cedx/akismet');
 
 async function main() {
   let author = new Author('127.0.0.1', 'Mozilla/5.0', {name: 'viagra-test-123'});
@@ -24,8 +24,8 @@ Make a [comment check](../features/comment_check.md) API call with the `Author#r
 
 The Akismet API will always return a `false` response. Any other response indicates a data or communication problem.
 
-```js
-const {Author, Client, Comment} = require('@cedx/akismet');
+```ts
+const {Author, Client, Comment} from '@cedx/akismet');
 
 async function main() {
   let author = new Author('127.0.0.1', 'Mozilla/5.0', {role: 'administrator'});
@@ -42,8 +42,8 @@ Enable the `Client#isTest` option in your tests.
 
 That will tell Akismet not to change its behaviour based on those API calls – they will have no training effect. That means your tests will be somewhat repeatable, in the sense that one test won't influence subsequent calls.
 
-```js
-const {Author, Client, Comment} = require('@cedx/akismet');
+```ts
+const {Author, Client, Comment} from '@cedx/akismet');
 
 async function main() {
   let author = new Author('127.0.0.1', 'Mozilla/5.0');

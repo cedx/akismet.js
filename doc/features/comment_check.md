@@ -23,8 +23,8 @@ The exception `message` usually includes some debug information, provided by the
 
 ## Example
 
-```js
-const {Author, Client, Comment} = require('@cedx/akismet');
+```ts
+const {Author, Client, Comment} from '@cedx/akismet');
 
 try {
   let client = new Client('123YourAPIKey', 'http://www.yourblog.com');
