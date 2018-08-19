@@ -1,7 +1,8 @@
-const EventEmitter = require('events');
-const fetch = require('node-fetch');
-const {Blog} = require('./blog.js');
-const pkg = require('../package.json');
+const EventEmitter from 'events');
+const fetch from 'node-fetch');
+const {Blog} from './blog.js');
+// @ts-ignore: disable processing of the imported JSON file.
+import * as pkg from '../package.json';
 
 /**
  * An exception caused by an error in a `Client` request.
@@ -31,9 +32,9 @@ class ClientError extends Error {
 
   /**
    * Returns a string representation of this object.
-   * @return {string} The string representation of this object.
+   * @return The string representation of this object.
    */
-  toString() {
+  toString(): string {
     let values = `"${this.message}"`;
     if (this.uri) values = `${values}, uri: "${this.uri.href}"`;
     return `${this.name}(${values})`;
@@ -91,7 +92,7 @@ class Client extends EventEmitter {
    * The class name.
    * @type {string}
    */
-  get [Symbol.toStringTag]() {
+  get [Symbol.toStringTag](): string {
     return 'Client';
   }
 
@@ -139,8 +140,8 @@ class Client extends EventEmitter {
    * @param {URL} endPoint The URL of the end point to query.
    * @param {Object} fields The fields describing the query body.
    * @return {Promise<string>} The response as string.
-   * @emits {Request} The "request" event.
-   * @emits {Response} The "response" event.
+   * @event {Request} The "request" event.
+   * @event {Response} The "response" event.
    */
   async _fetch(endPoint, fields) {
     let body = new URLSearchParams(Object.assign(this.blog.toJSON(), fields));
@@ -165,7 +166,3 @@ class Client extends EventEmitter {
     return res.text();
   }
 }
-
-// Module exports.
-exports.Client = Client;
-exports.ClientError = ClientError;
