@@ -1,7 +1,8 @@
 # Akismet for JS
-![Runtime](https://img.shields.io/badge/node-%3E%3D10.7-brightgreen.svg) ![Release](https://img.shields.io/npm/v/@cedx/akismet.svg) ![License](https://img.shields.io/npm/l/@cedx/akismet.svg) ![Downloads](https://img.shields.io/npm/dt/@cedx/akismet.svg) ![Dependencies](https://david-dm.org/cedx/akismet.js.svg) ![Coverage](https://coveralls.io/repos/github/cedx/akismet.js/badge.svg) ![Build](https://travis-ci.com/cedx/akismet.js.svg)
+![Runtime](https://img.shields.io/badge/node-%3E%3D10.9-brightgreen.svg) ![Release](https://img.shields.io/npm/v/@cedx/akismet.svg) ![License](https://img.shields.io/npm/l/@cedx/akismet.svg) ![Downloads](https://img.shields.io/npm/dt/@cedx/akismet.svg) ![Dependencies](https://david-dm.org/cedx/akismet.js.svg) ![Coverage](https://coveralls.io/repos/github/cedx/akismet.js/badge.svg) ![Build](https://travis-ci.com/cedx/akismet.js.svg)
 
-Prevent comment spam using [Akismet](https://akismet.com) service, in [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript).
+Prevent comment spam using [Akismet](https://akismet.com) service,
+in [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) and [TypeScript](https://www.typescriptlang.org).
 
 ## Resources
 - [Documentation](https://dev.belin.io/akismet.js)
@@ -31,8 +32,8 @@ npm install @cedx/akismet
 
 ### Key verification
 
-```js
-const {Client} = require('@cedx/akismet');
+```ts
+const {Client} from '@cedx/akismet');
 
 try {
   let client = new Client('123YourAPIKey', 'http://www.yourblog.com');
@@ -47,8 +48,8 @@ catch (err) {
 
 ### Comment check
 
-```js
-const {Author, Comment} = require('@cedx/akismet');
+```ts
+const {Author, Comment} from '@cedx/akismet');
 
 try {
   let comment = new Comment(
@@ -67,7 +68,7 @@ catch (err) {
 
 ### Submit spam / ham
 
-```js
+```ts
 try {
   await client.submitSpam(comment);
   console.log('Spam submitted');
@@ -89,7 +90,7 @@ The `Client` class is an [`EventEmitter`](https://nodejs.org/api/events.html) th
 
 You can subscribe to them using the `on()` method:
 
-```js
+```ts
 client.on('request', (request) =>
   console.log(`Client request: ${request.url}`)
 );
