@@ -1,5 +1,5 @@
-const {expect} = require('chai');
-const {Blog} = require('../lib/index.js');
+import {expect} from 'chai';
+const {Blog} from '../lib';
 
 /**
  * @test {Blog}

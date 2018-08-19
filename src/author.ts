@@ -55,16 +55,16 @@ class Author {
    * The class name.
    * @type {string}
    */
-  get [Symbol.toStringTag]() {
+  get [Symbol.toStringTag](): string {
     return 'Author';
   }
 
   /**
    * Creates a new author from the specified JSON map.
    * @param {Object} map A JSON map representing an author.
-   * @return {Author} The instance corresponding to the specified JSON map, or `null` if a parsing error occurred.
+   * @return {Author} The instance corresponding to the specified JSON map.
    */
-  static fromJson(map) {
+  static fromJson(map: JsonMap) {
     if (!map || typeof map != 'object') return null;
 
     let options = {
@@ -83,9 +83,9 @@ class Author {
 
   /**
    * Converts this object to a map in JSON format.
-   * @return {Object} The map in JSON format corresponding to this object.
+   * @return The map in JSON format corresponding to this object.
    */
-  toJSON() {
+  toJSON(): JsonMap {
     let map = {
       user_agent: this.userAgent,
       user_ip: this.ipAddress
@@ -100,12 +100,9 @@ class Author {
 
   /**
    * Returns a string representation of this object.
-   * @return {string} The string representation of this object.
+   * @return The string representation of this object.
    */
-  toString() {
+  toString(): string {
     return `${this[Symbol.toStringTag]} ${JSON.stringify(this)}`;
   }
 }
-
-// Module exports.
-exports.Author = Author;

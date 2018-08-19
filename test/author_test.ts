@@ -1,5 +1,5 @@
-const {expect} = require('chai');
-const {Author} = require('../lib/index.js');
+import {expect} from 'chai';
+const {Author} from '../lib';
 
 /**
  * @test {Author}

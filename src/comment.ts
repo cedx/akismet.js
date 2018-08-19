@@ -1,4 +1,4 @@
-const {Author} = require('./author.js');
+const {Author} from './author.js');
 
 /**
  * Represents a comment submitted by an author.
@@ -62,16 +62,16 @@ class Comment {
    * The class name.
    * @type {string}
    */
-  get [Symbol.toStringTag]() {
+  get [Symbol.toStringTag](): string {
     return 'Comment';
   }
 
   /**
    * Creates a new comment from the specified JSON map.
    * @param {Object} map A JSON map representing a comment.
-   * @return {Comment} The instance corresponding to the specified JSON map, or `null` if a parsing error occurred.
+   * @return {Comment} The instance corresponding to the specified JSON map.
    */
-  static fromJson(map) {
+  static fromJson(map: JsonMap) {
     if (!map || typeof map != 'object') return null;
 
     let hasAuthor = Object.keys(map)
@@ -92,9 +92,9 @@ class Comment {
 
   /**
    * Converts this object to a map in JSON format.
-   * @return {Object} The map in JSON format corresponding to this object.
+   * @return The map in JSON format corresponding to this object.
    */
-  toJSON() {
+  toJSON(): JsonMap {
     let map = this.author.toJSON();
     if (this.content.length) map.comment_content = this.content;
     if (this.date) map.comment_date_gmt = this.date.toISOString();
@@ -107,9 +107,9 @@ class Comment {
 
   /**
    * Returns a string representation of this object.
-   * @return {string} The string representation of this object.
+   * @return The string representation of this object.
    */
-  toString() {
+  toString(): string {
     return `${this[Symbol.toStringTag]} ${JSON.stringify(this)}`;
   }
 }
@@ -141,7 +141,3 @@ const CommentType = Object.freeze({
   trackback: 'trackback',
   tweet: 'tweet'
 });
-
-// Module exports.
-exports.Comment = Comment;
-exports.CommentType = CommentType;

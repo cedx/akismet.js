@@ -33,17 +33,17 @@ class Blog {
    * The class name.
    * @type {string}
    */
-  get [Symbol.toStringTag]() {
+  get [Symbol.toStringTag](): string {
     return 'Blog';
   }
 
   /**
    * Creates a new blog from the specified JSON map.
-   * @param {Object} map A JSON map representing a blog.
-   * @return {Blog} The instance corresponding to the specified JSON map, or `null` if a parsing error occurred.
+   * @param A JSON map representing a blog.
+   * @return The instance corresponding to the specified JSON map.
    */
-  static fromJson(map) {
-    return !map || typeof map != 'object' ? null : new this(typeof map.blog == 'string' ? map.blog : null, {
+  static fromJson(map: JsonMap): Blog {
+    return new this(typeof map.blog == 'string' ? map.blog : null, {
       charset: typeof map.blog_charset == 'string' ? map.blog_charset : '',
       languages: typeof map.blog_lang == 'string' ? map.blog_lang.split(',').map(lang => lang.trim()).filter(lang => lang.length > 0) : []
     });
@@ -51,9 +51,9 @@ class Blog {
 
   /**
    * Converts this object to a map in JSON format.
-   * @return {Object} The map in JSON format corresponding to this object.
+   * @return The map in JSON format corresponding to this object.
    */
-  toJSON() {
+  toJSON(): JsonMap {
     let map = {blog: this.url.href};
     if (this.charset.length) map.blog_charset = this.charset;
     if (this.languages.length) map.blog_lang = this.languages.join(',');
@@ -62,12 +62,9 @@ class Blog {
 
   /**
    * Returns a string representation of this object.
-   * @return {string} The string representation of this object.
+   * @return The string representation of this object.
    */
-  toString() {
+  toString(): string {
     return `${this[Symbol.toStringTag]} ${JSON.stringify(this)}`;
   }
 }
-
-// Module exports.
-exports.Blog = Blog;
