@@ -2,7 +2,7 @@ import {expect} from 'chai';
 const {Author, Client, Comment, CommentType} from '../lib';
 
 /**
- * @test {Client}
+ * Tests the `Client}
  */
 describe('Client', function() {
   this.timeout(15000);
@@ -31,7 +31,7 @@ describe('Client', function() {
   });
 
   /**
-   * @test {Client#checkComment}
+   * Tests the `Client#checkComment}
    */
   describe('#checkComment()', () => {
     it('should return `false` for valid comment (e.g. ham)' , async () => {
@@ -44,7 +44,7 @@ describe('Client', function() {
   });
 
   /**
-   * @test {Client#submitHam}
+   * Tests the `Client#submitHam}
    */
   describe('#submitHam()', () => {
     it('should complete without error' , async () => {
@@ -54,7 +54,7 @@ describe('Client', function() {
   });
 
   /**
-   * @test {Client#submitSpam}
+   * Tests the `Client#submitSpam}
    */
   describe('#submitSpam()', () => {
     it('should complete without error' , async () => {
@@ -64,7 +64,7 @@ describe('Client', function() {
   });
 
   /**
-   * @test {Client#verifyKey}
+   * Tests the `Client#verifyKey}
    */
   describe('#verifyKey()', () => {
     it('should return `true` for a valid API key' , async () => {

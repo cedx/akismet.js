@@ -2,12 +2,12 @@ import {expect} from 'chai';
 const {Author} from '../lib';
 
 /**
- * @test {Author}
+ * Tests the `Author}
  */
 describe('Author', () => {
 
   /**
-   * @test {Author.fromJson}
+   * Tests the `Author.fromJson()` method.
    */
   describe('.fromJson()', () => {
     it('should return a null reference with a non-object value', () => {
@@ -37,7 +37,7 @@ describe('Author', () => {
   });
 
   /**
-   * @test {Author#toJSON}
+   * Tests the `Author#toJSON()` method.
    */
   describe('#toJSON()', () => {
     it('should return only the IP address and user agent with a newly created instance', () => {
@@ -59,7 +59,7 @@ describe('Author', () => {
   });
 
   /**
-   * @test {Author#toString}
+   * Tests the `Author#toString()` method.
    */
   describe('#toString()', () => {
     let data = String(new Author('127.0.0.1', 'Doom/6.6.6', {email: 'cedric@belin.io', name: 'Cédric Belin', url: 'https://belin.io'}));
