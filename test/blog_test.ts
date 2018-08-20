@@ -2,12 +2,12 @@ import {expect} from 'chai';
 const {Blog} from '../lib';
 
 /**
- * @test {Blog}
+ * Tests the `Blog}
  */
 describe('Blog', () => {
 
   /**
-   * @test {Blog.fromJson}
+   * Tests the `Blog.fromJson}
    */
   describe('.fromJson()', () => {
     it('should return a null reference with a non-object value', () => {
@@ -35,7 +35,7 @@ describe('Blog', () => {
   });
 
   /**
-   * @test {Blog#toJSON}
+   * Tests the `Blog#toJSON}
    */
   describe('#toJSON()', () => {
     it('should return only the blog URL with a newly created instance', () => {
@@ -54,7 +54,7 @@ describe('Blog', () => {
   });
 
   /**
-   * @test {Blog#toString}
+   * Tests the `Blog#toString}
    */
   describe('#toString()', () => {
     let data = String(new Blog('https://dev.belin.io/akismet.js', {charset: 'UTF-8', languages: ['en', 'fr']}));

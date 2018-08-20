@@ -2,12 +2,12 @@ import {expect} from 'chai';
 const {Author, Comment, CommentType} from '../lib';
 
 /**
- * @test {Comment}
+ * Tests the `Comment}
  */
 describe('Comment', () => {
 
   /**
-   * @test {Comment.fromJson}
+   * Tests the `Comment.fromJson}
    */
   describe('.fromJson()', () => {
     it('should return a null reference with a non-object value', () => {
@@ -43,7 +43,7 @@ describe('Comment', () => {
   });
 
   /**
-   * @test {Comment#toJSON}
+   * Tests the `Comment#toJSON}
    */
   describe('#toJSON()', () => {
     it('should return only the author info with a newly created instance', () => {
@@ -73,7 +73,7 @@ describe('Comment', () => {
   });
 
   /**
-   * @test {Comment#toString}
+   * Tests the `Comment#toString}
    */
   describe('#toString()', () => {
     let data = String(new Comment(new Author('127.0.0.1', 'Doom/6.6.6', {name: 'Cédric Belin'}), {
