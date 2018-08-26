@@ -67,7 +67,7 @@ export class Author {
   static fromJson(map: JsonMap) {
     if (!map || typeof map != 'object') return null;
 
-    let options = {
+    const options = {
       email: typeof map.comment_author_email == 'string' ? map.comment_author_email : '',
       name: typeof map.comment_author == 'string' ? map.comment_author : '',
       role: typeof map.user_role == 'string' ? map.user_role : '',
@@ -86,7 +86,7 @@ export class Author {
    * @return The map in JSON format corresponding to this object.
    */
   toJSON(): JsonMap {
-    let map = {
+    const map = {
       user_agent: this.userAgent,
       user_ip: this.ipAddress
     };

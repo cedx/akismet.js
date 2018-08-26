@@ -17,7 +17,7 @@ describe('Comment', () => {
     });
 
     it('should return an empty instance with an empty map', () => {
-      let comment = Comment.fromJson({});
+      const comment = Comment.fromJson({});
       expect(comment.author).to.be.null;
       expect(comment.content).to.be.empty;
       expect(comment.date).to.be.null;
@@ -26,7 +26,7 @@ describe('Comment', () => {
     });
 
     it('should return an initialized instance with a non-empty map', () => {
-      let comment = Comment.fromJson({
+      const comment = Comment.fromJson({
         comment_author: 'Cédric Belin',
         comment_content: 'A user comment.',
         comment_date_gmt: '2000-01-01T00:00:00.000Z',
@@ -49,14 +49,14 @@ describe('Comment', () => {
    */
   describe('#toJSON()', () => {
     it('should return only the author info with a newly created instance', () => {
-      let data = new Comment(new Author('127.0.0.1', 'Doom/6.6.6')).toJSON();
+      const data = new Comment(new Author('127.0.0.1', 'Doom/6.6.6')).toJSON();
       expect(Object.keys(data)).to.have.lengthOf(2);
       expect(data.user_agent).to.equal('Doom/6.6.6');
       expect(data.user_ip).to.equal('127.0.0.1');
     });
 
     it('should return a non-empty map with an initialized instance', () => {
-      let data = new Comment(new Author('127.0.0.1', 'Doom/6.6.6', {name: 'Cédric Belin'}), {
+      const data = new Comment(new Author('127.0.0.1', 'Doom/6.6.6', {name: 'Cédric Belin'}), {
         content: 'A user comment.',
         date: new Date('2000-01-01T00:00:00.000Z'),
         referrer: 'https://belin.io',
@@ -78,7 +78,7 @@ describe('Comment', () => {
    * Tests the `Comment#toString}
    */
   describe('#toString()', () => {
-    let data = String(new Comment(new Author('127.0.0.1', 'Doom/6.6.6', {name: 'Cédric Belin'}), {
+    const data = String(new Comment(new Author('127.0.0.1', 'Doom/6.6.6', {name: 'Cédric Belin'}), {
       content: 'A user comment.',
       date: new Date('2000-01-01T00:00:00.000Z'),
       referrer: 'https://belin.io',

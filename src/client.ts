@@ -66,7 +66,7 @@ export class Client extends EventEmitter {
    * @return {Promise<boolean>} A boolean value indicating whether it is spam.
    */
   async checkComment(comment) {
-    let endPoint = new URL('/1.1/comment-check', `${this.endPoint.protocol}//${this.apiKey}.${this.endPoint.host}`);
+    const endPoint = new URL('/1.1/comment-check', `${this.endPoint.protocol}//${this.apiKey}.${this.endPoint.host}`);
     return await this._fetch(endPoint, comment.toJSON()) == 'true';
   }
 
@@ -76,7 +76,7 @@ export class Client extends EventEmitter {
    * @return {Promise} Completes once the comment has been submitted.
    */
   async submitHam(comment) {
-    let endPoint = new URL('/1.1/submit-ham', `${this.endPoint.protocol}//${this.apiKey}.${this.endPoint.host}`);
+    const endPoint = new URL('/1.1/submit-ham', `${this.endPoint.protocol}//${this.apiKey}.${this.endPoint.host}`);
     return this._fetch(endPoint, comment.toJSON());
   }
 
@@ -86,7 +86,7 @@ export class Client extends EventEmitter {
    * @return {Promise} Completes once the comment has been submitted.
    */
   async submitSpam(comment) {
-    let endPoint = new URL('/1.1/submit-spam', `${this.endPoint.protocol}//${this.apiKey}.${this.endPoint.host}`);
+    const endPoint = new URL('/1.1/submit-spam', `${this.endPoint.protocol}//${this.apiKey}.${this.endPoint.host}`);
     return this._fetch(endPoint, comment.toJSON());
   }
 
@@ -95,7 +95,7 @@ export class Client extends EventEmitter {
    * @return {Promise<boolean>} A boolean value indicating whether it is a valid API key.
    */
   async verifyKey() {
-    let endPoint = new URL('/1.1/verify-key', this.endPoint);
+    const endPoint = new URL('/1.1/verify-key', this.endPoint);
     return await this._fetch(endPoint, {key: this.apiKey}) == 'valid';
   }
 
@@ -108,10 +108,10 @@ export class Client extends EventEmitter {
    * @event {Response} The "response" event.
    */
   async _fetch(endPoint, fields) {
-    let body = new URLSearchParams(Object.assign(this.blog.toJSON(), fields));
+    const body = new URLSearchParams(Object.assign(this.blog.toJSON(), fields));
     if (this.isTest) body.set('is_test', '1');
 
-    let req = new fetch.Request(endPoint.href, {
+    const req = new fetch.Request(endPoint.href, {
       method: 'POST',
       headers: {'content-type': 'application/x-www-form-urlencoded', 'user-agent': this.userAgent},
       body
@@ -162,7 +162,7 @@ export class ClientError extends Error {
    * @return The string representation of this object.
    */
   toString(): string {
-    let values = `"${this.message}"`;
+    const values = `"${this.message}"`;
     if (this.uri) values = `${values}, uri: "${this.uri.href}"`;
     return `${this.name}(${values})`;
   }

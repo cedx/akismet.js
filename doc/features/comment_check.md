@@ -27,14 +27,14 @@ The exception `message` usually includes some debug information, provided by the
 const {Author, Client, Comment} from '@cedx/akismet');
 
 try {
-  let client = new Client('123YourAPIKey', 'http://www.yourblog.com');
+  const client = new Client('123YourAPIKey', 'http://www.yourblog.com');
 
-  let comment = new Comment(
+  const comment = new Comment(
     new Author('127.0.0.1', 'Mozilla/5.0'),
     {content: 'A user comment', date: Date.now()}
   );
 
-  let isSpam = await client.checkComment(comment);
+  const isSpam = await client.checkComment(comment);
   console.log(isSpam ? 'The comment is spam' : 'The comment is ham');
 }
 

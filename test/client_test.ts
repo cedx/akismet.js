@@ -8,15 +8,15 @@ import {Author, Client, Comment, CommentType} from '../src';
  */
 describe('Client', function() {
   this.timeout(15000);
-  let _client = new Client(process.env.AKISMET_API_KEY, 'https://dev.belin.io/akismet.js', {isTest: true});
+  const _client = new Client(process.env.AKISMET_API_KEY, 'https://dev.belin.io/akismet.js', {isTest: true});
 
-  let author = new Author('192.168.0.1', 'Mozilla/5.0 (X11; Linux x86_64) Chrome/66.0.3359.139', {
+  const author = new Author('192.168.0.1', 'Mozilla/5.0 (X11; Linux x86_64) Chrome/66.0.3359.139', {
     name: 'Akismet',
     role: 'administrator',
     url: 'https://dev.belin.io/akismet.js'
   });
 
-  let ham = new Comment(author, {
+  const ham = new Comment(author, {
     content: 'I\'m testing out the Service API.',
     referrer: 'https://www.npmjs.com/package/@cedx/akismet',
     type: CommentType.comment
@@ -27,7 +27,7 @@ describe('Client', function() {
     name: 'viagra-test-123'
   });
 
-  let spam = new Comment(author, {
+  const spam = new Comment(author, {
     content: 'Spam!',
     type: CommentType.trackback
   });
@@ -74,7 +74,7 @@ describe('Client', function() {
     });
 
     it('should return `false` for an invalid API key' , async () => {
-      let client = new Client('0123456789-ABCDEF', _client.blog, {isTest: _client.isTest});
+      const client = new Client('0123456789-ABCDEF', _client.blog, {isTest: _client.isTest});
       expect(await client.verifyKey()).to.be.false;
     });
   });

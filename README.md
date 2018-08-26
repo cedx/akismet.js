@@ -36,8 +36,8 @@ npm install @cedx/akismet
 const {Client} from '@cedx/akismet');
 
 try {
-  let client = new Client('123YourAPIKey', 'http://www.yourblog.com');
-  let isValid = await client.verifyKey();
+  const client = new Client('123YourAPIKey', 'http://www.yourblog.com');
+  const isValid = await client.verifyKey();
   console.log(isValid ? 'The API key is valid' : 'The API key is invalid');
 }
 
@@ -52,12 +52,12 @@ catch (err) {
 const {Author, Comment} from '@cedx/akismet');
 
 try {
-  let comment = new Comment(
+  const comment = new Comment(
     new Author('127.0.0.1', 'Mozilla/5.0'),
     {content: 'A user comment', date: Date.now()}
   );
 
-  let isSpam = await client.checkComment(comment);
+  const isSpam = await client.checkComment(comment);
   console.log(isSpam ? 'The comment is spam' : 'The comment is ham');
 }
 
