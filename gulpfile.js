@@ -46,9 +46,7 @@ gulp.task('lint', () => _exec('tslint', sources));
 /**
  * Runs the unit tests.
  */
-gulp.task('test:browser', () => _exec('karma', ['start']));
-gulp.task('test:node', () => _exec('nyc', [normalize('node_modules/.bin/mocha')]));
-gulp.task('test', gulp.series('test:browser', 'test:node'));
+gulp.task('test', () => _exec('nyc', [normalize('node_modules/.bin/mocha')]));
 
 /**
  * Upgrades the project to the latest revision.
