@@ -1,59 +1,49 @@
+import {JsonMap} from './map';
+
 /**
  * Represents the author of a comment.
  */
 export class Author {
 
   /**
-   * Creates a new author.
-   * @param {string} ipAddress The author's IP address.
-   * @param {string} userAgent The author's user agent.
-   * @param {Object} [options] An object specifying values used to initialize this instance.
+   * The author's mail address.
+   * If you set it to `"akismet-guaranteed-spam@example.com"`, Akismet will always return `true`.
    */
-  constructor(ipAddress, userAgent, {email = '', name = '', role = '', url = null} = {}) {
+  email: string;
 
-    /**
-     * The author's mail address.
-     * If you set it to `"akismet-guaranteed-spam@example.com"`, Akismet will always return `true`.
-     * @type {string}
-     */
+  /**
+   * The author's name.
+   * If you set it to `"viagra-test-123"`, Akismet will always return `true`.
+   */
+  name: string;
+
+  /**
+   * The role of the author.
+   * If you set it to `"administrator"`, Akismet will always return `false`.
+   */
+  role: string;
+
+  /**
+   * The URL of the author's website.
+   */
+  url: URL | null;
+
+  /**
+   * Creates a new author.
+   * @param ipAddress The author's IP address.
+   * @param userAgent The author's user agent, that is the string identifying the Web browser used to submit comments.
+   * @param options An object specifying values used to initialize this instance.
+   */
+  constructor(public ipAddress: string, public userAgent: string, options: Partial<AuthorOptions> = {}) {
+    const {email = '', name = '', role = '', url = null} = options;
     this.email = email;
-
-    /**
-     * The author's IP address.
-     * @type {string}
-     */
-    this.ipAddress = ipAddress;
-
-    /**
-     * The author's name.
-     * If you set it to `"viagra-test-123"`, Akismet will always return `true`.
-     * @type {string}
-     */
     this.name = name;
-
-    /**
-     * The role of the author.
-     * If you set it to `"administrator"`, Akismet will always return `false`.
-     * @type {string}
-     */
     this.role = role;
-
-    /**
-     * The URL of the author's website.
-     * @type {URL}
-     */
-    this.url = typeof url == 'string' ? new URL(url) : url;
-
-    /**
-     * The author's user agent, that is the string identifying the Web browser used to submit comments.
-     * @type {string}
-     */
-    this.userAgent = userAgent;
+    this.url = url;
   }
 
   /**
    * The class name.
-   * @type {string}
    */
   get [Symbol.toStringTag](): string {
     return 'Author';
@@ -61,17 +51,15 @@ export class Author {
 
   /**
    * Creates a new author from the specified JSON map.
-   * @param {Object} map A JSON map representing an author.
-   * @return {Author} The instance corresponding to the specified JSON map.
+   * @param map A JSON map representing an author.
+   * @return The instance corresponding to the specified JSON map.
    */
-  static fromJson(map: JsonMap) {
-    if (!map || typeof map != 'object') return null;
-
+  static fromJson(map: JsonMap): Author {
     const options = {
       email: typeof map.comment_author_email == 'string' ? map.comment_author_email : '',
       name: typeof map.comment_author == 'string' ? map.comment_author : '',
       role: typeof map.user_role == 'string' ? map.user_role : '',
-      url: typeof map.comment_author_url == 'string' ? map.comment_author_url : null
+      url: typeof map.comment_author_url == 'string' ? new URL(map.comment_author_url) : null
     };
 
     return new this(
@@ -86,7 +74,7 @@ export class Author {
    * @return The map in JSON format corresponding to this object.
    */
   toJSON(): JsonMap {
-    const map = {
+    const map: JsonMap = {
       user_agent: this.userAgent,
       user_ip: this.ipAddress
     };
@@ -105,4 +93,30 @@ export class Author {
   toString(): string {
     return `${this[Symbol.toStringTag]} ${JSON.stringify(this)}`;
   }
+}
+
+/**
+ * Defines the options of a `Author` instance.
+ */
+export interface AuthorOptions {
+
+  /**
+   * The author's mail address.
+   */
+  email: string;
+
+  /**
+   * The author's name.
+   */
+  name: string;
+
+  /**
+   * The role of the author.
+   */
+  role: string;
+
+  /**
+   * The URL of the author's website.
+   */
+  url: URL | null;
 }
