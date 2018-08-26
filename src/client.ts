@@ -1,50 +1,14 @@
-const EventEmitter from 'events');
-const fetch from 'node-fetch');
-const {Blog} from './blog.js');
+import {EventEmitter} from 'events';
+import * as fetch from 'node-fetch';
+
 // @ts-ignore: disable processing of the imported JSON file.
 import * as pkg from '../package.json';
-
-/**
- * An exception caused by an error in a `Client` request.
- */
-class ClientError extends Error {
-
-  /**
-   * Creates a new client error.
-   * @param {string} message A message describing the error.
-   * @param {string|URL} [uri] The URL of the HTTP request or response that failed.
-   */
-  constructor(message, uri) {
-    super(message);
-
-    /**
-     * The error name.
-     * @type {string}
-     */
-    this.name = 'ClientError';
-
-    /**
-     * The URL of the HTTP request or response that failed.
-     * @type {URL}
-     */
-    this.uri = typeof uri == 'string' ? new URL(uri) : uri;
-  }
-
-  /**
-   * Returns a string representation of this object.
-   * @return The string representation of this object.
-   */
-  toString(): string {
-    let values = `"${this.message}"`;
-    if (this.uri) values = `${values}, uri: "${this.uri.href}"`;
-    return `${this.name}(${values})`;
-  }
-}
+import {Blog} from './blog';
 
 /**
  * Submits comments to the [Akismet](https://akismet.com) service.
  */
-class Client extends EventEmitter {
+export class Client extends EventEmitter {
 
   /**
    * Creates a new client.
@@ -164,5 +128,42 @@ class Client extends EventEmitter {
     if (!res.ok) throw new ClientError('An error occurred while querying the end point', endPoint);
     if (res.headers.has('x-akismet-debug-help')) throw new ClientError(res.headers.get('x-akismet-debug-help'), endPoint);
     return res.text();
+  }
+}
+
+/**
+ * An exception caused by an error in a `Client` request.
+ */
+export class ClientError extends Error {
+
+  /**
+   * Creates a new client error.
+   * @param {string} message A message describing the error.
+   * @param {string|URL} [uri] The URL of the HTTP request or response that failed.
+   */
+  constructor(message, uri) {
+    super(message);
+
+    /**
+     * The error name.
+     * @type {string}
+     */
+    this.name = 'ClientError';
+
+    /**
+     * The URL of the HTTP request or response that failed.
+     * @type {URL}
+     */
+    this.uri = typeof uri == 'string' ? new URL(uri) : uri;
+  }
+
+  /**
+   * Returns a string representation of this object.
+   * @return The string representation of this object.
+   */
+  toString(): string {
+    let values = `"${this.message}"`;
+    if (this.uri) values = `${values}, uri: "${this.uri.href}"`;
+    return `${this.name}(${values})`;
   }
 }

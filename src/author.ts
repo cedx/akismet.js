@@ -1,7 +1,7 @@
 /**
  * Represents the author of a comment.
  */
-class Author {
+export class Author {
 
   /**
    * Creates a new author.
