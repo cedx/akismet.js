@@ -1,0 +1,36 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "command": "phing clean",
+      "label": "phing : clean",
+      "problemMatcher": [],
+      "type": "shell"
+    },
+    {
+      "command": "phing doc",
+      "label": "phing : doc",
+      "problemMatcher": [],
+      "type": "shell"
+    },
+    {
+      "command": "phing lint",
+      "label": "phing : lint",
+      "problemMatcher": [],
+      "type": "shell"
+    },
+    {
+      "command": "phing test",
+      "group": {"isDefault": true, "kind": "build"},
+      "label": "phing : test",
+      "problemMatcher": [],
+      "type": "shell"
+    },
+    {
+      "command": "phing upgrade",
+      "label": "phing : upgrade",
+      "problemMatcher": [],
+      "type": "shell"
+    }
+  ]
+}
