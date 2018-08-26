@@ -39,8 +39,9 @@
     "validation"
   ],
   "scripts": {
-    "coverage": "coveralls var/lcov.info",
-    "prepare": "tsc",
-    "test": "nyc mocha"
+    "coverage": "gulp coverage",
+    "prepare": "gulp build",
+    "start": "gulp watch",
+    "test": "gulp test"
   }
 }
