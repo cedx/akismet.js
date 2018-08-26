@@ -33,10 +33,10 @@ npm install @cedx/akismet
 ### Key verification
 
 ```ts
-const {Client} from '@cedx/akismet');
+import {Blog, Client} from '@cedx/akismet';
 
 try {
-  const client = new Client('123YourAPIKey', 'http://www.yourblog.com');
+  const client = new Client('123YourAPIKey', new Blog(new URL('http://www.yourblog.com')));
   const isValid = await client.verifyKey();
   console.log(isValid ? 'The API key is valid' : 'The API key is invalid');
 }
@@ -49,7 +49,7 @@ catch (err) {
 ### Comment check
 
 ```ts
-const {Author, Comment} from '@cedx/akismet');
+import {Author, Comment} from '@cedx/akismet';
 
 try {
   const comment = new Comment(
@@ -91,11 +91,11 @@ The `Client` class is an [`EventEmitter`](https://nodejs.org/api/events.html) th
 You can subscribe to them using the `on()` method:
 
 ```ts
-client.on('request', (request) =>
+client.on(Client.eventRequest, (request) =>
   console.log(`Client request: ${request.url}`)
 );
 
-client.on('response', (request, response) =>
+client.on(Client.eventResponse, (request, response) =>
   console.log(`Server response: ${response.status}`)
 );
 ```

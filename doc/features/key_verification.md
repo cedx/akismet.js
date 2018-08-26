@@ -17,11 +17,11 @@ The exception `message` usually includes some debug information, provided by the
 ## Example
 
 ```ts
-const {Client} from '@cedx/akismet');
+import {Blog, Client} from '@cedx/akismet';
 
 async function main() {
   try {
-    const client = new Client('123YourAPIKey', 'http://www.yourblog.com');
+    const client = new Client('123YourAPIKey', new Blog(new URL('http://www.yourblog.com')));
     const isValid = await client.verifyKey();
     console.log(isValid ? 'The API key is valid' : 'The API key is invalid');
   }

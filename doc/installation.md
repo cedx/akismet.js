@@ -34,5 +34,5 @@ npm install @cedx/akismet
 Now in your [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) or [TypeScript](https://www.typescriptlang.org) code, you can use:
 
 ```ts
-const akismet from '@cedx/akismet');
+import * as akismet from '@cedx/akismet';
 ```
