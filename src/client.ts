@@ -4,6 +4,7 @@ import fetch, {Request, Response} from 'node-fetch';
 // @ts-ignore: disable processing of the imported JSON file.
 import * as pkg from '../package.json';
 import {Blog} from './blog';
+import {Comment} from './comment';
 import {JsonMap} from './map';
 
 /**
@@ -84,7 +85,7 @@ export class Client extends EventEmitter {
    */
   async submitHam(comment: Comment): Promise<void> {
     const endPoint = new URL('1.1/submit-ham', `${this.endPoint.protocol}//${this.apiKey}.${this.endPoint.host}`);
-    return this._fetch(endPoint, comment.toJSON());
+    return this._fetch(endPoint, comment.toJSON()) as Promise<void>;
   }
 
   /**
@@ -94,7 +95,7 @@ export class Client extends EventEmitter {
    */
   async submitSpam(comment: Comment): Promise<void> {
     const endPoint = new URL('1.1/submit-spam', `${this.endPoint.protocol}//${this.apiKey}.${this.endPoint.host}`);
-    return this._fetch(endPoint, comment.toJSON());
+    return this._fetch(endPoint, comment.toJSON()) as Promise<void>;
   }
 
   /**
@@ -108,13 +109,11 @@ export class Client extends EventEmitter {
 
   /**
    * Queries the service by posting the specified fields to a given end point, and returns the response as a string.
-   * @param {URL} endPoint The URL of the end point to query.
-   * @param {Object} fields The fields describing the query body.
-   * @return {Promise<string>} The response as string.
-   * @event {Request} The "request" event.
-   * @event {Response} The "response" event.
+   * @param endPoint The URL of the end point to query.
+   * @param fields The fields describing the query body.
+   * @return The response as string.
    */
-  async _fetch(endPoint: URL, fields: JsonMap) {
+  private async _fetch(endPoint: URL, fields: JsonMap): Promise<string | undefined> {
     const body = new URLSearchParams(Object.assign(this.blog.toJSON(), fields));
     if (this.isTest) body.set('is_test', '1');
 
