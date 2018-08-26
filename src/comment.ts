@@ -3,7 +3,7 @@ const {Author} from './author.js');
 /**
  * Represents a comment submitted by an author.
  */
-class Comment {
+export class Comment {
 
   /**
    * Creates a new comment.
@@ -129,7 +129,7 @@ class Comment {
  * @property {string} trackback A [trackback](https://en.wikipedia.org/wiki/Trackback) post.
  * @property {string} tweet A [Twitter](https://twitter.com) message.
  */
-const CommentType = Object.freeze({
+export const CommentType = Object.freeze({
   blogPost: 'blog-post',
   comment: 'comment',
   contactForm: 'contact-form',

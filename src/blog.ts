@@ -1,7 +1,7 @@
 /**
  * Represents the front page or home URL transmitted when making requests.
  */
-class Blog {
+export class Blog {
 
   /**
    * Creates a new blog.
