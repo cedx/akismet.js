@@ -1,5 +1,7 @@
+/* tslint:disable: no-unused-expression */
 import {expect} from 'chai';
-const {Author} from '../lib';
+import {suite, test} from 'mocha-typescript';
+import {Author} from '../src';
 
 /**
  * Tests the `Author}
