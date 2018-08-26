@@ -1,5 +1,7 @@
+/* tslint:disable: no-unused-expression */
 import {expect} from 'chai';
-const {Blog} from '../lib';
+import {suite, test} from 'mocha-typescript';
+import {Blog} from '../src';
 
 /**
  * Tests the `Blog}

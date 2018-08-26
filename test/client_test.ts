@@ -1,5 +1,7 @@
+/* tslint:disable: no-unused-expression */
 import {expect} from 'chai';
-const {Author, Client, Comment, CommentType} from '../lib';
+import {suite, test} from 'mocha-typescript';
+import {Author, Client, Comment, CommentType} from '../src';
 
 /**
  * Tests the `Client}
