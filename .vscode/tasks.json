@@ -2,35 +2,45 @@
   "version": "2.0.0",
   "tasks": [
     {
-      "command": "phing clean",
-      "label": "phing : clean",
       "problemMatcher": [],
-      "type": "shell"
+      "task": "build",
+      "type": "gulp"
     },
     {
-      "command": "phing doc",
-      "label": "phing : doc",
       "problemMatcher": [],
-      "type": "shell"
+      "task": "clean",
+      "type": "gulp"
     },
     {
-      "command": "phing lint",
-      "label": "phing : lint",
       "problemMatcher": [],
-      "type": "shell"
+      "task": "doc",
+      "type": "gulp"
     },
     {
-      "command": "phing test",
+      "problemMatcher": [],
+      "task": "fix",
+      "type": "gulp"
+    },
+    {
+      "problemMatcher": [],
+      "task": "lint",
+      "type": "gulp"
+    },
+    {
       "group": {"isDefault": true, "kind": "build"},
-      "label": "phing : test",
       "problemMatcher": [],
-      "type": "shell"
+      "task": "test",
+      "type": "gulp"
     },
     {
-      "command": "phing upgrade",
-      "label": "phing : upgrade",
       "problemMatcher": [],
-      "type": "shell"
+      "task": "upgrade",
+      "type": "gulp"
+    },
+    {
+      "problemMatcher": [],
+      "task": "watch",
+      "type": "gulp"
     }
   ]
 }
