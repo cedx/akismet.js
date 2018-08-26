@@ -1,8 +1,15 @@
 # Changelog
 
 ## Version [14.0.0](https://github.com/cedx/akismet.js/compare/v13.1.0...v14.0.0)
+- Breaking change: ported the source code to [TypeScript](https://www.typescriptlang.org).
+- Breaking change: changed the signature of the constructors.
+- Breaking change: changed the signature of the `fromJson()` methods.
 - Breaking change: raised the required [Node.js](https://nodejs.org) version.
 - Breaking change: removed the `defaultEndPoint` and `debugHeader` static properties from the `Client` class.
+- Added the `eventRequest` and `eventResponse` static properties to the `Client` class.
+- Ported the unit tests to classes with experimental decorators.
+- Replaced [ESDoc](https://esdoc.org) documentation generator by [TypeDoc](https://typedoc.org).
+- Replaced [ESLint](https://eslint.org) static analyzer by [TSLint](https://palantir.github.io/tslint).
 - Updated the package dependencies.
 - Using the global `URL` and `URLSearchParams` classes.
 
