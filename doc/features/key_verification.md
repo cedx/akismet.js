@@ -21,8 +21,8 @@ const {Client} from '@cedx/akismet');
 
 async function main() {
   try {
-    let client = new Client('123YourAPIKey', 'http://www.yourblog.com');
-    let isValid = await client.verifyKey();
+    const client = new Client('123YourAPIKey', 'http://www.yourblog.com');
+    const isValid = await client.verifyKey();
     console.log(isValid ? 'The API key is valid' : 'The API key is invalid');
   }
     

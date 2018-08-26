@@ -10,11 +10,11 @@ The Akismet API will always return a `true` response to a valid request with one
 const {Author, Client, Comment} from '@cedx/akismet');
 
 async function main() {
-  let author = new Author('127.0.0.1', 'Mozilla/5.0', {name: 'viagra-test-123'});
-  let comment = new Comment(author, {content: 'A user comment'});
+  const author = new Author('127.0.0.1', 'Mozilla/5.0', {name: 'viagra-test-123'});
+  const comment = new Comment(author, {content: 'A user comment'});
 
-  let client = new Client('123YourAPIKey', 'http://www.yourblog.com');
-  let isSpam = await client.checkComment(comment);
+  const client = new Client('123YourAPIKey', 'http://www.yourblog.com');
+  const isSpam = await client.checkComment(comment);
   console.log(`It should be "true": ${isSpam}`);
 }
 ```
@@ -28,11 +28,11 @@ The Akismet API will always return a `false` response. Any other response indica
 const {Author, Client, Comment} from '@cedx/akismet');
 
 async function main() {
-  let author = new Author('127.0.0.1', 'Mozilla/5.0', {role: 'administrator'});
-  let comment = new Comment(author, {content: 'A user comment'});
+  const author = new Author('127.0.0.1', 'Mozilla/5.0', {role: 'administrator'});
+  const comment = new Comment(author, {content: 'A user comment'});
 
-  let client = new Client('123YourAPIKey', 'http://www.yourblog.com');
-  let isSpam = await client.checkComment(comment);
+  const client = new Client('123YourAPIKey', 'http://www.yourblog.com');
+  const isSpam = await client.checkComment(comment);
   console.log(`It should be "false": ${isSpam}`);
 }
 ```
@@ -46,10 +46,10 @@ That will tell Akismet not to change its behaviour based on those API calls – 
 const {Author, Client, Comment} from '@cedx/akismet');
 
 async function main() {
-  let author = new Author('127.0.0.1', 'Mozilla/5.0');
-  let comment = new Comment(author, {content: 'A user comment'});
+  const author = new Author('127.0.0.1', 'Mozilla/5.0');
+  const comment = new Comment(author, {content: 'A user comment'});
 
-  let client = new Client('123YourAPIKey', 'http://www.yourblog.com', {isTest: true});
+  const client = new Client('123YourAPIKey', 'http://www.yourblog.com', {isTest: true});
   console.log('It should not influence subsequent calls');
   await client.checkComment(comment);
 }

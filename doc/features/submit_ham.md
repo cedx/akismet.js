@@ -28,13 +28,13 @@ const {Author, Client, Comment} from '@cedx/akismet');
 
 async function main() {
   try {
-    let comment = new Comment(
+    const comment = new Comment(
       new Author('127.0.0.1', 'Mozilla/5.0'),
       {content: 'A valid user comment (ham)'}
     );
 
-    let client = new Client('123YourAPIKey', 'http://www.yourblog.com');
-    let isSpam = await client.checkComment(comment); // `true`, but `false` expected.
+    const client = new Client('123YourAPIKey', 'http://www.yourblog.com');
+    const isSpam = await client.checkComment(comment); // `true`, but `false` expected.
     
     console.log('The comment was incorrectly classified as spam');
     await client.submitHam(comment);

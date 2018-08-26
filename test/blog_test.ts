@@ -17,14 +17,14 @@ describe('Blog', () => {
     });
 
     it('should return an empty instance with an empty map', () => {
-      let blog = Blog.fromJson({});
+      const blog = Blog.fromJson({});
       expect(blog.charset).to.be.empty;
       expect(blog.languages).to.be.an('array').that.is.empty;
       expect(blog.url).to.be.null;
     });
 
     it('should return an initialized instance with a non-empty map', () => {
-      let blog = Blog.fromJson({
+      const blog = Blog.fromJson({
         blog: 'https://dev.belin.io/akismet.js',
         blog_charset: 'UTF-8',
         blog_lang: 'en, fr'
@@ -41,13 +41,13 @@ describe('Blog', () => {
    */
   describe('#toJSON()', () => {
     it('should return only the blog URL with a newly created instance', () => {
-      let data = new Blog('https://dev.belin.io/akismet.js').toJSON();
+      const data = new Blog('https://dev.belin.io/akismet.js').toJSON();
       expect(Object.keys(data)).to.have.lengthOf(1);
       expect(data.blog).to.equal('https://dev.belin.io/akismet.js');
     });
 
     it('should return a non-empty map with an initialized instance', () => {
-      let data = new Blog('https://dev.belin.io/akismet.js', {charset: 'UTF-8', languages: ['en', 'fr']}).toJSON();
+      const data = new Blog('https://dev.belin.io/akismet.js', {charset: 'UTF-8', languages: ['en', 'fr']}).toJSON();
       expect(Object.keys(data)).to.have.lengthOf(3);
       expect(data.blog).to.equal('https://dev.belin.io/akismet.js');
       expect(data.blog_charset).to.equal('UTF-8');
@@ -59,7 +59,7 @@ describe('Blog', () => {
    * Tests the `Blog#toString}
    */
   describe('#toString()', () => {
-    let data = String(new Blog('https://dev.belin.io/akismet.js', {charset: 'UTF-8', languages: ['en', 'fr']}));
+    const data = String(new Blog('https://dev.belin.io/akismet.js', {charset: 'UTF-8', languages: ['en', 'fr']}));
 
     it('should start with the class name', () => {
       expect(data.startsWith('Blog {')).be.true;
