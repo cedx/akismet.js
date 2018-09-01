@@ -2,7 +2,6 @@ import {EventEmitter} from 'events';
 import fetch, {Request, Response} from 'node-fetch';
 
 // @ts-ignore: disable processing of the imported JSON file.
-import * as pkg from '../package.json';
 import {Blog} from './blog';
 import {Comment} from './comment';
 import {JsonMap} from './map';
@@ -23,6 +22,11 @@ export class Client extends EventEmitter {
    * @event response
    */
   static readonly eventResponse: string = 'response';
+
+  /**
+   * The version number of the package.
+   */
+  static readonly version: string = '14.0.0';
 
   /**
    * The URL of the API end point.
@@ -53,7 +57,7 @@ export class Client extends EventEmitter {
     const {
       endPoint = new URL('https://rest.akismet.com'),
       isTest = false,
-      userAgent = `Node.js/${process.version.substr(1)} | Akismet/${pkg.version}`
+      userAgent = `Node.js/${process.version.substr(1)} | Akismet/${Client.version}`
     } = options;
 
     this.endPoint = endPoint;
