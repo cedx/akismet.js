@@ -18,7 +18,7 @@ class ClientTest {
    * A message marked as ham.
    */
   private _ham: Comment = new Comment(
-    new Author('192.168.0.1', 'Mozilla/5.0 (X11; Linux x86_64) Chrome/66.0.3359.139', {
+    new Author('192.168.0.1', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:61.0) Gecko/20100101 Firefox/61.0', {
       name: 'Akismet',
       role: 'administrator',
       url: new URL('https://dev.belin.io/akismet.js')
