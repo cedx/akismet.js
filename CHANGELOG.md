@@ -7,6 +7,7 @@
 - Breaking change: raised the required [Node.js](https://nodejs.org) version.
 - Breaking change: removed the `defaultEndPoint` and `debugHeader` static properties from the `Client` class.
 - Added the `eventRequest` and `eventResponse` static properties to the `Client` class.
+- Added an example code.
 - Ported the unit tests to classes with experimental decorators.
 - Replaced [ESDoc](https://esdoc.org) documentation generator by [TypeDoc](https://typedoc.org).
 - Replaced [ESLint](https://eslint.org) static analyzer by [TSLint](https://palantir.github.io/tslint).
