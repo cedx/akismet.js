@@ -33,7 +33,7 @@ async function main() {
       {content: 'An invalid user comment (spam)'}
     );
 
-    const client = new Client('123YourAPIKey', new Blog(new URL('http://www.yourblog.com')));
+    const client = new Client('123YourAPIKey', new Blog(new URL('https://www.yourblog.com')));
     const isSpam = await client.checkComment(comment); // `false`, but `true` expected.
     
     console.log('The comment was incorrectly classified as ham');

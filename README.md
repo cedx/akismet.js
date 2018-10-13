@@ -24,7 +24,7 @@ in [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) and [Ty
 import {Blog, Client} from '@cedx/akismet';
 
 try {
-  const client = new Client('123YourAPIKey', new Blog(new URL('http://www.yourblog.com')));
+  const client = new Client('123YourAPIKey', new Blog(new URL('https://www.yourblog.com')));
   const isValid = await client.verifyKey();
   console.log(isValid ? 'The API key is valid' : 'The API key is invalid');
 }

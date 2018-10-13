@@ -9,7 +9,7 @@ import {Author, Blog, Client, ClientError, Comment, CommentType} from '@cedx/aki
 async function main(): Promise<void> {
   try {
     // Key verification.
-    const client = new Client('123YourAPIKey', new Blog(new URL('http://www.yourblog.com')));
+    const client = new Client('123YourAPIKey', new Blog(new URL('https://www.yourblog.com')));
     const isValid = await client.verifyKey();
     console.log(isValid ? 'The API key is valid' : 'The API key is invalid');
 

@@ -13,7 +13,7 @@ async function main() {
   const author = new Author('127.0.0.1', 'Mozilla/5.0', {name: 'viagra-test-123'});
   const comment = new Comment(author, {content: 'A user comment'});
 
-  const client = new Client('123YourAPIKey', new Blog(new URL('http://www.yourblog.com')));
+  const client = new Client('123YourAPIKey', new Blog(new URL('https://www.yourblog.com')));
   const isSpam = await client.checkComment(comment);
   console.log(`It should be "true": ${isSpam}`);
 }
@@ -31,7 +31,7 @@ async function main() {
   const author = new Author('127.0.0.1', 'Mozilla/5.0', {role: 'administrator'});
   const comment = new Comment(author, {content: 'A user comment'});
 
-  const client = new Client('123YourAPIKey', new Blog(new URL('http://www.yourblog.com')));
+  const client = new Client('123YourAPIKey', new Blog(new URL('https://www.yourblog.com')));
   const isSpam = await client.checkComment(comment);
   console.log(`It should be "false": ${isSpam}`);
 }
@@ -50,7 +50,7 @@ async function main() {
   const comment = new Comment(author, {content: 'A user comment'});
   const client = new Client(
     '123YourAPIKey',
-    new Blog(new URL('http://www.yourblog.com')),
+    new Blog(new URL('https://www.yourblog.com')),
     {isTest: true}
   );
   

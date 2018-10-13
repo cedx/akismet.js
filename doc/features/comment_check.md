@@ -27,7 +27,7 @@ The exception `message` usually includes some debug information, provided by the
 import {Author, Blog, Client, Comment} from '@cedx/akismet';
 
 try {
-  const client = new Client('123YourAPIKey', new Blog(new URL('http://www.yourblog.com')));
+  const client = new Client('123YourAPIKey', new Blog(new URL('https://www.yourblog.com')));
 
   const comment = new Comment(
     new Author('127.0.0.1', 'Mozilla/5.0'),
