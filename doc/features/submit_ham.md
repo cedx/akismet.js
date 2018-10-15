@@ -1,15 +1,17 @@
 # Submit ham
-This call is intended for the submission of false positives - items that were incorrectly classified as spam by Akismet. It takes identical arguments as [comment check](comment_check.md) and [submit spam](submit_spam.md).
+This call is intended for the submission of false positives - items that were incorrectly classified as spam by Akismet.
+It takes identical arguments as [comment check](comment_check.md) and [submit spam](submit_spam.md).
 
-Remember that, as explained in the [submit spam](submit_spam.md) documentation, you should ensure that any values you're passing here match up with the original and corresponding [comment check](comment_check.md) call.
+Remember that, as explained in the [submit spam](submit_spam.md) documentation, you should ensure
+that any values you're passing here match up with the original and corresponding [comment check](comment_check.md) call.
 
 ```
-Client#submitHam(comment: Comment): Promise
+Client#submitHam(comment: Comment): Promise<void>
 ```
 
 ## Parameters
 
-### comment
+### **comment**: Comment
 The user `Comment` to be submitted, incorrectly classified as spam.
 
 !!! tip
@@ -26,7 +28,7 @@ The exception `message` usually includes some debug information, provided by the
 ```ts
 import {Author, Blog, Client, Comment} from '@cedx/akismet';
 
-async function main() {
+async function main(): Promise<void> {
   try {
     const comment = new Comment(
       new Author('127.0.0.1', 'Mozilla/5.0'),

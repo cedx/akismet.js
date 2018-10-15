@@ -1,5 +1,7 @@
 # Comment check
-This is the call you will make the most. It takes a number of arguments and characteristics about the submitted content and then returns a thumbs up or thumbs down. **Performance can drop dramatically if you choose to exclude data points.** The more data you send Akismet about each comment, the greater the accuracy. We recommend erring on the side of including too much data.
+This is the call you will make the most. It takes a number of arguments and characteristics about the submitted content
+and then returns a thumbs up or thumbs down. **Performance can drop dramatically if you choose to exclude data points.**
+The more data you send Akismet about each comment, the greater the accuracy. We recommend erring on the side of including too much data.
 
 ```
 Client#checkComment(comment: Comment): Promise<boolean>
@@ -12,7 +14,7 @@ Client#checkComment(comment: Comment): Promise<boolean>
 
 ## Parameters
 
-### comment
+### **comment**: Comment
 The `Comment` providing the user message to be checked.
 
 ## Return value
@@ -26,19 +28,20 @@ The exception `message` usually includes some debug information, provided by the
 ```ts
 import {Author, Blog, Client, Comment} from '@cedx/akismet';
 
-try {
-  const client = new Client('123YourAPIKey', new Blog(new URL('https://www.yourblog.com')));
+async function main(): Promise<void> {
+  try {
+    const comment = new Comment(
+      new Author('127.0.0.1', 'Mozilla/5.0'),
+      {content: 'A user comment', date: Date.now()}
+    );
 
-  const comment = new Comment(
-    new Author('127.0.0.1', 'Mozilla/5.0'),
-    {content: 'A user comment', date: Date.now()}
-  );
+    const client = new Client('123YourAPIKey', new Blog(new URL('https://www.yourblog.com')));
+    const isSpam = await client.checkComment(comment);
+    console.log(isSpam ? 'The comment is spam' : 'The comment is ham');
+  }
 
-  const isSpam = await client.checkComment(comment);
-  console.log(isSpam ? 'The comment is spam' : 'The comment is ham');
-}
-
-catch (err) {
-  console.log(`An error occurred: ${err.message}`);
+  catch (err) {
+    console.log(`An error occurred: ${err.message}`);
+  }
 }
 ```
