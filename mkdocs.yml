@@ -8,7 +8,7 @@ site_dir: web
 
 repo_name: Gitea/Belin.io
 repo_url: https://git.belin.io/cedx/akismet.js
-edit_uri: _edit/master/doc/
+edit_uri: ''
 
 copyright: Copyright &copy; 2014 - 2018 Cédric Belin
 google_analytics:
