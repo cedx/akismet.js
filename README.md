@@ -11,7 +11,7 @@ in [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) and [Ty
 ## Development
 - [Git repository](https://git.belin.io/cedx/akismet.js)
 - [npm package](https://www.npmjs.com/package/@cedx/akismet)
-- [Submit an issue](https://git.belin.io/cedx/akismet.js/issues)
+- [Submit an issue](https://github.com/cedx/akismet.js/issues)
 
 ## Features
 - [Key verification](https://akismet.com/development/api/#verify-key): checks an Akismet API key and gets a value indicating whether it is valid.

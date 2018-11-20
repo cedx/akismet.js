@@ -4,7 +4,7 @@
 - [Akismet for developers](https://akismet.com/development/api)
 - [API reference](https://dev.belin.io/akismet.js/api)
 - [npm package](https://www.npmjs.com/package/@cedx/akismet)
-- [Submit an issue](https://git.belin.io/cedx/akismet.js/issues)
+- [Submit an issue](https://github.com/cedx/akismet.js/issues)
 
 ## Testing
 - [Continuous integration](https://travis-ci.com/cedx/akismet.js)
