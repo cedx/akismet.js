@@ -15,7 +15,7 @@
     "@cedx/coveralls": "^8.2.1",
     "@types/chai": "^4.1.7",
     "@types/node": "^10.12.9",
-    "@types/node-fetch": "^2.1.3",
+    "@types/node-fetch": "^2.1.4",
     "chai": "^4.2.0",
     "del": "^3.0.0",
     "gulp": "^4.0.0",

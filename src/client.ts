@@ -1,5 +1,6 @@
 import {EventEmitter} from 'events';
-import fetch, {Request, Response} from 'node-fetch';
+import fetch from 'node-fetch';
+import {Request, Response} from 'node-fetch';
 
 // @ts-ignore: disable processing of the imported JSON file.
 import {Blog} from './blog';
