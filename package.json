@@ -1,6 +1,6 @@
 {
   "author": "Cédric Belin <cedric@belin.io>",
-  "bugs": "https://git.belin.io/cedx/akismet.js/issues",
+  "bugs": "https://github.com/cedx/akismet.js/issues",
   "description": "Prevent comment spam using the Akismet service. Add Akismet to your applications so you don't have to worry about spam again.",
   "homepage": "https://dev.belin.io/akismet.js",
   "license": "MIT",
