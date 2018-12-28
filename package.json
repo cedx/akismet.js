@@ -14,7 +14,7 @@
   "devDependencies": {
     "@cedx/coveralls": "^8.2.1",
     "@types/chai": "^4.1.7",
-    "@types/node": "^10.12.15",
+    "@types/node": "^10.12.18",
     "@types/node-fetch": "^2.1.4",
     "chai": "^4.2.0",
     "del": "^3.0.0",
@@ -25,7 +25,7 @@
     "nyc": "^13.1.0",
     "source-map-support": "^0.5.9",
     "ts-node": "^7.0.1",
-    "tslint": "^5.11.0",
+    "tslint": "^5.12.0",
     "typedoc": "^0.13.0",
     "typescript": "^3.2.2"
   },
