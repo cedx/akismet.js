@@ -10,7 +10,7 @@ repo_name: Gitea/Belin.io
 repo_url: https://git.belin.io/cedx/akismet.js
 edit_uri: ''
 
-copyright: Copyright &copy; 2014 - 2018 Cédric Belin
+copyright: Copyright &copy; 2014 - 2019 Cédric Belin
 google_analytics:
 - !!python/object/apply:os.getenv [GOOGLE_ANALYTICS_ID]
 - auto
