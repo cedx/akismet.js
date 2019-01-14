@@ -6,8 +6,8 @@ site_url: https://dev.belin.io/akismet.js
 docs_dir: doc
 site_dir: web
 
-repo_name: Gitea/Belin.io
-repo_url: https://git.belin.io/cedx/akismet.js
+repo_name: GitHub
+repo_url: https://github.com/cedx/akismet.js
 edit_uri: ''
 
 copyright: Copyright &copy; 2014 - 2019 Cédric Belin
@@ -18,7 +18,7 @@ google_analytics:
 extra:
   social:
   - {type: globe, link: 'https://belin.io'}
-  - {type: git, link: 'https://git.belin.io/cedx'}
+  - {type: github, link: 'https://github.com/cedx'}
   - {type: twitter, link: 'https://twitter.com/cedxbelin'}
   - {type: linkedin, link: 'https://linkedin.com/in/cedxbelin'}
 
