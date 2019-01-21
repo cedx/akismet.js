@@ -27,7 +27,7 @@ gulp.task('build', () => _exec('tsc'));
 /**
  * Deletes all generated files and reset any saved state.
  */
-gulp.task('clean', () => del(['.nyc_output', 'doc/api', 'lib', 'var/**/*', 'web']));
+gulp.task('clean', () => del(['.nyc_output', 'build', 'coverage', 'doc/api', 'lib', 'var/**/*', 'web']));
 
 /**
  * Uploads the results of the code coverage.
@@ -62,7 +62,9 @@ gulp.task('serve', () => _exec('http-server', ['example', '-o']));
 /**
  * Runs the test suites.
  */
-gulp.task('test', () => _exec('nyc', [normalize('node_modules/.bin/mocha')]));
+gulp.task('test:browser', () => _exec('karma', ['start']));
+gulp.task('test:node', () => _exec('nyc', [normalize('node_modules/.bin/mocha')]));
+gulp.task('test', gulp.parallel('test:browser', 'test:node'));
 
 /**
  * Upgrades the project to the latest revision.
@@ -88,7 +90,7 @@ gulp.task('version', () => gulp.src('src/client.ts')
  */
 gulp.task('watch', () => {
   gulp.watch('src/**/*.ts', {ignoreInitial: false}, gulp.task('build'));
-  gulp.watch('test/**/*.ts', gulp.task('test'));
+  gulp.watch('test/**/*.ts', gulp.task('test:node'));
 });
 
 /**
