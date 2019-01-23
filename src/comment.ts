@@ -7,6 +7,11 @@ import {JsonMap} from './map';
 export class Comment {
 
   /**
+   * The class name.
+   */
+  readonly [Symbol.toStringTag]: string = 'Comment';
+
+  /**
    * The comment's content.
    */
   content: string;
@@ -50,13 +55,6 @@ export class Comment {
     this.postModified = postModified;
     this.referrer = referrer;
     this.type = type;
-  }
-
-  /**
-   * The class name.
-   */
-  get [Symbol.toStringTag](): string {
-    return 'Comment';
   }
 
   /**

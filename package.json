@@ -1,4 +1,5 @@
 {
+  "browser": "lib/browser.mjs",
   "bugs": "https://github.com/cedx/akismet.js/issues",
   "description": "Prevent comment spam using the Akismet service. Add Akismet to your applications so you don't have to worry about spam again.",
   "homepage": "https://dev.belin.io/akismet.js",
@@ -27,6 +28,7 @@
     "chai": "^4.2.0",
     "del": "^3.0.0",
     "gulp": "^4.0.0",
+    "gulp-rename": "^1.4.0",
     "gulp-replace": "^1.0.0",
     "http-server": "^0.11.1",
     "karma": "^3.1.4",
@@ -37,7 +39,7 @@
     "mocha-typescript": "^1.1.17",
     "nyc": "^13.1.0",
     "rollup": "^1.1.2",
-    "rollup-plugin-commonjs": "^9.2.0",
+    "rollup-plugin-node-resolve": "^4.0.0",
     "source-map-support": "^0.5.10",
     "ts-node": "^8.0.1",
     "tslint": "^5.12.1",
