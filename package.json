@@ -3,10 +3,11 @@
   "description": "Prevent comment spam using the Akismet service. Add Akismet to your applications so you don't have to worry about spam again.",
   "homepage": "https://dev.belin.io/akismet.js",
   "license": "MIT",
-  "main": "./lib/index.js",
+  "main": "lib/index",
+  "module": "lib/index.mjs",
   "name": "@cedx/akismet",
   "repository": "github:cedx/akismet.js",
-  "types": "./lib/index.d.ts",
+  "types": "lib/index.d.ts",
   "version": "14.0.0",
   "author": {
     "email": "cedric@belin.io",
