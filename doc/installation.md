@@ -11,7 +11,7 @@ You can verify if you're already good to go with the following commands:
 
 ```shell
 node --version
-# v11.7.0
+# v11.8.0
 
 npm --version
 # 6.5.0
@@ -35,4 +35,31 @@ Now in your [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript
 
 ```ts
 import * as akismet from '@cedx/akismet';
+```
+
+!!! info
+    This library is packaged as [CommonJS modules](https://nodejs.org/api/modules.html) (`.js` files) and [ECMAScript modules](https://nodejs.org/api/esm.html) (`.mjs` files).  
+    To consume it in a browser, you must use a dedicated tool chain, like a build system coupled with a bundler.
+
+### 3. Use it
+See the [usage information](usage.md).
+
+## Installing from a content delivery network
+This library is also available as a ready-made bundle.
+To install it, add this code snippet to the `<head>` of your HTML document:
+
+```html
+<!-- jsDelivr -->
+<script src="https://cdn.jsdelivr.net/npm/@cedx/akismet/build/akismet.min.js"></script>
+
+<!-- UNPKG -->
+<script src="https://unpkg.com/@cedx/akismet/build/akismet.min.js"></script>
+```
+
+The classes of this library are exposed as `akismet` property on the `window` global object:
+
+```html
+<script>
+  const {Client, Comment, Author, ...} = window.akismet;
+</script>
 ```
