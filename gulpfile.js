@@ -64,7 +64,7 @@ gulp.task('fix', () => _exec('tslint', ['--fix', ...sources]));
 gulp.task('lint', () => _exec('tslint', sources));
 
 /**
- * Starts the Web server.
+ * Starts the development server.
  */
 gulp.task('serve', () => _exec('http-server', ['example', '-o']));
 
