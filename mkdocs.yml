@@ -48,4 +48,4 @@ nav:
 theme:
   name: material
   favicon: img/favicon.ico
-  palette: {primary: light green, accent: light green}
+  palette: {primary: yellow, accent: yellow}
