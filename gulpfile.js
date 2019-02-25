@@ -72,7 +72,7 @@ gulp.task('serve', () => _exec('http-server', ['example', '-o']));
  * Runs the test suites.
  */
 gulp.task('test:browser', () => _exec('karma', ['start']));
-gulp.task('test:node', () => _exec('nyc', [normalize('node_modules/.bin/mocha')]));
+gulp.task('test:node', () => _exec('nyc', [normalize('node_modules/.bin/mocha'), 'test/**/*.ts']));
 gulp.task('test', gulp.parallel('test:browser', 'test:node'));
 
 /**
