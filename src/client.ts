@@ -63,7 +63,7 @@ export class Client extends EventEmitter {
     const {
       endPoint = new URL('https://rest.akismet.com'),
       isTest = false,
-      userAgent = `Node.js/${process.version.substr(1)} | Akismet/${Client.version}`
+      userAgent = `Node.js/${process.version.substring(1)} | Akismet/${Client.version}`
     } = options;
 
     this.endPoint = endPoint;
