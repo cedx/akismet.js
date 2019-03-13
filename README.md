@@ -45,7 +45,7 @@ import {Author, Comment} from '@cedx/akismet';
 try {
   const comment = new Comment(
     new Author('127.0.0.1', 'Mozilla/5.0'),
-    {content: 'A user comment', date: Date.now()}
+    {content: 'A user comment', date: new Date}
   );
 
   const isSpam = await client.checkComment(comment);
