@@ -28,7 +28,7 @@ import {Author} from '../src';
 
     expect(author.email).to.equal('cedric@belin.io');
     expect(author.ipAddress).to.equal('127.0.0.1');
-    expect(author.url).to.be.instanceof(URL).and.have.property('href').that.equal('https://belin.io/');
+    expect(author.url).to.be.an.instanceof(URL).and.have.property('href').that.equal('https://belin.io/');
     expect(author.userAgent).to.equal('Mozilla/5.0');
   }
 

@@ -29,12 +29,12 @@ import {Author, Comment, CommentType} from '../src';
       referrer: 'https://belin.io'
     });
 
-    expect(comment.author).to.be.instanceof(Author);
+    expect(comment.author).to.be.an.instanceof(Author);
     expect(comment.author!.name).to.equal('Cédric Belin');
     expect(comment.content).to.equal('A user comment.');
-    expect(comment.date).to.be.instanceof(Date);
+    expect(comment.date).to.be.an.instanceof(Date);
     expect(comment.date!.getFullYear()).to.equal(2000);
-    expect(comment.referrer).to.be.instanceof(URL).and.have.property('href').that.equal('https://belin.io/');
+    expect(comment.referrer).to.be.an.instanceof(URL).and.have.property('href').that.equal('https://belin.io/');
     expect(comment.type).to.equal(CommentType.trackback);
   }
 

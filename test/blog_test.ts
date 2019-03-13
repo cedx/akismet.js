@@ -27,7 +27,7 @@ import {Blog} from '../src';
 
     expect(blog.charset).to.equal('UTF-8');
     expect(blog.languages).to.have.ordered.members(['en', 'fr']);
-    expect(blog.url).to.be.instanceof(URL).and.have.property('href').that.equal('https://dev.belin.io/akismet.js');
+    expect(blog.url).to.be.an.instanceof(URL).and.have.property('href').that.equal('https://dev.belin.io/akismet.js');
   }
 
   /**
