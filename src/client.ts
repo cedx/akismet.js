@@ -30,11 +30,6 @@ export class Client extends EventEmitter {
   static readonly version: string = '14.0.0';
 
   /**
-   * The class name.
-   */
-  readonly [Symbol.toStringTag]: string = 'Client';
-
-  /**
    * The URL of the API end point.
    */
   endPoint: URL;
