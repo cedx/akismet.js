@@ -51,21 +51,4 @@ import {Author} from '../src';
     expect(data.user_agent).to.equal('Mozilla/5.0');
     expect(data.user_ip).to.equal('192.168.0.1');
   }
-
-  /**
-   * Tests the `Author#toString()` method.
-   */
-  @test testToString(): void {
-    const data = String(new Author('127.0.0.1', 'Doom/6.6.6', {email: 'cedric@belin.io', name: 'Cédric Belin', url: new URL('https://belin.io')}));
-
-    // It should start with the class name.
-    expect(data.startsWith('Author {')).to.be.true;
-
-    // It should contain the instance properties.
-    expect(data).to.contain('"comment_author":"Cédric Belin"')
-      .and.contain('"comment_author_email":"cedric@belin.io"')
-      .and.contain('"comment_author_url":"https://belin.io/"')
-      .and.contain('"user_agent":"Doom/6.6.6"')
-      .and.contain('"user_ip":"127.0.0.1"');
-  }
 }

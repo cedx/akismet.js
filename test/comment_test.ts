@@ -65,28 +65,4 @@ import {Author, Comment, CommentType} from '../src';
     expect(data.user_agent).to.equal('Doom/6.6.6');
     expect(data.user_ip).to.equal('127.0.0.1');
   }
-
-  /**
-   * Tests the `Comment#toString()` method.
-   */
-  @test testToString(): void {
-    const data = String(new Comment(new Author('127.0.0.1', 'Doom/6.6.6', {name: 'Cédric Belin'}), {
-      content: 'A user comment.',
-      date: new Date('2000-01-01T00:00:00.000Z'),
-      referrer: new URL('https://belin.io'),
-      type: CommentType.pingback
-    }));
-
-    // It should start with the class name.
-    expect(data.startsWith('Comment {')).to.be.true;
-
-    // It should contain the instance properties.
-    expect(data).to.contain('"comment_author":"Cédric Belin"')
-      .and.contain('"comment_content":"A user comment."')
-      .and.contain('"comment_type":"pingback"')
-      .and.contain('"comment_date_gmt":"2000-01-01T00:00:00.000Z"')
-      .and.contain('"referrer":"https://belin.io/"')
-      .and.contain('"user_agent":"Doom/6.6.6"')
-      .and.contain('"user_ip":"127.0.0.1"');
-  }
 }

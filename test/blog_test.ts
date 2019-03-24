@@ -46,19 +46,4 @@ import {Blog} from '../src';
     expect(data.blog_charset).to.equal('UTF-8');
     expect(data.blog_lang).to.equal('en,fr');
   }
-
-  /**
-   * Tests the `Blog#toString()` method.
-   */
-  @test testToString(): void {
-    const data = String(new Blog(new URL('https://dev.belin.io/akismet.js'), {charset: 'UTF-8', languages: ['en', 'fr']}));
-
-    // It should start with the class name.
-    expect(data.startsWith('Blog {')).be.true;
-
-    // It should contain the instance properties.
-    expect(data).to.contain('"blog":"https://dev.belin.io/akismet.js"')
-      .and.contain('"blog_charset":"UTF-8"')
-      .and.contain('"blog_lang":"en,fr"');
-  }
 }
