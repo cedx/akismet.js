@@ -7,11 +7,6 @@ import {JsonMap} from './map';
 export class Comment {
 
   /**
-   * The class name.
-   */
-  readonly [Symbol.toStringTag]: string = 'Comment';
-
-  /**
    * The comment's content.
    */
   content: string;
@@ -92,14 +87,6 @@ export class Comment {
     if (this.permalink) map.permalink = this.permalink.href;
     if (this.referrer) map.referrer = this.referrer.href;
     return map;
-  }
-
-  /**
-   * Returns a string representation of this object.
-   * @return The string representation of this object.
-   */
-  toString(): string {
-    return `${this[Symbol.toStringTag]} ${JSON.stringify(this)}`;
   }
 }
 

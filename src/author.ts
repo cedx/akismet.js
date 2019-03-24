@@ -6,11 +6,6 @@ import {JsonMap} from './map';
 export class Author {
 
   /**
-   * The class name.
-   */
-  readonly [Symbol.toStringTag]: string = 'Author';
-
-  /**
    * The author's mail address.
    * If you set it to `"akismet-guaranteed-spam@example.com"`, Akismet will always return `true`.
    */
@@ -82,14 +77,6 @@ export class Author {
     if (this.url) map.comment_author_url = this.url.href;
     if (this.role.length) map.user_role = this.role;
     return map;
-  }
-
-  /**
-   * Returns a string representation of this object.
-   * @return The string representation of this object.
-   */
-  toString(): string {
-    return `${this[Symbol.toStringTag]} ${JSON.stringify(this)}`;
   }
 }
 

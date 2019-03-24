@@ -6,11 +6,6 @@ import {JsonMap} from './map';
 export class Blog {
 
   /**
-   * The class name.
-   */
-  readonly [Symbol.toStringTag]: string = 'Blog';
-
-  /**
    * The character encoding for the values included in comments.
    */
   charset: string;
@@ -52,14 +47,6 @@ export class Blog {
     if (this.charset.length) map.blog_charset = this.charset;
     if (this.languages.length) map.blog_lang = this.languages.join(',');
     return map;
-  }
-
-  /**
-   * Returns a string representation of this object.
-   * @return The string representation of this object.
-   */
-  toString(): string {
-    return `${this[Symbol.toStringTag]} ${JSON.stringify(this)}`;
   }
 }
 
