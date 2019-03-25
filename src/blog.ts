@@ -43,7 +43,7 @@ export class Blog {
    * @return The map in JSON format corresponding to this object.
    */
   toJSON(): JsonMap {
-    const map: JsonMap = {blog: this.url ? this.url.href : ''};
+    const map = {blog: this.url ? this.url.href : ''} as JsonMap;
     if (this.charset.length) map.blog_charset = this.charset;
     if (this.languages.length) map.blog_lang = this.languages.join(',');
     return map;
