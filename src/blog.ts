@@ -32,7 +32,7 @@ export class Blog {
    * @return The instance corresponding to the specified JSON map.
    */
   static fromJson(map: JsonMap): Blog {
-    return new this(typeof map.blog == 'string' ? new URL(map.blog) : null, {
+    return new Blog(typeof map.blog == 'string' ? new URL(map.blog) : null, {
       charset: typeof map.blog_charset == 'string' ? map.blog_charset : '',
       languages: typeof map.blog_lang == 'string' ? map.blog_lang.split(',').map(lang => lang.trim()).filter(lang => lang.length > 0) : []
     });

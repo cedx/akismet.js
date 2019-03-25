@@ -55,7 +55,7 @@ export class Author {
       url: typeof map.comment_author_url == 'string' ? new URL(map.comment_author_url) : null
     };
 
-    return new this(
+    return new Author(
       typeof map.user_ip == 'string' ? map.user_ip : '',
       typeof map.user_agent == 'string' ? map.user_agent : '',
       options

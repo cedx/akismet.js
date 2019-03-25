@@ -71,7 +71,7 @@ export class Comment {
       type: typeof map.comment_type == 'string' ? map.comment_type : ''
     };
 
-    return new this(hasAuthor ? Author.fromJson(map) : null, options);
+    return new Comment(hasAuthor ? Author.fromJson(map) : null, options);
   }
 
   /**
