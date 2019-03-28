@@ -71,7 +71,7 @@ task('serve', () => _exec('http-server', ['example', '-o']));
  * Runs the test suites.
  */
 task('test:browser', () => _exec('karma', ['start']));
-task('test:node', () => _exec('nyc', [normalize('node_modules/.bin/mocha'), 'test/**/*.ts']));
+task('test:node', () => _exec('nyc', [normalize('node_modules/.bin/mocha'), '"test/**/*.ts"']));
 task('test', parallel('test:browser', 'test:node'));
 
 /**
