@@ -91,7 +91,7 @@ export class Comment {
 }
 
 /**
- * Defines the options of a `Comment` instance.
+ * Defines the options of a [[Comment]] instance.
  */
 export interface CommentOptions {
 

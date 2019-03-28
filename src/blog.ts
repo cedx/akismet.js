@@ -51,7 +51,7 @@ export class Blog {
 }
 
 /**
- * Defines the options of a `Blog` instance.
+ * Defines the options of a [[Blog]] instance.
  */
 export interface BlogOptions {
 

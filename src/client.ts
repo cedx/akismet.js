@@ -161,7 +161,7 @@ export class ClientError extends Error {
 }
 
 /**
- * Defines the options of a `Client` instance.
+ * Defines the options of a [[Client]] instance.
  */
 export interface ClientOptions {
 

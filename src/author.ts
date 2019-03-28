@@ -81,7 +81,7 @@ export class Author {
 }
 
 /**
- * Defines the options of a `Author` instance.
+ * Defines the options of a [[Author]] instance.
  */
 export interface AuthorOptions {
 
