@@ -20,7 +20,7 @@
     "node-fetch": "^2.3.0"
   },
   "devDependencies": {
-    "@cedx/coveralls": "^8.4.0",
+    "@cedx/coveralls": "^8.5.0",
     "@types/chai": "^4.1.7",
     "@types/node": "^11.13.0",
     "@types/node-fetch": "^2.1.7",
