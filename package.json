@@ -22,8 +22,8 @@
   "devDependencies": {
     "@cedx/coveralls": "^8.5.0",
     "@types/chai": "^4.1.7",
-    "@types/node": "^11.13.2",
-    "@types/node-fetch": "^2.3.0",
+    "@types/node": "^11.13.4",
+    "@types/node-fetch": "^2.3.1",
     "babel-minify": "^0.5.0",
     "chai": "^4.2.0",
     "del": "^4.1.0",
