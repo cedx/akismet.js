@@ -1,5 +1,8 @@
 module.exports = config => config.set({
-  browsers: ['ChromeHeadless'],
+  browsers: ['FirefoxHeadless'],
+  customLaunchers: {
+    FirefoxHeadless: {base: 'Firefox', flags: ['--headless']}
+  },
   files: ['src/**/*.ts', 'test/**/*.ts'],
   frameworks: ['mocha', 'karma-typescript'],
   karmaTypescriptConfig: {
