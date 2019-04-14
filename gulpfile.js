@@ -23,7 +23,7 @@ const sources = ['*.js', 'example/*.ts', 'src/**/*.ts', 'test/**/*.ts'];
  * Builds the project.
  */
 task('build:browser', async () => {
-  await _exec('rollup', ['--config']);
+  await _exec('rollup', ['--config=src/rollup.config.js']);
   return _exec('minify', ['build/free-mobile.js', '--out-file=build/free-mobile.min.js']);
 });
 
@@ -46,10 +46,10 @@ task('coverage', () => _exec('coveralls', ['var/lcov.info']));
  * Builds the documentation.
  */
 task('doc', async () => {
-  await promises.copyFile('CHANGELOG.md', 'doc/about/changelog.md');
-  await promises.copyFile('LICENSE.md', 'doc/about/license.md');
-  await _exec('typedoc');
-  return _exec('mkdocs', ['build']);
+  for (const path of ['CHANGELOG.md', 'LICENSE.md']) await promises.copyFile(path, `doc/about/${path.toLowerCase()}`);
+  await _exec('typedoc', ['--options', 'doc/typedoc.js']);
+  await _exec('mkdocs', ['build', '--config-file=doc/mkdocs.yml']);
+  return del(['doc/about/changelog.md', 'doc/about/license.md', 'web/mkdocs.yml', 'web/typedoc.js']);
 });
 
 /**
@@ -70,8 +70,14 @@ task('serve', () => _exec('http-server', ['example', '-o']));
 /**
  * Runs the test suites.
  */
-task('test:browser', () => _exec('karma', ['start']));
-task('test:node', () => _exec('nyc', [normalize('node_modules/.bin/mocha'), '"test/**/*.ts"']));
+task('test:browser', () => _exec('karma', ['start', 'test/karma.conf.js']));
+task('test:node', () => _exec('nyc', [
+  '--nycrc-path=test/.nycrc',
+  normalize('node_modules/.bin/mocha'),
+  '--config=test/.mocharc.yaml',
+  '"test/**/*.ts"'
+]));
+
 task('test', parallel('test:browser', 'test:node'));
 
 /**
