@@ -4,7 +4,7 @@ import {suite, test, timeout} from 'mocha-typescript';
 import {Author, Blog, Client, Comment, CommentType} from '../src';
 
 /**
- * Tests the features of the `Client` class.
+ * Tests the features of the [[Client]] class.
  */
 @suite(timeout(15000))
 class ClientTest {

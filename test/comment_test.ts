@@ -4,7 +4,7 @@ import {suite, test} from 'mocha-typescript';
 import {Author, Comment, CommentType} from '../src';
 
 /**
- * Tests the features of the `Comment` class.
+ * Tests the features of the [[Comment]] class.
  */
 @suite class CommentTest {
 

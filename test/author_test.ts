@@ -4,7 +4,7 @@ import {suite, test} from 'mocha-typescript';
 import {Author} from '../src';
 
 /**
- * Tests the features of the `Client` class.
+ * Tests the features of the [[Author]] class.
  */
 @suite class AuthorTest {
 
