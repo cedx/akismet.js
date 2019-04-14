@@ -6,22 +6,27 @@ const sources = {
 
 module.exports = config => config.set({
   browsers: ['FirefoxHeadless'],
+  coverageReporter: {
+    dir: join(__dirname, '../var'),
+    subdir: '.',
+    type: 'lcovonly'
+  },
   files: [sources.lib, sources.test],
   frameworks: ['mocha', 'karma-typescript'],
   karmaTypescriptConfig: {
-    coverageOptions: {instrumentation: false},
     include: [sources.test],
     tsconfig: '../tsconfig.json'
   },
   plugins: [
+    require('karma-coverage'),
     require('karma-firefox-launcher'),
     require('karma-mocha'),
     require('karma-typescript')
   ],
   preprocessors: {
-    [sources.lib]: ['karma-typescript'],
+    [sources.lib]: ['karma-typescript', 'coverage'],
     [sources.test]: ['karma-typescript']
   },
-  reporters: ['progress'],
+  reporters: ['progress', 'coverage'],
   singleRun: true
 });

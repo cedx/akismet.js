@@ -1,8 +1,12 @@
 dist: xenial
+env: [PLATFORM=browser, PLATFORM=node]
 language: node_js
-node_js: [10, 11]
+node_js: ['10', '11']
 notifications: {email: false}
 
-install: npm install
-script: npm test
+install:
+  - npm install --global gulp-cli
+  - npm install
+
+script: gulp test:${PLATFORM}
 after_success: npm run coverage
