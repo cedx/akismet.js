@@ -77,9 +77,9 @@ task('test:browser', async () => {
 });
 
 task('test:node', () => _exec('nyc', [
-  '--nycrc-path=test/.nycrc',
+  '--nycrc-path=test/nycrc.json',
   normalize('node_modules/.bin/mocha'),
-  '--config=test/.mocharc.yaml',
+  '--config=test/mocharc.json',
   '"test/**/*.ts"'
 ]));
 
