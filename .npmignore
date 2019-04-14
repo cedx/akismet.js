@@ -12,6 +12,5 @@
 /*.iml
 /*.js
 /*.yaml
-/*.yml
-/**/*.tsconfig.json
+/**/tsconfig.json
 /lib/**/*.map
