@@ -2,7 +2,7 @@ addons: {firefox: latest}
 dist: xenial
 env: [PLATFORM=browser, PLATFORM=node]
 language: node_js
-node_js: ['10', '11']
+node_js: '10'
 notifications: {email: false}
 
 install:
