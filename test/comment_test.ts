@@ -3,14 +3,10 @@ import {expect} from 'chai';
 import {suite, test} from 'mocha-typescript';
 import {Author, Comment, CommentType} from '../src';
 
-/**
- * Tests the features of the [[Comment]] class.
- */
+/** Tests the features of the [[Comment]] class. */
 @suite class CommentTest {
 
-  /**
-   * Tests the `Comment.fromJson()` method.
-   */
+  /** Tests the `Comment.fromJson()` method. */
   @test testFromJson(): void {
     // It should return an empty instance with an empty map.
     let comment = Comment.fromJson({});
@@ -38,9 +34,7 @@ import {Author, Comment, CommentType} from '../src';
     expect(comment.type).to.equal(CommentType.trackback);
   }
 
-  /**
-   * Tests the `Comment#toJSON()` method.
-   */
+  /** Tests the `Comment#toJSON()` method. */
   @test testToJSON(): void {
     // It should return only the author info with a newly created instance.
     let data = new Comment(new Author('127.0.0.1', 'Doom/6.6.6')).toJSON();

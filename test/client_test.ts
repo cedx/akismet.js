@@ -3,9 +3,7 @@ import {expect} from 'chai';
 import {suite, test, timeout} from 'mocha-typescript';
 import {Author, Blog, Client, Comment, CommentType} from '../src';
 
-/**
- * Tests the features of the [[Client]] class.
- */
+/** Tests the features of the [[Client]] class. */
 @suite(timeout(15000))
 class ClientTest {
 
@@ -40,9 +38,7 @@ class ClientTest {
     type: CommentType.trackback
   });
 
-  /**
-   * Tests the `Client#checkComment()` method.
-   */
+  /** Tests the `Client#checkComment()` method. */
   @test async testCheckComment(): Promise<void> {
     // It should return `false` for valid comment (e.g. ham)' , async () => {
     expect(await this._client.checkComment(this._ham)).to.be.false;
@@ -51,27 +47,21 @@ class ClientTest {
     expect(await this._client.checkComment(this._spam)).to.be.true;
   }
 
-  /**
-   * Tests the `Client#submitHam()` method.
-   */
+  /** Tests the `Client#submitHam()` method. */
   @test async testSubmitHam(): Promise<void> {
     // It should complete without error' , async () => {
     await this._client.submitHam(this._ham);
     expect(true).to.be.ok;
   }
 
-  /**
-   * Tests the `Client#submitSpam()` method.
-   */
+  /** Tests the `Client#submitSpam()` method. */
   @test async testSubmitSpam(): Promise<void> {
     // It should complete without error' , async () => {
     await this._client.submitSpam(this._spam);
     expect(true).to.be.ok;
   }
 
-  /**
-   * Tests the `Client#verifyKey()` method.
-   */
+  /** Tests the `Client#verifyKey()` method. */
   @test async testVerifyKey(): Promise<void> {
     // It should return `true` for a valid API key' , async () => {
     expect(await this._client.verifyKey()).to.be.true;

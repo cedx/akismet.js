@@ -3,14 +3,10 @@ import {expect} from 'chai';
 import {suite, test} from 'mocha-typescript';
 import {Author} from '../src';
 
-/**
- * Tests the features of the [[Author]] class.
- */
+/** Tests the features of the [[Author]] class. */
 @suite class AuthorTest {
 
-  /**
-   * Tests the `Author.fromJson()` method.
-   */
+  /** Tests the `Author.fromJson()` method. */
   @test testFromJson(): void {
     // It should return an empty instance with an empty map.
     let author = Author.fromJson({});
@@ -32,9 +28,7 @@ import {Author} from '../src';
     expect(author.userAgent).to.equal('Mozilla/5.0');
   }
 
-  /**
-   * Tests the `Author#toJSON()` method.
-   */
+  /** Tests the `Author#toJSON()` method. */
   @test testToJSON(): void {
     // It should return only the IP address and user agent with a newly created instance.
     let data = new Author('127.0.0.1', 'Doom/6.6.6').toJSON();

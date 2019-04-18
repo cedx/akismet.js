@@ -24,26 +24,16 @@ export class Client extends EventEmitter {
    */
   static readonly eventResponse: string = 'response';
 
-  /**
-   * The version number of the package.
-   */
+  /** The version number of the package. */
   static readonly version: string = '14.0.0';
 
-  /**
-   * The URL of the API end point.
-   */
+  /** The URL of the API end point. */
   endPoint: URL;
 
-  /**
-   * Value indicating whether the client operates in test mode.
-   * You can use it when submitting test queries to Akismet.
-   */
+  /** Value indicating whether the client operates in test mode. */
   isTest: boolean;
 
-  /**
-   * The user agent string to use when making requests.
-   * If possible, the user agent string should always have the following format: `Application Name/Version | Plugin Name/Version`.
-   */
+  /** The user agent string to use when making requests. */
   userAgent: string;
 
   /**

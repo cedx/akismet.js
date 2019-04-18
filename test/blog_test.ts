@@ -3,14 +3,10 @@ import {expect} from 'chai';
 import {suite, test} from 'mocha-typescript';
 import {Blog} from '../src';
 
-/**
- * Tests the features of the [[Blog]] class.
- */
+/** Tests the features of the [[Blog]] class. */
 @suite class BlogTest {
 
-  /**
-   * Tests the `Blog.fromJson()` method.
-   */
+  /** Tests the `Blog.fromJson()` method. */
   @test testFromJson(): void {
     // It should return an empty instance with an empty map.
     let blog = Blog.fromJson({});
@@ -30,9 +26,7 @@ import {Blog} from '../src';
     expect(blog.url).to.be.an.instanceof(URL).and.have.property('href').that.equal('https://dev.belin.io/akismet.js');
   }
 
-  /**
-   * Tests the `Blog#toJSON()` method.
-   */
+  /** Tests the `Blog#toJSON()` method. */
   @test testToJSON(): void {
     // It should return only the blog URL with a newly created instance.
     let data = new Blog(new URL('https://dev.belin.io/akismet.js')).toJSON();
