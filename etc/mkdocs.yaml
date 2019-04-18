@@ -3,7 +3,7 @@ site_description: Prevent comment spam using the Akismet service, in JavaScript.
 site_author: Cédric Belin - cedric@belin.io
 site_url: https://dev.belin.io/akismet.js
 
-docs_dir: .
+docs_dir: ../doc
 site_dir: ../web
 
 repo_name: GitHub

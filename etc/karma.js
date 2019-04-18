@@ -1,7 +1,7 @@
 const {join} = require('path');
 const sources = {
   lib: join(__dirname, '../src/**/*.ts'),
-  test: join(__dirname, '**/*_test.ts')
+  test: join(__dirname, '../test/**/*_test.ts')
 };
 
 module.exports = config => config.set({

@@ -1,7 +1,7 @@
 /.*
 
-/coverage/
 /doc/api/
+/etc/
 /share/
 /src/
 /test/
@@ -11,6 +11,5 @@
 /*.code-workspace
 /*.iml
 /*.js
-/*.yaml
 /**/tsconfig.json
 /lib/**/*.map

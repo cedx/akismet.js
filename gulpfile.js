@@ -21,7 +21,7 @@ if (!_path.includes(_vendor)) process.env.PATH = `${_vendor}${delimiter}${_path}
 
 /** Builds the project. */
 task('build:browser', async () => {
-  await _exec('rollup', ['--config=src/rollup.config.js']);
+  await _exec('rollup', ['--config=etc/rollup.js']);
   return _exec('minify', ['build/free-mobile.js', '--out-file=build/free-mobile.min.js']);
 });
 
@@ -39,16 +39,16 @@ task('coverage', () => _exec('coveralls', ['var/lcov.info']));
 /** Builds the documentation. */
 task('doc', async () => {
   for (const path of ['CHANGELOG.md', 'LICENSE.md']) await promises.copyFile(path, `doc/about/${path.toLowerCase()}`);
-  await _exec('typedoc', ['--options', 'doc/typedoc.js']);
-  await _exec('mkdocs', ['build', '--config-file=doc/mkdocs.yml']);
-  return del(['doc/about/changelog.md', 'doc/about/license.md', 'web/mkdocs.yml', 'web/typedoc.js']);
+  await _exec('typedoc', ['--options', 'etc/typedoc.js']);
+  await _exec('mkdocs', ['build', '--config-file=etc/mkdocs.yaml']);
+  return del(['doc/about/changelog.md', 'doc/about/license.md']);
 });
 
 /** Fixes the coding standards issues. */
-task('fix', () => _exec('tslint', ['--fix', ...sources]));
+task('fix', () => _exec('tslint', ['--config', 'etc/tslint.yaml', '--fix', ...sources]));
 
 /** Performs the static analysis of source code. */
-task('lint', () => _exec('tslint', sources));
+task('lint', () => _exec('tslint', ['--config', 'etc/tslint.yaml', ...sources]));
 
 /** Starts the development server. */
 task('serve', () => _exec('http-server', ['example', '-o']));
@@ -56,14 +56,14 @@ task('serve', () => _exec('http-server', ['example', '-o']));
 /** Runs the test suites. */
 task('test:browser', async () => {
   if (process.platform == 'win32') process.env.FIREFOX_BIN = 'C:\\Program Files\\Mozilla\\Firefox\\firefox.exe';
-  await _exec('karma', ['start', 'test/karma.conf.js']);
+  await _exec('karma', ['start', 'etc/karma.js']);
   return del('test/coverage');
 });
 
 task('test:node', () => _exec('nyc', [
-  '--nycrc-path=test/nycrc.json',
+  '--nycrc-path=etc/nyc.json',
   normalize('node_modules/.bin/mocha'),
-  '--config=test/mocharc.json',
+  '--config=etc/mocha.json',
   '"test/**/*_test.ts"'
 ]));
 
