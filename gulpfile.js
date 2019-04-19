@@ -56,8 +56,7 @@ task('serve', () => _exec('http-server', ['example', '-o']));
 /** Runs the test suites. */
 task('test:browser', async () => {
   if (process.platform == 'win32') process.env.FIREFOX_BIN = 'C:\\Program Files\\Mozilla\\Firefox\\firefox.exe';
-  await _exec('karma', ['start', 'etc/karma.js']);
-  return del('test/coverage');
+  return _exec('karma', ['start', 'etc/karma.js']);
 });
 
 task('test:node', () => _exec('nyc', [
