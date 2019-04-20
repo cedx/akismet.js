@@ -32,7 +32,7 @@ describe('Client', function() {
   });
 
   /** Tests the `Client#checkComment()` method. */
-  describe('CheckComment()', () => {
+  describe('#checkComment()', () => {
     it('should return `false` for valid comment (e.g. ham)' , async () => {
       expect(await _client.checkComment(_ham)).to.be.false;
     });
@@ -43,7 +43,7 @@ describe('Client', function() {
   });
 
   /** Tests the `Client#submitHam()` method. */
-  describe('SubmitHam()', () => {
+  describe('#submitHam()', () => {
     it('should complete without error' , async () => {
       await _client.submitHam(_ham);
       expect(true).to.be.ok;
@@ -51,7 +51,7 @@ describe('Client', function() {
   });
 
   /** Tests the `Client#submitSpam()` method. */
-  describe('SubmitSpam()', () => {
+  describe('#submitSpam()', () => {
     it('should complete without error' , async () => {
       await _client.submitSpam(_spam);
       expect(true).to.be.ok;
@@ -59,7 +59,7 @@ describe('Client', function() {
   });
 
   /** Tests the `Client#verifyKey()` method. */
-  describe('VerifyKey()', () => {
+  describe('#verifyKey()', () => {
     it('should return `true` for a valid API key' , async () => {
       expect(await _client.verifyKey()).to.be.true;
     });
