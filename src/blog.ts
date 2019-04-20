@@ -1,18 +1,12 @@
 import {JsonMap} from './map';
 
-/**
- * Represents the front page or home URL transmitted when making requests.
- */
+/** Represents the front page or home URL transmitted when making requests. */
 export class Blog {
 
-  /**
-   * The character encoding for the values included in comments.
-   */
+  /** The character encoding for the values included in comments. */
   charset: string;
 
-  /**
-   * The languages in use on the blog or site, in ISO 639-1 format.
-   */
+  /** The languages in use on the blog or site, in ISO 639-1 format. */
   languages: string[];
 
   /**
@@ -50,18 +44,12 @@ export class Blog {
   }
 }
 
-/**
- * Defines the options of a [[Blog]] instance.
- */
+/** Defines the options of a [[Blog]] instance. */
 export interface BlogOptions {
 
-  /**
-   * The character encoding for the values included in comments.
-   */
+  /** The character encoding for the values included in comments. */
   charset: string;
 
-  /**
-   * The languages in use on the blog or site, in ISO 639-1 format.
-   */
+  /** The languages in use on the blog or site, in ISO 639-1 format. */
   languages: string[];
 }

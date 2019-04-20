@@ -7,9 +7,7 @@ import {Blog} from './blog';
 import {Comment} from './comment';
 import {JsonMap} from './map';
 
-/**
- * Submits comments to the [Akismet](https://akismet.com) service.
- */
+/** Submits comments to the [Akismet](https://akismet.com) service. */
 export class Client extends EventEmitter {
 
   /**
@@ -124,9 +122,7 @@ export class Client extends EventEmitter {
   }
 }
 
-/**
- * An exception caused by an error in a `Client` request.
- */
+/** An exception caused by an error in a `Client` request. */
 export class ClientError extends Error {
 
   /**
@@ -150,23 +146,15 @@ export class ClientError extends Error {
   }
 }
 
-/**
- * Defines the options of a [[Client]] instance.
- */
+/** Defines the options of a [[Client]] instance. */
 export interface ClientOptions {
 
-  /**
-   * The URL of the API end point.
-   */
+  /** The URL of the API end point. */
   endPoint: URL;
 
-  /**
-   * Value indicating whether the client operates in test mode.
-   */
+  /** Value indicating whether the client operates in test mode. */
   isTest: boolean;
 
-  /**
-   * The user agent string to use when making requests.
-   */
+  /** The user agent string to use when making requests. */
   userAgent: string;
 }

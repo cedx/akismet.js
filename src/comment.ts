@@ -1,40 +1,25 @@
 import {Author} from './author';
 import {JsonMap} from './map';
 
-/**
- * Represents a comment submitted by an author.
- */
+/** Represents a comment submitted by an author. */
 export class Comment {
 
-  /**
-   * The comment's content.
-   */
+  /** The comment's content. */
   content: string;
 
-  /**
-   * The UTC timestamp of the creation of the comment.
-   */
+  /** The UTC timestamp of the creation of the comment. */
   date: Date | null;
 
-  /**
-   * The permanent location of the entry the comment is submitted to.
-   */
+  /** The permanent location of the entry the comment is submitted to. */
   permalink: URL | null;
 
-  /**
-   * The UTC timestamp of the publication time for the post, page or thread on which the comment was posted.
-   */
+  /** The UTC timestamp of the publication time for the post, page or thread on which the comment was posted. */
   postModified: Date | null;
 
-  /**
-   * The URL of the webpage that linked to the entry being requested.
-   */
+  /** The URL of the webpage that linked to the entry being requested. */
   referrer: URL | null;
 
-  /**
-   * The comment's type.
-   * This string value specifies a `CommentType` constant or a made up value like `"registration"`.
-   */
+  /** The comment's type. */
   type: string;
 
   /**
@@ -90,94 +75,58 @@ export class Comment {
   }
 }
 
-/**
- * Defines the options of a [[Comment]] instance.
- */
+/** Defines the options of a [[Comment]] instance. */
 export interface CommentOptions {
 
-  /**
-   * The comment's content.
-   */
+  /** The comment's content. */
   content: string;
 
-  /**
-   * The UTC timestamp of the creation of the comment.
-   */
+  /** The UTC timestamp of the creation of the comment. */
   date: Date | null;
 
-  /**
-   * The permanent location of the entry the comment is submitted to.
-   */
+  /** The permanent location of the entry the comment is submitted to. */
   permalink: URL | null;
 
-  /**
-   * The UTC timestamp of the publication time for the post, page or thread on which the comment was posted.
-   */
+  /** The UTC timestamp of the publication time for the post, page or thread on which the comment was posted. */
   postModified: Date | null;
 
-  /**
-   * The URL of the webpage that linked to the entry being requested.
-   */
+  /** The URL of the webpage that linked to the entry being requested. */
   referrer: URL | null;
 
-  /**
-   * The comment's type.
-   */
+  /** The comment's type. */
   type: string;
 }
 
-/**
- * Specifies the type of a comment.
- */
+/** Specifies the type of a comment. */
 export enum CommentType {
 
-  /**
-   * A blog post.
-   */
+  /** A blog post. */
   blogPost = 'blog-post',
 
-  /**
-   * A blog comment.
-   */
+  /** A blog comment. */
   comment = 'comment',
 
-  /**
-   * A contact form or feedback form submission.
-   */
+  /** A contact form or feedback form submission. */
   contactForm = 'contact-form',
 
-  /**
-   * A top-level forum post.
-   */
+  /** A top-level forum post. */
   forumPost = 'forum-post',
 
-  /**
-   * A message sent between just a few users.
-   */
+  /** A message sent between just a few users. */
   message = 'message',
 
-  /**
-   * A [pingback](https://en.wikipedia.org/wiki/Pingback) post.
-   */
+  /** A [pingback](https://en.wikipedia.org/wiki/Pingback) post. */
   pingback = 'pingback',
 
-  /**
-   * A reply to a top-level forum post.
-   */
+  /** A reply to a top-level forum post. */
   reply = 'reply',
 
-  /**
-   * A new user account.
-   */
+  /** A new user account. */
   signup = 'signup',
 
-  /**
-   * A [trackback](https://en.wikipedia.org/wiki/Trackback) post.
-   */
+  /** A [trackback](https://en.wikipedia.org/wiki/Trackback) post. */
   trackback = 'trackback',
 
-  /**
-   * A [Twitter](https://twitter.com) message.
-   */
+  /** A [Twitter](https://twitter.com) message. */
   tweet = 'tweet'
 }

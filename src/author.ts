@@ -1,31 +1,18 @@
 import {JsonMap} from './map';
 
-/**
- * Represents the author of a comment.
- */
+/** Represents the author of a comment. */
 export class Author {
 
-  /**
-   * The author's mail address.
-   * If you set it to `"akismet-guaranteed-spam@example.com"`, Akismet will always return `true`.
-   */
+  /** The author's mail address. */
   email: string;
 
-  /**
-   * The author's name.
-   * If you set it to `"viagra-test-123"`, Akismet will always return `true`.
-   */
+  /** The author's name. */
   name: string;
 
-  /**
-   * The role of the author.
-   * If you set it to `"administrator"`, Akismet will always return `false`.
-   */
+  /** The role of the author. */
   role: string;
 
-  /**
-   * The URL of the author's website.
-   */
+  /** The URL of the author's website. */
   url: URL | null;
 
   /**
@@ -80,28 +67,18 @@ export class Author {
   }
 }
 
-/**
- * Defines the options of a [[Author]] instance.
- */
+/** Defines the options of a [[Author]] instance. */
 export interface AuthorOptions {
 
-  /**
-   * The author's mail address.
-   */
+  /** The author's mail address. */
   email: string;
 
-  /**
-   * The author's name.
-   */
+  /** The author's name. */
   name: string;
 
-  /**
-   * The role of the author.
-   */
+  /** The role of the author. */
   role: string;
 
-  /**
-   * The URL of the author's website.
-   */
+  /** The URL of the author's website. */
   url: URL | null;
 }
