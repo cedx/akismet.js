@@ -31,7 +31,7 @@ task('build:rename', () => src('lib/**/*.js').pipe(rename({extname: '.mjs'})).pi
 task('build', series('build:esm', 'build:rename', 'build:cjs', 'build:browser'));
 
 /** Deletes all generated files and reset any saved state. */
-task('clean', () => del(['.nyc_output', 'build', 'coverage', 'doc/api', 'lib', 'var/**/*', 'web']));
+task('clean', () => del(['.nyc_output', 'build', 'doc/api', 'lib', 'var/**/*', 'web']));
 
 /** Uploads the results of the code coverage. */
 task('coverage', () => _exec('coveralls', ['var/lcov.info']));

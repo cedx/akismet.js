@@ -1,32 +1,17 @@
 const {join} = require('path');
-const sources = {
-  lib: join(__dirname, '../src/**/*.ts'),
-  test: join(__dirname, '../test/**/*_test.ts')
-};
+const sources = [join(__dirname, '../src/**/*.ts'), join(__dirname, '../test/**/*_test.ts')];
 
 module.exports = config => config.set({
   browsers: ['FirefoxHeadless'],
-  coverageReporter: {
-    dir: join(__dirname, '../var'),
-    subdir: '.',
-    type: 'lcovonly'
-  },
-  files: [sources.lib, sources.test],
+  files: sources,
   frameworks: ['mocha', 'karma-typescript'],
   karmaTypescriptConfig: {
-    include: [sources.test],
+    coverageOptions: {exclude: /_test\.ts$/i},
+    include: sources,
+    reports: {lcovonly: {directory: join(__dirname, '..'), filename: 'lcov.info', subdirectory: 'var'}},
     tsconfig: '../tsconfig.json'
   },
-  plugins: [
-    require('karma-coverage'),
-    require('karma-firefox-launcher'),
-    require('karma-mocha'),
-    require('karma-typescript')
-  ],
-  preprocessors: {
-    [sources.lib]: ['karma-typescript', 'coverage'],
-    [sources.test]: ['karma-typescript']
-  },
-  reporters: ['progress', 'coverage'],
+  preprocessors: {[join(__dirname, '../**/*.ts')]: ['karma-typescript']},
+  reporters: ['progress', 'karma-typescript'],
   singleRun: true
 });

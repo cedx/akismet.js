@@ -3,9 +3,7 @@
 // @ts-ignore
 import {Author, Blog, Client, ClientError, Comment, CommentType} from '@cedx/akismet';
 
-/**
- * Queries the Akismet service.
- */
+/** Queries the Akismet service. */
 async function main(): Promise<void> {
   try {
     // Key verification.
