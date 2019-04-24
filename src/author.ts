@@ -35,18 +35,12 @@ export class Author {
    * @return The instance corresponding to the specified JSON map.
    */
   static fromJson(map: JsonMap): Author {
-    const options = {
+    return new Author(typeof map.user_ip == 'string' ? map.user_ip : '', typeof map.user_agent == 'string' ? map.user_agent : '', {
       email: typeof map.comment_author_email == 'string' ? map.comment_author_email : '',
       name: typeof map.comment_author == 'string' ? map.comment_author : '',
       role: typeof map.user_role == 'string' ? map.user_role : '',
       url: typeof map.comment_author_url == 'string' ? new URL(map.comment_author_url) : null
-    };
-
-    return new Author(
-      typeof map.user_ip == 'string' ? map.user_ip : '',
-      typeof map.user_agent == 'string' ? map.user_agent : '',
-      options
-    );
+    });
   }
 
   /**

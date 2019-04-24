@@ -47,16 +47,14 @@ export class Comment {
       .filter(key => /^comment_author/.test(key) || /^user/.test(key))
       .length > 0;
 
-    const options = {
+    return new Comment(hasAuthor ? Author.fromJson(map) : null, {
       content: typeof map.comment_content == 'string' ? map.comment_content : '',
       date: typeof map.comment_date_gmt == 'string' ? new Date(map.comment_date_gmt) : null,
       permalink: typeof map.permalink == 'string' ? new URL(map.permalink) : null,
       postModified: typeof map.comment_post_modified_gmt == 'string' ? new Date(map.comment_post_modified_gmt) : null,
       referrer: typeof map.referrer == 'string' ? new URL(map.referrer) : null,
       type: typeof map.comment_type == 'string' ? map.comment_type : ''
-    };
-
-    return new Comment(hasAuthor ? Author.fromJson(map) : null, options);
+    });
   }
 
   /**
