@@ -17,7 +17,7 @@
   },
   "dependencies": {
     "eventemitter3": "^3.1.0",
-    "node-fetch": "^2.3.0"
+    "node-fetch": "^2.4.0"
   },
   "devDependencies": {
     "@cedx/coveralls": "^8.6.0",
