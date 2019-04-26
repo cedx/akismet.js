@@ -60,7 +60,7 @@ task('test:browser', async () => {
 });
 
 task('test:node', () => _exec('nyc', [
-  '--nycrc-path=etc/nyc.json',
+  '--nycrc-path=etc/nyc.yaml',
   normalize('node_modules/.bin/mocha'),
   '--config=etc/mocha.json',
   '"test/**/*_test.ts"'
