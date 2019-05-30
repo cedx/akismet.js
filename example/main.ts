@@ -1,6 +1,3 @@
-/* tslint:disable: no-console */
-
-// @ts-ignore
 import {Author, Blog, Client, ClientError, Comment, CommentType} from '@cedx/akismet';
 
 /** Queries the Akismet service. */
