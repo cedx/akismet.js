@@ -1,8 +1,9 @@
 # Akismet for JS
-![Runtime](https://img.shields.io/badge/node-%3E%3D12.0-brightgreen.svg) ![Release](https://img.shields.io/npm/v/@cedx/akismet.svg) ![License](https://img.shields.io/npm/l/@cedx/akismet.svg) ![Downloads](https://img.shields.io/npm/dt/@cedx/akismet.svg) ![Dependencies](https://david-dm.org/cedx/akismet.js.svg) ![Coverage](https://coveralls.io/repos/github/cedx/akismet.js/badge.svg) ![Build](https://travis-ci.com/cedx/akismet.js.svg)
+![Runtime](https://img.shields.io/node/v/@cedx/akismet.svg) ![Release](https://img.shields.io/npm/v/@cedx/akismet.svg) ![License](https://img.shields.io/npm/l/@cedx/akismet.svg) ![Downloads](https://img.shields.io/npm/dt/@cedx/akismet.svg) ![Dependencies](https://david-dm.org/cedx/akismet.js.svg) ![Coverage](https://coveralls.io/repos/github/cedx/akismet.js/badge.svg) ![Build](https://travis-ci.com/cedx/akismet.js.svg)
 
-Prevent comment spam using [Akismet](https://akismet.com) service,
-in [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) and [TypeScript](https://www.typescriptlang.org).
+Prevent comment spam using [Akismet](https://akismet.com) service, in [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript).
+
+> This library is packaged as [ECMAScript modules](https://nodejs.org/api/esm.html).
 
 ## Documentation
 - [User guide](https://dev.belin.io/akismet.js)
@@ -23,7 +24,7 @@ in [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) and [Ty
 
 ### Key verification
 
-```ts
+```js
 import {Blog, Client} from '@cedx/akismet';
 
 try {
@@ -39,7 +40,7 @@ catch (err) {
 
 ### Comment check
 
-```ts
+```js
 import {Author, Comment} from '@cedx/akismet';
 
 try {
@@ -59,7 +60,7 @@ catch (err) {
 
 ### Submit spam / ham
 
-```ts
+```js
 try {
   await client.submitSpam(comment);
   console.log('Spam submitted');
@@ -79,7 +80,7 @@ The `Client` class is an [`EventEmitter`](https://nodejs.org/api/events.html) th
 ### The `Client.eventRequest` event
 Emitted every time a request is made to the remote service:
 
-```ts
+```js
 client.on(Client.eventRequest, (request) =>
   console.log(`Client request: ${request.url}`)
 );
@@ -88,7 +89,7 @@ client.on(Client.eventRequest, (request) =>
 ### The `Client.eventResponse` event
 Emitted every time a response is received from the remote service:
 
-```ts
+```js
 client.on(Client.eventResponse, (request, response) =>
   console.log(`Server response: ${response.status}`)
 );

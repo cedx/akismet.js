@@ -18,7 +18,7 @@ The exception `message` usually includes some debug information, provided by the
 
 ## Example
 
-```ts
+```js
 import {Blog, Client} from '@cedx/akismet';
 
 async function main(): Promise<void> {

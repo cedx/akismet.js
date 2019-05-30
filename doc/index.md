@@ -1,5 +1,5 @@
 # Akismet <small>for JS</small>
-![Runtime](https://img.shields.io/badge/node-%3E%3D12.0-brightgreen.svg) ![Release](https://img.shields.io/npm/v/@cedx/akismet.svg) ![License](https://img.shields.io/npm/l/@cedx/akismet.svg) ![Downloads](https://img.shields.io/npm/dt/@cedx/akismet.svg) ![Dependencies](https://david-dm.org/cedx/akismet.js.svg) ![Coverage](https://coveralls.io/repos/github/cedx/akismet.js/badge.svg) ![Build](https://travis-ci.com/cedx/akismet.js.svg)
+![Runtime](https://img.shields.io/node/v/@cedx/akismet.svg) ![Release](https://img.shields.io/npm/v/@cedx/akismet.svg) ![License](https://img.shields.io/npm/l/@cedx/akismet.svg) ![Downloads](https://img.shields.io/npm/dt/@cedx/akismet.svg) ![Dependencies](https://david-dm.org/cedx/akismet.js.svg) ![Coverage](https://coveralls.io/repos/github/cedx/akismet.js/badge.svg) ![Build](https://travis-ci.com/cedx/akismet.js.svg)
 
 ![Akismet](img/akismet.png)
 
@@ -23,5 +23,8 @@ Install the latest version of **Akismet for JS** with [npm](https://www.npmjs.co
 ```shell
 npm install @cedx/akismet
 ```
+
+!!! info
+    This library is packaged as [ECMAScript modules](https://nodejs.org/api/esm.html).
 
 For detailed instructions, see the [installation guide](installation.md).
