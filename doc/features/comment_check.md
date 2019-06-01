@@ -28,7 +28,7 @@ The exception `message` usually includes some debug information, provided by the
 ```js
 import {Author, Blog, Client, Comment} from '@cedx/akismet';
 
-async function main(): Promise<void> {
+async function main(): Promise {
   try {
     const comment = new Comment(
       new Author('127.0.0.1', 'Mozilla/5.0'),

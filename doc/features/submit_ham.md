@@ -6,7 +6,7 @@ Remember that, as explained in the [submit spam](submit_spam.md) documentation, 
 that any values you're passing here match up with the original and corresponding [comment check](comment_check.md) call.
 
 ```
-Client#submitHam(comment: Comment): Promise<void>
+Client#submitHam(comment: Comment): Promise
 ```
 
 ## Parameters
@@ -28,7 +28,7 @@ The exception `message` usually includes some debug information, provided by the
 ```js
 import {Author, Blog, Client, Comment} from '@cedx/akismet';
 
-async function main(): Promise<void> {
+async function main(): Promise {
   try {
     const comment = new Comment(
       new Author('127.0.0.1', 'Mozilla/5.0'),

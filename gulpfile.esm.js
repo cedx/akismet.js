@@ -94,7 +94,7 @@ task('default', series('version', 'build'));
  * @param {string} command The command to run.
  * @param {string[]} [args] The command arguments.
  * @param {SpawnOptions} [options] The settings to customize how the process is spawned.
- * @return {Promise<void>} Completes when the command is finally terminated.
+ * @return {Promise} Completes when the command is finally terminated.
  */
 function _exec(command, args = [], options = {}) {
   return new Promise((fulfill, reject) => spawn(normalize(command), args, {shell: true, stdio: 'inherit', ...options})

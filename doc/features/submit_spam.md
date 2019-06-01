@@ -8,7 +8,7 @@ to be available for [submit spam](submit_spam.md) and [submit ham](submit_ham.md
 you should ensure that the values that you do send match those of the original content.
 
 ```
-Client#submitSpam(comment: Comment): Promise<void>
+Client#submitSpam(comment: Comment): Promise
 ```
 
 ## Parameters
@@ -30,7 +30,7 @@ The exception `message` usually includes some debug information, provided by the
 ```js
 import {Author, Blog, Client, Comment} from '@cedx/akismet';
 
-async function main(): Promise<void> {
+async function main(): Promise {
   try {
     const comment = new Comment(
       new Author('127.0.0.1', 'Mozilla/5.0'),

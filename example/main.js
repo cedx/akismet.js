@@ -2,7 +2,7 @@ import {Author, Blog, Client, ClientError, Comment, CommentType} from '@cedx/aki
 
 /**
  * Queries the Akismet service.
- * @return {Promise<void>} Completes when the program is terminated.
+ * @return {Promise} Completes when the program is terminated.
  */
 async function main() { // eslint-disable-line no-unused-vars
   try {
