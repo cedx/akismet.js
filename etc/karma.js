@@ -19,7 +19,7 @@ module.exports = config => config.set({
       if (warning.code == 'CIRCULAR_DEPENDENCY' && warning.importer.includes(normalize('node_modules/chai'))) return;
       warn(warning);
     },
-    output: {format: 'iife', name: 'lcov'},
+    output: {format: 'iife', name: 'akismet'},
     plugins: [nodeResolve(), commonjs()]
   },
   singleRun: true

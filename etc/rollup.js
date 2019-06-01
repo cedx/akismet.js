@@ -11,8 +11,6 @@ export default {
   },
   plugins: [
     nodeResolve(),
-    commonjs({
-      namedExports: {'node_modules/eventemitter3/index.js': ['EventEmitter']}
-    })
+    commonjs()
   ]
 };
