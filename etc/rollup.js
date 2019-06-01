@@ -1,11 +1,18 @@
-import {join} from 'path';
+import {resolve} from 'path';
 import commonjs from 'rollup-plugin-commonjs';
-import resolve from 'rollup-plugin-node-resolve';
+import nodeResolve from 'rollup-plugin-node-resolve';
 
 export default {
-  input: join(__dirname, '../lib/browser.js'),
-  output: {file: join(__dirname, '../build/akismet.js'), format: 'iife', name: 'akismet'},
-  plugins: [resolve(), commonjs({
-    namedExports: {'node_modules/eventemitter3/index.js': ['EventEmitter']}
-  })]
+  input: resolve(__dirname, '../lib/browser.js'),
+  output: {
+    file: resolve(__dirname, '../build/akismet.js'),
+    format: 'iife',
+    name: 'akismet'
+  },
+  plugins: [
+    nodeResolve(),
+    commonjs({
+      namedExports: {'node_modules/eventemitter3/index.js': ['EventEmitter']}
+    })
+  ]
 };

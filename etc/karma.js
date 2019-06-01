@@ -1,17 +1,26 @@
-const {join} = require('path');
-const sources = [join(__dirname, '../src/**/*.ts'), join(__dirname, '../test/**/*_test.ts')];
+const {normalize, resolve} = require('path');
+const commonjs = require('rollup-plugin-commonjs');
+const nodeResolve = require('rollup-plugin-node-resolve');
 
 module.exports = config => config.set({
+  basePath: resolve(__dirname, '..'),
   browsers: ['FirefoxHeadless'],
-  files: sources,
-  frameworks: ['mocha', 'karma-typescript'],
-  karmaTypescriptConfig: {
-    coverageOptions: {exclude: /_test\.ts$/i},
-    include: sources,
-    reports: {lcovonly: {directory: join(__dirname, '..'), filename: 'lcov.info', subdirectory: 'var'}},
-    tsconfig: '../tsconfig.json'
+  files: [
+    {pattern: 'lib/**/*.js', type: 'module'},
+    {pattern: 'test/**/*.js', type: 'module'}
+  ],
+  frameworks: ['mocha'],
+  preprocessors: {
+    'test/**/*.js': ['rollup']
   },
-  preprocessors: {[join(__dirname, '../**/*.ts')]: ['karma-typescript']},
-  reporters: ['progress', 'karma-typescript'],
+  reporters: ['progress'],
+  rollupPreprocessor: {
+    onwarn: (warning, warn) => {
+      if (warning.code == 'CIRCULAR_DEPENDENCY' && warning.importer.includes(normalize('node_modules/chai'))) return;
+      warn(warning);
+    },
+    output: {format: 'iife', name: 'lcov'},
+    plugins: [nodeResolve(), commonjs()]
+  },
   singleRun: true
 });
