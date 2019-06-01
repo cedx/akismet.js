@@ -1,11 +1,10 @@
-/* tslint:disable: no-unused-expression */
-import {expect} from 'chai';
-import {Author, Comment, CommentType} from '../src';
+import chai from 'chai';
+import {Author, Comment, CommentType} from '../lib/index.js';
 
-/** Tests the features of the [[Comment]] class. */
+/** Tests the features of the {@link Comment} class. */
 describe('Comment', () => {
+  const {expect} = chai;
 
-  /** Tests the `Comment.fromJson()` method. */
   describe('.fromJson()', () => {
     it('should return an empty instance with an empty map', () => {
       const comment = Comment.fromJson({});
@@ -26,16 +25,15 @@ describe('Comment', () => {
       });
 
       expect(comment.author).to.be.an.instanceof(Author);
-      expect(comment.author!.name).to.equal('Cédric Belin');
+      expect(comment.author.name).to.equal('Cédric Belin');
       expect(comment.content).to.equal('A user comment.');
       expect(comment.date).to.be.an.instanceof(Date);
-      expect(comment.date!.getFullYear()).to.equal(2000);
+      expect(comment.date.getFullYear()).to.equal(2000);
       expect(comment.referrer).to.be.an.instanceof(URL).and.have.property('href').that.equal('https://belin.io/');
       expect(comment.type).to.equal(CommentType.trackback);
     });
   });
 
-  /** Tests the `Comment#toJSON()` method. */
   describe('#toJSON()', () => {
     it('should return only the author info with a newly created instance', () => {
       const data = new Comment(new Author('127.0.0.1', 'Doom/6.6.6')).toJSON();
