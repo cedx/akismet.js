@@ -1,11 +1,10 @@
-/* tslint:disable: no-unused-expression */
-import {expect} from 'chai';
-import {Blog} from '../src';
+import chai from 'chai';
+import {Blog} from '../lib/index.js';
 
-/** Tests the features of the [[Blog]] class. */
+/** Tests the features of the {@link Blog} class. */
 describe('Blog', () => {
+  const {expect} = chai;
 
-  /** Tests the `Blog.fromJson()` method. */
   describe('.fromJson()', () => {
     it('should return an empty instance with an empty map', () => {
       const blog = Blog.fromJson({});
@@ -27,7 +26,6 @@ describe('Blog', () => {
     });
   });
 
-  /** Tests the `Blog#toJSON()` method. */
   describe('#toJSON()', () => {
     it('should return only the blog URL with a newly created instance', () => {
       const data = new Blog(new URL('https://dev.belin.io/akismet.js')).toJSON();
