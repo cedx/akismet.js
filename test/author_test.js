@@ -1,11 +1,10 @@
-/* tslint:disable: no-unused-expression */
-import {expect} from 'chai';
-import {Author} from '../src';
+import chai from 'chai';
+import {Author} from '../lib/index.js';
 
-/** Tests the features of the [[Author]] class. */
+/** Tests the features of the {@link Author} class. */
 describe('Author', () => {
+  const {expect} = chai;
 
-  /** Tests the `Author.fromJson()` method. */
   describe('.fromJson()', () => {
     it('should return an empty instance with an empty map', () => {
       const author = Author.fromJson({});
@@ -29,7 +28,6 @@ describe('Author', () => {
     });
   });
 
-  /** Tests the `Author#toJSON()` method. */
   describe('#toJSON()', () => {
     it('should return only the IP address and user agent with a newly created instance', () => {
       const data = new Author('127.0.0.1', 'Doom/6.6.6').toJSON();
