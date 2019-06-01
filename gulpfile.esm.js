@@ -2,7 +2,7 @@ import {spawn} from 'child_process';
 import del from 'del';
 import {promises} from 'fs';
 import gulp from 'gulp';
-import replace from 'gulp-replace';
+import {EOL} from 'os';
 import {delimiter, normalize, resolve} from 'path';
 import pkg from './package.json';
 
@@ -13,8 +13,8 @@ import pkg from './package.json';
 const sources = ['*.js', 'example/*.js', 'lib/**/*.js', 'test/**/*.js'];
 
 // Shortcuts.
-const {dest, parallel, src, task, watch} = gulp;
-const {access, copyFile} = promises;
+const {parallel, series, task, watch} = gulp;
+const {access, copyFile, writeFile} = promises;
 
 // Initialize the build system.
 const _path = 'PATH' in process.env ? process.env.PATH : '';
@@ -74,11 +74,11 @@ task('upgrade', async () => {
   return _exec('npm', ['update', '--dev']);
 });
 
-/** TODO: Updates the version number contained in the sources. */
-task('version', () => src('lib/http/client.js')
-  .pipe(replace(/version: string = '\d+(\.\d+){2}'/g, `version: string = '${pkg.version}'`))
-  .pipe(dest('src'))
-);
+/** Updates the version number contained in the sources. */
+task('version', () => writeFile('lib/version.js', [
+  '/**', ' * The version number of the package.', ' * @type {string}', ' */',
+  `export const packageVersion = '${pkg.version}';`, ''
+].join(EOL)));
 
 /** Watches for file changes. */
 task('watch', () => {
@@ -87,7 +87,7 @@ task('watch', () => {
 });
 
 /** Runs the default tasks. */
-task('default', task('build'));
+task('default', series('version', 'build'));
 
 /**
  * Spawns a new process using the specified command.
