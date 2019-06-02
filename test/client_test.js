@@ -1,17 +1,17 @@
-/* tslint:disable: no-unused-expression */
-import {expect} from 'chai';
-import {Author, Blog, Client, Comment, CommentType} from '../src';
+import chai from 'chai';
+import {Author, Blog, Client, Comment, CommentType} from '../lib/index.js';
 
-/** Tests the features of the [[Client]] class. */
+/** Tests the features of the {@link Client} class. */
 describe('Client', function() {
+  const {expect} = chai;
   this.timeout(15000);
 
   /** The default test client. */
-  const _client: Client = new Client(process.env.AKISMET_API_KEY!, new Blog(new URL('https://dev.belin.io/akismet.js')), {isTest: true});
+  const _client: Client = new Client(process.env.AKISMET_API_KEY, new Blog(new URL('https://dev.belin.io/akismet.js')), {isTest: true});
 
   /** A message marked as ham. */
   const _ham: Comment = new Comment(
-    new Author('192.168.0.1', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:66.0) Gecko/20100101 Firefox/66.0', {
+    new Author('192.168.0.1', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:67.0) Gecko/20100101 Firefox/67.0', {
       name: 'Akismet',
       role: 'administrator',
       url: new URL('https://dev.belin.io/akismet.js')
@@ -31,7 +31,6 @@ describe('Client', function() {
     type: CommentType.trackback
   });
 
-  /** Tests the `Client#checkComment()` method. */
   describe('#checkComment()', () => {
     it('should return `false` for valid comment (e.g. ham)' , async () => {
       expect(await _client.checkComment(_ham)).to.be.false;
@@ -42,7 +41,6 @@ describe('Client', function() {
     });
   });
 
-  /** Tests the `Client#submitHam()` method. */
   describe('#submitHam()', () => {
     it('should complete without error' , async () => {
       await _client.submitHam(_ham);
@@ -50,7 +48,6 @@ describe('Client', function() {
     });
   });
 
-  /** Tests the `Client#submitSpam()` method. */
   describe('#submitSpam()', () => {
     it('should complete without error' , async () => {
       await _client.submitSpam(_spam);
@@ -58,7 +55,6 @@ describe('Client', function() {
     });
   });
 
-  /** Tests the `Client#verifyKey()` method. */
   describe('#verifyKey()', () => {
     it('should return `true` for a valid API key' , async () => {
       expect(await _client.verifyKey()).to.be.true;
