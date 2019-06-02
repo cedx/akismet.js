@@ -1,13 +1,8 @@
 {
-  "metadata": {
-    "header": {"background": "#f9a825", "color": "white"},
-    "title": "Akismet for JS"
-  },
   "opts": {
     "destination": "doc/api",
     "readme": "README.md",
-    "recurse": true,
-    "template": "node_modules/tidy-jsdoc"
+    "recurse": true
   },
   "plugins": ["plugins/markdown"],
   "source": {"include": ["lib"]},
@@ -15,5 +10,8 @@
   "tags": {
     "allowUnknownTags": false,
     "dictionaries": ["jsdoc"]
+  },
+  "templates": {
+    "default": {"includeDate": false}
   }
 }
