@@ -4,7 +4,6 @@
     "readme": "README.md",
     "recurse": true
   },
-  "plugins": ["plugins/markdown"],
   "source": {"include": ["lib"]},
   "sourceType": "module",
   "tags": {
