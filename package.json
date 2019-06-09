@@ -15,7 +15,6 @@
     "url": "https://belin.io"
   },
   "dependencies": {
-    "eventemitter3": "^3.1.2",
     "node-fetch": "^2.6.0"
   },
   "devDependencies": {
