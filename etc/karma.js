@@ -2,11 +2,18 @@ const {normalize, resolve} = require('path');
 const commonjs = require('rollup-plugin-commonjs');
 const nodeResolve = require('rollup-plugin-node-resolve');
 
+/** Resolves browser imports. */
+function browserResolve() {
+  return {
+    name: 'browserResolve',
+    resolveId: source => source == '../lib/index.js' ? resolve(__dirname, '../lib/browser.js') : null
+  };
+}
+
 module.exports = config => config.set({
   basePath: resolve(__dirname, '..'),
   browsers: ['FirefoxHeadless'],
   files: [
-    {pattern: 'lib/**/*.js', type: 'module'},
     {pattern: 'test/**/*.js', type: 'module'}
   ],
   frameworks: ['mocha'],
@@ -20,7 +27,7 @@ module.exports = config => config.set({
       warn(warning);
     },
     output: {format: 'iife', name: 'akismet'},
-    plugins: [nodeResolve(), commonjs()]
+    plugins: [browserResolve(), nodeResolve(), commonjs()]
   },
   singleRun: true
 });
