@@ -75,7 +75,7 @@ task('upgrade', async () => {
 });
 
 /** Updates the version number contained in the sources. */
-task('version', () => writeFile('lib/version.js', [
+task('version', () => writeFile('lib/version.g.js', [
   '/**', ' * The version number of the package.', ' * @type {string}', ' */',
   `export const packageVersion = '${pkg.version}';`, ''
 ].join(EOL)));
