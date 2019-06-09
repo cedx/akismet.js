@@ -1,13 +1,16 @@
 import chai from 'chai';
 import {Author, Blog, Client, Comment, CommentType} from '../lib/index.js';
+import {apiKey} from './config.g.js';
 
 /** Tests the features of the {@link Client} class. */
 describe('Client', function() {
-  const {expect} = chai;
   this.timeout(15000); // eslint-disable-line no-invalid-this
 
+  const {expect} = chai;
+  const test = typeof window != 'undefined' && typeof window.document != 'undefined' ? it.skip : it;
+
   // The default test client.
-  const _client = new Client(process.env.AKISMET_API_KEY, new Blog(new URL('https://dev.belin.io/akismet.js')), {isTest: true});
+  const _client = new Client(apiKey, new Blog(new URL('https://dev.belin.io/akismet.js')), {isTest: true});
 
   // A message marked as ham.
   let author = new Author('192.168.0.1', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:67.0) Gecko/20100101 Firefox/67.0', {
@@ -34,35 +37,35 @@ describe('Client', function() {
   });
 
   describe('#checkComment()', () => {
-    it('should return `false` for valid comment (e.g. ham)', async () => {
+    test('should return `false` for valid comment (e.g. ham)', async () => {
       expect(await _client.checkComment(_ham)).to.be.false;
     });
 
-    it('should return `true` for invalid comment (e.g. spam)', async () => {
+    test('should return `true` for invalid comment (e.g. spam)', async () => {
       expect(await _client.checkComment(_spam)).to.be.true;
     });
   });
 
   describe('#submitHam()', () => {
-    it('should complete without error', async () => {
+    test('should complete without error', async () => {
       await _client.submitHam(_ham);
       expect(true).to.be.ok;
     });
   });
 
   describe('#submitSpam()', () => {
-    it('should complete without error', async () => {
+    test('should complete without error', async () => {
       await _client.submitSpam(_spam);
       expect(true).to.be.ok;
     });
   });
 
   describe('#verifyKey()', () => {
-    it('should return `true` for a valid API key', async () => {
+    test('should return `true` for a valid API key', async () => {
       expect(await _client.verifyKey()).to.be.true;
     });
 
-    it('should return `false` for an invalid API key', async () => {
+    test('should return `false` for an invalid API key', async () => {
       const client = new Client('0123456789-ABCDEF', _client.blog, {isTest: _client.isTest});
       expect(await client.verifyKey()).to.be.false;
     });

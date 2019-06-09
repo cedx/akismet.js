@@ -57,13 +57,20 @@ task('fix', () => _exec('eslint', ['--config=etc/eslint.json', '--fix', ...sourc
 task('lint', () => _exec('eslint', ['--config=etc/eslint.json', ...sources]));
 
 /** Runs the test suites. */
-task('test:browser', () => {
+task('test:config', () => writeFile('test/config.g.js', [
+  '/**', ' * The Akismet API key.', ' * @type {string}', ' */',
+  `export const apiKey = '${process.env.AKISMET_API_KEY}';`, ''
+].join(EOL)));
+
+task('test:karma', () => {
   if (process.platform == 'win32') process.env.FIREFOX_BIN = 'C:\\Program Files\\Mozilla\\Firefox\\firefox.exe';
   return _exec('karma', ['start', 'etc/karma.js']);
 });
 
-task('test:node', () => _exec('nyc', ['--nycrc-path=etc/nyc.json', 'node_modules/.bin/mocha', '--config=etc/mocha.json']));
-task('test', parallel('test:browser', 'test:node'));
+task('test:mocha', () => _exec('nyc', ['--nycrc-path=etc/nyc.json', 'node_modules/.bin/mocha', '--config=etc/mocha.json']));
+task('test:browser', series('test:config', 'test:karma'));
+task('test:node', series('test:config', 'test:mocha'));
+task('test', series('test:config', parallel('test:karma', 'test:mocha')));
 
 /** Upgrades the project to the latest revision. */
 task('upgrade', async () => {
