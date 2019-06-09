@@ -11,10 +11,13 @@
 
     <script>
       // Import the classes.
-      const {Author, Blog, Client, ClientError, Comment, CommentType} = Akismet;
+      const {Author, Blog, Client, ClientError, Comment, CommentType} = window.akismet;
 
-      // Queries the Akismet service.
-      try {
+      /**
+       * Queries the Akismet service.
+       * @return {Promise} Completes when the program is terminated.
+       */
+      async function main() {
         // Key verification.
         const client = new Client('123YourAPIKey', new Blog(new URL('https://www.yourblog.com')));
         const isValid = await client.verifyKey();
@@ -37,10 +40,11 @@
         console.log('Ham submitted');
       }
 
-      catch (error) {
+      // Start the application.
+      main().catch(error => {
         console.log(`An error occurred: ${error.message}`);
         if (error instanceof ClientError) console.log(`From: ${error.uri}`);
-      }
+      });
     </script>
   </body>
 </html>
