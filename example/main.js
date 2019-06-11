@@ -1,10 +1,11 @@
+/* eslint-disable no-unused-vars */
 import {Author, Blog, Client, ClientError, Comment, CommentType} from '@cedx/akismet';
 
 /**
  * Queries the Akismet service.
  * @return {Promise} Completes when the program is terminated.
  */
-async function main() { // eslint-disable-line no-unused-vars
+async function main() {
   try {
     // Key verification.
     const client = new Client('123YourAPIKey', new Blog(new URL('https://www.yourblog.com')));
