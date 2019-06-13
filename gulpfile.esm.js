@@ -28,7 +28,7 @@ task('build', async () => {
 });
 
 /** Deletes all generated files and reset any saved state. */
-task('clean', () => del(['.nyc_output', 'build', 'doc/api', 'var/**/*', 'web']));
+task('clean', () => del(['.nyc_output', 'build', 'doc/api', 'test/*.g.js', 'var/**/*', 'web']));
 
 /** Uploads the results of the code coverage. */
 task('coverage', async () => {
