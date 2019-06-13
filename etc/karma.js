@@ -2,7 +2,10 @@ const {normalize, resolve} = require('path');
 const commonjs = require('rollup-plugin-commonjs');
 const nodeResolve = require('rollup-plugin-node-resolve');
 
-/** Resolves browser imports. */
+/**
+ * Resolves browser imports.
+ * @return {object} A Rollup plugin resolving browser imports.
+ */
 function browserResolve() {
   return {
     name: 'browserResolve',
