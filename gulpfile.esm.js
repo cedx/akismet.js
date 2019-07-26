@@ -62,11 +62,7 @@ task('test:config', () => writeFile('test/config.g.js', [
   `export const apiKey = '${process.env.AKISMET_API_KEY}';`, ''
 ].join(EOL)));
 
-task('test:karma', () => {
-  if (process.platform == 'win32') process.env.FIREFOX_BIN = 'C:\\Program Files\\Mozilla\\Firefox\\firefox.exe';
-  return _exec('karma', ['start', 'etc/karma.js']);
-});
-
+task('test:karma', () => _exec('karma', ['start', 'etc/karma.js']));
 task('test:mocha', () => _exec('nyc', ['--nycrc-path=etc/nyc.json', 'node_modules/.bin/mocha', '--config=etc/mocha.json']));
 task('test:browser', series('test:config', 'test:karma'));
 task('test:node', series('test:config', 'test:mocha'));
@@ -77,7 +73,7 @@ task('upgrade', async () => {
   await _exec('git', ['reset', '--hard']);
   await _exec('git', ['fetch', '--all', '--prune']);
   await _exec('git', ['pull', '--rebase']);
-  await _exec('npm', ['install', '--ignore-scripts']));
+  await _exec('npm', ['install', '--ignore-scripts']);
   return _exec('npm', ['update', '--dev']);
 });
 
