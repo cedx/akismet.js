@@ -1,9 +1,13 @@
-addons: {chrome: stable}
 dist: xenial
-env: [PLATFORM=browser, PLATFORM=node]
+notifications: {email: false}
+
+addons: {chrome: stable}
 language: node_js
 node_js: node
-notifications: {email: false}
+
+env:
+  - PLATFORM="browser" NODE_OPTIONS="--experimental-modules --no-warnings"
+  - PLATFORM="node" NODE_OPTIONS="--experimental-modules --no-warnings"
 
 install:
   - npm install --global gulp-cli
