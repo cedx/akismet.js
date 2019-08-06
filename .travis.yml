@@ -1,17 +1,9 @@
 dist: xenial
-notifications: {email: false}
-
-addons: {chrome: stable}
+env: [NODE_OPTIONS="--experimental-modules --no-warnings"]
 language: node_js
 node_js: node
+notifications: {email: false}
 
-env:
-  - PLATFORM="browser" NODE_OPTIONS="--experimental-modules --no-warnings"
-  - PLATFORM="node" NODE_OPTIONS="--experimental-modules --no-warnings"
-
-install:
-  - npm install --global gulp-cli
-  - npm install
-
-script: gulp test:${PLATFORM}
+install: npm install --ignore-scripts
+script: npm test
 after_success: npm run-script coverage
