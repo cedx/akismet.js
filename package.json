@@ -39,7 +39,7 @@
     "typescript": "^3.5.3"
   },
   "engines": {
-    "node": ">=12.7.0",
+    "node": ">=12.8.0",
     "npm": ">=6.10.0"
   },
   "keywords": [
