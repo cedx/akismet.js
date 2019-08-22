@@ -1,4 +1,4 @@
-import {Author} from './author.js';
+import {Author} from './author';
 
 /**
  * Defines the options of a {@link Comment} instance.

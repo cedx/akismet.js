@@ -1,7 +1,6 @@
-import {packageVersion} from '../version.g.js';
-import {ClientConstructor, ClientPrototype} from './mixins.js';
-import {ClientError} from './error.js';
-import {RequestEvent, ResponseEvent} from './events.js';
+import {packageVersion} from '../version.g';
+import {RequestEvent, ResponseEvent} from './events';
+import {ClientMixin} from './mixin';
 
 /**
  * Defines the options of a {@link BrowserClient} instance.
