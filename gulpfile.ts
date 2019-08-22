@@ -65,7 +65,7 @@ task('upgrade', async () => {
 });
 
 /** Builds the version file. */
-task('version', () => writeFile('src/cli/version.g.ts', [
+task('version', () => writeFile('src/version.g.ts', [
   '/** The version number of the package. */',
   `export const packageVersion: string = '${pkg.version}';`, ''
 ].join(EOL)));
