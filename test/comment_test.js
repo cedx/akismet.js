@@ -1,7 +1,7 @@
-import chai from 'chai';
+import * as chai from 'chai';
 import {Author, Comment, CommentType} from '../lib/index.js';
 
-/** Tests the features of the {@link Comment} class. */
+/** Tests the features of the [[Comment]] class. */
 describe('Comment', () => {
   const {expect} = chai;
 

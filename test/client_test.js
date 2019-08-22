@@ -1,8 +1,8 @@
-import chai from 'chai';
+import * as chai from 'chai';
 import {Author, Blog, Client, Comment, CommentType} from '../lib/index.js';
 import {apiKey} from './config.g.js';
 
-/** Tests the features of the {@link Client} class. */
+/** Tests the features of the [[Client]] class. */
 describe('Client', function() {
   this.timeout(15000); // eslint-disable-line no-invalid-this
 
