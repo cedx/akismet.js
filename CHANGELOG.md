@@ -9,8 +9,8 @@
 - Added the `eventRequest` and `eventResponse` static properties to the `Client` class.
 - Added an example code.
 - Ported the unit tests to classes with experimental decorators.
-- Replaced [ESDoc](https://esdoc.org) documentation generator by [TypeDoc](https://typedoc.org).
-- Replaced [ESLint](https://eslint.org) static analyzer by [TSLint](https://palantir.github.io/tslint).
+- Replaced the [ESDoc](https://esdoc.org) documentation generator by [TypeDoc](https://typedoc.org).
+- Replaced the [ESLint](https://eslint.org) static analyzer by [TSLint](https://palantir.github.io/tslint).
 - Updated the package dependencies.
 - Using the global `URL` and `URLSearchParams` classes.
 
@@ -131,7 +131,7 @@
 - Updated the project URL.
 
 ## Version [1.0.1](https://github.com/cedx/akismet.js/compare/v1.0.0...v1.0.1)
-- Fixed [issue #5](https://github.com/cedx/akismet.js/issues/5).
+- Fixed the [issue #5](https://github.com/cedx/akismet.js/issues/5).
 
 ## Version [1.0.0](https://github.com/cedx/akismet.js/compare/v0.9.0...v1.0.0)
 - Breaking change: changed the signature of the `fromJSON` methods.
@@ -142,8 +142,8 @@
 - Breaking change: removed the `url` parameter from the `Blog` constructor.
 - Breaking change: removed the `HTTPHeaders` enumeration.
 - Added a build task for fixing the coding standards issues.
-- Replaced [JSDoc](http://usejsdoc.org) documentation generator by [ESDoc](https://esdoc.org).
-- Replaced [JSHint](http://jshint.com) linter by [ESLint](http://eslint.org).
+- Replaced the [JSDoc](http://usejsdoc.org) documentation generator by [ESDoc](https://esdoc.org).
+- Replaced the [JSHint](http://jshint.com) linter by [ESLint](http://eslint.org).
 - Replaced the test classes by plain tests.
 - Updated the package dependencies.
 
@@ -161,12 +161,12 @@
 - Turned the package into a [scoped one](https://docs.npmjs.com/getting-started/scoped-packages).
 - Added the `DEFAULT_HOST` and `DEFAULT_PORT` constants to the `Server` class.
 - Added more unit tests.
-- Replaced [SonarQube](http://www.sonarqube.org) code analyzer by [Codacy](https://www.codacy.com) service.
+- Replaced the [SonarQube](http://www.sonarqube.org) code analyzer by [Codacy](https://www.codacy.com) service.
 - Improved the code coverage.
 
 ## Version [0.7.1](https://github.com/cedx/akismet.js/compare/v0.7.0...v0.7.1)
 - Added a command line option to set the user to drop privileges to once server socket is bound.
-- Fixed [issue #4](https://github.com/cedx/akismet.js/issues/4): properly handle the `host` and `port` command line arguments.
+- Fixed the [issue #4](https://github.com/cedx/akismet.js/issues/4): properly handle the `host` and `port` command line arguments.
 - Upgraded the package dependencies.
 
 ## Version [0.7.0](https://github.com/cedx/akismet.js/compare/v0.6.2...v0.7.0)
@@ -205,10 +205,10 @@
 - Raised the required [Node.js](http://nodejs.org) version.
 - Removed the dependency on [`promise`](https://www.npmjs.com/package/promise) module.
 - Upgraded the package dependencies.
-- Fixed [issue #3](https://github.com/cedx/akismet.js/issues/3): returning a `Promise` in `Server.checkComment` method.
+- Fixed the [issue #3](https://github.com/cedx/akismet.js/issues/3): returning a `Promise` in `Server.checkComment` method.
 
 ## Version [0.4.1](https://github.com/cedx/akismet.js/compare/v0.4.0...v0.4.1)
-- Fixed [issue #2](https://github.com/cedx/akismet.js/issues/2): using a Unix system for publishing the package on [npm](https://www.npmjs.com).
+- Fixed the [issue #2](https://github.com/cedx/akismet.js/issues/2): using a Unix system for publishing the package on [npm](https://www.npmjs.com).
 
 ## Version [0.4.0](https://github.com/cedx/akismet.js/compare/v0.3.5...v0.4.0)
 - Breaking change: ported the callback-based API to [Promises](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise).
