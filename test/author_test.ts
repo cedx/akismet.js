@@ -1,5 +1,5 @@
 import * as chai from 'chai';
-import {Author} from '../lib/index';
+import {Author} from '../src/index';
 
 /** Tests the features of the [[Author]] class. */
 describe('Author', () => {

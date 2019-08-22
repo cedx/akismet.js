@@ -1,5 +1,5 @@
 import * as chai from 'chai';
-import {Blog} from '../lib/index';
+import {Blog} from '../src/index';
 
 /** Tests the features of the [[Blog]] class. */
 describe('Blog', () => {

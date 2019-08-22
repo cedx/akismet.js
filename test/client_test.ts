@@ -1,5 +1,5 @@
 import * as chai from 'chai';
-import {Author, Blog, Client, Comment, CommentType} from '../lib/index';
+import {Author, Blog, Client, Comment, CommentType} from '../src/index';
 import {apiKey} from './config.g';
 
 /** Tests the features of the [[Client]] class. */
