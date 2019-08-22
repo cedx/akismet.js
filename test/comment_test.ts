@@ -1,5 +1,5 @@
 import * as chai from 'chai';
-import {Author, Comment, CommentType} from '../lib/index.js';
+import {Author, Comment, CommentType} from '../lib/index';
 
 /** Tests the features of the [[Comment]] class. */
 describe('Comment', () => {

@@ -1,6 +1,6 @@
 import * as chai from 'chai';
-import {Author, Blog, Client, Comment, CommentType} from '../lib/index.js';
-import {apiKey} from './config.g.js';
+import {Author, Blog, Client, Comment, CommentType} from '../lib/index';
+import {apiKey} from './config.g';
 
 /** Tests the features of the [[Client]] class. */
 describe('Client', function() {
