@@ -46,6 +46,10 @@
     "node": ">=12.8.0",
     "npm": ">=6.10.0"
   },
+  "files": [
+    "build/",
+    "lib/"
+  ],
   "keywords": [
     "akismet",
     "api",

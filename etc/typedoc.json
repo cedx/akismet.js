@@ -1,0 +1,8 @@
+{
+  "excludePrivate": true,
+  "gaSite": "auto",
+  "gitRevision": "master",
+  "mode": "file",
+  "name": "Akismet for JS",
+  "out": "doc/api"
+}
