@@ -30,7 +30,7 @@
     "@typescript-eslint/parser": "^2.0.0",
     "babel-minify": "^0.5.1",
     "chai": "^4.2.0",
-    "del": "^5.0.0",
+    "del": "^5.1.0",
     "eslint": "^6.2.1",
     "gulp": "^4.0.2",
     "gulp-replace": "^1.0.0",
