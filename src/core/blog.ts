@@ -36,8 +36,8 @@ export class Blog {
   }
 
   /**
-   * Creates a new blog from the specified JSON map.
-   * @param {Object<string, *>} map A JSON map representing a blog.
+   * Creates a new blog from the specified JSON object.
+   * @param {Object<string, *>} map A JSON object representing a blog.
    * @return {Blog} The instance corresponding to the specified JSON map.
    */
   static fromJson(map) {
