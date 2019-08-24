@@ -59,7 +59,7 @@ export class Author {
   /**
    * Creates a new author from the specified JSON object.
    * @param {Object<string, *>} map A JSON object representing an author.
-   * @return {Author} The instance corresponding to the specified JSON map.
+   * @return {Author} The instance corresponding to the specified JSON object.
    */
   static fromJson(map) {
     return new Author(typeof map.user_ip == 'string' ? map.user_ip : '', typeof map.user_agent == 'string' ? map.user_agent : '', {

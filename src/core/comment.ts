@@ -68,7 +68,7 @@ export class Comment {
   /**
    * Creates a new comment from the specified JSON object.
    * @param {Object<string, *>} map A JSON object representing a comment.
-   * @return {Comment} The instance corresponding to the specified JSON map.
+   * @return {Comment} The instance corresponding to the specified JSON object.
    */
   static fromJson(map) {
     const hasAuthor = Object.keys(map)
