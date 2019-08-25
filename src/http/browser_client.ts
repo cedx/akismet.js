@@ -68,9 +68,8 @@ export class BrowserClient extends EventTarget {
    * @param {URL} endPoint The URL of the end point to query.
    * @param {object} fields The fields describing the query body.
    * @return {Promise<string>} The response as string.
-   * @private
    */
-  async _fetch(endPoint, fields) {
+  private async _fetch(endPoint, fields) {
     const body = new URLSearchParams({...this.blog.toJSON(), ...fields});
     if (this.isTest) body.set('is_test', '1');
 
