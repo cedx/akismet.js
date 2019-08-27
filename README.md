@@ -24,7 +24,7 @@ Prevent comment spam using [Akismet](https://akismet.com) service, in [JavaScrip
 
 ### Key verification
 
-```ts
+```typescript
 import {Blog, Client} from '@cedx/akismet';
 
 try {
@@ -40,7 +40,7 @@ catch (err) {
 
 ### Comment check
 
-```ts
+```typescript
 import {Author, Comment} from '@cedx/akismet';
 
 try {
@@ -60,7 +60,7 @@ catch (err) {
 
 ### Submit spam / ham
 
-```ts
+```typescript
 try {
   await client.submitSpam(comment);
   console.log('Spam submitted');
@@ -80,7 +80,7 @@ The `Client` class is an [`EventEmitter`](https://nodejs.org/api/events.html) th
 ### The `Client.eventRequest` event
 Emitted every time a request is made to the remote service:
 
-```ts
+```typescript
 client.on(Client.eventRequest, (request) =>
   console.log(`Client request: ${request.url}`)
 );
@@ -89,7 +89,7 @@ client.on(Client.eventRequest, (request) =>
 ### The `Client.eventResponse` event
 Emitted every time a response is received from the remote service:
 
-```ts
+```typescript
 client.on(Client.eventResponse, (request, response) =>
   console.log(`Server response: ${response.status}`)
 );
