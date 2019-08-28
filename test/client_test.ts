@@ -1,13 +1,10 @@
 import * as chai from 'chai';
 import {Author, Blog, Client, Comment, CommentType} from '../src/index';
-import {apiKey} from './config.g';
 
 /** Tests the features of the [[Client]] class. */
 describe('Client', function() {
-  this.timeout(15000); // eslint-disable-line no-invalid-this
-
   const {expect} = chai;
-  const test = typeof window != 'undefined' && typeof window.document != 'undefined' ? it.skip : it;
+  this.timeout(15000); // eslint-disable-line no-invalid-this
 
   // The default test client.
   const _client = new Client(apiKey, new Blog(new URL('https://dev.belin.io/akismet.js')), {isTest: true});
@@ -37,35 +34,35 @@ describe('Client', function() {
   });
 
   describe('#checkComment()', () => {
-    test('should return `false` for valid comment (e.g. ham)', async () => {
+    it('should return `false` for valid comment (e.g. ham)', async () => {
       expect(await _client.checkComment(_ham)).to.be.false;
     });
 
-    test('should return `true` for invalid comment (e.g. spam)', async () => {
+    it('should return `true` for invalid comment (e.g. spam)', async () => {
       expect(await _client.checkComment(_spam)).to.be.true;
     });
   });
 
   describe('#submitHam()', () => {
-    test('should complete without error', async () => {
+    it('should complete without error', async () => {
       await _client.submitHam(_ham);
       expect(true).to.be.ok;
     });
   });
 
   describe('#submitSpam()', () => {
-    test('should complete without error', async () => {
+    it('should complete without error', async () => {
       await _client.submitSpam(_spam);
       expect(true).to.be.ok;
     });
   });
 
   describe('#verifyKey()', () => {
-    test('should return `true` for a valid API key', async () => {
+    it('should return `true` for a valid API key', async () => {
       expect(await _client.verifyKey()).to.be.true;
     });
 
-    test('should return `false` for an invalid API key', async () => {
+    it('should return `false` for an invalid API key', async () => {
       const client = new Client('0123456789-ABCDEF', _client.blog, {isTest: _client.isTest});
       expect(await client.verifyKey()).to.be.false;
     });
