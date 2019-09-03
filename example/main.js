@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable no-console, @typescript-eslint/no-unused-vars */
 import {Author, Blog, Client, ClientError, Comment, CommentType} from '@cedx/akismet';
 
 /**
