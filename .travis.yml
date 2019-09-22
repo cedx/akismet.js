@@ -1,9 +1,0 @@
-dist: xenial
-env: [NODE_OPTIONS="--experimental-modules --no-warnings"]
-language: node_js
-node_js: node
-notifications: {email: false}
-
-install: npm install --ignore-scripts
-script: npm test
-after_success: npm run-script coverage

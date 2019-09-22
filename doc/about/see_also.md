@@ -7,7 +7,7 @@
 - [Submit an issue](https://github.com/cedx/akismet.js/issues)
 
 ## Testing
-- [Continuous integration](https://travis-ci.com/cedx/akismet.js)
+- [Continuous integration](https://github.com/cedx/akismet.js/actions)
 - [Code coverage](https://coveralls.io/github/cedx/akismet.js)
 
 ## Other implementations
