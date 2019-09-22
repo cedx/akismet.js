@@ -13,4 +13,3 @@
 ## Other implementations
 - Dart: [Akismet for Dart](https://dev.belin.io/akismet.dart)
 - PHP: [Akismet for PHP](https://dev.belin.io/akismet.php)
-- Yii Framework: [Akismet for Yii](https://dev.belin.io/yii2-akismet)
