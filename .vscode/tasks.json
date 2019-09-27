@@ -39,6 +39,11 @@
     },
     {
       "problemMatcher": [],
+      "task": "publish",
+      "type": "gulp"
+    },
+    {
+      "problemMatcher": [],
       "task": "serve",
       "type": "gulp"
     },
