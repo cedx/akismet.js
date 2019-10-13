@@ -5,14 +5,13 @@ import * as gulp from 'gulp';
 import * as replace from 'gulp-replace';
 import {EOL} from 'os';
 import {delimiter, normalize, resolve} from 'path';
-import * as pkg from './package.json';
 
 /** The file patterns providing the list of source files. */
 const sources: string[] = ['*.ts', 'example/*.ts', 'src/**/*.ts', 'test/**/*.ts'];
 
 // Shortcuts.
-const {dest, parallel, series, src, task, watch} = gulp;
-const {copyFile, writeFile} = promises;
+const {dest, series, src, task, watch} = gulp;
+const {copyFile, readFile, writeFile} = promises;
 
 // Initialize the build system.
 const _path = 'PATH' in process.env ? process.env.PATH! : '';
@@ -70,10 +69,13 @@ task('upgrade', async () => {
 });
 
 /** Builds the version file. */
-task('version', () => writeFile('src/version.g.ts', [
-  '/** The version number of the package. */',
-  `export const packageVersion: string = '${pkg.version}';`, ''
-].join(EOL)));
+task('version', async () => {
+  const pkg = JSON.parse(await readFile('package.json', 'utf8'));
+  return writeFile('src/cli/version.g.ts', [
+    '/** The version number of the package. */',
+    `export const packageVersion: string = '${pkg.version}';`, ''
+  ].join(EOL));
+});
 
 /** Watches for file changes. */
 task('watch', () => {
