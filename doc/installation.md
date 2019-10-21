@@ -5,13 +5,13 @@ Before installing **Akismet for JS**, you need to make sure you have [Node.js](h
 and [npm](https://www.npmjs.com), the Node.js package manager, up and running.
 
 !!! warning
-    Akismet for JS requires Node.js >= **12.12.0**.
+    Akismet for JS requires Node.js >= **12.13.0**.
 
 You can verify if you're already good to go with the following commands:
 
 ```shell
 node --version
-# v12.12.0
+v12.13.0
 
 npm --version
 # 6.11.3
