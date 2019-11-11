@@ -1,81 +1,54 @@
-/**
- * Defines the options of an {@link Author} instance.
- * @typedef {object} AuthorOptions
- * @property {string} [email] The author's mail address.
- * @property {string} [name] The author's name.
- * @property {string} [role] The role of the author.
- * @property {?URL} [url] The URL of the author's website.
- */
+import {JsonObject} from './json';
 
 /** Represents the author of a comment. */
 export class Author {
 
+  /** The author's mail address. */
+  email: string;
+
+  /** The author's name. */
+  name: string;
+
+  /** The role of the author. */
+  role: string;
+
+  /** The URL of the author's website. */
+  url?: URL;
+
   /**
    * Creates a new author.
-   * @param {string} ipAddress The author's IP address.
-   * @param {string} userAgent The author's user agent, that is the string identifying the Web browser used to submit comments.
-   * @param {AuthorOptions} [options] An object specifying values used to initialize this instance.
+   * @param ipAddress The author's IP address.
+   * @param userAgent The author's user agent, that is the string identifying the Web browser used to submit comments.
+   * @param options An object specifying values used to initialize this instance.
    */
-  constructor(ipAddress, userAgent, options = {}) {
-    const {email = '', name = '', role = '', url = null} = options;
-
-    /**
-     * The author's mail address.
-     * @type {string}
-     */
+  constructor(public ipAddress: string, public userAgent: string, options: Partial<AuthorOptions> = {}) {
+    const {email = '', name = '', role = '', url} = options;
     this.email = email;
-
-    /**
-     * The author's IP address.
-     * @type {string}
-     */
-    this.ipAddress = ipAddress;
-
-    /**
-     * The author's name.
-     * @type {string}
-     */
     this.name = name;
-
-    /**
-     * The role of the author.
-     * @type {string}
-     */
     this.role = role;
-
-    /**
-     * The URL of the author's website.
-     * @type {?URL}
-     */
     this.url = url;
-
-    /**
-     * The author's user agent, that is the string identifying the Web browser used to submit comments.
-     * @type {string}
-     */
-    this.userAgent = userAgent;
   }
 
   /**
    * Creates a new author from the specified JSON object.
-   * @param {Object<string, *>} map A JSON object representing an author.
-   * @return {Author} The instance corresponding to the specified JSON object.
+   * @param map A JSON object representing an author.
+   * @return The instance corresponding to the specified JSON object.
    */
-  static fromJson(map) {
+  static fromJson(map: JsonObject): Author {
     return new Author(typeof map.user_ip == 'string' ? map.user_ip : '', typeof map.user_agent == 'string' ? map.user_agent : '', {
       email: typeof map.comment_author_email == 'string' ? map.comment_author_email : '',
       name: typeof map.comment_author == 'string' ? map.comment_author : '',
       role: typeof map.user_role == 'string' ? map.user_role : '',
-      url: typeof map.comment_author_url == 'string' ? new URL(map.comment_author_url) : null
+      url: typeof map.comment_author_url == 'string' ? new URL(map.comment_author_url) : undefined
     });
   }
 
   /**
    * Converts this object to a map in JSON format.
-   * @return {Object<string, *>} The map in JSON format corresponding to this object.
+   * @return The map in JSON format corresponding to this object.
    */
-  toJSON() {
-    const map = {
+  toJSON(): JsonObject {
+    const map: JsonObject = {
       user_agent: this.userAgent,
       user_ip: this.ipAddress
     };
@@ -86,4 +59,20 @@ export class Author {
     if (this.role.length) map.user_role = this.role;
     return map;
   }
+}
+
+/** Defines the options of an [[Author]] instance. */
+export interface AuthorOptions {
+
+  /** The author's mail address. */
+  email: string;
+
+  /** The author's name. */
+  name: string;
+
+  /** The role of the author. */
+  role: string;
+
+  /** The URL of the author's website. */
+  url: URL;
 }
