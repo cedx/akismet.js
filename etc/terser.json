@@ -1,0 +1,5 @@
+{
+  "compress": true,
+  "ecma": 8,
+  "mangle": true
+}
