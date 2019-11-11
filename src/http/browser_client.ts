@@ -18,6 +18,18 @@ import {ClientMixin} from './mixin';
 export class BrowserClient extends EventTarget {
 
   /**
+   * An event that is triggered when a request is made to the remote service.
+   * @event request
+   */
+  static readonly eventRequest: string = 'request';
+
+  /**
+   * An event that is triggered when a response is received from the remote service.
+   * @event response
+   */
+  static readonly eventResponse: string = 'response';
+
+  /**
    * Creates a new client.
    * @param {string} apiKey The Akismet API key.
    * @param {Blog} blog The front page or home URL of the instance making requests.
@@ -95,6 +107,6 @@ export class BrowserClient extends EventTarget {
   }
 }
 
-// Apply the client mixins.
-Object.assign(BrowserClient, ClientConstructor);
-Object.assign(BrowserClient.prototype, ClientPrototype);
+// Apply the client mixin.
+export interface BrowserClient extends ClientMixin {} // eslint-disable-line @typescript-eslint/no-empty-interface
+Object.defineProperties(BrowserClient.prototype, Object.getOwnPropertyDescriptors(ClientMixin.prototype));
