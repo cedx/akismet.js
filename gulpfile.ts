@@ -14,7 +14,7 @@ const {dest, series, src, task, watch} = gulp;
 const {copyFile, readFile, writeFile} = promises;
 
 // Initialize the build system.
-const _path = 'PATH' in process.env ? process.env.PATH! : '';
+const _path = process.env.PATH ?? '';
 const _vendor = resolve('node_modules/.bin');
 if (!_path.includes(_vendor)) process.env.PATH = `${_vendor}${delimiter}${_path}`;
 
