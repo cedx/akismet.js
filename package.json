@@ -35,10 +35,10 @@
     "gulp-replace": "^1.0.0",
     "mocha": "^6.2.2",
     "nyc": "^15.0.0-beta.1",
-    "rollup": "^1.27.4",
+    "rollup": "^1.27.5",
     "source-map-support": "^0.5.16",
     "terser": "^4.4.0",
-    "ts-node": "^8.5.2",
+    "ts-node": "^8.5.3",
     "typedoc": "^0.15.3",
     "typescript": "^3.7.2"
   },
