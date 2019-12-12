@@ -50,6 +50,10 @@
     "build/",
     "lib/"
   ],
+  "funding": {
+    "type": "patreon",
+    "url": "https://www.patreon.com/cedx"
+  },
   "keywords": [
     "akismet",
     "api",
