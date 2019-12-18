@@ -7,7 +7,7 @@ import {EOL} from 'os';
 import {delimiter, normalize, resolve} from 'path';
 
 /** The file patterns providing the list of source files. */
-const sources: string[] = ['*.ts', 'example/*.ts', 'src/**/*.ts', 'test/**/*.ts'];
+const sources: string[] = ['*.ts', 'src/**/*.ts', 'test/**/*.ts'];
 
 // Shortcuts.
 const {dest, series, src, task, watch} = gulp;
