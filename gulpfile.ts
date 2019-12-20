@@ -70,10 +70,10 @@ task('upgrade', async () => {
 
 /** Builds the version file. */
 task('version', async () => {
-  const pkg = JSON.parse(await readFile('package.json', 'utf8'));
+  const {version} = JSON.parse(await readFile('package.json', 'utf8'));
   return writeFile('src/cli/version.g.ts', [
     '/** The version number of the package. */',
-    `export const packageVersion: string = '${pkg.version}';`, ''
+    `export const packageVersion: string = '${version}';`, ''
   ].join(EOL));
 });
 
