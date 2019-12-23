@@ -43,10 +43,10 @@ task('doc', async () => {
 });
 
 /** Fixes the coding standards issues. */
-task('fix', () => _exec('eslint', ['--config=etc/eslint.json', '--fix', ...sources]));
+task('fix', () => _exec('eslint', ['--config=etc/eslint.yaml', '--fix', ...sources]));
 
 /** Performs the static analysis of source code. */
-task('lint', () => _exec('eslint', ['--config=etc/eslint.json', ...sources]));
+task('lint', () => _exec('eslint', ['--config=etc/eslint.yaml', ...sources]));
 
 /** Publishes the package to the registry. */
 task('publish:github', () => _exec('npm', ['publish', '--registry=https://npm.pkg.github.com']));
@@ -56,7 +56,7 @@ task('publish', series('clean', 'publish:github', 'publish:npm'));
 /** Runs the test suites. */
 task('test', () => {
   process.env.TS_NODE_PROJECT = 'test/tsconfig.json';
-  return _exec('nyc', ['--nycrc-path=etc/nyc.json', 'node_modules/.bin/mocha', '--config=etc/mocha.json', '"test/**/*.ts"']);
+  return _exec('nyc', ['--nycrc-path=etc/nyc.yaml', 'node_modules/.bin/mocha', '--config=etc/mocha.yaml', '"test/**/*.ts"']);
 });
 
 /** Upgrades the project to the latest revision. */
