@@ -4,5 +4,7 @@
   "gitRevision": "master",
   "mode": "file",
   "name": "Akismet for JS",
-  "out": "doc/api"
+  "out": "doc/api",
+  "readme": "none",
+  "tsconfig": "src/tsconfig.json"
 }
