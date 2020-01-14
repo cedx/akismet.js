@@ -10,7 +10,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@master
         with:
-          node-version: 12
+          node-version: 13
       - name: Check environment
         run: |
           node --version
@@ -22,11 +22,9 @@ jobs:
       - name: Run tests
         env:
           AKISMET_API_KEY: ${{secrets.AKISMET_API_KEY}}
-          NODE_OPTIONS: '--experimental-modules --no-warnings'
         run: npm test
       - name: Collect code coverage
         env:
           COVERALLS_REPO_TOKEN: ${{secrets.GITHUB_TOKEN}}
-          NODE_OPTIONS: '--experimental-modules --no-warnings'
         if: success()
         run: npm run-script coverage
