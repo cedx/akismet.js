@@ -11,6 +11,7 @@ Prevent comment spam using [Akismet](https://akismet.com) service, in [JavaScrip
 
 ## Development
 - [Git repository](https://github.com/cedx/akismet.js)
+- [GitHub package](https://github.com/cedx/akismet.js/packages)
 - [npm package](https://www.npmjs.com/package/@cedx/akismet)
 - [Submit an issue](https://github.com/cedx/akismet.js/issues)
 
@@ -24,7 +25,7 @@ Prevent comment spam using [Akismet](https://akismet.com) service, in [JavaScrip
 
 ### Key verification
 
-```typescript
+```js
 import {Blog, Client} from '@cedx/akismet';
 
 try {
@@ -40,7 +41,7 @@ catch (err) {
 
 ### Comment check
 
-```typescript
+```js
 import {Author, Comment} from '@cedx/akismet';
 
 try {
@@ -60,7 +61,7 @@ catch (err) {
 
 ### Submit spam / ham
 
-```typescript
+```js
 try {
   await client.submitSpam(comment);
   console.log('Spam submitted');
@@ -80,7 +81,7 @@ The `Client` class is an [`EventEmitter`](https://nodejs.org/api/events.html) th
 ### The `Client.eventRequest` event
 Emitted every time a request is made to the remote service:
 
-```typescript
+```js
 client.on(Client.eventRequest, (request) =>
   console.log(`Client request: ${request.url}`)
 );
@@ -89,7 +90,7 @@ client.on(Client.eventRequest, (request) =>
 ### The `Client.eventResponse` event
 Emitted every time a response is received from the remote service:
 
-```typescript
+```js
 client.on(Client.eventResponse, (request, response) =>
   console.log(`Server response: ${response.status}`)
 );
