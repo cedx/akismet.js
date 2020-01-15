@@ -19,10 +19,10 @@
     "node-fetch": "^2.6.0"
   },
   "devDependencies": {
-    "@cedx/coveralls": "^9.3.0",
+    "@cedx/coveralls": "^9.4.0",
     "@types/chai": "^4.2.7",
     "@types/mocha": "^5.2.7",
-    "@types/node": "^13.1.6",
+    "@types/node": "^13.1.7",
     "@types/node-fetch": "^2.5.4",
     "@typescript-eslint/eslint-plugin": "^2.16.0",
     "@typescript-eslint/parser": "^2.16.0",
@@ -37,7 +37,7 @@
     "source-map-support": "^0.5.16",
     "terser": "^4.6.3",
     "ts-node": "^8.6.2",
-    "typedoc": "^0.16.2",
+    "typedoc": "^0.16.4",
     "typescript": "^3.7.4"
   },
   "engines": {
