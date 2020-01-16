@@ -33,7 +33,7 @@
     "rollup": "^1.29.0",
     "terser": "^4.6.3",
     "typedoc": "^0.16.4",
-    "typescript": "^3.7.4"
+    "typescript": "^3.7.5"
   },
   "engines": {
     "node": ">=12.14.0"
