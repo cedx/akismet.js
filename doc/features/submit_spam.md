@@ -27,10 +27,10 @@ The exception `message` usually includes some debug information, provided by the
 
 ## Example
 
-```typescript
+```js
 import {Author, Blog, Client, Comment} from '@cedx/akismet';
 
-async function main(): Promise {
+async function main() {
   try {
     const comment = new Comment(
       new Author('127.0.0.1', 'Mozilla/5.0'),

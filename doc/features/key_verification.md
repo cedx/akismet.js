@@ -18,10 +18,10 @@ The exception `message` usually includes some debug information, provided by the
 
 ## Example
 
-```typescript
+```js
 import {Blog, Client} from '@cedx/akismet';
 
-async function main(): Promise {
+async function main() {
   try {
     const client = new Client('123YourAPIKey', new Blog(new URL('https://www.yourblog.com')));
     const isValid = await client.verifyKey();
