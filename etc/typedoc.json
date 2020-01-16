@@ -2,6 +2,7 @@
   "excludePrivate": true,
   "gaSite": "auto",
   "gitRevision": "master",
+  "hideGenerator": true,
   "mode": "file",
   "name": "Akismet for JS",
   "out": "doc/api",
