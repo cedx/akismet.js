@@ -1,10 +1,10 @@
-import * as chai from 'chai';
-import {Author, Blog, Client, Comment, CommentType} from '../src/index';
+import chai from 'chai';
+import {Author, Blog, Client, Comment, CommentType} from '../lib/index.js';
 
-/** Tests the features of the [[Client]] class. */
+/** Tests the features of the {@link Client} class. */
 describe('Client', function() {
   const {expect} = chai;
-  this.timeout(15000); // eslint-disable-line no-invalid-this
+  this.timeout(15000);
 
   // The default test client.
   const _client = new Client(apiKey, new Blog(new URL('https://dev.belin.io/akismet.js')), {isTest: true});

@@ -1,7 +1,7 @@
-import * as chai from 'chai';
-import {Blog} from '../src/index';
+import chai from 'chai';
+import {Blog} from '../lib/index.js';
 
-/** Tests the features of the [[Blog]] class. */
+/** Tests the features of the {@link Blog} class. */
 describe('Blog', () => {
   const {expect} = chai;
 
