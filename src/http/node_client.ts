@@ -88,7 +88,7 @@ export class NodeClient extends EventEmitter {
 
     const request = new fetch.Request(endPoint.href, {
       body,
-      headers: {'content-type': 'application/x-www-form-urlencoded', 'user-agent': this.userAgent},
+      headers: {'Content-Type': 'application/x-www-form-urlencoded', 'User-Agent': this.userAgent},
       method: 'POST'
     });
 
@@ -101,7 +101,7 @@ export class NodeClient extends EventEmitter {
     this.emit(NodeClient.eventResponse, new ResponseEvent(response, request));
 
     if (!response.ok) throw new ClientError('An error occurred while querying the end point', endPoint);
-    if (response.headers.has('x-akismet-debug-help')) throw new ClientError(response.headers.get('x-akismet-debug-help'), endPoint);
+    if (response.headers.has('X-akismet-debug-help')) throw new ClientError(response.headers.get('X-akismet-debug-help'), endPoint);
     return response.text();
   }
 }

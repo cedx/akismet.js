@@ -87,7 +87,7 @@ export class BrowserClient extends EventTarget {
 
     const request = new Request(endPoint.href, {
       body,
-      headers: {'content-type': 'application/x-www-form-urlencoded', 'user-agent': this.userAgent},
+      headers: {'Content-Type': 'application/x-www-form-urlencoded', 'User-Agent': this.userAgent},
       method: 'POST'
     });
 
@@ -102,7 +102,7 @@ export class BrowserClient extends EventTarget {
     this.dispatchEvent(new CustomEvent(BrowserClient.eventResponse, {detail}));
 
     if (!response.ok) throw new ClientError('An error occurred while querying the end point', endPoint);
-    if (response.headers.has('x-akismet-debug-help')) throw new ClientError(response.headers.get('x-akismet-debug-help'), endPoint);
+    if (response.headers.has('X-akismet-debug-help')) throw new ClientError(response.headers.get('X-akismet-debug-help'), endPoint);
     return response.text();
   }
 }
