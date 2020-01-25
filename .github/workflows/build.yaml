@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Set up Node.js
-        uses: actions/setup-node@master
+        uses: actions/setup-node@v1
         with:
           node-version: 13
       - name: Check environment
@@ -16,7 +16,7 @@ jobs:
           node --version
           npm --version
       - name: Fetch sources
-        uses: actions/checkout@master
+        uses: actions/checkout@v2
       - name: Install dependencies
         run: npm install --ignore-scripts
       - name: Run tests
