@@ -1,4 +1,4 @@
-import EventEmitter from 'events';
+import {EventEmitter} from 'events';
 import {packageVersion} from '../version.g';
 import {RequestEvent, ResponseEvent} from './events';
 import {ClientMixin} from './mixin';
