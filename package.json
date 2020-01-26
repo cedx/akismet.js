@@ -33,7 +33,7 @@
     "mocha": "7.0.0-esm1",
     "rollup": "^1.29.1",
     "terser": "^4.6.3",
-    "typedoc": "^0.16.8",
+    "typedoc": "^0.16.9",
     "typescript": "^3.7.5"
   },
   "engines": {
