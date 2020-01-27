@@ -31,7 +31,7 @@
     "gulp": "^4.0.2",
     "gulp-replace": "^1.0.0",
     "mocha": "7.0.0-esm1",
-    "rollup": "^1.29.1",
+    "rollup": "^1.30.0",
     "terser": "^4.6.3",
     "typedoc": "^0.16.9",
     "typescript": "^3.7.5"
