@@ -96,18 +96,5 @@ client.on(Client.eventResponse, (request, response) =>
 );
 ```
 
-## Unit tests
-In order to run the tests, you must set the `AKISMET_API_KEY` environment variable to the value of your Akismet API key:
-
-```shell
-export AKISMET_API_KEY="<123YourAPIKey>"
-```
-
-Then, you can run the `test` script from the command prompt:
-
-```shell
-npm test
-```
-
 ## License
 [Akismet for JS](https://dev.belin.io/akismet.js) is distributed under the MIT License.
