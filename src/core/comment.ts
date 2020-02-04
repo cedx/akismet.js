@@ -110,17 +110,8 @@ export enum CommentType {
   /** A top-level forum post. */
   forumPost = 'forum-post',
 
-  /** A message sent between just a few users. */
-  message = 'message',
-
   /** A [pingback](https://en.wikipedia.org/wiki/Pingback) post. */
   pingback = 'pingback',
-
-  /** A reply to a top-level forum post. */
-  reply = 'reply',
-
-  /** A new user account. */
-  signup = 'signup',
 
   /** A [trackback](https://en.wikipedia.org/wiki/Trackback) post. */
   trackback = 'trackback',
