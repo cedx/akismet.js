@@ -3,7 +3,7 @@ site_description: Prevent comment spam using the Akismet service, in JavaScript.
 site_author: Cédric Belin - cedric@belin.io
 site_url: https://dev.belin.io/akismet.js
 
-docs_dir: ../doc
+docs_dir: .
 site_dir: ../web
 
 repo_name: GitHub
@@ -29,17 +29,15 @@ markdown_extensions:
 nav:
   - Overview: index.md
   - Installation: installation.md
-  - Usage:
-      - Client setup: usage/client_setup.md
-      - Data collection: usage/data_collection.md
-      - Testing: usage/testing.md
-      - JSON serialization: usage/json_serialization.md
-      - Request lifecycle: usage/request_lifecycle.md
+  - Usage: usage.md
   - Features:
       - Key verification: features/key_verification.md
       - Comment check: features/comment_check.md
       - Submit spam: features/submit_spam.md
       - Submit ham: features/submit_ham.md
+  - Further reading:
+      - Events: advanced/events.md
+      - Testing: advanced/testing.md
   - About:
       - Changelog: about/changelog.md
       - License: about/license.md
