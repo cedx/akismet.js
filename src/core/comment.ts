@@ -16,6 +16,9 @@ export class Comment {
   /** The UTC timestamp of the publication time for the post, page or thread on which the comment was posted. */
   postModified?: Date;
 
+  /** A string describing why the content is being rechecked. */
+  recheckReason: string;
+
   /** The URL of the webpage that linked to the entry being requested. */
   referrer?: URL;
 
@@ -28,11 +31,12 @@ export class Comment {
    * @param options An object specifying values used to initialize this instance.
    */
   constructor(public author?: Author, options: Partial<CommentOptions> = {}) {
-    const {content = '', date, permalink, postModified, referrer, type = ''} = options;
+    const {content = '', date, permalink, postModified, recheckReason = '', referrer, type = ''} = options;
     this.content = content;
     this.date = date;
     this.permalink = permalink;
     this.postModified = postModified;
+    this.recheckReason = recheckReason;
     this.referrer = referrer;
     this.type = type;
   }
@@ -52,6 +56,7 @@ export class Comment {
       date: typeof map.comment_date_gmt == 'string' ? new Date(map.comment_date_gmt) : undefined,
       permalink: typeof map.permalink == 'string' ? new URL(map.permalink) : undefined,
       postModified: typeof map.comment_post_modified_gmt == 'string' ? new Date(map.comment_post_modified_gmt) : undefined,
+      recheckReason: typeof map.recheck_reason == 'string' ? map.recheck_reason : '',
       referrer: typeof map.referrer == 'string' ? new URL(map.referrer) : undefined,
       type: typeof map.comment_type == 'string' ? map.comment_type : ''
     });
@@ -65,10 +70,11 @@ export class Comment {
     const map = this.author ? this.author.toJSON() : {};
     if (this.content.length) map.comment_content = this.content;
     if (this.date) map.comment_date_gmt = this.date.toISOString();
-    if (this.postModified) map.comment_post_modified_gmt = this.postModified.toISOString();
-    if (this.type.length) map.comment_type = this.type;
     if (this.permalink) map.permalink = this.permalink.href;
+    if (this.postModified) map.comment_post_modified_gmt = this.postModified.toISOString();
+    if (this.recheckReason.length) map.recheck_reason = this.recheckReason;
     if (this.referrer) map.referrer = this.referrer.href;
+    if (this.type.length) map.comment_type = this.type;
     return map;
   }
 }
@@ -80,16 +86,19 @@ export interface CommentOptions {
   content: string;
 
   /** The UTC timestamp of the creation of the comment. */
-  date?: Date;
+  date: Date;
 
   /** The permanent location of the entry the comment is submitted to. */
-  permalink?: URL;
+  permalink: URL;
 
   /** The UTC timestamp of the publication time for the post, page or thread on which the comment was posted. */
-  postModified?: Date;
+  postModified: Date;
+
+  /** A string describing why the content is being rechecked. */
+  recheckReason: string;
 
   /** The URL of the webpage that linked to the entry being requested. */
-  referrer?: URL;
+  referrer: URL;
 
   /** The comment's type. */
   type: string;
