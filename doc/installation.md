@@ -56,6 +56,6 @@ The classes of this library are exposed as `akismet` property on the `window` gl
 
 ```html
 <script>
-  const {Client, Comment, Author, ...} = window.akismet;
+  const {Author, Blog, Client, Comment, ...} = window.akismet;
 </script>
 ```
