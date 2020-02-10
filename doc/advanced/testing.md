@@ -1,10 +1,10 @@
 # Testing
-When you will integrate the library with your own application, you will of course need to test it. Often we see developers get ahead of themselves, making a few trivial API calls with minimal values and drawing the wrong conclusions about Akismet's accuracy.
+When you will integrate this library with your own application, you will of course need to test it. Often we see developers get ahead of themselves, making a few trivial API calls with minimal values and drawing the wrong conclusions about Akismet's accuracy.
 
 ## Simulate a positive (spam) result
 Make a [comment check](../features/comment_check.md) API call with the `Author#name` set to `"viagra-test-123"` or `Author#email` set to `"akismet-guaranteed-spam@example.com"`. Populate all other required fields with typical values.
 
-The Akismet API will always return a `true` response to a valid request with one of those values. If you receive anything else, something is wrong in your client, data, or communications.
+The Akismet API will always return a `CheckResult.isSpam` response to a valid request with one of those values. If you receive anything else, something is wrong in your client, data, or communications.
 
 ```js
 import {Author, Blog, Client, Comment} from '@cedx/akismet';
@@ -22,7 +22,7 @@ async function main() {
 ## Simulate a negative (not spam) result
 Make a [comment check](../features/comment_check.md) API call with the `Author#role` set to `"administrator"` and all other required fields populated with typical values.
 
-The Akismet API will always return a `false` response. Any other response indicates a data or communication problem.
+The Akismet API will always return a `CheckResult.isHam` response. Any other response indicates a data or communication problem.
 
 ```js
 import {Author, Blog, Client, Comment} from '@cedx/akismet';
