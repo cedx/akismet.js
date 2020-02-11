@@ -6,6 +6,9 @@
 - Breaking change: changed the signature of the `fromJson()` methods.
 - Breaking change: raised the required [Node.js](https://nodejs.org) version.
 - Breaking change: removed the `defaultEndPoint` and `debugHeader` static properties from the `Client` class.
+- Added support for the `X-akismet-pro-tip` HTTP header.
+- Added the `CheckResult` enumeration.
+- Added the `Comment->recheckReason` property.
 - Added the `eventRequest` and `eventResponse` static properties to the `Client` class.
 - Added an example code.
 - Ported the unit tests to classes with experimental decorators.

@@ -54,7 +54,7 @@ async function main() {
     {isTest: true}
   );
   
-  console.log('It should not influence subsequent calls');
+  console.log('It should not influence subsequent calls.');
   await client.checkComment(comment);
 }
 ```
