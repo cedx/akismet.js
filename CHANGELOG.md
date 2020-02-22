@@ -38,7 +38,7 @@
 ## Version [11.0.0](https://github.com/cedx/akismet.js/compare/v10.1.0...v11.0.0)
 - Breaking change: converted the [`Observable`](http://reactivex.io/intro.html)-based API to an `async/await`-based one.
 - Breaking change: converted the `Subject` event API to the [`EventEmitter`](https://nodejs.org/api/events.html) one.
-- Added the [`#[Symbol.toStringTag]`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol/toStringTag) property to all classes.
+- Added the [`[Symbol.toStringTag]`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol/toStringTag) property to all classes.
 - Changed licensing for the [MIT License](https://opensource.org/licenses/MIT).
 
 ## Version [10.1.0](https://github.com/cedx/akismet.js/compare/v10.0.0...v10.1.0)
@@ -129,7 +129,7 @@
 ## Version [2.0.0](https://github.com/cedx/akismet.js/compare/v1.0.1...v2.0.0)
 - Breaking change: removed the `Client.serviceURL` property.
 - Breaking change: removed the `EndPoints` enumeration.
-- Breaking change: renamed the `Client.DEFAULT_SERVICE` property to `SERVICE_URL`.
+- Breaking change: renamed the `Client.DEFAULT_SERVICE` static property to `SERVICE_URL`.
 - Updated the package dependencies.
 - Updated the project URL.
 
@@ -137,7 +137,7 @@
 - Fixed the [issue #5](https://github.com/cedx/akismet.js/issues/5).
 
 ## Version [1.0.0](https://github.com/cedx/akismet.js/compare/v0.9.0...v1.0.0)
-- Breaking change: changed the signature of the `fromJSON` methods.
+- Breaking change: changed the signature of the `fromJSON()` methods.
 - Breaking change: dropped the embedded server and the command line interface.
 - Breaking change: ported the [CommonJS modules](https://nodejs.org/api/modules.html) to ES2015 format.
 - Breaking change: ported the [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)-based APIs to [Observables](http://reactivex.io/intro.html).
@@ -151,7 +151,7 @@
 - Updated the package dependencies.
 
 ## Version [0.9.0](https://github.com/cedx/akismet.js/compare/v0.8.0...v0.9.0)
-- Breaking change: renamed the `Server.DEFAULT_HOST` property to `DEFAULT_ADDRESS`.
+- Breaking change: renamed the `Server.DEFAULT_HOST` static property to `DEFAULT_ADDRESS`.
 - Breaking change: renamed the `Server.host` property to `address`.
 - Breaking change: renamed the `-H, --host` command line option to `-a, --address`.
 - Upgraded the package dependencies.
@@ -176,7 +176,7 @@
 - Breaking change: using ES2015 features, like arrow functions, block-scoped binding constructs, classes and template strings.
 - Breaking change: raised the required [Node.js](http://nodejs.org) version.
 - Breaking change: the `Server` class is not exposed anymore by the default exports.
-- Breaking change: `Application._log` method renamed to `log`.
+- Breaking change: `Application._log()` method renamed to `log`.
 - The `port` parameter of `Server.listen()` method is now optional.
 - Improved browser integration.
 - Added support for code coverage.
@@ -186,7 +186,7 @@
 - Changed licensing for the [Apache License Version 2.0](http://www.apache.org/licenses/LICENSE-2.0).
 
 ## Version [0.6.2](https://github.com/cedx/akismet.js/compare/v0.6.1...v0.6.2)
-- Fixed a bug in `Comment.toJSON` method.
+- Fixed a bug in `Comment.toJSON()` method.
 
 ## Version [0.6.1](https://github.com/cedx/akismet.js/compare/v0.6.0...v0.6.1)
 - Fixed the usage of `Author.role` property.
@@ -208,7 +208,7 @@
 - Raised the required [Node.js](http://nodejs.org) version.
 - Removed the dependency on [`promise`](https://www.npmjs.com/package/promise) module.
 - Upgraded the package dependencies.
-- Fixed the [issue #3](https://github.com/cedx/akismet.js/issues/3): returning a `Promise` in `Server.checkComment` method.
+- Fixed the [issue #3](https://github.com/cedx/akismet.js/issues/3): returning a `Promise` in `Server.checkComment()` method.
 
 ## Version [0.4.1](https://github.com/cedx/akismet.js/compare/v0.4.0...v0.4.1)
 - Fixed the [issue #2](https://github.com/cedx/akismet.js/issues/2): using a Unix system for publishing the package on [npm](https://www.npmjs.com).

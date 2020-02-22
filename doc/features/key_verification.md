@@ -4,7 +4,7 @@ or [submit ham](submit_ham.md) methods. This is the first call that you should m
 if you will have multiple users with their own Akismet subscriptions using your application.
 
 ```
-Client#verifyKey(): Promise<boolean>
+Client.verifyKey(): Promise<boolean>
 ```
 
 ## Parameters

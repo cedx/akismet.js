@@ -8,7 +8,7 @@ to be available for [submit spam](submit_spam.md) and [submit ham](submit_ham.md
 you should ensure that the values that you do send match those of the original content.
 
 ```
-Client#submitSpam(comment: Comment): Promise
+Client.submitSpam(comment: Comment): Promise
 ```
 
 ## Parameters

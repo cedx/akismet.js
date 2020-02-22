@@ -6,7 +6,7 @@ Remember that, as explained in the [submit spam](submit_spam.md) documentation, 
 that any values you're passing here match up with the original and corresponding [comment check](comment_check.md) call.
 
 ```
-Client#submitHam(comment: Comment): Promise
+Client.submitHam(comment: Comment): Promise
 ```
 
 ## Parameters
