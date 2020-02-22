@@ -28,7 +28,7 @@ describe('Author', () => {
     });
   });
 
-  describe('#toJSON()', () => {
+  describe('.toJSON()', () => {
     it('should return only the IP address and user agent with a newly created instance', () => {
       const data = new Author('127.0.0.1', 'Doom/6.6.6').toJSON();
       expect(Object.keys(data)).to.have.lengthOf(2);

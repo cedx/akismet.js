@@ -33,7 +33,7 @@ describe('Client', function() {
     type: CommentType.trackback
   });
 
-  describe('#checkComment()', () => {
+  describe('.checkComment()', () => {
     it('should return `false` for valid comment (e.g. ham)', async () => {
       expect(await _client.checkComment(_ham)).to.be.false;
     });
@@ -43,21 +43,21 @@ describe('Client', function() {
     });
   });
 
-  describe('#submitHam()', () => {
+  describe('.submitHam()', () => {
     it('should complete without error', async () => {
       await _client.submitHam(_ham);
       expect(true).to.be.ok;
     });
   });
 
-  describe('#submitSpam()', () => {
+  describe('.submitSpam()', () => {
     it('should complete without error', async () => {
       await _client.submitSpam(_spam);
       expect(true).to.be.ok;
     });
   });
 
-  describe('#verifyKey()', () => {
+  describe('.verifyKey()', () => {
     it('should return `true` for a valid API key', async () => {
       expect(await _client.verifyKey()).to.be.true;
     });

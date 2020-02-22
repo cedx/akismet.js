@@ -34,7 +34,7 @@ describe('Comment', () => {
     });
   });
 
-  describe('#toJSON()', () => {
+  describe('.toJSON()', () => {
     it('should return only the author info with a newly created instance', () => {
       const data = new Comment(new Author('127.0.0.1', 'Doom/6.6.6')).toJSON();
       expect(Object.keys(data)).to.have.lengthOf(2);

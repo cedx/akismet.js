@@ -26,7 +26,7 @@ describe('Blog', () => {
     });
   });
 
-  describe('#toJSON()', () => {
+  describe('.toJSON()', () => {
     it('should return only the blog URL with a newly created instance', () => {
       const data = new Blog(new URL('https://dev.belin.io/akismet.js')).toJSON();
       expect(Object.keys(data)).to.have.lengthOf(1);
