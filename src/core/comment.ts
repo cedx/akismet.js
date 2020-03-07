@@ -69,9 +69,9 @@ export class Comment {
   toJSON(): JsonObject {
     const map = this.author ? this.author.toJSON() : {};
     if (this.content.length) map.comment_content = this.content;
-    if (this.date) map.comment_date_gmt = this.date.toISOString();
+    if (this.date) map.comment_date_gmt = this.date.toJSON();
     if (this.permalink) map.permalink = this.permalink.href;
-    if (this.postModified) map.comment_post_modified_gmt = this.postModified.toISOString();
+    if (this.postModified) map.comment_post_modified_gmt = this.postModified.toJSON();
     if (this.recheckReason.length) map.recheck_reason = this.recheckReason;
     if (this.referrer) map.referrer = this.referrer.href;
     if (this.type.length) map.comment_type = this.type;
