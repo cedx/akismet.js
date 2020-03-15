@@ -17,7 +17,7 @@ task('build:dist', async () => {
   return _exec('terser', ['--config-file=etc/terser.json', '--output=build/free-mobile.min.js', 'build/free-mobile.js']);
 });
 
-const esmRegex = /(export|import)\s+(.+)\s+from\s+'(\.[^']+)'/g;
+const esmRegex = /(export|import)\s+(.+)\s+from\s+'(\.((?!.*\.js)[^']+))'/g;
 task('build:fix', () => src('lib/**/*.js').pipe(replace(esmRegex, "$1 $2 from '$3.js'")).pipe(dest('lib')));
 task('build:js', () => _exec('tsc', ['--project', 'src/tsconfig.json']));
 task('build', series('build:js', 'build:fix', 'build:dist'));
