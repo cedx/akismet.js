@@ -36,26 +36,3 @@ Now in your [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript
 ```js
 import * as akismet from '@cedx/akismet';
 ```
-
-### 3. Use it
-See the [usage information](usage.md).
-
-## Installing from a content delivery network
-This library is also available as a ready-made bundle.
-To install it, add this code snippet to the `<head>` of your HTML document:
-
-```html
-<!-- jsDelivr -->
-<script src="https://cdn.jsdelivr.net/npm/@cedx/akismet/build/akismet.min.js"></script>
-
-<!-- UNPKG -->
-<script src="https://unpkg.com/@cedx/akismet/build/akismet.min.js"></script>
-```
-
-The classes of this library are exposed as `akismet` property on the `window` global object:
-
-```html
-<script>
-  const {Author, Blog, Client, Comment, ...} = window.akismet;
-</script>
-```
