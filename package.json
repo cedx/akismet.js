@@ -1,5 +1,4 @@
 {
-  "browser": "lib/browser.js",
   "bugs": "https://github.com/cedx/akismet.js/issues",
   "description": "Prevent comment spam using the Akismet service. Add Akismet to your applications so you don't have to worry about spam again.",
   "homepage": "https://dev.belin.io/akismet.js",
@@ -31,8 +30,6 @@
     "gulp": "^4.0.2",
     "gulp-replace": "^1.0.0",
     "mocha": "^7.1.0",
-    "rollup": "^2.0.6",
-    "terser": "^4.6.6",
     "typedoc": "^0.17.0",
     "typescript": "^3.8.3"
   },
@@ -40,7 +37,6 @@
     "node": ">=12.16.0"
   },
   "files": [
-    "build/",
     "lib/"
   ],
   "funding": {
