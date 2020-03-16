@@ -47,10 +47,7 @@ export class Comment {
    * @return The instance corresponding to the specified JSON object.
    */
   static fromJson(map: JsonObject): Comment {
-    const hasAuthor = Object.keys(map)
-      .filter(key => /^comment_author/.test(key) || /^user/.test(key))
-      .length > 0;
-
+    const hasAuthor = Object.keys(map).filter(key => key.startsWith('comment_author') || key.startsWith('user')).length > 0;
     return new Comment(hasAuthor ? Author.fromJson(map) : undefined, {
       content: typeof map.comment_content == 'string' ? map.comment_content : '',
       date: typeof map.comment_date_gmt == 'string' ? new Date(map.comment_date_gmt) : undefined,
