@@ -5,6 +5,19 @@ import {Comment} from './comment';
 import {JsonObject} from './json';
 import {packageVersion} from './version.g';
 
+/** Specifies the result of a comment check. */
+export enum CheckResult {
+
+  /** The comment is not a spam (i.e. a ham). */
+  isHam,
+
+  /** The comment is a spam. */
+  isSpam,
+
+  /** The comment is a pervasive spam (i.e. it can be safely discarded). */
+  isPervasiveSpam
+}
+
 /** An exception caused by an error in a [[Client]] request. */
 export class ClientError extends Error {
 
@@ -148,17 +161,3 @@ export interface ClientOptions {
   /** The user agent string to use when making requests. */
   userAgent: string;
 }
-
-/** Specifies the result of a comment check. */
-export enum CheckResult {
-
-  /** The comment is not a spam (i.e. a ham). */
-  isHam,
-
-  /** The comment is a spam. */
-  isSpam,
-
-  /** The comment is a pervasive spam (i.e. it can be safely discarded). */
-  isPervasiveSpam
-}
-

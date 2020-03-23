@@ -12,15 +12,10 @@ const _vendor = resolve('node_modules/.bin');
 if (!_path.includes(_vendor)) process.env.PATH = `${_vendor}${delimiter}${_path}`;
 
 /** Builds the project. */
-task('build:dist', async () => {
-  await _exec('rollup', ['--config=etc/rollup.js']);
-  return _exec('terser', ['--config-file=etc/terser.json', '--output=build/free-mobile.min.js', 'build/free-mobile.js']);
-});
-
 const esmRegex = /(export|import)\s+(.+)\s+from\s+'(\.((?!.*\.js)[^']+))'/g;
 task('build:fix', () => src('lib/**/*.js').pipe(replace(esmRegex, "$1 $2 from '$3.js'")).pipe(dest('lib')));
 task('build:js', () => _exec('tsc', ['--project', 'src/tsconfig.json']));
-task('build', series('build:js', 'build:fix', 'build:dist'));
+task('build', series('build:js', 'build:fix'));
 
 /** Deletes all generated files and reset any saved state. */
 task('clean', () => del(['build', 'doc/api', 'lib', 'var/**/*', 'web']));

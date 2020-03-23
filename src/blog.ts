@@ -37,10 +37,12 @@ export class Blog {
    * @return The map in JSON format corresponding to this object.
    */
   toJSON(): JsonObject {
+    /* eslint-disable @typescript-eslint/camelcase */
     const map: JsonObject = {blog: this.url ? this.url.href : ''};
     if (this.charset.length) map.blog_charset = this.charset;
     if (this.languages.length) map.blog_lang = this.languages.join(',');
     return map;
+    /* eslint-enable @typescript-eslint/camelcase */
   }
 }
 

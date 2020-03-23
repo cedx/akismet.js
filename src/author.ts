@@ -48,6 +48,7 @@ export class Author {
    * @return The map in JSON format corresponding to this object.
    */
   toJSON(): JsonObject {
+    /* eslint-disable @typescript-eslint/camelcase */
     const map: JsonObject = {
       user_agent: this.userAgent,
       user_ip: this.ipAddress
@@ -58,6 +59,7 @@ export class Author {
     if (this.url) map.comment_author_url = this.url.href;
     if (this.role.length) map.user_role = this.role;
     return map;
+    /* eslint-enable @typescript-eslint/camelcase */
   }
 }
 

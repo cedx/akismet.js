@@ -64,6 +64,7 @@ export class Comment {
    * @return The map in JSON format corresponding to this object.
    */
   toJSON(): JsonObject {
+    /* eslint-disable @typescript-eslint/camelcase */
     const map = this.author ? this.author.toJSON() : {};
     if (this.content.length) map.comment_content = this.content;
     if (this.date) map.comment_date_gmt = this.date.toJSON();
@@ -73,6 +74,7 @@ export class Comment {
     if (this.referrer) map.referrer = this.referrer.href;
     if (this.type.length) map.comment_type = this.type;
     return map;
+    /* eslint-enable @typescript-eslint/camelcase */
   }
 }
 
