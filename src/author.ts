@@ -49,11 +49,7 @@ export class Author {
    */
   toJSON(): JsonObject {
     /* eslint-disable @typescript-eslint/camelcase */
-    const map: JsonObject = {
-      user_agent: this.userAgent,
-      user_ip: this.ipAddress
-    };
-
+    const map: JsonObject = {user_agent: this.userAgent, user_ip: this.ipAddress};
     if (this.name.length) map.comment_author = this.name;
     if (this.email.length) map.comment_author_email = this.email;
     if (this.url) map.comment_author_url = this.url.href;

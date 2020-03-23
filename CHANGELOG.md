@@ -1,25 +1,22 @@
 # Changelog
 
-## Version [14.0.0](https://github.com/cedx/akismet.js/compare/v13.1.0...v14.0.0)
+## Version [14.0.0](https://github.com/cedx/akismet.js/compare/v13.0.1...v14.0.0)
 - Breaking change: ported the source code to [TypeScript](https://www.typescriptlang.org).
-- Breaking change: changed the signature of the constructors.
+- Breaking change: changed the signature of the class constructors.
 - Breaking change: changed the signature of the `fromJson()` methods.
 - Breaking change: raised the required [Node.js](https://nodejs.org) version.
-- Breaking change: removed the `defaultEndPoint` and `debugHeader` static properties from the `Client` class.
-- Added support for the `X-akismet-pro-tip` HTTP header.
-- Added the `CheckResult` enumeration.
-- Added the `Comment->recheckReason` property.
-- Added the `eventRequest` and `eventResponse` static properties to the `Client` class.
-- Added an example code.
-- Ported the unit tests to classes with experimental decorators.
+- Breaking change: removed the `[Symbol.toStringTag]()` and `toString()` methods.
+- Breaking change: removed the `debugHeader` and `defaultEndPoint` static properties from the `Client` class.
+- Breaking change: using [ECMAScript modules](https://nodejs.org/api/esm.html) instead of [CommonJS](https://nodejs.org/api/modules.html) ones.
 - Replaced the [ESDoc](https://esdoc.org) documentation generator by [TypeDoc](https://typedoc.org).
-- Replaced the [ESLint](https://eslint.org) static analyzer by [TSLint](https://palantir.github.io/tslint).
-- Updated the package dependencies.
-- Using the global `URL` and `URLSearchParams` classes.
-
-## Version [13.1.0](https://github.com/cedx/akismet.js/compare/v13.0.1...v13.1.0)
-- Added a user guide based on [MkDocs](http://www.mkdocs.org).
+- Added the `CheckResult` enumeration.
 - Added the `ClientError` class.
+- Added the `Comment.recheckReason` property.
+- Added the `eventRequest` and `eventResponse` static properties to the `Client` class.
+- Added support for the `X-akismet-pro-tip` HTTP header.
+- Added a user guide based on [MkDocs](http://www.mkdocs.org).
+- Added an example code.
+- Using the global `URL` and `URLSearchParams` classes.
 - Updated the build system to [Gulp](https://gulpjs.com) version 4.
 - Updated the package dependencies.
 
