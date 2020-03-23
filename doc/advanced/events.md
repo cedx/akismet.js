@@ -8,7 +8,7 @@ The `Client` class, used to query the Akismet service, is an [`EventEmitter`](ht
 Emitted every time a request is made to the remote service:
 
 ```js
-client.on(Client.eventRequest, (request) =>
+client.on(Client.eventRequest, request =>
   console.log(`Client request: ${request.url}`)
 );
 ```
@@ -17,7 +17,7 @@ client.on(Client.eventRequest, (request) =>
 Emitted every time a response is received from the remote service:
 
 ```js
-client.on(Client.eventResponse, (request, response) =>
+client.on(Client.eventResponse, (response, request) =>
   console.log(`Server response: ${response.status}`)
 );
 ```

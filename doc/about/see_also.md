@@ -1,11 +1,11 @@
 # See also
 
 ## Development
-- [Akismet for developers](https://akismet.com/development/api)
 - [API reference](https://dev.belin.io/akismet.js/api)
 - [GitHub package](https://github.com/cedx/akismet.js/packages)
 - [npm package](https://www.npmjs.com/package/@cedx/akismet)
 - [Submit an issue](https://github.com/cedx/akismet.js/issues)
+- [Akismet for developers](https://akismet.com/development/api)
 
 ## Testing
 - [Continuous integration](https://github.com/cedx/akismet.js/actions)

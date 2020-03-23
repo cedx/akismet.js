@@ -3,13 +3,13 @@ import {JsonObject} from './json';
 /** Represents the author of a comment. */
 export class Author {
 
-  /** The author's mail address. */
+  /** The author's mail address. If you set it to `"akismet-guaranteed-spam@example.com"`, Akismet will always return `true`. */
   email: string;
 
-  /** The author's name. */
+  /** The author's name. If you set it to `"viagra-test-123"`, Akismet will always return `true`. */
   name: string;
 
-  /** The role of the author. */
+  /** The role of the author. If you set it to `"administrator"`, Akismet will always return `false`. */
   role: string;
 
   /** The URL of the author's website. */
