@@ -1,5 +1,5 @@
 import chai from 'chai';
-import {Author, Blog, Client, Comment, CommentType} from '../lib/index.js';
+import {Author, Blog, CheckResult, Client, Comment, CommentType} from '../lib/index.js';
 
 /** Tests the features of the {@link Client} class. */
 describe('Client', function() {
@@ -7,10 +7,10 @@ describe('Client', function() {
   this.timeout(15000);
 
   // The default test client.
-  const _client = new Client(apiKey, new Blog(new URL('https://dev.belin.io/akismet.js')), {isTest: true});
+  const _client = new Client(process.env.AKISMET_API_KEY, new Blog(new URL('https://dev.belin.io/akismet.js')), {isTest: true});
 
   // A message marked as ham.
-  let author = new Author('192.168.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36 Edg/79.0.309.71', {
+  let author = new Author('192.168.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:74.0) Gecko/20100101 Firefox/74.0', {
     name: 'Akismet',
     role: 'administrator',
     url: new URL('https://dev.belin.io/akismet.js')
@@ -34,26 +34,26 @@ describe('Client', function() {
   });
 
   describe('.checkComment()', () => {
-    it('should return `false` for valid comment (e.g. ham)', async () => {
-      expect(await _client.checkComment(_ham)).to.be.false;
+    it('should return `CheckResult.isHam` for valid comment (e.g. ham)', async () => {
+      expect(await _client.checkComment(_ham)).to.equal(CheckResult.isHam);
     });
 
-    it('should return `true` for invalid comment (e.g. spam)', async () => {
-      expect(await _client.checkComment(_spam)).to.be.true;
+    it('should return `CheckResult.isSpam` for invalid comment (e.g. spam)', async () => {
+      expect(await _client.checkComment(_spam)).to.be.oneOf([CheckResult.isSpam, CheckResult.isPervasiveSpam]);
     });
   });
 
   describe('.submitHam()', () => {
-    it('should complete without error', async () => {
-      await _client.submitHam(_ham);
-      expect(true).to.be.ok;
+    it('should complete without any error', async () => {
+      try { await _client.submitHam(_ham); }
+      catch (err) { expect.fail(err.message); }
     });
   });
 
   describe('.submitSpam()', () => {
-    it('should complete without error', async () => {
-      await _client.submitSpam(_spam);
-      expect(true).to.be.ok;
+    it('should complete without any error', async () => {
+      try { await _client.submitSpam(_spam); }
+      catch (err) { expect.fail(err.message); }
     });
   });
 

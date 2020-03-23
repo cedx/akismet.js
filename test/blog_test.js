@@ -10,7 +10,7 @@ describe('Blog', () => {
       const blog = Blog.fromJson({});
       expect(blog.charset).to.be.empty;
       expect(blog.languages).to.be.an('array').that.is.empty;
-      expect(blog.url).to.be.null;
+      expect(blog.url).to.be.undefined;
     });
 
     it('should return an initialized instance with a non-empty map', () => {

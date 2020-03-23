@@ -8,10 +8,10 @@ describe('Comment', () => {
   describe('.fromJson()', () => {
     it('should return an empty instance with an empty map', () => {
       const comment = Comment.fromJson({});
-      expect(comment.author).to.be.null;
+      expect(comment.author).to.be.undefined;
       expect(comment.content).to.be.empty;
-      expect(comment.date).to.be.null;
-      expect(comment.referrer).to.be.null;
+      expect(comment.date).to.be.undefined;
+      expect(comment.referrer).to.be.undefined;
       expect(comment.type).to.be.empty;
     });
 
