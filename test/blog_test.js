@@ -1,16 +1,14 @@
-import chai from 'chai';
+import {strict as assert} from 'assert';
 import {Blog} from '../lib/index.js';
 
 /** Tests the features of the {@link Blog} class. */
 describe('Blog', () => {
-  const {expect} = chai;
-
   describe('.fromJson()', () => {
     it('should return an empty instance with an empty map', () => {
       const blog = Blog.fromJson({});
-      expect(blog.charset).to.be.empty;
-      expect(blog.languages).to.be.an('array').that.is.empty;
-      expect(blog.url).to.be.undefined;
+      assert.equal(blog.charset.length, 0);
+      assert.equal(blog.languages.length, 0);
+      assert.equal(blog.url, undefined);
     });
 
     it('should return an initialized instance with a non-empty map', () => {
@@ -20,25 +18,26 @@ describe('Blog', () => {
         blog_lang: 'en, fr'
       });
 
-      expect(blog.charset).to.equal('UTF-8');
-      expect(blog.languages).to.have.ordered.members(['en', 'fr']);
-      expect(blog.url).to.be.an.instanceof(URL).and.have.property('href').that.equal('https://dev.belin.io/akismet.js');
+      assert.equal(blog.charset, 'UTF-8');
+      assert.deepEqual(blog.languages, ['en', 'fr']);
+      assert(blog.url instanceof URL);
+      assert.equal(blog.url.href, 'https://dev.belin.io/akismet.js');
     });
   });
 
   describe('.toJSON()', () => {
     it('should return only the blog URL with a newly created instance', () => {
       const data = new Blog(new URL('https://dev.belin.io/akismet.js')).toJSON();
-      expect(Object.keys(data)).to.have.lengthOf(1);
-      expect(data.blog).to.equal('https://dev.belin.io/akismet.js');
+      assert.equal(Object.keys(data).length, 1);
+      assert.equal(data.blog, 'https://dev.belin.io/akismet.js');
     });
 
     it('should return a non-empty map with an initialized instance', () => {
       const data = new Blog(new URL('https://dev.belin.io/akismet.js'), {charset: 'UTF-8', languages: ['en', 'fr']}).toJSON();
-      expect(Object.keys(data)).to.have.lengthOf(3);
-      expect(data.blog).to.equal('https://dev.belin.io/akismet.js');
-      expect(data.blog_charset).to.equal('UTF-8');
-      expect(data.blog_lang).to.equal('en,fr');
+      assert.equal(Object.keys(data).length, 3);
+      assert.equal(data.blog, 'https://dev.belin.io/akismet.js');
+      assert.equal(data.blog_charset, 'UTF-8');
+      assert.equal(data.blog_lang, 'en,fr');
     });
   });
 });
