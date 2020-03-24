@@ -2,12 +2,14 @@
 This call is intended for the submission of false positives - items that were incorrectly classified as spam by Akismet.
 It takes identical arguments as [comment check](comment_check.md) and [submit spam](submit_spam.md).
 
+```
+Client.submitHam(comment: Comment): Promise<void>
+```
+
 Remember that, as explained in the [submit spam](submit_spam.md) documentation, you should ensure
 that any values you're passing here match up with the original and corresponding [comment check](comment_check.md) call.
 
-```
-Client.submitHam(comment: Comment): Promise
-```
+See the [Akismet API documentation](https://akismet.com/development/api/#submit-ham) for more information.
 
 ## Parameters
 
@@ -30,15 +32,16 @@ import {Author, Blog, Client, Comment} from '@cedx/akismet';
 
 async function main() {
   try {
-    const comment = new Comment(
-      new Author('127.0.0.1', 'Mozilla/5.0'),
-      {content: 'A valid user comment (ham)'}
-    );
+    const author = new Author('127.0.0.1', 'Mozilla/5.0');
+    const comment = new Comment(author, {content: 'A valid user comment (ham)'});
 
-    const client = new Client('123YourAPIKey', new Blog(new URL('https://www.yourblog.com')));
-    const isSpam = await client.checkComment(comment); // `true`, but `false` expected.
-    
-    console.log('The comment was incorrectly classified as spam');
+    const blog = new Blog(new URL('https://www.yourblog.com'));
+    const client = new Client('123YourAPIKey', blog);
+
+    const result = await client.checkComment(comment);
+    // Got `CheckResult.isSpam`, but `CheckResult.isHam` expected.
+
+    console.log('The comment was incorrectly classified as spam.');
     await client.submitHam(comment);
   }
     

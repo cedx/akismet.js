@@ -1,5 +1,5 @@
 path: blob/master
-source: src/core/comment.ts
+source: src/comment.ts
 
 # Comment check
 This is the call you will make the most. It takes a number of arguments and characteristics about the submitted content
@@ -33,18 +33,18 @@ The exception `message` usually includes some debug information, provided by the
 ## Example
 
 ```js
-import {Author, Blog, Client, Comment} from '@cedx/akismet';
+import {Author, Blog, CheckResult, Client, Comment} from '@cedx/akismet';
 
 async function main() {
   try {
-    const comment = new Comment(
-      new Author('127.0.0.1', 'Mozilla/5.0'),
-      {content: 'A user comment', date: new Date}
-    );
+    const author = new Author('127.0.0.1', 'Mozilla/5.0');
+    const comment = new Comment(author, {content: 'A user comment', date: new Date});
 
-    const client = new Client('123YourAPIKey', new Blog(new URL('https://www.yourblog.com')));
-    const isSpam = await client.checkComment(comment);
-    console.log(isSpam ? 'The comment is spam' : 'The comment is ham');
+    const blog = new Blog(new URL('https://www.yourblog.com'));
+    const client = new Client('123YourAPIKey', blog);
+
+    const result = await client.checkComment(comment);
+    console.log(result == CheckResult.isHam ? 'The comment is ham.' : 'The comment is spam.');
   }
 
   catch (err) {
