@@ -10,12 +10,12 @@ Add Akismet to your [Node.js](https://nodejs.org) applications so you don't have
 ## Quick start
 
 ### Get a developer key
-You first need to [sign up for a developer key](https://akismet.com/signup/?connect=yes&plan=developer).
+You first need to [sign up for a developer key](https://akismet.com/signup/?plan=developer).
 This will give you access to the API and will allow Akismet to monitor its results to make sure things are running as smoothly as possible.
 
 !!! warning
     All Akismet endpoints require an API key. If you are not already registered,
-    [join the developer program](https://akismet.com/signup/?connect=yes&plan=developer).
+    [join the developer program](https://akismet.com/signup/?plan=developer).
 
 ### Get the library
 Install the latest version of **Akismet for JS** with [npm](https://www.npmjs.com):
