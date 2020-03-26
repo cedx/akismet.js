@@ -43,4 +43,4 @@ async function main() {
 }
 ```
 
-See the [API reference](https://dev.belin.io/akismet.s/api) for detailed information about the `Client` and `Blog` classes, and their properties and methods.
+See the [API reference](https://dev.belin.io/akismet.js/api) for detailed information about the `Client` and `Blog` classes, and their properties and methods.
