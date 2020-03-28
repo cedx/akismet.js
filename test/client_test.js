@@ -64,7 +64,7 @@ describe('Client', function() {
     });
 
     it('should return `false` for an invalid API key', async () => {
-      const client = new Client('0123456789-ABCDEF', _client.blog, {isTest: _client.isTest});
+      const client = new Client('0123456789-ABCDEF', _client.blog, {isTest: true});
       assert.equal(await client.verifyKey(), false);
     });
   });
