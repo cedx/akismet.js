@@ -6,14 +6,13 @@ Prevent comment spam using [Akismet](https://akismet.com) service, in [JavaScrip
 > This library is packaged as [ECMAScript modules](https://nodejs.org/api/esm.html).
 
 ## Documentation
-- [User guide](https://dev.belin.io/akismet.js)
-- [API reference](https://dev.belin.io/akismet.js/api)
+- [User guide](https://docs.belin.io/akismet.js)
+- [API reference](https://api.belin.io/akismet.js)
 
 ## Development
-- [Git repository](https://github.com/cedx/akismet.js)
-- [GitHub package](https://github.com/cedx/akismet.js/packages)
+- [Git repository](https://git.belin.io/cedx/akismet.js)
 - [npm package](https://www.npmjs.com/package/@cedx/akismet)
-- [Submit an issue](https://github.com/cedx/akismet.js/issues)
+- [Submit an issue](https://git.belin.io/cedx/akismet.js/issues)
 
 ## License
-[Akismet for JS](https://dev.belin.io/akismet.js) is distributed under the MIT License.
+[Akismet for JS](https://docs.belin.io/akismet.js) is distributed under the MIT License.

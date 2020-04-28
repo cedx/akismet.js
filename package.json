@@ -1,11 +1,10 @@
 {
-  "bugs": "https://github.com/cedx/akismet.js/issues",
+  "bugs": "https://git.belin.io/cedx/akismet.js/issues",
   "description": "Prevent comment spam using the Akismet service. Add Akismet to your applications so you don't have to worry about spam again.",
-  "homepage": "https://dev.belin.io/akismet.js",
+  "homepage": "https://docs.belin.io/akismet.js",
   "license": "MIT",
   "main": "lib/index.js",
   "name": "@cedx/akismet",
-  "repository": "github:cedx/akismet.js",
   "type": "module",
   "types": "lib/index.d.ts",
   "version": "14.0.0",
@@ -51,6 +50,10 @@
     "spam",
     "validation"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://git.belin.io/cedx/akismet.js.git"
+  },
   "scripts": {
     "coverage": "gulp coverage",
     "prepack": "gulp",

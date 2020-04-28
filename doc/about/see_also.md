@@ -1,10 +1,9 @@
 # See also
 
 ## Development
-- [API reference](https://dev.belin.io/akismet.js/api)
-- [GitHub package](https://github.com/cedx/akismet.js/packages)
+- [API reference](https://api.belin.io/akismet.js)
 - [npm package](https://www.npmjs.com/package/@cedx/akismet)
-- [Submit an issue](https://github.com/cedx/akismet.js/issues)
+- [Submit an issue](https://git.belin.io/cedx/akismet.js/issues)
 - [Akismet for developers](https://akismet.com/development/api)
 
 ## Testing
@@ -12,5 +11,5 @@
 - [Code coverage](https://coveralls.io/github/cedx/akismet.js)
 
 ## Other implementations
-- Dart: [Akismet for Dart](https://dev.belin.io/akismet.dart)
-- PHP: [Akismet for PHP](https://dev.belin.io/akismet.php)
+- Dart: [Akismet for Dart](https://docs.belin.io/akismet.dart)
+- PHP: [Akismet for PHP](https://docs.belin.io/akismet.php)

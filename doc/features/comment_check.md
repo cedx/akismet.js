@@ -1,5 +1,7 @@
-path: blob/master
+---
+path: src/branch/master
 source: src/comment.ts
+---
 
 # Comment check
 This is the call you will make the most. It takes a number of arguments and characteristics about the submitted content
@@ -53,4 +55,4 @@ async function main() {
 }
 ```
 
-See the [API reference](https://dev.belin.io/akismet.js/api) of this library for detailed information about the `Author` and `Comment` classes, and their properties.
+See the [API reference](https://api.belin.io/akismet.js) of this library for detailed information about the `Author` and `Comment` classes, and their properties.

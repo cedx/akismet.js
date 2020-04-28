@@ -1,5 +1,7 @@
-path: blob/master
+---
+path: src/branch/master
 source: src/client.ts
+---
 
 # Events
 The `Client` class, used to query the Akismet service, is an [`EventEmitter`](https://nodejs.org/api/events.html) that triggers some events during its life cycle.

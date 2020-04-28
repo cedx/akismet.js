@@ -1,5 +1,7 @@
-path: blob/master
+---
+path: src/branch/master
 source: src/client.ts
+---
 
 # Key verification
 Key verification authenticates your key before calling the [comment check](comment_check.md),
@@ -43,4 +45,4 @@ async function main() {
 }
 ```
 
-See the [API reference](https://dev.belin.io/akismet.js/api) for detailed information about the `Client` and `Blog` classes, and their properties and methods.
+See the [API reference](https://api.belin.io/akismet.js) for detailed information about the `Client` and `Blog` classes, and their properties and methods.
