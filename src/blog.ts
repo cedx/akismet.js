@@ -1,4 +1,4 @@
-import {JsonObject} from './json';
+import {JsonObject} from './json.js';
 
 /** Represents the front page or home URL transmitted when making requests. */
 export class Blog {

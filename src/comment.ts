@@ -1,5 +1,5 @@
-import {Author} from './author';
-import {JsonObject} from './json';
+import {Author} from './author.js';
+import {JsonObject} from './json.js';
 
 /** Represents a comment submitted by an author. */
 export class Comment {

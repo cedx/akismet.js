@@ -1,9 +1,9 @@
 import {EventEmitter} from 'events';
 import fetch, {Response} from 'node-fetch';
-import {Blog} from './blog';
-import {Comment} from './comment';
-import {JsonObject} from './json';
-import {packageVersion} from './version.g';
+import {Blog} from './blog.js';
+import {Comment} from './comment.js';
+import {JsonObject} from './json.js';
+import {packageVersion} from './version.g.js';
 
 /** Specifies the result of a comment check. */
 export enum CheckResult {
