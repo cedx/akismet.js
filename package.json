@@ -17,7 +17,7 @@
     "node-fetch": "^2.6.0"
   },
   "devDependencies": {
-    "@cedx/coveralls": "^9.4.0",
+    "@cedx/coveralls": "^10.0.0",
     "@types/node": "^13.13.4",
     "@types/node-fetch": "^2.5.7",
     "@typescript-eslint/eslint-plugin": "^2.30.0",
