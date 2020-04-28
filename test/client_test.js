@@ -6,14 +6,14 @@ describe('Client', function() {
   this.timeout(15000);
 
   // The default test client.
-  const blog = new Blog(new URL('https://dev.belin.io/akismet.js'));
+  const blog = new Blog(new URL('https://docs.belin.io/akismet.js'));
   const _client = new Client(process.env.AKISMET_API_KEY, blog, {isTest: true});
 
   // A message marked as ham.
   let author = new Author('192.168.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:74.0) Gecko/20100101 Firefox/74.0', {
     name: 'Akismet',
     role: 'administrator',
-    url: new URL('https://dev.belin.io/akismet.js')
+    url: new URL('https://docs.belin.io/akismet.js')
   });
 
   const _ham = new Comment(author, {
