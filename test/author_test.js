@@ -1,7 +1,7 @@
 import {strict as assert} from 'assert';
 import {Author} from '../lib/index.js';
 
-/** Tests the features of the {@link Author} class. */
+/** Tests the features of the `Author` class. */
 describe('Author', () => {
   describe('.fromJson()', () => {
     it('should return an empty instance with an empty map', () => {

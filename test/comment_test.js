@@ -1,7 +1,7 @@
 import {strict as assert} from 'assert';
 import {Author, Comment, CommentType} from '../lib/index.js';
 
-/** Tests the features of the {@link Comment} class. */
+/** Tests the features of the `Comment` class. */
 describe('Comment', () => {
   describe('.fromJson()', () => {
     it('should return an empty instance with an empty map', () => {

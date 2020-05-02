@@ -1,7 +1,7 @@
 import {strict as assert} from 'assert';
 import {Blog} from '../lib/index.js';
 
-/** Tests the features of the {@link Blog} class. */
+/** Tests the features of the `Blog` class. */
 describe('Blog', () => {
   describe('.fromJson()', () => {
     it('should return an empty instance with an empty map', () => {
