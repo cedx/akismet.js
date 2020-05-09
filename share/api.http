@@ -1,3 +1,7 @@
+@baseUrl = https://<your-api-key>.rest.akismet.com/1.1
+
+###
+
 // It should return `false` for valid comment (e.g. ham).
 POST {{baseUrl}}/comment-check
 Content-Type: application/x-www-form-urlencoded
@@ -11,5 +15,3 @@ POST {{baseUrl}}/comment-check
 Content-Type: application/x-www-form-urlencoded
 
 blog=https%3A%2F%2Fdocs.belin.io%2Fakismet.js&comment_author=viagra-test-123&comment_content=Spam!&comment_type=trackback&comment_author_email=akismet-guaranteed-spam%40example.com&is_test=true&user_ip=127.0.0.1&user_agent=Spam%20Bot%2F6.6.6
-
-###
