@@ -1,7 +1,6 @@
 root: true
 env:
   es2020: true
-  mocha: true
   node: true
 extends:
   - eslint:recommended
@@ -20,7 +19,6 @@ rules:
   no-console: [error, {allow: [error, warn]}]
   no-extra-semi: 'off'
   no-template-curly-in-string: error
-  no-useless-backreference: error
   require-atomic-updates: error
 
   # Best practices.
@@ -172,7 +170,6 @@ rules:
   '@typescript-eslint/no-unnecessary-condition': error
   '@typescript-eslint/no-unnecessary-qualifier': error
   '@typescript-eslint/no-unnecessary-type-arguments': error
-  '@typescript-eslint/no-unsafe-return': error
   '@typescript-eslint/no-unused-vars-experimental': error
   '@typescript-eslint/prefer-as-const': error
   '@typescript-eslint/prefer-for-of': error
@@ -184,7 +181,6 @@ rules:
   '@typescript-eslint/promise-function-async': error
   '@typescript-eslint/require-array-sort-compare': error
   '@typescript-eslint/restrict-plus-operands': error
-  '@typescript-eslint/restrict-template-expressions': error
   '@typescript-eslint/switch-exhaustiveness-check': error
   '@typescript-eslint/unbound-method': [error, {ignoreStatic: true}]
   '@typescript-eslint/unified-signatures': error
