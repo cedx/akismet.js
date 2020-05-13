@@ -127,8 +127,7 @@ export class Client extends EventEmitter {
     const body = new URLSearchParams({...this.blog.toJSON(), ...fields} as Record<string, string>);
     if (this.isTest) body.set('is_test', '1');
 
-    // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
-    // @ts-ignore: `fetch` has wrong typings.
+    // @ts-expect-error: `fetch` has wrong typings.
     const request = new fetch.Request(endPoint.href, {
       body,
       headers: {'Content-Type': 'application/x-www-form-urlencoded', 'User-Agent': this.userAgent},
