@@ -19,7 +19,7 @@ See the [Akismet API documentation](https://akismet.com/development/api/#submit-
 The user `Comment` to be submitted, incorrectly classified as ham.
 
 !!! tip
-    Ideally, it should be the same object as the one passed to the original [comment check](comment_check.md) API call.
+	Ideally, it should be the same object as the one passed to the original [comment check](comment_check.md) API call.
 
 ## Return value
 A `Promise` that resolves when the given `Comment` has been submitted.
@@ -29,26 +29,26 @@ The exception `message` usually includes some debug information, provided by the
 
 ## Example
 
-```js
-import {Author, Blog, Client, Comment} from '@cedx/akismet';
+``` js
+import {Author, Blog, Client, Comment} from "@cedx/akismet";
 
 async function main() {
-  try {
-    const author = new Author('127.0.0.1', 'Mozilla/5.0');
-    const comment = new Comment(author, {content: 'An invalid user comment (spam)'});
+	try {
+		const author = new Author("127.0.0.1", "Mozilla/5.0");
+		const comment = new Comment(author, {content: "An invalid user comment (spam)"});
 
-    const blog = new Blog(new URL('https://www.yourblog.com'));
-    const client = new Client('123YourAPIKey', blog);
+		const blog = new Blog(new URL("https://www.yourblog.com"));
+		const client = new Client("123YourAPIKey", blog);
 
-    const result = await client.checkComment(comment);
-    // Got `CheckResult.isHam`, but `CheckResult.isSpam` expected.
-    
-    console.log('The comment was incorrectly classified as ham.');
-    await client.submitSpam(comment);
-  }
-    
-  catch (err) {
-    console.log(`An error occurred: ${err.message}`);
-  }
+		const result = await client.checkComment(comment);
+		// Got `CheckResult.isHam`, but `CheckResult.isSpam` expected.
+		
+		console.log("The comment was incorrectly classified as ham.");
+		await client.submitSpam(comment);
+	}
+		
+	catch (err) {
+		console.log(`An error occurred: ${err.message}`);
+	}
 }
 ```

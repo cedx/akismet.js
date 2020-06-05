@@ -1,7 +1,7 @@
 /// <reference types="node" />
-import { EventEmitter } from 'events';
-import { Blog } from './blog.js';
-import { Comment } from './comment.js';
+import { EventEmitter } from "events";
+import { Blog } from "./blog.js";
+import { Comment } from "./comment.js";
 /** Specifies the result of a comment check. */
 export declare enum CheckResult {
     /** The comment is not a spam (i.e. a ham). */

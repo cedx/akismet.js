@@ -6,18 +6,18 @@ Make a [comment check](../features/comment_check.md) API call with the `Author.n
 
 The Akismet API will always return a `CheckResult.isSpam` response to a valid request with one of those values. If you receive anything else, something is wrong in your client, data, or communications.
 
-```js
-import {Author, Blog, Client, Comment} from '@cedx/akismet';
+``` js
+import {Author, Blog, Client, Comment} from "@cedx/akismet";
 
 async function main() {
-  const author = new Author('127.0.0.1', 'Mozilla/5.0', {name: 'viagra-test-123'});
-  const comment = new Comment(author, {content: 'A user comment'});
+	const author = new Author("127.0.0.1", "Mozilla/5.0", {name: "viagra-test-123"});
+	const comment = new Comment(author, {content: "A user comment"});
 
-  const blog = new Blog(new URL('https://www.yourblog.com'));
-  const client = new Client('123YourAPIKey', blog);
+	const blog = new Blog(new URL("https://www.yourblog.com"));
+	const client = new Client("123YourAPIKey", blog);
 
-  const result = await client.checkComment(comment);
-  console.log(`It should be "CheckResult.isSpam": ${result}`);
+	const result = await client.checkComment(comment);
+	console.log(`It should be "CheckResult.isSpam": ${result}`);
 }
 ```
 
@@ -26,18 +26,18 @@ Make a [comment check](../features/comment_check.md) API call with the `Author.r
 
 The Akismet API will always return a `CheckResult.isHam` response. Any other response indicates a data or communication problem.
 
-```js
-import {Author, Blog, Client, Comment} from '@cedx/akismet';
+``` js
+import {Author, Blog, Client, Comment} from "@cedx/akismet";
 
 async function main() {
-  const author = new Author('127.0.0.1', 'Mozilla/5.0', {role: 'administrator'});
-  const comment = new Comment(author, {content: 'A user comment'});
+	const author = new Author("127.0.0.1", "Mozilla/5.0", {role: "administrator"});
+	const comment = new Comment(author, {content: "A user comment"});
 
-  const blog = new Blog(new URL('https://www.yourblog.com'));
-  const client = new Client('123YourAPIKey', blog);
+	const blog = new Blog(new URL("https://www.yourblog.com"));
+	const client = new Client("123YourAPIKey", blog);
 
-  const result = await client.checkComment(comment);
-  console.log(`It should be "CheckResult.isHam": ${result}`);
+	const result = await client.checkComment(comment);
+	console.log(`It should be "CheckResult.isHam": ${result}`);
 }
 ```
 
@@ -46,17 +46,17 @@ Enable the `Client.isTest` option in your tests.
 
 That will tell Akismet not to change its behaviour based on those API calls: they will have no training effect. That means your tests will be somewhat repeatable, in the sense that one test won't influence subsequent calls.
 
-```js
-import {Author, Blog, Client, Comment} from '@cedx/akismet';
+``` js
+import {Author, Blog, Client, Comment} from "@cedx/akismet";
 
 async function main() {
-  const author = new Author('127.0.0.1', 'Mozilla/5.0');
-  const comment = new Comment(author, {content: 'A user comment'});
+	const author = new Author("127.0.0.1", "Mozilla/5.0");
+	const comment = new Comment(author, {content: "A user comment"});
 
-  const blog = new Blog(new URL('https://www.yourblog.com'));
-  const client = new Client('123YourAPIKey', blog, {isTest: true});
+	const blog = new Blog(new URL("https://www.yourblog.com"));
+	const client = new Client("123YourAPIKey", blog, {isTest: true});
 
-  console.log('It should not influence subsequent calls.');
-  await client.checkComment(comment);
+	console.log("It should not influence subsequent calls.");
+	await client.checkComment(comment);
 }
 ```

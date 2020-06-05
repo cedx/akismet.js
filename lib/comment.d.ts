@@ -1,5 +1,5 @@
-import { Author } from './author.js';
-import { JsonObject } from './json.js';
+import { Author } from "./author.js";
+import { JsonObject } from "./json.js";
 /** Represents a comment submitted by an author. */
 export declare class Comment {
     author?: Author | undefined;

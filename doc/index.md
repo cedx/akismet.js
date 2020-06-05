@@ -14,17 +14,17 @@ You first need to [sign up for a developer key](https://akismet.com/signup/?plan
 This will give you access to the API and will allow Akismet to monitor its results to make sure things are running as smoothly as possible.
 
 !!! warning
-    All Akismet endpoints require an API key. If you are not already registered,
-    [join the developer program](https://akismet.com/signup/?plan=developer).
+	All Akismet endpoints require an API key. If you are not already registered,
+	[join the developer program](https://akismet.com/signup/?plan=developer).
 
 ### Get the library
 Install the latest version of **Akismet for JS** with [npm](https://www.npmjs.com):
 
-```shell
+``` shell
 npm install @cedx/akismet
 ```
 
 !!! info
-    This library is packaged as [ECMAScript modules](https://nodejs.org/api/esm.html).
+	This library is packaged as [ECMAScript modules](https://nodejs.org/api/esm.html).
 
 For detailed instructions, see the [installation guide](installation.md).

@@ -27,31 +27,31 @@ The `Comment` providing the user message to be checked.
 A `Promise` that resolves with a `CheckResult` value indicating whether the given `Comment` is ham, spam or pervasive spam.
 
 !!! tip
-    A comment classified as pervasive spam can be safely discarded.
+	A comment classified as pervasive spam can be safely discarded.
 
 The promise rejects with a `ClientError` exception when an error occurs.
 The exception `message` usually includes some debug information, provided by the `X-akismet-debug-help` HTTP header, about what exactly was invalid about the call.
 
 ## Example
 
-```js
-import {Author, Blog, CheckResult, Client, Comment} from '@cedx/akismet';
+``` js
+import {Author, Blog, CheckResult, Client, Comment} from "@cedx/akismet";
 
 async function main() {
-  try {
-    const author = new Author('127.0.0.1', 'Mozilla/5.0');
-    const comment = new Comment(author, {content: 'A user comment', date: new Date});
+	try {
+		const author = new Author("127.0.0.1", "Mozilla/5.0");
+		const comment = new Comment(author, {content: "A user comment", date: new Date});
 
-    const blog = new Blog(new URL('https://www.yourblog.com'));
-    const client = new Client('123YourAPIKey', blog);
+		const blog = new Blog(new URL("https://www.yourblog.com"));
+		const client = new Client("123YourAPIKey", blog);
 
-    const result = await client.checkComment(comment);
-    console.log(result == CheckResult.isHam ? 'The comment is ham.' : 'The comment is spam.');
-  }
+		const result = await client.checkComment(comment);
+		console.log(result == CheckResult.isHam ? "The comment is ham." : "The comment is spam.");
+	}
 
-  catch (err) {
-    console.log(`An error occurred: ${err.message}`);
-  }
+	catch (err) {
+		console.log(`An error occurred: ${err.message}`);
+	}
 }
 ```
 

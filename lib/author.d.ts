@@ -1,4 +1,4 @@
-import { JsonObject } from './json.js';
+import { JsonObject } from "./json.js";
 /** Represents the author of a comment. */
 export declare class Author {
     ipAddress: string;
