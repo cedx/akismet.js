@@ -33,37 +33,37 @@ describe("Client", function() {
 		type: CommentType.trackback
 	});
 
-	describe(".checkComment()", () => {
-		it("should return `CheckResult.isHam` for valid comment (e.g. ham)", async () => {
+	describe(".checkComment()", function() {
+		it("should return `CheckResult.isHam` for valid comment (e.g. ham)", async function() {
 			assert.equal(await _client.checkComment(_ham), CheckResult.isHam);
 		});
 
-		it("should return `CheckResult.isSpam` for invalid comment (e.g. spam)", async () => {
+		it("should return `CheckResult.isSpam` for invalid comment (e.g. spam)", async function() {
 			const result = await _client.checkComment(_spam);
 			assert(result == CheckResult.isSpam || result == CheckResult.isPervasiveSpam);
 		});
 	});
 
-	describe(".submitHam()", () => {
-		it("should complete without any error", async () => {
+	describe(".submitHam()", function() {
+		it("should complete without any error", async function() {
 			try { await _client.submitHam(_ham); }
 			catch (err) { assert.fail(err.message); }
 		});
 	});
 
-	describe(".submitSpam()", () => {
-		it("should complete without any error", async () => {
+	describe(".submitSpam()", function() {
+		it("should complete without any error", async function() {
 			try { await _client.submitSpam(_spam); }
 			catch (err) { assert.fail(err.message); }
 		});
 	});
 
-	describe(".verifyKey()", () => {
-		it("should return `true` for a valid API key", async () => {
+	describe(".verifyKey()", function() {
+		it("should return `true` for a valid API key", async function() {
 			assert(await _client.verifyKey());
 		});
 
-		it("should return `false` for an invalid API key", async () => {
+		it("should return `false` for an invalid API key", async function() {
 			const client = new Client("0123456789-ABCDEF", _client.blog, {isTest: true});
 			assert.equal(await client.verifyKey(), false);
 		});

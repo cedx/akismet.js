@@ -2,16 +2,16 @@ import {strict as assert} from "assert";
 import {Blog} from "../lib/index.js";
 
 /** Tests the features of the `Blog` class. */
-describe("Blog", () => {
-	describe(".fromJson()", () => {
-		it("should return an empty instance with an empty map", () => {
+describe("Blog", function() {
+	describe(".fromJson()", function() {
+		it("should return an empty instance with an empty map", function() {
 			const blog = Blog.fromJson({});
 			assert.equal(blog.charset.length, 0);
 			assert.equal(blog.languages.length, 0);
 			assert.equal(blog.url, undefined);
 		});
 
-		it("should return an initialized instance with a non-empty map", () => {
+		it("should return an initialized instance with a non-empty map", function() {
 			const blog = Blog.fromJson({
 				blog: "https://docs.belin.io/akismet.js",
 				blog_charset: "UTF-8",
@@ -25,14 +25,14 @@ describe("Blog", () => {
 		});
 	});
 
-	describe(".toJSON()", () => {
-		it("should return only the blog URL with a newly created instance", () => {
+	describe(".toJSON()", function() {
+		it("should return only the blog URL with a newly created instance", function() {
 			const data = new Blog(new URL("https://docs.belin.io/akismet.js")).toJSON();
 			assert.equal(Object.keys(data).length, 1);
 			assert.equal(data.blog, "https://docs.belin.io/akismet.js");
 		});
 
-		it("should return a non-empty map with an initialized instance", () => {
+		it("should return a non-empty map with an initialized instance", function() {
 			const data = new Blog(new URL("https://docs.belin.io/akismet.js"), {charset: "UTF-8", languages: ["en", "fr"]}).toJSON();
 			assert.equal(Object.keys(data).length, 3);
 			assert.equal(data.blog, "https://docs.belin.io/akismet.js");
