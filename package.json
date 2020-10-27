@@ -20,16 +20,16 @@
 		"@cedx/coveralls": "^10.1.0",
 		"@types/node": "^14.0.19",
 		"@types/node-fetch": "^2.5.7",
-		"@typescript-eslint/eslint-plugin": "^3.6.0",
-		"@typescript-eslint/parser": "^3.6.0",
+		"@typescript-eslint/eslint-plugin": "^4.6.0",
+		"@typescript-eslint/parser": "^4.6.0",
 		"c8": "^7.1.2",
 		"eslint": "^7.4.0",
-		"mocha": "^8.0.1",
-		"typedoc": "^0.17.7",
-		"typescript": "^3.9.6"
+		"mocha": "^8.2.0",
+		"typedoc": "^0.19.2",
+		"typescript": "^4.0.5"
 	},
 	"engines": {
-		"node": ">=14.5.0"
+		"node": ">=14.15.0"
 	},
 	"files": [
 		"lib/"
@@ -43,7 +43,6 @@
 		"api",
 		"client",
 		"comment",
-		"esm",
 		"spam",
 		"validation"
 	],
@@ -52,8 +51,12 @@
 		"url": "https://git.belin.io/cedx/akismet.js.git"
 	},
 	"scripts": {
-		"coverage": "coveralls var/lcov.info",
+		"build": "tsc --project src/tsconfig.json",
+		"coverage": "coveralls var/akismet.info",
+		"doc": "typedoc --options etc/typedoc.json",
+		"lint": "eslint --config=etc/eslint.yaml src/**/*.ts",
 		"prepack": "pwsh tool/build.ps1",
-		"test": "c8 --all --include=lib/**/*.js --report-dir=var --reporter=lcovonly node_modules/.bin/mocha --recursive"
+		"prepublishOnly": "npm run clean",
+		"test": "c8 --all --include=lib/**/*.js --report-dir=var --reporter=akismetonly node_modules/.bin/mocha --recursive"
 	}
 }
