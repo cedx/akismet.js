@@ -1,5 +1,5 @@
 ---
-path: src/branch/master
+path: src/branch/main
 source: src/comment.ts
 ---
 

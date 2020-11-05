@@ -1,5 +1,5 @@
 # Akismet <small>for JS</small>
-![Runtime](https://badgen.net/npm/node/@cedx/akismet) ![Release](https://badgen.net/npm/v/@cedx/akismet) ![Types](https://badgen.net/npm/types/@cedx/akismet) ![License](https://badgen.net/npm/license/@cedx/akismet) ![Downloads](https://badgen.net/npm/dt/@cedx/akismet) ![Dependencies](https://badgen.net/david/dep/cedx/akismet.js) ![Coverage](https://badgen.net/coveralls/c/github/cedx/akismet.js) ![Build](https://badgen.net/github/checks/cedx/akismet.js)
+![Runtime](https://badgen.net/npm/node/@cedx/akismet) ![Release](https://badgen.net/npm/v/@cedx/akismet) ![Types](https://badgen.net/npm/types/@cedx/akismet) ![License](https://badgen.net/npm/license/@cedx/akismet) ![Downloads](https://badgen.net/npm/dt/@cedx/akismet) ![Dependencies](https://badgen.net/david/dep/cedx/akismet.js) ![Coverage](https://badgen.net/coveralls/c/github/cedx/akismet.js) ![Build](https://badgen.net/github/checks/cedx/akismet.js/main)
 
 ![Akismet](img/akismet.png)
 
