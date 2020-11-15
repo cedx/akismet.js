@@ -10,7 +10,7 @@ describe("Client", function() {
 	const _client = new Client(process.env.AKISMET_API_KEY, blog, {isTest: true});
 
 	// A message marked as ham.
-	let author = new Author("192.168.0.1", "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:74.0) Gecko/20100101 Firefox/74.0", {
+	let author = new Author("192.168.0.1", "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:79.0) Gecko/20100101 Firefox/79.0", {
 		name: "Akismet",
 		role: "administrator",
 		url: new URL("https://docs.belin.io/akismet.js")
