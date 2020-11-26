@@ -1,13 +1,8 @@
----
-path: src/branch/main
-source: src/client.ts
----
-
 # Key verification
-Key verification authenticates your key before calling the [comment check](comment_check.md),
-[submit spam](submit_spam.md) or [submit ham](submit_ham.md) methods.
+Key verification authenticates your key before calling the [comment check](features/comment_check.md),
+[submit spam](features/submit_spam.md) or [submit ham](features/submit_ham.md) methods.
 
-```
+```javascript
 Client.verifyKey(): Promise<boolean>
 ```
 
@@ -27,7 +22,7 @@ The exception `message` usually includes some debug information, provided by the
 
 ## Example
 
-``` js
+```javascript
 import {Blog, Client} from "@cedx/akismet";
 
 async function main() {

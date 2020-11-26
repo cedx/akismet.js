@@ -1,15 +1,10 @@
----
-path: src/branch/main
-source: src/client.ts
----
-
 # Events
-The `Client` class, used to query the Akismet service, is an [`EventEmitter`](https://nodejs.org/api/events.html) that triggers some events during its life cycle.
+The `Client` class, used to query the Akismet service, is an `EventEmitter` that triggers some events during its life cycle.
 
-## The `Client.eventRequest` event
+## The "request" event
 Emitted every time a request is made to the remote service:
 
-``` js
+```javascript
 import {Blog, Client} from "@cedx/akismet";
 
 function main() {
@@ -20,10 +15,10 @@ function main() {
 }
 ```
 
-## The `Client.eventResponse` event
+## The "response" event
 Emitted every time a response is received from the remote service:
 
-``` js
+```javascript
 import {Blog, Client} from "@cedx/akismet";
 
 function main() {

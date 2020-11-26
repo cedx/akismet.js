@@ -12,4 +12,4 @@ See the detailed documentation of each feature for more information about their 
 ## Further reading
 Before integrating this library into your application, you should [test your API calls](advanced/testing.md) to ensure a proper usage.
 
-If you want to be notified when a call is made to the Akismet service, or to log the service responses for further processing, you should take a look at the [events triggered by the `Client` class](advanced/events.md).
+If you want to be notified when a call is made to the Akismet service, or to log the service responses for further processing, you should take a look at the [events triggered by the client](advanced/events.md).

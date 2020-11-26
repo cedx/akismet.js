@@ -3,7 +3,7 @@
 !/.vscode/
 
 /build/
-/doc/api/
+/docs/api/
 /node_modules/
 /var/
 /www/
