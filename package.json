@@ -52,11 +52,11 @@
 	},
 	"scripts": {
 		"build": "tsc --project src/tsconfig.json",
-		"coverage": "coveralls var/akismet.info",
+		"coverage": "coveralls var/lcov.info",
 		"doc": "typedoc --options etc/typedoc.json",
 		"lint": "eslint --config=etc/eslint.yaml src/**/*.ts",
 		"prepack": "pwsh tool/build.ps1",
 		"prepublishOnly": "npm run clean",
-		"test": "c8 --all --include=lib/**/*.js --report-dir=var --reporter=akismetonly node_modules/.bin/mocha --recursive"
+		"test": "c8 --all --include=lib/**/*.js --report-dir=var --reporter=lcovonly node_modules/.bin/mocha --recursive"
 	}
 }

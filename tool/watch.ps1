@@ -1,13 +1,12 @@
 #!/usr/bin/env pwsh
 Set-StrictMode -Version Latest
 Set-Location (Split-Path $PSScriptRoot)
-[Console]::TreatControlCAsInput = $true
 
 $action = {
 	if ($EventArgs.Name -notlike "*.g.ts") {
 		$changeType = [String] $EventArgs.ChangeType
 		Write-Host "'$($EventArgs.Name)' was $($changeType.ToLower()): starting a new build..."
-		$timeSpan = Measure-Command { tool/build.ps1 }
+		$timeSpan = Measure-Command { npm run build 2>&1 | Out-Host }
 		Write-Host "> Finished the build after $($timeSpan.TotalSeconds) seconds."
 	}
 }
@@ -20,10 +19,13 @@ foreach ($event in "Changed", "Created", "Deleted", "Renamed") {
 	Register-ObjectEvent $watcher $event -Action $action | Out-Null
 }
 
-$console = $Host.UI.RawUI;
-while ($true) {
-	if ($console.KeyAvailable -and ($console.ReadKey("AllowCtrlC,IncludeKeyUp,NoEcho").Character -eq 3)) { break }
-	Start-Sleep -Milliseconds 200
+try {
+	npm run build
+	do { Wait-Event -Timeout 1 } while ($true)
 }
 
-Get-EventSubscriber | Unregister-Event
+finally {
+	$watcher.EnableRaisingEvents = $false
+	$watcher.Dispose()
+	Get-EventSubscriber | Unregister-Event -Force
+}
