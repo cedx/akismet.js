@@ -1,10 +1,11 @@
 {
-	"bugs": "https://git.belin.io/cedx/akismet.js/issues",
-	"description": "Prevent comment spam using the Akismet service. Add Akismet to your applications so you don't have to worry about spam again.",
-	"homepage": "https://docs.belin.io/akismet.js",
+	"bugs": "https://github.com/cedx/akismet.js/issues",
+	"description": "Prevent comment spam using the Akismet service.",
+	"exports": "./lib/index.js",
+	"homepage": "https://github.com/cedx/akismet.js",
 	"license": "MIT",
-	"main": "./lib/index.js",
 	"name": "@cedx/akismet",
+	"repository": "github:cedx/akismet.js",
 	"type": "module",
 	"types": "./lib/index.d.ts",
 	"version": "15.0.0",
@@ -14,29 +15,31 @@
 		"url": "https://belin.io"
 	},
 	"dependencies": {
-		"node-fetch": "^2.6.0"
+		"undici": "^5.1.1"
 	},
 	"devDependencies": {
-		"@cedx/coveralls": "^10.1.0",
-		"@types/node": "^14.0.19",
-		"@types/node-fetch": "^2.5.7",
-		"@typescript-eslint/eslint-plugin": "^4.6.0",
-		"@typescript-eslint/parser": "^4.6.0",
-		"c8": "^7.1.2",
-		"eslint": "^7.4.0",
-		"mocha": "^8.2.0",
-		"typedoc": "^0.19.2",
-		"typescript": "^4.0.5"
+		"@types/gulp": "^4.0.9",
+		"@types/mocha": "^9.1.1",
+		"@types/node": "^17.0.30",
+		"c8": "^7.11.2",
+		"del": "^6.0.0",
+		"eslint": "^8.14.0",
+		"execa": "^6.1.0",
+		"gulp": "^4.0.2",
+		"mocha": "^10.0.0",
+		"typedoc": "^0.22.15",
+		"typescript": "^4.6.4"
 	},
 	"engines": {
-		"node": ">=14.15.0"
+		"node": ">=18.0.0"
 	},
 	"files": [
-		"lib/"
+		"lib/",
+		"share/"
 	],
 	"funding": {
-		"type": "patreon",
-		"url": "https://www.patreon.com/cedx"
+		"type": "github",
+		"url": "https://github.com/sponsors/cedx"
 	},
 	"keywords": [
 		"akismet",
@@ -46,17 +49,8 @@
 		"spam",
 		"validation"
 	],
-	"repository": {
-		"type": "git",
-		"url": "https://git.belin.io/cedx/akismet.js.git"
-	},
 	"scripts": {
-		"build": "tsc --project src/tsconfig.json",
-		"coverage": "coveralls var/lcov.info",
-		"doc": "typedoc --options etc/typedoc.json",
-		"lint": "eslint --config=etc/eslint.yaml src/**/*.ts",
-		"prepack": "pwsh tool/build.ps1",
-		"prepublishOnly": "npm run clean",
+		"prepack": "gulp",
 		"test": "c8 --all --include=lib/**/*.js --report-dir=var --reporter=lcovonly node_modules/.bin/mocha --recursive"
 	}
 }
