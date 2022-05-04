@@ -2,7 +2,7 @@ import {Author, Blog, CheckResult, Client, ClientError, Comment, CommentType} fr
 
 /**
  * Queries the Akismet service.
- * @return {Promise<void>} Completes when the program is terminated.
+ * @returns {Promise<void>} Completes when the program is terminated.
  */
 async function main() {
 	try {
