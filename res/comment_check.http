@@ -1,0 +1,67 @@
+@baseUrl = https://{{$processEnv %apiKey}}.rest.akismet.com/1.1
+
+###
+
+// Checks the specified comment against the service database, and returns a value indicating whether it is spam.
+// It should return `false` for valid comment (e.g. ham).
+POST {{baseUrl}}/comment-check
+Content-Type: application/x-www-form-urlencoded
+
+blog=https://github.com/cedx/akismet.js
+&comment_author=Akismet
+&comment_author_url=https://belin.io
+&comment_content=I'm testing out the Service API.
+&comment_type=comment
+&is_test=true
+&referrer=https://www.npmjs.com/package/@cedx/akismet
+&user_agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/97.0.4692.99 Safari/537.36
+&user_ip=192.168.0.1
+&user_role=administrator
+
+###
+
+// Checks the specified comment against the service database, and returns a value indicating whether it is spam.
+// It should return `true` for invalid comment (e.g. spam).
+POST {{baseUrl}}/comment-check
+Content-Type: application/x-www-form-urlencoded
+
+blog=https://github.com/cedx/akismet.js
+&comment_author=viagra-test-123
+&comment_content=Spam!
+&comment_type=trackback
+&comment_author_email=akismet-guaranteed-spam%40example.com
+&is_test=true
+&user_ip=127.0.0.1
+&user_agent=Spam Bot/6.6.6
+
+###
+
+// Submits the specified comment that was incorrectly marked as spam but should not have been.
+POST {{baseUrl}}/submit-ham
+Content-Type: application/x-www-form-urlencoded
+
+blog=https://github.com/cedx/akismet.js
+&comment_author=Akismet
+&comment_author_url=https://belin.io
+&comment_content=I'm testing out the Service API.
+&comment_type=comment
+&is_test=true
+&referrer=https://www.npmjs.com/package/@cedx/akismet
+&user_agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/97.0.4692.99 Safari/537.36
+&user_ip=192.168.0.1
+&user_role=administrator
+
+###
+
+// Submits the specified comment that was not marked as spam but should have been.
+POST {{baseUrl}}/submit-spam
+Content-Type: application/x-www-form-urlencoded
+
+blog=https://github.com/cedx/akismet.js
+&comment_author=viagra-test-123
+&comment_content=Spam!
+&comment_type=trackback
+&comment_author_email=akismet-guaranteed-spam%40example.com
+&is_test=true
+&user_ip=127.0.0.1
+&user_agent=Spam Bot/6.6.6

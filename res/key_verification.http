@@ -1,0 +1,6 @@
+// Checks the specified API key against the service database, and returns a value indicating whether it is valid.
+POST {{baseUrl}}/verify-key
+Content-Type: application/x-www-form-urlencoded
+
+blog=https://github.com/cedx/akismet.js
+&key={{$processEnv %apiKey}}
