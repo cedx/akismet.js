@@ -1,0 +1,24 @@
+name: main
+on: push
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Fetch sources
+        uses: actions/checkout@v3
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          cache: npm
+          node-version: 18
+      - name: Install dependencies
+        run: npm install
+      - name: Run tests
+        env:
+          AKISMET_API_KEY: ${{secrets.AKISMET_API_KEY}}
+        run: npm test
+      - name: Collect code coverage
+        if: success()
+        uses: codecov/codecov-action@v2
+        with:
+          files: var/lcov.info
