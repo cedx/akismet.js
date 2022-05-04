@@ -100,28 +100,3 @@ export interface CommentOptions {
 	/** The comment's type. */
 	type: string;
 }
-
-/** Specifies the type of a comment. */
-export enum CommentType {
-
-	/** A blog post. */
-	blogPost = "blog-post",
-
-	/** A blog comment. */
-	comment = "comment",
-
-	/** A contact form or feedback form submission. */
-	contactForm = "contact-form",
-
-	/** A top-level forum post. */
-	forumPost = "forum-post",
-
-	/** A [pingback](https://en.wikipedia.org/wiki/Pingback) post. */
-	pingback = "pingback",
-
-	/** A [trackback](https://en.wikipedia.org/wiki/Trackback) post. */
-	trackback = "trackback",
-
-	/** A [Twitter](https://twitter.com) message. */
-	tweet = "tweet"
-}
