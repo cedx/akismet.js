@@ -28,7 +28,7 @@ export class Comment {
 	/**
 	 * Creates a new comment.
 	 * @param author The comment's author.
-	 * @param options An object specifying values used to initialize this instance.
+	 * @param options An object providing values to initialize this instance.
 	 */
 	constructor(public author?: Author, options: Partial<CommentOptions> = {}) {
 		const {content = "", date, permalink, postModified, recheckReason = "", referrer, type = ""} = options;
@@ -43,8 +43,8 @@ export class Comment {
 
 	/**
 	 * Creates a new comment from the specified JSON object.
-	 * @param map A JSON object representing a comment.
-	 * @return The instance corresponding to the specified JSON object.
+	 * @param {Record<string, any>} map A JSON object representing a comment.
+	 * @returns The instance corresponding to the specified JSON object.
 	 */
 	static fromJson(map: JsonObject): Comment {
 		const hasAuthor = Object.keys(map).filter(key => key.startsWith("comment_author") || key.startsWith("user")).length > 0;
@@ -61,7 +61,7 @@ export class Comment {
 
 	/**
 	 * Converts this object to a map in JSON format.
-	 * @return The map in JSON format corresponding to this object.
+	 * @returns {Record<string, any>} The map in JSON format corresponding to this object.
 	 */
 	toJSON(): JsonObject {
 		const map = this.author ? this.author.toJSON() : {};

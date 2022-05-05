@@ -60,7 +60,7 @@ export class Client extends EventEmitter {
 	 * Creates a new client.
 	 * @param apiKey The Akismet API key.
 	 * @param blog The front page or home URL of the instance making requests.
-	 * @param options An object specifying values used to initialize this instance.
+	 * @param options An object providing values to initialize this instance.
 	 */
 	constructor(readonly apiKey: string, public blog: Blog, options: Partial<ClientOptions> = {}) {
 		super();
@@ -79,7 +79,7 @@ export class Client extends EventEmitter {
 	/**
 	 * Checks the specified comment against the service database, and returns a value indicating whether it is spam.
 	 * @param comment The comment to be checked.
-	 * @return A [[CheckResult]] value indicating whether the specified comment is spam.
+	 * @returns A [[CheckResult]] value indicating whether the specified comment is spam.
 	 */
 	async checkComment(comment: Comment): Promise<CheckResult> {
 		const endPoint = new URL(`${this.endPoint.protocol}//${this.apiKey}.${this.endPoint.host}${this.endPoint.pathname}`);
@@ -91,7 +91,7 @@ export class Client extends EventEmitter {
 	/**
 	 * Submits the specified comment that was incorrectly marked as spam but should not have been.
 	 * @param comment The comment to be submitted.
-	 * @return Completes once the comment has been submitted.
+	 * @returns Completes once the comment has been submitted.
 	 */
 	async submitHam(comment: Comment): Promise<void> {
 		const endPoint = new URL(`${this.endPoint.protocol}//${this.apiKey}.${this.endPoint.host}${this.endPoint.pathname}`);
@@ -101,7 +101,7 @@ export class Client extends EventEmitter {
 	/**
 	 * Submits the specified comment that was not marked as spam but should have been.
 	 * @param comment The comment to be submitted.
-	 * @return Completes once the comment has been submitted.
+	 * @returns Completes once the comment has been submitted.
 	 */
 	async submitSpam(comment: Comment): Promise<void> {
 		const endPoint = new URL(`${this.endPoint.protocol}//${this.apiKey}.${this.endPoint.host}${this.endPoint.pathname}`);
@@ -110,7 +110,7 @@ export class Client extends EventEmitter {
 
 	/**
 	 * Checks the API key against the service database, and returns a value indicating whether it is valid.
-	 * @return A boolean value indicating whether it is a valid API key.
+	 * @returns A boolean value indicating whether it is a valid API key.
 	 */
 	async verifyKey(): Promise<boolean> {
 		const response = await this._fetch(new URL("verify-key", this.endPoint), {key: this.apiKey});
@@ -121,7 +121,7 @@ export class Client extends EventEmitter {
 	 * Queries the service by posting the specified fields to a given end point, and returns the response as a string.
 	 * @param endPoint The URL of the end point to query.
 	 * @param fields The fields describing the query body.
-	 * @return The server response.
+	 * @returns The server response.
 	 */
 	private async _fetch(endPoint: URL, fields: JsonObject): Promise<Response> {
 		const body = new URLSearchParams({...this.blog.toJSON(), ...fields} as Record<string, string>);
