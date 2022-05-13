@@ -6,7 +6,7 @@
 		"esModuleInterop": true,
 		"module": "es2022",
 		"moduleResolution": "node",
-		"paths": {"@cedx/lcov": ["lib"]},
+		"paths": {"@cedx/akismet": ["lib"]},
 		"strict": true,
 		"target": "es2022"
 	}
