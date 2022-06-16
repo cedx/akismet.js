@@ -40,8 +40,8 @@ async function main() {
 		console.log("Ham submitted");
 	}
 
-	catch (err) {
-		console.log(`An error occurred: ${err.message}`);
-		if (err instanceof ClientError) console.log(`From: ${err.uri.href}`);
+	catch (error) {
+		console.log(`An error occurred: ${error.message}`);
+		if (err instanceof ClientError) console.log(`From: ${error.uri.href}`);
 	}
 }

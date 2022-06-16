@@ -1,9 +1,9 @@
 import {strict as assert} from "assert";
 import {Author, Blog, CheckResult, Client, Comment, CommentType} from "../lib/index.js";
 
-/** Tests the features of the `Client` class. */
+/** Tests the features of the {@link Client} class. */
 describe("Client", function() {
-	this.timeout(15000);
+	this.timeout(15_000);
 
 	// The default test client.
 	const blog = new Blog(new URL("https://github.com/cedx/akismet.js"));
@@ -47,14 +47,14 @@ describe("Client", function() {
 	describe(".submitHam()", function() {
 		it("should complete without any error", async function() {
 			try { await _client.submitHam(_ham); }
-			catch (err) { assert.fail(err.message); }
+			catch (error) { assert.fail(error.message); }
 		});
 	});
 
 	describe(".submitSpam()", function() {
 		it("should complete without any error", async function() {
 			try { await _client.submitSpam(_spam); }
-			catch (err) { assert.fail(err.message); }
+			catch (error) { assert.fail(error.message); }
 		});
 	});
 
