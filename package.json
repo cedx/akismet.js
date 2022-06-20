@@ -26,7 +26,6 @@
 		"eslint": "^8.18.0",
 		"execa": "^6.1.0",
 		"gulp": "^4.0.2",
-		"mocha": "^10.0.0",
 		"typedoc": "^0.22.17",
 		"typescript": "^4.7.4"
 	},
@@ -51,6 +50,6 @@
 	],
 	"scripts": {
 		"prepack": "gulp",
-		"test": "c8 --all --include=lib/**/*.js --report-dir=var --reporter=lcovonly node_modules/.bin/mocha --recursive"
+		"test": "c8 --all --include=lib/**/*.js --report-dir=var --reporter=lcovonly node --test"
 	}
 }

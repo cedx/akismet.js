@@ -1,4 +1,4 @@
-import {Author, Blog, CheckResult, Client, ClientError, Comment, CommentType} from "@cedx/akismet";
+import {Author, Blog, CheckResult, Client, Comment, CommentType} from "@cedx/akismet";
 
 /**
  * Queries the Akismet service.
@@ -6,7 +6,7 @@ import {Author, Blog, CheckResult, Client, ClientError, Comment, CommentType} fr
  */
 async function main() {
 	try {
-		const blog = new Blog(new URL("https://www.yourblog.com"), {charset: "UTF-8", languages: ["fr"]});
+		const blog = new Blog("https://www.yourblog.com", {charset: "UTF-8", languages: ["fr"]});
 		const client = new Client("123YourAPIKey", blog);
 
 		// Key verification.
@@ -30,7 +30,7 @@ async function main() {
 		});
 
 		const result = await client.checkComment(comment);
-		console.log(result == CheckResult.isHam ? "The comment is ham" : "The comment is spam");
+		console.log(result == CheckResult.ham ? "The comment is ham" : "The comment is spam");
 
 		// Submit spam / ham.
 		await client.submitSpam(comment);
