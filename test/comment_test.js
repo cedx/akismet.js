@@ -34,14 +34,14 @@ test("Comment.fromJson()", async ctx => {
 
 test("Comment.toJSON()", async ctx => {
 	await ctx.test("should return only the author info with a newly created instance", () => {
-		const data = new Comment(new Author("127.0.0.1", "Doom/6.6.6")).toJSON();
-		assert.equal(Object.keys(data).length, 2);
-		assert.equal(data.user_agent, "Doom/6.6.6");
+		const data = new Comment({author: new Author({ipAddress: "127.0.0.1"})}).toJSON();
+		assert.equal(Object.keys(data).length, 1);
 		assert.equal(data.user_ip, "127.0.0.1");
 	});
 
 	await ctx.test("should return a non-empty map with an initialized instance", () => {
-		const data = new Comment(new Author("127.0.0.1", "Doom/6.6.6", {name: "Cédric Belin"}), {
+		const data = new Comment({
+			author: new Author({ipAddress: "127.0.0.1", name: "Cédric Belin", userAgent: "Doom/6.6.6"}),
 			content: "A user comment.",
 			date: new Date("2000-01-01T00:00:00.000Z"),
 			referrer: "https://belin.io",

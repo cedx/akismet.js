@@ -26,13 +26,13 @@ test("Blog.fromJson()", async ctx => {
 
 test("Blog.toJSON()", async ctx => {
 	await ctx.test("should return only the blog URL with a newly created instance", () => {
-		const data = new Blog("https://github.com/cedx/akismet.js").toJSON();
+		const data = new Blog({url: "https://github.com/cedx/akismet.js"}).toJSON();
 		assert.equal(Object.keys(data).length, 1);
 		assert.equal(data.blog, "https://github.com/cedx/akismet.js");
 	});
 
 	await ctx.test("should return a non-empty map with an initialized instance", () => {
-		const data = new Blog("https://github.com/cedx/akismet.js", {charset: "UTF-8", languages: ["en", "fr"]}).toJSON();
+		const data = new Blog({charset: "UTF-8", languages: ["en", "fr"], url: "https://github.com/cedx/akismet.js"}).toJSON();
 		assert.equal(Object.keys(data).length, 3);
 		assert.equal(data.blog, "https://github.com/cedx/akismet.js");
 		assert.equal(data.blog_charset, "UTF-8");

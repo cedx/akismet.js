@@ -28,18 +28,19 @@ test("Author.fromJson()", async ctx => {
 });
 
 test("Author.toJSON()", async ctx => {
-	await ctx.test("should return only the IP address and user agent with a newly created instance", () => {
-		const data = new Author("127.0.0.1", "Doom/6.6.6").toJSON();
-		assert.equal(Object.keys(data).length, 2);
-		assert.equal(data.user_agent, "Doom/6.6.6");
+	await ctx.test("should return only the IP address with a newly created instance", () => {
+		const data = new Author({ipAddress: "127.0.0.1"}).toJSON();
+		assert.equal(Object.keys(data).length, 1);
 		assert.equal(data.user_ip, "127.0.0.1");
 	});
 
 	await ctx.test("should return a non-empty map with an initialized instance", () => {
-		const data = new Author("192.168.0.1", "Mozilla/5.0", {
+		const data = new Author({
 			email: "cedric@belin.io",
+			ipAddress: "192.168.0.1",
 			name: "Cédric Belin",
-			url: "https://belin.io"
+			url: "https://belin.io",
+			userAgent: "Mozilla/5.0"
 		}).toJSON();
 
 		assert.equal(Object.keys(data).length, 5);

@@ -6,30 +6,32 @@ import {Author, AuthorRole, Blog, CheckResult, Client, Comment, CommentType} fro
 // The default test client.
 const client = new Client(
 	env.AKISMET_API_KEY ?? "",
-	new Blog("https://github.com/cedx/akismet.js"),
+	new Blog({url: "https://github.com/cedx/akismet.js"}),
 	{isTest: true}
 );
 
 // A message marked as ham.
-let author = new Author("192.168.0.1", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.0.0 Safari/537.36", {
-	name: "Akismet",
-	role: AuthorRole.administrator,
-	url: "https://belin.io"
-});
-
-const ham = new Comment(author, {
+const ham = new Comment({
+	author: new Author({
+		ipAddress: "192.168.0.1",
+		name: "Akismet",
+		role: AuthorRole.administrator,
+		url: "https://belin.io",
+		userAgent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.0.0 Safari/537.36"
+	}),
 	content: "I'm testing out the Service API.",
 	referrer: "https://www.npmjs.com/package/@cedx/akismet",
 	type: CommentType.comment
 });
 
 // A message marked as spam.
-author = new Author("127.0.0.1", "Spam Bot/6.6.6", {
-	email: "akismet-guaranteed-spam@example.com",
-	name: "viagra-test-123"
-});
-
-const spam = new Comment(author, {
+const spam = new Comment({
+	author: new Author({
+		email: "akismet-guaranteed-spam@example.com",
+		ipAddress: "127.0.0.1",
+		name: "viagra-test-123",
+		userAgent: "Spam Bot/6.6.6"
+	}),
 	content: "Spam!",
 	type: CommentType.blogPost
 });
@@ -46,15 +48,11 @@ test("Client.checkComment()", async ctx => {
 });
 
 test("Client.submitHam()", async ctx => {
-	await ctx.test("should complete without any error", () => {
-		return assert.doesNotReject(client.submitHam(ham));
-	});
+	await ctx.test("should complete without any error", () => assert.doesNotReject(client.submitHam(ham)));
 });
 
 test("Client.submitSpam()", async ctx => {
-	await ctx.test("should complete without any error", () => {
-		return assert.doesNotReject(client.submitSpam(spam));
-	});
+	await ctx.test("should complete without any error", () => assert.doesNotReject(client.submitSpam(spam)));
 });
 
 test("Client.verifyKey()", async ctx => {

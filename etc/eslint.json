@@ -27,7 +27,7 @@
 		"accessor-pairs": "error",
 		"arrow-body-style": "error",
 		"block-scoped-var": "error",
-		"camelcase": "error",
+		"camelcase": "off",
 		"capitalized-comments": "error",
 		"class-methods-use-this": "off",
 		"complexity": "error",
