@@ -7,7 +7,7 @@ test("Blog.fromJson()", async ctx => {
 		const blog = Blog.fromJson({});
 		assert.equal(blog.charset.length, 0);
 		assert.equal(blog.languages.length, 0);
-		assert.equal(blog.url, undefined);
+		assert.equal(blog.url, null);
 	});
 
 	await ctx.test("should return an initialized instance with a non-empty map", () => {

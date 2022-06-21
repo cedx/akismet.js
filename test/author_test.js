@@ -7,7 +7,7 @@ test("Author.fromJson()", async ctx => {
 		const author = Author.fromJson({});
 		assert.equal(author.email.length, 0);
 		assert.equal(author.ipAddress.length, 0);
-		assert.equal(author.url, undefined);
+		assert.equal(author.url, null);
 		assert.equal(author.userAgent.length, 0);
 	});
 
