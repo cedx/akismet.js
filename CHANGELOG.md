@@ -1,5 +1,16 @@
 # Changelog
 
+## Version [16.0.0](https://github.com/cedx/akismet.js/compare/v15.0.0...v16.0.0)
+- Breaking change: changed the constructor signatures of the `Author`, `Blog` and `Comment` classes.
+- Breaking change: raised the required [Node.js](https://nodejs.org) version.
+- Breaking change: removed the `ClientError` class.
+- Breaking change: the `Client` class is no longer an event emitter. 
+- Added support for the [Akismet response error codes](https://akismet.com/development/api/#error-codes).
+- Ported the source code to [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript).
+- Replaced the [Mocha](https://mochajs.org) test runner by the [Node.js one](https://nodejs.org/api/test.html).
+- Restored support for [GitHub Packages](https://github.com/features/packages).
+- Updated the package dependencies.
+
 ## Version [15.0.0](https://github.com/cedx/akismet.js/compare/v14.0.0...v15.0.0)
 - Breaking change: raised the required [Node.js](https://nodejs.org) version.
 - Dropped support for [GitHub Packages](https://github.com/features/packages).
