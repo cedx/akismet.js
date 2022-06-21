@@ -5,10 +5,10 @@ import {Author, Comment, CommentType} from "../lib/index.js";
 test("Comment.fromJson()", async ctx => {
 	await ctx.test("should return an empty instance with an empty map", () => {
 		const comment = Comment.fromJson({});
-		assert.equal(comment.author, undefined);
+		assert.equal(comment.author, null);
 		assert.equal(comment.content.length, 0);
-		assert.equal(comment.date, undefined);
-		assert.equal(comment.referrer, undefined);
+		assert.equal(comment.date, null);
+		assert.equal(comment.referrer, null);
 		assert.equal(comment.type.length, 0);
 	});
 
@@ -17,7 +17,7 @@ test("Comment.fromJson()", async ctx => {
 			comment_author: "Cédric Belin",
 			comment_content: "A user comment.",
 			comment_date_gmt: "2000-01-01T00:00:00.000Z",
-			comment_type: "trackback",
+			comment_type: "blog-post",
 			referrer: "https://belin.io"
 		});
 
@@ -28,7 +28,7 @@ test("Comment.fromJson()", async ctx => {
 		assert.equal(comment.date.getFullYear(), 2000);
 		assert.ok(comment.referrer instanceof URL);
 		assert.equal(comment.referrer.href, "https://belin.io/");
-		assert.equal(comment.type, CommentType.trackback);
+		assert.equal(comment.type, CommentType.blogPost);
 	});
 });
 
@@ -45,14 +45,14 @@ test("Comment.toJSON()", async ctx => {
 			content: "A user comment.",
 			date: new Date("2000-01-01T00:00:00.000Z"),
 			referrer: "https://belin.io",
-			type: CommentType.pingback
+			type: CommentType.blogPost
 		}).toJSON();
 
 		assert.equal(Object.keys(data).length, 7);
 		assert.equal(data.comment_author, "Cédric Belin");
 		assert.equal(data.comment_content, "A user comment.");
 		assert.equal(data.comment_date_gmt, "2000-01-01T00:00:00.000Z");
-		assert.equal(data.comment_type, "pingback");
+		assert.equal(data.comment_type, "blog-post");
 		assert.equal(data.referrer, "https://belin.io/");
 		assert.equal(data.user_agent, "Doom/6.6.6");
 		assert.equal(data.user_ip, "127.0.0.1");
