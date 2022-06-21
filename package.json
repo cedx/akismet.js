@@ -8,7 +8,7 @@
 	"repository": "github:cedx/akismet.js",
 	"type": "module",
 	"types": "./lib/index.d.ts",
-	"version": "15.0.0",
+	"version": "16.0.0",
 	"author": {
 		"email": "cedric@belin.io",
 		"name": "Cédric Belin",
