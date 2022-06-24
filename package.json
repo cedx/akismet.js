@@ -14,9 +14,6 @@
 		"name": "Cédric Belin",
 		"url": "https://belin.io"
 	},
-	"dependencies": {
-		"undici": "^5.5.1"
-	},
 	"devDependencies": {
 		"@types/gulp": "^4.0.9",
 		"@types/mocha": "^9.1.1",
