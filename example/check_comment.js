@@ -16,12 +16,17 @@ try {
 	const comment = new Comment({
 		author,
 		date: new Date,
-		content: "A user comment",
+		content: "A user comment.",
 		referrer: "https://github.com/cedx/akismet.js",
 		type: CommentType.contactForm
 	});
 
-	const blog = new Blog({charset: "UTF-8", languages: ["fr"], url: "https://www.yourblog.com"});
+	const blog = new Blog({
+		charset: "UTF-8",
+		languages: ["fr"],
+		url: "https://www.yourblog.com"
+	});
+
 	const result = await new Client("123YourAPIKey", blog).checkComment(comment);
 	console.log(result == CheckResult.ham ? "The comment is ham." : "The comment is spam.");
 }

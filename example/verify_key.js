@@ -6,7 +6,9 @@ import {Blog, Client} from "@cedx/akismet";
  */
 try {
 	const blog = new Blog({url: "https://www.yourblog.com"});
-	const isValid = await new Client("123YourAPIKey", blog).verifyKey();
+	const client = new Client("123YourAPIKey", blog);
+
+	const isValid = await client.verifyKey();
 	console.log(isValid ? "The API key is valid." : "The API key is invalid.");
 }
 
