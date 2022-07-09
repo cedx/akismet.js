@@ -1,7 +1,7 @@
 {
 	"bugs": "https://github.com/cedx/akismet.js/issues",
 	"description": "Prevent comment spam using the Akismet service.",
-	"exports": "./lib/index.js",
+	"exports": "./src/index.js",
 	"homepage": "https://github.com/cedx/akismet.js",
 	"license": "MIT",
 	"name": "@cedx/akismet",
@@ -32,7 +32,7 @@
 	},
 	"files": [
 		"lib/",
-		"share/"
+		"src/"
 	],
 	"funding": {
 		"type": "github",
@@ -48,6 +48,6 @@
 	],
 	"scripts": {
 		"prepack": "gulp",
-		"test": "c8 --all --include=lib/**/*.js --report-dir=var --reporter=lcovonly node --test"
+		"test": "c8 --all --include=src/**/*.js --report-dir=var --reporter=lcovonly node --test"
 	}
 }

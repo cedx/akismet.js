@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import {env} from "node:process";
 import test from "node:test";
-import {Author, AuthorRole, Blog, CheckResult, Client, Comment, CommentType} from "../lib/index.js";
+import {Author, AuthorRole, Blog, CheckResult, Client, Comment, CommentType} from "../src/index.js";
 
 // The default test client.
 const client = new Client(

@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import {Author, Comment, CommentType} from "../lib/index.js";
+import {Author, Comment, CommentType} from "../src/index.js";
 
 test("Comment.fromJson()", async ctx => {
 	await ctx.test("should return an empty instance with an empty map", () => {

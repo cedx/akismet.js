@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import {Blog} from "../lib/index.js";
+import {Blog} from "../src/index.js";
 
 test("Blog.fromJson()", async ctx => {
 	await ctx.test("should return an empty instance with an empty map", () => {

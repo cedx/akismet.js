@@ -1,11 +1,11 @@
 {
 	"$schema": "https://typedoc.org/schema.json",
-	"entryPoints": ["../lib/index.js"],
+	"entryPoints": ["../src/index.js"],
 	"excludePrivate": true,
 	"gitRevision": "main",
 	"hideGenerator": true,
 	"name": "Akismet for JS",
 	"out": "../docs",
 	"readme": "none",
-	"tsconfig": "../lib/jsconfig.json"
+	"tsconfig": "../src/jsconfig.json"
 }
