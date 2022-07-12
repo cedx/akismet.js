@@ -78,7 +78,7 @@ export class Client {
 		const response = await this.#fetch(new URL("comment-check", this.#endpoint), comment.toJSON());
 		return await response.text() == "false"
 			? CheckResult.ham
-			: response.headers.get("x-akismet-pro-tip") == "discard" ? CheckResult.pervasiveSpam : CheckResult.spam;
+			: response.headers.get("X-akismet-pro-tip") == "discard" ? CheckResult.pervasiveSpam : CheckResult.spam;
 	}
 
 	/**
@@ -129,13 +129,13 @@ export class Client {
 		const response = await fetch(endpoint, params);
 		if (!response.ok) throw new Error(`${response.status} ${response.statusText}`);
 
-		if (response.headers.has("x-akismet-alert-code")) {
-			const code = response.headers.get("x-akismet-alert-code") ?? "";
-			throw Object.assign(new Error(response.headers.get("x-akismet-alert-msg") ?? ""), {name: code ? `AkismetError #${code}` : "AkismetError"});
+		if (response.headers.has("X-akismet-alert-code")) {
+			const code = response.headers.get("X-akismet-alert-code") ?? "";
+			throw Object.assign(new Error(response.headers.get("X-akismet-alert-msg") ?? ""), {name: code ? `AkismetError #${code}` : "AkismetError"});
 		}
 
-		if (response.headers.has("x-akismet-debug-help"))
-			throw Object.assign(new Error(response.headers.get("x-akismet-debug-help") ?? ""), {name: "AkismetError"});
+		if (response.headers.has("X-akismet-debug-help"))
+			throw Object.assign(new Error(response.headers.get("X-akismet-debug-help") ?? ""), {name: "AkismetError"});
 
 		return response;
 	}
