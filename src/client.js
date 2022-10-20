@@ -122,7 +122,7 @@ export class Client {
 
 		const params = {
 			method: "POST",
-			headers: {"content-type": "application/x-www-form-urlencoded", "user-agent": this.userAgent},
+			headers: {"Content-Type": "application/x-www-form-urlencoded", "User-Agent": this.userAgent},
 			body
 		};
 
