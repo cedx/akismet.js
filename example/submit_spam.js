@@ -19,7 +19,6 @@ try {
 	await client.submitSpam(comment);
 	console.log("The comment was successfully submitted as spam.");
 }
-
 catch (error) {
 	console.log(`An error occurred: ${error}`);
 }

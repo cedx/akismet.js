@@ -9,7 +9,6 @@
 *.json text
 *.md text diff=markdown
 *.mjs text
-*.scss text diff=css
 *.svg text
 *.ts text
 *.txt text

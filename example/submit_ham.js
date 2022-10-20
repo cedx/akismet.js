@@ -19,7 +19,6 @@ try {
 	await client.submitHam(comment);
 	console.log("The comment was successfully submitted as ham.");
 }
-
 catch (error) {
 	console.log(`An error occurred: ${error}`);
 }
