@@ -120,13 +120,7 @@ export class Client {
 		const body = new URLSearchParams({...this.blog.toJSON(), ...fields});
 		if (this.isTest) body.set("is_test", "1");
 
-		const params = {
-			method: "POST",
-			headers: {"Content-Type": "application/x-www-form-urlencoded", "User-Agent": this.userAgent},
-			body
-		};
-
-		const response = await fetch(endpoint, params);
+		const response = await fetch(endpoint, {method: "POST", headers: {"User-Agent": this.userAgent}, body});
 		if (!response.ok) throw new Error(`${response.status} ${response.statusText}`);
 
 		if (response.headers.has("X-akismet-alert-code")) {
