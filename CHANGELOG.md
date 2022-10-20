@@ -1,12 +1,15 @@
 # Changelog
 
+## Version [16.0.1](https://github.com/cedx/akismet.js/compare/v16.0.0...v16.0.1)
+- Fixed the [TypeScript](https://www.typescriptlang.org) typings.
+
 ## Version [16.0.0](https://github.com/cedx/akismet.js/compare/v15.0.0...v16.0.0)
 - Breaking change: changed the constructor signatures of the `Author`, `Blog` and `Comment` classes.
 - Breaking change: raised the required [Node.js](https://nodejs.org) version.
 - Breaking change: removed the `ClientError` class.
 - Breaking change: the `Client` class is no longer an event emitter. 
 - Added support for the [Akismet response error codes](https://akismet.com/development/api/#error-codes).
-- Ported the source code to [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript).
+- Ported the source code to [JavaScript](https://developer.mozilla.org/docs/Web/JavaScript).
 - Replaced the [Mocha](https://mochajs.org) test runner by the [Node.js one](https://nodejs.org/api/test.html).
 - Restored support for [GitHub Packages](https://github.com/features/packages).
 - Updated the package dependencies.
@@ -52,7 +55,7 @@
 ## Version [11.0.0](https://github.com/cedx/akismet.js/compare/v10.1.0...v11.0.0)
 - Breaking change: converted the [`Observable`](http://reactivex.io/intro.html)-based API to an `async/await`-based one.
 - Breaking change: converted the `Subject` event API to the [`EventEmitter`](https://nodejs.org/api/events.html) one.
-- Added the [`[Symbol.toStringTag]`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol/toStringTag) property to all classes.
+- Added the [`[Symbol.toStringTag]`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Symbol/toStringTag) property to all classes.
 - Changed licensing for the [MIT License](https://opensource.org/licenses/MIT).
 
 ## Version [10.1.0](https://github.com/cedx/akismet.js/compare/v10.0.0...v10.1.0)
@@ -78,7 +81,7 @@
 - Updated the package dependencies.
 
 ## Version [8.0.0](https://github.com/cedx/akismet.js/compare/v7.1.0...v8.0.0)
-- Breaking change: properties representing URLs as strings now use instances of the [`URL`](https://developer.mozilla.org/en-US/docs/Web/API/URL) class.
+- Breaking change: properties representing URLs as strings now use instances of the [`URL`](https://developer.mozilla.org/docs/Web/API/URL) class.
 - Breaking change: raised the required [Node.js](https://nodejs.org) version.
 - Updated the package dependencies.
 
@@ -154,7 +157,7 @@
 - Breaking change: changed the signature of the `fromJSON()` methods.
 - Breaking change: dropped the embedded server and the command line interface.
 - Breaking change: ported the [CommonJS modules](https://nodejs.org/api/modules.html) to ES2015 format.
-- Breaking change: ported the [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)-based APIs to [Observables](http://reactivex.io/intro.html).
+- Breaking change: ported the [Promise](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)-based APIs to [Observables](http://reactivex.io/intro.html).
 - Breaking change: raised the required [Node.js](https://nodejs.org) version.
 - Breaking change: removed the `url` parameter from the `Blog` constructor.
 - Breaking change: removed the `HTTPHeaders` enumeration.
@@ -228,7 +231,7 @@
 - Fixed the [issue #2](https://github.com/cedx/akismet.js/issues/2): using a Unix system for publishing the package on [npm](https://www.npmjs.com).
 
 ## Version [0.4.0](https://github.com/cedx/akismet.js/compare/v0.3.5...v0.4.0)
-- Breaking change: ported the callback-based API to [Promises](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise).
+- Breaking change: ported the callback-based API to [Promises](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise).
 
 ## Version [0.3.5](https://github.com/cedx/akismet.js/compare/v0.3.4...v0.3.5)
 - Using [Gulp](https://gulpjs.com) as build system.
@@ -252,7 +255,7 @@
 - Fixed bugs in server implementation: bad parsing of client requests.
 
 ## Version [0.2.0](https://github.com/cedx/akismet.js/compare/v0.1.0...v0.2.0)
-- Added client implementation based on [`XMLHttpRequest`](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest).
+- Added client implementation based on [`XMLHttpRequest`](https://developer.mozilla.org/docs/Web/API/XMLHttpRequest).
 - Added server implementation used to proxy requests from HTML clients to [Akismet](https://akismet.com) service.
 
 ## Version 0.1.0
