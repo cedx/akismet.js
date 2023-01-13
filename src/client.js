@@ -1,11 +1,22 @@
 import {version} from "node:process";
 import {CheckResult} from "./check_result.js";
-import pkg from "../package.json" assert {type: "json"};
 
 /**
  * Submits comments to the [Akismet](https://akismet.com) service.
  */
 export class Client {
+
+	/**
+	 * The response returned by the `submit-ham` and `submit-spam` endpoints when the outcome is a success.
+	 * @type {string}
+	 */
+	static #success = "Thanks for making the web a better place.";
+
+	/**
+	 * The package version.
+	 * @type {string}
+	 */
+	static #version = "16.0.2";
 
 	/**
 	 * The Akismet API key.
@@ -49,12 +60,6 @@ export class Client {
 	#endpoint;
 
 	/**
-	 * The response returned by the `submit-ham` and `submit-spam` endpoints when the outcome is a success.
-	 * @type {string}
-	 */
-	static #successfulResponse = "Thanks for making the web a better place.";
-
-	/**
 	 * Creates a new client.
 	 * @param {string} apiKey The Akismet API key.
 	 * @param {import("./blog.js").Blog} blog The front page or home URL of the instance making requests.
@@ -65,7 +70,7 @@ export class Client {
 		this.baseUrl = new URL(options.baseUrl ?? "https://rest.akismet.com/1.1/");
 		this.blog = blog;
 		this.isTest = options.isTest ?? false;
-		this.userAgent = options.userAgent ?? `Node.js/${version.slice(1)} | Akismet/${pkg.version}`;
+		this.userAgent = options.userAgent ?? `Node.js/${version.slice(1)} | Akismet/${Client.#version}`;
 		this.#endpoint = new URL(`${this.baseUrl.protocol}//${this.apiKey}.${this.baseUrl.host}${this.baseUrl.pathname}`);
 	}
 
@@ -88,7 +93,7 @@ export class Client {
 	 */
 	async submitHam(comment) {
 		const response = await this.#fetch(new URL("submit-ham", this.#endpoint), comment.toJSON());
-		if (await response.text() != Client.#successfulResponse) throw Error("Invalid server response.");
+		if (await response.text() != Client.#success) throw Error("Invalid server response.");
 	}
 
 	/**
@@ -98,7 +103,7 @@ export class Client {
 	 */
 	async submitSpam(comment) {
 		const response = await this.#fetch(new URL("submit-spam", this.#endpoint), comment.toJSON());
-		if (await response.text() != Client.#successfulResponse) throw Error("Invalid server response.");
+		if (await response.text() != Client.#success) throw Error("Invalid server response.");
 	}
 
 	/**
