@@ -8,6 +8,7 @@
 		"moduleResolution": "NodeNext",
 		"resolveJsonModule": true,
 		"paths": {"@cedx/akismet": ["src"]},
+		"rootDir": "./src",
 		"strict": true,
 		"target": "ESNext"
 	}
