@@ -41,7 +41,7 @@ export function test() {
 
 /** Updates the version number in the sources. */
 export function version() {
-	return gulp.src("src/client.js").pipe(replace(/#version = "\d+(\.\d+){2}"/, `#version = "${pkg.version}"`)).pipe(gulp.dest("."));
+	return gulp.src("src/client.js").pipe(replace(/#version = "\d+(\.\d+){2}"/, `#version = "${pkg.version}"`)).pipe(gulp.dest("src"));
 }
 
 /** Runs the default task. */
