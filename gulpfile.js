@@ -2,6 +2,7 @@ import {cp} from "node:fs/promises";
 import {deleteAsync} from "del";
 import {execa} from "execa";
 import gulp from "gulp";
+import replace from "gulp-replace";
 import config from "./jsconfig.json" assert {type: "json"};
 import pkg from "./package.json" assert {type: "json"};
 
@@ -38,10 +39,16 @@ export function test() {
 	return exec("c8", ["--all", "--include=src/**/*.js", "--report-dir=var", "--reporter=lcovonly", "node", "--test"]);
 }
 
+/** Updates the version number in the sources. */
+export function version() {
+	return gulp.src("src/client.js").pipe(replace(/#version = "\d+(\.\d+){2}"/, `#version = "${pkg.version}"`)).pipe(gulp.dest("."));
+}
+
 /** Runs the default task. */
 export default gulp.series(
 	clean,
-	build
+	build,
+	version
 );
 
 /**
