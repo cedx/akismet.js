@@ -52,7 +52,7 @@ export class Blog {
 		/** @type {Record<string, string>} */
 		const map = {blog: this.url ? this.url.href : ""};
 		if (this.charset) map.blog_charset = this.charset;
-		if (this.languages.length) map.blog_lang = this.languages.join(",");
+		if (this.languages.length) map.blog_lang = this.languages.join();
 		return map;
 	}
 }
