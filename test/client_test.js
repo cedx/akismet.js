@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import {env} from "node:process";
 import {describe, it} from "node:test";
-import {Author, AuthorRole, Blog, CheckResult, Client, Comment, CommentType} from "../src/index.js";
+import {Author, AuthorRole, Blog, CheckResult, Client, Comment, CommentType} from "#akismet";
 
 /**
  * Tests the features of the {@link Client} class.

@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import {describe, it} from "node:test";
-import {Blog} from "../src/index.js";
+import {Blog} from "#akismet";
 
 /**
  * Tests the features of the {@link Blog} class.

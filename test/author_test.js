@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import {describe, it} from "node:test";
-import {Author} from "../src/index.js";
+import {Author} from "#akismet";
 
 /**
  * Tests the features of the {@link Author} class.
