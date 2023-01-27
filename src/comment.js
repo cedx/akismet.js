@@ -55,9 +55,9 @@ export class Comment {
 
 	/**
 	 * Creates a new comment.
-	 * @param {CommentOptions} [options] An object providing values to initialize this instance.
+	 * @param {CommentOptions} options An object providing values to initialize this instance.
 	 */
-	constructor(options = {}) {
+	constructor(options) {
 		this.author = options.author ?? null;
 		this.content = options.content ?? "";
 		this.date = options.date ?? null;
@@ -107,7 +107,7 @@ export class Comment {
 /**
  * Defines the options of a {@link Comment} instance.
  * @typedef {object} CommentOptions
- * @property {Author|null} [author] The comment's author.
+ * @property {Author|null} author The comment's author.
  * @property {string} [content] The comment's content.
  * @property {Date|null} [date] The UTC timestamp of the creation of the comment.
  * @property {string} [permalink] The permanent location of the entry the comment is submitted to.

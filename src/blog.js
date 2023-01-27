@@ -23,9 +23,9 @@ export class Blog {
 
 	/**
 	 * Creates a new blog.
-	 * @param {BlogOptions} [options] An object providing values to initialize this instance.
+	 * @param {BlogOptions} options An object providing values to initialize this instance.
 	 */
-	constructor(options = {}) {
+	constructor(options) {
 		this.charset = options.charset ?? "";
 		this.languages = options.languages ?? [];
 		this.url = options.url ? new URL(options.url) : null;
@@ -62,5 +62,5 @@ export class Blog {
  * @typedef {object} BlogOptions
  * @property {string} [charset] The character encoding for the values included in comments.
  * @property {string[]} [languages] The languages in use on the blog or site, in ISO 639-1 format.
- * @property {string} [url] The blog or site URL.
+ * @property {string} url The blog or site URL.
  */
