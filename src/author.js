@@ -101,6 +101,8 @@ export class Author {
  */
 export const AuthorRole = Object.freeze({
 
-	/** The author is an administrator. */
+	/**
+	 * The author is an administrator.
+	 */
 	administrator: "administrator"
 });
