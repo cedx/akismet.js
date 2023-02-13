@@ -12,6 +12,9 @@ describe("Comment", () => {
 			assert.equal(comment.author, null);
 			assert.equal(comment.content.length, 0);
 			assert.equal(comment.date, null);
+			assert.equal(comment.permalink, null);
+			assert.equal(comment.postModified, null);
+			assert.equal(comment.recheckReason.length, 0);
 			assert.equal(comment.referrer, null);
 			assert.equal(comment.type.length, 0);
 		});
@@ -22,15 +25,19 @@ describe("Comment", () => {
 				comment_content: "A user comment.",
 				comment_date_gmt: "2000-01-01T00:00:00.000Z",
 				comment_type: "blog-post",
-				referrer: "https://belin.io"
+				referrer: "https://belin.io",
+				recheck_reason: "The comment has been changed.",
+				user_ip: "127.0.0.1"
 			});
 
 			assert.ok(comment.author instanceof Author);
+			assert.equal(comment.author.ipAddress, "127.0.0.1");
 			assert.equal(comment.author.name, "Cédric Belin");
 			assert.equal(comment.content, "A user comment.");
 			assert.ok(comment.date instanceof Date);
-			assert.equal(comment.date.getFullYear(), 2000);
+			assert.equal(comment.date.toISOString(), "2000-01-01T00:00:00.000Z");
 			assert.ok(comment.referrer instanceof URL);
+			assert.equal(comment.recheckReason, "The comment has been changed.");
 			assert.equal(comment.referrer.href, "https://belin.io/");
 			assert.equal(comment.type, CommentType.blogPost);
 		});
