@@ -67,7 +67,7 @@ export class Client {
 	 */
 	constructor(apiKey, blog, options = {}) {
 		this.apiKey = apiKey;
-		this.baseUrl = new URL(options.baseUrl ?? "https://rest.akismet.com/1.1/");
+		this.baseUrl = new URL(options.baseUrl ?? "https://rest.akismet.com/");
 		this.blog = blog;
 		this.isTest = options.isTest ?? false;
 		this.userAgent = options.userAgent ?? `Node.js/${version.slice(1)} | Akismet/${Client.#version}`;
@@ -80,7 +80,7 @@ export class Client {
 	 * @returns {Promise<CheckResult>} A value indicating whether the specified comment is spam.
 	 */
 	async checkComment(comment) {
-		const response = await this.#fetch(new URL("comment-check", this.#endpoint), comment.toJSON());
+		const response = await this.#fetch(new URL("1.1/comment-check", this.#endpoint), comment.toJSON());
 		return await response.text() == "false"
 			? CheckResult.ham
 			: response.headers.get("X-akismet-pro-tip") == "discard" ? CheckResult.pervasiveSpam : CheckResult.spam;
@@ -92,7 +92,7 @@ export class Client {
 	 * @returns {Promise<void>} Resolves once the comment has been submitted.
 	 */
 	async submitHam(comment) {
-		const response = await this.#fetch(new URL("submit-ham", this.#endpoint), comment.toJSON());
+		const response = await this.#fetch(new URL("1.1/submit-ham", this.#endpoint), comment.toJSON());
 		if (await response.text() != Client.#success) throw Error("Invalid server response.");
 	}
 
@@ -102,7 +102,7 @@ export class Client {
 	 * @returns {Promise<void>} Resolves once the comment has been submitted.
 	 */
 	async submitSpam(comment) {
-		const response = await this.#fetch(new URL("submit-spam", this.#endpoint), comment.toJSON());
+		const response = await this.#fetch(new URL("1.1/submit-spam", this.#endpoint), comment.toJSON());
 		if (await response.text() != Client.#success) throw Error("Invalid server response.");
 	}
 
@@ -111,7 +111,7 @@ export class Client {
 	 * @returns {Promise<boolean>} `true` if the specified API key is valid, otherwise `false`.
 	 */
 	async verifyKey() {
-		const response = await this.#fetch(new URL("verify-key", this.baseUrl), {key: this.apiKey});
+		const response = await this.#fetch(new URL("1.1/verify-key", this.baseUrl), {key: this.apiKey});
 		return await response.text() == "valid";
 	}
 

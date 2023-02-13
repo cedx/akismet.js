@@ -4,7 +4,7 @@
 
 // Checks the specified comment against the service database, and returns a value indicating whether it is spam.
 // It should return `false` for valid comment (e.g. ham).
-POST {{baseUrl}}/comment-check
+POST {{baseUrl}}/1.1/comment-check
 Content-Type: application/x-www-form-urlencoded
 
 blog=https://github.com/cedx/akismet.js
@@ -22,7 +22,7 @@ blog=https://github.com/cedx/akismet.js
 
 // Checks the specified comment against the service database, and returns a value indicating whether it is spam.
 // It should return `true` for invalid comment (e.g. spam).
-POST {{baseUrl}}/comment-check
+POST {{baseUrl}}/1.1/comment-check
 Content-Type: application/x-www-form-urlencoded
 
 blog=https://github.com/cedx/akismet.js
@@ -37,7 +37,7 @@ blog=https://github.com/cedx/akismet.js
 ###
 
 // Submits the specified comment that was incorrectly marked as spam but should not have been.
-POST {{baseUrl}}/submit-ham
+POST {{baseUrl}}/1.1/submit-ham
 Content-Type: application/x-www-form-urlencoded
 
 blog=https://github.com/cedx/akismet.js
@@ -54,7 +54,7 @@ blog=https://github.com/cedx/akismet.js
 ###
 
 // Submits the specified comment that was not marked as spam but should have been.
-POST {{baseUrl}}/submit-spam
+POST {{baseUrl}}/1.1/submit-spam
 Content-Type: application/x-www-form-urlencoded
 
 blog=https://github.com/cedx/akismet.js
