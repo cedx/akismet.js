@@ -15,13 +15,9 @@
 	"devDependencies": {
 		"@babel/eslint-parser": "^7.19.1",
 		"@babel/plugin-syntax-import-assertions": "^7.20.0",
-		"@types/gulp": "^4.0.10",
 		"@types/node": "^18.14.0",
 		"c8": "^7.13.0",
-		"del": "^7.0.0",
 		"eslint": "^8.34.0",
-		"execa": "^7.0.0",
-		"gulp": "^4.0.2",
 		"gulp-replace": "^1.1.4",
 		"typedoc": "^0.23.25",
 		"typescript": "^4.9.5"
@@ -52,7 +48,7 @@
 		"validation"
 	],
 	"scripts": {
-		"prepack": "gulp",
+		"prepack": "lix Dist",
 		"test": "c8 --all --include=src/**/*.js --report-dir=var --reporter=lcovonly node --test"
 	}
 }
