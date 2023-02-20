@@ -1,2 +1,2 @@
 /** Packages the project. **/
-function main() for (script in ["Clean", "Build", "Version"]) Sys.command('lix $script');
+function main() for (script in ["Clean", "Build"]) Sys.command('lix $script');
