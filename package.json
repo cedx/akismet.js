@@ -13,9 +13,9 @@
 		"url": "https://belin.io"
 	},
 	"devDependencies": {
-		"@types/node": "^18.14.1",
+		"@types/node": "^18.14.2",
 		"c8": "^7.13.0",
-		"eslint": "^8.34.0",
+		"eslint": "^8.35.0",
 		"typedoc": "^0.23.25",
 		"typescript": "^4.9.5"
 	},
