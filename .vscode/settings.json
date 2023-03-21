@@ -7,7 +7,7 @@
 	"[markdown]": {"files.trimTrailingWhitespace": false},
 	"[yaml]": {"editor.insertSpaces": true},
 	"rest-client.environmentVariables": {
-		"development": {
+		"dev": {
 			"apiKey": "AKISMET_API_KEY",
 			"baseUrl": "https://rest.akismet.com"
 		}
