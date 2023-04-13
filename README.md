@@ -1,5 +1,5 @@
 # Akismet for JS
-![Runtime](https://badgen.net/npm/node/@cedx/akismet) ![Release](https://badgen.net/npm/v/@cedx/akismet) ![License](https://badgen.net/npm/license/@cedx/akismet) ![Downloads](https://badgen.net/npm/dt/@cedx/akismet) ![Coverage](https://badgen.net/codecov/c/github/cedx/akismet.js)
+![Node.js](https://badgen.net/npm/node/@cedx/akismet) ![npm](https://badgen.net/npm/v/@cedx/akismet) ![License](https://badgen.net/npm/license/@cedx/akismet) ![Downloads](https://badgen.net/npm/dt/@cedx/akismet) ![Coverage](https://badgen.net/codecov/c/github/cedx/akismet.js)
 
 Prevent comment spam using [Akismet](https://akismet.com) service, in [JavaScript](https://developer.mozilla.org/docs/Web/JavaScript).
 
