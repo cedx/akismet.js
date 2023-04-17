@@ -16,7 +16,7 @@
 		"@types/node": "^18.15.11",
 		"c8": "^7.13.0",
 		"eslint": "^8.38.0",
-		"typedoc": "^0.24.1",
+		"typedoc": "^0.24.4",
 		"typescript": "^5.0.4"
 	},
 	"engines": {
