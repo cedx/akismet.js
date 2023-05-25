@@ -1,7 +1,7 @@
 {
 	"bugs": "https://github.com/cedx/akismet.js/issues",
 	"description": "Prevent comment spam using the Akismet service.",
-	"homepage": "https://github.com/cedx/akismet.js",
+	"homepage": "https://docs.belin.io/akismet.js",
 	"license": "MIT",
 	"name": "@cedx/akismet",
 	"repository": "github:cedx/akismet.js",
@@ -13,7 +13,7 @@
 		"url": "https://belin.io"
 	},
 	"devDependencies": {
-		"@types/node": "^20.2.1",
+		"@types/node": "^20.2.4",
 		"c8": "^7.13.0",
 		"eslint": "^8.41.0",
 		"typedoc": "^0.24.7",
