@@ -54,12 +54,6 @@ export class Client {
 	userAgent;
 
 	/**
-	 * The final URL of the remote API endpoint.
-	 * @type {URL}
-	 */
-	#endpoint;
-
-	/**
 	 * Creates a new client.
 	 * @param {string} apiKey The Akismet API key.
 	 * @param {import("./blog.js").Blog} blog The front page or home URL of the instance making requests.
@@ -71,7 +65,6 @@ export class Client {
 		this.blog = blog;
 		this.isTest = options.isTest ?? false;
 		this.userAgent = options.userAgent ?? `Node.js/${version.slice(1)} | Akismet/${Client.#version}`;
-		this.#endpoint = new URL(`${this.baseUrl.protocol}//${this.apiKey}.${this.baseUrl.host}${this.baseUrl.pathname}`);
 	}
 
 	/**
@@ -80,7 +73,7 @@ export class Client {
 	 * @returns {Promise<CheckResult>} A value indicating whether the specified comment is spam.
 	 */
 	async checkComment(comment) {
-		const response = await this.#fetch(new URL("1.1/comment-check", this.#endpoint), comment.toJSON());
+		const response = await this.#fetch("1.1/comment-check", comment.toJSON());
 		return await response.text() == "false"
 			? CheckResult.ham
 			: response.headers.get("X-akismet-pro-tip") == "discard" ? CheckResult.pervasiveSpam : CheckResult.spam;
@@ -92,7 +85,7 @@ export class Client {
 	 * @returns {Promise<void>} Resolves once the comment has been submitted.
 	 */
 	async submitHam(comment) {
-		const response = await this.#fetch(new URL("1.1/submit-ham", this.#endpoint), comment.toJSON());
+		const response = await this.#fetch("1.1/submit-ham", comment.toJSON());
 		if (await response.text() != Client.#success) throw Error("Invalid server response.");
 	}
 
@@ -102,7 +95,7 @@ export class Client {
 	 * @returns {Promise<void>} Resolves once the comment has been submitted.
 	 */
 	async submitSpam(comment) {
-		const response = await this.#fetch(new URL("1.1/submit-spam", this.#endpoint), comment.toJSON());
+		const response = await this.#fetch("1.1/submit-spam", comment.toJSON());
 		if (await response.text() != Client.#success) throw Error("Invalid server response.");
 	}
 
@@ -111,21 +104,22 @@ export class Client {
 	 * @returns {Promise<boolean>} `true` if the specified API key is valid, otherwise `false`.
 	 */
 	async verifyKey() {
-		const response = await this.#fetch(new URL("1.1/verify-key", this.baseUrl), {key: this.apiKey});
+		const response = await this.#fetch("1.1/verify-key", {key: this.apiKey});
 		return await response.text() == "valid";
 	}
 
 	/**
 	 * Queries the service by posting the specified fields to a given end point, and returns the response.
-	 * @param {URL} endpoint The URL of the end point to query.
+	 * @param {string} endpoint The URL of the end point to query.
 	 * @param {Record<string, string>} fields The fields describing the query body.
 	 * @returns {Promise<Response>} The server response.
 	 */
 	async #fetch(endpoint, fields) {
 		const body = new URLSearchParams({...this.blog.toJSON(), ...fields});
+		body.set("api_key", this.apiKey);
 		if (this.isTest) body.set("is_test", "1");
 
-		const response = await fetch(endpoint, {method: "POST", headers: {"User-Agent": this.userAgent}, body});
+		const response = await fetch(new URL(endpoint, this.baseUrl), {method: "POST", headers: {"User-Agent": this.userAgent}, body});
 		if (!response.ok) throw Error(`${response.status} ${response.statusText}`);
 
 		if (response.headers.has("X-akismet-alert-code")) {
