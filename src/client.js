@@ -115,9 +115,16 @@ export class Client {
 	 * @returns {Promise<Response>} The server response.
 	 */
 	async #fetch(endpoint, fields) {
-		const body = new URLSearchParams({...this.blog.toJSON(), ...fields});
+		const body = new URLSearchParams(this.blog.toJSON());
 		body.set("api_key", this.apiKey);
 		if (this.isTest) body.set("is_test", "1");
+
+		for (const [key, value] of Object.entries(fields))
+			if (!Array.isArray(value)) body.set(key, value);
+			else {
+				let index = 0;
+				value.forEach(item => body.set(`${key}[${index++}]`, item));
+			}
 
 		const response = await fetch(new URL(endpoint, this.baseUrl), {method: "POST", headers: {"User-Agent": this.userAgent}, body});
 		if (!response.ok) throw Error(`${response.status} ${response.statusText}`);
