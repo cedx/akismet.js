@@ -18,6 +18,12 @@ export class Comment {
 	content;
 
 	/**
+	 * The context in which this comment was posted.
+	 * @type {string[]}
+	 */
+	context;
+
+	/**
 	 * The UTC timestamp of the creation of the comment.
 	 * @type {Date|null}
 	 */
@@ -60,6 +66,7 @@ export class Comment {
 	constructor(options) {
 		this.author = options.author ?? null;
 		this.content = options.content ?? "";
+		this.context = options.context ?? [];
 		this.date = options.date ?? null;
 		this.permalink = options.permalink ? new URL(options.permalink) : null;
 		this.postModified = options.postModified ?? null;
@@ -78,6 +85,7 @@ export class Comment {
 		return new this({
 			author: hasAuthor ? Author.fromJson(json) : null,
 			content: typeof json.comment_content == "string" ? json.comment_content : "",
+			context: Array.isArray(json.comment_context) ? json.comment_context : [],
 			date: typeof json.comment_date_gmt == "string" ? new Date(json.comment_date_gmt) : null,
 			permalink: typeof json.permalink == "string" ? json.permalink : "",
 			postModified: typeof json.comment_post_modified_gmt == "string" ? new Date(json.comment_post_modified_gmt) : null,
@@ -94,6 +102,7 @@ export class Comment {
 	toJSON() {
 		const map = this.author ? this.author.toJSON() : {};
 		if (this.content) map.comment_content = this.content;
+		if (this.context.length) map.comment_context = this.context;
 		if (this.date) map.comment_date_gmt = this.date.toJSON();
 		if (this.permalink) map.permalink = this.permalink.href;
 		if (this.postModified) map.comment_post_modified_gmt = this.postModified.toJSON();
@@ -109,6 +118,7 @@ export class Comment {
  * @typedef {object} CommentOptions
  * @property {Author|null} author The comment's author.
  * @property {string} [content] The comment's content.
+ * @property {string[]} [context] The context in which this comment was posted.
  * @property {Date|null} [date] The UTC timestamp of the creation of the comment.
  * @property {string} [permalink] The permanent location of the entry the comment is submitted to.
  * @property {Date|null} [postModified] The UTC timestamp of the publication time for the post, page or thread on which the comment was posted.
