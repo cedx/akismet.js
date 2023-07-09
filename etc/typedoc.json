@@ -5,7 +5,7 @@
 	"gitRevision": "main",
 	"hideGenerator": true,
 	"name": "Akismet for JS",
-	"out": "../docs",
+	"out": "../docs/api",
 	"readme": "none",
 	"tsconfig": "../src/jsconfig.json"
 }
