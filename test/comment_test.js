@@ -6,7 +6,7 @@ import {Author, Comment, CommentType} from "#akismet";
  * Tests the features of the {@link Comment} class.
  */
 describe("Comment", () => {
-	describe(".fromJson()", () => {
+	describe("fromJson()", () => {
 		it("should return an empty instance with an empty map", () => {
 			const comment = Comment.fromJson({});
 			assert.equal(comment.author, null);
@@ -43,7 +43,7 @@ describe("Comment", () => {
 		});
 	});
 
-	describe(".toJSON()", () => {
+	describe("toJSON()", () => {
 		it("should return only the author info with a newly created instance", () => {
 			const data = new Comment({author: new Author({ipAddress: "127.0.0.1"})}).toJSON();
 			assert.equal(Object.keys(data).length, 1);

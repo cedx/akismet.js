@@ -40,7 +40,7 @@ describe("Client", () => {
 		type: CommentType.blogPost
 	});
 
-	describe(".checkComment()", () => {
+	describe("checkComment()", () => {
 		it("should return `CheckResult.ham` for valid comment (e.g. ham)", async () => {
 			assert.equal(await client.checkComment(ham), CheckResult.ham);
 		});
@@ -51,15 +51,15 @@ describe("Client", () => {
 		});
 	});
 
-	describe(".submitHam()", () => {
+	describe("submitHam()", () => {
 		it("should complete without any error", () => assert.doesNotReject(client.submitHam(ham)));
 	});
 
-	describe(".submitSpam()", () => {
+	describe("submitSpam()", () => {
 		it("should complete without any error", () => assert.doesNotReject(client.submitSpam(spam)));
 	});
 
-	describe(".verifyKey()", () => {
+	describe("verifyKey()", () => {
 		it("should return `true` for a valid API key", async () => {
 			assert.ok(await client.verifyKey());
 		});

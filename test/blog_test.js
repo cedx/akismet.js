@@ -6,7 +6,7 @@ import {Blog} from "#akismet";
  * Tests the features of the {@link Blog} class.
  */
 describe("Blog", () => {
-	describe(".fromJson()", () => {
+	describe("fromJson()", () => {
 		it("should return an empty instance with an empty map", () => {
 			const blog = Blog.fromJson({});
 			assert.equal(blog.charset.length, 0);
@@ -28,7 +28,7 @@ describe("Blog", () => {
 		});
 	});
 
-	describe(".toJSON()", () => {
+	describe("toJSON()", () => {
 		it("should return only the blog URL with a newly created instance", () => {
 			const data = new Blog({url: "https://github.com/cedx/akismet.js"}).toJSON();
 			assert.equal(Object.keys(data).length, 1);

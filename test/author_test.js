@@ -6,7 +6,7 @@ import {Author, AuthorRole} from "#akismet";
  * Tests the features of the {@link Author} class.
  */
 describe("Author", () => {
-	describe(".fromJson()", () => {
+	describe("fromJson()", () => {
 		it("should return an empty instance with an empty map", () => {
 			const author = Author.fromJson({});
 			assert.equal(author.email.length, 0);
@@ -36,7 +36,7 @@ describe("Author", () => {
 		});
 	});
 
-	describe(".toJSON()", () => {
+	describe("toJSON()", () => {
 		it("should return only the IP address with a newly created instance", () => {
 			const data = new Author({ipAddress: "127.0.0.1"}).toJSON();
 			assert.equal(Object.keys(data).length, 1);
