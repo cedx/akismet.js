@@ -5,8 +5,6 @@
 *.css text diff=css
 *.html text diff=html
 *.http text
-*.hx text
-*.hxml text
 *.js text
 *.json text
 *.md text diff=markdown

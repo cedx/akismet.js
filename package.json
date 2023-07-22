@@ -45,7 +45,13 @@
 		"validation"
 	],
 	"scripts": {
-		"prepack": "lix Dist",
+		"build": "node scripts/build.js",
+		"clean": "node scripts/clean.js",
+		"doc": "node scripts/doc.js",
+		"dist": "npm run clean && npm run build",
+		"lint": "tsc --project jsconfig.json && eslint --config=etc/eslint.json example scripts src test",
+		"postpublish": "node scripts/publish.js",
+		"prepack": "npm run dist",
 		"test": "c8 --all --include=src/**/*.js --report-dir=var --reporter=lcovonly node --test --test-reporter=spec"
 	}
 }
