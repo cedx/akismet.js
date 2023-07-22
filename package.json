@@ -45,9 +45,9 @@
 		"validation"
 	],
 	"scripts": {
-		"build": "node scripts/build.js",
+		"build": "node scripts/build.js && tsc --project src/jsconfig.json",
 		"clean": "node scripts/clean.js",
-		"doc": "node scripts/doc.js",
+		"doc": "typedoc --options etc/typedoc.json && node scripts/doc.js",
 		"dist": "npm run clean && npm run build",
 		"lint": "tsc --project jsconfig.json && eslint --config=etc/eslint.json example scripts src test",
 		"postpublish": "node scripts/publish.js",
