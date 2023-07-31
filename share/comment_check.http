@@ -3,7 +3,8 @@
 POST {{baseUrl}}/1.1/comment-check
 Content-Type: application/x-www-form-urlencoded
 
-blog=https://github.com/cedx/akismet.js
+api_key={{$processEnv %apiKey}}
+&blog=https://github.com/cedx/akismet.js
 &comment_author=Akismet
 &comment_author_url=https://belin.io
 &comment_content=I'm testing out the Service API.
@@ -21,7 +22,8 @@ blog=https://github.com/cedx/akismet.js
 POST {{baseUrl}}/1.1/comment-check
 Content-Type: application/x-www-form-urlencoded
 
-blog=https://github.com/cedx/akismet.js
+api_key={{$processEnv %apiKey}}
+&blog=https://github.com/cedx/akismet.js
 &comment_author=viagra-test-123
 &comment_content=Spam!
 &comment_type=trackback
