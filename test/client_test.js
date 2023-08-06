@@ -7,14 +7,14 @@ import {Author, AuthorRole, Blog, CheckResult, Client, Comment, CommentType} fro
  * Tests the features of the {@link Client} class.
  */
 describe("Client", () => {
-	// The default test client.
+	// The client used to query the remote API.
 	const client = new Client(
 		env.AKISMET_API_KEY ?? "",
 		new Blog({url: "https://github.com/cedx/akismet.js"}),
 		{isTest: true}
 	);
 
-	// A message marked as ham.
+	// A comment with content marked as ham.
 	const ham = new Comment({
 		author: new Author({
 			ipAddress: "192.168.0.1",
@@ -28,7 +28,7 @@ describe("Client", () => {
 		type: CommentType.comment
 	});
 
-	// A message marked as spam.
+	// A comment with content marked as spam.
 	const spam = new Comment({
 		author: new Author({
 			email: "akismet-guaranteed-spam@example.com",
