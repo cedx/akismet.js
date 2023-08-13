@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+	<head>
+		<meta charset="utf-8"/>
+		<title>Akismet for JS</title>
+
+		<meta name="application-name" content="Akismet for JS"/>
+		<meta name="author" content="Cédric Belin - cedric@belin.io"/>
+		<meta name="color-scheme" content="light"/>
+		<meta name="description" content="Prevent comment spam using the Akismet service, in JavaScript."/>
+		<meta name="format-detection" content="telephone=no"/>
+		<meta name="referrer" content="same-origin"/>
+		<meta name="theme-color" content="#ba9f18"/>
+		<meta name="viewport" content="initial-scale=1, width=device-width"/>
+
+		<link rel="icon" href="favicon.svg"/>
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify/lib/themes/vue.css"/>
+
+		<script defer src="https://cdn.jsdelivr.net/npm/docsify/lib/docsify.min.js"></script>
+		<script defer src="https://cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js"></script>
+		<script defer src="https://cdn.jsdelivr.net/npm/docsify-pagination/dist/docsify-pagination.min.js"></script>
+		<script defer src="https://cdn.jsdelivr.net/npm/prismjs/components/prism-bash.min.js"></script>
+
+		<script>
+			window.$docsify = {
+				alias: {"/.*/_sidebar.md": "/_sidebar.md"},
+				auto2top: true,
+				loadSidebar: true,
+				name: "Akismet for JS",
+				noCompileLinks: ["api/.*"],
+				pagination: {crossChapter: true},
+				repo: "cedx/akismet.js",
+				tabs: {theme: "material"},
+				themeColor: "#ba9f18"
+			};
+		</script>
+
+		<style>
+			body { font-family: ui-sans-serif, sans-serif; }
+			button, input { font-family: inherit; }
+			.docsify-tabs > button { cursor: pointer; }
+		</style>
+	</head>
+
+	<body>
+		<div id="app"></div>
+	</body>
+</html>

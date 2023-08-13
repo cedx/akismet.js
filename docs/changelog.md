@@ -11,7 +11,7 @@
 - Breaking change: raised the required [Node.js](https://nodejs.org) version.
 - Breaking change: removed the `ClientError` class.
 - Breaking change: the `Client` class is no longer an event emitter. 
-- Added support for the [Akismet response error codes](https://akismet.com/development/api/#error-codes).
+- Added support for the [Akismet response error codes](https://akismet.com/developers/errors).
 - Ported the source code to [JavaScript](https://developer.mozilla.org/docs/Web/JavaScript).
 - Replaced the [Mocha](https://mochajs.org) test runner by the [Node.js one](https://nodejs.org/api/test.html).
 - Restored support for [GitHub Packages](https://github.com/features/packages).
