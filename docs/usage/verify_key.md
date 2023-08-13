@@ -25,6 +25,7 @@ It can also rejects with a custom error code and message (respectively provided 
 See [Response Error Codes](https://akismet.com/developers/errors) for more information.
 
 ## Example
+
 ```javascript
 import console from "node:console";
 import {Blog, Client} from "@cedx/akismet";
@@ -36,9 +37,9 @@ try {
   const isValid = await client.verifyKey();
   console.log(isValid ? "The API key is valid." : "The API key is invalid.");
 }
-
 catch (error) {
   console.log(`An error occurred: ${error}`);
+}
 }
 ```
 
