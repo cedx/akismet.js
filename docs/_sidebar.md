@@ -1,10 +1,9 @@
 - [Installation](installation.md)
-- [Usage](usage.md)
-- Features
-	- [Key verification](features/verify_key.md)
-	- [Comment check](features/check_comment.md)
-	- [Submit spam](features/submit_spam.md)
-	- [Submit ham](features/submit_ham.md)
+- Usage
+	- [Key verification](usage/verify_key.md)
+	- [Comment check](usage/check_comment.md)
+	- [Submit spam](usage/submit_spam.md)
+	- [Submit ham](usage/submit_ham.md)
 - [API reference](api/)
 - [Changelog](changelog.md)
 - [License](license.md)
