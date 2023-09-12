@@ -9,7 +9,7 @@
 	"rest-client.environmentVariables": {
 		"dev": {
 			"apiKey": "AKISMET_API_KEY",
-			"baseUrl": "https://rest.akismet.com"
+			"apiUrl": "https://rest.akismet.com"
 		}
 	}
 }

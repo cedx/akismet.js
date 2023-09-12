@@ -1,5 +1,5 @@
 // Checks the specified API key against the service database, and returns a value indicating whether it is valid.
-POST {{baseUrl}}/1.1/verify-key
+POST {{apiUrl}}/1.1/verify-key
 Content-Type: application/x-www-form-urlencoded
 
 blog=https://github.com/cedx/akismet.js
