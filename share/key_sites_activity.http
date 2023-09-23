@@ -1,2 +1,2 @@
 // TODO
-GET {{apiUrl}}/1.2/key-sites?api_key={{$processEnv %apiKey}}
+GET {{apiUrl}}/1.2/key-sites?api_key={{$processEnv AKISMET_API_KEY}}
