@@ -4,7 +4,7 @@
 	"homepage": "https://docs.belin.io/akismet.js",
 	"license": "MIT",
 	"name": "@cedx/akismet",
-	"repository": "github:cedx/akismet.js",
+	"repository": "cedx/akismet.js",
 	"type": "module",
 	"version": "16.0.2",
 	"author": {
@@ -13,7 +13,7 @@
 		"url": "https://belin.io"
 	},
 	"devDependencies": {
-		"@types/node": "^20.8.0",
+		"@types/node": "^20.8.2",
 		"c8": "^8.0.1",
 		"eslint": "^8.50.0",
 		"typedoc": "^0.25.1",
