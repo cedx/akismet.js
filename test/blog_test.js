@@ -30,17 +30,17 @@ describe("Blog", () => {
 
 	describe("toJSON()", () => {
 		it("should return only the blog URL with a newly created instance", () => {
-			const data = new Blog({url: "https://github.com/cedx/akismet.js"}).toJSON();
-			assert.equal(Object.keys(data).length, 1);
-			assert.equal(data.blog, "https://github.com/cedx/akismet.js");
+			const json = new Blog({url: "https://github.com/cedx/akismet.js"}).toJSON();
+			assert.equal(Object.keys(json).length, 1);
+			assert.equal(json.blog, "https://github.com/cedx/akismet.js");
 		});
 
 		it("should return a non-empty map with an initialized instance", () => {
-			const data = new Blog({charset: "UTF-8", languages: ["en", "fr"], url: "https://github.com/cedx/akismet.js"}).toJSON();
-			assert.equal(Object.keys(data).length, 3);
-			assert.equal(data.blog, "https://github.com/cedx/akismet.js");
-			assert.equal(data.blog_charset, "UTF-8");
-			assert.equal(data.blog_lang, "en,fr");
+			const json = new Blog({charset: "UTF-8", languages: ["en", "fr"], url: "https://github.com/cedx/akismet.js"}).toJSON();
+			assert.equal(Object.keys(json).length, 3);
+			assert.equal(json.blog, "https://github.com/cedx/akismet.js");
+			assert.equal(json.blog_charset, "UTF-8");
+			assert.equal(json.blog_lang, "en,fr");
 		});
 	});
 });

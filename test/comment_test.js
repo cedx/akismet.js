@@ -45,13 +45,13 @@ describe("Comment", () => {
 
 	describe("toJSON()", () => {
 		it("should return only the author info with a newly created instance", () => {
-			const data = new Comment({author: new Author({ipAddress: "127.0.0.1"})}).toJSON();
-			assert.equal(Object.keys(data).length, 1);
-			assert.equal(data.user_ip, "127.0.0.1");
+			const json = new Comment({author: new Author({ipAddress: "127.0.0.1"})}).toJSON();
+			assert.equal(Object.keys(json).length, 1);
+			assert.equal(json.user_ip, "127.0.0.1");
 		});
 
 		it("should return a non-empty map with an initialized instance", () => {
-			const data = new Comment({
+			const json = new Comment({
 				author: new Author({ipAddress: "127.0.0.1", name: "Cédric Belin", userAgent: "Doom/6.6.6"}),
 				content: "A user comment.",
 				date: new Date("2000-01-01T00:00:00.000Z"),
@@ -59,14 +59,14 @@ describe("Comment", () => {
 				type: CommentType.blogPost
 			}).toJSON();
 
-			assert.equal(Object.keys(data).length, 7);
-			assert.equal(data.comment_author, "Cédric Belin");
-			assert.equal(data.comment_content, "A user comment.");
-			assert.equal(data.comment_date_gmt, "2000-01-01T00:00:00.000Z");
-			assert.equal(data.comment_type, "blog-post");
-			assert.equal(data.referrer, "https://belin.io/");
-			assert.equal(data.user_agent, "Doom/6.6.6");
-			assert.equal(data.user_ip, "127.0.0.1");
+			assert.equal(Object.keys(json).length, 7);
+			assert.equal(json.comment_author, "Cédric Belin");
+			assert.equal(json.comment_content, "A user comment.");
+			assert.equal(json.comment_date_gmt, "2000-01-01T00:00:00.000Z");
+			assert.equal(json.comment_type, "blog-post");
+			assert.equal(json.referrer, "https://belin.io/");
+			assert.equal(json.user_agent, "Doom/6.6.6");
+			assert.equal(json.user_ip, "127.0.0.1");
 		});
 	});
 });

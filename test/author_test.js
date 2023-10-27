@@ -38,13 +38,13 @@ describe("Author", () => {
 
 	describe("toJSON()", () => {
 		it("should return only the IP address with a newly created instance", () => {
-			const data = new Author({ipAddress: "127.0.0.1"}).toJSON();
-			assert.equal(Object.keys(data).length, 1);
-			assert.equal(data.user_ip, "127.0.0.1");
+			const json = new Author({ipAddress: "127.0.0.1"}).toJSON();
+			assert.equal(Object.keys(json).length, 1);
+			assert.equal(json.user_ip, "127.0.0.1");
 		});
 
 		it("should return a non-empty map with an initialized instance", () => {
-			const data = new Author({
+			const json = new Author({
 				email: "cedric@belin.io",
 				ipAddress: "192.168.0.1",
 				name: "Cédric Belin",
@@ -52,12 +52,12 @@ describe("Author", () => {
 				userAgent: "Mozilla/5.0"
 			}).toJSON();
 
-			assert.equal(Object.keys(data).length, 5);
-			assert.equal(data.comment_author, "Cédric Belin");
-			assert.equal(data.comment_author_email, "cedric@belin.io");
-			assert.equal(data.comment_author_url, "https://belin.io/");
-			assert.equal(data.user_agent, "Mozilla/5.0");
-			assert.equal(data.user_ip, "192.168.0.1");
+			assert.equal(Object.keys(json).length, 5);
+			assert.equal(json.comment_author, "Cédric Belin");
+			assert.equal(json.comment_author_email, "cedric@belin.io");
+			assert.equal(json.comment_author_url, "https://belin.io/");
+			assert.equal(json.user_agent, "Mozilla/5.0");
+			assert.equal(json.user_ip, "192.168.0.1");
 		});
 	});
 });
