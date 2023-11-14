@@ -13,4 +13,4 @@ Prevent comment spam using [Akismet](https://akismet.com) service, in [JavaScrip
 - [Submit an issue](https://github.com/cedx/akismet.js/issues)
 
 ## License
-[Akismet for JS](https://cedx.github.io/akismet.js) is distributed under the MIT License.
+[Akismet for JS](https://github.com/cedx/akismet.js) is distributed under the MIT License.
