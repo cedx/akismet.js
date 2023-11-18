@@ -1,6 +1,6 @@
 # Akismet for JS
 Used by millions of websites, [Akismet](https://akismet.com) filters out hundreds of millions of spam comments from the Web every day.
-Add Akismet to your [Haxe](https://haxe.org) applications so you don't have to worry about spam again.
+Add Akismet to your [JavaScript](https://developer.mozilla.org/docs/Web/JavaScript) applications so you don't have to worry about spam again.
 
 ## Quick start
 
