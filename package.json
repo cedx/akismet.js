@@ -13,9 +13,8 @@
 		"url": "https://belin.io"
 	},
 	"devDependencies": {
-		"@types/node": "^20.9.0",
-		"c8": "^8.0.1",
-		"eslint": "^8.53.0",
+		"@types/node": "^20.9.2",
+		"eslint": "^8.54.0",
 		"typedoc": "^0.25.3",
 		"typescript": "^5.2.2"
 	},
@@ -47,11 +46,12 @@
 	"scripts": {
 		"build": "node scripts/build.js && tsc --project src/jsconfig.json",
 		"clean": "node scripts/clean.js",
+		"coverage": "node --test --test-reporter=lcov --test-reporter-destination=var/lcov.info",
 		"doc": "typedoc --options etc/typedoc.json && node scripts/doc.js",
 		"dist": "npm run clean && npm run build",
 		"lint": "tsc --project jsconfig.json && eslint --config=etc/eslint.json example scripts src test",
 		"postpublish": "node scripts/publish.js",
 		"prepack": "npm run dist",
-		"test": "c8 --all --include=src/**/*.js --report-dir=var --reporter=lcovonly node --test --test-reporter=spec"
+		"test": "node --test --test-reporter=spec"
 	}
 }
