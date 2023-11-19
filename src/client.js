@@ -62,7 +62,7 @@ export class Client {
 	constructor(apiKey, blog, options = {}) {
 		const baseUrl = options.baseUrl ?? "https://rest.akismet.com";
 		this.apiKey = apiKey;
-		this.baseUrl = new URL(baseUrl.slice(-1) == "/" ? baseUrl : `${baseUrl}/`);
+		this.baseUrl = new URL(baseUrl.endsWith("/") ? baseUrl : `${baseUrl}/`);
 		this.blog = blog;
 		this.isTest = options.isTest ?? false;
 		this.userAgent = options.userAgent ?? `Node.js/${version.slice(1)} | Akismet/${Client.#version}`;
