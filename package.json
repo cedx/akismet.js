@@ -46,12 +46,11 @@
 	"scripts": {
 		"build": "node scripts/build.js && tsc --project src/jsconfig.json",
 		"clean": "node scripts/clean.js",
-		"coverage": "node --test --test-reporter=lcov --test-reporter-destination=var/lcov.info",
 		"doc": "typedoc --options etc/typedoc.json && node scripts/doc.js",
 		"dist": "npm run clean && npm run build",
 		"lint": "tsc --project jsconfig.json && eslint --config=etc/eslint.json example scripts src test",
 		"postpublish": "node scripts/publish.js",
 		"prepack": "npm run dist",
-		"test": "node --test --test-reporter=spec"
+		"test": "node --test --test-reporter=lcov --test-reporter-destination=var/lcov.info --test-reporter=spec --test-reporter-destination=stdout"
 	}
 }
