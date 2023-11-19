@@ -30,13 +30,13 @@ describe("Comment", () => {
 				user_ip: "127.0.0.1"
 			});
 
-			assert.ok(comment.author instanceof Author);
+			assert(comment.author instanceof Author);
 			assert.equal(comment.author.ipAddress, "127.0.0.1");
 			assert.equal(comment.author.name, "Cédric Belin");
 			assert.equal(comment.content, "A user comment.");
-			assert.ok(comment.date instanceof Date);
+			assert(comment.date instanceof Date);
 			assert.equal(comment.date.toISOString(), "2000-01-01T00:00:00.000Z");
-			assert.ok(comment.referrer instanceof URL);
+			assert(comment.referrer instanceof URL);
 			assert.equal(comment.recheckReason, "The comment has been changed.");
 			assert.equal(comment.referrer.href, "https://belin.io/");
 			assert.equal(comment.type, CommentType.blogPost);

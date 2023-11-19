@@ -47,7 +47,7 @@ describe("Client", () => {
 
 		it("should return `CheckResult.spam` for invalid comment (e.g. spam)", async () => {
 			const isSpam = /** @type {CheckResult[]} */ ([CheckResult.spam, CheckResult.pervasiveSpam]);
-			assert.ok(isSpam.includes(await client.checkComment(spam)));
+			assert(isSpam.includes(await client.checkComment(spam)));
 		});
 	});
 
@@ -61,7 +61,7 @@ describe("Client", () => {
 
 	describe("verifyKey()", () => {
 		it("should return `true` for a valid API key", async () => {
-			assert.ok(await client.verifyKey());
+			assert(await client.verifyKey());
 		});
 
 		it("should return `false` for an invalid API key", async () => {

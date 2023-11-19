@@ -30,7 +30,7 @@ describe("Author", () => {
 			assert.equal(author.email, "cedric@belin.io");
 			assert.equal(author.ipAddress, "127.0.0.1");
 			assert.equal(author.role, AuthorRole.administrator);
-			assert.ok(author.url instanceof URL);
+			assert(author.url instanceof URL);
 			assert.equal(author.url.href, "https://belin.io/");
 			assert.equal(author.userAgent, "Mozilla/5.0");
 		});

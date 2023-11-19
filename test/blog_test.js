@@ -23,7 +23,7 @@ describe("Blog", () => {
 
 			assert.equal(blog.charset, "UTF-8");
 			assert.deepEqual(blog.languages, ["en", "fr"]);
-			assert.ok(blog.url instanceof URL);
+			assert(blog.url instanceof URL);
 			assert.equal(blog.url.href, "https://github.com/cedx/akismet.js");
 		});
 	});
