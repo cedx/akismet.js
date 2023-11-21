@@ -40,7 +40,6 @@ try {
 catch (error) {
   console.log(`An error occurred: ${error}`);
 }
-}
 ```
 
 See the [API reference](api/) for detailed information about the `Client` and `Blog` classes, and their properties and methods.
