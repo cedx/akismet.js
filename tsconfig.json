@@ -1,6 +1,7 @@
 {
-	"include": ["example/*.js", "scripts/*.js", "src/**/*.js", "test/**/*.js"],
+	"include": ["example/*.js", "scripts/*.js", "src/**/*.ts", "test/**/*.js"],
 	"compilerOptions": {
+		"allowJs": true,
 		"baseUrl": ".",
 		"checkJs": true,
 		"esModuleInterop": true,
