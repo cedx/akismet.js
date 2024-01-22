@@ -20,7 +20,7 @@
 	"parser": "@typescript-eslint/parser",
 	"parserOptions": {
 		"ecmaVersion": "latest",
-		"project": true,
+		"project": "tsconfig.json",
 		"sourceType": "module"
 	},
 	"plugins": ["@typescript-eslint"],
