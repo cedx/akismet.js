@@ -3,4 +3,4 @@ POST {{apiUrl}}/1.1/verify-key
 Content-Type: application/x-www-form-urlencoded
 
 blog=https://github.com/cedx/akismet.js
-&key={{$processEnv AKISMET_API_KEY}}
+&key={{akismetApiKey}}

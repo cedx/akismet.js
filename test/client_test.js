@@ -1,4 +1,4 @@
-import assert from "node:assert/strict";
+import {doesNotReject, equal, ok} from "node:assert/strict";
 import {env} from "node:process";
 import {describe, it} from "node:test";
 import {Author, AuthorRole, Blog, CheckResult, Client, Comment, CommentType} from "#akismet";
@@ -21,7 +21,7 @@ describe("Client", () => {
 			name: "Akismet",
 			role: AuthorRole.administrator,
 			url: "https://belin.io",
-			userAgent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118.0.0.0 Safari/537.36"
+			userAgent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
 		}),
 		content: "I'm testing out the Service API.",
 		referrer: "https://www.npmjs.com/package/@cedx/akismet",
@@ -42,30 +42,30 @@ describe("Client", () => {
 
 	describe("checkComment()", () => {
 		it("should return `CheckResult.ham` for valid comment (e.g. ham)", async () => {
-			assert.equal(await client.checkComment(ham), CheckResult.ham);
+			equal(await client.checkComment(ham), CheckResult.ham);
 		});
 
 		it("should return `CheckResult.spam` for invalid comment (e.g. spam)", async () => {
 			const isSpam = /** @type {CheckResult[]} */ ([CheckResult.spam, CheckResult.pervasiveSpam]);
-			assert(isSpam.includes(await client.checkComment(spam)));
+			ok(isSpam.includes(await client.checkComment(spam)));
 		});
 	});
 
 	describe("submitHam()", () => {
-		it("should complete without any error", () => assert.doesNotReject(client.submitHam(ham)));
+		it("should complete without any error", () => doesNotReject(client.submitHam(ham)));
 	});
 
 	describe("submitSpam()", () => {
-		it("should complete without any error", () => assert.doesNotReject(client.submitSpam(spam)));
+		it("should complete without any error", () => doesNotReject(client.submitSpam(spam)));
 	});
 
 	describe("verifyKey()", () => {
 		it("should return `true` for a valid API key", async () => {
-			assert(await client.verifyKey());
+			ok(await client.verifyKey());
 		});
 
 		it("should return `false` for an invalid API key", async () => {
-			assert.equal(await new Client("0123456789-ABCDEF", client.blog, {isTest: true}).verifyKey(), false);
+			equal(await new Client("0123456789-ABCDEF", client.blog, {isTest: true}).verifyKey(), false);
 		});
 	});
 });
