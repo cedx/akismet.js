@@ -1,0 +1,4 @@
+/**
+ * TODO
+ */
+export class Activity {}
