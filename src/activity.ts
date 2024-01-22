@@ -1,4 +1,0 @@
-/**
- * TODO
- */
-export class Activity {}

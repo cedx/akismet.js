@@ -1,7 +1,7 @@
 import {version} from "node:process";
-import {Blog} from "./blog.js";
+import type {Blog} from "./blog.js";
 import {CheckResult} from "./check_result.js";
-import {Comment} from "./comment.js";
+import type {Comment} from "./comment.js";
 
 /**
  * Submits comments to the [Akismet](https://akismet.com) service.
@@ -11,12 +11,12 @@ export class Client {
 	/**
 	 * The response returned by the `submit-ham` and `submit-spam` endpoints when the outcome is a success.
 	 */
-	static #success = "Thanks for making the web a better place.";
+	static readonly #success = "Thanks for making the web a better place.";
 
 	/**
 	 * The package version.
 	 */
-	static #version = "16.0.2";
+	static readonly #version = "16.0.2";
 
 	/**
 	 * The Akismet API key.
