@@ -21,7 +21,7 @@ The promise rejects with an `Error` when an issue occurs.
 The error `message` usually includes some debug information, provided by the `X-akismet-debug-help` HTTP header,
 about what exactly was invalid about the call.
 
-It can also rejects with a custom error code and message (respectively provided by the `X-akismet-alert-code` and `X-akismet-alert-msg` headers).
+It can also reject with a custom error code and message (respectively provided by the `X-akismet-alert-code` and `X-akismet-alert-msg` headers).
 See [Response Error Codes](https://akismet.com/developers/errors) for more information.
 
 ## Example

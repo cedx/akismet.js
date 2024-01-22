@@ -1,6 +1,6 @@
 {
 	"$schema": "https://typedoc.org/schema.json",
-	"entryPoints": ["../src/index.js"],
+	"entryPoints": ["../src/index.ts"],
 	"excludePrivate": true,
 	"gitRevision": "main",
 	"hideGenerator": true,

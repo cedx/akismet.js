@@ -10,6 +10,7 @@
 *.md text diff=markdown
 *.mjs text
 *.svg text
+*.ts text
 *.txt text
 *.yaml text
 *.yml text
