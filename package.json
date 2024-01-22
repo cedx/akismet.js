@@ -14,8 +14,8 @@
 	},
 	"devDependencies": {
 		"@types/node": "^20.11.5",
-		"@typescript-eslint/eslint-plugin": "^6.19.0",
-		"@typescript-eslint/parser": "^6.19.0",
+		"@typescript-eslint/eslint-plugin": "^6.19.1",
+		"@typescript-eslint/parser": "^6.19.1",
 		"eslint": "^8.56.0",
 		"typedoc": "^0.25.7",
 		"typescript": "^5.3.3"
@@ -46,12 +46,12 @@
 		"validation"
 	],
 	"scripts": {
-		"build": "node scripts/build.js && tsc --project src/tsconfig.json",
-		"clean": "node scripts/clean.js",
-		"doc": "typedoc --options etc/typedoc.json && node scripts/doc.js",
+		"build": "node tool/build.js && tsc --project src/tsconfig.json",
+		"clean": "node tool/clean.js",
+		"doc": "typedoc --options etc/typedoc.json && node tool/doc.js",
 		"dist": "npm run clean && npm run build",
-		"lint": "tsc --project tsconfig.json && eslint --config=etc/eslint.json example scripts src test",
-		"postpublish": "node scripts/publish.js",
+		"lint": "tsc --project tsconfig.json && eslint --config=etc/eslint.json example src test tool",
+		"postpublish": "node tool/publish.js",
 		"prepack": "npm run dist",
 		"test": "npm run build && node --test --test-reporter=lcov --test-reporter-destination=var/lcov.info --test-reporter=spec --test-reporter-destination=stdout"
 	}
