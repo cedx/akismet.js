@@ -28,4 +28,3 @@ Before integrating this library into your application, you should [test your API
 ## See also
 - [API reference](api/)
 - [npm package](https://www.npmjs.com/package/@cedx/akismet)
-- [Code coverage](https://app.codecov.io/gh/cedx/akismet.js)

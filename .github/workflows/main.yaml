@@ -17,8 +17,3 @@ jobs:
         run: npm test
         env:
           AKISMET_API_KEY: ${{secrets.AKISMET_API_KEY}}
-      - name: Collect code coverage
-        if: success()
-        uses: codecov/codecov-action@v3
-        with:
-          files: var/lcov.info
