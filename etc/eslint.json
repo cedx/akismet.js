@@ -64,7 +64,7 @@
 		"id-length": ["error", {"exceptions": ["_"]}],
 		"id-match": "error",
 		"init-declarations": "error",
-		"max-classes-per-file": "error",
+		"max-classes-per-file": "off",
 		"max-depth": "error",
 		"max-lines": ["error", {"max": 500}],
 		"max-lines-per-function": ["error", {"max": 100}],
