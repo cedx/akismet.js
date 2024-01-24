@@ -41,12 +41,11 @@ describe("Client", () => {
 	});
 
 	describe("checkComment()", () => {
-		it("should return `CheckResult.ham` for valid comment (e.g. ham)", async () => {
-			equal(await client.checkComment(ham), CheckResult.ham);
-		});
+		it("should return `CheckResult.ham` for valid comment (e.g. ham)", async () =>
+			equal(await client.checkComment(ham), CheckResult.ham));
 
 		it("should return `CheckResult.spam` for invalid comment (e.g. spam)", async () => {
-			const isSpam = /** @type {CheckResult[]} */ ([CheckResult.spam, CheckResult.pervasiveSpam]);
+			const isSpam = [CheckResult.spam, CheckResult.pervasiveSpam];
 			ok(isSpam.includes(await client.checkComment(spam)));
 		});
 	});
@@ -60,12 +59,10 @@ describe("Client", () => {
 	});
 
 	describe("verifyKey()", () => {
-		it("should return `true` for a valid API key", async () => {
-			ok(await client.verifyKey());
-		});
+		it("should return `true` for a valid API key", async () =>
+			ok(await client.verifyKey()));
 
-		it("should return `false` for an invalid API key", async () => {
-			equal(await new Client("0123456789-ABCDEF", client.blog, {isTest: true}).verifyKey(), false);
-		});
+		it("should return `false` for an invalid API key", async () =>
+			equal(await new Client("0123456789-ABCDEF", client.blog, {isTest: true}).verifyKey(), false));
 	});
 });
