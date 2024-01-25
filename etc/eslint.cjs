@@ -1,30 +1,30 @@
-{
-	"root": true,
-	"env": {
-		"es2024": true,
-		"node": true
+module.exports = {
+	root: true,
+	env: {
+		es2024: true,
+		node: true
 	},
-	"extends": [
+	extends: [
 		"eslint:recommended",
 		"plugin:@typescript-eslint/recommended"
 	],
-	"overrides": [
+	overrides: [
     {
-      "files": ["*.cts", "*.mts", "*.ts", "*.tsx"],
-      "rules": {
+      files: ["*.cts", "*.mts", "*.ts", "*.tsx"],
+      rules: {
 				"@typescript-eslint/explicit-function-return-type": "error",
 				"@typescript-eslint/explicit-module-boundary-types": "error"
 			}
     }
   ],
-	"parser": "@typescript-eslint/parser",
-	"parserOptions": {
-		"ecmaVersion": "latest",
-		"project": "tsconfig.json",
-		"sourceType": "module"
+	parser: "@typescript-eslint/parser",
+	parserOptions: {
+		ecmaVersion: "latest",
+		project: "tsconfig.json",
+		sourceType: "module"
 	},
-	"plugins": ["@typescript-eslint"],
-	"rules": {
+	plugins: ["@typescript-eslint"],
+	rules: {
 		"array-callback-return": "error",
 		"no-await-in-loop": "off",
 		"no-constant-binary-expression": "off",
@@ -38,7 +38,7 @@
 		"no-unreachable-loop": "error",
 		"no-unused-private-class-members": "error",
 		"no-use-before-define": "off",
-		"require-atomic-updates": ["error", {"allowProperties": true}],
+		"require-atomic-updates": ["error", {allowProperties: true}],
 
 		"accessor-pairs": "error",
 		"arrow-body-style": "error",
@@ -57,22 +57,22 @@
 		"eqeqeq": "off",
 		"func-name-matching": "error",
 		"func-names": "off",
-		"func-style": ["error", "declaration", {"allowArrowFunctions": true}],
+		"func-style": ["error", "declaration", {allowArrowFunctions: true}],
 		"grouped-accessor-pairs": "error",
 		"guard-for-in": "error",
 		"id-denylist": "off",
-		"id-length": ["error", {"exceptions": ["_"]}],
+		"id-length": ["error", {exceptions: ["_"]}],
 		"id-match": "error",
 		"init-declarations": "error",
 		"max-classes-per-file": "off",
 		"max-depth": "error",
-		"max-lines": ["error", {"max": 500}],
-		"max-lines-per-function": ["error", {"max": 100}],
+		"max-lines": ["error", {max: 500}],
+		"max-lines-per-function": ["error", {max: 100}],
 		"max-nested-callbacks": "error",
 		"max-params": ["error", 4],
-		"max-statements": ["error", {"max": 25}],
+		"max-statements": ["error", {max: 25}],
 		"multiline-comment-style": ["error", "separate-lines"],
-		"new-cap": ["error", {"capIsNewExceptions": ["RangeError", "SyntaxError", "TypeError"]}],
+		"new-cap": ["error", {capIsNewExceptions: ["RangeError", "SyntaxError", "TypeError"]}],
 		"no-alert": "error",
 		"no-array-constructor": "error",
 		"no-caller": "error",
@@ -100,7 +100,7 @@
 		"no-lonely-if": "error",
 		"no-loop-func": "error",
 		"no-magic-numbers": "off",
-		"no-multi-assign": ["error", {"ignoreNonDeclaration": true}],
+		"no-multi-assign": ["error", {ignoreNonDeclaration: true}],
 		"no-multi-str": "error",
 		"no-negated-condition": "off",
 		"no-nested-ternary": "off",
@@ -181,7 +181,7 @@
 		"@typescript-eslint/default-param-last": "error",
 		"@typescript-eslint/dot-notation": "error",
 		"@typescript-eslint/explicit-function-return-type": "off",
-		"@typescript-eslint/explicit-member-accessibility": ["error", {"accessibility": "no-public"}],
+		"@typescript-eslint/explicit-member-accessibility": ["error", {accessibility: "no-public"}],
 		"@typescript-eslint/explicit-module-boundary-types": "off",
 		"@typescript-eslint/init-declarations": "error",
 		"@typescript-eslint/max-params": "error",
@@ -190,7 +190,7 @@
 		"@typescript-eslint/naming-convention": "off",
 		"@typescript-eslint/no-array-delete": "error",
 		"@typescript-eslint/no-confusing-non-null-assertion": "error",
-		"@typescript-eslint/no-confusing-void-expression": ["error", {"ignoreArrowShorthand": true}],
+		"@typescript-eslint/no-confusing-void-expression": ["error", {ignoreArrowShorthand: true}],
 		"@typescript-eslint/no-dupe-class-members": "error",
 		"@typescript-eslint/no-dynamic-delete": "error",
 		"@typescript-eslint/no-empty-function": "error",
@@ -218,7 +218,7 @@
 		"@typescript-eslint/no-unnecessary-type-arguments": "error",
 		"@typescript-eslint/no-unsafe-unary-minus": "error",
 		"@typescript-eslint/no-unused-expressions": "error",
-		"@typescript-eslint/no-use-before-define": ["error", {"functions": false}],
+		"@typescript-eslint/no-use-before-define": ["error", {functions: false}],
 		"@typescript-eslint/no-useless-constructor": "error",
 		"@typescript-eslint/no-useless-empty-export": "error",
 		"@typescript-eslint/no-useless-template-literals": "error",
@@ -250,4 +250,4 @@
 		"@typescript-eslint/typedef": "error",
 		"@typescript-eslint/unified-signatures": "error"
 	}
-}
+};
