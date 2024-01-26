@@ -4,14 +4,11 @@
 Before installing **Akismet for JS**, you need to make sure you have [Node.js](https://nodejs.org)
 and [npm](https://www.npmjs.com), the Node.js package manager, up and running.
 		
-You can verify if you're already good to go with the following commands:
+You can verify if you're already good to go with the following command:
 
 ```shell
 node --version
-# v21.6.0
-
-npm --version
-# 10.2.4
+# v21.6.1
 ```
 
 ## Installing with npm package manager
