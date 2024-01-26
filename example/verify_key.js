@@ -1,9 +1,7 @@
 import console from "node:console";
 import {Blog, Client} from "@cedx/akismet";
 
-/**
- * Verifies an Akismet API key.
- */
+// Verifies an Akismet API key.
 try {
 	const blog = new Blog({url: "https://www.yourblog.com"});
 	const client = new Client("123YourAPIKey", blog);

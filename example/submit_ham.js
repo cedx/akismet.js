@@ -1,9 +1,7 @@
 import console from "node:console";
 import {Author, Blog, Client, Comment} from "@cedx/akismet";
 
-/**
- * Submits ham to the Akismet service.
- */
+// Submits ham to the Akismet service.
 try {
 	const blog = new Blog({url: "https://www.yourblog.com"});
 	const client = new Client("123YourAPIKey", blog);

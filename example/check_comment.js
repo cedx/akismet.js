@@ -1,9 +1,7 @@
 import console from "node:console";
 import {Author, Blog, CheckResult, Client, Comment, CommentType} from "@cedx/akismet";
 
-/**
- * Checks a comment against the Akismet service.
- */
+// Checks a comment against the Akismet service.
 try {
 	const author = new Author({
 		email: "john.doe@domain.com",
