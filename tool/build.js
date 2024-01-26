@@ -1,7 +1,6 @@
-import {parseJson, replaceInFile} from "./tools.js";
+import {readFileSync, writeFileSync} from "node:fs";
+import pkg from "../package.json" with {type: "json"};
 
-/**
- * Updates the version number in the sources.
- */
-const {version} = await parseJson("../package.json");
-replaceInFile("src/client.ts", /#version = "\d+(\.\d+){2}"/, `#version = "${version}"`);
+// Updates the version number in the sources.
+const file = "src/client.ts";
+writeFileSync(file, readFileSync(file, {encoding: "utf8"}).replace(/#version = "\d+(\.\d+){2}"/, `#version = "${pkg.version}"`));
