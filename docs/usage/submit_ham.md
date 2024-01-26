@@ -2,7 +2,7 @@
 This call is intended for the submission of false positives - items that were incorrectly classified as spam by Akismet.
 It takes identical arguments as [comment check](usage/check_comment.md) and [submit spam](usage/submit_spam.md).
 
-```javascript
+```js
 Client.submitHam(comment: Comment): Promise<void>
 ```
 
@@ -30,7 +30,7 @@ See [Response Error Codes](https://akismet.com/developers/errors) for more infor
 
 ## Example
 
-```javascript
+```js
 import console from "node:console";
 import {Author, Blog, Client, Comment} from "@cedx/akismet";
 
