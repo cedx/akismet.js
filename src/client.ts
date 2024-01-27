@@ -114,7 +114,7 @@ export class Client {
 			if (!Array.isArray(value)) body.set(key, value);
 			else {
 				let index = 0;
-				value.forEach(item => body.set(`${key}[${index++}]`, item));
+				for (const item of value) body.set(`${key}[${index++}]`, item);
 			}
 
 		const response = await fetch(new URL(endpoint, this.baseUrl), {method: "POST", headers: {"User-Agent": this.userAgent}, body});
