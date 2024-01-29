@@ -90,7 +90,7 @@ export class Comment {
 	 * Converts this object to a map in JSON format.
 	 * @returns The map in JSON format corresponding to this object.
 	 */
-	toJSON(): Record<string, any> {
+	toJSON(): Record<string, string[]|string> {
 		const map = this.author ? this.author.toJSON() : {};
 		if (this.content) map.comment_content = this.content;
 		if (this.context.length) map.comment_context = this.context;

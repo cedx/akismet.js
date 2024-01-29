@@ -13,7 +13,7 @@
 		"url": "https://belin.io"
 	},
 	"devDependencies": {
-		"@types/node": "^20.11.9",
+		"@types/node": "^20.11.10",
 		"@typescript-eslint/eslint-plugin": "^6.19.1",
 		"@typescript-eslint/parser": "^6.19.1",
 		"del": "^7.1.0",
@@ -50,8 +50,8 @@
 	"scripts": {
 		"build": "node tool/build.js && tsc --project src/tsconfig.json",
 		"clean": "node tool/clean.js",
-		"doc": "typedoc --options etc/typedoc.js && node tool/doc.js",
 		"dist": "npm run clean && npm run build",
+		"doc": "typedoc --options etc/typedoc.js && node tool/doc.js",
 		"lint": "tsc --project tsconfig.json && eslint --config=etc/eslint.cjs example src test tool",
 		"postpublish": "node tool/publish.js",
 		"prepack": "npm run dist",

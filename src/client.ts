@@ -105,7 +105,7 @@ export class Client {
 	 * @param fields The fields describing the query body.
 	 * @returns The server response.
 	 */
-	async #fetch(endpoint: string, fields: Record<string, string>): Promise<Response> {
+	async #fetch(endpoint: string, fields: Record<string, string[]|string>): Promise<Response> {
 		const body = new URLSearchParams(this.blog.toJSON());
 		body.set("api_key", this.apiKey);
 		if (this.isTest) body.set("is_test", "1");
