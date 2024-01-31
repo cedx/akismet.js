@@ -11,7 +11,7 @@ It is important to [test Akismet](testing.md) with a significant amount of real,
 Akismet works by comparing content to genuine spam activity happening **right now** (and this is based on more than just the content itself),
 so artificially generating spam comments is not a viable approach.
 
-See the [Akismet API documentation](https://akismet.com/developers/comment-check) for more information.
+See the [Akismet API documentation](https://akismet.com/developers/detailed-docs/comment-check) for more information.
 
 ## Parameters
 
@@ -28,7 +28,7 @@ The error `message` usually includes some debug information, provided by the `X-
 about what exactly was invalid about the call.
 
 It can also reject with a custom error code and message (respectively provided by the `X-akismet-alert-code` and `X-akismet-alert-msg` headers).
-See [Response Error Codes](https://akismet.com/developers/errors) for more information.
+See [Response Error Codes](https://akismet.com/developers/detailed-docs/errors) for more information.
 
 ## Example
 

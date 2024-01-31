@@ -11,7 +11,7 @@ to the original [comment check](usage/check_comment.md) API calls made when the 
 to be available for [submit spam](usage/submit_spam.md) and [submit ham](usage/submit_ham.md) calls (most comment systems and forums will not store all metadata),
 you should ensure that the values that you do send match those of the original content.
 
-See the [Akismet API documentation](https://akismet.com/developers/submit-spam-missed-spam) for more information.
+See the [Akismet API documentation](https://akismet.com/developers/detailed-docs/submit-spam-missed-spam) for more information.
 
 ## Parameters
 
@@ -28,7 +28,7 @@ The error `message` usually includes some debug information, provided by the `X-
 about what exactly was invalid about the call.
 
 It can also reject with a custom error code and message (respectively provided by the `X-akismet-alert-code` and `X-akismet-alert-msg` headers).
-See [Response Error Codes](https://akismet.com/developers/errors) for more information.
+See [Response Error Codes](https://akismet.com/developers/detailed-docs/errors) for more information.
 
 ## Example
 

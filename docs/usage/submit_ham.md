@@ -9,7 +9,7 @@ Client.submitHam(comment: Comment): Promise<void>
 Remember that, as explained in the [submit spam](usage/submit_spam.md) documentation, you should ensure
 that any values you're passing here match up with the original and corresponding [comment check](usage/check_comment.md) call.
 
-See the [Akismet API documentation](https://akismet.com/developers/submit-ham-false-positives) for more information.
+See the [Akismet API documentation](https://akismet.com/developers/detailed-docs/submit-ham-false-positives) for more information.
 
 ## Parameters
 
@@ -26,7 +26,7 @@ The error `message` usually includes some debug information, provided by the `X-
 about what exactly was invalid about the call.
 
 It can also reject with a custom error code and message (respectively provided by the `X-akismet-alert-code` and `X-akismet-alert-msg` headers).
-See [Response Error Codes](https://akismet.com/developers/errors) for more information.
+See [Response Error Codes](https://akismet.com/developers/detailed-docs/errors) for more information.
 
 ## Example
 
