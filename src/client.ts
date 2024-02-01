@@ -50,9 +50,11 @@ export class Client {
 	 * @param options An object providing values to initialize this instance.
 	 */
 	constructor(apiKey: string, blog: Blog, options: Partial<ClientOptions> = {}) {
-		const baseUrl = options.baseUrl ?? "https://rest.akismet.com";
+		const {baseUrl = "https://rest.akismet.com"} = options;
+		const url = baseUrl instanceof URL ? baseUrl.href : baseUrl;
+
 		this.apiKey = apiKey;
-		this.baseUrl = new URL(baseUrl.endsWith("/") ? baseUrl : `${baseUrl}/`);
+		this.baseUrl = new URL(url.endsWith("/") ? url : `${url}/`);
 		this.blog = blog;
 		this.isTest = options.isTest ?? false;
 		this.userAgent = options.userAgent ?? `Node.js/${version.slice(1)} | Akismet/${Client.#version}`;
@@ -140,7 +142,7 @@ export interface ClientOptions {
 	/**
 	 * The base URL of the remote API endpoint.
 	 */
-	baseUrl: string;
+	baseUrl: URL|string;
 
 	/**
 	 * Value indicating whether the client operates in test mode.
