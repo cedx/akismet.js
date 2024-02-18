@@ -199,7 +199,7 @@ module.exports = {
 		"@typescript-eslint/no-shadow": "error",
 		"@typescript-eslint/no-unnecessary-qualifier": "error",
 		"@typescript-eslint/no-unsafe-unary-minus": "error",
-		"@typescript-eslint/no-unused-expressions": "error",
+		"@typescript-eslint/no-unused-expressions": ["error", {allowTernary: true}],
 		"@typescript-eslint/no-use-before-define": ["error", {functions: false}],
 		"@typescript-eslint/no-useless-empty-export": "error",
 		"@typescript-eslint/parameter-properties": "error",
