@@ -14,7 +14,7 @@
 	},
 	"devDependencies": {
 		"@types/eslint__js": "^8.42.3",
-		"@types/node": "^20.11.19",
+		"@types/node": "^20.11.20",
 		"del": "^7.1.0",
 		"eslint": "^8.56.0",
 		"execa": "^8.0.1",
