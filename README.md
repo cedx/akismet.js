@@ -4,8 +4,8 @@
 Prevent comment spam using [Akismet](https://akismet.com) service, in [JavaScript](https://developer.mozilla.org/docs/Web/JavaScript).
 
 ## Documentation
-- [User guide](https://cedx.github.io/akismet.js)
-- [API reference](https://cedx.github.io/akismet.js/api)
+- [User guide](https://docs.belin.io/akismet.js)
+- [API reference](https://docs.belin.io/akismet.js/api)
 
 ## Development
 - [Git repository](https://github.com/cedx/akismet.js)
