@@ -1,6 +1,6 @@
 import {equal, ok} from "node:assert/strict";
 import {describe, it} from "node:test";
-import {Author, AuthorRole} from "#akismet";
+import {Author, AuthorRole} from "@cedx/akismet";
 
 /**
  * Tests the features of the {@link Author} class.

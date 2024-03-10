@@ -33,12 +33,6 @@
 		"lib/",
 		"src/"
 	],
-	"imports": {
-		"#akismet": {
-			"types": "./lib/index.d.ts",
-			"import": "./lib/index.js"
-		}
-	},
 	"keywords": [
 		"akismet",
 		"api",

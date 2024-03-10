@@ -1,7 +1,7 @@
 import {doesNotReject, equal, ok} from "node:assert/strict";
 import {env} from "node:process";
 import {describe, it} from "node:test";
-import {Author, AuthorRole, Blog, CheckResult, Client, Comment, CommentType} from "#akismet";
+import {Author, AuthorRole, Blog, CheckResult, Client, Comment, CommentType} from "@cedx/akismet";
 
 /**
  * Tests the features of the {@link Client} class.
@@ -50,13 +50,11 @@ describe("Client", () => {
 		});
 	});
 
-	describe("submitHam()", () => {
-		it("should complete without any error", () => doesNotReject(client.submitHam(ham)));
-	});
+	describe("submitHam()", () =>
+		it("should complete without any error", () => doesNotReject(client.submitHam(ham))));
 
-	describe("submitSpam()", () => {
-		it("should complete without any error", () => doesNotReject(client.submitSpam(spam)));
-	});
+	describe("submitSpam()", () =>
+		it("should complete without any error", () => doesNotReject(client.submitSpam(spam))));
 
 	describe("verifyKey()", () => {
 		it("should return `true` for a valid API key", async () =>
