@@ -5,6 +5,8 @@
 		"declaration": true,
 		"declarationMap": true,
 		"noEmit": false,
-		"outDir": "../lib"
+		"incremental": true,
+		"outDir": "../lib",
+		"tsBuildInfoFile": "../var/tsbuildinfo.json"
 	}
 }
