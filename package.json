@@ -15,15 +15,15 @@
 	"devDependencies": {
 		"@types/eslint__js": "^8.42.3",
 		"@types/gulp": "^4.0.17",
-		"@types/node": "^20.12.2",
+		"@types/node": "^20.12.4",
 		"del": "^7.1.0",
 		"eslint": "^8.57.0",
 		"execa": "^8.0.1",
 		"gulp": "^5.0.0",
 		"gulp-replace": "^1.1.4",
 		"typedoc": "^0.25.12",
-		"typescript": "^5.4.3",
-		"typescript-eslint": "^7.4.0"
+		"typescript": "^5.4.4",
+		"typescript-eslint": "^7.5.0"
 	},
 	"engines": {
 		"node": ">=20.0.0"
