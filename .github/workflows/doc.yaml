@@ -10,13 +10,20 @@ jobs:
     steps:
       - name: Fetch sources
         uses: actions/checkout@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          cache: npm
+          node-version: 21
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           cache: pip
           python-version: 3.12
       - name: Install dependencies
-        run: pip install --requirement=etc/requirements.txt
+        run: |
+          npm install
+          pip install --requirement=etc/requirements.txt
       - name: Build documentation
         run: npx gulp doc
       - name: Deploy documentation
