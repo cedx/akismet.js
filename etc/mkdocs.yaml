@@ -16,9 +16,6 @@ repo_url: https://github.com/cedx/akismet.js
 copyright: Copyright &copy; Cédric Belin
 extra:
   social:
-    - icon: fontawesome/solid/globe
-      link: https://belin.io
-      name: Belin.io
     - icon: fontawesome/brands/github
       link: https://github.com/cedx
       name: GitHub

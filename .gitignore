@@ -1,5 +1,6 @@
 /**/.DS_Store
 /.idea/
+/docs/api/
 /etc/http-client.private.env.json
 /lib/
 /node_modules/
