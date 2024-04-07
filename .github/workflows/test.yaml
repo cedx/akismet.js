@@ -1,4 +1,4 @@
-name: Run the test suite
+name: run-tests
 on: push
 
 jobs:
