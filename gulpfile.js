@@ -36,6 +36,12 @@ export async function publish() {
 	for (const action of [["tag"], ["push", "origin"]]) await $`git ${action} v${pkg.version}`;
 }
 
+// Starts the development server.
+export async function serve() {
+	await doc();
+	return $({stdio: "inherit"})`mkdocs serve --config-file=etc/mkdocs.yaml`;
+}
+
 // Runs the test suite.
 export async function test() {
 	await build();

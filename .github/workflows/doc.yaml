@@ -17,5 +17,7 @@ jobs:
           python-version: 3.12
       - name: Install dependencies
         run: pip install --requirement=etc/requirements.txt
+      - name: Build documentation
+        run: npx gulp doc
       - name: Deploy documentation
         run: mkdocs gh-deploy --config-file=etc/mkdocs.yaml --force
