@@ -3,11 +3,11 @@ This is the call you will make the most. It takes a number of arguments and char
 and then returns a thumbs up or thumbs down. **Performance can drop dramatically if you choose to exclude data points.**
 The more data you send Akismet about each comment, the greater the accuracy. We recommend erring on the side of including too much data.
 
-```js
+``` js
 Client.checkComment(comment: Comment): Promise<CheckResult>
 ```
 
-It is important to [test Akismet](testing.md) with a significant amount of real, live data in order to draw any conclusions on accuracy.
+It is important to [test Akismet](../testing.md) with a significant amount of real, live data in order to draw any conclusions on accuracy.
 Akismet works by comparing content to genuine spam activity happening **right now** (and this is based on more than just the content itself),
 so artificially generating spam comments is not a viable approach.
 
@@ -32,7 +32,7 @@ See [Response Error Codes](https://akismet.com/developers/detailed-docs/errors) 
 
 ## Example
 
-```js
+``` js
 import console from "node:console";
 import {Author, Blog, CheckResult, Client, Comment, CommentType} from "@cedx/akismet";
 
@@ -68,4 +68,4 @@ catch (error) {
 }
 ```
 
-See the [API reference](api/) for detailed information about the `Author` and `Comment` classes, and their properties.
+See the [API reference](https://docs.belin.io/akismet.js/api) for detailed information about the `Author` and `Comment` classes, and their properties.

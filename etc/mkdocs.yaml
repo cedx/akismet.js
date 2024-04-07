@@ -1,0 +1,75 @@
+site_name: Akismet for JS
+site_description: >
+  Prevent comment spam using the Akismet service, in JavaScript.
+  Add Akismet to your JavaScript applications so you don't have to worry about spam again.
+site_author: Cédric Belin - cedric@belin.io
+site_url: https://docs.belin.io/akismet.js
+
+docs_dir: ../docs
+site_dir: ../www
+
+edit_uri: edit/main/docs/
+repo_name: cedx/akismet.js
+repo_url: https://github.com/cedx/akismet.js
+
+copyright: Copyright &copy; Cédric Belin
+extra:
+  generator: false
+  social:
+    - icon: fontawesome/solid/globe
+      link: https://belin.io
+      name: Belin.io
+    - icon: fontawesome/brands/github
+      link: https://github.com/cedx
+      name: GitHub
+    - icon: fontawesome/brands/linkedin
+      link: https://linkedin.com/in/cedxbelin
+      name: LinkedIn
+    - icon: fontawesome/brands/mastodon
+      link: https://mastodon.social/@cedx
+      name: Mastodon
+extra_css:
+  - styles.css
+
+markdown_extensions:
+  - admonition
+  - pymdownx.highlight
+  - pymdownx.inlinehilite
+  - pymdownx.superfences
+
+nav:
+  - Home: index.md
+  - Installation: installation.md
+  - Usage:
+      - Key verification: usage/verify_key.md
+      - Comment check: usage/check_comment.md
+      - Submit spam: usage/submit_spam.md
+      - Submit ham: usage/submit_ham.md
+  - Further reading:
+    - Testing: testing.md
+    - API reference: https://docs.belin.io/akismet.js/api
+  - About:
+      - Changelog: changelog.md
+      - License: license.md
+
+plugins:
+  - git-revision-date-localized
+  - search
+
+theme:
+  favicon: favicon.svg
+  features:
+    - content.action.edit
+    - content.action.view
+    - content.code.copy
+    - content.tooltips
+    - navigation.instant
+    - navigation.instant.progress
+    - navigation.sections
+    - navigation.top
+  font: false
+  logo: favicon.svg
+  name: material
+  palette:
+    accent: yellow
+    primary: yellow

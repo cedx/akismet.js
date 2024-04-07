@@ -1,14 +1,14 @@
 # Submit spam
 This call is for submitting comments that weren't marked as spam but should have been.
 
-```js
+``` js
 Client.submitSpam(comment: Comment): Promise<void>
 ```
 
-It is very important that the values you submit with this call match those of your [comment check](usage/check_comment.md) calls as closely as possible.
+It is very important that the values you submit with this call match those of your [comment check](check_comment.md) calls as closely as possible.
 In order to learn from its mistakes, Akismet needs to match your missed spam and false positive reports
-to the original [comment check](usage/check_comment.md) API calls made when the content was first posted. While it is normal for less information
-to be available for [submit spam](usage/submit_spam.md) and [submit ham](usage/submit_ham.md) calls (most comment systems and forums will not store all metadata),
+to the original [comment check](check_comment.md) API calls made when the content was first posted. While it is normal for less information
+to be available for [submit spam](submit_spam.md) and [submit ham](submit_ham.md) calls (most comment systems and forums will not store all metadata),
 you should ensure that the values that you do send match those of the original content.
 
 See the [Akismet API documentation](https://akismet.com/developers/detailed-docs/submit-spam-missed-spam) for more information.
@@ -18,7 +18,7 @@ See the [Akismet API documentation](https://akismet.com/developers/detailed-docs
 ### **comment**: Comment
 The user's `Comment` to be submitted, incorrectly classified as ham.
 
-> Ideally, it should be the same object as the one passed to the original [comment check](usage/check_comment.md) API call.
+> Ideally, it should be the same object as the one passed to the original [comment check](check_comment.md) API call.
 
 ## Return value
 A `Promise` that resolves when the given `Comment` has been submitted.
@@ -32,7 +32,7 @@ See [Response Error Codes](https://akismet.com/developers/detailed-docs/errors) 
 
 ## Example
 
-```js
+``` js
 import console from "node:console";
 import {Author, Blog, Client, Comment} from "@cedx/akismet";
 

@@ -20,7 +20,8 @@ export async function doc() {
 	await build();
 	await $`typedoc --options etc/typedoc.js`;
 	for (const file of ["CHANGELOG.md", "LICENSE.md"]) await cp(file, `docs/${file.toLowerCase()}`);
-	return cp("docs/favicon.ico", "docs/api/favicon.ico");
+	await cp("docs/favicon.ico", "docs/api/favicon.ico");
+	return $`mkdocs build --config-file=etc/mkdocs.yaml`;
 }
 
 // Performs the static analysis of source code.

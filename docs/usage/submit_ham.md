@@ -1,13 +1,13 @@
 # Submit ham
 This call is intended for the submission of false positives - items that were incorrectly classified as spam by Akismet.
-It takes identical arguments as [comment check](usage/check_comment.md) and [submit spam](usage/submit_spam.md).
+It takes identical arguments as [comment check](check_comment.md) and [submit spam](submit_spam.md).
 
-```js
+``` js
 Client.submitHam(comment: Comment): Promise<void>
 ```
 
-Remember that, as explained in the [submit spam](usage/submit_spam.md) documentation, you should ensure
-that any values you're passing here match up with the original and corresponding [comment check](usage/check_comment.md) call.
+Remember that, as explained in the [submit spam](submit_spam.md) documentation, you should ensure
+that any values you're passing here match up with the original and corresponding [comment check](check_comment.md) call.
 
 See the [Akismet API documentation](https://akismet.com/developers/detailed-docs/submit-ham-false-positives) for more information.
 
@@ -16,7 +16,7 @@ See the [Akismet API documentation](https://akismet.com/developers/detailed-docs
 ### **comment**: Comment
 The user's `Comment` to be submitted, incorrectly classified as spam.
 
-> Ideally, it should be the same object as the one passed to the original [comment check](usage/check_comment.md) API call.
+> Ideally, it should be the same object as the one passed to the original [comment check](check_comment.md) API call.
 
 ## Return value
 A `Promise` that resolves when the given `Comment` has been submitted.
@@ -30,7 +30,7 @@ See [Response Error Codes](https://akismet.com/developers/detailed-docs/errors) 
 
 ## Example
 
-```js
+``` js
 import console from "node:console";
 import {Author, Blog, Client, Comment} from "@cedx/akismet";
 

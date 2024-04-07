@@ -1,8 +1,8 @@
 # Key verification
-Key verification authenticates your API key before calling the [comment check](usage/check_comment.md),
-[submit spam](usage/submit_spam.md) or [submit ham](usage/submit_ham.md) methods.
+Key verification authenticates your API key before calling the [comment check](check_comment.md),
+[submit spam](submit_spam.md) or [submit ham](submit_ham.md) methods.
 
-```js
+``` js
 Client.verifyKey(): Promise<boolean>
 ```
 
@@ -12,7 +12,7 @@ if you will have multiple users with their own Akismet subscriptions using your 
 See the [Akismet API documentation](https://akismet.com/developers/detailed-docs/key-verification) for more information.
 
 ## Parameters
-None.
+None. 
 
 ## Return value
 A `Promise` that resolves with a boolean value indicating whether the client's API key is valid.
@@ -26,7 +26,7 @@ See [Response Error Codes](https://akismet.com/developers/detailed-docs/errors) 
 
 ## Example
 
-```js
+``` js
 import console from "node:console";
 import {Blog, Client} from "@cedx/akismet";
 
@@ -43,4 +43,4 @@ catch (error) {
 }
 ```
 
-See the [API reference](api/) for detailed information about the `Client` and `Blog` classes, and their properties and methods.
+See the [API reference](https://docs.belin.io/akismet.js/api) for detailed information about the `Client` and `Blog` classes, and their properties and methods.
