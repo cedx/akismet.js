@@ -12,7 +12,7 @@ export async function build() {
 
 // Deletes all generated files.
 export function clean() {
-	return deleteAsync(["lib", "var/**/*"]);
+	return deleteAsync(["lib", "var/**/*", "www"]);
 }
 
 // Builds the documentation.
@@ -20,8 +20,7 @@ export async function doc() {
 	await build();
 	await $`typedoc --options etc/typedoc.js`;
 	for (const file of ["CHANGELOG.md", "LICENSE.md"]) await cp(file, `docs/${file.toLowerCase()}`);
-	await cp("docs/favicon.ico", "docs/api/favicon.ico");
-	return $`mkdocs build --config-file=etc/mkdocs.yaml`;
+	return cp("docs/favicon.ico", "docs/api/favicon.ico");
 }
 
 // Performs the static analysis of source code.

@@ -43,4 +43,4 @@ catch (error) {
 }
 ```
 
-See the [API reference](https://docs.belin.io/akismet.js/api) for detailed information about the `Client` and `Blog` classes, and their properties and methods.
+See the [API reference](../api/) for detailed information about the `Client` and `Blog` classes, and their properties and methods.

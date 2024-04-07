@@ -68,4 +68,4 @@ catch (error) {
 }
 ```
 
-See the [API reference](https://docs.belin.io/akismet.js/api) for detailed information about the `Author` and `Comment` classes, and their properties.
+See the [API reference](../api/) for detailed information about the `Author` and `Comment` classes, and their properties.

@@ -7,6 +7,7 @@ site_url: https://docs.belin.io/akismet.js
 
 docs_dir: ../docs
 site_dir: ../www
+use_directory_urls: false
 
 edit_uri: edit/main/docs/
 repo_name: cedx/akismet.js
@@ -14,7 +15,6 @@ repo_url: https://github.com/cedx/akismet.js
 
 copyright: Copyright &copy; Cédric Belin
 extra:
-  generator: false
   social:
     - icon: fontawesome/solid/globe
       link: https://belin.io
@@ -28,6 +28,7 @@ extra:
     - icon: fontawesome/brands/mastodon
       link: https://mastodon.social/@cedx
       name: Mastodon
+
 extra_css:
   - styles.css
 
@@ -47,14 +48,20 @@ nav:
       - Submit ham: usage/submit_ham.md
   - Further reading:
     - Testing: testing.md
-    - API reference: https://docs.belin.io/akismet.js/api
+    - API reference: api/
   - About:
       - Changelog: changelog.md
       - License: license.md
 
 plugins:
-  - git-revision-date-localized
   - search
+  - git-committers:
+      branch: main
+      cache_dir: var
+      repository: cedx/akismet.js
+  - git-revision-date-localized:
+      enable_creation_date: true
+      type: timeago
 
 theme:
   favicon: favicon.svg
@@ -67,6 +74,7 @@ theme:
     - navigation.instant.progress
     - navigation.sections
     - navigation.top
+    - search.suggest
   font: false
   logo: favicon.svg
   name: material
