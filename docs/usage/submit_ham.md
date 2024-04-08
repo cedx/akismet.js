@@ -2,7 +2,7 @@
 This call is intended for the submission of false positives - items that were incorrectly classified as spam by Akismet.
 It takes identical arguments as [comment check](check_comment.md) and [submit spam](submit_spam.md).
 
-```js
+```ts
 Client.submitHam(comment: Comment): Promise<void>
 ```
 
@@ -16,7 +16,8 @@ See the [Akismet API documentation](https://akismet.com/developers/detailed-docs
 ### **comment**: Comment
 The user's `Comment` to be submitted, incorrectly classified as spam.
 
-> Ideally, it should be the same object as the one passed to the original [comment check](check_comment.md) API call.
+!!! note
+    Ideally, it should be the same object as the one passed to the original [comment check](check_comment.md) API call.
 
 ## Return value
 A `Promise` that resolves when the given `Comment` has been submitted.

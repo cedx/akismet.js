@@ -1,7 +1,7 @@
 # Submit spam
 This call is for submitting comments that weren't marked as spam but should have been.
 
-```js
+```ts
 Client.submitSpam(comment: Comment): Promise<void>
 ```
 
@@ -18,7 +18,8 @@ See the [Akismet API documentation](https://akismet.com/developers/detailed-docs
 ### **comment**: Comment
 The user's `Comment` to be submitted, incorrectly classified as ham.
 
-> Ideally, it should be the same object as the one passed to the original [comment check](check_comment.md) API call.
+!!! note
+    Ideally, it should be the same object as the one passed to the original [comment check](check_comment.md) API call.
 
 ## Return value
 A `Promise` that resolves when the given `Comment` has been submitted.

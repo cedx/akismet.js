@@ -3,7 +3,7 @@ This is the call you will make the most. It takes a number of arguments and char
 and then returns a thumbs up or thumbs down. **Performance can drop dramatically if you choose to exclude data points.**
 The more data you send Akismet about each comment, the greater the accuracy. We recommend erring on the side of including too much data.
 
-```js
+```ts
 Client.checkComment(comment: Comment): Promise<CheckResult>
 ```
 
@@ -21,7 +21,8 @@ The `Comment` providing the user's message to be checked.
 ## Return value
 A `Promise` that resolves with a `CheckResult` value indicating whether the given `Comment` is ham, spam or pervasive spam.
 
-> A comment classified as pervasive spam can be safely discarded.
+!!! tip
+    A comment classified as pervasive spam can be safely discarded.
 
 The promise rejects with an `Error` when an issue occurs.
 The error `message` usually includes some debug information, provided by the `X-akismet-debug-help` HTTP header,

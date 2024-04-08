@@ -2,13 +2,11 @@
 Used by millions of websites, [Akismet](https://akismet.com) filters out hundreds of millions of spam comments from the Web every day.
 Add Akismet to your [JavaScript](https://developer.mozilla.org/docs/Web/JavaScript) applications so you don't have to worry about spam again.
 
+!!! warning
+    The Akismet service requires an API key.
+    If you are not already registered, [sign up for an Akismet account](https://akismet.com/developers).
+
 ## Quick start
-
-### Get an API key
-The Akismet service requires an API key.  
-If you are not already registered, [sign up for an Akismet account](https://akismet.com/developers).
-
-### Get the library
 Install the latest version of **Akismet for JS** with [npm](https://getcomposer.org) package manager:
 
 ```shell

@@ -2,7 +2,7 @@
 Key verification authenticates your API key before calling the [comment check](check_comment.md),
 [submit spam](submit_spam.md) or [submit ham](submit_ham.md) methods.
 
-```js
+```ts
 Client.verifyKey(): Promise<boolean>
 ```
 
