@@ -50,28 +50,15 @@ nav:
       - Changelog: changelog.md
       - License: license.md
 
-plugins:
-  - search
-  - git-committers:
-      branch: main
-      cache_dir: var
-      repository: cedx/akismet.js
-  - git-revision-date-localized:
-      enable_creation_date: true
-      type: timeago
-
 theme:
   favicon: favicon.svg
   features:
-    - content.action.edit
-    - content.action.view
     - content.code.copy
     - content.tooltips
     - navigation.footer
     - navigation.instant
     - navigation.instant.progress
     - navigation.sections
-    - navigation.top
     - search.suggest
   font: false
   logo: favicon.svg
