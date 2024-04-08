@@ -32,6 +32,7 @@ extra_css:
 markdown_extensions:
   - admonition
   - attr_list
+  - pymdownx.details
   - pymdownx.highlight
   - pymdownx.inlinehilite
   - pymdownx.superfences
@@ -45,8 +46,8 @@ nav:
       - Submit spam: usage/submit_spam.md
       - Submit ham: usage/submit_ham.md
   - Further reading:
-    - Testing: testing.md
     - API reference: api/
+    - Testing: testing.md
   - About:
       - Changelog: changelog.md
       - License: license.md

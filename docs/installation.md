@@ -6,7 +6,7 @@ and [npm](https://www.npmjs.com), the Node.js package manager, up and running.
 		
 You can verify if you're already good to go with the following command:
 
-``` shell
+```shell
 node --version
 # v21.7.2
 ```
@@ -16,13 +16,13 @@ node --version
 ### 1. Install it
 From a command prompt, run:
 
-``` shell
+```shell
 npm install @cedx/akismet
 ```
 
 ### 2. Import it
 Now in your [JavaScript](https://developer.mozilla.org/docs/Web/JavaScript) code, you can use:
 
-``` js
+```js
 import * as akismet from "@cedx/akismet";
 ```

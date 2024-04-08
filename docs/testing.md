@@ -10,7 +10,7 @@ or `Author.email` set to `"akismet-guaranteed-spam@example.com"`. Populate all o
 The Akismet API will always return a `CheckResult.spam` response to a valid request with one of those values.
 If you receive anything else, something is wrong in your client, data, or communications.
 
-``` js
+```js
 import console from "node:console";
 import {Author, Blog, Client, Comment} from "@cedx/akismet";
 
@@ -34,7 +34,7 @@ and all other required fields populated with typical values.
 
 The Akismet API will always return a `CheckResult.ham` response. Any other response indicates a data or communication problem.
 
-``` js
+```js
 import console from "node:console";
 import {Author, AuthorRole, Blog, Client, Comment} from "@cedx/akismet";
 
@@ -58,7 +58,7 @@ Enable the `Client.isTest` option in your tests.
 That will tell Akismet not to change its behaviour based on those API calls: they will have no training effect.
 That means your tests will be somewhat repeatable, in the sense that one test won't influence subsequent calls.
 
-``` js
+```js
 import {Author, Blog, Client, Comment} from "@cedx/akismet";
 
 const blog = new Blog({url: "https://www.yourblog.com"});

@@ -5,12 +5,13 @@ Add Akismet to your [JavaScript](https://developer.mozilla.org/docs/Web/JavaScri
 ## Quick start
 
 ### Get an API key
-The Akismet service requires an API key. If you are not already registered, [sign up for an Akismet account](https://akismet.com/developers).
+The Akismet service requires an API key.  
+If you are not already registered, [sign up for an Akismet account](https://akismet.com/developers).
 
 ### Get the library
 Install the latest version of **Akismet for JS** with [npm](https://getcomposer.org) package manager:
 
-``` shell
+```shell
 npm install @cedx/akismet
 ```
 

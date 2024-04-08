@@ -2,7 +2,7 @@
 Key verification authenticates your API key before calling the [comment check](check_comment.md),
 [submit spam](submit_spam.md) or [submit ham](submit_ham.md) methods.
 
-``` js
+```js
 Client.verifyKey(): Promise<boolean>
 ```
 
@@ -26,7 +26,7 @@ See [Response Error Codes](https://akismet.com/developers/detailed-docs/errors) 
 
 ## Example
 
-``` js
+```js
 import console from "node:console";
 import {Blog, Client} from "@cedx/akismet";
 
