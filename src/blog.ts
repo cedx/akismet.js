@@ -71,5 +71,5 @@ export interface BlogOptions {
 	/**
 	 * The blog or site URL.
 	 */
-	url: string;
+	url: URL|string;
 }

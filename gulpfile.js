@@ -17,10 +17,9 @@ export function clean() {
 
 // Builds the documentation.
 export async function doc() {
+	for (const file of ["CHANGELOG.md", "LICENSE.md"]) await cp(file, `docs/${file.toLowerCase()}`);
 	await build();
 	await $`typedoc --options etc/typedoc.js`;
-	for (const file of ["CHANGELOG.md", "LICENSE.md"]) await cp(file, `docs/${file.toLowerCase()}`);
-	return cp("docs/favicon.ico", "docs/api/favicon.ico");
 }
 
 // Performs the static analysis of source code.

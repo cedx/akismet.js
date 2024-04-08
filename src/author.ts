@@ -105,7 +105,7 @@ export interface AuthorOptions {
 	/**
 	 * The URL of the author's website.
 	 */
-	url: string;
+	url: URL|string;
 
 	/**
 	 * The author's user agent, that is the string identifying the Web browser used to submit comments.

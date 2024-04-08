@@ -132,7 +132,7 @@ export interface CommentOptions {
 	/**
 	 * The permanent location of the entry the comment is submitted to.
 	 */
-	permalink: string;
+	permalink: URL|string;
 
 	/**
 	 * The UTC timestamp of the publication time for the post, page or thread on which the comment was posted.
@@ -147,7 +147,7 @@ export interface CommentOptions {
 	/**
 	 * The URL of the webpage that linked to the entry being requested.
 	 */
-	referrer: string;
+	referrer: URL|string;
 
 	/**
 	 * The comment's type.
