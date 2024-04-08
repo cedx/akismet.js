@@ -1,9 +1,9 @@
 site_name: Akismet for JS
+site_url: https://docs.belin.io/akismet.js
+site_author: Cédric Belin - cedric@belin.io
 site_description: >
   Prevent comment spam using the Akismet service, in JavaScript.
   Add Akismet to your JavaScript applications so you don't have to worry about spam again.
-site_author: Cédric Belin - cedric@belin.io
-site_url: https://docs.belin.io/akismet.js
 
 docs_dir: ../docs
 site_dir: ../www
@@ -31,10 +31,8 @@ extra_css:
 
 markdown_extensions:
   - admonition
-  - attr_list
   - pymdownx.details
   - pymdownx.highlight
-  - pymdownx.inlinehilite
   - pymdownx.superfences
 
 nav:

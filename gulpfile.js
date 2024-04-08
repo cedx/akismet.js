@@ -19,7 +19,7 @@ export function clean() {
 export async function doc() {
 	for (const file of ["CHANGELOG.md", "LICENSE.md"]) await cp(file, `docs/${file.toLowerCase()}`);
 	await build();
-	await $`typedoc --options etc/typedoc.js`;
+	return $`typedoc --options etc/typedoc.js`;
 }
 
 // Performs the static analysis of source code.
