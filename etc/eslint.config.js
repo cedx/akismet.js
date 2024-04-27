@@ -6,7 +6,7 @@ export default [
 	js.configs.recommended,
 	{
 		languageOptions: {
-			globals: {...globals.node},
+			globals: {...globals.nodeBuiltin},
 			parser: babelParser,
 			parserOptions: {
 				requireConfigFile: false,
