@@ -7,7 +7,7 @@ import pkg from "./package.json" with {type: "json"};
 
 // Builds the project.
 export function build() {
-	return $`tsc --project src/jsconfig.json`;
+	return $`tsc --project src/tsconfig.json`;
 }
 
 // Deletes all generated files.
@@ -23,7 +23,7 @@ export async function doc() {
 
 // Performs the static analysis of source code.
 export async function lint() {
-	await $`tsc --project jsconfig.json`;
+	await $`tsc --project tsconfig.json`;
 	return $`eslint --config=etc/eslint.config.js gulpfile.js etc example src test`;
 }
 
