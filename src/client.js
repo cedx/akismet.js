@@ -1,7 +1,5 @@
 import {version} from "node:process";
-import type {Blog} from "./blog.js";
 import {CheckResult} from "./check_result.js";
-import type {Comment} from "./comment.js";
 
 /**
  * Submits comments to the [Akismet](https://akismet.com) service.
@@ -10,46 +8,60 @@ export class Client {
 
 	/**
 	 * The response returned by the `submit-ham` and `submit-spam` endpoints when the outcome is a success.
+	 * @type {string}
+	 * @readonly
 	 */
-	static readonly #success = "Thanks for making the web a better place.";
+	static #success = "Thanks for making the web a better place.";
 
 	/**
 	 * The package version.
+	 * @type {string}
+	 * @readonly
 	 */
-	static readonly #version = "16.1.0";
+	static #version = "16.1.0";
 
 	/**
 	 * The Akismet API key.
+	 * @type {string}
+	 * @readonly
 	 */
-	readonly apiKey: string;
+	apiKey;
 
 	/**
 	 * The base URL of the remote API endpoint.
+	 * @type {URL}
+	 * @readonly
 	 */
-	readonly baseUrl: URL;
+	baseUrl;
 
 	/**
 	 * The front page or home URL of the instance making requests.
+	 * @type {import("./blog.js").Blog}
+	 * @readonly
 	 */
-	readonly blog: Blog;
+	blog;
 
 	/**
 	 * Value indicating whether the client operates in test mode.
+	 * @type {boolean}
+	 * @readonly
 	 */
-	readonly isTest: boolean;
+	isTest;
 
 	/**
 	 * The user agent string to use when making requests.
+	 * @type {string}
+	 * @readonly
 	 */
-	readonly userAgent: string;
+	userAgent;
 
 	/**
 	 * Creates a new client.
-	 * @param apiKey The Akismet API key.
-	 * @param blog The front page or home URL of the instance making requests.
-	 * @param options An object providing values to initialize this instance.
+	 * @param {string} apiKey The Akismet API key.
+	 * @param {import("./blog.js").Blog} blog The front page or home URL of the instance making requests.
+	 * @param {Partial<ClientOptions>} options An object providing values to initialize this instance.
 	 */
-	constructor(apiKey: string, blog: Blog, options: Partial<ClientOptions> = {}) {
+	constructor(apiKey, blog, options = {}) {
 		const {baseUrl = "https://rest.akismet.com"} = options;
 		const url = baseUrl instanceof URL ? baseUrl.href : baseUrl;
 
@@ -62,10 +74,10 @@ export class Client {
 
 	/**
 	 * Checks the specified comment against the service database, and returns a value indicating whether it is spam.
-	 * @param comment The comment to be checked.
-	 * @returns A value indicating whether the specified comment is spam.
+	 * @param {import("./comment.js").Comment} comment The comment to be checked.
+	 * @returns {Promise<CheckResult>} A value indicating whether the specified comment is spam.
 	 */
-	async checkComment(comment: Comment): Promise<CheckResult> {
+	async checkComment(comment) {
 		const response = await this.#fetch("1.1/comment-check", comment.toJSON());
 		return await response.text() == "false"
 			? CheckResult.ham
@@ -74,29 +86,29 @@ export class Client {
 
 	/**
 	 * Submits the specified comment that was incorrectly marked as spam but should not have been.
-	 * @param comment The comment to be submitted.
-	 * @returns Resolves once the comment has been submitted.
+	 * @param {import("./comment.js").Comment} comment The comment to be submitted.
+	 * @returns {Promise<void>} Resolves once the comment has been submitted.
 	 */
-	async submitHam(comment: Comment): Promise<void> {
+	async submitHam(comment) {
 		const response = await this.#fetch("1.1/submit-ham", comment.toJSON());
 		if (await response.text() != Client.#success) throw Error("Invalid server response.");
 	}
 
 	/**
 	 * Submits the specified comment that was not marked as spam but should have been.
-	 * @param comment The comment to be submitted.
-	 * @returns Resolves once the comment has been submitted.
+	 * @param {import("./comment.js").Comment} comment The comment to be submitted.
+	 * @returns {Promise<void>} Resolves once the comment has been submitted.
 	 */
-	async submitSpam(comment: Comment): Promise<void> {
+	async submitSpam(comment) {
 		const response = await this.#fetch("1.1/submit-spam", comment.toJSON());
 		if (await response.text() != Client.#success) throw Error("Invalid server response.");
 	}
 
 	/**
 	 * Checks the API key against the service database, and returns a value indicating whether it is valid.
-	 * @returns `true` if the specified API key is valid, otherwise `false`.
+	 * @returns {Promise<boolean>} `true` if the specified API key is valid, otherwise `false`.
 	 */
-	async verifyKey(): Promise<boolean> {
+	async verifyKey() {
 		try {
 			const response = await this.#fetch("1.1/verify-key", {});
 			return await response.text() == "valid";
@@ -108,11 +120,11 @@ export class Client {
 
 	/**
 	 * Queries the service by posting the specified fields to a given end point, and returns the response.
-	 * @param endpoint The URL of the end point to query.
-	 * @param fields The fields describing the query body.
-	 * @returns The server response.
+	 * @param {string} endpoint The URL of the end point to query.
+	 * @param {Record<string, string[]|string>} fields The fields describing the query body.
+	 * @returns {Promise<Response>} The server response.
 	 */
-	async #fetch(endpoint: string, fields: Record<string, string[]|string>): Promise<Response> {
+	async #fetch(endpoint, fields) {
 		const body = new URLSearchParams(this.blog.toJSON());
 		body.set("api_key", this.apiKey);
 		if (this.isTest) body.set("is_test", "1");
@@ -141,21 +153,8 @@ export class Client {
 
 /**
  * Defines the options of a {@link Client} instance.
+ * @typedef {object} ClientOptions
+ * @property {URL|string} baseUrl The base URL of the remote API endpoint.
+ * @property {boolean} isTest Value indicating whether the client operates in test mode.
+ * @property {string} userAgent The user agent string to use when making requests.
  */
-export interface ClientOptions {
-
-	/**
-	 * The base URL of the remote API endpoint.
-	 */
-	baseUrl: URL|string;
-
-	/**
-	 * Value indicating whether the client operates in test mode.
-	 */
-	isTest: boolean;
-
-	/**
-	 * The user agent string to use when making requests.
-	 */
-	userAgent: string;
-}

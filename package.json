@@ -13,24 +13,25 @@
 		"url": "https://belin.io"
 	},
 	"devDependencies": {
-		"@types/eslint__js": "^8.42.3",
+		"@babel/eslint-parser": "^7.24.1",
+		"@babel/plugin-syntax-import-attributes": "^7.24.1",
 		"@types/gulp": "^4.0.17",
 		"@types/node": "^20.12.7",
 		"del": "^7.1.0",
 		"eslint": "^8.57.0",
 		"execa": "^8.0.1",
+		"globals": "^15.0.0",
 		"gulp": "^5.0.0",
 		"gulp-replace": "^1.1.4",
 		"typedoc": "^0.25.13",
-		"typescript": "^5.4.5",
-		"typescript-eslint": "^7.7.1"
+		"typescript": "^5.4.5"
 	},
 	"engines": {
-		"node": ">=20.0.0"
+		"node": ">=22.0.0"
 	},
 	"exports": {
 		"types": "./lib/index.d.ts",
-		"import": "./lib/index.js"
+		"import": "./src/index.js"
 	},
 	"files": [
 		"lib/",
@@ -46,6 +47,6 @@
 	],
 	"scripts": {
 		"prepack": "gulp",
-		"test": "gulp build && node --test --test-reporter=spec"
+		"test": "node --test --test-reporter=spec"
 	}
 }

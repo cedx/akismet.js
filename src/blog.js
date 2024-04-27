@@ -5,24 +5,27 @@ export class Blog {
 
 	/**
 	 * The character encoding for the values included in comments.
+	 * @type {string}
 	 */
-	charset: string;
+	charset;
 
 	/**
 	 * The languages in use on the blog or site, in ISO 639-1 format.
+	 * @type {string[]}
 	 */
-	languages: string[];
+	languages;
 
 	/**
 	 * The blog or site URL.
+	 * @type {URL|null}
 	 */
-	url: URL|null;
+	url;
 
 	/**
 	 * Creates a new blog.
-	 * @param options An object providing values to initialize this instance.
+	 * @param {Partial<BlogOptions>} options An object providing values to initialize this instance.
 	 */
-	constructor(options: Partial<BlogOptions>) {
+	constructor(options = {}) {
 		this.charset = options.charset ?? "";
 		this.languages = options.languages ?? [];
 		this.url = options.url ? new URL(options.url) : null;
@@ -30,10 +33,10 @@ export class Blog {
 
 	/**
 	 * Creates a new blog from the specified JSON object.
-	 * @param json A JSON object representing a blog.
-	 * @returns The instance corresponding to the specified JSON object.
+	 * @param {Record<string, any>} json A JSON object representing a blog.
+	 * @returns {Blog} The instance corresponding to the specified JSON object.
 	 */
-	static fromJson(json: Record<string, any>): Blog {
+	static fromJson(json) {
 		return new this({
 			charset: typeof json.blog_charset == "string" ? json.blog_charset : "",
 			languages: typeof json.blog_lang == "string" ? json.blog_lang.split(",").map(language => language.trim()) : [],
@@ -43,10 +46,10 @@ export class Blog {
 
 	/**
 	 * Converts this object to a map in JSON format.
-	 * @returns The map in JSON format corresponding to this object.
+	 * @returns {Record<string, any>} The map in JSON format corresponding to this object.
 	 */
-	toJSON(): Record<string, any> {
-		const map: Record<string, string> = {blog: this.url ? this.url.href : ""};
+	toJSON() {
+		/** @type {Record<string, any>} */ const map = {blog: this.url ? this.url.href : ""};
 		if (this.charset) map.blog_charset = this.charset;
 		if (this.languages.length) map.blog_lang = this.languages.join();
 		return map;
@@ -55,21 +58,8 @@ export class Blog {
 
 /**
  * Defines the options of a {@link Blog} instance.
+ * @typedef {object} BlogOptions
+ * @property {string} charset The character encoding for the values included in comments.
+ * @property {string[]} languages The languages in use on the blog or site, in ISO 639-1 format.
+ * @property {URL|string} url The blog or site URL.
  */
-export interface BlogOptions {
-
-	/**
-	 * The character encoding for the values included in comments.
-	 */
-	charset: string;
-
-	/**
-	 * The languages in use on the blog or site, in ISO 639-1 format.
-	 */
-	languages: string[];
-
-	/**
-	 * The blog or site URL.
-	 */
-	url: URL|string;
-}

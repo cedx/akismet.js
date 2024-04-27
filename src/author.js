@@ -5,39 +5,45 @@ export class Author {
 
 	/**
 	 * The author's mail address. If you set it to `"akismet-guaranteed-spam@example.com"`, Akismet will always return `true`.
+	 * @type {string}
 	 */
-	email: string;
+	email;
 
 	/**
 	 * The author's IP address.
+	 * @type {string}
 	 */
-	ipAddress: string;
+	ipAddress;
 
 	/**
 	 * The author's name. If you set it to `"viagra-test-123"`, Akismet will always return `true`.
+	 * @type {string}
 	 */
-	name: string;
+	name;
 
 	/**
 	 * The author's role. If you set it to `"administrator"`, Akismet will always return `false`.
+	 * @type {AuthorRole|string}
 	 */
-	role: AuthorRole|string;
+	role;
 
 	/**
 	 * The URL of the author's website.
+	 * @type {URL|null}
 	 */
-	url: URL|null;
+	url;
 
 	/**
 	 * The author's user agent, that is the string identifying the Web browser used to submit comments.
+	 * @type {string}
 	 */
-	userAgent: string;
+	userAgent;
 
 	/**
 	 * Creates a new author.
-	 * @param options An object providing values to initialize this instance.
+	 * @param {Partial<AuthorOptions>} options An object providing values to initialize this instance.
 	 */
-	constructor(options: Partial<AuthorOptions> = {}) {
+	constructor(options = {}) {
 		this.email = options.email ?? "";
 		this.ipAddress = options.ipAddress ?? "";
 		this.name = options.name ?? "";
@@ -48,10 +54,10 @@ export class Author {
 
 	/**
 	 * Creates a new author from the specified JSON object.
-	 * @param json A JSON object representing an author.
-	 * @returns The instance corresponding to the specified JSON object.
+	 * @param {Record<string, any>} json A JSON object representing an author.
+	 * @returns {Author} The instance corresponding to the specified JSON object.
 	 */
-	static fromJson(json: Record<string, any>): Author {
+	static fromJson(json) {
 		return new this({
 			email: typeof json.comment_author_email == "string" ? json.comment_author_email : "",
 			ipAddress: typeof json.user_ip == "string" ? json.user_ip : "",
@@ -64,10 +70,10 @@ export class Author {
 
 	/**
 	 * Converts this object to a map in JSON format.
-	 * @returns The map in JSON format corresponding to this object.
+	 * @returns {Record<string, any>} The map in JSON format corresponding to this object.
 	 */
-	toJSON(): Record<string, any> {
-		const map: Record<string, string> = {user_ip: this.ipAddress};
+	toJSON() {
+		/** @type {Record<string, any>} */ const map = {user_ip: this.ipAddress};
 		if (this.email) map.comment_author_email = this.email;
 		if (this.name) map.comment_author = this.name;
 		if (this.role) map.user_role = this.role;
@@ -79,47 +85,23 @@ export class Author {
 
 /**
  * Defines the options of an {@link Author} instance.
+ * @typedef {object} AuthorOptions
+ * @property {string} email The author's mail address. If you set it to `"akismet-guaranteed-spam@example.com"`, Akismet will always return `true`.
+ * @property {string} ipAddress The author's IP address.
+ * @property {string} name The author's name.
+ * @property {AuthorRole|string} role The author's role.
+ * @property {URL|string} url The URL of the author's website.
+ * @property {string} userAgent The author's user agent, that is the string identifying the Web browser used to submit comments.
  */
-export interface AuthorOptions {
-
-	/**
-	 * The author's mail address. If you set it to `"akismet-guaranteed-spam@example.com"`, Akismet will always return `true`.
-	 */
-	email: string;
-
-	/**
-	 * The author's IP address.
-	 */
-	ipAddress: string;
-
-	/**
-	 * The author's name.
-	 */
-	name: string;
-
-	/**
-	 * The author's role.
-	 */
-	role: AuthorRole|string;
-
-	/**
-	 * The URL of the author's website.
-	 */
-	url: URL|string;
-
-	/**
-	 * The author's user agent, that is the string identifying the Web browser used to submit comments.
-	 */
-	userAgent: string;
-}
 
 /**
  * Specifies the role of an author.
+ * @enum {string}
  */
-export enum AuthorRole {
+export const AuthorRole = Object.freeze({
 
 	/**
 	 * The author is an administrator.
 	 */
-	administrator = "administrator"
-}
+	administrator: "administrator"
+});

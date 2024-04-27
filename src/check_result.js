@@ -1,20 +1,21 @@
 /**
  * Specifies the result of a comment check.
+ * @enum {number}
  */
-export enum CheckResult {
+export const CheckResult = Object.freeze({
 
 	/**
 	 * The comment is not a spam (i.e. a ham).
 	 */
-	ham,
+	ham: 0,
 
 	/**
 	 * The comment is a spam.
 	 */
-	spam,
+	spam: 1,
 
 	/**
 	 * The comment is a pervasive spam (i.e. it can be safely discarded).
 	 */
-	pervasiveSpam
-}
+	pervasiveSpam: 2
+});
