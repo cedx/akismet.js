@@ -48,7 +48,7 @@ export default [
 			"dot-notation": "error",
 			"eqeqeq": "off",
 			"func-name-matching": "error",
-			"func-names": "error",
+			"func-names": "off",
 			"func-style": ["error", "declaration", {allowArrowFunctions: true}],
 			"grouped-accessor-pairs": "error",
 			"guard-for-in": "error",
