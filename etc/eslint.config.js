@@ -29,7 +29,7 @@ export default [
 			"no-unmodified-loop-condition": "error",
 			"no-unreachable-loop": "error",
 			"no-use-before-define": ["error", {functions: false}],
-			// "no-useless-assignment": "error",
+			"no-useless-assignment": "error",
 			"require-atomic-updates": ["error", {allowProperties: true}],
 
 			"accessor-pairs": "error",
