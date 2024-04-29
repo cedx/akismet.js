@@ -13,12 +13,12 @@
 		"url": "https://belin.io"
 	},
 	"devDependencies": {
-		"@babel/eslint-parser": "^7.24.1",
+		"@babel/eslint-parser": "^7.24.5",
 		"@babel/plugin-syntax-import-attributes": "^7.24.1",
 		"@types/gulp": "^4.0.17",
 		"@types/node": "^20.12.7",
 		"del": "^7.1.0",
-		"eslint": "^8.57.0",
+		"eslint": "^9.1.1",
 		"execa": "^8.0.1",
 		"globals": "^15.1.0",
 		"gulp": "^5.0.0",
