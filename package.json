@@ -31,7 +31,7 @@
 	},
 	"exports": {
 		"types": "./lib/index.d.ts",
-		"import": "./src/index.js"
+		"default": "./src/index.js"
 	},
 	"files": [
 		"lib/",
