@@ -1,4 +1,3 @@
-import {version} from "node:process";
 import {CheckResult} from "./check_result.js";
 
 /**
@@ -69,7 +68,7 @@ export class Client {
 		this.baseUrl = new URL(url.endsWith("/") ? url : `${url}/`);
 		this.blog = blog;
 		this.isTest = options.isTest ?? false;
-		this.userAgent = options.userAgent ?? `Node.js/${version.slice(1)} | Akismet/${Client.#version}`;
+		this.userAgent = options.userAgent ?? `${navigator.userAgent} | Akismet/${Client.#version}`;
 	}
 
 	/**
