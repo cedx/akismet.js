@@ -124,8 +124,7 @@ export class Client {
 	 * @returns {Promise<Response>} The server response.
 	 */
 	async #fetch(endpoint, fields) {
-		const body = new URLSearchParams(this.blog.toJSON());
-		body.set("api_key", this.apiKey);
+		const body = new URLSearchParams({...this.blog.toJSON(), api_key: this.apiKey});
 		if (this.isTest) body.set("is_test", "1");
 
 		for (const [key, value] of Object.entries(fields))
