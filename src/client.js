@@ -120,7 +120,7 @@ export class Client {
 	/**
 	 * Queries the service by posting the specified fields to a given end point, and returns the response.
 	 * @param {string} endpoint The URL of the end point to query.
-	 * @param {Record<string, string[]|string>} fields The fields describing the query body.
+	 * @param {Record<string, any>} fields The fields describing the query body.
 	 * @returns {Promise<Response>} The server response.
 	 */
 	async #fetch(endpoint, fields) {
@@ -129,10 +129,10 @@ export class Client {
 		if (this.isTest) body.set("is_test", "1");
 
 		for (const [key, value] of Object.entries(fields))
-			if (!Array.isArray(value)) body.set(key, value);
+			if (!Array.isArray(value)) body.set(key, String(value));
 			else {
 				let index = 0;
-				for (const item of value) body.set(`${key}[${index++}]`, item);
+				for (const item of value) body.set(`${key}[${index++}]`, String(item));
 			}
 
 		const response = await fetch(new URL(endpoint, this.baseUrl), {method: "POST", headers: {"user-agent": this.userAgent}, body});
