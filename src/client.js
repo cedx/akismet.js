@@ -136,8 +136,10 @@ export class Client {
 
 		const response = await fetch(new URL(endpoint, this.baseUrl), {method: "POST", headers: {"user-agent": this.userAgent}, body});
 		if (!response.ok) throw Error(`${response.status} ${response.statusText}`);
-		if (response.headers.has("x-akismet-alert-code")) throw Error(response.headers.get("x-akismet-alert-msg") ?? "");
-		if (response.headers.has("x-akismet-debug-help")) throw Error(response.headers.get("x-akismet-debug-help") ?? "");
+
+		const {headers} = response;
+		if (headers.has("x-akismet-alert-code")) throw Error(`${headers.get("x-akismet-alert-code")} ${headers.get("x-akismet-alert-msg")}`);
+		if (headers.has("x-akismet-debug-help")) throw Error(/** @type {string} */ (headers.get("x-akismet-debug-help")));
 		return response;
 	}
 }
