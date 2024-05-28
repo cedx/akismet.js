@@ -1,3 +1,5 @@
+/** @import {Blog} from "./blog.js" */
+/** @import {Comment} from "./comment.js" */
 import {CheckResult} from "./check_result.js";
 
 /**
@@ -35,7 +37,7 @@ export class Client {
 
 	/**
 	 * The front page or home URL of the instance making requests.
-	 * @type {import("./blog.js").Blog}
+	 * @type {Blog}
 	 * @readonly
 	 */
 	blog;
@@ -57,7 +59,7 @@ export class Client {
 	/**
 	 * Creates a new client.
 	 * @param {string} apiKey The Akismet API key.
-	 * @param {import("./blog.js").Blog} blog The front page or home URL of the instance making requests.
+	 * @param {Blog} blog The front page or home URL of the instance making requests.
 	 * @param {Partial<ClientOptions>} options An object providing values to initialize this instance.
 	 */
 	constructor(apiKey, blog, options = {}) {
@@ -73,7 +75,7 @@ export class Client {
 
 	/**
 	 * Checks the specified comment against the service database, and returns a value indicating whether it is spam.
-	 * @param {import("./comment.js").Comment} comment The comment to be checked.
+	 * @param {Comment} comment The comment to be checked.
 	 * @returns {Promise<CheckResult>} A value indicating whether the specified comment is spam.
 	 */
 	async checkComment(comment) {
@@ -85,7 +87,7 @@ export class Client {
 
 	/**
 	 * Submits the specified comment that was incorrectly marked as spam but should not have been.
-	 * @param {import("./comment.js").Comment} comment The comment to be submitted.
+	 * @param {Comment} comment The comment to be submitted.
 	 * @returns {Promise<void>} Resolves once the comment has been submitted.
 	 */
 	async submitHam(comment) {
@@ -95,7 +97,7 @@ export class Client {
 
 	/**
 	 * Submits the specified comment that was not marked as spam but should have been.
-	 * @param {import("./comment.js").Comment} comment The comment to be submitted.
+	 * @param {Comment} comment The comment to be submitted.
 	 * @returns {Promise<void>} Resolves once the comment has been submitted.
 	 */
 	async submitSpam(comment) {
