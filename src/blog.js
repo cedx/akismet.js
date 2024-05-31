@@ -49,7 +49,7 @@ export class Blog {
 	 * @returns {Record<string, any>} The map in JSON format corresponding to this object.
 	 */
 	toJSON() {
-		/** @type {Record<string, any>} */ const map = {blog: this.url ? this.url.href : ""};
+		/** @type {Record<string, any>} */ const map = {blog: this.url?.href ?? ""};
 		if (this.charset) map.blog_charset = this.charset;
 		if (this.languages.length) map.blog_lang = this.languages.join();
 		return map;
