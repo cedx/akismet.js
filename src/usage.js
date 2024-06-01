@@ -45,10 +45,10 @@ export class Usage {
 	 */
 	static fromJson(json) {
 		return new this({
-			limit: typeof json.limit == "number" && Number.isInteger(json.limit) ? json.limit : -1,
+			limit: Number.isInteger(json.limit) ? json.limit : -1,
 			percentage: typeof json.percentage == "number" ? json.percentage : 0,
 			throttled: typeof json.throttled == "boolean" ? json.throttled : false,
-			usage: typeof json.usage == "number" && Number.isInteger(json.usage) ? json.usage : 0
+			usage: Number.isInteger(json.usage) ? json.usage : 0
 		});
 	}
 }
