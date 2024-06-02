@@ -26,7 +26,7 @@
 - Updated the documentation.
 - Updated the package dependencies.
 
-## Version [14.0.0](https://github.com/cedx/akismet.js/compare/v13.0.1...v14.0.0)
+## Version [14.0.0](https://github.com/cedx/akismet.js/compare/v13.0.0...v14.0.0)
 - Breaking change: ported the source code to [TypeScript](https://www.typescriptlang.org).
 - Breaking change: changed the signature of the class constructors.
 - Breaking change: changed the signature of the `fromJson()` methods.
@@ -46,7 +46,7 @@
 - Updated the build system to [Gulp](https://gulpjs.com) version 4.
 - Updated the package dependencies.
 
-## Version [13.0.1](https://github.com/cedx/akismet.js/compare/v12.0.0...v13.0.1)
+## Version [13.0.0](https://github.com/cedx/akismet.js/compare/v12.0.0...v13.0.0)
 - Breaking change: changed the signature of the `Client` events.
 - Updated the package dependencies.
 
