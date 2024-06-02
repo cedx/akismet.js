@@ -16,7 +16,7 @@
 		"@babel/eslint-parser": "^7.24.6",
 		"@babel/plugin-syntax-import-attributes": "^7.24.6",
 		"@types/gulp": "^4.0.17",
-		"@types/node": "^20.13.0",
+		"@types/node": "^20.14.0",
 		"del": "^7.1.0",
 		"eslint": "^9.4.0",
 		"execa": "^9.1.0",
