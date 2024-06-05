@@ -13,10 +13,10 @@
 		"url": "https://belin.io"
 	},
 	"devDependencies": {
-		"@babel/eslint-parser": "^7.24.6",
-		"@babel/plugin-syntax-import-attributes": "^7.24.6",
+		"@babel/eslint-parser": "^7.24.7",
+		"@babel/plugin-syntax-import-attributes": "^7.24.7",
 		"@types/gulp": "^4.0.17",
-		"@types/node": "^20.14.1",
+		"@types/node": "^20.14.2",
 		"del": "^7.1.0",
 		"eslint": "^9.4.0",
 		"execa": "^9.1.0",
