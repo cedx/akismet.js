@@ -18,6 +18,7 @@ jobs:
         run: npm test
         env:
           AKISMET_API_KEY: ${{secrets.AKISMET_API_KEY}}
+          NODE_ENV: test
   deploy:
     needs: test
     runs-on: ubuntu-latest
