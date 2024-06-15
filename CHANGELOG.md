@@ -1,5 +1,8 @@
 # Changelog
 
+## Version [16.1.&](https://github.com/cedx/akismet.js/compare/v16.1.0...v16.1.1)
+- Migrated the documentation to the [GitHub wiki](https://github.com/cedx/akismet.js/wiki).
+
 ## Version [16.1.0](https://github.com/cedx/akismet.js/compare/v16.0.2...v16.1.0)
 - Ported the source code to [TypeScript](https://www.typescriptlang.org).
 
