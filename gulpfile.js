@@ -6,7 +6,9 @@ import gulp from "gulp";
 import pkg from "./package.json" with {type: "json"};
 
 // Builds the project.
-export function build() {
+export async function build() {
+	const file = "src/client.js";
+	await writeFile(file, (await readFile(file, "utf8")).replace(/#version = "\d+(\.\d+){2}"/, `#version = "${pkg.version}"`));
 	return $`tsc --project src/tsconfig.json`;
 }
 
@@ -45,15 +47,8 @@ export function test() {
 	return $`node --test --test-reporter=spec`;
 }
 
-// Updates the version number in the sources.
-export async function version() {
-	const file = "src/client.js";
-	return writeFile(file, (await readFile(file, "utf8")).replace(/#version = "\d+(\.\d+){2}"/, `#version = "${pkg.version}"`));
-}
-
 // The default task.
 export default gulp.series(
 	clean,
-	version,
 	build
 );
