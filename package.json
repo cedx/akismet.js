@@ -22,7 +22,6 @@
 		"execa": "^9.2.0",
 		"globals": "^15.4.0",
 		"gulp": "^5.0.0",
-		"gulp-replace": "^1.1.4",
 		"typedoc": "^0.25.13",
 		"typescript": "^5.4.5"
 	},
