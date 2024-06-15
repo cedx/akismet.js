@@ -6,7 +6,7 @@
 	"name": "@cedx/akismet",
 	"repository": "cedx/akismet.js",
 	"type": "module",
-	"version": "16.1.0",
+	"version": "16.1.1",
 	"author": {
 		"email": "cedric@belin.io",
 		"name": "Cédric Belin",
@@ -22,7 +22,6 @@
 		"execa": "^9.2.0",
 		"globals": "^15.4.0",
 		"gulp": "^5.0.0",
-		"typedoc": "^0.25.13",
 		"typescript": "^5.4.5"
 	},
 	"engines": {
