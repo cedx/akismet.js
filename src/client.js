@@ -17,7 +17,7 @@ export class Client {
 	 * @type {string}
 	 * @readonly
 	 */
-	static #version = "16.1.0";
+	static #version = "16.1.1";
 
 	/**
 	 * The Akismet API key.
