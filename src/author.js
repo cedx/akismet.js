@@ -69,8 +69,8 @@ export class Author {
 	}
 
 	/**
-	 * Converts this object to a map in JSON format.
-	 * @returns {Record<string, any>} The map in JSON format corresponding to this object.
+	 * Returns a JSON representation of this object.
+	 * @returns {Record<string, any>} The JSON representation of this object.
 	 */
 	toJSON() {
 		/** @type {Record<string, any>} */ const map = {user_ip: this.ipAddress};
