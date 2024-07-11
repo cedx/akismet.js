@@ -7,7 +7,7 @@ import pkg from "./package.json" with {type: "json"};
 
 // Builds the project.
 export async function build() {
-	const file = "src/client.js";
+	const file = "src/client.ts";
 	await writeFile(file, (await readFile(file, "utf8")).replace(/#version = "\d+(\.\d+){2}"/, `#version = "${pkg.version}"`));
 	return $`tsc --project src/tsconfig.json`;
 }
@@ -30,9 +30,10 @@ export async function publish() {
 }
 
 // Runs the test suite.
-export function test() {
+export async function test() {
 	env.NODE_ENV = "test";
-	return $`node --test --test-reporter=spec`;
+	await build();
+	return $({stdio: "inherit"})`node --test --test-reporter=spec`;
 }
 
 // The default task.
