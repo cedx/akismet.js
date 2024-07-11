@@ -41,10 +41,10 @@ export class Usage {
 	 */
 	static fromJson(json: Record<string, any>): Usage {
 		return new this({
-			limit: Number.isInteger(json.limit) ? json.limit : -1,
+			limit: Number.isInteger(json.limit) ? json.limit as number : -1,
 			percentage: typeof json.percentage == "number" ? json.percentage : 0,
 			throttled: typeof json.throttled == "boolean" ? json.throttled : false,
-			usage: Number.isInteger(json.usage) ? json.usage : 0
+			usage: Number.isInteger(json.usage) ? json.usage as number : 0
 		});
 	}
 }
