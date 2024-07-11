@@ -45,8 +45,8 @@ describe("Client", () => {
 			equal(await client.checkComment(ham), CheckResult.ham));
 
 		it("should return `CheckResult.spam` for invalid comment (e.g. spam)", async () => {
-			const isSpam = [CheckResult.spam, CheckResult.pervasiveSpam];
-			ok(isSpam.includes(await client.checkComment(spam)));
+			const isSpam = new Set([CheckResult.spam, CheckResult.pervasiveSpam]);
+			ok(isSpam.has(await client.checkComment(spam)));
 		});
 	});
 
