@@ -5,33 +5,29 @@ export class Usage {
 
 	/**
 	 * The number of monthly API calls your plan entitles you to.
-	 * @type {number}
 	 */
-	limit;
+	limit: number;
 
 	/**
 	 * The percentage of the limit used since the beginning of the month.
-	 * @type {number}
 	 */
-	percentage;
+	percentage: number;
 
 	/**
 	 * Value indicating whether the requests are being throttled for having consistently gone over the limit.
-	 * @type {boolean}
 	 */
-	throttled;
+	throttled: boolean;
 
 	/**
 	 * The number of calls (spam + ham) since the beginning of the month.
-	 * @type {number}
 	 */
-	usage;
+	usage: number;
 
 	/**
 	 * Creates a new usage.
-	 * @param {Partial<UsageOptions>} options An object providing values to initialize this instance.
+	 * @param options An object providing values to initialize this instance.
 	 */
-	constructor(options = {}) {
+	constructor(options: Partial<UsageOptions> = {}) {
 		this.limit = options.limit ?? -1;
 		this.percentage = options.percentage ?? 0;
 		this.throttled = options.throttled ?? false;
@@ -40,10 +36,10 @@ export class Usage {
 
 	/**
 	 * Creates a new usage from the specified JSON object.
-	 * @param {Record<string, any>} json A JSON object representing a usage.
-	 * @returns {Usage} The instance corresponding to the specified JSON object.
+	 * @param json A JSON object representing a usage.
+	 * @returns The instance corresponding to the specified JSON object.
 	 */
-	static fromJson(json) {
+	static fromJson(json: Record<string, any>): Usage {
 		return new this({
 			limit: Number.isInteger(json.limit) ? json.limit : -1,
 			percentage: typeof json.percentage == "number" ? json.percentage : 0,
@@ -55,9 +51,26 @@ export class Usage {
 
 /**
  * Defines the options of a {@link Usage} instance.
- * @typedef {object} UsageOptions
- * @property {number} limit The number of monthly API calls your plan entitles you to.
- * @property {number} percentage The percentage of the limit used since the beginning of the month.
- * @property {boolean} throttled Value indicating whether the requests are being throttled for having consistently gone over the limit.
- * @property {number} usage The number of calls (spam + ham) since the beginning of the month.
  */
+export interface UsageOptions {
+
+	/**
+	 * The number of monthly API calls your plan entitles you to.
+	 */
+	limit: number;
+
+	/**
+	 * The percentage of the limit used since the beginning of the month.
+	 */
+	percentage: number;
+
+	/**
+	 * Value indicating whether the requests are being throttled for having consistently gone over the limit.
+	 */
+	throttled: boolean;
+
+	/**
+	 * The number of calls (spam + ham) since the beginning of the month.
+	 */
+	usage: number;
+}
