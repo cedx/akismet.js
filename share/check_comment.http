@@ -2,7 +2,7 @@
 POST {{apiUrl}}/1.1/comment-check
 Content-Type: application/x-www-form-urlencoded
 
-api_key={{akismetApiKey}}
+api_key={{$processEnv %apiKey}}
 &blog=https://github.com/cedx/akismet.js
 &comment_author=Akismet
 &comment_author_url=https://belin.io
@@ -18,7 +18,7 @@ api_key={{akismetApiKey}}
 POST {{apiUrl}}/1.1/comment-check
 Content-Type: application/x-www-form-urlencoded
 
-api_key={{akismetApiKey}}
+api_key={{$processEnv %apiKey}}
 &blog=https://github.com/cedx/akismet.js
 &comment_author=viagra-test-123
 &comment_content=Spam!

@@ -8,7 +8,7 @@
 	"[yaml]": {"editor.insertSpaces": true},
 	"rest-client.environmentVariables": {
 		"development": {
-			"akismetApiKey": "",
+			"apiKey": "AKISMET_API_KEY",
 			"apiUrl": "https://rest.akismet.com"
 		}
 	}
