@@ -1,9 +1,12 @@
 import {readFile, writeFile} from "node:fs/promises";
 import {env} from "node:process";
 import {deleteAsync} from "del";
-import {$} from "execa";
+import {execa} from "execa";
 import gulp from "gulp";
 import pkg from "./package.json" with {type: "json"};
+
+// Runs a command.
+const $ = execa({preferLocal: true, stdio: "inherit"});
 
 // Builds the project.
 export async function build() {
@@ -34,7 +37,7 @@ export async function publish() {
 export async function test() {
 	env.NODE_ENV = "test";
 	await build();
-	return $({stdio: "inherit"})`node --test --test-reporter=spec`;
+	return $`node --test --test-reporter=spec`;
 }
 
 // The default task.

@@ -49,7 +49,7 @@ export default ts.config(
 			"grouped-accessor-pairs": "error",
 			"guard-for-in": "error",
 			"id-denylist": "error",
-			"id-length": ["error", {exceptions: ["_", "x", "y"]}],
+			"id-length": ["error", {exceptions: ["_", "$", "x", "y"]}],
 			"id-match": "error",
 			"init-declarations": "error",
 			"logical-assignment-operators": "error",
