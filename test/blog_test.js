@@ -1,6 +1,6 @@
+import {Blog} from "@cedx/akismet";
 import {deepEqual, equal, ok} from "node:assert/strict";
 import {describe, it} from "node:test";
-import {Blog} from "@cedx/akismet";
 
 /**
  * Tests the features of the {@link Blog} class.

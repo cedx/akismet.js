@@ -1,5 +1,5 @@
-import console from "node:console";
 import {Blog, Client} from "@cedx/akismet";
+import console from "node:console";
 
 // Verifies an Akismet API key.
 try {

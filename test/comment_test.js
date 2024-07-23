@@ -1,6 +1,6 @@
+import {Author, Comment, CommentType} from "@cedx/akismet";
 import {equal, ok} from "node:assert/strict";
 import {describe, it} from "node:test";
-import {Author, Comment, CommentType} from "@cedx/akismet";
 
 /**
  * Tests the features of the {@link Comment} class.

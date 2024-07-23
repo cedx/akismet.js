@@ -1,5 +1,5 @@
-import console from "node:console";
 import {Author, Blog, Client, Comment} from "@cedx/akismet";
+import console from "node:console";
 
 // Submits spam to the Akismet service.
 try {

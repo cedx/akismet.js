@@ -1,8 +1,8 @@
-import {readFile, writeFile} from "node:fs/promises";
-import {env} from "node:process";
 import {deleteAsync} from "del";
 import {execa} from "execa";
 import gulp from "gulp";
+import {readFile, writeFile} from "node:fs/promises";
+import {env} from "node:process";
 import pkg from "./package.json" with {type: "json"};
 
 // Runs a command.

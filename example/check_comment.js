@@ -1,5 +1,5 @@
-import console from "node:console";
 import {Author, Blog, CheckResult, Client, Comment, CommentType} from "@cedx/akismet";
+import console from "node:console";
 
 // Checks a comment against the Akismet service.
 try {

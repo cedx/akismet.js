@@ -1,7 +1,7 @@
+import {Author, AuthorRole, Blog, CheckResult, Client, Comment, CommentType} from "@cedx/akismet";
 import {doesNotReject, equal, ok} from "node:assert/strict";
 import {env} from "node:process";
 import {describe, it} from "node:test";
-import {Author, AuthorRole, Blog, CheckResult, Client, Comment, CommentType} from "@cedx/akismet";
 
 /**
  * Tests the features of the {@link Client} class.
