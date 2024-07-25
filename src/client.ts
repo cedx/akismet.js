@@ -15,7 +15,7 @@ export class Client {
 	/**
 	 * The package version.
 	 */
-	static readonly #version = "16.1.1";
+	static readonly #version = "16.2.0";
 
 	/**
 	 * The Akismet API key.
