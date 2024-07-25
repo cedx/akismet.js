@@ -1,5 +1,8 @@
 # Changelog
 
+## Version [16.2.0](https://github.com/cedx/akismet.js/compare/v16.1.1...v16.2.0)
+- The `AuthorRole`, `CheckResult` and `CommentType` enumerations are now implemented as frozen objects.
+
 ## Version [16.1.1](https://github.com/cedx/akismet.js/compare/v16.1.0...v16.1.1)
 - Migrated the documentation to the [GitHub wiki](https://github.com/cedx/akismet.js/wiki).
 
