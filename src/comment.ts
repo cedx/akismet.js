@@ -48,7 +48,7 @@ export class Comment {
 	/**
 	 * The comment's type.
 	 */
-	type: CommentType|string;
+	type: string;
 
 	/**
 	 * Creates a new comment.
@@ -152,46 +152,51 @@ export interface CommentOptions {
 	/**
 	 * The comment's type.
 	 */
-	type: CommentType|string;
+	type: string;
 }
 
 /**
  * Specifies the type of a comment.
  */
-export enum CommentType {
+export const CommentType = Object.freeze({
 
 	/**
 	 * A blog post.
 	 */
-	blogPost = "blog-post",
+	blogPost: "blog-post",
 
 	/**
 	 * A blog comment.
 	 */
-	comment = "comment",
+	comment: "comment",
 
 	/**
 	 * A contact form or feedback form submission.
 	 */
-	contactForm = "contact-form",
+	contactForm: "contact-form",
 
 	/**
 	 * A top-level forum post.
 	 */
-	forumPost = "forum-post",
+	forumPost: "forum-post",
 
 	/**
 	 * A message sent between just a few users.
 	 */
-	message = "message",
+	message: "message",
 
 	/**
 	 * A reply to a top-level forum post.
 	 */
-	reply = "reply",
+	reply: "reply",
 
 	/**
 	 * A new user account.
 	 */
-	signup = "signup"
-}
+	signup: "signup"
+});
+
+/**
+ * Specifies the type of a comment.
+ */
+export type CommentType = typeof CommentType[keyof typeof CommentType];
