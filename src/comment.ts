@@ -18,7 +18,7 @@ export class Comment {
 	/**
 	 * The context in which this comment was posted.
 	 */
-	context: string[];
+	context: Array<string>;
 
 	/**
 	 * The UTC timestamp of the creation of the comment.
@@ -122,7 +122,7 @@ export interface CommentOptions {
 	/**
 	 * The context in which this comment was posted.
 	 */
-	context: string[];
+	context: Array<string>;
 
 	/**
 	 * The UTC timestamp of the creation of the comment.

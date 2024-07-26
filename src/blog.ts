@@ -11,7 +11,7 @@ export class Blog {
 	/**
 	 * The languages in use on the blog or site, in ISO 639-1 format.
 	 */
-	languages: string[];
+	languages: Array<string>;
 
 	/**
 	 * The blog or site URL.
@@ -66,7 +66,7 @@ export interface BlogOptions {
 	/**
 	 * The languages in use on the blog or site, in ISO 639-1 format.
 	 */
-	languages: string[];
+	languages: Array<string>;
 
 	/**
 	 * The blog or site URL.
