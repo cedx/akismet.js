@@ -15,7 +15,7 @@
 	"devDependencies": {
 		"@types/eslint__js": "^8.42.3",
 		"@types/gulp": "^4.0.17",
-		"@types/node": "^20.14.12",
+		"@types/node": "^20.14.13",
 		"del": "^7.1.0",
 		"execa": "^9.3.0",
 		"gulp": "^5.0.0",
