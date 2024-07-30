@@ -20,7 +20,7 @@
 		"execa": "^9.3.0",
 		"gulp": "^5.0.0",
 		"typescript": "^5.5.4",
-		"typescript-eslint": "^8.0.0-alpha.57"
+		"typescript-eslint": "^8.0.0-alpha.59"
 	},
 	"engines": {
 		"node": ">=22.0.0"
