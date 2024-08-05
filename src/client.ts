@@ -49,11 +49,11 @@ export class Client {
 	 * @param options An object providing values to initialize this instance.
 	 */
 	constructor(apiKey: string, blog: Blog, options: Partial<ClientOptions> = {}) {
-		const {baseUrl = "https://rest.akismet.com"} = options;
+		const {baseUrl = ""} = options;
 		const url = baseUrl instanceof URL ? baseUrl.href : baseUrl;
 
 		this.apiKey = apiKey;
-		this.baseUrl = new URL(url.endsWith("/") ? url : `${url}/`);
+		this.baseUrl = new URL(URL.canParse(url) ? (url.endsWith("/") ? url : `${url}/`) : "https://rest.akismet.com/");
 		this.blog = blog;
 		this.isTest = options.isTest ?? false;
 		this.userAgent = options.userAgent ?? `${navigator.userAgent} | Akismet/${Client.#version}`;

@@ -42,7 +42,7 @@ export class Author {
 		this.ipAddress = options.ipAddress ?? "";
 		this.name = options.name ?? "";
 		this.role = options.role ?? "";
-		this.url = options.url ? new URL(options.url) : null;
+		this.url = options.url && URL.canParse(options.url) ? new URL(options.url) : null;
 		this.userAgent = options.userAgent ?? "";
 	}
 

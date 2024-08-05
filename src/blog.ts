@@ -25,7 +25,7 @@ export class Blog {
 	constructor(options: Partial<BlogOptions> = {}) {
 		this.charset = options.charset ?? "";
 		this.languages = options.languages ?? [];
-		this.url = options.url ? new URL(options.url) : null;
+		this.url = options.url && URL.canParse(options.url) ? new URL(options.url) : null;
 	}
 
 	/**
