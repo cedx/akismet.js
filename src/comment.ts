@@ -59,10 +59,10 @@ export class Comment {
 		this.content = options.content ?? "";
 		this.context = options.context ?? [];
 		this.date = options.date ?? null;
-		this.permalink = options.permalink && URL.canParse(options.permalink) ? new URL(options.permalink) : null;
+		this.permalink = options.permalink ? new URL(options.permalink) : null;
 		this.postModified = options.postModified ?? null;
 		this.recheckReason = options.recheckReason ?? "";
-		this.referrer = options.referrer && URL.canParse(options.referrer) ? new URL(options.referrer) : null;
+		this.referrer = options.referrer ? new URL(options.referrer) : null;
 		this.type = options.type ?? "";
 	}
 
