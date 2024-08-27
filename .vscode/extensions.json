@@ -1,5 +1,7 @@
 {
 	"recommendations": [
-		"humao.rest-client"
+		"humao.rest-client",
+		"lix.lix",
+		"nadako.vshaxe"
 	]
 }
