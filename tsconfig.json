@@ -4,6 +4,7 @@
 		"allowJs": true,
 		"baseUrl": ".",
 		"checkJs": true,
+		"incremental": true,
 		"module": "NodeNext",
 		"moduleResolution": "NodeNext",
 		"noEmit": true,
@@ -11,6 +12,7 @@
 		"resolveJsonModule": true,
 		"strict": true,
 		"target": "ESNext",
+		"tsBuildInfoFile": "var/tsbuildinfo.json",
 		"verbatimModuleSyntax": true
 	}
 }
