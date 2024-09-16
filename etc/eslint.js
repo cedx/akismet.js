@@ -167,6 +167,7 @@ export default ts.config(
 			"@typescript-eslint/no-empty-object-type": "error",
 			"@typescript-eslint/no-explicit-any": "off",
 			"@typescript-eslint/no-import-type-side-effects": "error",
+			"@typescript-eslint/no-invalid-void-type": ["error", {allowAsThisParameter: true}],
 			"@typescript-eslint/no-loop-func": "error",
 			"@typescript-eslint/no-magic-numbers": "off",
 			"@typescript-eslint/no-non-null-assertion": "off",
