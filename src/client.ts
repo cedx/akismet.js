@@ -97,7 +97,7 @@ export class Client {
 	 */
 	async verifyKey(): Promise<boolean> {
 		try {
-			const response = await this.#fetch("1.1/verify-key", {});
+			const response = await this.#fetch("1.1/verify-key");
 			return await response.text() == "valid";
 		}
 		catch {
@@ -111,7 +111,7 @@ export class Client {
 	 * @param fields The fields describing the query body.
 	 * @returns The server response.
 	 */
-	async #fetch(endpoint: string, fields: Record<string, any>): Promise<Response> {
+	async #fetch(endpoint: string, fields: Record<string, any> = {}): Promise<Response> {
 		const body = new URLSearchParams({...this.blog.toJSON(), api_key: this.apiKey});
 		if (this.isTest) body.set("is_test", "1");
 
