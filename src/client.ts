@@ -64,11 +64,9 @@ export class Client {
 	 * @param comment The comment to be checked.
 	 * @returns A value indicating whether the specified comment is spam.
 	 */
-	async checkComment(comment: Comment): Promise<CheckResult> {
-		const response = await this.#fetch("1.1/comment-check", comment.toJSON());
-		return await response.text() == "false"
-			? CheckResult.ham
-			: response.headers.get("x-akismet-pro-tip") == "discard" ? CheckResult.pervasiveSpam : CheckResult.spam;
+	checkComment(comment: Comment): Promise<CheckResult> {
+		return this.#fetch("1.1/comment-check", comment.toJSON()).then(response => response.text()
+			.then(text => text == "false" ? CheckResult.ham : response.headers.get("x-akismet-pro-tip") == "discard" ? CheckResult.pervasiveSpam : CheckResult.spam));
 	}
 
 	/**
@@ -76,9 +74,10 @@ export class Client {
 	 * @param comment The comment to be submitted.
 	 * @returns Resolves once the comment has been submitted.
 	 */
-	async submitHam(comment: Comment): Promise<void> {
-		const response = await this.#fetch("1.1/submit-ham", comment.toJSON());
-		if (await response.text() != Client.#success) throw Error("Invalid server response.");
+	submitHam(comment: Comment): Promise<void> {
+		return this.#fetch("1.1/submit-ham", comment.toJSON()).then(response => response.text()).then(text => {
+			if (text != Client.#success) throw Error("Invalid server response.");
+		});
 	}
 
 	/**
@@ -86,23 +85,18 @@ export class Client {
 	 * @param comment The comment to be submitted.
 	 * @returns Resolves once the comment has been submitted.
 	 */
-	async submitSpam(comment: Comment): Promise<void> {
-		const response = await this.#fetch("1.1/submit-spam", comment.toJSON());
-		if (await response.text() != Client.#success) throw Error("Invalid server response.");
+	submitSpam(comment: Comment): Promise<void> {
+		return this.#fetch("1.1/submit-spam", comment.toJSON()).then(response => response.text()).then(text => {
+			if (text != Client.#success) throw Error("Invalid server response.");
+		});
 	}
 
 	/**
 	 * Checks the API key against the service database, and returns a value indicating whether it is valid.
 	 * @returns `true` if the specified API key is valid, otherwise `false`.
 	 */
-	async verifyKey(): Promise<boolean> {
-		try {
-			const response = await this.#fetch("1.1/verify-key");
-			return await response.text() == "valid";
-		}
-		catch {
-			return false;
-		}
+	verifyKey(): Promise<boolean> {
+		return this.#fetch("1.1/verify-key").then(response => response.text()).then(text => text == "valid").catch(() => false);
 	}
 
 	/**
@@ -111,7 +105,7 @@ export class Client {
 	 * @param fields The fields describing the query body.
 	 * @returns The server response.
 	 */
-	async #fetch(endpoint: string, fields: Record<string, any> = {}): Promise<Response> {
+	#fetch(endpoint: string, fields: Record<string, any> = {}): Promise<Response> {
 		const body = new URLSearchParams({...this.blog.toJSON(), api_key: this.apiKey});
 		if (this.isTest) body.set("is_test", "1");
 
@@ -122,13 +116,14 @@ export class Client {
 				for (const item of value) body.set(`${key}[${index++}]`, String(item));
 			}
 
-		const response = await fetch(new URL(endpoint, this.baseUrl), {method: "POST", headers: {"user-agent": this.userAgent}, body});
-		if (!response.ok) throw Error(`${response.status} ${response.statusText}`);
+		return fetch(new URL(endpoint, this.baseUrl), {method: "POST", headers: {"user-agent": this.userAgent}, body}).then(response => {
+			if (!response.ok) throw Error(`${response.status} ${response.statusText}`);
 
-		const {headers} = response;
-		if (headers.has("x-akismet-alert-code")) throw Error(`${headers.get("x-akismet-alert-code")} ${headers.get("x-akismet-alert-msg")}`);
-		if (headers.has("x-akismet-debug-help")) throw Error(headers.get("x-akismet-debug-help")!);
-		return response;
+			const {headers} = response;
+			if (headers.has("x-akismet-alert-code")) throw Error(`${headers.get("x-akismet-alert-code")} ${headers.get("x-akismet-alert-msg")}`);
+			if (headers.has("x-akismet-debug-help")) throw Error(headers.get("x-akismet-debug-help")!);
+			return response;
+		});
 	}
 }
 
