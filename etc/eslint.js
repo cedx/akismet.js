@@ -160,7 +160,6 @@ export default ts.config(
 			"@typescript-eslint/explicit-module-boundary-types": "error",
 			"@typescript-eslint/init-declarations": "error",
 			"@typescript-eslint/max-params": ["error", {max: 4}],
-			"@typescript-eslint/member-ordering": "error",
 			"@typescript-eslint/method-signature-style": "error",
 			"@typescript-eslint/naming-convention": "off",
 			"@typescript-eslint/no-confusing-void-expression": "off",
