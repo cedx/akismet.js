@@ -6,7 +6,7 @@
 	"name": "@cedx/akismet",
 	"repository": "cedx/akismet.js",
 	"type": "module",
-	"version": "16.2.0",
+	"version": "16.2.1",
 	"author": {
 		"email": "cedric@belin.io",
 		"name": "Cédric Belin",
@@ -23,7 +23,7 @@
 		"typescript-eslint": "^8.8.0"
 	},
 	"engines": {
-		"node": ">=22.0.0"
+		"node": ">=20.0.0"
 	},
 	"exports": {
 		"types": "./lib/index.d.ts",
