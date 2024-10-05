@@ -1,3 +1,4 @@
+import process from "node:process";
 import type {Blog} from "./blog.js";
 import {CheckResult} from "./check_result.js";
 import type {Comment} from "./comment.js";
@@ -56,7 +57,9 @@ export class Client {
 		this.baseUrl = new URL(url.endsWith("/") ? url : `${url}/`);
 		this.blog = blog;
 		this.isTest = options.isTest ?? false;
-		this.userAgent = options.userAgent ?? `${navigator.userAgent} | Akismet/${Client.#version}`;
+
+		const [nodeVersion] = process.version.slice(1).split(".");
+		this.userAgent = options.userAgent ?? `Node.js/${nodeVersion} | Akismet/${Client.#version}`;
 	}
 
 	/**
