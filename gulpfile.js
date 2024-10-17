@@ -36,7 +36,6 @@ export async function publish() {
 
 /** Runs the test suite. */
 export async function test() {
-	env.NODE_ENV = "test";
 	await build();
 	return $("node", ["--test", "--test-reporter=spec"]);
 }
