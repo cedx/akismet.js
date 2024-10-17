@@ -1,7 +1,7 @@
 import gulp from "gulp";
 import {spawn} from "node:child_process";
 import {readdir, readFile, rm, writeFile} from "node:fs/promises";
-import {delimiter, resolve} from "node:path";
+import {delimiter, join, resolve} from "node:path";
 import {env} from "node:process";
 import pkg from "./package.json" with {type: "json"};
 
@@ -18,7 +18,7 @@ export async function build() {
 /** Deletes all generated files. */
 export async function clean() {
 	await rm("lib", {force: true, recursive: true});
-	for (const file of await readdir("var")) if (file != ".gitkeep") await rm(`var/${file}`, {recursive: true});
+	for (const file of await readdir("var")) if (file != ".gitkeep") await rm(join("var", file), {recursive: true});
 }
 
 /** Performs the static analysis of source code. */
