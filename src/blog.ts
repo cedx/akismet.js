@@ -61,15 +61,15 @@ export type BlogOptions = Partial<{
 	/**
 	 * The character encoding for the values included in comments.
 	 */
-	charset: string,
+	charset: string;
 
 	/**
 	 * The languages in use on the blog or site, in ISO 639-1 format.
 	 */
-	languages: Array<string>,
+	languages: Array<string>;
 
 	/**
 	 * The blog or site URL.
 	 */
-	url: URL|string
+	url: URL|string;
 }>;

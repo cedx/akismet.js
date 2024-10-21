@@ -112,47 +112,47 @@ export type CommentOptions = Partial<{
 	/**
 	 * The comment's author.
 	 */
-	author: Author|null,
+	author: Author|null;
 
 	/**
 	 * The comment's content.
 	 */
-	content: string,
+	content: string;
 
 	/**
 	 * The context in which this comment was posted.
 	 */
-	context: Array<string>,
+	context: Array<string>;
 
 	/**
 	 * The UTC timestamp of the creation of the comment.
 	 */
-	date: Date|null,
+	date: Date|null;
 
 	/**
 	 * The permanent location of the entry the comment is submitted to.
 	 */
-	permalink: URL|string,
+	permalink: URL|string;
 
 	/**
 	 * The UTC timestamp of the publication time for the post, page or thread on which the comment was posted.
 	 */
-	postModified: Date|null,
+	postModified: Date|null;
 
 	/**
 	 * A string describing why the content is being rechecked.
 	 */
-	recheckReason: string,
+	recheckReason: string;
 
 	/**
 	 * The URL of the webpage that linked to the entry being requested.
 	 */
-	referrer: URL|string,
+	referrer: URL|string;
 
 	/**
 	 * The comment's type.
 	 */
-	type: string
+	type: string;
 }>;
 
 /**

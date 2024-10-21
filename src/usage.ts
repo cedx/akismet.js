@@ -57,20 +57,20 @@ export type UsageOptions = Partial<{
 	/**
 	 * The number of monthly API calls your plan entitles you to.
 	 */
-	limit: number,
+	limit: number;
 
 	/**
 	 * The percentage of the limit used since the beginning of the month.
 	 */
-	percentage: number,
+	percentage: number;
 
 	/**
 	 * Value indicating whether the requests are being throttled for having consistently gone over the limit.
 	 */
-	throttled: boolean,
+	throttled: boolean;
 
 	/**
 	 * The number of calls (spam + ham) since the beginning of the month.
 	 */
-	usage: number
+	usage: number;
 }>;
