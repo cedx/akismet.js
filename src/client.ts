@@ -143,15 +143,15 @@ export type ClientOptions = Partial<{
 	/**
 	 * The base URL of the remote API endpoint.
 	 */
-	baseUrl: URL|string;
+	baseUrl: URL|string,
 
 	/**
 	 * Value indicating whether the client operates in test mode.
 	 */
-	isTest: boolean;
+	isTest: boolean,
 
 	/**
 	 * The user agent string to use when making requests.
 	 */
-	userAgent: string;
+	userAgent: string
 }>;
