@@ -37,7 +37,7 @@ export class Author {
 	 * Creates a new author.
 	 * @param options An object providing values to initialize this instance.
 	 */
-	constructor(options: Partial<AuthorOptions> = {}) {
+	constructor(options: AuthorOptions = {}) {
 		this.email = options.email ?? "";
 		this.ipAddress = options.ipAddress ?? "";
 		this.name = options.name ?? "";
@@ -80,7 +80,7 @@ export class Author {
 /**
  * Defines the options of an {@link Author} instance.
  */
-export interface AuthorOptions {
+export type AuthorOptions = Partial<{
 
 	/**
 	 * The author's mail address. If you set it to `"akismet-guaranteed-spam@example.com"`, Akismet will always return `true`.
@@ -111,7 +111,7 @@ export interface AuthorOptions {
 	 * The author's user agent, that is the string identifying the Web browser used to submit comments.
 	 */
 	userAgent: string;
-}
+}>;
 
 /**
  * Specifies the role of an author.

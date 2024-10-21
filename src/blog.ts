@@ -22,7 +22,7 @@ export class Blog {
 	 * Creates a new blog.
 	 * @param options An object providing values to initialize this instance.
 	 */
-	constructor(options: Partial<BlogOptions> = {}) {
+	constructor(options: BlogOptions = {}) {
 		this.charset = options.charset ?? "";
 		this.languages = options.languages ?? [];
 		this.url = options.url ? new URL(options.url) : null;
@@ -56,7 +56,7 @@ export class Blog {
 /**
  * Defines the options of a {@link Blog} instance.
  */
-export interface BlogOptions {
+export type BlogOptions = Partial<{
 
 	/**
 	 * The character encoding for the values included in comments.
@@ -72,4 +72,4 @@ export interface BlogOptions {
 	 * The blog or site URL.
 	 */
 	url: URL|string;
-}
+}>;

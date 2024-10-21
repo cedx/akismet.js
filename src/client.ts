@@ -49,7 +49,7 @@ export class Client {
 	 * @param blog The front page or home URL of the instance making requests.
 	 * @param options An object providing values to initialize this instance.
 	 */
-	constructor(apiKey: string, blog: Blog, options: Partial<ClientOptions> = {}) {
+	constructor(apiKey: string, blog: Blog, options: ClientOptions = {}) {
 		const {baseUrl = "https://rest.akismet.com"} = options;
 		const url = baseUrl instanceof URL ? baseUrl.href : baseUrl;
 
@@ -138,7 +138,7 @@ export class Client {
 /**
  * Defines the options of a {@link Client} instance.
  */
-export interface ClientOptions {
+export type ClientOptions = Partial<{
 
 	/**
 	 * The base URL of the remote API endpoint.
@@ -154,4 +154,4 @@ export interface ClientOptions {
 	 * The user agent string to use when making requests.
 	 */
 	userAgent: string;
-}
+}>;

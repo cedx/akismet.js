@@ -54,7 +54,7 @@ export class Comment {
 	 * Creates a new comment.
 	 * @param options An object providing values to initialize this instance.
 	 */
-	constructor(options: Partial<CommentOptions> = {}) {
+	constructor(options: CommentOptions = {}) {
 		this.author = options.author ?? null;
 		this.content = options.content ?? "";
 		this.context = options.context ?? [];
@@ -107,7 +107,7 @@ export class Comment {
 /**
  * Defines the options of a {@link Comment} instance.
  */
-export interface CommentOptions {
+export type CommentOptions = Partial<{
 
 	/**
 	 * The comment's author.
@@ -153,7 +153,7 @@ export interface CommentOptions {
 	 * The comment's type.
 	 */
 	type: string;
-}
+}>;
 
 /**
  * Specifies the type of a comment.

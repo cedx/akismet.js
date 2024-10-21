@@ -27,7 +27,7 @@ export class Usage {
 	 * Creates a new usage.
 	 * @param options An object providing values to initialize this instance.
 	 */
-	constructor(options: Partial<UsageOptions> = {}) {
+	constructor(options: UsageOptions = {}) {
 		this.limit = options.limit ?? -1;
 		this.percentage = options.percentage ?? 0;
 		this.throttled = options.throttled ?? false;
@@ -52,7 +52,7 @@ export class Usage {
 /**
  * Defines the options of a {@link Usage} instance.
  */
-export interface UsageOptions {
+export type UsageOptions = Partial<{
 
 	/**
 	 * The number of monthly API calls your plan entitles you to.
@@ -73,4 +73,4 @@ export interface UsageOptions {
 	 * The number of calls (spam + ham) since the beginning of the month.
 	 */
 	usage: number;
-}
+}>;
