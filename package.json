@@ -42,6 +42,6 @@
 	],
 	"scripts": {
 		"prepack": "gulp",
-		"test": "gulp build && node --test --test-reporter=spec"
+		"test": "gulp test"
 	}
 }
