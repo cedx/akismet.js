@@ -49,8 +49,8 @@ export default gulp.series(
 /**
  * Spawns a new process using the specified command.
  * @param {string} command The command to run.
- * @param {string[]} [args] The command arguments.
- * @param {import("node:child_process").SpawnOptionsWithoutStdio} [options] The settings to customize how the process is spawned.
+ * @param {string[]} args The command arguments.
+ * @param {import("node:child_process").SpawnOptionsWithoutStdio} options The settings to customize how the process is spawned.
  * @return {Promise<void>} Resolves when the command is terminated.
  */
 function $(command, args = [], options = {}) {
