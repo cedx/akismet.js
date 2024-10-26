@@ -40,6 +40,11 @@ export async function test() {
 	return $("node", ["--test", "--test-reporter=spec"]);
 }
 
+/** Watches for file changes. */
+export function watch() {
+	return $("tsc", ["--build", "src/tsconfig.json", "--preserveWatchOutput", "--sourceMap", "--watch"]);
+}
+
 /** The default task. */
 export default gulp.series(
 	clean,
