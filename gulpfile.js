@@ -38,7 +38,7 @@ export async function test() {
 
 /** Watches for file changes. */
 export function watch() {
-	return exec("tsc", "--build", "src/tsconfig.json", "--preserveWatchOutput", "--sourceMap", "--watch");
+	return exec("tsc", "--build", "src/tsconfig.json", "--preserveWatchOutput", "--watch");
 }
 
 /** The default task. */
