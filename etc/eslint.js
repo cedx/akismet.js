@@ -192,7 +192,7 @@ export default ts.config(
 			"@typescript-eslint/restrict-template-expressions": "off",
 			"@typescript-eslint/return-await": "error",
 			"@typescript-eslint/strict-boolean-expressions": "off",
-			"@typescript-eslint/switch-exhaustiveness-check": "error",
+			"@typescript-eslint/switch-exhaustiveness-check": ["error", {considerDefaultExhaustiveForUnions: true}],
 			"@typescript-eslint/typedef": "error"
 		}
 	},
