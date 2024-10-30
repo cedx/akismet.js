@@ -65,6 +65,6 @@ function exec(command, ...args) {
  */
 function run(command, ...args) {
 	const {promise, resolve: fulfill, reject} = /** @type {PromiseWithResolvers<void>} */ (Promise.withResolvers());
-	spawn(command, args, {shell: true, stdio: "inherit"}).on("close", code => code ? reject(new Error(command)) : fulfill());
+	spawn(command, args, {shell: true, stdio: "inherit"}).on("close", code => code ? reject(new Error([command].concat(args).join(" "))) : fulfill());
 	return promise;
 }
