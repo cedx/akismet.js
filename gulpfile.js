@@ -53,7 +53,7 @@ export default gulp.series(
  * @param {...string} args The command arguments.
  * @return {Promise<void>} Resolves when the command is terminated.
  */
-function exec(command, ...args) {
+function npx(command, ...args) {
 	return run("npm", "exec", "--", command, ...args);
 }
 
