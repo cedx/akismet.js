@@ -6,7 +6,6 @@
 		"checkJs": true,
 		"incremental": true,
 		"module": "NodeNext",
-		"moduleResolution": "NodeNext",
 		"noEmit": true,
 		"noImplicitOverride": true,
 		"resolveJsonModule": true,
