@@ -2,6 +2,7 @@
 .* text
 
 *.cjs text
+*.coffee text
 *.css text diff=css
 *.html text diff=html
 *.http text
@@ -9,6 +10,8 @@
 *.json text
 *.md text diff=markdown
 *.mjs text
+*.ps1 text
+*.sql text
 *.svg text
 *.ts text
 *.txt text
