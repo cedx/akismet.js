@@ -13,12 +13,9 @@
 		"url": "https://belin.io"
 	},
 	"devDependencies": {
-		"@types/eslint__js": "^8.42.3",
-		"@types/gulp": "^4.0.17",
+		"@coffeelint/cli": "^5.2.11",
 		"@types/node": "^22.9.0",
-		"gulp": "^5.0.0",
-		"typescript": "^5.6.3",
-		"typescript-eslint": "^8.13.0"
+		"coffeescript": "^2.7.0"
 	},
 	"engines": {
 		"node": ">=20.0.0"
@@ -29,8 +26,7 @@
 	},
 	"files": [
 		"lib/",
-		"src/",
-		"tsconfig.json"
+		"src/"
 	],
 	"keywords": [
 		"akismet",
@@ -41,7 +37,6 @@
 		"validation"
 	],
 	"scripts": {
-		"prepack": "gulp",
-		"test": "gulp test"
+		"test": "cake test"
 	}
 }
