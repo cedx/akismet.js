@@ -1,17 +1,7 @@
 {
-	"include": ["*.js", "example/*.js", "src/**/*.ts", "test/**/*.js"],
 	"compilerOptions": {
 		"allowJs": true,
-		"baseUrl": ".",
-		"checkJs": true,
-		"incremental": true,
-		"module": "NodeNext",
 		"noEmit": true,
-		"noImplicitOverride": true,
-		"resolveJsonModule": true,
-		"strict": true,
-		"target": "ESNext",
-		"tsBuildInfoFile": "var/tsbuildinfo.json",
-		"verbatimModuleSyntax": true
+		"module": "NodeNext"
 	}
 }
