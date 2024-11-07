@@ -37,44 +37,20 @@ export class Author {
 	 * Creates a new author.
 	 * @param options An object providing values to initialize this instance.
 	 */
-	constructor(options: AuthorOptions = {}) {
-		this.email = options.email ?? "";
-		this.ipAddress = options.ipAddress ?? "";
-		this.name = options.name ?? "";
-		this.role = options.role ?? "";
-		this.url = options.url ? new URL(options.url) : null;
-		this.userAgent = options.userAgent ?? "";
-	}
+	constructor(options?: AuthorOptions);
 
 	/**
 	 * Creates a new author from the specified JSON object.
 	 * @param json A JSON object representing an author.
 	 * @returns The instance corresponding to the specified JSON object.
 	 */
-	static fromJson(json: Record<string, any>): Author {
-		return new this({
-			email: typeof json.comment_author_email == "string" ? json.comment_author_email : "",
-			ipAddress: typeof json.user_ip == "string" ? json.user_ip : "",
-			name: typeof json.comment_author == "string" ? json.comment_author : "",
-			role: typeof json.user_role == "string" ? json.user_role : "",
-			url: typeof json.comment_author_url == "string" ? json.comment_author_url : "",
-			userAgent: typeof json.user_agent == "string" ? json.user_agent : ""
-		});
-	}
+	static fromJson(json: Record<string, any>): Author;
 
 	/**
 	 * Returns a JSON representation of this object.
 	 * @returns The JSON representation of this object.
 	 */
-	toJSON(): Record<string, any> {
-		const map: Record<string, any> = {user_ip: this.ipAddress};
-		if (this.email) map.comment_author_email = this.email;
-		if (this.name) map.comment_author = this.name;
-		if (this.role) map.user_role = this.role;
-		if (this.url) map.comment_author_url = this.url.href;
-		if (this.userAgent) map.user_agent = this.userAgent;
-		return map;
-	}
+	toJSON(): Record<string, any>;
 }
 
 /**
@@ -116,13 +92,13 @@ export type AuthorOptions = Partial<{
 /**
  * Specifies the role of an author.
  */
-export const AuthorRole = Object.freeze({
+export const AuthorRole: Readonly<{
 
 	/**
 	 * The author is an administrator.
 	 */
 	administrator: "administrator"
-});
+}>;
 
 /**
  * Specifies the role of an author.
