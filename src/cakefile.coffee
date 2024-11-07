@@ -1,5 +1,5 @@
 {spawnSync} = require "node:child_process"
-{readdirSync, rmSync} = require "node:fs"
+{readdirSync, readFileSync, rmSync, writeFileSync} = require "node:fs"
 {join} = require "node:path"
 {env} = require "node:process"
 pkg = require "../package.json"
@@ -7,6 +7,8 @@ pkg = require "../package.json"
 option "-m", "--map", "Whether to generate source maps."
 
 task "build", "Builds the project.", (options) ->
+	file = "src/client.coffee"
+	writeFileSync file, readFileSync(file, "utf8").replace /@_version = "\d+(\.\d+){2}"/, "@_version = \"#{pkg.version}\""
 	sourcemaps = if options.map then ["--map"] else []
 	run "coffee", "--compile", sourcemaps..., "--no-header", "--output", "lib", "src"
 
