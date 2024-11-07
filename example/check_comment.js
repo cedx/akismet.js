@@ -29,6 +29,5 @@ try {
 	console.log(result == CheckResult.ham ? "The comment is ham." : "The comment is spam.");
 }
 catch (error) {
-	const message = error instanceof Error ? error.message : String(error);
-	console.log(`An error occurred: ${message}`);
+	console.log(error instanceof Error ? error.message : error);
 }
