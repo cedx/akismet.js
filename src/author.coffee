@@ -24,12 +24,12 @@ export class Author
 
 	# Creates a new author from the specified JSON object.
 	@fromJson: (json) -> new @
-		email: if typeof json.comment_author_email == "string" then json.comment_author_email else ""
-		ipAddress: if typeof json.user_ip == "string" then json.user_ip else ""
-		name: if typeof json.comment_author == "string" then json.comment_author else ""
-		role: if typeof json.user_role == "string" then json.user_role else ""
-		url: if typeof json.comment_author_url == "string" then json.comment_author_url else ""
-		userAgent: if typeof json.user_agent == "string" then json.user_agent else ""
+		email: if typeof json.comment_author_email is "string" then json.comment_author_email else ""
+		ipAddress: if typeof json.user_ip is "string" then json.user_ip else ""
+		name: if typeof json.comment_author is "string" then json.comment_author else ""
+		role: if typeof json.user_role is "string" then json.user_role else ""
+		url: if typeof json.comment_author_url is "string" then json.comment_author_url else ""
+		userAgent: if typeof json.user_agent is "string" then json.user_agent else ""
 
 	# Returns a JSON representation of this object.
 	toJSON: ->

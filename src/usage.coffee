@@ -19,6 +19,6 @@ export class Usage
 	# Creates a new usage from the specified JSON object.
 	@fromJson: (json) -> new @
 		limit: if Number.isInteger(json.limit) then json.limit else -1
-		percentage: if typeof json.percentage == "number" then json.percentage else 0
-		throttled: if typeof json.throttled == "boolean" then json.throttled else no
+		percentage: if typeof json.percentage is "number" then json.percentage else 0
+		throttled: if typeof json.throttled is "boolean" then json.throttled else no
 		usage: if Number.isInteger(json.usage) then json.usage else 0

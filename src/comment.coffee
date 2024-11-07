@@ -1,3 +1,5 @@
+import {Author} from "./author.js"
+
 # Represents a comment submitted by an author.
 export class Comment
 
@@ -36,14 +38,14 @@ export class Comment
 		hasAuthor = Object.keys(json).filter((key) -> key.startsWith "comment_author" or key.startsWith "user").length > 0
 		new @
 			author: if hasAuthor then Author.fromJson json else null
-			content: if typeof json.comment_content == "string" then json.comment_content else ""
+			content: if typeof json.comment_content is "string" then json.comment_content else ""
 			context: if Array.isArray json.comment_context then json.comment_context else []
-			date: if typeof json.comment_date_gmt == "string" then new Date json.comment_date_gmt else null
-			permalink: if typeof json.permalink == "string" then json.permalink else ""
-			postModified: if typeof json.comment_post_modified_gmt == "string" then new Date json.comment_post_modified_gmt else null
-			recheckReason: if typeof json.recheck_reason == "string" then json.recheck_reason else ""
-			referrer: if typeof json.referrer == "string" then json.referrer else ""
-			type: if typeof json.comment_type == "string" then json.comment_type else ""
+			date: if typeof json.comment_date_gmt is "string" then new Date json.comment_date_gmt else null
+			permalink: if typeof json.permalink is "string" then json.permalink else ""
+			postModified: if typeof json.comment_post_modified_gmt is "string" then new Date json.comment_post_modified_gmt else null
+			recheckReason: if typeof json.recheck_reason is "string" then json.recheck_reason else ""
+			referrer: if typeof json.referrer is "string" then json.referrer else ""
+			type: if typeof json.comment_type is "string" then json.comment_type else ""
 
 	# Returns a JSON representation of this object.
 	toJSON: ->
