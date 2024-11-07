@@ -8,7 +8,7 @@ describe "Blog", ->
 		it "should return an empty instance with an empty map", ->
 			blog = Blog.fromJson {}
 			equal blog.charset.length, 0
-			equal blog.languages.length, 0
+			equal blog.languages.size, 0
 			equal blog.url, null
 
 		it "should return an initialized instance with a non-empty map", ->
@@ -18,7 +18,7 @@ describe "Blog", ->
 				blog_lang: "en, fr"
 
 			equal blog.charset, "UTF-8"
-			deepEqual blog.languages, ["en", "fr"]
+			deepEqual Array.from(blog.languages), ["en", "fr"]
 			ok blog.url instanceof URL
 			equal blog.url.href, "https://github.com/cedx/akismet.js"
 
