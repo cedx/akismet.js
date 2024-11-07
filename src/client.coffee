@@ -12,7 +12,7 @@ export class Client
 	# Creates a new client.
 	constructor: (apiKey, blog, options = {}) ->
 		{baseUrl = "https://rest.akismet.com"} = options
-		[nodeVersion] = process.version.slice(1).split "."
+		[nodeVersion] = process.version[1..].split "."
 		url = if baseUrl instanceof URL then baseUrl.href else baseUrl
 
 		# The Akismet API key.
