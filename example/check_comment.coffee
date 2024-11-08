@@ -23,7 +23,7 @@ try
 		url: "https://www.yourblog.com"
 
 	result = await new Client("123YourAPIKey", blog).checkComment comment
-	console.log(if result is CheckResult.ham then "The comment is ham." else "The comment is spam.")
+	console.log if result is CheckResult.ham then "The comment is ham." else "The comment is spam."
 
 catch error
 	console.error if error instanceof Error then error.message else error

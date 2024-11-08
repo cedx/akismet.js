@@ -7,7 +7,7 @@ try
 	client = new Client "123YourAPIKey", blog
 
 	isValid = await client.verifyKey()
-	console.log(if isValid then "The API key is valid." else "The API key is invalid.")
+	console.log if isValid then "The API key is valid." else "The API key is invalid."
 
 catch error
 	console.error if error instanceof Error then error.message else error

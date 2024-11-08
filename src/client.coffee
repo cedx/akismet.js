@@ -19,7 +19,7 @@ export class Client
 		@apiKey = apiKey
 
 		# The base URL of the remote API endpoint.
-		@baseUrl = new URL(if url.endsWith("/") then url else "#{url}/")
+		@baseUrl = new URL if url.endsWith("/") then url else "#{url}/"
 
 		# The front page or home URL of the instance making requests.
 		@blog = blog
