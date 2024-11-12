@@ -49,7 +49,7 @@ export class Comment
 
 	# Returns a JSON representation of this object.
 	toJSON: ->
-		map = @author?.toJSON() ? {}
+		map = @author?.toJSON() or {}
 		map.comment_content = @content if @content
 		map.comment_context = @context if @context.length
 		map.comment_date_gmt = @date.toJSON() if @date

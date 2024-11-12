@@ -21,7 +21,7 @@ export class Blog
 
 	# Returns a JSON representation of this object.
 	toJSON: ->
-		map = blog: @url?.href ? ""
+		map = blog: if @url? then @url.href else ""
 		map.blog_charset = @charset if @charset
 		map.blog_lang = Array.from(@languages).join "," if @languages.size
 		map

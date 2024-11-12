@@ -6,7 +6,7 @@ import {describe, it} from "node:test"
 # Tests the features of the `Client` class.
 describe "Client", ->
 	# The client used to query the remote API.
-	client = new Client env.AKISMET_API_KEY ? "", new Blog(url: "https://github.com/cedx/akismet.js"), isTest: yes
+	client = new Client env.AKISMET_API_KEY or "", new Blog(url: "https://github.com/cedx/akismet.js"), isTest: yes
 
 	# A comment with content marked as ham.
 	ham = new Comment
