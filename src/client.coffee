@@ -12,7 +12,6 @@ export class Client
 	# Creates a new client.
 	constructor: (apiKey, blog, options = {}) ->
 		{baseUrl = "https://rest.akismet.com"} = options
-		[nodeVersion] = process.version[1..].split "."
 		url = if baseUrl instanceof URL then baseUrl.href else baseUrl
 
 		# The Akismet API key.
@@ -28,7 +27,7 @@ export class Client
 		@isTest = options.isTest ? no
 
 		# The user agent string to use when making requests.
-		@userAgent = options.userAgent ? "Node.js/#{nodeVersion} | Akismet/#{Client._version}"
+		@userAgent = options.userAgent ? "#{navigator.userAgent} | Akismet/#{Client._version}"
 
 	# Checks the specified comment against the service database, and returns a value indicating whether it is spam.
 	checkComment: (comment) ->
