@@ -7,7 +7,7 @@ export class Client
 	@_success = "Thanks for making the web a better place."
 
 	# The package version.
-	@_version = "17.0.0"
+	@_version = "17.0.1"
 
 	# Creates a new client.
 	constructor: (apiKey, blog, options = {}) ->

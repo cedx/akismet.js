@@ -35,7 +35,7 @@ export class Comment
 
 	# Creates a new comment from the specified JSON object.
 	@fromJson: (json) ->
-		hasAuthor = Object.keys(json).filter((key) -> key.startsWith "comment_author" or key.startsWith "user").length > 0
+		hasAuthor = Object.keys(json).filter((key) -> key.startsWith("comment_author") or key.startsWith("user")).length > 0
 		new @
 			author: if hasAuthor then Author.fromJson json else null
 			content: if typeof json.comment_content is "string" then json.comment_content else ""
