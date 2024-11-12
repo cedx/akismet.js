@@ -1,5 +1,8 @@
 # Changelog
 
+## Version [17.0.1](https://github.com/cedx/akismet.js/compare/v17.0.0...v17.0.1)
+- Fixed the `Comment.fromJson()` method.
+
 ## Version [17.0.0](https://github.com/cedx/akismet.js/compare/v16.2.1...v17.0.0)
 - Breaking change: the `Blog.languages` property is now implemented as `Set<string>`.
 - Ported the source code to [CoffeeScript](https://coffeescript.org).
