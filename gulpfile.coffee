@@ -2,7 +2,6 @@ import gulp from "gulp"
 import {spawn} from "node:child_process"
 import {readdir, readFile, rm, writeFile} from "node:fs/promises"
 import {join} from "node:path"
-import {env} from "node:process"
 
 # Builds the project.
 export build = ->
