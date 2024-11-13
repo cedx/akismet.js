@@ -29,7 +29,6 @@ export publish = ->
 
 # Runs the test suite.
 export test = ->
-	env.NODE_ENV = "test"
 	await npx "coffee", "--compile", "--map", "--no-header", "--output", "lib", "src", "test"
 	await run "node", "--enable-source-maps", "--test"
 
