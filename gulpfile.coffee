@@ -6,7 +6,7 @@ import {join} from "node:path"
 # Builds the project.
 export build = ->
 	file = "src/client.coffee"
-	{default: {version}} = await import("./package.json", with: {type: "json"})
+	{default: {version}} = await import("./package.json", with: type: "json")
 	await writeFile file, (await readFile file, "utf8").replace /@_version = "\d+(\.\d+){2}"/, "@_version = \"#{version}\""
 	await npx "coffee", "--compile", "--no-header", "--output", "lib", "src"
 
@@ -21,7 +21,7 @@ export lint = ->
 
 # Publishes the package.
 export publish = ->
-	{default: {version}} = await import("./package.json", with: {type: "json"})
+	{default: {version}} = await import("./package.json", with: type: "json")
 	await npx "gulp"
 	await run "npm", "publish", "--registry=#{registry}" for registry from ["https://registry.npmjs.org", "https://npm.pkg.github.com"]
 	await run "git", action..., "v#{version}" for action from [["tag"], ["push", "origin"]]
