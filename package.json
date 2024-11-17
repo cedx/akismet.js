@@ -23,7 +23,7 @@
 		"node": ">=20.0.0"
 	},
 	"exports": {
-		"types": "./lib/index.d.ts",
+		"types": "./src/index.d.ts",
 		"default": "./lib/index.js"
 	},
 	"files": [
