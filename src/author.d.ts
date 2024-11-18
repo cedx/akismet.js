@@ -45,12 +45,6 @@ export class Author {
 	 * @returns The instance corresponding to the specified JSON object.
 	 */
 	static fromJson(json: Record<string, any>): Author;
-
-	/**
-	 * Returns a JSON representation of this object.
-	 * @returns The JSON representation of this object.
-	 */
-	toJSON(): Record<string, any>;
 }
 
 /**
