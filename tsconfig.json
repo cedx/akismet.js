@@ -4,6 +4,7 @@
 		"checkJs": false,
 		"noEmit": true,
 		"module": "nodenext",
-		"resolveJsonModule": true
+		"resolveJsonModule": true,
+		"target": "esnext"
 	}
 }
