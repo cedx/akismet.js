@@ -16,7 +16,7 @@ export class Blog
 	# Creates a new blog from the specified JSON object.
 	@fromJson: (json) -> new @
 		charset: if typeof json.blog_charset is "string" then json.blog_charset else ""
-		languages: if typeof json.blog_lang is "string" then json.blog_lang.split(",").map ($) -> $.trim() else []
+		languages: if typeof json.blog_lang is "string" then json.blog_lang.split(",").map (language) -> language.trim() else []
 		url: if typeof json.blog is "string" then json.blog else ""
 
 	# Returns a JSON representation of this object.
