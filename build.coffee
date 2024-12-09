@@ -1,7 +1,7 @@
 {spawnSync} = require "node:child_process"
 {readdirSync, readFileSync, rmSync, writeFileSync} = require "node:fs"
 {join} = require "node:path"
-pkg = require "../package.json"
+pkg = require "./package.json"
 
 task "build", "Builds the project.", ->
 	file = "src/client.coffee"
@@ -14,7 +14,6 @@ task "clean", "Deletes all generated files.", ->
 
 task "dist", "Packages the project.", ->
 	invoke script for script from ["clean", "build"]
-	rmSync "lib/cakefile.js"
 
 task "lint", "Performs the static analysis of source code.", ->
 	npx "coffeelint", "--file=etc/coffeelint.json", "example", "src", "test"
