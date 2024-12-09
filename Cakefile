@@ -1,1 +1,1 @@
-./src/cakefile.coffee
+src/cakefile.coffee
