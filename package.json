@@ -13,10 +13,8 @@
 		"url": "https://belin.io"
 	},
 	"devDependencies": {
-		"@coffeelint/cli": "^5.2.11",
 		"@types/gulp": "^4.0.17",
-		"@types/node": "^22.10.7",
-		"coffeescript": "^2.7.0",
+		"@types/node": "^22.10.10",
 		"gulp": "^5.0.0"
 	},
 	"engines": {
