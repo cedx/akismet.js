@@ -1,6 +1,5 @@
 {
 	"recommendations": [
-		"humao.rest-client",
-		"phil294.coffeesense"
+		"humao.rest-client"
 	]
 }
