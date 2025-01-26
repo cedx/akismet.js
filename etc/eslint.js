@@ -149,7 +149,7 @@ export default ts.config(
 			"vars-on-top": "error",
 			"yoda": "error",
 
-			"@typescript-eslint/array-type": ["error", {default: "generic"}],
+			"@typescript-eslint/array-type": ["error", {default: "array-simple"}],
 			"@typescript-eslint/class-methods-use-this": "off",
 			"@typescript-eslint/consistent-return": "error",
 			"@typescript-eslint/consistent-type-exports": "error",
