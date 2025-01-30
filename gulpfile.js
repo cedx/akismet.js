@@ -15,6 +15,11 @@ export async function clean() {
 	for (const file of await readdir("var")) if (file != ".gitkeep") await rm(join("var", file), {recursive: true});
 }
 
+/** Builds the documentation. */
+export async function doc() {
+	await npx("typedoc", "--options", "etc/typedoc.js");
+}
+
 /** Performs the static analysis of source code. */
 export async function lint() {
 	await npx("tsc", "--build", "tsconfig.json", "--noEmit");
