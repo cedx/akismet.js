@@ -5,6 +5,7 @@ Prevent comment spam using [Akismet](https://akismet.com) service, in [JavaScrip
 
 ## Documentation
 - [User guide](https://github.com/cedx/akismet.js/wiki)
+- [API reference](https://cedx.github.io/akismet.js)
 - [Examples](https://github.com/cedx/akismet.js/tree/main/example)
 
 ## Development
