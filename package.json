@@ -6,7 +6,7 @@
 	"name": "@cedx/akismet",
 	"repository": "cedx/akismet.js",
 	"type": "module",
-	"version": "17.0.1",
+	"version": "17.1.0",
 	"author": {
 		"email": "cedric@belin.io",
 		"name": "Cédric Belin",
