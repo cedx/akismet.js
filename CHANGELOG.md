@@ -1,5 +1,8 @@
 # Changelog
 
+## Version [17.1.0](https://github.com/cedx/akismet.js/compare/v17.0.1...v17.1.0)
+- Ported the source code to [TypeScript](https://www.typescriptlang.org).
+
 ## Version [17.0.1](https://github.com/cedx/akismet.js/compare/v17.0.0...v17.0.1)
 - Fixed the `Comment.fromJson()` method.
 
