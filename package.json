@@ -13,7 +13,6 @@
 		"url": "https://belin.io"
 	},
 	"devDependencies": {
-		"@types/eslint__js": "^8.42.3",
 		"@types/gulp": "^4.0.17",
 		"@types/node": "^22.13.1",
 		"gulp": "^5.0.0",
