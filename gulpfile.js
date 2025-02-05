@@ -1,11 +1,13 @@
 import gulp from "gulp";
 import {spawn} from "node:child_process";
-import {readdir, rm} from "node:fs/promises";
+import {readdir, readFile, rm, writeFile} from "node:fs/promises";
 import {join} from "node:path";
 import pkg from "./package.json" with {type: "json"};
 
 /** Builds the project. */
 export async function build() {
+	const file = "src/client.ts";
+	await writeFile(file, (await readFile(file, "utf8")).replace(/#version = "\d+(\.\d+){2}"/, `#version = "${pkg.version}"`));
 	await npx("tsc", "--build", "src/tsconfig.json");
 }
 
