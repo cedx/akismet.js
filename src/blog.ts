@@ -22,20 +22,35 @@ export class Blog {
 	 * Creates a new blog.
 	 * @param options An object providing values to initialize this instance.
 	 */
-	constructor(options?: BlogOptions);
+	constructor(options: BlogOptions = {}) {
+		this.charset = options.charset ?? "";
+		this.languages = new Set(options.languages ?? []);
+		this.url = options.url ? new URL(options.url) : null;
+	}
 
 	/**
 	 * Creates a new blog from the specified JSON object.
 	 * @param json A JSON object representing a blog.
 	 * @returns The instance corresponding to the specified JSON object.
 	 */
-	static fromJson(json: Record<string, any>): Blog;
+	static fromJson(json: Record<string, any>): Blog {
+		return new this({
+			charset: typeof json.blog_charset == "string" ? json.blog_charset : "",
+			languages: typeof json.blog_lang == "string" ? json.blog_lang.split(",").map(language => language.trim()) : [],
+			url: typeof json.blog == "string" ? json.blog : ""
+		});
+	}
 
 	/**
 	 * Returns a JSON representation of this object.
 	 * @returns The JSON representation of this object.
 	 */
-	toJSON(): Record<string, any>;
+	toJSON(): Record<string, any> {
+		const map: Record<string, any> = {blog: this.url?.href ?? ""};
+		if (this.charset) map.blog_charset = this.charset;
+		if (this.languages.size) map.blog_lang = Array.from(this.languages).join(",");
+		return map;
+	}
 }
 
 /**
@@ -51,7 +66,7 @@ export type BlogOptions = Partial<{
 	/**
 	 * The languages in use on the blog or site, in ISO 639-1 format.
 	 */
-	languages: Array<string>;
+	languages: string[];
 
 	/**
 	 * The blog or site URL.

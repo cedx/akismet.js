@@ -18,7 +18,7 @@ export class Comment {
 	/**
 	 * The context in which this comment was posted.
 	 */
-	context: Array<string>;
+	context: string[];
 
 	/**
 	 * The UTC timestamp of the creation of the comment.
@@ -54,20 +54,50 @@ export class Comment {
 	 * Creates a new comment.
 	 * @param options An object providing values to initialize this instance.
 	 */
-	constructor(options?: CommentOptions);
+	constructor(options: CommentOptions = {}) {
+		this.author = options.author ?? null;
+		this.content = options.content ?? "";
+		this.context = options.context ?? [];
+		this.date = options.date ?? null;
+		this.permalink = options.permalink ? new URL(options.permalink) : null;
+		this.postModified = options.postModified ?? null;
+		this.recheckReason = options.recheckReason ?? "";
+		this.referrer = options.referrer ? new URL(options.referrer) : null;
+		this.type = options.type ?? "";
+	}
 
 	/**
 	 * Creates a new comment from the specified JSON object.
 	 * @param json A JSON object representing a comment.
 	 * @returns The instance corresponding to the specified JSON object.
 	 */
-	static fromJson(json: Record<string, any>): Comment;
+	static fromJson(json: Record<string, any>): Comment {
+		const hasAuthor = Object.keys(json).filter(key => key.startsWith("comment_author") || key.startsWith("user")).length > 0;
+		return new this({
+			author: hasAuthor ? Author.fromJson(json) : null,
+			content: typeof json.comment_content == "string" ? json.comment_content : "",
+			context: Array.isArray(json.comment_context) ? json.comment_context : [],
+			date: typeof json.comment_date_gmt == "string" ? new Date(json.comment_date_gmt) : null,
+			permalink: typeof json.permalink == "string" ? json.permalink : "",
+			postModified: typeof json.comment_post_modified_gmt == "string" ? new Date(json.comment_post_modified_gmt) : null,
+			recheckReason: typeof json.recheck_reason == "string" ? json.recheck_reason : "",
+			referrer: typeof json.referrer == "string" ? json.referrer : "",
+			type: typeof json.comment_type == "string" ? json.comment_type : ""
+		});
+	}
 
-	/**
-	 * Returns a JSON representation of this object.
-	 * @returns The JSON representation of this object.
-	 */
-	toJSON(): Record<string, any>;
+	toJSON(): Record<string, any> {
+		const map = this.author ? this.author.toJSON() : {};
+		if (this.content) map.comment_content = this.content;
+		if (this.context.length) map.comment_context = this.context;
+		if (this.date) map.comment_date_gmt = this.date.toJSON();
+		if (this.permalink) map.permalink = this.permalink.href;
+		if (this.postModified) map.comment_post_modified_gmt = this.postModified.toJSON();
+		if (this.recheckReason) map.recheck_reason = this.recheckReason;
+		if (this.referrer) map.referrer = this.referrer.href;
+		if (this.type) map.comment_type = this.type;
+		return map;
+	}
 }
 
 /**
@@ -88,7 +118,7 @@ export type CommentOptions = Partial<{
 	/**
 	 * The context in which this comment was posted.
 	 */
-	context: Array<string>;
+	context: string[];
 
 	/**
 	 * The UTC timestamp of the creation of the comment.
@@ -124,7 +154,7 @@ export type CommentOptions = Partial<{
 /**
  * Specifies the type of a comment.
  */
-export const CommentType: Readonly<{
+export const CommentType = Object.freeze({
 
 	/**
 	 * A blog post.
@@ -160,7 +190,7 @@ export const CommentType: Readonly<{
 	 * A new user account.
 	 */
 	signup: "signup"
-}>;
+});
 
 /**
  * Specifies the type of a comment.

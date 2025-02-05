@@ -8,11 +8,7 @@ import {describe, it} from "node:test";
  */
 describe("Client", () => {
 	// The client used to query the remote API.
-	const client = new Client(
-		env.AKISMET_API_KEY ?? "",
-		new Blog({url: "https://github.com/cedx/akismet.js"}),
-		{isTest: true}
-	);
+	const client = new Client(env.AKISMET_API_KEY ?? "", new Blog({url: "https://github.com/cedx/akismet.js"}), {isTest: true});
 
 	// A comment with content marked as ham.
 	const ham = new Comment({

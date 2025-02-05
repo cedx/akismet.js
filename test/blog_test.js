@@ -22,7 +22,7 @@ describe("Blog", () => {
 			});
 
 			equal(blog.charset, "UTF-8");
-			deepEqual(blog.languages, ["en", "fr"]);
+			deepEqual(Array.from(blog.languages), ["en", "fr"]);
 			ok(blog.url instanceof URL);
 			equal(blog.url.href, "https://github.com/cedx/akismet.js");
 		});
