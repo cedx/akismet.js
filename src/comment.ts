@@ -101,29 +101,9 @@ export class Comment {
 }
 
 /**
- * Defines the options of a {@link Comment} instance.
+ * Defines the options of an {@link Author} instance.
  */
-export type CommentOptions = Partial<{
-
-	/**
-	 * The comment's author.
-	 */
-	author: Author|null;
-
-	/**
-	 * The comment's content.
-	 */
-	content: string;
-
-	/**
-	 * The context in which this comment was posted.
-	 */
-	context: string[];
-
-	/**
-	 * The UTC timestamp of the creation of the comment.
-	 */
-	date: Date|null;
+export type CommentOptions = Partial<Omit<Comment, "permalink"|"referrer"|"toJSON"> & {
 
 	/**
 	 * The permanent location of the entry the comment is submitted to.
@@ -131,24 +111,9 @@ export type CommentOptions = Partial<{
 	permalink: URL|string;
 
 	/**
-	 * The UTC timestamp of the publication time for the post, page or thread on which the comment was posted.
-	 */
-	postModified: Date|null;
-
-	/**
-	 * A string describing why the content is being rechecked.
-	 */
-	recheckReason: string;
-
-	/**
 	 * The URL of the webpage that linked to the entry being requested.
 	 */
 	referrer: URL|string;
-
-	/**
-	 * The comment's type.
-	 */
-	type: string;
 }>;
 
 /**

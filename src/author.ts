@@ -80,37 +80,12 @@ export class Author {
 /**
  * Defines the options of an {@link Author} instance.
  */
-export type AuthorOptions = Partial<{
-
-	/**
-	 * The author's mail address. If you set it to `"akismet-guaranteed-spam@example.com"`, Akismet will always return `true`.
-	 */
-	email: string;
-
-	/**
-	 * The author's IP address.
-	 */
-	ipAddress: string;
-
-	/**
-	 * The author's name. If you set it to `"viagra-test-123"`, Akismet will always return `true`.
-	 */
-	name: string;
-
-	/**
-	 * The author's role. If you set it to `"administrator"`, Akismet will always return `false`.
-	 */
-	role: string;
+export type AuthorOptions = Partial<Omit<Author, "toJSON"|"url"> & {
 
 	/**
 	 * The URL of the author's website.
 	 */
 	url: URL|string;
-
-	/**
-	 * The author's user agent, that is the string identifying the Web browser used to submit comments.
-	 */
-	userAgent: string;
 }>;
 
 /**
