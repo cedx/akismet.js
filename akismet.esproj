@@ -1,8 +1,8 @@
 <Project Sdk="Microsoft.VisualStudio.JavaScript.Sdk/1.0.2191419">
 	<PropertyGroup>
+		<BaseIntermediateOutputPath>var</BaseIntermediateOutputPath>
 		<BuildCommand>gulp build</BuildCommand>
 		<CleanCommand>gulp clean</CleanCommand>
-		<OutDir>../var</OutDir>
 	</PropertyGroup>
 
 	<ItemGroup>
