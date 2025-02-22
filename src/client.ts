@@ -68,7 +68,7 @@ export class Client {
 		const response = await this.#fetch("1.1/comment-check", comment.toJSON());
 		return await response.text() == "false"
 			? CheckResult.ham
-			: response.headers.get("x-akismet-pro-tip") == "discard" ? CheckResult.pervasiveSpam : CheckResult.spam;
+			: response.headers.get("X-akismet-pro-tip") == "discard" ? CheckResult.pervasiveSpam : CheckResult.spam;
 	}
 
 	/**
@@ -122,12 +122,12 @@ export class Client {
 				for (const item of value) body.set(`${key}[${index++}]`, String(item));
 			}
 
-		const response = await fetch(new URL(endpoint, this.baseUrl), {method: "POST", headers: {"user-agent": this.userAgent}, body});
+		const response = await fetch(new URL(endpoint, this.baseUrl), {method: "POST", headers: {"User-Agent": this.userAgent}, body});
 		if (!response.ok) throw Error(`${response.status} ${response.statusText}`);
 
 		const {headers} = response;
-		if (headers.has("x-akismet-alert-code")) throw Error(`${headers.get("x-akismet-alert-code")} ${headers.get("x-akismet-alert-msg")}`);
-		if (headers.has("x-akismet-debug-help")) throw Error(headers.get("x-akismet-debug-help")!);
+		if (headers.has("X-akismet-alert-code")) throw Error(`${headers.get("X-akismet-alert-code")} ${headers.get("X-akismet-alert-msg")}`);
+		if (headers.has("X-akismet-debug-help")) throw Error(headers.get("X-akismet-debug-help")!);
 		return response;
 	}
 }
