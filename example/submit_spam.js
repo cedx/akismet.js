@@ -18,5 +18,5 @@ try {
 	console.log("The comment was successfully submitted as spam.");
 }
 catch (error) {
-	console.log(error instanceof Error ? error.message : error);
+	console.error(error instanceof Error ? error.message : error);
 }
