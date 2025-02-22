@@ -126,7 +126,7 @@ export class Client {
 		if (!response.ok) throw Error(`${response.status} ${response.statusText}`);
 
 		const {headers} = response;
-		if (headers.has("X-akismet-alert-code")) throw Error(`${headers.get("X-akismet-alert-code")} ${headers.get("X-akismet-alert-msg")}`);
+		if (headers.has("X-akismet-alert-msg")) throw Error(headers.get("X-akismet-alert-msg")!);
 		if (headers.has("X-akismet-debug-help")) throw Error(headers.get("X-akismet-debug-help")!);
 		return response;
 	}
