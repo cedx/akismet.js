@@ -1,6 +1,0 @@
-<Solution>
-	<Project Path="akismet.esproj">
-		<Build />
-		<Deploy />
-	</Project>
-</Solution>
