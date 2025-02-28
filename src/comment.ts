@@ -86,6 +86,10 @@ export class Comment {
 		});
 	}
 
+	/**
+	 * Returns a JSON representation of this object.
+	 * @returns The JSON representation of this object.
+	 */
 	toJSON(): Record<string, any> {
 		const map = this.author ? this.author.toJSON() : {};
 		if (this.content) map.comment_content = this.content;
