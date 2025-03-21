@@ -6,8 +6,7 @@ import pkg from "./package.json" with {type: "json"};
 
 /** Builds the project. */
 export async function build() {
-	const file = "src/client.ts";
-	await writeFile(file, (await readFile(file, "utf8")).replace(/#version = "\d+(\.\d+){2}"/, `#version = "${pkg.version}"`));
+	await replaceInFile("src/client.ts", /#version = "\d+(\.\d+){2}"/, `#version = "${pkg.version}"`);
 	await run("npx", "tsc", "--build", "src/tsconfig.json");
 }
 
@@ -43,6 +42,16 @@ export async function test() {
 
 /** The default task. */
 export default gulp.series(clean, build);
+
+/**
+ * Replaces the specified pattern in a given file.
+ * @param {string} file The path of the file to be processed.
+ * @param {RegExp} pattern The regular expression to find.
+ * @param {string} replacement The replacement text.
+ */
+async function replaceInFile(file, pattern, replacement) {
+	await writeFile(file, (await readFile(file, "utf8")).replace(pattern, replacement));
+}
 
 /**
  * Spawns a new process using the specified command.
