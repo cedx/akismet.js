@@ -54,6 +54,7 @@ export default gulp.series(clean, version, build);
  * @param {string} file The path of the file to be processed.
  * @param {RegExp} pattern The regular expression to find.
  * @param {string} replacement The replacement text.
+ * @returns {Promise<void>} Resolves when the replacement has been completed.
  */
 async function replaceInFile(file, pattern, replacement) {
 	await writeFile(file, (await readFile(file, "utf8")).replace(pattern, replacement));
@@ -63,7 +64,7 @@ async function replaceInFile(file, pattern, replacement) {
  * Spawns a new process using the specified command.
  * @param {string} command The command to run.
  * @param {...string} args The command arguments.
- * @return {Promise<void>} Resolves when the command is terminated.
+ * @returns {Promise<void>} Resolves when the command is terminated.
  */
 function run(command, ...args) {
 	return new Promise((resolve, reject) => {
