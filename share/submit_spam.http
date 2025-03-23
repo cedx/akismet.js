@@ -1,3 +1,5 @@
+@apiUrl = https://rest.akismet.com
+
 ### Submits the specified comment that was not marked as spam but should have been.
 POST {{apiUrl}}/1.1/submit-spam
 Content-Type: application/x-www-form-urlencoded

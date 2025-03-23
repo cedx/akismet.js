@@ -1,6 +1,6 @@
 import gulp from "gulp";
 import {spawn} from "node:child_process";
-import {readdir, readFile, rm, writeFile} from "node:fs/promises";
+import {glob, readdir, readFile, rm, writeFile} from "node:fs/promises";
 import {join} from "node:path";
 import pkg from "./package.json" with {type: "json"};
 
@@ -40,8 +40,14 @@ export async function test() {
 	await run("node", "--enable-source-maps", "--test");
 }
 
+/** Updates the version number in the sources. */
+export async function version() {
+	for await (const file of glob("*/*.esproj"))
+		await replaceInFile(file, /<Version>\d+(\.\d+){2}<\/Version>/, `<Version>${pkg.version}</Version>`);
+}
+
 /** The default task. */
-export default gulp.series(clean, build);
+export default gulp.series(clean, version, build);
 
 /**
  * Replaces the specified pattern in a given file.

@@ -1,3 +1,5 @@
+@apiUrl = https://rest.akismet.com
+
 ### Checks the specified API key against the service database, and returns a value indicating whether it is valid.
 POST {{apiUrl}}/1.1/verify-key
 Content-Type: application/x-www-form-urlencoded

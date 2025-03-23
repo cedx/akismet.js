@@ -1,3 +1,5 @@
+@apiUrl = https://rest.akismet.com
+
 ### Checks the specified ham against the service database.
 POST {{apiUrl}}/1.1/comment-check
 Content-Type: application/x-www-form-urlencoded
