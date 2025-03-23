@@ -6,6 +6,8 @@
 	</Folder>
 	<Folder Name="/build/">
 		<File Path="gulpfile.js" />
+		<File Path="package.json" />
+		<File Path="tsconfig.json" />
 	</Folder>
 	<Folder Name="/doc/">
 		<File Path="AUTHORS.txt" />
