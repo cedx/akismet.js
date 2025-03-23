@@ -13,17 +13,3 @@ api_key={{$processEnv AKISMET_API_KEY}}
 &user_agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36
 &user_ip=192.168.0.1
 &user_role=administrator
-
-### Submits the specified comment that was not marked as spam but should have been.
-POST {{apiUrl}}/1.1/submit-spam
-Content-Type: application/x-www-form-urlencoded
-
-api_key={{$processEnv AKISMET_API_KEY}}
-&blog=https://github.com/cedx/akismet.js
-&comment_author=viagra-test-123
-&comment_content=Spam!
-&comment_type=trackback
-&comment_author_email=akismet-guaranteed-spam%40example.com
-&is_test=true
-&user_ip=127.0.0.1
-&user_agent=Spam Bot/6.6.6
