@@ -11,13 +11,18 @@
 *.md text diff=markdown
 *.mjs text
 *.ps1 text
+*.scss text diff=css
+*.slnx text
 *.sql text
 *.svg text
 *.ts text
 *.txt text
+*.webmanifest text
+*.xml text
 *.yaml text
 *.yml text
 
+*.gif binary
 *.ico binary
 *.jpg binary
 *.pdf binary
