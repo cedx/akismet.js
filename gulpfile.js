@@ -1,12 +1,11 @@
 import gulp from "gulp";
 import {spawn} from "node:child_process";
-import {glob, readdir, readFile, rm, writeFile} from "node:fs/promises";
+import {readdir, readFile, rm, writeFile} from "node:fs/promises";
 import {join} from "node:path";
 import pkg from "./package.json" with {type: "json"};
 
 /** Builds the project. */
 export async function build() {
-	await replaceInFile("src/client.ts", /#version = "\d+(\.\d+){2}"/, `#version = "${pkg.version}"`);
 	await run("npx", "tsc", "--build", "src/tsconfig.json");
 }
 
@@ -42,8 +41,7 @@ export async function test() {
 
 /** Updates the version number in the sources. */
 export async function version() {
-	for await (const file of glob("*/*.esproj"))
-		await replaceInFile(file, /<Version>\d+(\.\d+){2}<\/Version>/, `<Version>${pkg.version}</Version>`);
+	await replaceInFile("src/client.ts", /#version = "\d+(\.\d+){2}"/, `#version = "${pkg.version}"`);
 }
 
 /** The default task. */
