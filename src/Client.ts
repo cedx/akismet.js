@@ -1,6 +1,6 @@
-import type {Blog} from "./blog.js";
-import {CheckResult} from "./check_result.js";
-import type {Comment} from "./comment.js";
+import type {Blog} from "./Blog.js";
+import {CheckResult} from "./CheckResult.js";
+import type {Comment} from "./Comment.js";
 
 /**
  * Submits comments to the [Akismet](https://akismet.com) service.

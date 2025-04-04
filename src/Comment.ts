@@ -1,4 +1,4 @@
-import {Author} from "./author.js";
+import {Author} from "./Author.js";
 
 /**
  * Represents a comment submitted by an author.
