@@ -67,8 +67,8 @@ export class Client {
 	async checkComment(comment: Comment): Promise<CheckResult> {
 		const response = await this.#fetch("1.1/comment-check", comment.toJSON());
 		return await response.text() == "false"
-			? CheckResult.ham
-			: response.headers.get("X-akismet-pro-tip") == "discard" ? CheckResult.pervasiveSpam : CheckResult.spam;
+			? CheckResult.Ham
+			: response.headers.get("X-akismet-pro-tip") == "discard" ? CheckResult.PervasiveSpam : CheckResult.Spam;
 	}
 
 	/**

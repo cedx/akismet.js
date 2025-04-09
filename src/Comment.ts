@@ -128,37 +128,37 @@ export const CommentType = Object.freeze({
 	/**
 	 * A blog post.
 	 */
-	blogPost: "blog-post",
+	BlogPost: "blog-post",
 
 	/**
 	 * A blog comment.
 	 */
-	comment: "comment",
+	Comment: "comment",
 
 	/**
 	 * A contact form or feedback form submission.
 	 */
-	contactForm: "contact-form",
+	ContactForm: "contact-form",
 
 	/**
 	 * A top-level forum post.
 	 */
-	forumPost: "forum-post",
+	ForumPost: "forum-post",
 
 	/**
 	 * A message sent between just a few users.
 	 */
-	message: "message",
+	Message: "message",
 
 	/**
 	 * A reply to a top-level forum post.
 	 */
-	reply: "reply",
+	Reply: "reply",
 
 	/**
 	 * A new user account.
 	 */
-	signup: "signup"
+	Signup: "signup"
 });
 
 /**

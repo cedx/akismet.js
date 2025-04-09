@@ -29,7 +29,7 @@ describe("Author", () => {
 
 			equal(author.email, "cedric@belin.io");
 			equal(author.ipAddress, "127.0.0.1");
-			equal(author.role, AuthorRole.administrator);
+			equal(author.role, AuthorRole.Administrator);
 			ok(author.url instanceof URL);
 			equal(author.url.href, "https://belin.io/");
 			equal(author.userAgent, "Mozilla/5.0");

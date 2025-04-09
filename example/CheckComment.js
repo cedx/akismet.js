@@ -16,7 +16,7 @@ try {
 		date: new Date,
 		content: "A user comment.",
 		referrer: "https://github.com/cedx/akismet.js",
-		type: CommentType.contactForm
+		type: CommentType.ContactForm
 	});
 
 	const blog = new Blog({
@@ -26,7 +26,7 @@ try {
 	});
 
 	const result = await new Client("123YourAPIKey", blog).checkComment(comment);
-	console.log(result == CheckResult.ham ? "The comment is ham." : "The comment is spam.");
+	console.log(result == CheckResult.Ham ? "The comment is ham." : "The comment is spam.");
 }
 catch (error) {
 	console.error(error instanceof Error ? error.message : error);

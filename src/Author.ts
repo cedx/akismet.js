@@ -96,7 +96,7 @@ export const AuthorRole = Object.freeze({
 	/**
 	 * The author is an administrator.
 	 */
-	administrator: "administrator"
+	Administrator: "administrator"
 });
 
 /**

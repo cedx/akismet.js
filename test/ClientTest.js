@@ -15,13 +15,13 @@ describe("Client", () => {
 		author: new Author({
 			ipAddress: "192.168.0.1",
 			name: "Akismet",
-			role: AuthorRole.administrator,
+			role: AuthorRole.Administrator,
 			url: "https://belin.io",
 			userAgent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36"
 		}),
 		content: "I'm testing out the Service API.",
 		referrer: "https://www.npmjs.com/package/@cedx/akismet",
-		type: CommentType.comment
+		type: CommentType.Comment
 	});
 
 	// A comment with content marked as spam.
@@ -33,16 +33,16 @@ describe("Client", () => {
 			userAgent: "Spam Bot/6.6.6"
 		}),
 		content: "Spam!",
-		type: CommentType.blogPost
+		type: CommentType.BlogPost
 	});
 
 	describe("checkComment()", () => {
-		it("should return `CheckResult.ham` for valid comment (e.g. ham)", async () =>
-			equal(await client.checkComment(ham), CheckResult.ham));
+		it("should return `CheckResult.Ham` for valid comment (e.g. ham)", async () =>
+			equal(await client.checkComment(ham), CheckResult.Ham));
 
-		it("should return `CheckResult.spam` for invalid comment (e.g. spam)", async () => {
+		it("should return `CheckResult.Spam` for invalid comment (e.g. spam)", async () => {
 			/** @type {Set<CheckResult>} */
-			const isSpam = new Set([CheckResult.spam, CheckResult.pervasiveSpam]);
+			const isSpam = new Set([CheckResult.Spam, CheckResult.PervasiveSpam]);
 			ok(isSpam.has(await client.checkComment(spam)));
 		});
 	});

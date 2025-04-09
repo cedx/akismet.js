@@ -39,7 +39,7 @@ describe("Comment", () => {
 			ok(comment.referrer instanceof URL);
 			equal(comment.recheckReason, "The comment has been changed.");
 			equal(comment.referrer.href, "https://belin.io/");
-			equal(comment.type, CommentType.blogPost);
+			equal(comment.type, CommentType.BlogPost);
 		});
 	});
 
@@ -56,7 +56,7 @@ describe("Comment", () => {
 				content: "A user comment.",
 				date: new Date("2000-01-01T00:00:00.000Z"),
 				referrer: "https://belin.io",
-				type: CommentType.blogPost
+				type: CommentType.BlogPost
 			}).toJSON();
 
 			equal(Object.keys(json).length, 7);
