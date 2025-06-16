@@ -41,7 +41,7 @@ export async function test() {
 
 /** Updates the version number in the sources. */
 export async function version() {
-	await replaceInFile("src/client.ts", /#version = "\d+(\.\d+){2}"/, `#version = "${pkg.version}"`);
+	await replaceInFile("src/Client.ts", /#version = "\d+(\.\d+){2}"/, `#version = "${pkg.version}"`);
 }
 
 /** The default task. */
