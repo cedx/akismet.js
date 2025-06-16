@@ -10,6 +10,6 @@
 			"program": "${workspaceFolder}/node_modules/gulp/bin/gulp.js",
 			"args": ["test"],
 			"skipFiles": ["<node_internals>/**"]
-		},
+		}
 	]
 }
