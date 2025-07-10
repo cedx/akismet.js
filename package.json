@@ -14,7 +14,7 @@
 	},
 	"devDependencies": {
 		"@types/gulp": "^4.0.17",
-		"@types/node": "^24.0.12",
+		"@types/node": "^24.0.13",
 		"gulp": "^5.0.1",
 		"typedoc": "^0.28.7",
 		"typescript": "^5.8.3",
