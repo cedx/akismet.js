@@ -1,15 +1,12 @@
 {
-	"$schema": "vscode://schemas/launch",
 	"version": "0.2.0",
 	"configurations": [
 		{
 			"name": "Tests",
 			"request": "launch",
 			"type": "node",
-			"cwd": "${workspaceFolder}",
 			"program": "${workspaceFolder}/node_modules/gulp/bin/gulp.js",
-			"args": ["test"],
-			"skipFiles": ["<node_internals>/**"]
+			"args": ["test"]
 		}
 	]
 }
