@@ -20,14 +20,14 @@ describe("Author", () => {
 		it("should return an initialized instance with a non-empty map", () => {
 			const author = Author.fromJson({
 				comment_author: "Cédric Belin",
-				comment_author_email: "cedx@outlook.com",
+				comment_author_email: "cedric@belin.io",
 				comment_author_url: "https://belin.io",
 				user_agent: "Mozilla/5.0",
 				user_ip: "127.0.0.1",
 				user_role: "administrator"
 			});
 
-			equal(author.email, "cedx@outlook.com");
+			equal(author.email, "cedric@belin.io");
 			equal(author.ipAddress, "127.0.0.1");
 			equal(author.role, AuthorRole.Administrator);
 			ok(author.url instanceof URL);
@@ -45,7 +45,7 @@ describe("Author", () => {
 
 		it("should return a non-empty map with an initialized instance", () => {
 			const json = new Author({
-				email: "cedx@outlook.com",
+				email: "cedric@belin.io",
 				ipAddress: "192.168.0.1",
 				name: "Cédric Belin",
 				url: "https://belin.io",
@@ -54,7 +54,7 @@ describe("Author", () => {
 
 			equal(Object.keys(json).length, 5);
 			equal(json.comment_author, "Cédric Belin");
-			equal(json.comment_author_email, "cedx@outlook.com");
+			equal(json.comment_author_email, "cedric@belin.io");
 			equal(json.comment_author_url, "https://belin.io/");
 			equal(json.user_agent, "Mozilla/5.0");
 			equal(json.user_ip, "192.168.0.1");
