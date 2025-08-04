@@ -10,7 +10,7 @@
 	"version": "17.1.0",
 	"devDependencies": {
 		"@types/gulp": "^4.0.17",
-		"@types/node": "^24.1.0",
+		"@types/node": "^24.2.0",
 		"gulp": "^5.0.1",
 		"typedoc": "^0.28.9",
 		"typescript": "^5.8.3",
