@@ -78,7 +78,7 @@ export class Client {
 	 */
 	async submitHam(comment: Comment): Promise<void> {
 		const response = await this.#fetch("1.1/submit-ham", comment.toJSON());
-		if (await response.text() != Client.#success) throw Error("Invalid server response.");
+		if (await response.text() != Client.#success) throw new Error("Invalid server response.");
 	}
 
 	/**
@@ -88,7 +88,7 @@ export class Client {
 	 */
 	async submitSpam(comment: Comment): Promise<void> {
 		const response = await this.#fetch("1.1/submit-spam", comment.toJSON());
-		if (await response.text() != Client.#success) throw Error("Invalid server response.");
+		if (await response.text() != Client.#success) throw new Error("Invalid server response.");
 	}
 
 	/**
@@ -123,11 +123,11 @@ export class Client {
 			}
 
 		const response = await fetch(new URL(endpoint, this.baseUrl), {method: "POST", headers: {"User-Agent": this.userAgent}, body});
-		if (!response.ok) throw Error(`${response.status} ${response.statusText}`);
+		if (!response.ok) throw new Error(`${response.status} ${response.statusText}`);
 
 		const {headers} = response;
-		if (headers.has("X-akismet-alert-msg")) throw Error(headers.get("X-akismet-alert-msg")!);
-		if (headers.has("X-akismet-debug-help")) throw Error(headers.get("X-akismet-debug-help")!);
+		if (headers.has("X-akismet-alert-msg")) throw new Error(headers.get("X-akismet-alert-msg")!);
+		if (headers.has("X-akismet-debug-help")) throw new Error(headers.get("X-akismet-debug-help")!);
 		return response;
 	}
 }
