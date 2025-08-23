@@ -25,7 +25,7 @@ describe("Comment", () => {
 				comment_content: "A user comment.",
 				comment_date_gmt: "2000-01-01T00:00:00.000Z",
 				comment_type: "blog-post",
-				referrer: "https://belin.io",
+				referrer: "https://cedric-belin.fr",
 				recheck_reason: "The comment has been changed.",
 				user_ip: "127.0.0.1"
 			});
@@ -38,7 +38,7 @@ describe("Comment", () => {
 			equal(comment.date.toISOString(), "2000-01-01T00:00:00.000Z");
 			ok(comment.referrer instanceof URL);
 			equal(comment.recheckReason, "The comment has been changed.");
-			equal(comment.referrer.href, "https://belin.io/");
+			equal(comment.referrer.href, "https://cedric-belin.fr/");
 			equal(comment.type, CommentType.BlogPost);
 		});
 	});
@@ -55,7 +55,7 @@ describe("Comment", () => {
 				author: new Author({ipAddress: "127.0.0.1", name: "Cédric Belin", userAgent: "Doom/6.6.6"}),
 				content: "A user comment.",
 				date: new Date("2000-01-01T00:00:00.000Z"),
-				referrer: "https://belin.io",
+				referrer: "https://cedric-belin.fr",
 				type: CommentType.BlogPost
 			}).toJSON();
 
@@ -64,7 +64,7 @@ describe("Comment", () => {
 			equal(json.comment_content, "A user comment.");
 			equal(json.comment_date_gmt, "2000-01-01T00:00:00.000Z");
 			equal(json.comment_type, "blog-post");
-			equal(json.referrer, "https://belin.io/");
+			equal(json.referrer, "https://cedric-belin.fr/");
 			equal(json.user_agent, "Doom/6.6.6");
 			equal(json.user_ip, "127.0.0.1");
 		});

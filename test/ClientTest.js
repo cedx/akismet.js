@@ -16,7 +16,7 @@ describe("Client", () => {
 			ipAddress: "192.168.0.1",
 			name: "Akismet",
 			role: AuthorRole.Administrator,
-			url: "https://belin.io",
+			url: "https://cedric-belin.fr",
 			userAgent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36"
 		}),
 		content: "I'm testing out the Service API.",

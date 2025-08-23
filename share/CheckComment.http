@@ -7,7 +7,7 @@ Content-Type: application/x-www-form-urlencoded
 api_key={{$processEnv AKISMET_API_KEY}}
 &blog=https://github.com/cedx/akismet.js
 &comment_author=Akismet
-&comment_author_url=https://belin.io
+&comment_author_url=https://cedric-belin.fr
 &comment_content=I'm testing out the Service API.
 &comment_type=comment
 &is_test=true
