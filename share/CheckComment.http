@@ -1,7 +1,7 @@
-@apiUrl = https://rest.akismet.com
+@baseUrl = https://rest.akismet.com/1.1
 
 ### Checks the specified ham against the service database.
-POST {{apiUrl}}/1.1/comment-check
+POST {{baseUrl}}/comment-check
 Content-Type: application/x-www-form-urlencoded
 
 api_key={{$processEnv AKISMET_API_KEY}}
@@ -17,7 +17,7 @@ api_key={{$processEnv AKISMET_API_KEY}}
 &user_role=administrator
 
 ### Checks the specified spam against the service database.
-POST {{apiUrl}}/1.1/comment-check
+POST {{baseUrl}}/comment-check
 Content-Type: application/x-www-form-urlencoded
 
 api_key={{$processEnv AKISMET_API_KEY}}

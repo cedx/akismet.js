@@ -1,7 +1,7 @@
-@apiUrl = https://rest.akismet.com
+@baseUrl = https://rest.akismet.com/1.1
 
 ### Submits the specified comment that was incorrectly marked as spam but should not have been.
-POST {{apiUrl}}/1.1/submit-ham
+POST {{baseUrl}}/submit-ham
 Content-Type: application/x-www-form-urlencoded
 
 api_key={{$processEnv AKISMET_API_KEY}}

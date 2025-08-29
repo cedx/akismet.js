@@ -1,7 +1,7 @@
-@apiUrl = https://rest.akismet.com
+@baseUrl = https://rest.akismet.com/1.1
 
 ### Checks the specified API key against the service database, and returns a value indicating whether it is valid.
-POST {{apiUrl}}/1.1/verify-key
+POST {{baseUrl}}/verify-key
 Content-Type: application/x-www-form-urlencoded
 
 api_key={{$processEnv AKISMET_API_KEY}}
