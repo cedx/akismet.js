@@ -9,7 +9,7 @@
 	"type": "module",
 	"version": "17.1.0",
 	"devDependencies": {
-		"@types/node": "^24.6.2",
+		"@types/node": "^24.7.0",
 		"typedoc": "^0.28.13",
 		"typescript": "^5.9.3",
 		"typescript-eslint": "^8.45.0"
