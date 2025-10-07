@@ -1,3 +1,3 @@
-. tool/Clean.ps1
-. tool/Version.ps1
-. tool/Build.ps1
+. $PSScriptRoot/Clean.ps1
+. $PSScriptRoot/Version.ps1
+. $PSScriptRoot/Build.ps1
