@@ -107,11 +107,11 @@ export class Client {
 
 	/**
 	 * Queries the service by posting the specified fields to a given end point, and returns the response.
-	 * @param endpoint The URL of the end point to query.
+	 * @param endPoint The URL of the end point to query.
 	 * @param fields The fields describing the query body.
 	 * @returns The server response.
 	 */
-	async #fetch(endpoint: string, fields: Record<string, any> = {}): Promise<Response> {
+	async #fetch(endPoint: string, fields: Record<string, any> = {}): Promise<Response> {
 		const body = new URLSearchParams({...this.blog.toJSON(), api_key: this.apiKey});
 		if (this.isTest) body.set("is_test", "1");
 
@@ -122,7 +122,7 @@ export class Client {
 				for (const item of value) body.set(`${key}[${index++}]`, String(item));
 			}
 
-		const response = await fetch(new URL(endpoint, this.baseUrl), {method: "POST", headers: {"User-Agent": this.userAgent}, body});
+		const response = await fetch(new URL(endPoint, this.baseUrl), {method: "POST", headers: {"User-Agent": this.userAgent}, body});
 		if (!response.ok) throw new Error(`${response.status} ${response.statusText}`);
 
 		const {headers} = response;
