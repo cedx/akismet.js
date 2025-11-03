@@ -33,20 +33,6 @@ export class Usage {
 		this.throttled = options.throttled ?? false;
 		this.usage = options.usage ?? 0;
 	}
-
-	/**
-	 * Creates a new usage from the specified JSON object.
-	 * @param json A JSON object representing a usage.
-	 * @returns The instance corresponding to the specified JSON object.
-	 */
-	static fromJson(json: Record<string, any>): Usage {
-		return new this({
-			limit: Number.isInteger(json.limit) ? json.limit as number : -1,
-			percentage: typeof json.percentage == "number" ? json.percentage : 0,
-			throttled: typeof json.throttled == "boolean" ? json.throttled : false,
-			usage: Number.isInteger(json.usage) ? json.usage as number : 0
-		});
-	}
 }
 
 /**

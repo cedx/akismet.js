@@ -6,28 +6,6 @@ import {describe, it} from "node:test";
  * Tests the features of the {@link Blog} class.
  */
 describe("Blog", () => {
-	describe("fromJson()", () => {
-		it("should return an empty instance with an empty map", () => {
-			const blog = Blog.fromJson({});
-			equal(blog.charset.length, 0);
-			equal(blog.languages.size, 0);
-			equal(blog.url, null);
-		});
-
-		it("should return an initialized instance with a non-empty map", () => {
-			const blog = Blog.fromJson({
-				blog: "https://github.com/cedx/akismet.js",
-				blog_charset: "UTF-8",
-				blog_lang: "en, fr"
-			});
-
-			equal(blog.charset, "UTF-8");
-			deepEqual(Array.from(blog.languages), ["en", "fr"]);
-			ok(blog.url instanceof URL);
-			equal(blog.url.href, "https://github.com/cedx/akismet.js");
-		});
-	});
-
 	describe("toJSON()", () => {
 		it("should return only the blog URL with a newly created instance", () => {
 			const json = new Blog({url: "https://github.com/cedx/akismet.js"}).toJSON();

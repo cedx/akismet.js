@@ -29,19 +29,6 @@ export class Blog {
 	}
 
 	/**
-	 * Creates a new blog from the specified JSON object.
-	 * @param json A JSON object representing a blog.
-	 * @returns The instance corresponding to the specified JSON object.
-	 */
-	static fromJson(json: Record<string, any>): Blog {
-		return new this({
-			charset: typeof json.blog_charset == "string" ? json.blog_charset : "",
-			languages: typeof json.blog_lang == "string" ? json.blog_lang.split(",").map(language => language.trim()) : [],
-			url: typeof json.blog == "string" ? json.blog : ""
-		});
-	}
-
-	/**
 	 * Returns a JSON representation of this object.
 	 * @returns The JSON representation of this object.
 	 */

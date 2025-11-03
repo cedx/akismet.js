@@ -67,33 +67,13 @@ export class Comment {
 	}
 
 	/**
-	 * Creates a new comment from the specified JSON object.
-	 * @param json A JSON object representing a comment.
-	 * @returns The instance corresponding to the specified JSON object.
-	 */
-	static fromJson(json: Record<string, any>): Comment {
-		const hasAuthor = Object.keys(json).filter(key => key.startsWith("comment_author") || key.startsWith("user")).length > 0;
-		return new this({
-			author: hasAuthor ? Author.fromJson(json) : null,
-			content: typeof json.comment_content == "string" ? json.comment_content : "",
-			context: Array.isArray(json.comment_context) ? json.comment_context : [],
-			date: typeof json.comment_date_gmt == "string" ? new Date(json.comment_date_gmt) : null,
-			permalink: typeof json.permalink == "string" ? json.permalink : "",
-			postModified: typeof json.comment_post_modified_gmt == "string" ? new Date(json.comment_post_modified_gmt) : null,
-			recheckReason: typeof json.recheck_reason == "string" ? json.recheck_reason : "",
-			referrer: typeof json.referrer == "string" ? json.referrer : "",
-			type: typeof json.comment_type == "string" ? json.comment_type : ""
-		});
-	}
-
-	/**
 	 * Returns a JSON representation of this object.
 	 * @returns The JSON representation of this object.
 	 */
 	toJSON(): Record<string, any> {
 		const map = this.author ? this.author.toJSON() : {};
 		if (this.content) map.comment_content = this.content;
-		if (this.context.length) map.comment_context = this.context;
+		// TODO if (this.context.length) map.comment_context = this.context;
 		if (this.date) map.comment_date_gmt = this.date.toJSON();
 		if (this.permalink) map.permalink = this.permalink.href;
 		if (this.postModified) map.comment_post_modified_gmt = this.postModified.toJSON();

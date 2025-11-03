@@ -47,22 +47,6 @@ export class Author {
 	}
 
 	/**
-	 * Creates a new author from the specified JSON object.
-	 * @param json A JSON object representing an author.
-	 * @returns The instance corresponding to the specified JSON object.
-	 */
-	static fromJson(json: Record<string, any>): Author {
-		return new this({
-			email: typeof json.comment_author_email == "string" ? json.comment_author_email : "",
-			ipAddress: typeof json.user_ip == "string" ? json.user_ip : "",
-			name: typeof json.comment_author == "string" ? json.comment_author : "",
-			role: typeof json.user_role == "string" ? json.user_role : "",
-			url: typeof json.comment_author_url == "string" ? json.comment_author_url : "",
-			userAgent: typeof json.user_agent == "string" ? json.user_agent : ""
-		});
-	}
-
-	/**
 	 * Returns a JSON representation of this object.
 	 * @returns The JSON representation of this object.
 	 */
