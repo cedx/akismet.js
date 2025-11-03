@@ -1,5 +1,5 @@
-import {Author, AuthorRole} from "@cedx/akismet";
-import {equal, ok} from "node:assert/strict";
+import {Author} from "@cedx/akismet";
+import {equal} from "node:assert/strict";
 import {describe, it} from "node:test";
 
 /**

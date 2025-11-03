@@ -1,5 +1,5 @@
 import {Blog} from "@cedx/akismet";
-import {deepEqual, equal, ok} from "node:assert/strict";
+import {equal} from "node:assert/strict";
 import {describe, it} from "node:test";
 
 /**

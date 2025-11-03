@@ -1,5 +1,5 @@
 import {Author, Comment, CommentType} from "@cedx/akismet";
-import {equal, ok} from "node:assert/strict";
+import {equal} from "node:assert/strict";
 import {describe, it} from "node:test";
 
 /**
