@@ -17,7 +17,7 @@ describe("Client", () => {
 			name: "Akismet",
 			role: AuthorRole.Administrator,
 			url: "https://cedric-belin.fr",
-			userAgent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36"
+			userAgent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:144.0) Gecko/20100101 Firefox/144.0"
 		}),
 		content: "I'm testing out the Service API.",
 		referrer: "https://www.npmjs.com/package/@cedx/akismet",
