@@ -39,7 +39,6 @@
 		<File Path="tool/Publish.ps1" />
 		<File Path="tool/Test.ps1" />
 		<File Path="tool/Update.ps1" />
-		<File Path="tool/Version.ps1" />
 	</Folder>
 	<Folder Name="/Workflows/">
 		<File Path=".github/workflows/ContinuousIntegration.yaml" />

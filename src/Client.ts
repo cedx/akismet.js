@@ -1,6 +1,7 @@
 import type {Blog} from "./Blog.js";
 import {CheckResult} from "./CheckResult.js";
 import type {Comment} from "./Comment.js";
+import pkg from "../package.json" with {type: "json"};
 
 /**
  * Submits comments to the [Akismet](https://akismet.com) service.
@@ -11,11 +12,6 @@ export class Client {
 	 * The response returned by the `submit-ham` and `submit-spam` endpoints when the outcome is a success.
 	 */
 	static readonly #success = "Thanks for making the web a better place.";
-
-	/**
-	 * The package version.
-	 */
-	static readonly #version = "17.1.0";
 
 	/**
 	 * The Akismet API key.
@@ -56,7 +52,7 @@ export class Client {
 		this.baseUrl = new URL(url.endsWith("/") ? url : `${url}/`);
 		this.blog = blog;
 		this.isTest = options.isTest ?? false;
-		this.userAgent = options.userAgent ?? `${navigator.userAgent} | Akismet/${Client.#version}`;
+		this.userAgent = options.userAgent ?? `${navigator.userAgent} | Akismet/${pkg.version}`;
 	}
 
 	/**
