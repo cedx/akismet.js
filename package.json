@@ -9,10 +9,10 @@
 	"type": "module",
 	"version": "17.1.0",
 	"devDependencies": {
-		"@types/node": "^24.10.1",
+		"@types/node": "^24.10.2",
 		"typedoc": "^0.28.15",
 		"typescript": "^5.9.3",
-		"typescript-eslint": "^8.48.1"
+		"typescript-eslint": "^8.49.0"
 	},
 	"engines": {
 		"node": ">=24.0.0"
