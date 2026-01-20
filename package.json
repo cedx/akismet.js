@@ -12,7 +12,7 @@
 		"@types/node": "^25.0.9",
 		"typedoc": "^0.28.16",
 		"typescript": "^5.9.3",
-		"typescript-eslint": "^8.53.0"
+		"typescript-eslint": "^8.53.1"
 	},
 	"engines": {
 		"node": ">=24.0.0"
