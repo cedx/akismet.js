@@ -29,5 +29,5 @@ try {
 	console.log(result == CheckResult.Ham ? "The comment is ham." : "The comment is spam.");
 }
 catch (error) {
-	console.error(error instanceof Error ? error.message : error);
+	console.error(Error.isError(error) ? error.message : error);
 }
