@@ -8,10 +8,10 @@ You can verify if you're already good to go with the following commands:
 
 ```shell
 node --version
-# v25.6.0
+# v25.8.1
 
 npm --version
-# 11.8.0
+# 11.11.0
 ```
 
 ## Installing with npm package manager
