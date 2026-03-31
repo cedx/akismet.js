@@ -13,7 +13,6 @@
 		"skipLibCheck": true,
 		"target": "ESNext",
 		"tsBuildInfoFile": "../var/tsbuildinfo.json",
-		"types": ["node"],
 		"verbatimModuleSyntax": true
 	}
 }
