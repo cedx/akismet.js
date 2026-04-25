@@ -1,7 +1,8 @@
+import {version} from "node:process";
+import pkg from "../package.json" with {type: "json"};
 import type {Blog} from "./Blog.js";
 import {CheckResult} from "./CheckResult.js";
 import type {Comment} from "./Comment.js";
-import pkg from "../package.json" with {type: "json"};
 
 /**
  * The response returned by the `submit-ham` and `submit-spam` endpoints when the outcome is a success.
@@ -52,7 +53,7 @@ export class Client {
 		this.baseUrl = new URL(url.endsWith("/") ? url : `${url}/`);
 		this.blog = blog;
 		this.isTest = options.isTest ?? false;
-		this.userAgent = options.userAgent ?? `${navigator.userAgent} | Akismet/${pkg.version}`;
+		this.userAgent = options.userAgent ?? `Node.js/${version.slice(1)} | Belin.Akismet/${pkg.version}`;
 	}
 
 	/**
