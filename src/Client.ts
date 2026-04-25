@@ -4,14 +4,14 @@ import type {Comment} from "./Comment.js";
 import pkg from "../package.json" with {type: "json"};
 
 /**
+ * The response returned by the `submit-ham` and `submit-spam` endpoints when the outcome is a success.
+ */
+const success = "Thanks for making the web a better place.";
+
+/**
  * Submits comments to the [Akismet](https://akismet.com) service.
  */
 export class Client {
-
-	/**
-	 * The response returned by the `submit-ham` and `submit-spam` endpoints when the outcome is a success.
-	 */
-	static readonly #success = "Thanks for making the web a better place.";
 
 	/**
 	 * The Akismet API key.
@@ -73,7 +73,7 @@ export class Client {
 	 */
 	async submitHam(comment: Comment): Promise<void> {
 		const response = await this.#fetch("1.1/submit-ham", comment.toJSON());
-		if (await response.text() != Client.#success) throw new Error("Invalid server response.");
+		if (await response.text() != success) throw new Error("Invalid server response.");
 	}
 
 	/**
@@ -83,7 +83,7 @@ export class Client {
 	 */
 	async submitSpam(comment: Comment): Promise<void> {
 		const response = await this.#fetch("1.1/submit-spam", comment.toJSON());
-		if (await response.text() != Client.#success) throw new Error("Invalid server response.");
+		if (await response.text() != success) throw new Error("Invalid server response.");
 	}
 
 	/**
