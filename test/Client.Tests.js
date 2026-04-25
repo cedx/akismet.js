@@ -58,6 +58,6 @@ describe("Client", () => {
 			ok(await client.verifyKey()));
 
 		it("should return `false` for an invalid API key", async () =>
-			equal(await new Client("0123456789-ABCDEF", client.blog, {isTest: true}).verifyKey(), false));
+			equal(await new Client("0123456789AB", client.blog, {isTest: true}).verifyKey(), false));
 	});
 });

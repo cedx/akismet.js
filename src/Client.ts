@@ -91,13 +91,8 @@ export class Client {
 	 * @returns `true` if the specified API key is valid, otherwise `false`.
 	 */
 	async verifyKey(): Promise<boolean> {
-		try {
-			const response = await this.#fetch("1.1/verify-key");
-			return await response.text() == "valid";
-		}
-		catch {
-			return false;
-		}
+		const response = await this.#fetch("1.1/verify-key");
+		return await response.text() == "valid";
 	}
 
 	/**
