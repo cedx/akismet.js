@@ -48,9 +48,11 @@ export class Client {
 	constructor(apiKey: string, blog: Blog, options: ClientOptions = {}) {
 		const {baseUrl = "https://rest.akismet.com"} = options;
 		const url = baseUrl instanceof URL ? baseUrl.href : baseUrl;
+		const endpoint = new URL(url.endsWith("/") ? url : `${url}/`);
+		if (endpoint.protocol != "https:") throw new TypeError("The base URL must use the HTTPS protocol.");
 
 		this.apiKey = apiKey;
-		this.baseUrl = new URL(url.endsWith("/") ? url : `${url}/`);
+		this.baseUrl = endpoint;
 		this.blog = blog;
 		this.isTest = options.isTest ?? false;
 		this.userAgent = options.userAgent ?? `Node.js/${version.slice(1)} | Belin.Akismet/${pkg.version}`;
